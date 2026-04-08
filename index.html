@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friction & Toil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #0c0c0c; color: #e8e8e8; overflow: hidden; }
+.bridge-wrap { position: fixed; inset: 0; z-index: 0; }
+.bridge-wrap svg { width: 100%; height: 100%; }
+.veil {
+  position: fixed; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom,
+    rgba(12,12,12,0.5)  0%,
+    rgba(12,12,12,0.0)  14%,
+    rgba(12,12,12,0.0)  54%,
+    rgba(12,12,12,0.25) 66%,
+    rgba(12,12,12,0.72) 80%,
+    rgba(12,12,12,1.0) 100%
+  );
+}
+.fog-band { position: fixed; left: -5%; width: 110%; z-index: 2; border-radius: 50%; filter: blur(18px); }
+.fog-band.f1 { bottom: 40%; height: 8%; background: rgba(180,180,180,0.05); animation: fogDrift 26s ease-in-out infinite alternate; }
+.fog-band.f2 { bottom: 32%; height: 5%; background: rgba(160,160,160,0.035); animation: fogDrift 34s ease-in-out infinite alternate-reverse; }
+.fog-band.f3 { bottom: 47%; height: 4%; background: rgba(150,150,150,0.025); animation: fogDrift 42s ease-in-out infinite alternate; }
+@keyframes fogDrift {
+  from { transform: translateX(0) scaleY(1); opacity: 0.6; }
+  to   { transform: translateX(5%) scaleY(1.3); opacity: 1; }
+}
+.centre {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.brand-f {
+  font-family: 'Outfit', sans-serif; font-weight: 200;
+  font-size: clamp(4rem, 12vw, 11rem);
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #e8e8e8; line-height: 1;
+  opacity: 0; animation: rise 1.4s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+}
+.brand-amp {
+  font-family: 'Cormorant', serif; font-style: italic; font-weight: 300;
+  font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+  color: #aaa; letter-spacing: 0.05em;
+  margin: 0.05em 0;
+  opacity: 0; animation: rise 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+}
+.brand-t {
+  font-family: 'Outfit', sans-serif; font-weight: 200;
+  font-size: clamp(4rem, 12vw, 11rem);
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #e8e8e8; line-height: 1;
+  opacity: 0; animation: rise 1.4s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+}
+.divider {
+  width: 40px; height: 0.5px; background: #404040;
+  margin: 2rem auto;
+  opacity: 0; animation: rise 1s cubic-bezier(0.16,1,0.3,1) 1.4s forwards;
+}
+.coming-soon {
+  font-family: 'Outfit', sans-serif; font-weight: 200;
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: #888;
+  opacity: 0; animation: rise 1s cubic-bezier(0.16,1,0.3,1) 1.7s forwards;
+}
+.domain {
+  font-family: 'Outfit', sans-serif; font-weight: 200;
+  font-size: clamp(0.6rem, 1vw, 0.75rem);
+  letter-spacing: 0.25em; color: #555;
+  margin-top: 1rem;
+  opacity: 0; animation: rise 1s cubic-bezier(0.16,1,0.3,1) 2s forwards;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="bridge-wrap">
+<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="skyG" cx="50%" cy="25%" r="80%">
+    <stop offset="0%" stop-color="#2a2a2a"/>
+    <stop offset="55%" stop-color="#181818"/>
+    <stop offset="100%" stop-color="#0c0c0c"/>
+  </radialGradient>
+  <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1c1c1c"/>
+    <stop offset="100%" stop-color="#0a0a0a"/>
+  </linearGradient>
+  <linearGradient id="towerG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#242424"/>
+    <stop offset="30%" stop-color="#505050"/>
+    <stop offset="60%" stop-color="#3c3c3c"/>
+    <stop offset="100%" stop-color="#1e1e1e"/>
+  </linearGradient>
+  <linearGradient id="cableG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#2e2e2e" stop-opacity="0.4"/>
+    <stop offset="20%" stop-color="#606060" stop-opacity="0.95"/>
+    <stop offset="50%" stop-color="#747474" stop-opacity="1"/>
+    <stop offset="80%" stop-color="#606060" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#2e2e2e" stop-opacity="0.4"/>
+  </linearGradient>
+  <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="b6"><feGaussianBlur stdDeviation="6"/></filter>
+  <filter id="b10"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+
+<!-- SKY -->
+<rect width="1440" height="900" fill="url(#skyG)"/>
+
+<!-- WATER — deck is at y=605 -->
+<rect x="0" y="618" width="1440" height="282" fill="url(#waterG)"/>
+<g opacity="0.2" filter="url(#b3)">
+  <line x1="0" y1="636" x2="1440" y2="636" stroke="#404040" stroke-width="0.8"/>
+  <line x1="0" y1="652" x2="1440" y2="652" stroke="#363636" stroke-width="0.6"/>
+  <line x1="0" y1="670" x2="1440" y2="670" stroke="#404040" stroke-width="0.7"/>
+  <line x1="0" y1="690" x2="1440" y2="690" stroke="#363636" stroke-width="0.5"/>
+  <line x1="0" y1="712" x2="1440" y2="712" stroke="#3a3a3a" stroke-width="0.5"/>
+</g>
+<ellipse cx="380" cy="648" rx="140" ry="7" fill="rgba(80,80,80,0.06)" filter="url(#b6)"/>
+<ellipse cx="920" cy="658" rx="110" ry="6" fill="rgba(80,80,80,0.05)" filter="url(#b6)"/>
+
+<!-- Shore -->
+<path d="M0,608 Q240,590 480,598 Q720,585 960,596 Q1200,582 1440,600 L1440,628 L0,628Z" fill="#131313" opacity="0.9"/>
+<path d="M0,632 Q180,617 360,625 Q560,610 720,620 Q880,608 1080,622 Q1260,614 1440,628 L1440,650 L0,650Z" fill="#0f0f0f"/>
+
+<!-- LEFT TOWER — y=160 to y=605 = 445px tall -->
+<g>
+  <rect x="348" y="160" width="24" height="445" fill="url(#towerG)"/>
+  <rect x="444" y="160" width="24" height="445" fill="url(#towerG)"/>
+  <!-- Cross beams -->
+  <rect x="348" y="160" width="120" height="16" fill="#3e3e3e"/>
+  <rect x="348" y="244" width="120" height="11" fill="#363636"/>
+  <rect x="348" y="336" width="120" height="11" fill="#363636"/>
+  <rect x="348" y="428" width="120" height="10" fill="#323232"/>
+  <rect x="348" y="514" width="120" height="9"  fill="#2e2e2e"/>
+  <rect x="348" y="588" width="120" height="8"  fill="#2a2a2a"/>
+  <!-- X-bracing -->
+  <line x1="372" y1="244" x2="444" y2="336" stroke="#282828" stroke-width="3.5" opacity="0.75"/>
+  <line x1="468" y1="244" x2="372" y2="336" stroke="#282828" stroke-width="3.5" opacity="0.75"/>
+  <line x1="372" y1="336" x2="444" y2="428" stroke="#282828" stroke-width="3"   opacity="0.7"/>
+  <line x1="468" y1="336" x2="372" y2="428" stroke="#282828" stroke-width="3"   opacity="0.7"/>
+  <line x1="372" y1="428" x2="444" y2="514" stroke="#282828" stroke-width="2.5" opacity="0.65"/>
+  <line x1="468" y1="428" x2="372" y2="514" stroke="#282828" stroke-width="2.5" opacity="0.65"/>
+  <line x1="372" y1="514" x2="444" y2="588" stroke="#282828" stroke-width="2"   opacity="0.55"/>
+  <line x1="468" y1="514" x2="372" y2="588" stroke="#282828" stroke-width="2"   opacity="0.55"/>
+  <!-- Caps -->
+  <rect x="342" y="152" width="36" height="12" fill="#484848"/>
+  <rect x="438" y="152" width="36" height="12" fill="#484848"/>
+  <!-- Finials -->
+  <rect x="352" y="114" width="16" height="42" fill="#3e3e3e"/>
+  <rect x="448" y="114" width="16" height="42" fill="#3e3e3e"/>
+  <rect x="356" y="94"  width="8"  height="24" fill="#444444"/>
+  <rect x="452" y="94"  width="8"  height="24" fill="#444444"/>
+  <rect x="358" y="80"  width="4"  height="18" fill="#4c4c4c"/>
+  <rect x="454" y="80"  width="4"  height="18" fill="#4c4c4c"/>
+  <!-- Base plinth -->
+  <rect x="336" y="597" width="148" height="10" fill="#2c2c2c"/>
+  <rect x="330" y="605" width="160" height="7"  fill="#262626"/>
+</g>
+
+<!-- RIGHT TOWER -->
+<g>
+  <rect x="984"  y="160" width="24" height="445" fill="url(#towerG)"/>
+  <rect x="1080" y="160" width="24" height="445" fill="url(#towerG)"/>
+  <rect x="984"  y="160" width="120" height="16" fill="#3e3e3e"/>
+  <rect x="984"  y="244" width="120" height="11" fill="#363636"/>
+  <rect x="984"  y="336" width="120" height="11" fill="#363636"/>
+  <rect x="984"  y="428" width="120" height="10" fill="#323232"/>
+  <rect x="984"  y="514" width="120" height="9"  fill="#2e2e2e"/>
+  <rect x="984"  y="588" width="120" height="8"  fill="#2a2a2a"/>
+  <line x1="1008" y1="244" x2="1080" y2="336" stroke="#282828" stroke-width="3.5" opacity="0.75"/>
+  <line x1="1104" y1="244" x2="1008" y2="336" stroke="#282828" stroke-width="3.5" opacity="0.75"/>
+  <line x1="1008" y1="336" x2="1080" y2="428" stroke="#282828" stroke-width="3"   opacity="0.7"/>
+  <line x1="1104" y1="336" x2="1008" y2="428" stroke="#282828" stroke-width="3"   opacity="0.7"/>
+  <line x1="1008" y1="428" x2="1080" y2="514" stroke="#282828" stroke-width="2.5" opacity="0.65"/>
+  <line x1="1104" y1="428" x2="1008" y2="514" stroke="#282828" stroke-width="2.5" opacity="0.65"/>
+  <line x1="1008" y1="514" x2="1080" y2="588" stroke="#282828" stroke-width="2"   opacity="0.55"/>
+  <line x1="1104" y1="514" x2="1008" y2="588" stroke="#282828" stroke-width="2"   opacity="0.55"/>
+  <rect x="978"  y="152" width="36" height="12" fill="#484848"/>
+  <rect x="1074" y="152" width="36" height="12" fill="#484848"/>
+  <rect x="988"  y="114" width="16" height="42" fill="#3e3e3e"/>
+  <rect x="1084" y="114" width="16" height="42" fill="#3e3e3e"/>
+  <rect x="992"  y="94"  width="8"  height="24" fill="#444444"/>
+  <rect x="1088" y="94"  width="8"  height="24" fill="#444444"/>
+  <rect x="994"  y="80"  width="4"  height="18" fill="#4c4c4c"/>
+  <rect x="1090" y="80"  width="4"  height="18" fill="#4c4c4c"/>
+  <rect x="972"  y="597" width="148" height="10" fill="#2c2c2c"/>
+  <rect x="966"  y="605" width="160" height="7"  fill="#262626"/>
+</g>
+
+<!-- MAIN SUSPENSION CABLES — catenary from y=80 at towers to y=275 at midspan -->
+<g fill="none">
+  <path d="M-40,510 Q360,138 720,272 Q1080,138 1480,458" stroke="url(#cableG)" stroke-width="4.5" opacity="0.98"/>
+  <path d="M-40,528 Q360,156 720,290 Q1080,156 1480,476" stroke="url(#cableG)" stroke-width="2.8" opacity="0.72"/>
+  <!-- Backstays -->
+  <path d="M-40,510 Q90,568 185,603" stroke="#505050" stroke-width="2.8" fill="none" opacity="0.65"/>
+  <path d="M1480,458 Q1350,548 1255,603" stroke="#505050" stroke-width="2.8" fill="none" opacity="0.65"/>
+</g>
+
+<!-- HANGER CABLES — from main cable to deck at y=605 -->
+<g stroke="#424242" stroke-width="0.9" opacity="0.88">
+  <line x1="36"   y1="492" x2="36"   y2="605"/>
+  <line x1="68"   y1="466" x2="68"   y2="605"/>
+  <line x1="100"  y1="443" x2="100"  y2="605"/>
+  <line x1="132"  y1="421" x2="132"  y2="605"/>
+  <line x1="164"  y1="401" x2="164"  y2="605"/>
+  <line x1="196"  y1="383" x2="196"  y2="605"/>
+  <line x1="228"  y1="366" x2="228"  y2="605"/>
+  <line x1="258"  y1="351" x2="258"  y2="605"/>
+  <line x1="288"  y1="337" x2="288"  y2="605"/>
+  <line x1="316"  y1="325" x2="316"  y2="605"/>
+  <line x1="342"  y1="315" x2="342"  y2="605"/>
+  <line x1="366"  y1="306" x2="366"  y2="605"/>
+  <line x1="390"  y1="298" x2="390"  y2="605"/>
+  <line x1="414"  y1="291" x2="414"  y2="605"/>
+  <line x1="438"  y1="285" x2="438"  y2="605"/>
+  <line x1="462"  y1="279" x2="462"  y2="605"/>
+  <line x1="486"  y1="275" x2="486"  y2="605"/>
+  <line x1="510"  y1="271" x2="510"  y2="605"/>
+  <line x1="534"  y1="268" x2="534"  y2="605"/>
+  <line x1="558"  y1="275" x2="558"  y2="605"/>
+  <line x1="582"  y1="273" x2="582"  y2="605"/>
+  <line x1="606"  y1="272" x2="606"  y2="605"/>
+  <line x1="630"  y1="272" x2="630"  y2="605"/>
+  <line x1="654"  y1="272" x2="654"  y2="605"/>
+  <line x1="678"  y1="272" x2="678"  y2="605"/>
+  <line x1="702"  y1="272" x2="702"  y2="605"/>
+  <line x1="720"  y1="272" x2="720"  y2="605"/>
+  <line x1="738"  y1="272" x2="738"  y2="605"/>
+  <line x1="762"  y1="272" x2="762"  y2="605"/>
+  <line x1="786"  y1="272" x2="786"  y2="605"/>
+  <line x1="810"  y1="272" x2="810"  y2="605"/>
+  <line x1="834"  y1="273" x2="834"  y2="605"/>
+  <line x1="858"  y1="275" x2="858"  y2="605"/>
+  <line x1="882"  y1="268" x2="882"  y2="605"/>
+  <line x1="906"  y1="271" x2="906"  y2="605"/>
+  <line x1="930"  y1="275" x2="930"  y2="605"/>
+  <line x1="954"  y1="279" x2="954"  y2="605"/>
+  <line x1="978"  y1="285" x2="978"  y2="605"/>
+  <line x1="1002" y1="291" x2="1002" y2="605"/>
+  <line x1="1026" y1="298" x2="1026" y2="605"/>
+  <line x1="1050" y1="306" x2="1050" y2="605"/>
+  <line x1="1074" y1="315" x2="1074" y2="605"/>
+  <line x1="1098" y1="325" x2="1098" y2="605"/>
+  <line x1="1124" y1="337" x2="1124" y2="605"/>
+  <line x1="1152" y1="351" x2="1152" y2="605"/>
+  <line x1="1180" y1="366" x2="1180" y2="605"/>
+  <line x1="1212" y1="383" x2="1212" y2="605"/>
+  <line x1="1244" y1="401" x2="1244" y2="605"/>
+  <line x1="1276" y1="421" x2="1276" y2="605"/>
+  <line x1="1308" y1="443" x2="1308" y2="605"/>
+  <line x1="1340" y1="466" x2="1340" y2="605"/>
+  <line x1="1372" y1="492" x2="1372" y2="605"/>
+  <line x1="1404" y1="520" x2="1404" y2="605"/>
+</g>
+
+<!-- ROAD DECK — clearly at y=605, visible above water -->
+<rect x="0" y="601" width="1440" height="4"  fill="#181818"/>
+<rect x="0" y="605" width="1440" height="13" fill="#1f1f1f"/>
+<rect x="0" y="603" width="1440" height="2"  fill="#484848"/>
+<rect x="0" y="618" width="1440" height="4"  fill="#252525"/>
+<line x1="0" y1="603" x2="1440" y2="603" stroke="#565656" stroke-width="0.8"/>
+
+<!-- TOWER REFLECTIONS -->
+<g opacity="0.1" filter="url(#b10)">
+  <rect x="348"  y="626" width="24" height="200" fill="#555"/>
+  <rect x="444"  y="626" width="24" height="200" fill="#555"/>
+  <rect x="984"  y="626" width="24" height="200" fill="#555"/>
+  <rect x="1080" y="626" width="24" height="200" fill="#555"/>
+</g>
+<!-- CABLE REFLECTIONS -->
+<g fill="none" opacity="0.13" filter="url(#b6)">
+  <path d="M-40,646 Q360,696 720,680 Q1080,696 1480,638" stroke="#606060" stroke-width="3"/>
+  <path d="M-40,660 Q360,710 720,694 Q1080,710 1480,652" stroke="#505050" stroke-width="2"/>
+</g>
+</svg>
+</div>
+
+<div class="fog-band f1"></div>
+<div class="fog-band f2"></div>
+<div class="fog-band f3"></div>
+<div class="veil"></div>
+
+<div class="centre">
+  <div class="brand-f">Friction</div>
+  <div class="brand-amp">&amp;</div>
+  <div class="brand-t">Toil</div>
+  <div class="divider"></div>
+  <div class="coming-soon">Coming Soon</div>
+  <div class="domain">frictionandtoil.com</div>
+</div>
+</body>
+</html>
