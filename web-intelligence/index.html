@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friction & Toil — Web Intelligence Report</title>
+<meta name="description" content="A £500 intelligence report on your website. We typically find £70k–£120k in missed opportunity. 14-day money-back guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Web Intelligence Report",
+  "description": "A five-dimension website intelligence report covering Search, Design, Brand, Competitive position, and Growth. Delivered as an interactive HTML dashboard within 5 working days.",
+  "offers": {
+    "@type": "Offer",
+    "price": "500",
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/InStock"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com",
+    "email": "hello@frictionandtoil.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What format is the report delivered in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An interactive HTML dashboard, hosted online. Five tabbed dimensions, each with findings, recommendations, and an AI prompt you can use to act immediately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who runs the audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "F&T runs every report. It is not automated software — it is a structured intelligence process combining crawl data, competitor analysis, AI search visibility testing, and human review across five dimensions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from a free PageSpeed or SEO tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free tools measure one thing. This report covers five dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It models the revenue gap, shows competitor activity, and gives a prioritised action plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I have multiple sites or locations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contact us at hello@frictionandtoil.com. Multi-site reports are available and priced separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the turnaround time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five working days from briefing to delivery."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Friction & Toil",
+  "url": "https://frictionandtoil.com",
+  "email": "hello@frictionandtoil.com",
+  "description": "F&T is an intelligence company building world-class strategic intelligence systems for businesses."
+}
+</script>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-soft: rgba(255,255,255,0.02);
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+
+    --search: #6366f1;
+    --design: #c9963a;
+    --brand: #10b981;
+    --compete: #f43f5e;
+    --growth: #06b6d4;
+
+    --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    --max: 1240px;
+    --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--body);
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ============ Typography ============ */
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--text-muted);
+  }
+
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    border-radius: 999px;
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .badge-pill .tick {
+    width: 6px; height: 6px;
+    background: var(--design);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(201, 150, 58, 0.55);
+  }
+
+  .section-heading {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    max-width: 22ch;
+  }
+  .section-sub {
+    font-family: var(--body);
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 60ch;
+    margin-top: 1.15rem;
+    line-height: 1.55;
+  }
+  .section-head { margin-bottom: 3.5rem; max-width: 900px; }
+  .section-head .eyebrow { display: block; margin-bottom: 1.25rem; }
+
+  /* ============ Header ============ */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+  }
+  .brand {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .header-link {
+    font-family: var(--body);
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+  }
+  .header-link:hover { color: var(--design); }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 1.9rem;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 6px;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn .arrow { display: inline-block; transition: transform 0.25s ease; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  .btn-white {
+    background: #fff;
+    color: #000;
+  }
+  .btn-white:hover {
+    background: var(--design);
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px -16px rgba(201,150,58,0.55);
+  }
+
+  .btn-amber {
+    background: var(--design);
+    color: #14100a;
+    box-shadow: 0 10px 30px -12px rgba(201,150,58,0.45);
+  }
+  .btn-amber:hover {
+    background: #b08125;
+    transform: translateY(-2px);
+  }
+
+  .btn-full { width: 100%; }
+
+  /* ============ Hero ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 7rem 0 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -20%; left: -10%;
+    width: 60%; height: 80%;
+    background: radial-gradient(circle at 30% 30%, rgba(99,102,241,0.07), transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -20%; right: -10%;
+    width: 60%; height: 80%;
+    background: radial-gradient(circle at 70% 70%, rgba(201,150,58,0.06), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge { margin-bottom: 2rem; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.5rem, 7.5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+  .hero-sub {
+    font-family: var(--body);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    color: var(--text-secondary);
+    max-width: 52ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.55;
+  }
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .hero-guarantee {
+    margin-top: 1.5rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+  .dot {
+    display: inline-block;
+    width: 3px; height: 3px;
+    background: currentColor;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 0.75rem;
+    opacity: 0.6;
+  }
+
+  /* ============ Hero rings ============ */
+  .rings-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .rings-svg { width: 100%; aspect-ratio: 1; display: block; overflow: visible; }
+  .ring-track { fill: none; stroke: rgba(255,255,255,0.05); }
+  .ring-arc {
+    fill: none;
+    stroke-linecap: round;
+    transition: none;
+  }
+  .ring-center-label {
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-family: var(--body);
+    font-weight: 500;
+    fill: var(--text-muted);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+  .ring-center-score {
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 26px;
+    fill: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .ring-center-score-suffix {
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 10px;
+    fill: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .ring-legend {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .legend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: legendIn 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .legend-item[data-d="1"] { animation-delay: 0.45s; }
+  .legend-item[data-d="2"] { animation-delay: 0.60s; }
+  .legend-item[data-d="3"] { animation-delay: 0.75s; }
+  .legend-item[data-d="4"] { animation-delay: 0.90s; }
+  .legend-item[data-d="5"] { animation-delay: 1.05s; }
+  @keyframes legendIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .legend-dot {
+    transform: scale(0);
+    animation: dotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: inherit;
+  }
+  .legend-item[data-d="1"] .legend-dot { animation-delay: 0.55s; }
+  .legend-item[data-d="2"] .legend-dot { animation-delay: 0.70s; }
+  .legend-item[data-d="3"] .legend-dot { animation-delay: 0.85s; }
+  .legend-item[data-d="4"] .legend-dot { animation-delay: 1.00s; }
+  .legend-item[data-d="5"] .legend-dot { animation-delay: 1.15s; }
+  @keyframes dotPop {
+    to { transform: scale(1); }
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .legend-label {
+    font-family: var(--body);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .legend-score {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ============ Cost of inaction ============ */
+  .stats {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    transition: background 0.3s ease;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: var(--bg-card); }
+  .stat-figure {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .stat-figure.accent { color: var(--design); }
+  .stat-label {
+    font-family: var(--body);
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .stats-caption {
+    font-family: var(--display);
+    font-weight: 500;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* ============ Dimensions ============ */
+  .dimensions { padding: clamp(5rem, 10vw, 8rem) 0; }
+  .dim-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .dim-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2.25rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 260px;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  .dim-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--search);
+  }
+  .dim-card[data-dim="search"]::before  { background: var(--search); }
+  .dim-card[data-dim="design"]::before  { background: var(--design); }
+  .dim-card[data-dim="brand"]::before   { background: var(--brand); }
+  .dim-card[data-dim="compete"]::before { background: var(--compete); }
+  .dim-card[data-dim="growth"]::before  { background: var(--growth); }
+
+  .dim-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+  }
+  .dim-num {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .dim-name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+  .dim-card[data-dim="search"]  .dim-name { color: var(--search); }
+  .dim-card[data-dim="design"]  .dim-name { color: var(--design); }
+  .dim-card[data-dim="brand"]   .dim-name { color: var(--brand); }
+  .dim-card[data-dim="compete"] .dim-name { color: var(--compete); }
+  .dim-card[data-dim="growth"]  .dim-name { color: var(--growth); }
+
+  .dim-desc {
+    font-family: var(--body);
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  /* ============ Comparison (Why £500?) ============ */
+  .compare { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+  .compare-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem 1.75rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  .compare-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--border-hover);
+  }
+  .compare-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+  }
+  .compare-card.is-featured {
+    background: rgba(201, 150, 58, 0.05);
+    border-color: rgba(201, 150, 58, 0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px -24px rgba(201, 150, 58, 0.35);
+  }
+  .compare-card.is-featured::before { background: var(--design); height: 3px; }
+  .compare-card.is-featured:hover { transform: translateY(-10px); }
+
+  .compare-label {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .compare-card.is-featured .compare-label { color: var(--design); }
+  .compare-price {
+    font-family: var(--mono);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .compare-card.is-featured .compare-price { color: var(--design); }
+  .compare-desc {
+    font-family: var(--body);
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .compare-tag {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    padding: 0.45rem 0.85rem;
+    font-family: var(--body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    border-radius: 999px;
+    margin-top: 0.5rem;
+  }
+  .compare-card.is-featured .compare-tag {
+    color: var(--design);
+    border-color: rgba(201, 150, 58, 0.35);
+    background: rgba(201, 150, 58, 0.08);
+  }
+
+  /* ============ Sample report ============ */
+  .sample { padding: clamp(5rem, 10vw, 8rem) 0; }
+  .report-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: clamp(2rem, 5vw, 3.25rem);
+    border-radius: 6px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  }
+  .report-card:hover {
+    border-color: rgba(201, 150, 58, 0.35);
+    background: var(--bg-card-hover);
+    box-shadow: 0 30px 80px -30px rgba(201, 150, 58, 0.25), 0 0 0 1px rgba(201, 150, 58, 0.15);
+  }
+
+  .report-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.25rem;
+  }
+  .report-sector-label {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .report-sector-value {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .report-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--body);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-card);
+  }
+  .pulse {
+    width: 6px; height: 6px;
+    background: var(--design);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(201, 150, 58, 0.55);
+    animation: pulse 2.2s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(201, 150, 58, 0.45); }
+    70%  { box-shadow: 0 0 0 10px rgba(201, 150, 58, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(201, 150, 58, 0); }
+  }
+
+  .chip-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid;
+    transition: transform 0.25s ease;
+  }
+  .chip:hover { transform: translateY(-3px); }
+  .chip[data-dim="search"]  { background: rgba(99,102,241,0.12);  border-color: rgba(99,102,241,0.35); }
+  .chip[data-dim="design"]  { background: rgba(201,150,58,0.12);  border-color: rgba(201,150,58,0.35); }
+  .chip[data-dim="brand"]   { background: rgba(16,185,129,0.12);  border-color: rgba(16,185,129,0.35); }
+  .chip[data-dim="compete"] { background: rgba(244,63,94,0.12);   border-color: rgba(244,63,94,0.35); }
+  .chip[data-dim="growth"]  { background: rgba(6,182,212,0.12);   border-color: rgba(6,182,212,0.35); }
+
+  .chip-label {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.45rem;
+  }
+  .chip-value {
+    font-family: var(--mono);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .chip[data-dim="search"]  .chip-label,
+  .chip[data-dim="search"]  .chip-value { color: var(--search); }
+  .chip[data-dim="design"]  .chip-label,
+  .chip[data-dim="design"]  .chip-value { color: var(--design); }
+  .chip[data-dim="brand"]   .chip-label,
+  .chip[data-dim="brand"]   .chip-value { color: var(--brand); }
+  .chip[data-dim="compete"] .chip-label,
+  .chip[data-dim="compete"] .chip-value { color: var(--compete); }
+  .chip[data-dim="growth"]  .chip-label,
+  .chip[data-dim="growth"]  .chip-value { color: var(--growth); }
+
+  .revenue-block {
+    padding: 1.75rem 2rem;
+    background: rgba(201,150,58,0.05);
+    border: 1px solid rgba(201,150,58,0.18);
+    border-radius: 4px;
+    margin-bottom: 1.75rem;
+  }
+  .revenue-label {
+    font-family: var(--body);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--design);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .revenue-value {
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .sample-footnote {
+    text-align: center;
+    margin-top: 2.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 58ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  /* ============ Testimonials ============ */
+  .testimonials { padding: clamp(5rem, 10vw, 8rem) 0; }
+  .tgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .tcard {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--design);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    border-radius: 4px;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  .tcard:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+  }
+  .tquote {
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .tquote::before { content: "\201C"; color: var(--design); margin-right: 0.05em; }
+  .tquote::after  { content: "\201D"; color: var(--design); margin-left: 0.05em; }
+
+  .tmeta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .tavatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .tavatar[data-c="search"]  { background: var(--search); }
+  .tavatar[data-c="design"]  { background: var(--design); color: #14100a; }
+  .tavatar[data-c="brand"]   { background: var(--brand); }
+  .tavatar[data-c="compete"] { background: var(--compete); }
+  .tavatar[data-c="growth"]  { background: var(--growth); color: #0a2128; }
+
+  .tname {
+    font-family: var(--body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .ttitle {
+    font-family: var(--body);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ============ FAQ ============ */
+  .faq { padding: clamp(5rem, 10vw, 8rem) 0; }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .faq-item:hover { background: var(--bg-card-hover); border-color: var(--border-hover); }
+  .faq-item[open] { border-color: rgba(201, 150, 58, 0.3); }
+
+  .faq-q {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.35rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    color: var(--text);
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::marker { content: ""; }
+
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    opacity: 0.7;
+    transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .faq-item:hover .faq-toggle { opacity: 1; }
+  .faq-toggle::before,
+  .faq-toggle::after {
+    content: "";
+    position: absolute;
+    background: var(--text);
+    border-radius: 2px;
+  }
+  .faq-toggle::before {
+    top: 50%; left: 0; right: 0;
+    height: 1.5px;
+    transform: translateY(-50%);
+  }
+  .faq-toggle::after {
+    left: 50%; top: 0; bottom: 0;
+    width: 1.5px;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease;
+  }
+  .faq-item[open] .faq-toggle { opacity: 1; }
+  .faq-item[open] .faq-toggle::after { transform: translateX(-50%) scaleY(0); }
+
+  .faq-a {
+    padding: 0 1.75rem 1.5rem;
+    font-family: var(--body);
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 72ch;
+  }
+
+  /* ============ Final CTA ============ */
+  .final-cta {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: clamp(6rem, 11vw, 9rem) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(201,150,58,0.08), transparent 55%);
+    pointer-events: none;
+  }
+  .final-cta-inner { max-width: 780px; margin: 0 auto; position: relative; }
+  .final-headline {
+    font-family: var(--display);
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.25rem;
+    color: var(--text);
+  }
+  .final-sub {
+    font-family: var(--body);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 54ch;
+    margin: 0 auto 2.5rem;
+    line-height: 1.55;
+  }
+  .final-small {
+    margin-top: 1.5rem;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+
+  /* ============ Footer ============ */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0 2rem;
+  }
+  .footer-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .footer-centre {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .footer-right {
+    font-family: var(--body);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: right;
+    transition: color 0.2s ease;
+  }
+  .footer-right:hover { color: var(--design); }
+  .footer-copy {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ Reveal ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal.d1 { transition-delay: 0.08s; }
+  .reveal.d2 { transition-delay: 0.16s; }
+  .reveal.d3 { transition-delay: 0.24s; }
+  .reveal.d4 { transition-delay: 0.32s; }
+  .reveal.d5 { transition-delay: 0.40s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .pulse, .legend-item { animation: none; opacity: 1; }
+    .ring-arc { stroke-dashoffset: 0 !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .rings-wrap { max-width: 380px; margin: 0 auto; }
+  }
+  @media (max-width: 960px) {
+    .dim-grid { grid-template-columns: repeat(2, 1fr); }
+    .tgrid { grid-template-columns: 1fr; }
+    .chip-row { grid-template-columns: repeat(5, 1fr); gap: 0.4rem; }
+    .chip { padding: 1rem 0.4rem; }
+    .chip-label { font-size: 0.58rem; letter-spacing: 0.14em; }
+  }
+  @media (max-width: 860px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .compare-card.is-featured { transform: none; }
+    .compare-card.is-featured:hover { transform: translateY(-4px); }
+  }
+  @media (max-width: 720px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
+    .stat:last-child { border-bottom: none; }
+    .report-head { flex-direction: column; align-items: flex-start; }
+    .footer-row { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
+    .footer-right, .footer-centre { text-align: center; }
+    .brand { font-size: 0.88rem; letter-spacing: 0.16em; }
+    .header-link { font-size: 0.8rem; }
+    .hero-cta-row { flex-direction: column; align-items: stretch; }
+    .hero-cta-row .btn { width: 100%; }
+    .ring-legend { grid-template-columns: repeat(5, 1fr); gap: 0.25rem; }
+    .legend-label { font-size: 0.55rem; letter-spacing: 0.1em; }
+  }
+  @media (max-width: 480px) {
+    .dim-grid { grid-template-columns: 1fr; }
+    .dim-card { min-height: 0; }
+    .tcard { padding: 2rem 1.5rem; }
+    .report-card { padding: 1.5rem 1.1rem; }
+    .chip-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="#top" class="brand">Friction &amp; Toil</a>
+    <a href="mailto:hello@frictionandtoil.com" class="header-link">hello@frictionandtoil.com</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="badge-pill hero-badge reveal"><span class="tick"></span>Web Intelligence System</div>
+          <h1 class="reveal d1">Is your website costing you money?</h1>
+          <p class="hero-sub reveal d2">Not just in lost leads. In credibility, competitive position, and the clients who found someone else first.</p>
+          <div class="hero-cta-row reveal d3">
+            <!-- STRIPE LINK HERE -->
+            <a href="#" class="btn btn-white">Get your report &mdash; &pound;500</a>
+          </div>
+          <div class="hero-guarantee reveal d4">
+            Delivered as an interactive HTML dashboard<span class="dot"></span>14-day money-back guarantee<span class="dot"></span>No conversation required
+          </div>
+        </div>
+
+        <div class="rings-wrap reveal d2" aria-hidden="true">
+          <svg class="rings-svg" viewBox="0 0 260 260">
+            <!-- five concentric rings, radii 118 / 100 / 82 / 64 / 46 -->
+            <!-- stroke-width 8, 18 unit gap between ring centres (10px clear) -->
+            <!-- Search  r=118, c=741.42 -->
+            <!-- Design  r=100, c=628.32 -->
+            <!-- Brand   r=82,  c=515.22 -->
+            <!-- Compete r=64,  c=402.12 -->
+            <!-- Growth  r=46,  c=289.03 -->
+            <g transform="rotate(-90 130 130)">
+              <circle class="ring-track" cx="130" cy="130" r="118" stroke-width="8"/>
+              <circle class="ring-arc" data-circ="741.42" data-score="31"
+                      cx="130" cy="130" r="118" stroke="#6366f1" stroke-width="8"
+                      stroke-dasharray="741.42" stroke-dashoffset="741.42"/>
+
+              <circle class="ring-track" cx="130" cy="130" r="100" stroke-width="8"/>
+              <circle class="ring-arc" data-circ="628.32" data-score="56"
+                      cx="130" cy="130" r="100" stroke="#c9963a" stroke-width="8"
+                      stroke-dasharray="628.32" stroke-dashoffset="628.32"/>
+
+              <circle class="ring-track" cx="130" cy="130" r="82" stroke-width="8"/>
+              <circle class="ring-arc" data-circ="515.22" data-score="66"
+                      cx="130" cy="130" r="82" stroke="#10b981" stroke-width="8"
+                      stroke-dasharray="515.22" stroke-dashoffset="515.22"/>
+
+              <circle class="ring-track" cx="130" cy="130" r="64" stroke-width="8"/>
+              <circle class="ring-arc" data-circ="402.12" data-score="60"
+                      cx="130" cy="130" r="64" stroke="#f43f5e" stroke-width="8"
+                      stroke-dasharray="402.12" stroke-dashoffset="402.12"/>
+
+              <circle class="ring-track" cx="130" cy="130" r="46" stroke-width="8"/>
+              <circle class="ring-arc" data-circ="289.03" data-score="58"
+                      cx="130" cy="130" r="46" stroke="#06b6d4" stroke-width="8"
+                      stroke-dasharray="289.03" stroke-dashoffset="289.03"/>
+            </g>
+            <text class="ring-center-label" x="130" y="118">Overall</text>
+            <text class="ring-center-score" x="130" y="140" data-target="54">0</text>
+            <text class="ring-center-score-suffix" x="130" y="158">/ 100</text>
+          </svg>
+
+          <div class="ring-legend">
+            <div class="legend-item" data-d="1">
+              <span class="legend-dot" style="background:#6366f1"></span>
+              <span class="legend-label">Search</span>
+              <span class="legend-score" data-target="31">0</span>
+            </div>
+            <div class="legend-item" data-d="2">
+              <span class="legend-dot" style="background:#c9963a"></span>
+              <span class="legend-label">Design</span>
+              <span class="legend-score" data-target="56">0</span>
+            </div>
+            <div class="legend-item" data-d="3">
+              <span class="legend-dot" style="background:#10b981"></span>
+              <span class="legend-label">Brand</span>
+              <span class="legend-score" data-target="66">0</span>
+            </div>
+            <div class="legend-item" data-d="4">
+              <span class="legend-dot" style="background:#f43f5e"></span>
+              <span class="legend-label">Compete</span>
+              <span class="legend-score" data-target="60">0</span>
+            </div>
+            <div class="legend-item" data-d="5">
+              <span class="legend-dot" style="background:#06b6d4"></span>
+              <span class="legend-label">Growth</span>
+              <span class="legend-score" data-target="58">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COST OF INACTION ============ -->
+  <section class="stats">
+    <div class="container">
+      <div class="stat-grid">
+        <div class="stat reveal">
+          <div class="stat-figure accent">&pound;500</div>
+          <div class="stat-label">The report</div>
+        </div>
+        <div class="stat reveal d1">
+          <div class="stat-figure">&pound;70k&ndash;&pound;120k</div>
+          <div class="stat-label">What we typically find</div>
+        </div>
+        <div class="stat reveal d2">
+          <div class="stat-figure">14 days</div>
+          <div class="stat-label">Full refund if you don&rsquo;t find it useful</div>
+        </div>
+      </div>
+      <p class="stats-caption reveal d3">We believe you are leaving money on the table.</p>
+    </div>
+  </section>
+
+  <!-- ============ DIMENSIONS ============ -->
+  <section class="dimensions">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What the report covers</span>
+        <h2 class="section-heading">Five dimensions. One report. Your website, fully exposed.</h2>
+      </div>
+      <div class="dim-grid">
+        <div class="dim-card reveal d1" data-dim="search">
+          <div class="dim-num">01</div>
+          <div class="dim-name">Search</div>
+          <div class="dim-desc">Whether the people already looking for what you sell can actually find you &mdash; and what it costs every month they can&rsquo;t.</div>
+        </div>
+        <div class="dim-card reveal d2" data-dim="design">
+          <div class="dim-num">02</div>
+          <div class="dim-name">Design</div>
+          <div class="dim-desc">How your website reads in the first three seconds. Whether it earns trust, or quietly asks to be closed.</div>
+        </div>
+        <div class="dim-card reveal d3" data-dim="brand">
+          <div class="dim-num">03</div>
+          <div class="dim-name">Brand</div>
+          <div class="dim-desc">Whether the site sounds like you, says anything distinct, and gives a reason to choose you over the next tab.</div>
+        </div>
+        <div class="dim-card reveal d4" data-dim="compete">
+          <div class="dim-num">04</div>
+          <div class="dim-name">Compete</div>
+          <div class="dim-desc">How you stack up against the three companies your customers are comparing you to &mdash; line by line, page by page.</div>
+        </div>
+        <div class="dim-card reveal d5" data-dim="growth">
+          <div class="dim-num">05</div>
+          <div class="dim-name">Growth</div>
+          <div class="dim-desc">Where the revenue is, specifically &mdash; which pages, which pivots, which quiet changes compound.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARISON / WHY £500 ============ -->
+  <section class="compare">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why &pound;500</span>
+        <h2 class="section-heading">Why &pound;500?</h2>
+        <p class="section-sub">The alternatives, for context.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card reveal d1">
+          <div class="compare-label">Agency SEO audit</div>
+          <div class="compare-price">&pound;3,000&ndash;&pound;8,000</div>
+          <div class="compare-desc">Typically covers search only. Takes 2&ndash;4 weeks. Delivered as a PDF. No competitor intelligence, no brand analysis, no growth modelling.</div>
+          <div class="compare-tag">The expensive option</div>
+        </div>
+        <div class="compare-card is-featured reveal d2">
+          <div class="compare-label">F&amp;T Web Intelligence</div>
+          <div class="compare-price">&pound;500</div>
+          <div class="compare-desc">Five dimensions. Interactive dashboard. Competitor analysis. Revenue gap modelled. AI prompts included. 14-day money-back guarantee.</div>
+          <div class="compare-tag">The intelligent option</div>
+        </div>
+        <div class="compare-card reveal d3">
+          <div class="compare-label">&pound;99/month SEO tool</div>
+          <div class="compare-price">&pound;1,188/yr</div>
+          <div class="compare-desc">Automated. No human review. No brand or competitor analysis. No revenue modelling. You interpret the data yourself.</div>
+          <div class="compare-tag">The DIY option</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAMPLE REPORT ============ -->
+  <section class="sample">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Sample report</span>
+        <h2 class="section-heading">See exactly what a report looks like.</h2>
+        <p class="section-sub">This is a real report, run on a real wedding venue. The business name has been changed.</p>
+      </div>
+
+      <div class="report-card reveal d1">
+        <div class="report-head">
+          <div>
+            <div class="report-sector-label">Sector</div>
+            <div class="report-sector-value">Wedding Venue</div>
+          </div>
+          <div class="report-status">
+            <span class="pulse"></span>
+            Report &middot; Delivered
+          </div>
+        </div>
+
+        <div class="chip-row">
+          <div class="chip" data-dim="search">
+            <div class="chip-label">Search</div>
+            <div class="chip-value">31</div>
+          </div>
+          <div class="chip" data-dim="design">
+            <div class="chip-label">Design</div>
+            <div class="chip-value">56</div>
+          </div>
+          <div class="chip" data-dim="brand">
+            <div class="chip-label">Brand</div>
+            <div class="chip-value">66</div>
+          </div>
+          <div class="chip" data-dim="compete">
+            <div class="chip-label">Compete</div>
+            <div class="chip-value">60</div>
+          </div>
+          <div class="chip" data-dim="growth">
+            <div class="chip-label">Growth</div>
+            <div class="chip-value">58</div>
+          </div>
+        </div>
+
+        <div class="revenue-block">
+          <div class="revenue-label">Revenue opportunity</div>
+          <div class="revenue-value">&pound;45k&ndash;&pound;90k estimated annual opportunity identified</div>
+        </div>
+
+        <a href="https://frictionandtoil.com/web-intelligence/wedding-venues/" target="_blank" rel="noopener" class="btn btn-white btn-full">
+          Open the full report <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <p class="sample-footnote reveal d2">Every report goes this deep. Across every dimension. For your actual website.</p>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Testimonials</span>
+        <h2 class="section-heading">What clients say.</h2>
+      </div>
+
+      <div class="tgrid">
+        <div class="tcard reveal d1">
+          <p class="tquote">We knew the website wasn&rsquo;t performing. We didn&rsquo;t know it was costing us &pound;60k a year in missed enquiries. The report showed us exactly where.</p>
+          <div class="tmeta">
+            <div class="tavatar" data-c="search">HM</div>
+            <div>
+              <div class="tname">Hannah Mercer</div>
+              <div class="ttitle">Managing Director &middot; Independent Hotel Group</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal d2">
+          <p class="tquote">The depth surprised us. This isn&rsquo;t an SEO checklist &mdash; it&rsquo;s a proper intelligence report. We acted on it within a week.</p>
+          <div class="tmeta">
+            <div class="tavatar" data-c="brand">JR</div>
+            <div>
+              <div class="tname">James Rowley</div>
+              <div class="ttitle">Marketing Director &middot; Professional Services Firm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-heading">Common questions.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal d1">
+          <summary class="faq-q">
+            What format is the report delivered in?
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">An interactive HTML dashboard, hosted online. Five tabbed dimensions, each with findings, recommendations, and an AI prompt you can use to act immediately. Not a PDF. Not a slide deck. Something you can navigate, share, and return to.</div>
+        </details>
+        <details class="faq-item reveal d2">
+          <summary class="faq-q">
+            Who runs the audit?
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">F&amp;T runs every report. It&rsquo;s not automated software &mdash; it&rsquo;s a structured intelligence process combining crawl data, competitor analysis, AI search visibility testing, and human review across five dimensions.</div>
+        </details>
+        <details class="faq-item reveal d3">
+          <summary class="faq-q">
+            How is this different from a free PageSpeed or SEO tool?
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">Free tools measure one thing &mdash; usually technical performance. This report covers five dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It models the revenue or credibility gap, shows you what competitors are doing, and gives you a prioritised action plan. It&rsquo;s intelligence, not a score.</div>
+        </details>
+        <details class="faq-item reveal d4">
+          <summary class="faq-q">
+            What if I have multiple sites or locations?
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">Contact us at <a href="mailto:hello@frictionandtoil.com" style="color: var(--design); text-decoration: none;">hello@frictionandtoil.com</a>. Multi-site reports are available and priced separately.</div>
+        </details>
+        <details class="faq-item reveal d5">
+          <summary class="faq-q">
+            What&rsquo;s the turnaround time?
+            <span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-a">Five working days from briefing to delivery.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner reveal">
+        <h2 class="final-headline">We believe you are leaving money on the table.</h2>
+        <p class="final-sub">The report shows you exactly where &mdash; and what to do about it.</p>
+        <!-- STRIPE LINK HERE -->
+        <a href="#" class="btn btn-amber">Get your report &mdash; &pound;500</a>
+        <div class="final-small">
+          14-day money-back guarantee<span class="dot"></span>Delivered within 5 working days
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">Friction &amp; Toil</div>
+      <div class="footer-centre">frictionandtoil.com</div>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Score ring animation + synced legend count-up
+  (function () {
+    var RING_DURATION = 1400;
+    var START_DELAY = 300;
+    var STAGGER = 120;
+    var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+    function countUp(el, target, duration) {
+      var start = performance.now();
+      function tick(now) {
+        var t = Math.min(1, (now - start) / duration);
+        var v = Math.round(target * easeOut(t));
+        el.textContent = v;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Animate each ring + matching legend score
+    var arcs = document.querySelectorAll('.ring-arc');
+    var scores = document.querySelectorAll('.legend-score');
+    arcs.forEach(function (arc, i) {
+      var circ = parseFloat(arc.dataset.circ);
+      var score = parseFloat(arc.dataset.score);
+      var offsetTarget = circ * (1 - score / 100);
+      arc.style.transition = 'stroke-dashoffset ' + RING_DURATION + 'ms cubic-bezier(0.16,1,0.3,1)';
+      var delay = START_DELAY + i * STAGGER;
+      setTimeout(function () {
+        arc.style.strokeDashoffset = offsetTarget;
+        if (scores[i]) {
+          countUp(scores[i], parseFloat(scores[i].dataset.target), RING_DURATION);
+        }
+      }, delay);
+    });
+
+    // Animate the Overall centre score — starts after the last ring kicks off
+    var centre = document.querySelector('.ring-center-score[data-target]');
+    if (centre) {
+      setTimeout(function () {
+        countUp(centre, parseFloat(centre.dataset.target), RING_DURATION);
+      }, START_DELAY + arcs.length * STAGGER);
+    }
+  })();
+
+  // Scroll reveal
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
