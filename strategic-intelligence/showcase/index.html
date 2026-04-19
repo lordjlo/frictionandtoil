@@ -33,19 +33,20 @@
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
+      display: flex; align-items: center;
+      padding: 0 40px; height: 56px;
       background: rgba(10,10,15,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .nav-brand {
-      font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-primary); text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-primary); text-decoration: none;
+      margin-right: 48px; white-space: nowrap;
     }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary);
+      font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary);
       text-decoration: none; transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { color: var(--amber); }
@@ -218,8 +219,8 @@
   <nav>
     <a href="/" class="nav-brand">Friction &amp; Toil</a>
     <ul class="nav-links">
-      <li><a href="/web-intelligence/">Web Intelligence</a></li>
       <li><a href="/strategic-intelligence/" class="active">Strategic Intelligence</a></li>
+      <li><a href="/web-intelligence/">Web Intelligence</a></li>
       <li><a href="/experiments/">Experiments</a></li>
       <li><a href="mailto:hello@frictionandtoil.com">Contact</a></li>
     </ul>
