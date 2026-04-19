@@ -179,16 +179,23 @@
       justify-content: center;
     }
 
+    .card-visual-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-visual-img { transform: scale(1.04); }
+
     /* MyGapFinder — dark blue diagnostic aesthetic */
     .card-gapfinder .card-visual {
       background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 40%, #0f1a3a 100%);
     }
 
-    .card-gapfinder .card-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 70% 30%, rgba(99,120,255,0.2) 0%, transparent 60%);
+    .card-gapfinder .card-visual-img {
+      object-position: center center;
     }
 
     /* Genius Core — deep navy/purple philosophical */
@@ -196,11 +203,10 @@
       background: linear-gradient(135deg, #0e0e2a 0%, #1a1535 50%, #0d1525 100%);
     }
 
-    .card-genius .card-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 40%, rgba(180,100,220,0.18) 0%, transparent 65%);
+    .card-genius .card-visual-img {
+      object-fit: contain;
+      object-position: center center;
+      padding: 12px;
     }
 
     /* Coming Soon — muted */
@@ -213,89 +219,6 @@
       z-index: 1;
       text-align: center;
       padding: 24px;
-    }
-
-    /* GapFinder mock UI */
-    .gf-mock {
-      background: rgba(10,15,45,0.8);
-      border: 1px solid rgba(99,120,255,0.2);
-      border-radius: 8px;
-      padding: 12px 16px;
-      width: 200px;
-    }
-
-    .gf-mock-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .gf-mock-row:last-child { border-bottom: none; }
-
-    .gf-mock-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 9px;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .gf-mock-score {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    .score-green { color: #4ade80; }
-    .score-amber { color: #fbbf24; }
-    .score-red { color: #f87171; }
-
-    .gf-mock-headline {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 0.05em;
-      margin-bottom: 10px;
-    }
-
-    /* Genius Core mock */
-    .gc-mock {
-      text-align: center;
-    }
-
-    .gc-brain-ring {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 1px solid rgba(180,100,220,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
-      position: relative;
-    }
-
-    .gc-brain-ring::before {
-      content: '';
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      border: 1px solid rgba(180,100,220,0.15);
-    }
-
-    .gc-brain-icon {
-      font-size: 32px;
-      filter: drop-shadow(0 0 12px rgba(180,100,220,0.5));
-    }
-
-    .gc-mock-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
     }
 
     /* Coming soon */
@@ -503,23 +426,7 @@
       <!-- MyGapFinder -->
       <div class="card card-gapfinder">
         <div class="card-visual">
-          <div class="card-visual-inner">
-            <div class="gf-mock">
-              <div class="gf-mock-headline">FIND WHAT YOU DON'T KNOW.</div>
-              <div class="gf-mock-row">
-                <span class="gf-mock-label">Forces &amp; Motion</span>
-                <span class="gf-mock-score score-green">4/4</span>
-              </div>
-              <div class="gf-mock-row">
-                <span class="gf-mock-label">Wave Properties</span>
-                <span class="gf-mock-score score-red">2/5</span>
-              </div>
-              <div class="gf-mock-row">
-                <span class="gf-mock-label">Electricity</span>
-                <span class="gf-mock-score score-amber">1/4</span>
-              </div>
-            </div>
-          </div>
+          <img src="/Images/Gapfinder.png" alt="MyGapFinder — GCSE diagnostic results showing topic-level marks breakdown" class="card-visual-img" loading="lazy" />
         </div>
         <div class="card-body">
           <p class="card-tag">EdTech · Live</p>
@@ -535,14 +442,7 @@
       <!-- Genius Core -->
       <div class="card card-genius">
         <div class="card-visual">
-          <div class="card-visual-inner">
-            <div class="gc-mock">
-              <div class="gc-brain-ring">
-                <span class="gc-brain-icon">🧠</span>
-              </div>
-              <div class="gc-mock-text">Genius Core</div>
-            </div>
-          </div>
+          <img src="/Images/Whyarewehere.png" alt="Genius Core — CEO Briefing navigation revealing frameworks from Situation to Executive Memos" class="card-visual-img" loading="lazy" />
         </div>
         <div class="card-body">
           <p class="card-tag">PsychTech · Live</p>
