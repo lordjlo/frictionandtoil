@@ -24,7 +24,12 @@
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; min-height: 100vh; }
 a { color: var(--gold); text-decoration: none; }
-.ft-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+.ft-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 56px; z-index: 100; }
+.site-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; padding: 0 40px; height: 56px; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.site-nav .brand { font-family: sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: #fff; text-decoration: none; margin-right: 48px; white-space: nowrap; }
+.site-nav .links { display: flex; gap: 36px; }
+.site-nav .links a { font-family: sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+.site-nav .links a:hover { color: #fff; }
 .ft-brand { display: flex; align-items: center; gap: 12px; }
 .ft-brand-mark { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--gold); background: var(--gold-dim); border: 1px solid var(--gold); padding: 3px 8px; border-radius: 3px; }
 .ft-company { font-size: 15px; font-weight: 600; color: var(--text); }
@@ -190,6 +195,16 @@ a { color: var(--gold); text-decoration: none; }
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="https://www.frictionandtoil.com/" class="brand">FRICTION &amp; TOIL</a>
+  <div class="links">
+    <a href="https://www.frictionandtoil.com/strategic-intelligence/">Strategic Intelligence</a>
+    <a href="https://www.frictionandtoil.com/web-intelligence/">Web Intelligence</a>
+    <a href="https://www.frictionandtoil.com/experiments/">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com">Contact</a>
+  </div>
+</nav>
 
 <header class="ft-header">
   <div class="ft-brand">
@@ -1844,12 +1859,12 @@ First useful content: 0 clicks away.</div></div>
 
 <div style="margin-bottom:40px">
   <div class="card-label" style="margin-bottom:12px;font-size:14px">Infographic 1 — Strategic Structure &amp; Acquisition Architecture</div>
-  <img src="../media/Henkel-Info1.png" alt="Henkel Strategic Structure and Acquisition Architecture" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.08);display:block">
+  <img src="media/Henkel-Info1.png" alt="Henkel Strategic Structure and Acquisition Architecture" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.08);display:block">
 </div>
 
 <div style="margin-bottom:40px">
   <div class="card-label" style="margin-bottom:12px;font-size:14px">Infographic 2 — Financial Intelligence &amp; SOTP Valuation</div>
-  <img src="../media/Henkel-Info2.png" alt="Henkel Financial Intelligence and SOTP Valuation" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.08);display:block">
+  <img src="media/Henkel-Info2.png" alt="Henkel Financial Intelligence and SOTP Valuation" style="width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.08);display:block">
 </div>
 
 </section>
