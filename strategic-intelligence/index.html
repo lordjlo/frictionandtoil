@@ -83,6 +83,19 @@
       padding: 160px 48px 80px;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-infographic {
+      position: absolute;
+      top: 140px;
+      right: 48px;
+      width: 420px;
+      max-width: 38vw;
+      height: auto;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      opacity: 0.95;
     }
 
     .hero-eyebrow {
@@ -417,6 +430,13 @@
       nav { padding: 0 24px; }
       .nav-links { gap: 24px; }
       .hero { padding: 120px 24px 60px; }
+      .hero-infographic {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 48px;
+        display: block;
+      }
       .panels-section { padding: 0 24px 80px; }
       .panels-grid { grid-template-columns: 1fr; }
       .bottom-strip { flex-direction: column; padding: 48px 24px; align-items: flex-start; }
@@ -447,6 +467,7 @@
     <h1 class="fade-up">What the data room<br>doesn't show you.</h1>
     <div class="hero-rule fade-up"></div>
     <p class="hero-sub fade-up">Board-level intelligence on the decisions, people, and positions that determine whether a move succeeds or fails. Commissioned engagements. No templates. No guesswork.</p>
+    <img src="/Infographic/Prezero-infog.png" alt="Sample strategic intelligence infographic" class="hero-infographic fade-up">
   </section>
 
   <!-- PANELS -->
