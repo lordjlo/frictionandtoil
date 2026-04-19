@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design Critique — frictionandtoil.com/web-intelligence/</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0f; --surface:#111116; --surface-2:#17171e; --border:rgba(255,255,255,0.08);
+    --text:#e8e8ed; --muted:#8b8b9e; --dim:#5a5a6e;
+    --search:#6366f1; --design:#c9963a; --brand:#10b981; --compete:#f43f5e; --growth:#06b6d4;
+    --crit:#f43f5e; --high:#c9963a; --med:#06b6d4; --good:#10b981;
+    --sans:'Inter',system-ui,sans-serif; --display:'Space Grotesk',sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .shell{max-width:1240px;margin:0 auto;padding:48px 32px 96px}
+  header.hero{border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:32px}
+  .eyebrow{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;font-weight:500}
+  h1{font-family:var(--display);font-size:clamp(32px,4.5vw,48px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+  .sub{color:var(--muted);margin-top:10px;font-size:15px}
+  .tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .tab{background:none;border:none;color:var(--muted);font-family:var(--sans);font-size:13px;font-weight:500;padding:14px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+  .tab:hover{color:var(--text)}
+  .tab.active{color:var(--design);border-bottom-color:var(--design)}
+  .panel{display:none;animation:fadeIn .3s ease-out}
+  .panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .card + .card{margin-top:16px}
+  .grid{display:grid;gap:16px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:800px){.grid-2,.grid-3{grid-template-columns:1fr}}
+  .card h3{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .card h2{font-family:var(--display);font-size:22px;font-weight:600;margin-bottom:10px;letter-spacing:-0.01em}
+  .card p{color:#c7c7cf;font-size:15px;line-height:1.65}
+  .card p + p{margin-top:12px}
+  .overview-top{display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:stretch}
+  @media(max-width:800px){.overview-top{grid-template-columns:1fr}}
+  .ring-wrap{display:flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .ring{position:relative;width:220px;height:220px}
+  .ring svg{transform:rotate(-90deg)}
+  .ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring-num{font-family:var(--display);font-size:64px;font-weight:600;letter-spacing:-0.03em}
+  .ring-cap{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .bars{display:flex;flex-direction:column;gap:14px}
+  .bar-row{display:grid;grid-template-columns:140px 1fr 42px;align-items:center;gap:12px}
+  .bar-label{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+  .bar-track{height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:999px}
+  .bar-val{font-family:var(--mono);font-size:13px;color:var(--text);text-align:right}
+  .priority{border-left:3px solid var(--crit);padding-left:16px}
+  .priority.high{border-left-color:var(--high)}
+  .priority.med{border-left-color:var(--med)}
+  .priority-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(244,63,94,.12);color:var(--crit);margin-bottom:8px}
+  .priority.high .priority-tag{background:rgba(201,150,58,.12);color:var(--high)}
+  .priority.med .priority-tag{background:rgba(6,182,212,.12);color:var(--med)}
+  .swatches{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .swatch{width:120px}
+  .swatch .chip{height:64px;border-radius:8px;border:1px solid var(--border)}
+  .swatch .hex{font-family:var(--mono);font-size:11px;margin-top:8px;color:var(--muted)}
+  .swatch .use{font-size:11px;color:var(--dim);margin-top:2px}
+  pre{background:#050509;border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.55;color:#d4d4d8}
+  code.inline{font-family:var(--mono);font-size:12px;background:var(--surface-2);padding:2px 6px;border-radius:4px;color:var(--design)}
+  .matrix{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:16px}
+  .quad{background:var(--surface);padding:20px;min-height:160px}
+  .quad h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .quad.wins h4{color:var(--good)}
+  .quad.projects h4{color:var(--design)}
+  .quad.fill h4{color:var(--med)}
+  .quad.skip h4{color:var(--dim)}
+  .quad ul{list-style:none;padding:0;margin:0;font-size:13px;color:#c7c7cf}
+  .quad li{padding:6px 0;border-bottom:1px dashed var(--border)}
+  .quad li:last-child{border-bottom:none}
+  .phase{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--border)}
+  .phase:last-child{border-bottom:none}
+  .phase-num{font-family:var(--display);font-weight:500;font-size:32px;color:var(--design);line-height:1;letter-spacing:-0.02em}
+  .phase h4{font-size:15px;font-weight:600;margin-bottom:4px}
+  .phase p{font-size:13px;color:var(--muted);line-height:1.6}
+  .prompt-box{background:#050509;border:1px solid var(--border);border-radius:12px;padding:24px;font-family:var(--mono);font-size:12.5px;line-height:1.65;color:#d4d4d8;white-space:pre-wrap}
+  .copy{float:right;background:var(--design);color:#0a0a0f;border:none;padding:8px 14px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.05em;border-radius:6px;cursor:pointer;text-transform:uppercase}
+  .copy:hover{filter:brightness(1.1)}
+  .finding{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--crit);border-radius:8px;padding:16px 20px;margin-bottom:12px}
+  .finding.high{border-left-color:var(--high)}
+  .finding.med{border-left-color:var(--med)}
+  .finding-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+  .finding-title{font-weight:600;font-size:15px}
+  .finding .tag{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--crit)}
+  .finding.high .tag{color:var(--high)}
+  .finding.med .tag{color:var(--med)}
+  .finding p{font-size:13.5px;color:#c7c7cf;line-height:1.6}
+  .finding p + p{margin-top:8px}
+  .rec{color:var(--design);font-weight:500}
+  .footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--dim);text-align:center;letter-spacing:.05em}
+  .dim-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--muted)}
+  .dim-legend span{display:inline-flex;align-items:center;gap:6px}
+  .dim-legend i{width:10px;height:10px;border-radius:999px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header class="hero">
+  <div class="eyebrow">Design Critique — Luxury Websites Framework · Mode B</div>
+  <h1>Web Intelligence — Landing Page</h1>
+  <div class="sub">frictionandtoil.com/web-intelligence/ · £500 intelligence report product page · Reviewed 2026-04-18</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-t="overview">Overview</button>
+  <button class="tab" data-t="layout">Layout &amp; Pattern</button>
+  <button class="tab" data-t="visual">Visual Identity</button>
+  <button class="tab" data-t="colour">Colour &amp; Type</button>
+  <button class="tab" data-t="motion">Motion &amp; UX</button>
+  <button class="tab" data-t="anti">Anti-Patterns</button>
+  <button class="tab" data-t="roadmap">Redesign Roadmap</button>
+  <button class="tab" data-t="prompt">AI Prompt</button>
+</nav>
+
+<!-- OVERVIEW -->
+<section class="panel active" id="overview">
+  <div class="overview-top">
+    <div class="ring-wrap">
+      <div class="ring">
+        <svg width="220" height="220" viewBox="0 0 220 220">
+          <circle cx="110" cy="110" r="80" fill="none" stroke="#232327" stroke-width="14"/>
+          <circle cx="110" cy="110" r="80" fill="none" stroke="url(#g)" stroke-width="14" stroke-linecap="round"
+            stroke-dasharray="502" stroke-dashoffset="90.4"/>
+          <defs><linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-color="#c9963a"/><stop offset="1" stop-color="#10b981"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="ring-label">
+          <div class="ring-num">82</div>
+          <div class="ring-cap">Overall</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Sub-dimension Scores</h3>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-label">Pattern</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--search)"></div></div><div class="bar-val">9.0</div></div>
+        <div class="bar-row"><div class="bar-label">Aesthetic</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--design)"></div></div><div class="bar-val">8.0</div></div>
+        <div class="bar-row"><div class="bar-label">Colour</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--brand)"></div></div><div class="bar-val">8.0</div></div>
+        <div class="bar-row"><div class="bar-label">Typography</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--compete)"></div></div><div class="bar-val">8.0</div></div>
+        <div class="bar-row"><div class="bar-label">Motion</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--growth)"></div></div><div class="bar-val">8.0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-3" style="margin-top:24px">
+    <div class="card priority">
+      <div class="priority-tag">Critical · Priority 1</div>
+      <h2>Turnaround claim contradicts itself</h2>
+      <p>Hero reads <em>"ready within 48 hours"</em>. FAQ answers <em>"Five working days from briefing to delivery."</em> Same page, same product, two different promises. For a £500 credibility product this is the single highest-risk line on the page.</p>
+    </div>
+    <div class="card priority">
+      <div class="priority-tag">Critical · Priority 2</div>
+      <h2>Every CTA is a Cloudflare-obfuscated mailto</h2>
+      <p>"Order your report — £500" resolves to <code class="inline">/cdn-cgi/l/email-protection#…</code> which <em>JavaScript decodes to a mailto</em>. A visitor ready to buy has to compose an email. No form, no Stripe link, no Calendly. Highest-friction possible checkout.</p>
+    </div>
+    <div class="card priority med">
+      <div class="priority-tag">Medium · Priority 3</div>
+      <h2>Brand mismatch with homepage</h2>
+      <p>Homepage is editorial-luxury (Outfit 200 + Cormorant italic, cinematic bridge). This page is modern-SaaS (Space Grotesk + Inter, indigo/amber/emerald). Same company, two different design languages. Pick one identity.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px">
+    <h3>Executive summary</h3>
+    <p>This is a <strong>well-built direct-response landing page</strong>. The nine-section arc (hero → pain → cost → solution → 8 specialist areas → 5 dimensions → pricing comparison → sample report → testimonials → FAQ) is textbook, and it's executed with real craft: animated 5-ring hero visualisation, semantic colour system per dimension, Schema.org Product + FAQPage + Organization markup, and disciplined typography scale.</p>
+    <p>What holds it back from a 90+ isn't design execution — it's <strong>two tactical breaks in the buyer's trust arc</strong>: a self-contradicting turnaround promise, and a checkout path that forces a manual email at the moment of commitment. Fix those two and this page is ready. The brand-identity divergence from the homepage is a quieter issue but worth resolving before scaling marketing spend.</p>
+  </div>
+
+  <div class="dim-legend">
+    <span><i style="background:var(--search)"></i>Search</span>
+    <span><i style="background:var(--design)"></i>Design</span>
+    <span><i style="background:var(--brand)"></i>Brand</span>
+    <span><i style="background:var(--compete)"></i>Compete</span>
+    <span><i style="background:var(--growth)"></i>Growth</span>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<section class="panel" id="layout">
+  <div class="card">
+    <h3>Current pattern</h3>
+    <h2>Direct-response SaaS landing page, long-form</h2>
+    <p>Sticky nav → Hero (copy + animated 5-ring rating) → The Problem (4-card impact stack) → What it's costing you (5 flip cards) → The Solution → The Intelligence (8 specialist areas) → 5 Dimensions → Why £500 (3-card comparison) → Sample report (chip row + "open full report" CTA) → Testimonials → FAQ → Footer.</p>
+    <p>This is a strong pattern for a mid-ticket information product. It mirrors the framework's SaaS reference (<em>Hero + Features + Social Proof + CTA</em>) and adds three things it should add: pain agitation, pricing rationale, and anchored proof (the wedding-venue sample report).</p>
+  </div>
+  <div class="card">
+    <h3>Information architecture — what works</h3>
+    <p>• Hero pairs an emotional H1 with a <em>visible rating system</em> — the visitor sees the product before they read about it.<br>
+       • "Why £500" section places F&amp;T between the £3–8k agency audit and the £1,188/yr DIY tool. Clean price-anchoring.<br>
+       • Sample report card is genuinely useful — visitors can click through to a real (anonymised) deliverable. Most competitors gate this.<br>
+       • FAQ carries Schema.org markup → eligible for Google's FAQ rich results.</p>
+  </div>
+  <div class="card">
+    <h3>IA — where it leaks</h3>
+    <p>• <strong>Only one CTA action exists</strong> (email). There's no secondary path for a visitor who's curious but not ready — no "get a one-page summary", no calendar link, no newsletter.<br>
+       • The 8 specialist areas and the 5 dimensions sit back-to-back and partially overlap in meaning. A visitor may read them as the same thing said twice. Consider collapsing, or explicitly framing 8-areas as <em>"how we do it"</em> and 5-dimensions as <em>"what you get"</em>.<br>
+       • Testimonials section has only 2 cards — on a page selling trust, three feels minimum. Four is better.</p>
+  </div>
+</section>
+
+<!-- VISUAL -->
+<section class="panel" id="visual">
+  <div class="card">
+    <h3>Aesthetic read</h3>
+    <h2>Dark modern SaaS with semantic colour system</h2>
+    <p>The page lives in the <strong>Linear/Vercel aesthetic</strong> neighbourhood — dark background, subtle translucent cards (<code class="inline">rgba(255,255,255,0.03)</code>), hairline borders, soft hover lifts. The 5-dimension colour system (indigo / amber / emerald / rose / cyan) gives it a unique fingerprint — you're not just using one accent, you're using a palette-as-taxonomy. This is confident and rare.</p>
+    <p>The animated 5-ring hero is the signature asset. It's a compact visual argument — five dimensions, each with a visible score, assembled around a single "Overall: 54/100". It sells the product <em>by being the product</em>. Strong.</p>
+  </div>
+  <div class="card">
+    <h3>Where it misaligns with the brand</h3>
+    <p>The homepage sells <em>"Strategic Intelligence Systems"</em> in an editorial, cinematic register — thin Outfit wordmarks, Cormorant italic, atmospheric SVG bridge, near-silent dark. This page sells the same brand in a direct-response register — bold Space Grotesk H1, multi-colour system, pain-focused copy ("Your website is losing you money right now").</p>
+    <p>Both are good pages. But a visitor who journeys <em>homepage → web-intelligence</em> experiences tonal whiplash. Decide: is Friction &amp; Toil an editorial intelligence house (quiet, confident, senior) or a direct-response martech product (pain, urgency, proof)? Then harmonise.</p>
+  </div>
+  <div class="card">
+    <h3>Premium details worth preserving</h3>
+    <p>• Hairline <code class="inline">rgba(255,255,255,0.08)</code> borders sit well under the dim background without competing.<br>
+       • Sticky header uses <code class="inline">backdrop-filter:blur(14px)</code> with an 0.78 opacity base — classic glass, tastefully applied.<br>
+       • Pricing comparison's "is-featured" card uses a subtle scale/translate to lift F&amp;T above the alternatives — the anchoring is visual as well as verbal.</p>
+  </div>
+</section>
+
+<!-- COLOUR -->
+<section class="panel" id="colour">
+  <div class="card">
+    <h3>Current palette</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#0a0a0f"></div><div class="hex">#0A0A0F</div><div class="use">Base 60%</div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(255,255,255,0.03)"></div><div class="hex">rgba 0.03</div><div class="use">Card 30%</div></div>
+      <div class="swatch"><div class="chip" style="background:#e8e8ed"></div><div class="hex">#E8E8ED</div><div class="use">Text</div></div>
+      <div class="swatch"><div class="chip" style="background:#8b8b9e"></div><div class="hex">#8B8B9E</div><div class="use">Muted</div></div>
+      <div class="swatch"><div class="chip" style="background:#6366f1"></div><div class="hex">#6366F1</div><div class="use">Search</div></div>
+      <div class="swatch"><div class="chip" style="background:#c9963a"></div><div class="hex">#C9963A</div><div class="use">Design</div></div>
+      <div class="swatch"><div class="chip" style="background:#10b981"></div><div class="hex">#10B981</div><div class="use">Brand</div></div>
+      <div class="swatch"><div class="chip" style="background:#f43f5e"></div><div class="hex">#F43F5E</div><div class="use">Compete</div></div>
+      <div class="swatch"><div class="chip" style="background:#06b6d4"></div><div class="hex">#06B6D4</div><div class="use">Growth</div></div>
+    </div>
+    <p style="margin-top:16px">The 5 dimension colours are used semantically — not decoratively. That's the correct discipline and it's rare. Each dimension owns its colour in the rings, chips, dim-cards, and legend. This creates instant visual learning: after one scroll, a visitor knows amber = design without being told.</p>
+  </div>
+
+  <div class="card">
+    <h3>What to refine</h3>
+    <p><strong>1. No singular brand accent.</strong> The five semantic colours are great for reports, but the <em>brand</em> itself needs one anchor colour. Currently, the badge pill tick glows amber (design) — by accident or design, amber is doing double duty as brand accent. Either commit to that (amber = F&amp;T) or introduce a 6th, brand-only colour (e.g. bone white, brass).<br>
+       <strong>2. CTA button is white</strong> (<code class="inline">.btn-white</code>). Functional but unmemorable. Painting it amber would both reinforce brand and match the hero badge tick — one colour move, two wins.<br>
+       <strong>3. Muted text</strong> <code class="inline">#8B8B9E</code> on <code class="inline">#0A0A0F</code> at 15–17px passes AA. At 12px eyebrow sizes the <code class="inline">#5A5A6E</code> muted-dim is borderline — check the "Why £500" context line.</p>
+  </div>
+
+  <div class="card">
+    <h3>Typography — current</h3>
+    <p>Three families, role-separated:<br>
+       • <strong>Space Grotesk</strong> 500/600 — H1, section headings, display numbers. Geometric, slightly quirky "a", confident.<br>
+       • <strong>Inter</strong> 400/500 — body, UI, eyebrows, nav. Neutral workhorse.<br>
+       • <strong>JetBrains Mono</strong> 400/500 — scores, stats, data chips. Implicit "this is measured intelligence, not marketing fluff."</p>
+    <p>The role-separation is excellent: display for persuasion, sans for reading, mono for proof. Scale clamps (<code class="inline">clamp(2rem,4.5vw,3.25rem)</code> on section heads) handle responsive well.</p>
+  </div>
+  <div class="card">
+    <h3>Typography — to fix</h3>
+    <p>• <strong>Brand pair mismatch with homepage.</strong> The homepage uses Outfit + Cormorant. If both pages are meant to co-exist, either the homepage should pick up Space Grotesk in its nav, or this page should carry <em>one</em> editorial touch (Cormorant italic <code class="inline">&amp;</code> somewhere — in "Friction &amp; Toil" footer wordmark, or as a pull-quote accent in testimonials).<br>
+       • <strong>Eyebrow at 0.72rem with 0.3em tracking</strong> is on the tight side — that's roughly 11.5px with heavy spacing. At small viewports this risks visual jitter. Bump to 0.75rem minimum.<br>
+       • H1 line-break <code class="inline">&lt;br&gt;</code> forces the split "Your website is losing / you money right now." — works on desktop, awkward on mid-width. Remove the hard break and let a <code class="inline">max-width</code> constraint handle wrap.</p>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section class="panel" id="motion">
+  <div class="card">
+    <h3>Animation audit</h3>
+    <p>Three animation systems detected:<br>
+       <strong>1. Staggered reveal</strong> — <code class="inline">.reveal</code> with <code class="inline">d1–d5</code> delay classes, IntersectionObserver-style entry on scroll. Standard and clean.<br>
+       <strong>2. Ring dashoffset animation</strong> — the 5 hero arcs animate from <code class="inline">stroke-dashoffset: circumference → (circumference × (100 − score)/100)</code> on viewport entry. Score counter (<code class="inline">0 → 54</code>) counts up in parallel.<br>
+       <strong>3. Card hover lifts</strong> — translate and border-colour transitions on impact cards, flip cards, and pricing cards.</p>
+    <p>All three are on-spec for the framework: transform/opacity only, sub-600ms, staggered at ~100ms. No blocking animations. No autoplay video. Good discipline.</p>
+  </div>
+  <div class="card">
+    <h3>Missing</h3>
+    <p><strong>No <code class="inline">prefers-reduced-motion</code> media query.</strong> Same miss as the homepage. For a product whose core asset is an animated visualisation, this is the most important accessibility fix on the page:</p>
+<pre>@media (prefers-reduced-motion: reduce) {
+  .reveal, .ring-arc, .ring-center-score {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: var(--final-offset) !important;
+  }
+}</pre>
+    <p><strong>Inline <code class="inline">onmouseover</code>/<code class="inline">onmouseout</code> on the shared nav.</strong> Same carry-over from the homepage nav. Replace with CSS <code class="inline">:hover</code>.</p>
+  </div>
+  <div class="card">
+    <h3>UX micro-issues</h3>
+    <p>• The CTA <code class="inline">.btn-white</code> relies on Cloudflare's email-decode script (<code class="inline">email-decode.min.js</code>). With JavaScript disabled or blocked, the "Order your report — £500" button resolves to a garbled URL. The whole purchase path is JS-dependent for no structural reason. A visible <code class="inline">mailto:hello@frictionandtoil.com</code> would be better even with the spam risk.<br>
+       • FAQ <code class="inline">&lt;details&gt;</code> elements don't animate open — they jump. A 200ms max-height transition would align them with the rest of the page's motion grammar.<br>
+       • No focus-visible styles detected on nav links or buttons. Keyboard users get the default browser ring, which on a dark theme can be invisible.</p>
+  </div>
+</section>
+
+<!-- ANTI-PATTERNS -->
+<section class="panel" id="anti">
+  <div class="finding">
+    <div class="finding-head"><div class="finding-title">Conflicting turnaround promise: 48 hours vs 5 working days</div><div class="tag">Critical</div></div>
+    <p>Hero sub: <em>"Tell us your URL. We'll have your report ready within 48 hours."</em> FAQ answer: <em>"Five working days from briefing to delivery."</em> Schema.org FAQPage markup means the 5-day answer could appear directly in Google results even as the hero advertises 48 hours.</p>
+    <p class="rec">Fix: pick one. If 5 days is the real SLA, change the hero to "Your report delivered within five working days" and update the FAQPage JSON-LD to match. If you can truly hit 48 hours, change the FAQ (and make it the headline promise — it's a competitive weapon).</p>
+  </div>
+  <div class="finding">
+    <div class="finding-head"><div class="finding-title">No real checkout — every CTA opens a mailto</div><div class="tag">Critical</div></div>
+    <p>Every "Order your report — £500" button routes to a Cloudflare-obfuscated <code class="inline">mailto:</code> with pre-filled subject and body. A buyer who has read the full page and is ready to pay must: (a) have a mail client configured, (b) compose, (c) wait for a human reply, (d) wait for an invoice, (e) pay. That's five steps between "yes" and "paid."</p>
+    <p class="rec">Fix: add Stripe Payment Link (single-use, £500, GBP). Keep the mailto as a secondary "questions?" link. On submit of payment, redirect to a "brief us" form that captures URL + sector + goals.</p>
+  </div>
+  <div class="finding">
+    <div class="finding-head"><div class="finding-title">Two dead nav links (<code class="inline">#</code>)</div><div class="tag">Critical</div></div>
+    <p>Shared header on this page and the homepage. <code class="inline">Strategic Intelligence Systems</code> and <code class="inline">Experiments</code> both point to <code class="inline">#</code>. Clicking them adds <code class="inline">#</code> to the URL and nothing happens. On a page selling professional intelligence at £500, broken navigation reads as "not quite ready yet."</p>
+    <p class="rec">Fix: stub routes — even a "Coming soon — join the waitlist" page — or remove those links from the nav until pages exist.</p>
+  </div>
+  <div class="finding high">
+    <div class="finding-head"><div class="finding-title">Brand-identity fork from homepage</div><div class="tag">High</div></div>
+    <p>Homepage: Outfit 200 + Cormorant italic, monochrome, cinematic SVG. This page: Space Grotesk + Inter + JBM, five-colour semantic palette, direct-response copy. The shared 56px sticky nav is the only thing binding them visually.</p>
+    <p class="rec">Fix: introduce one shared anchor asset — e.g. the editorial <code class="inline">Friction &amp; Toil</code> wordmark (Outfit 200 + Cormorant italic ampersand) must appear on <em>both</em> pages, and one colour or motif from the homepage bridge (the brass/amber highlight) should carry into the Web Intelligence CTA.</p>
+  </div>
+  <div class="finding high">
+    <div class="finding-head"><div class="finding-title">Only two testimonials</div><div class="tag">High</div></div>
+    <p>Two quotes is below the "trust floor" for a £500 mid-ticket product. Also — both signatories are plausible but generic ("Independent Hotel Group", "Professional Services Firm"). No company name, no linkedin link, no photo.</p>
+    <p class="rec">Fix: add 2 more testimonials. For each, use a real company name and a headshot (with permission). If you can't get four real ones yet, show one and replace the rest with a case-study card that links to the sample report.</p>
+  </div>
+  <div class="finding high">
+    <div class="finding-head"><div class="finding-title">No <code class="inline">prefers-reduced-motion</code> guard</div><div class="tag">High</div></div>
+    <p>Reveal animations and ring-arc animations run unconditionally. Accessibility failure, same as homepage.</p>
+    <p class="rec">Fix: add the media query from the Motion tab. The ring should render at its final offset for reduced-motion users; the counter should render at its final value.</p>
+  </div>
+  <div class="finding med">
+    <div class="finding-head"><div class="finding-title">Two overlapping "features" sections</div><div class="tag">Medium</div></div>
+    <p>"The Intelligence — eight specialist areas" and "Five dimensions — one report" are consecutive and semantically adjacent. A visitor may read them as redundancy.</p>
+    <p class="rec">Fix: reframe. 8 areas = <em>"Our process"</em> (how we do it). 5 dimensions = <em>"Your report"</em> (what you get). Or collapse 8→5 and retire the redundant section.</p>
+  </div>
+  <div class="finding med">
+    <div class="finding-head"><div class="finding-title">CTA button is plain white</div><div class="tag">Medium</div></div>
+    <p><code class="inline">.btn-white</code> is the primary action. Functional, contrasts well, but invisible as brand — any page on the internet could have that button.</p>
+    <p class="rec">Fix: paint it amber (<code class="inline">#C9963A</code>) to match the hero badge tick. That's already your brand's ownable accent — use it.</p>
+  </div>
+  <div class="finding med">
+    <div class="finding-head"><div class="finding-title">H1 hard line break</div><div class="tag">Medium</div></div>
+    <p><code class="inline">&lt;h1&gt;Your website is losing&lt;br&gt;you money right now.&lt;/h1&gt;</code> — forces an awkward wrap at mid-viewport widths.</p>
+    <p class="rec">Fix: remove <code class="inline">&lt;br&gt;</code>, add <code class="inline">max-width: 18ch</code> to the H1.</p>
+  </div>
+  <div class="finding med">
+    <div class="finding-head"><div class="finding-title">Inline handlers on shared nav</div><div class="tag">Medium</div></div>
+    <p>Same inline <code class="inline">onmouseover</code>/<code class="inline">onmouseout</code> colour swaps as homepage. CSP-unfriendly, DRY-unfriendly.</p>
+    <p class="rec">Fix: extract to a shared stylesheet. Both pages inherit cleanly.</p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="panel" id="roadmap">
+  <div class="card">
+    <h3>Effort × Impact</h3>
+    <div class="matrix">
+      <div class="quad wins">
+        <h4>Quick Wins · Low effort / High impact</h4>
+        <ul>
+          <li>Reconcile 48h vs 5-day turnaround claim</li>
+          <li>Swap <code class="inline">.btn-white</code> → amber CTA</li>
+          <li>Fix dead nav links</li>
+          <li>Add <code class="inline">prefers-reduced-motion</code></li>
+          <li>Remove H1 <code class="inline">&lt;br&gt;</code>, add <code class="inline">max-width</code></li>
+          <li>Bump eyebrow size 0.72→0.75rem</li>
+        </ul>
+      </div>
+      <div class="quad projects">
+        <h4>Projects · High effort / High impact</h4>
+        <ul>
+          <li>Add Stripe Payment Link + brief form</li>
+          <li>Harmonise brand identity across both pages</li>
+          <li>Add 2 more testimonials (named companies, photos)</li>
+          <li>Collapse 8-areas / 5-dimensions into one coherent story</li>
+          <li>Build Strategic Intelligence Systems + Experiments pages (kills the <code class="inline">#</code> links)</li>
+        </ul>
+      </div>
+      <div class="quad fill">
+        <h4>Fill-ins · Low effort / Low impact</h4>
+        <ul>
+          <li>Animate FAQ details open/close</li>
+          <li>Add <code class="inline">:focus-visible</code> styles</li>
+          <li>Extract inline nav handlers to CSS</li>
+          <li>Add testimonials third column on desktop</li>
+        </ul>
+      </div>
+      <div class="quad skip">
+        <h4>Skip · High effort / Low impact</h4>
+        <ul>
+          <li>Scroll-linked parallax on hero rings</li>
+          <li>Dark/light mode toggle (stay dark)</li>
+          <li>Interactive "score my site" widget (reserve for v2 after payment flow works)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Phased timeline</h3>
+    <div class="phase"><div class="phase-num">01</div><div><h4>Week 1 — Fix the trust breaks</h4><p>Reconcile the turnaround promise across hero + FAQ + Schema.org JSON-LD. Stub or remove dead nav links. Add reduced-motion guard. Swap CTA to amber. These five changes can ship in one commit and collectively lift the page by 6–8 points.</p></div></div>
+    <div class="phase"><div class="phase-num">02</div><div><h4>Week 2 — Real checkout</h4><p>Add a Stripe Payment Link (£500 GBP). On success → redirect to a simple Typeform/Tally brief (URL, sector, primary competitor, goals). Keep mailto as a "questions?" fallback. This is the single highest-revenue change on the roadmap.</p></div></div>
+    <div class="phase"><div class="phase-num">03</div><div><h4>Week 3 — Brand harmonisation</h4><p>Introduce one shared asset across homepage and this page: the editorial Outfit 200 + Cormorant italic <code class="inline">Friction &amp; Toil</code> wordmark. Use amber <code class="inline">#C9963A</code> as the single CTA colour on both pages. Keep Space Grotesk for section heads on long-form pages, keep editorial for brand/wordmark.</p></div></div>
+    <div class="phase"><div class="phase-num">04</div><div><h4>Week 4 — Proof pass</h4><p>Collect 2 more named testimonials. Replace generic sector labels with real company names and photos. Add a second sample report to the "See a real report" section so it's not a single lonely card.</p></div></div>
+    <div class="phase"><div class="phase-num">05</div><div><h4>Week 5+ — Collapse the feature sections</h4><p>Decide: are 8-areas and 5-dimensions different things? If yes, reframe them explicitly ("process" vs "deliverable"). If no, collapse to one. Currently they feel like the same section written twice with different numbers.</p></div></div>
+  </div>
+</section>
+
+<!-- PROMPT -->
+<section class="panel" id="prompt">
+  <div class="card">
+    <button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('prompt-txt').innerText)">Copy</button>
+    <h3>Copy-paste redesign prompt</h3>
+    <div id="prompt-txt" class="prompt-box">Refine the Friction &amp; Toil "Web Intelligence" landing page (frictionandtoil.com/web-intelligence/) — a long-form sales page for a £500 interactive HTML intelligence report. Keep the existing IA and copy; fix the trust breaks, harmonise with the homepage brand, and enable real checkout.
+
+PATTERN (keep as-is — this part is strong):
+Sticky nav → Hero (copy + animated 5-ring rating) → Pain (4 impact cards) → Cost (5 flip cards) → Solution → 8 specialist areas OR 5 dimensions (pick one, not both) → Pricing comparison (3 cards) → Sample report card → Testimonials (≥4) → FAQ (Schema.org) → Footer.
+
+CHANGES TO MAKE:
+1. Reconcile turnaround claim. Single source of truth across hero copy, FAQ copy, and FAQPage JSON-LD. Recommended: "Your report delivered within 5 working days." If 48h is real, make it the headline and update FAQ.
+2. Replace every email-protection mailto CTA with a Stripe Payment Link (£500 GBP). On success → redirect to Tally/Typeform brief (URL, sector, primary competitor, goals). Keep one secondary "hello@frictionandtoil.com" link for enquiries.
+3. Fix dead nav links — build stub pages for /intelligence-systems/ and /experiments/ or remove those links from nav.
+4. Add 2 more testimonials. Each with real company name + headshot.
+5. Collapse "The Intelligence · 8 specialist areas" and "Five dimensions" into one of two framings: keep both but rename to "Our process" vs "Your report", OR merge into single "Five dimensions" section.
+
+STYLE (keep as-is):
+Dark modern SaaS. Linear/Vercel aesthetic. Translucent cards rgba(255,255,255,0.03), hairline borders rgba(255,255,255,0.08), backdrop blur on sticky header.
+
+BRAND HARMONISATION (new):
+• On BOTH the homepage and this page, render the wordmark "Friction &amp; Toil" using Outfit 200 (F and T) + Cormorant italic 400 (&amp;). This is the one shared brand asset.
+• Use amber #C9963A as the single primary-CTA colour across both pages. Replace .btn-white with .btn-amber.
+• Keep the 5-dimension semantic colours (indigo / amber / emerald / rose / cyan) for data elements — rings, chips, dim-cards, legend only. Not for CTAs.
+
+COLOURS (60-30-10):
+• 60% Base — #0A0A0F
+• 30% Surface — rgba(255,255,255,0.03) cards, rgba(255,255,255,0.08) borders
+• 10% Accent — #C9963A (primary CTA, hero badge tick, focus rings)
+• Semantic (data only): #6366F1 search · #C9963A design · #10B981 brand · #F43F5E compete · #06B6D4 growth
+• Ink — #E8E8ED · Muted — #8B8B9E
+
+TYPOGRAPHY:
+• Display — Space Grotesk 500/600 — section heads, H1, display numbers
+• Editorial — Cormorant italic 400 — wordmark ampersand, pull-quote accent
+• Body / UI — Inter 400/500
+• Data — JetBrains Mono 400/500 — scores, stats, chips
+• Scale: 11.5px eyebrow (0.25em tracking) → 13px UI → 16px body → clamp(2rem, 4.5vw, 3.25rem) section head → clamp(2.5rem, 6vw, 4.5rem) H1
+• H1: remove hard &lt;br&gt;, apply max-width: 18ch
+
+ANIMATIONS:
+• Keep: .reveal staggered entry (d1–d5 × 100ms), ring dashoffset animation, score counter, card hover lifts
+• Fix: add @media (prefers-reduced-motion: reduce) kill-switch — rings render at final offset, counter renders at final value, reveals render instantly
+• Fix: move inline onmouseover/onmouseout on nav to CSS :hover
+• Add: FAQ &lt;details&gt; max-height transition 200ms ease-out
+• Add: :focus-visible styles on nav links and CTA buttons (2px amber outline, 2px offset)
+
+AVOID:
+• Cloudflare email-obfuscated CTAs as the primary buy button
+• Self-contradicting numeric claims (48h vs 5 days)
+• Dead nav links (#)
+• Hard line breaks in H1
+• Generic "Independent Hotel Group" testimonials — either name them or remove
+• Running two adjacent "feature" sections that cover overlapping ground
+• Letting this page feel like a different brand from the homepage
+
+DELIVERABLES:
+• Updated web-intelligence/index.html (single file, reuse existing nav partial)
+• Updated JSON-LD FAQPage with consistent turnaround
+• Stripe Payment Link + Tally/Typeform brief
+• Shared CSS partial for nav :hover, :focus-visible, reduced-motion
+• OG image (1200×630, amber wordmark on dark)</div>
+  </div>
+</section>
+
+<div class="footer">Generated via /designing-luxury-websites Mode B · frictionandtoil.com/web-intelligence/ · 2026-04-18</div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    panels.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.t).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+</script>
+</body>
+</html>
