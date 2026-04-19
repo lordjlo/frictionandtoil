@@ -80,11 +80,11 @@ All Stripe placeholders removed. Both CTAs now use:
 
 Added a fixed top nav (56px, dark translucent with backdrop-blur) to three pages for consistency:
 
-- `index.html` (root homepage) — nav inserted after `<body>`, "COMING SOON" replaced with "Strategic Intelligence Systems", added `padding-top: 56px` to main wrapper
+- `index.html` (root homepage) — nav inserted after `<body>`, "COMING SOON" replaced with "Strategic Intelligence", added `padding-top: 56px` to main wrapper
 - `web-intelligence/index.html` — replaced old sticky `.site-header` with the global nav (avoided visual duplication)
 - `web-intelligence/wedding-venues/index.html` — nav inserted before existing `.global-header` with 56px spacer div
 
-**Nav links:** Web Intelligence · Strategic Intelligence Systems · Experiments · Contact
+**Nav links:** Web Intelligence · Strategic Intelligence · Experiments · Contact
 
 ---
 
