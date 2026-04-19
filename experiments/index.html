@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiments — Friction & Toil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #0f0f18;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(201,150,58,0.3);
+      --amber: #C9963A;
+      --amber-light: #e0b060;
+      --text-primary: #f0ede8;
+      --text-secondary: #8a8a9a;
+      --text-dim: #4a4a5a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--amber); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 520px;
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--amber);
+      margin: 48px 0;
+      opacity: 0.6;
+    }
+
+    .lab-ethos {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .lab-ethos-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .lab-ethos-item span {
+      color: var(--amber);
+      margin-right: 6px;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-section {
+      padding: 0 48px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .card-visual {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* MyGapFinder — dark blue diagnostic aesthetic */
+    .card-gapfinder .card-visual {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 40%, #0f1a3a 100%);
+    }
+
+    .card-gapfinder .card-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(99,120,255,0.2) 0%, transparent 60%);
+    }
+
+    /* Genius Core — deep navy/purple philosophical */
+    .card-genius .card-visual {
+      background: linear-gradient(135deg, #0e0e2a 0%, #1a1535 50%, #0d1525 100%);
+    }
+
+    .card-genius .card-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(180,100,220,0.18) 0%, transparent 65%);
+    }
+
+    /* Coming Soon — muted */
+    .card-soon .card-visual {
+      background: linear-gradient(135deg, #0e0e14 0%, #12121e 100%);
+    }
+
+    .card-visual-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+    }
+
+    /* GapFinder mock UI */
+    .gf-mock {
+      background: rgba(10,15,45,0.8);
+      border: 1px solid rgba(99,120,255,0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      width: 200px;
+    }
+
+    .gf-mock-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .gf-mock-row:last-child { border-bottom: none; }
+
+    .gf-mock-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .gf-mock-score {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .score-green { color: #4ade80; }
+    .score-amber { color: #fbbf24; }
+    .score-red { color: #f87171; }
+
+    .gf-mock-headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    /* Genius Core mock */
+    .gc-mock {
+      text-align: center;
+    }
+
+    .gc-brain-ring {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid rgba(180,100,220,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      position: relative;
+    }
+
+    .gc-brain-ring::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px solid rgba(180,100,220,0.15);
+    }
+
+    .gc-brain-icon {
+      font-size: 32px;
+      filter: drop-shadow(0 0 12px rgba(180,100,220,0.5));
+    }
+
+    .gc-mock-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Coming soon */
+    .soon-icon {
+      font-size: 40px;
+      opacity: 0.2;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .soon-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ── CARD BODY ── */
+    .card-body {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(201,150,58,0.25);
+      padding: 10px 20px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+
+    .card-cta:hover {
+      background: var(--amber);
+      color: #0a0a0f;
+      border-color: var(--amber);
+    }
+
+    .card-cta.disabled {
+      color: var(--text-dim);
+      border-color: rgba(255,255,255,0.05);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .card-cta svg {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.2s;
+    }
+
+    .card-cta:hover svg { transform: translateX(3px); }
+
+    /* ── BOTTOM NOTE ── */
+    .bottom-note {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      border-top: 1px solid var(--border);
+      padding-top: 48px;
+    }
+
+    .bottom-note p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.2s; }
+    .fade-up:nth-child(3) { animation-delay: 0.25s; }
+    .fade-up:nth-child(4) { animation-delay: 0.3s; }
+
+    .card { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.32s; }
+    .card:nth-child(3) { animation-delay: 0.44s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 24px; }
+      .hero { padding: 120px 24px 60px; }
+      .cards-section { padding: 0 24px 80px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .bottom-note { padding: 48px 24px 60px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-brand">Friction &amp; Toil</a>
+    <ul class="nav-links">
+      <li><a href="/web-intelligence/">Web Intelligence</a></li>
+      <li><a href="/strategic-intelligence/">Strategic Intelligence</a></li>
+      <li><a href="/experiments/" class="active">Experiments</a></li>
+      <li><a href="mailto:hello@frictionandtoil.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow fade-up">F&amp;T Lab</p>
+    <h1 class="fade-up">Think. Build.<br>Experiment.</h1>
+    <div class="hero-rule fade-up"></div>
+    <p class="hero-sub fade-up">Not every build is a product. Some things exist because we wanted to know if they could. These are demonstrations of what becomes possible when intelligence systems meet a problem worth solving.</p>
+    <div style="height: 24px;"></div>
+    <div class="lab-ethos fade-up">
+      <span class="lab-ethos-item"><span>—</span> EdTech</span>
+      <span class="lab-ethos-item"><span>—</span> PsychTech</span>
+      <span class="lab-ethos-item"><span>—</span> More coming</span>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards-section">
+    <div class="cards-grid">
+
+      <!-- MyGapFinder -->
+      <div class="card card-gapfinder">
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <div class="gf-mock">
+              <div class="gf-mock-headline">FIND WHAT YOU DON'T KNOW.</div>
+              <div class="gf-mock-row">
+                <span class="gf-mock-label">Forces &amp; Motion</span>
+                <span class="gf-mock-score score-green">4/4</span>
+              </div>
+              <div class="gf-mock-row">
+                <span class="gf-mock-label">Wave Properties</span>
+                <span class="gf-mock-score score-red">2/5</span>
+              </div>
+              <div class="gf-mock-row">
+                <span class="gf-mock-label">Electricity</span>
+                <span class="gf-mock-score score-amber">1/4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">EdTech · Live</p>
+          <h2 class="card-title">MyGapFinder</h2>
+          <p class="card-desc">Upload a past paper. See exactly which topics are costing marks — in seconds. AI-powered GCSE diagnostics for students revising independently and tutors managing multiple students at once.</p>
+          <a href="https://mygapfinder.app/" target="_blank" rel="noopener" class="card-cta">
+            Try it
+            <svg viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Genius Core -->
+      <div class="card card-genius">
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <div class="gc-mock">
+              <div class="gc-brain-ring">
+                <span class="gc-brain-icon">🧠</span>
+              </div>
+              <div class="gc-mock-text">Genius Core</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">PsychTech · Live</p>
+          <h2 class="card-title">Genius Core</h2>
+          <p class="card-desc">Why are we here? An exploration of human potential through a psychological intelligence lens. Unlock your infinite potential — a philosophical and practical application built to ask bigger questions.</p>
+          <a href="https://genius-backend-app.web.app/" target="_blank" rel="noopener" class="card-cta">
+            Explore
+            <svg viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="card card-soon">
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <span class="soon-icon">⚗️</span>
+            <p class="soon-text">In the lab</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Coming Soon</p>
+          <h2 class="card-title" style="color: var(--text-dim);">Next Experiment</h2>
+          <p class="card-desc">Something is in progress. We build when we find a problem worth solving. When it's ready, it'll be here.</p>
+          <span class="card-cta disabled">Not yet</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTTOM NOTE -->
+  <div class="bottom-note">
+    <p>"These aren't side projects. They're proof that the methodology works beyond the core intelligence products."</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Friction &amp; Toil</span>
+    <span class="footer-note">Think. Build. Experiment. Innovate.</span>
+  </footer>
+
+</body>
+</html>

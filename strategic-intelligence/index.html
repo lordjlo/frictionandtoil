@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Intelligence — Friction & Toil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-panel: #0f0f18;
+      --bg-card: #12121e;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(201,150,58,0.35);
+      --amber: #C9963A;
+      --amber-light: #e0b060;
+      --text-primary: #f0ede8;
+      --text-secondary: #8a8a9a;
+      --text-dim: #4a4a5a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--amber); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 28px;
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--amber);
+      margin: 48px 0;
+      opacity: 0.6;
+    }
+
+    /* ── PANELS GRID ── */
+    .panels-section {
+      padding: 0 48px 120px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .panels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 48px;
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--amber);
+      transition: height 0.4s ease;
+    }
+
+    .panel:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card);
+    }
+
+    .panel:hover::before {
+      height: 100%;
+    }
+
+    .panel-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .panel-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 24px;
+      opacity: 0.8;
+    }
+
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .panel-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--amber-light);
+      margin-bottom: 20px;
+    }
+
+    .panel-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+    }
+
+    /* ── SIDEBAR VISUAL ── */
+    .panel-visual {
+      background: #0d0d1a;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,150,58,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .visual-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+      opacity: 0.7;
+    }
+
+    .visual-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .visual-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 4px;
+      transition: background 0.15s;
+      cursor: default;
+    }
+
+    .visual-item.active {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .visual-item.active .visual-item-text {
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    .visual-item-icon {
+      font-size: 13px;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .visual-item-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .visual-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.04);
+      margin: 4px 0;
+    }
+
+    .visual-section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.6;
+      padding: 10px 10px 4px;
+    }
+
+    /* ── CTA ── */
+    .panel-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(201,150,58,0.3);
+      padding: 12px 24px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .panel-cta:hover {
+      background: var(--amber);
+      color: #0a0a0f;
+      border-color: var(--amber);
+    }
+
+    .panel-cta svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s;
+    }
+
+    .panel-cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ── BOTTOM STRIP ── */
+    .bottom-strip {
+      border-top: 1px solid var(--border);
+      padding: 64px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .bottom-strip-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .bottom-strip-text p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    .bottom-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--amber);
+      color: #0a0a0f;
+      text-decoration: none;
+      padding: 16px 32px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .bottom-cta:hover { background: var(--amber-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.2s; }
+    .fade-up:nth-child(3) { animation-delay: 0.3s; }
+    .fade-up:nth-child(4) { animation-delay: 0.15s; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 24px; }
+      .hero { padding: 120px 24px 60px; }
+      .panels-section { padding: 0 24px 80px; }
+      .panels-grid { grid-template-columns: 1fr; }
+      .bottom-strip { flex-direction: column; padding: 48px 24px; align-items: flex-start; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-brand">Friction &amp; Toil</a>
+    <ul class="nav-links">
+      <li><a href="/web-intelligence/">Web Intelligence</a></li>
+      <li><a href="/strategic-intelligence/" class="active">Strategic Intelligence</a></li>
+      <li><a href="/experiments/">Experiments</a></li>
+      <li><a href="mailto:hello@frictionandtoil.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow fade-up">Strategic Intelligence</p>
+    <h1 class="fade-up">What the data room<br>doesn't show you.</h1>
+    <div class="hero-rule fade-up"></div>
+    <p class="hero-sub fade-up">Board-level intelligence on the decisions, people, and positions that determine whether a move succeeds or fails. Commissioned engagements. No templates. No guesswork.</p>
+  </section>
+
+  <!-- PANELS -->
+  <section class="panels-section">
+    <div class="panels-grid">
+
+      <!-- PANEL 1: CEO Strategic Briefing -->
+      <div class="panel fade-up">
+        <p class="panel-number">01 — CEO Strategic Briefing</p>
+        <p class="panel-title">CEO Strategic Briefing</p>
+        <p class="panel-question">"Are you making decisions with the full picture?"</p>
+        <p class="panel-desc">Market position, regulatory pipeline, M&A signals, scenario planning, competitive intelligence — synthesised into a board-ready strategic console. Built from public data. Delivered in 48 hours.</p>
+        <div class="panel-visual">
+          <p class="visual-label">CEO Briefing</p>
+          <div class="visual-items">
+            <div class="visual-item active">
+              <span class="visual-item-icon">🏛️</span>
+              <span class="visual-item-text">The Situation</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🔴</span>
+              <span class="visual-item-text">Operations Crisis</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">💰</span>
+              <span class="visual-item-text">Financial Deep-Dive</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">📈</span>
+              <span class="visual-item-text">Growth Blueprint</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">⚠️</span>
+              <span class="visual-item-text">Disruption Matrix</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🤝</span>
+              <span class="visual-item-text">M&A Verdict</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">📋</span>
+              <span class="visual-item-text">Executive Memos</span>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:hello@frictionandtoil.com?subject=CEO Strategic Briefing" class="panel-cta">
+          Commission a brief
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- PANEL 2: Strategic Advisor Briefing -->
+      <div class="panel fade-up">
+        <p class="panel-number">02 — Strategic Advisor Briefing</p>
+        <p class="panel-title">Strategic Advisor Briefing</p>
+        <p class="panel-question">"Do you know enough walking in?"</p>
+        <p class="panel-desc">Multi-party intelligence for complex advisory mandates. Acquisition target, client context, competitor landscape — everything you need before the conversation starts, not after.</p>
+        <div class="panel-visual">
+          <p class="visual-label">Strategic Advisor</p>
+          <div class="visual-items">
+            <div class="visual-section-label">L2A · Acquisition Target</div>
+            <div class="visual-item active">
+              <span class="visual-item-icon">🎯</span>
+              <span class="visual-item-text">Opening Move</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">💪</span>
+              <span class="visual-item-text">Leverage Points</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">❓</span>
+              <span class="visual-item-text">15 Smart Questions</span>
+            </div>
+            <div class="visual-divider"></div>
+            <div class="visual-section-label">L2B · Client Context</div>
+            <div class="visual-item">
+              <span class="visual-item-icon">📋</span>
+              <span class="visual-item-text">Track Record</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">⚖️</span>
+              <span class="visual-item-text">Award Recommendation</span>
+            </div>
+            <div class="visual-divider"></div>
+            <div class="visual-section-label">L2C · Competitor</div>
+            <div class="visual-item">
+              <span class="visual-item-icon">💪</span>
+              <span class="visual-item-text">Strengths &amp; Exposures</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🎯</span>
+              <span class="visual-item-text">Market Gaps</span>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:hello@frictionandtoil.com?subject=Strategic Advisor Briefing" class="panel-cta">
+          Commission a brief
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- PANEL 3: Meeting Prep Intelligence -->
+      <div class="panel fade-up">
+        <p class="panel-number">03 — Meeting Prep Intelligence</p>
+        <p class="panel-title">Meeting Prep Intelligence</p>
+        <p class="panel-question">"Do you know enough walking in?"</p>
+        <p class="panel-desc">Every significant meeting deserves better preparation than 45 minutes of Google. Company financials, technology posture, competitive position, people in the room — built before you ask.</p>
+        <div class="panel-visual">
+          <p class="visual-label">Meeting Prep</p>
+          <div class="visual-items">
+            <div class="visual-item active">
+              <span class="visual-item-icon">🎯</span>
+              <span class="visual-item-text">Situational Brief</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🔴</span>
+              <span class="visual-item-text">Live Alerts</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🔴</span>
+              <span class="visual-item-text">Council Flags</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">👥</span>
+              <span class="visual-item-text">People in the Room</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">💪</span>
+              <span class="visual-item-text">Your Leverage</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🎤</span>
+              <span class="visual-item-text">Opening Move</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">❓</span>
+              <span class="visual-item-text">Smart Questions</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🧠</span>
+              <span class="visual-item-text">What They Won't Say</span>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:hello@frictionandtoil.com?subject=Meeting Prep Intelligence" class="panel-cta">
+          Commission a brief
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- PANEL 4: Technology & Operational Intelligence -->
+      <div class="panel fade-up">
+        <p class="panel-number">04 — Technology &amp; Operational Intelligence</p>
+        <p class="panel-title">Technology &amp; Operational Intelligence</p>
+        <p class="panel-question">"Is your organisation's foundation fit for its strategy?"</p>
+        <p class="panel-desc">Technology estate, AI readiness, cyber posture, regulatory deadlines, talent capability gaps — the operational layer that due diligence firms rarely surface. We look at what doesn't appear in the data room.</p>
+        <div class="panel-visual">
+          <p class="visual-label">Tech &amp; Ops Intelligence</p>
+          <div class="visual-items">
+            <div class="visual-item active">
+              <span class="visual-item-icon">🖥️</span>
+              <span class="visual-item-text">Technology Estate</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🤖</span>
+              <span class="visual-item-text">AI Readiness</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🛡️</span>
+              <span class="visual-item-text">Cyber Posture</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">📅</span>
+              <span class="visual-item-text">Regulatory Deadlines</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">⚙️</span>
+              <span class="visual-item-text">Operational Efficiency</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">🧑‍💼</span>
+              <span class="visual-item-text">Talent &amp; Capability</span>
+            </div>
+            <div class="visual-item">
+              <span class="visual-item-icon">⚡</span>
+              <span class="visual-item-text">Forcing Function Summary</span>
+            </div>
+          </div>
+        </div>
+        <a href="mailto:hello@frictionandtoil.com?subject=Technology and Operational Intelligence" class="panel-cta">
+          Commission a brief
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTTOM STRIP -->
+  <div style="max-width:1200px; margin:0 auto; padding: 0 48px;">
+    <div class="bottom-strip">
+      <div class="bottom-strip-text">
+        <h3>These are commissioned engagements.</h3>
+        <p>No self-serve. No templates. Built for a specific target, a specific decision, a specific moment.</p>
+      </div>
+      <a href="mailto:hello@frictionandtoil.com" class="bottom-cta">hello@frictionandtoil.com</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Friction &amp; Toil</span>
+    <span class="footer-note">Board intelligence. The commercial conversation follows.</span>
+  </footer>
+
+</body>
+</html>
