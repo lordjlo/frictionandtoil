@@ -49,10 +49,10 @@
     }
 
     .nav-brand {
-      font-family: sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-primary);
       text-decoration: none;
@@ -60,15 +60,15 @@
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 40px;
       list-style: none;
     }
 
     .nav-links a {
-      font-family: sans-serif;
-      font-size: 11px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-secondary);
       text-decoration: none;
@@ -83,19 +83,6 @@
       padding: 160px 48px 80px;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-    }
-
-    .hero-infographic {
-      position: absolute;
-      top: 140px;
-      right: 48px;
-      width: 420px;
-      max-width: 38vw;
-      height: auto;
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      opacity: 0.95;
     }
 
     .hero-eyebrow {
@@ -410,6 +397,74 @@
       color: var(--text-dim);
     }
 
+    /* ── INFOGRAPHIC PANEL ── */
+    .panel-infographic {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: center;
+    }
+
+    .panel-infographic .panel-content {
+      padding: 48px;
+    }
+
+    .panel-infographic .panel-img-side {
+      position: relative;
+      height: 100%;
+      min-height: 320px;
+      overflow: hidden;
+      border-left: 1px solid var(--border);
+    }
+
+    .panel-infographic .panel-img-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .panel-infographic:hover .panel-img-side img {
+      opacity: 1;
+    }
+
+    .panel-infographic .panel-img-side::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(15,15,24,0.4) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .infographic-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .infographic-count span {
+      color: var(--amber);
+      font-size: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .panel-infographic { grid-template-columns: 1fr; }
+      .panel-infographic .panel-img-side { border-left: none; border-top: 1px solid var(--border); min-height: 220px; }
+      .panel-infographic .panel-content { padding: 36px 24px; }
+    }
+
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
@@ -430,13 +485,6 @@
       nav { padding: 0 24px; }
       .nav-links { gap: 24px; }
       .hero { padding: 120px 24px 60px; }
-      .hero-infographic {
-        position: static;
-        width: 100%;
-        max-width: 100%;
-        margin-top: 48px;
-        display: block;
-      }
       .panels-section { padding: 0 24px 80px; }
       .panels-grid { grid-template-columns: 1fr; }
       .bottom-strip { flex-direction: column; padding: 48px 24px; align-items: flex-start; }
@@ -467,7 +515,6 @@
     <h1 class="fade-up">What the data room<br>doesn't show you.</h1>
     <div class="hero-rule fade-up"></div>
     <p class="hero-sub fade-up">Board-level intelligence on the decisions, people, and positions that determine whether a move succeeds or fails. Commissioned engagements. No templates. No guesswork.</p>
-    <img src="/Infographic/Prezero-infog.png" alt="Sample strategic intelligence infographic" class="hero-infographic fade-up">
   </section>
 
   <!-- PANELS -->
@@ -573,7 +620,7 @@
       <div class="panel fade-up">
         <p class="panel-number">03 — Meeting Prep Intelligence</p>
         <p class="panel-title">Meeting Prep Intelligence</p>
-        <p class="panel-question">"Every significant meeting is won before you arrive."</p>
+        <p class="panel-question">"Do you know enough walking in?"</p>
         <p class="panel-desc">Every significant meeting deserves better preparation than 45 minutes of Google. Company financials, technology posture, competitive position, people in the room — built before you ask.</p>
         <div class="panel-visual">
           <p class="visual-label">Meeting Prep</p>
@@ -661,6 +708,26 @@
           Commission a brief
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+      </div>
+
+      <!-- PANEL 5: Intelligence Infographics -->
+      <div class="panel panel-infographic fade-up">
+        <div class="panel-content">
+          <p class="panel-number">05 — Intelligence Infographics</p>
+          <p class="panel-title">Intelligence Infographics</p>
+          <p class="panel-question">"What does the intelligence actually look like?"</p>
+          <p class="panel-desc">Every brief produces a visual intelligence summary — synthesised from the full analysis into a single-page strategic infographic. What a board needs to see, at a glance.</p>
+          <div class="infographic-count">
+            <span>3</span> infographics in the showcase
+          </div>
+          <a href="/strategic-intelligence/showcase/" class="panel-cta">
+            View showcase
+            <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="panel-img-side">
+          <img src="/infographics/prezero.png" alt="PréZero Intelligence Infographic — Strategic Moat vs Operational Reality" />
+        </div>
       </div>
 
     </div>
