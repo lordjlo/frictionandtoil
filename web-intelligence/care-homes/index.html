@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Intelligence Report — UK Care Home Group Sample | Friction &amp; Toil</title>
-<meta name="description" content="Sample Web Intelligence Report for a UK care home group. Real five-dimension audit — Search, Design, Brand, Competitive position, and Growth — with a £12k–£18k annual opportunity identified.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://frictionandtoil.com/web-intelligence/care-homes/">
+<title>Website Intelligence Dashboard — sample-care-homes.co.uk</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -557,6 +554,410 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .badge-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
 .badge-amber{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)}
 .badge-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+
+/* ════════════════════════════════════════════════════════════
+   CARE HOMES COMPONENT CSS — fills all BEM class names used in HTML
+   ════════════════════════════════════════════════════════════ */
+
+/* ── SVG Ring Charts ─────────────────────────────────────── */
+.ring-track{fill:none;stroke:rgba(255,255,255,.06);stroke-width:4}
+.ring-fill{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)}
+.ring-fill.ring-red{stroke:#ef4444;filter:drop-shadow(0 0 5px rgba(239,68,68,.4))}
+.ring-fill.ring-orange{stroke:#f97316;filter:drop-shadow(0 0 5px rgba(249,115,22,.4))}
+.ring-fill.ring-yellow{stroke:#eab308;filter:drop-shadow(0 0 5px rgba(234,179,8,.4))}
+.ring-fill.ring-green{stroke:#22c55e;filter:drop-shadow(0 0 5px rgba(34,197,94,.4))}
+.ring-svg{transform:rotate(-90deg);display:block}
+
+/* ── Dashboard Ring Layout ──────────────────────────────── */
+.rings-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:28px 16px 8px}
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:120px;height:120px}
+.ring-wrap--large{width:140px;height:140px}
+.ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.ring-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;line-height:1}
+.ring-label{font-size:10px;color:var(--text-muted);text-align:center;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.ring-num--large{font-size:36px}
+.ring-label--large{font-size:12px}
+.rings-legend{display:flex;justify-content:center;gap:24px;padding:6px 0 14px;font-size:12px;color:var(--text-muted);flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── Summary Strip Children ─────────────────────────────── */
+.summary-headline{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;flex:1;color:var(--text);min-width:160px}
+.summary-body{font-size:14px;color:var(--text-secondary);flex:2;line-height:1.6}
+
+/* ── Intel Cards ─────────────────────────────────────────── */
+.intel-cards{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-bottom:20px}
+.intel-card--revenue{position:relative;overflow:hidden}
+.intel-card--revenue::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--search),var(--design),var(--growth))}
+.intel-card--actions{display:flex;flex-direction:column}
+.intel-card__label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--text-muted);margin-bottom:10px}
+.intel-card__value{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,#a5b4fc,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.intel-card__sub{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:8px}
+.intel-card__footer{font-size:11px;color:var(--text-muted);padding-top:8px;border-top:1px solid var(--border)}
+
+/* ── Top 5 Actions List ──────────────────────────────────── */
+.top5-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.top3-action{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-secondary);line-height:1.5}
+.top3-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;flex-shrink:0;margin-top:1px;white-space:nowrap}
+.top3-badge--now{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+.top3-badge--window{background:rgba(234,179,8,.12);color:#eab308;border:1px solid rgba(234,179,8,.25)}
+.top3-text{flex:1}
+
+/* ── Timing Card BEM Variants ───────────────────────────── */
+.timing-card__title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px}
+.timing-col--now{background:rgba(239,68,68,.04);border-color:var(--red-border)}
+.timing-col--window{background:rgba(234,179,8,.04);border-color:var(--yellow-border)}
+.timing-col--later{background:rgba(255,255,255,.02);border-color:var(--border)}
+.timing-col__head{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;margin-bottom:10px;display:flex;align-items:baseline;gap:6px}
+.timing-col--now .timing-col__head{color:#ef4444}
+.timing-col--window .timing-col__head{color:#eab308}
+.timing-col--later .timing-col__head{color:var(--text-muted)}
+.timing-col__sub{font-size:10px;font-weight:400;color:var(--text-muted)}
+.timing-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+.timing-list li{font-size:12px;color:var(--text-secondary);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);line-height:1.4}
+.timing-list li:last-child{border-bottom:none}
+
+/* ── Action Grids ────────────────────────────────────────── */
+.action-grids{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.action-card{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:border-color .2s}
+.action-card:hover{border-color:var(--border-hover)}
+.action-card[data-dim="search"]{border-top:3px solid var(--search)}
+.action-card[data-dim="design"]{border-top:3px solid var(--design)}
+.action-card[data-dim="brand"]{border-top:3px solid var(--brand)}
+.action-card[data-dim="compete"]{border-top:3px solid var(--compete)}
+.action-card[data-dim="growth"]{border-top:3px solid var(--growth)}
+.action-card__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.action-card__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
+.action-card[data-dim="search"] .action-card__label{color:#a5b4fc}
+.action-card[data-dim="design"] .action-card__label{color:#fbbf24}
+.action-card[data-dim="brand"] .action-card__label{color:#6ee7b7}
+.action-card[data-dim="compete"] .action-card__label{color:#fda4af}
+.action-card[data-dim="growth"] .action-card__label{color:#67e8f9}
+.action-card__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+.action-card__list li{font-size:12px;color:var(--text-secondary);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);line-height:1.4}
+.action-card__list li:last-child{border-bottom:none}
+.score-pill{display:inline-flex;align-items:center;justify-content:center;padding:3px 10px;border-radius:100px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;border:1px solid}
+.score-pill--red{color:#ef4444;background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.25)}
+.score-pill--orange{color:#f97316;background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.25)}
+.score-pill--yellow{color:#eab308;background:rgba(234,179,8,.12);border-color:rgba(234,179,8,.25)}
+.score-pill--green{color:#22c55e;background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.25)}
+
+/* ── Research Flags Teaser (rft-* BEM) ─────────────────── */
+.rft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.rft-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.rft-flag{display:flex;gap:12px;padding:14px 16px;background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.2);border-radius:var(--radius-sm)}
+.rft-flag--amber{border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.04)}
+.rft-flag--blue{border-color:rgba(59,130,246,.25);background:rgba(59,130,246,.04)}
+.rft-flag__icon{font-size:18px;flex-shrink:0;line-height:1.4}
+.rft-flag__head{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.rft-flag__body,.rft-flag__text{font-size:11px;color:var(--text-secondary);line-height:1.5}
+
+/* ── Tab Navigation ──────────────────────────────────────── */
+.tab-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:thin;padding:0 24px;flex-wrap:wrap}
+.tab-nav::-webkit-scrollbar{height:3px}
+
+/* ── Score Hero in Panels ────────────────────────────────── */
+.score-ring-lg{width:160px;height:160px;flex-shrink:0;transform:rotate(-90deg);display:block}
+.score-ring-lg circle{stroke-width:5}
+.score-hero__inner{display:flex;flex-direction:column;justify-content:center;flex:1}
+.score-hero__num{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;line-height:1;color:#fff;margin-bottom:4px}
+.score-hero__label{font-size:13px;color:var(--text-secondary);font-weight:500}
+
+/* ── Overview Verdict ────────────────────────────────────── */
+.overview-verdict{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px}
+.ov-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.ov-body{font-size:13px;color:var(--text-secondary);line-height:1.7}
+
+/* ── Heatmap (grid style) ────────────────────────────────── */
+.heatmap-wrap{margin-bottom:24px}
+.heatmap-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--text-muted);margin-bottom:10px}
+.heatmap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.heatmap-cell{padding:16px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);border-top:3px solid var(--border)}
+.heatmap-cell--red{border-top-color:#ef4444}
+.heatmap-cell--orange{border-top-color:#f97316}
+.heatmap-cell--yellow{border-top-color:#eab308}
+.heatmap-cell--green{border-top-color:#22c55e}
+.hc-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:6px;font-weight:600}
+.hc-score{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;line-height:1;margin-bottom:8px;color:#fff}
+.hc-bar{height:2px;border-radius:2px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:2px}
+.hc-fill{height:100%;border-radius:2px}
+
+/* ── Section Blocks ──────────────────────────────────────── */
+.section-block{margin-bottom:28px}
+.section-block__title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.section-intro{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px}
+.section-note{font-size:11px;color:var(--text-muted);font-style:italic;margin-top:8px;line-height:1.5}
+.tab-section-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:16px;color:var(--text)}
+
+/* ── Priority Cards (BEM variant) ───────────────────────── */
+.priority-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.priority-card{padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);border-left:3px solid var(--border);transition:border-color .2s}
+.priority-card--critical{border-left-color:#ef4444}
+.priority-card--high{border-left-color:#f97316}
+.priority-card--medium{border-left-color:#eab308}
+.priority-card--low{border-left-color:var(--text-muted)}
+.pc-head{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
+.pc-body{font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
+.pc-meta{display:flex;gap:16px;font-size:11px;flex-wrap:wrap}
+.pc-effort{color:var(--text-muted)}
+.pc-impact{color:var(--text);font-weight:500}
+
+/* ── Data Tables ─────────────────────────────────────────── */
+.table-wrap{overflow-x:auto;margin:14px 0 24px;border:1px solid var(--border);border-radius:var(--radius-sm)}
+.data-table{width:100%;border-collapse:collapse;font-size:12px}
+.data-table th{text-align:left;padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border);font-weight:600;background:rgba(255,255,255,.02)}
+.data-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.03);color:var(--text-secondary);vertical-align:top;line-height:1.5}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:rgba(255,255,255,.02)}
+.table-note{font-size:11px;color:var(--text-muted);font-style:italic;margin-top:6px;line-height:1.4}
+.td-pass{color:#22c55e;font-weight:600}
+.td-fail{color:#ef4444;font-weight:600}
+.td-partial{color:#eab308;font-weight:600}
+.td-amber{color:#f97316}
+.td-high{color:#ef4444;font-weight:600}
+.td-med{color:#f97316}
+.td-low{color:#22c55e}
+
+/* ── Technical Check Rows ────────────────────────────────── */
+.cwv-scorecard{margin-bottom:20px}
+.cwv-row{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:10px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;font-size:12px;color:var(--text-secondary)}
+.cwv-row--head{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;background:rgba(255,255,255,.02);border-radius:var(--radius-sm) var(--radius-sm) 0 0;border-bottom:1px solid var(--border)}
+.cwv-green{color:#22c55e;font-weight:600}
+.cwv-amber{color:#f97316;font-weight:600}
+.stc-row,.tc-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.stc-row:last-child,.tc-row:last-child{border-bottom:none}
+.stc-signal,.tc-signal{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.stc-verdict,.tc-verdict{font-size:12px;flex-shrink:0;font-weight:600}
+.stc-fail,.tc-fail{color:#ef4444}
+.tc-pass{color:#22c55e}
+.tc-partial{color:#eab308}
+.stc-note,.tc-note{font-size:11px;color:var(--text-muted);margin-top:3px;line-height:1.4;display:block}
+
+/* ── E-E-A-T Checklist ───────────────────────────────────── */
+.eeat-checklist{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:16px}
+.eeat-row{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);background:var(--bg-card)}
+.eeat-row:last-child{border-bottom:none}
+.eeat-signal{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.eeat-verdict{font-size:12px;flex-shrink:0;font-weight:600}
+.eeat-pass{color:#22c55e}
+.eeat-fail{color:#ef4444}
+.eeat-partial{color:#eab308}
+.eeat-note{font-size:11px;color:var(--text-muted);display:block;margin-top:3px;line-height:1.4}
+.eeat-score-bar{margin:16px 0 4px;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.eeat-score-track{height:100%}
+.eeat-score-fill{height:100%;background:var(--brand);border-radius:4px}
+.eeat-score-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:4px}
+.eeat-score-num{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--brand)}
+
+/* ── YMYL ────────────────────────────────────────────────── */
+.ymyl-verdict{padding:14px 18px;border-radius:var(--radius-sm);border:1px solid;margin-bottom:14px}
+.ymyl-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.ymyl-high{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+.ymyl-fail{color:#ef4444}
+.ymyl-status{font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.ymyl-body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.ymyl-note{font-size:11px;color:var(--text-muted);margin-top:6px;font-style:italic;line-height:1.4}
+
+/* ── Content Roadmap ─────────────────────────────────────── */
+.content-roadmap{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.cr-phase{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.cr-phase__head{padding:12px 16px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--growth);background:rgba(6,182,212,.04);border-bottom:1px solid var(--border)}
+.cr-phase__items{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.cr-item{padding:8px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);border-left:2px solid var(--growth)}
+.cr-item__title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px}
+.cr-item__kw{font-size:11px;color:#67e8f9;font-family:'JetBrains Mono',monospace}
+.cr-item__detail{font-size:11px;color:var(--text-muted);line-height:1.4;margin-top:2px}
+
+/* ── AI SoV Hero ─────────────────────────────────────────── */
+.sov-hero{display:flex;align-items:center;gap:28px;padding:28px 32px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px}
+.sov-score-wrap{position:relative;width:120px;height:120px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sov-score-wrap .ring-svg{position:absolute;top:0;left:0;width:100%;height:100%}
+.sov-verdict__title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:8px}
+.sov-verdict__body{font-size:13px;color:var(--text-secondary);line-height:1.6}
+
+/* ── Gap Analysis ────────────────────────────────────────── */
+.gap-analysis{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.gap-item{padding:16px 18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);border-left:3px solid var(--border)}
+.gap-item--critical{border-left-color:#ef4444}
+.gap-item--gap{border-left-color:#f97316}
+.gap-item--win{border-left-color:#22c55e}
+.gap-item__head{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.gap-item__body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+
+/* ── AO Cards (Authority Overview) ──────────────────────── */
+.ao-card{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:12px}
+.ao-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:5px;font-weight:600}
+.ao-value{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.ao-note{font-size:11px;color:var(--text-secondary);line-height:1.4}
+.ao-red{color:#ef4444}
+.ao-amber{color:#f97316}
+
+/* ── Horizontal Bar ──────────────────────────────────────── */
+.hb-legend{display:flex;gap:16px;margin-bottom:12px;font-size:11px;color:var(--text-muted);flex-wrap:wrap}
+.hb-dot{width:10px;height:10px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:4px}
+.hb-bar{height:20px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;display:flex;margin-bottom:10px}
+.hb-seg{height:100%}
+
+/* ── Before / After (Design) ─────────────────────────────── */
+.before-after-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.ba-col{border-radius:var(--radius-sm);padding:22px;border:1px solid var(--border)}
+.ba-col--before{background:#f0f4f8;border-color:#d0dae6}
+.ba-col--after{background:#1a2234;border-color:rgba(99,102,241,.3)}
+.ba-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:12px}
+.ba-col--before .ba-label{background:rgba(0,0,0,.06);color:#666}
+.ba-col--after .ba-label{background:rgba(99,102,241,.15);color:#6366f1}
+.ba-card{margin-bottom:12px}
+.ba-card__section{margin-bottom:8px}
+.ba-card__section-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:3px}
+.ba-col--before .ba-card__section-label{color:#90afc5}
+.ba-col--after .ba-card__section-label{color:#6366f1}
+.ba-card__section-body{font-size:13px;line-height:1.5}
+.ba-col--before .ba-card__section-body{color:#4a6180}
+.ba-col--after .ba-card__section-body{color:rgba(255,255,255,.75)}
+.ba-card__score{display:inline-flex;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:700;margin-top:8px;border:1px solid}
+.ba-card__score--red{background:rgba(239,68,68,.12);color:#ef4444;border-color:rgba(239,68,68,.25)}
+.ba-card__score--green{background:rgba(34,197,94,.12);color:#22c55e;border-color:rgba(34,197,94,.25)}
+
+/* ── UX Findings ─────────────────────────────────────────── */
+.ux-findings{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:16px}
+.ux-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);background:var(--bg-card)}
+.ux-item:last-child{border-bottom:none}
+.ux-head{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.ux-body{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-top:3px}
+.ux-pass{color:#22c55e;font-size:12px;font-weight:600;flex-shrink:0}
+.ux-fail{color:#ef4444;font-size:12px;font-weight:600;flex-shrink:0}
+.ux-partial{color:#eab308;font-size:12px;font-weight:600;flex-shrink:0}
+
+/* ── Visual Audit ────────────────────────────────────────── */
+.visual-audit{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.va-dimension{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px}
+.va-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:4px}
+.va-item{flex:1}
+.va-item__label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:2px}
+.va-item__value{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#fff}
+.va-item__note{font-size:11px;color:var(--text-secondary);margin-top:2px}
+.va-fail{color:#ef4444}
+.va-partial{color:#eab308}
+.va-verdict{font-size:12px;flex-shrink:0;font-weight:600}
+.va-note{font-size:11px;color:var(--text-secondary);line-height:1.4;margin-top:6px}
+
+/* ── Voice + Positioning ─────────────────────────────────── */
+.voice-audit{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.pos-assessment{padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:12px}
+.pos-assessment--positive{border-left:3px solid var(--green)}
+.pos-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:var(--text-muted);margin-bottom:6px}
+.pos-statement{font-size:14px;color:var(--text);line-height:1.6;font-style:italic}
+.positioning-card{padding:22px 26px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px}
+.positioning-card--recommended{background:rgba(16,185,129,.04);border-color:rgba(16,185,129,.2)}
+
+/* ── Trust / Heading / Misc Audit ────────────────────────── */
+.trust-checklist{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:16px}
+.heading-breakdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+
+/* ── USP Grid ────────────────────────────────────────────── */
+.usp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.usp-card{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.usp-card--high{border-left:3px solid var(--orange)}
+.usp-card--medium{border-left:3px solid var(--yellow)}
+.usp-card__head{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px}
+.usp-card__body{font-size:12px;color:var(--text-secondary);line-height:1.5}
+.usp-card__fix{font-size:11px;color:var(--text-muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+
+/* ── Pillar Analysis ─────────────────────────────────────── */
+.pillar-analysis{margin-bottom:20px}
+.pa-subhead{font-size:12px;color:var(--text-secondary);margin-bottom:14px;line-height:1.6}
+.pa-status{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600}
+.pa-status--fail{background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+
+/* ── Competitor Cards ────────────────────────────────────── */
+.competitor-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.comp-card{padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);border-left:3px solid var(--compete)}
+.comp-card--aggregator{border-left-color:var(--blue)}
+.comp-card__name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:3px}
+.comp-card__url{font-family:'JetBrains Mono',monospace;font-size:11px;color:#fda4af;margin-bottom:10px;display:block}
+.comp-card__head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px}
+.comp-card__body{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:8px}
+.comp-card__stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:var(--text-muted)}
+.comp-card__threat{font-size:11px;color:#fda4af;padding:6px 10px;background:rgba(244,63,94,.06);border-radius:var(--radius-xs);border-left:2px solid var(--compete);display:block;margin-top:4px}
+
+/* ── Avatar Cards ────────────────────────────────────────── */
+.avatar-card{padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;border-top:3px solid var(--growth)}
+.avatar-card--secondary{border-top-color:var(--design)}
+.avatar-card--tertiary{border-top-color:var(--brand)}
+.avatar-card__name{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:var(--text);margin-bottom:4px}
+.avatar-card__profile{font-size:13px;color:var(--text-secondary);margin-bottom:14px}
+.avatar-card__content{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.avatar-card__pain{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px}
+.avatar-content__label{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:var(--text-muted);margin-bottom:6px}
+.avatar-pain__label{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:#fda4af;margin-bottom:6px}
+.avatar-pain__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+.avatar-pain__list li{font-size:12px;color:var(--text-secondary);line-height:1.4}
+
+/* ── Prompt Cards ────────────────────────────────────────── */
+.prompt-cards{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.prompt-card{padding:20px 22px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-sm)}
+.prompt-card__label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--design);margin-bottom:8px}
+#panel-search .prompt-card__label{color:var(--search)}
+#panel-brand .prompt-card__label{color:var(--brand)}
+#panel-compete .prompt-card__label{color:var(--compete)}
+#panel-growth .prompt-card__label{color:var(--growth)}
+.prompt-card__text{font-size:12px;color:var(--text-secondary);line-height:1.7;white-space:pre-wrap}
+.prompt-card__note{font-size:11px;color:var(--text-muted);font-style:italic;margin-top:8px}
+.aiprompt-intro{font-size:13px;color:var(--text-secondary);line-height:1.6;padding:18px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:16px}
+
+/* ── Business Impact Hero ────────────────────────────────── */
+.biz-impact-hero{padding:28px 32px;background:var(--bg-card);border:1px solid rgba(99,102,241,.25);border-radius:var(--radius);margin-bottom:20px;position:relative;overflow:hidden}
+.biz-impact-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--search),var(--design),var(--growth))}
+.bih-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--text-muted);margin-bottom:8px}
+.bih-value{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;line-height:1;background:linear-gradient(135deg,#a5b4fc,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.bih-sub{font-size:13px;color:var(--text-secondary);line-height:1.5;max-width:600px}
+
+/* ── COI Model ───────────────────────────────────────────── */
+.coi-model{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:16px}
+.coi-label{color:var(--text-secondary);flex:1}
+.coi-value{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff;flex-shrink:0;margin-left:12px}
+.coi-red .coi-label{color:var(--text-secondary)}
+.coi-red .coi-value{color:#ef4444}
+.coi-red{background:rgba(239,68,68,.04)}
+
+/* ── Site Type Checks ────────────────────────────────────── */
+.site-type-checks{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:16px}
+
+/* ── Exec Overlay ────────────────────────────────────────── */
+.exec-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,10,15,.9);backdrop-filter:blur(10px);overflow-y:auto;padding:40px}
+.exec-overlay__inner{max-width:800px;margin:0 auto;background:#fff;color:#1a1a2e;border-radius:12px;padding:48px 56px;box-shadow:0 20px 60px rgba(0,0,0,.5);position:relative}
+.exec-overlay__close{position:absolute;top:16px;right:16px;font-size:18px;color:#666;cursor:pointer;background:rgba(0,0,0,.08);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;line-height:1;font-family:sans-serif}
+.exec-overlay__close:hover{background:rgba(0,0,0,.15)}
+.exec-overlay__title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:#1a2744;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #e8e8ee}
+.exec-overlay__body p{font-size:13px;line-height:1.7;color:#444;margin-bottom:12px}
+.exec-overlay__body p:last-child{margin-bottom:0}
+
+/* ── Services CTA (BEM variant) ─────────────────────────── */
+.services-cta__title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.services-cta__body{font-size:14px;color:var(--text-secondary);line-height:1.7;max-width:560px;margin:0 auto 20px}
+.services-cta__btn{display:inline-block;padding:14px 36px;border-radius:100px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--search),#8b5cf6);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.services-cta__btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,.3)}
+
+/* ── Site Footer ─────────────────────────────────────────── */
+.site-footer{padding:40px 0 24px;border-top:1px solid var(--border);margin-top:60px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{display:flex;flex-direction:column;gap:3px}
+.footer-brand__name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text)}
+.footer-brand__tagline{font-size:12px;color:var(--text-muted)}
+.footer-meta{font-size:11px;color:var(--text-muted)}
+.footer-cta__link{font-size:13px;color:#a5b4fc;text-decoration:none;font-weight:500}
+.footer-cta__link:hover{text-decoration:underline}
+
+/* ── Responsive overrides ────────────────────────────────── */
+@media(max-width:768px){
+  .intel-cards,.before-after-wrap{grid-template-columns:1fr}
+  .action-grids{grid-template-columns:1fr}
+  .heatmap-grid{grid-template-columns:repeat(2,1fr)}
+  .usp-grid,.avatar-card__content{grid-template-columns:1fr}
+  .rft-grid{grid-template-columns:1fr}
+  .heading-breakdown{grid-template-columns:repeat(2,1fr)}
+  .sov-hero{flex-direction:column}
+}
 </style>
 </head>
 <body>
@@ -604,7 +1005,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   <div class="guide-hero">
     <div class="guide-hero-eyebrow">Your guide to this report</div>
     <h2>You've just received a Website Intelligence Report.<br>Here's exactly how to use it.</h2>
-    <p>This report audits sample-care-homes.co.uk across five dimensions — Search, Design, Brand, Competition, and Growth. A UK Care Home Group operates 34 care homes across Yorkshire, Lincolnshire and the North Midlands with a 30+ year track record. This report shows where digital performance is letting down a strong operational business — and exactly what to fix first.</p>
+    <p>This report audits sample-care-homes.co.uk across five dimensions — Search, Design, Brand, Compete, and Growth. A UK Care Home Group operates 34 care homes across Yorkshire, Lincolnshire and the North Midlands with a 30+ year track record. This report shows where digital performance is letting down a strong operational business — and exactly what to fix first.</p>
   </div>
 
   <div class="guide-section">
@@ -661,7 +1062,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">What does the AI SoV score of 1/6 mean?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">AI Share-of-Voice measures whether AI engines like ChatGPT and Perplexity would cite sample-care-homes.co.uk in their answers for the six most relevant queries. Scoring 1 out of 6 means A UK Care Home Group only appears for direct brand searches — not for "care homes Huddersfield", "dementia care North England", or "veteran friendly care home". The robots.txt is open, so the problem is schema, content structure, and fact density — not access.</div></div>
       <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">The carehome.co.uk score is 9.2/10. Why is Brand only 56?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">The rating is excellent — but it's not on the A UK Care Home Group website. The scoring measures what's communicated on the owned site, not what exists in third-party databases. A family who goes to carehome.co.uk gets the full picture. A family who goes to sample-care-homes.co.uk gets generic copy. The fix is surfacing that 9.2/10 figure prominently — on the homepage, on every home page, in the meta description.</div></div>
       <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">What's the biggest single fix?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">LocalBusiness + AggregateRating schema on all 34 home pages. It takes one working day for a developer. It tells Google and AI engines that each home has a verified address, phone number, and a 9.2/10 review rating. It unlocks star ratings in search results, rich snippets, and AI citation eligibility — all at once.</div></div>
-      <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">What's the Veteran Care opportunity?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">Multiple A UK Care Home Group homes hold Veteran Friendly Framework accreditation — including Sycamore Hall in Ripon, which has received trade press coverage. Neither Orchard Care Homes nor Sanctuary Care fully own "veteran care home" as an SEO keyword. A dedicated landing page explaining the accreditation, listing certified homes, and answering veterans' families' specific questions could rank position 1–3 for this query cluster within 8 weeks.</div></div>
+      <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">What's the Veteran Care opportunity?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">Multiple A UK Care Home Group homes hold Veteran Friendly Framework accreditation — with several homes having received regional trade press coverage. Neither Orchard Care Homes nor Sanctuary Care fully own "veteran care home" as an SEO keyword. A dedicated landing page explaining the accreditation, listing certified homes, and answering veterans' families' specific questions could rank position 1–3 for this query cluster within 8 weeks.</div></div>
       <div class="guide-faq-item"><div class="guide-faq-q" onclick="this.parentElement.classList.toggle('open')">How was the £12k–£18k annual COI calculated?<span class="guide-faq-chevron">▼</span></div><div class="guide-faq-a">The Cost of Invisibility (COI) model estimates occupancy revenue lost to poor digital visibility, based on 1–2 unfilled beds per year across 34 homes at average weekly fees of £600–£750. The £12k–£18k is intentionally conservative — it covers the direct schema and meta-description gap only. Across all 34 homes and the full keyword cluster (veterans, dementia, nursing, cost guides), the addressable figure is significantly higher.</div></div>
     </div>
   </div>
@@ -778,7 +1179,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="intel-card__label">Estimated Annual Revenue Impact</div>
       <div class="intel-card__value">£12,000–£18,000</div>
       <div class="intel-card__sub">Cost of Invisibility (COI) — occupancy revenue lost to poor digital visibility. Based on 1–2 unfilled beds/yr at £600–£750/week average weekly fee.</div>
-      <div class="intel-card__footer">34 homes · Yorkshire, Lincs &amp; North Midlands · CQC 'Good' estate</div>
+      <div class="intel-card__footer">34 homes · Yorkshire, Lincolnshire &amp; North Midlands · CQC 'Good' estate</div>
     </div>
 
     <!-- Top 5 Actions Card -->
@@ -944,7 +1345,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <h2 class="exec-overlay__title">Executive Summary</h2>
       <div class="exec-overlay__body">
         <p><strong>A UK Care Home Group</strong> operates 34 care homes across Yorkshire, Lincolnshire and the North Midlands. The business has genuine operational strengths — CQC 'Good' ratings across the estate, Veteran Friendly Framework accreditation, and a 30+ year track record. None of this surfaces in organic search.</p>
-        <p>The site scores <strong>46/100 overall</strong> across five audit dimensions. SEO (30/100) and Design (38/100) are both in the critical band. The core problem is a complete absence of local SEO infrastructure: no LocalBusiness or AggregateRating schema on any of the 34 home pages, missing or duplicate meta descriptions, and no pillar-page content architecture. Aggregators (carehome.co.uk, Autumna, CareHome.co.uk) dominate every commercial search query in A UK Care Home Group's operating geography.</p>
+        <p>The site scores <strong>46/100 overall</strong> across five audit dimensions. SEO (30/100) and Design (38/100) are both in the critical band. The core problem is a complete absence of local SEO infrastructure: no LocalBusiness or AggregateRating schema on any of the 34 home pages, missing or duplicate meta descriptions, and no pillar-page content architecture. Aggregators (carehome.co.uk, CareHome.co.uk, and Autumna) dominate every commercial search query in A UK Care Home Group's operating geography.</p>
         <p>The estimated annual cost of this invisibility is <strong>£12,000–£18,000</strong> in occupancy revenue — based on 1–2 unfilled beds per year at current weekly fee rates. The actual figure is likely higher once regional variance and care-type uplift are factored in.</p>
         <p>The single largest competitive opportunity is the <strong>veterans niche</strong>. A UK Care Home Group holds Veteran Friendly Framework accreditation; neither Orchard Care Homes nor Sanctuary Care do. "Care homes for veterans UK" receives ~1,200 searches/month with almost no optimised content. A dedicated landing page could rank within 60 days.</p>
         <p><strong>Priority actions:</strong> (1) Deploy LocalBusiness + AggregateRating schema on all 34 home pages — unlocks star ratings in Google, boosts local map pack visibility. (2) Rewrite meta descriptions across the entire site. (3) Add social proof above the fold on the homepage. (4) Build care-type pillar pages. (5) Launch veterans landing page.</p>
@@ -1208,7 +1609,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
     <!-- Atomic Answer Check -->
     <div class="section-block">
-      <h4 class="section-block__title">Atomic Answer Check — M1</h4>
+      <h4 class="section-block__title">Atomic Answer Check</h4>
       <p class="section-intro">Does each page answer its target query in the first 1–2 sentences of the relevant section, or bury the answer in prose?</p>
       <div class="table-wrap">
         <table class="data-table">
@@ -1253,7 +1654,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
     <!-- Fact Density Scan -->
     <div class="section-block">
-      <h4 class="section-block__title">Fact Density Scan — M2</h4>
+      <h4 class="section-block__title">Fact Density Scan</h4>
       <p class="section-intro">Specific, verifiable claims per 100 words (statistics, named clients, dated achievements, prices, percentages). AI citation threshold: 2.0+ facts/100 words.</p>
       <div class="table-wrap">
         <table class="data-table">
@@ -1299,7 +1700,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
     <!-- Heading Classification -->
     <div class="section-block">
-      <h4 class="section-block__title">Heading Classification — M3</h4>
+      <h4 class="section-block__title">Heading Classification</h4>
       <div class="heading-breakdown">
         <div class="hb-bar">
           <div class="hb-seg" style="width:18%;background:#22c55e" title="Keyword-targeted: 18%"></div>
@@ -1379,7 +1780,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
     <!-- Intent-to-CTA Alignment -->
     <div class="section-block">
-      <h4 class="section-block__title">Intent-to-CTA Alignment — M10</h4>
+      <h4 class="section-block__title">Intent-to-CTA Alignment</h4>
       <div class="table-wrap">
         <table class="data-table">
           <thead>
@@ -1437,7 +1838,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="pillar-analysis">
         <div class="pa-status pa-status--fail">No pillar-cluster architecture detected. The site has a flat structure: homepage → home listing → individual home pages. There are no topical authority pages for the four main care types (Dementia, Nursing, Respite, Residential).</div>
         <h5 class="pa-subhead">Orphan Page Risk</h5>
-        <p>Individual home pages (34) receive internal links from the /our-care-homes/ listing page only. They have no inbound links from care-type content, no blog posts linking to them, and no service pages referencing specific homes by condition match. By the pillar mapper definition these are semi-orphans — linked once from a directory page but not integrated into a content structure.</p>
+        <p>Individual home pages (34) receive internal links from the /our-care-homes/ listing page only. They have no inbound links from care-type content, no blog posts linking to them, and no service pages referencing specific homes by condition match. By this definition, these pages are semi-orphans — linked once from a directory page but not integrated into a content structure.</p>
         <h5 class="pa-subhead">Recommended Architecture</h5>
         <div class="table-wrap">
           <table class="data-table">
@@ -1544,7 +1945,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     </div>
 
     <div class="section-block">
-      <h4 class="section-block__title">Originality Signature Audit — M11</h4>
+      <h4 class="section-block__title">Originality Signature Audit</h4>
       <div class="table-wrap">
         <table class="data-table">
           <thead>
@@ -1728,7 +2129,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
           <span class="coi-value coi-red">£12,000–£18,000</span>
         </div>
       </div>
-      <p class="section-note">This model is deliberately conservative. It assumes poor digital visibility causes 1–2 missed enquiries per year across the 34-home estate — equivalent to roughly 0.003 beds per home. The actual exposure is likely higher: aggregator dominance means many families never see individual home pages during their search, increasing the enquiry deficit. Verify with current occupancy and enquiry source data for a precise figure.</p>
+      <p class="section-note">This model is deliberately conservative. It assumes poor digital visibility causes 1–2 missed enquiries per year across the 34-home estate — equivalent to roughly 0.03–0.06 beds per home. The actual exposure is likely higher: aggregator dominance means many families never see individual home pages during their search, increasing the enquiry deficit. Verify with current occupancy and enquiry source data for a precise figure.</p>
     </div>
 
     <div class="section-block">
@@ -1984,7 +2385,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         </div>
         <div class="ux-item ux-fail">
           <div class="ux-head">Individual home pages lack a persistent enquiry path</div>
-          <div class="ux-body">When a family lands on a specific home page (e.g. Delamere Lodge), the primary action — calling or enquiring — is available only in the footer phone number. There is no inline form, no click-to-call button, no "Book a visit" CTA. The decision-stage visitor has no obvious next step.</div>
+          <div class="ux-body">When a family lands on a specific home page (e.g. one of their home pages), the primary action — calling or enquiring — is available only in the footer phone number. There is no inline form, no click-to-call button, no "Book a visit" CTA. The decision-stage visitor has no obvious next step.</div>
         </div>
         <div class="ux-item ux-partial">
           <div class="ux-head">Breadcrumb navigation present</div>
@@ -2304,7 +2705,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
     <div class="overview-verdict">
       <h3 class="ov-title">Real Assets, Underplayed</h3>
-      <p class="ov-body">A UK Care Home Group's brand score of 56/100 reflects a business that has genuine positioning assets but fails to deploy them. The Veteran Friendly Framework accreditation is unique in the competitive set and alone could anchor a powerful brand story — yet it is relegated to a footer badge. Thirty-plus years of operation in Yorkshire and Lincolnshire creates regional legitimacy that neither Orchard nor Sanctuary (both newer entrants to this geography) can easily replicate. The core problem is not that A UK Care Home Group lacks a brand story — it's that the story is never told. Copy is institutional and passive. The CQC 'Good' rating, the veteran specialisation, and the regional depth are mentioned but never dramatised.</p>
+      <p class="ov-body">A UK Care Home Group's brand score of 56/100 reflects a business that has genuine positioning assets but fails to deploy them. The Veteran Friendly Framework accreditation is unique in the competitive set and alone could anchor a powerful brand story — yet it is relegated to a footer badge. Thirty-plus years of operation in Yorkshire and Lincolnshire create regional legitimacy that neither Orchard nor Sanctuary (both newer entrants to this geography) can easily replicate. The core problem is not that A UK Care Home Group lacks a brand story — it's that the story is never told. Copy is institutional and passive. The CQC 'Good' rating, the veteran specialisation, and the regional depth are mentioned but never dramatised.</p>
     </div>
 
     <div class="heatmap-wrap">
@@ -2359,12 +2760,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         </div>
         <div class="usp-card usp-card--high">
           <div class="usp-card__head">CQC 'Good' Across the Estate</div>
-          <div class="usp-card__body">CQC 'Good' ratings across all 34 homes is a genuine operational achievement — not all multi-site operators achieve estate-wide consistency. Orchard Care quotes 100% 'Good or Outstanding' prominently in their marketing. A UK Care Home Group does not lead with this. Families use CQC as the primary quality benchmark: if it is not visible, they assume it is average or unstated for a reason.</div>
+          <div class="usp-card__body">CQC 'Good' ratings across all 34 homes are a genuine operational achievement — not all multi-site operators achieve estate-wide consistency. Orchard Care quotes 100% 'Good or Outstanding' prominently in their marketing. A UK Care Home Group does not lead with this. Families use CQC as the primary quality benchmark: if it is not visible, they assume it is average or unstated for a reason.</div>
           <div class="usp-card__fix">Fix: Feature CQC 'Good' (and number of rated homes) in the hero and individual home pages. Link to CQC reports for each home.</div>
         </div>
         <div class="usp-card usp-card--medium">
           <div class="usp-card__head">30+ Years &amp; Regional Roots</div>
-          <div class="usp-card__body">30+ years of operation in the Yorkshire and Lincolnshire region creates genuine local knowledge and community trust. This positions A UK Care Home Group against newer corporate operators as the established regional choice. Currently mentioned on the About page but not used as a positioning pillar.</div>
+          <div class="usp-card__body">30+ years of operation in the Yorkshire and Lincolnshire region create genuine local knowledge and community trust. This positions A UK Care Home Group against newer corporate operators as the established regional choice. Currently mentioned on the About page but not used as a positioning pillar.</div>
           <div class="usp-card__fix">Fix: Integrate into strapline and homepage headline — "Yorkshire's trusted care homes for over 30 years".</div>
         </div>
       </div>
@@ -2391,7 +2792,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         <div class="va-item">
           <div class="va-item__label">Tone</div>
           <div class="va-item__value">Institutional / Corporate</div>
-          <div class="va-item__note">Copy reads as written by and for an organisation, not for a family making a care decision. Passive constructions ("care is provided", "our homes offer") rather than direct, warm address ("we provide", "you'll find").</div>
+          <div class="va-item__note">Copy reads as written by and for an organisation, not for a family making a care decision. Passive constructions are used throughout ("care is provided", "our homes offer") rather than direct, warm address ("we provide", "you'll find").</div>
         </div>
         <div class="va-item">
           <div class="va-item__label">Audience Address</div>
@@ -2420,7 +2821,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         </div>
         <div class="priority-card priority-card--medium">
           <div class="pc-head">Lead with outcomes, not process</div>
-          <div class="pc-body">Current copy describes what A UK Care Home Group does. It should describe what residents and families experience. "Residents at Delamere Lodge often tell us [specific thing]" outperforms "Delamere Lodge provides high-quality care" in both trust and engagement.</div>
+          <div class="pc-body">Current copy describes what A UK Care Home Group does. It should describe what residents and families experience. "Residents here often tell us [specific thing]" outperforms "[Home name] provides high-quality care" in both trust and engagement.</div>
         </div>
       </div>
     </div>
@@ -2552,7 +2953,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
             <span>100% CQC Good/Outstanding</span>
           </div>
           <div class="comp-card__body">Direct regional competitor. Smaller estate but stronger digital execution. Leads with CQC excellence prominently, has a named dementia brand ("Reconnect Programme"), and uses care-type pillar pages effectively. SEO-optimised home pages with unique titles and meta descriptions. Does not hold Veteran Friendly accreditation.</div>
-          <div class="comp-card__threat">Threat Level: <span class="threat-high">High</span> — digital execution significantly outperforms A UK Care Home Group despite smaller scale.</div>
+          <div class="comp-card__threat">Threat Level: <span class="badge badge-critical">High</span> — digital execution significantly outperforms A UK Care Home Group despite smaller scale.</div>
         </div>
         <div class="comp-card">
           <div class="comp-card__head">
@@ -2565,14 +2966,14 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
             <span>Not-for-profit</span>
           </div>
           <div class="comp-card__body">Large not-for-profit operator with a Top 20 Large Group 2026 accolade. Stronger domain authority, national content programme, and dedicated cost/funding guide that ranks for key informational queries. Not-for-profit positioning resonates with families — a harder angle for A UK Care Home Group to counter directly. Does not hold Veteran Friendly accreditation.</div>
-          <div class="comp-card__threat">Threat Level: <span class="threat-high">High</span> — informational content dominance and national authority make them hard to displace on broad queries.</div>
+          <div class="comp-card__threat">Threat Level: <span class="badge badge-critical">High</span> — informational content dominance and national authority make them hard to displace on broad queries.</div>
         </div>
         <div class="comp-card comp-card--aggregator">
           <div class="comp-card__head">
             <span class="comp-card__name">Aggregators (carehome.co.uk, CareHome.co.uk, Autumna)</span>
           </div>
           <div class="comp-card__body">Aggregators occupy positions 1–5 for nearly every "care homes [town]" query in A UK Care Home Group's operating areas. They benefit from enormous backlink profiles, structured data, and review aggregation. They are not direct competitors — they list A UK Care Home Group homes — but they intercept the search journey before families reach A UK Care Home Group's own site, giving aggregators control of the first impression.</div>
-          <div class="comp-card__threat">Threat Level: <span class="threat-amber">Structural</span> — owning local SEO (GBP, schema, local landing pages) is the most effective counter to aggregator dominance for specific locations.</div>
+          <div class="comp-card__threat">Threat Level: <span class="badge badge-medium">Structural</span> — owning local SEO (GBP, schema, local landing pages) is the most effective counter to aggregator dominance for specific locations.</div>
         </div>
       </div>
     </div>
