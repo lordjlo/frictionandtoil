@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strategic Intelligence — Friction & Toil</title>
+  <title>Strategic Intelligence — Full-Spectrum Company Intelligence | Friction &amp; Toil</title>
+  <meta name="description" content="F&T Strategic Intelligence: CEO strategy, M&A verdict, competitive landscape, financial analysis, meeting prep, and technology audit — delivered as an interactive intelligence portal.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frictionandtoil.com/strategic-intelligence/">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -132,14 +135,14 @@
 
     .panels-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 2px;
     }
 
     .panel {
       background: var(--bg-panel);
       border: 1px solid var(--border);
-      padding: 48px;
+      padding: 36px 28px;
       position: relative;
       transition: border-color 0.3s, background 0.3s;
       overflow: hidden;
@@ -479,6 +482,10 @@
     .fade-up:nth-child(2) { animation-delay: 0.2s; }
     .fade-up:nth-child(3) { animation-delay: 0.3s; }
     .fade-up:nth-child(4) { animation-delay: 0.15s; }
+
+    @media (max-width: 1100px) {
+      .panels-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
