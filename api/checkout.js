@@ -8,7 +8,9 @@ module.exports = async function handler(req, res) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   const origin = req.headers.origin || 'https://frictionandtoil.com';
 
-  const session = await stripe.checkout.sessions.create({
+  let session;
+  try {
+    session = await stripe.checkout.sessions.create({
     mode: 'payment',
     currency: 'gbp',
     line_items: [
@@ -41,7 +43,11 @@ module.exports = async function handler(req, res) {
           'After payment you will receive a confirmation email. We will be in touch within 24 hours to gather any additional context before delivering your report.',
       },
     },
-  });
+    });
+  } catch (err) {
+    console.error('Stripe error:', err.message, err.type, err.code);
+    return res.status(500).json({ error: err.message, type: err.type, code: err.code });
+  }
 
   res.status(200).json({ url: session.url });
 };
