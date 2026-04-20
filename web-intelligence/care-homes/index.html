@@ -568,15 +568,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .ring-fill.ring-green{stroke:#22c55e;filter:drop-shadow(0 0 5px rgba(34,197,94,.4))}
 .ring-svg{transform:rotate(-90deg);display:block}
 
-/* ── Dashboard Ring Layout ──────────────────────────────── */
-.rings-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:28px 16px 8px}
-.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;width:120px;height:120px}
-.ring-wrap--large{width:140px;height:140px}
-.ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
-.ring-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#fff;line-height:1}
-.ring-label{font-size:10px;color:var(--text-muted);text-align:center;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
-.ring-num--large{font-size:36px}
-.ring-label--large{font-size:12px}
+/* ── Dashboard Ring Layout (legacy patch removed) ── */
 .rings-legend{display:flex;justify-content:center;gap:24px;padding:6px 0 14px;font-size:12px;color:var(--text-muted);flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:6px}
 .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -1105,64 +1097,65 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 ═══════════════════════════════════════════════════════════ -->
 <div id="panel-dashboard" class="mode-panel active">
 
-  <!-- Rings Hero -->
+  <!-- Executive Summary button -->
+  <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+    <button class="exec-summary-btn" style="padding:9px 20px;border-radius:100px;font-size:12px;font-weight:600;color:var(--text-secondary);background:var(--bg-card);border:1px solid var(--border);cursor:pointer;font-family:'Inter',sans-serif">Executive Summary ↗</button>
+  </div>
+
+  <!-- 5 score rings -->
   <div class="rings-hero">
-    <div class="rings-row">
-      <div class="ring-wrap" data-dim="search">
-        <svg viewBox="0 0 120 120" class="ring-svg">
-          <circle cx="60" cy="60" r="48" class="ring-track"/>
-          <circle cx="60" cy="60" r="48" class="ring-fill ring-red" data-score="30"
-            stroke-dasharray="302" stroke-dashoffset="302" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num">30</span><span class="ring-label">SEO</span></div>
+    <div class="ring-col">
+      <div class="ring-mode-label l-search">Search</div>
+      <div class="ring-sm">
+        <svg viewBox="0 0 110 110"><circle class="bg-r" cx="55" cy="55" r="48"/><circle cx="55" cy="55" r="48" class="ring-fill ring-red" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" data-score="30"/></svg>
+        <span class="score-sm" style="color:#ef4444">30</span><span class="score-sm-sub">/ 100</span>
       </div>
-      <div class="ring-wrap" data-dim="design">
-        <svg viewBox="0 0 120 120" class="ring-svg">
-          <circle cx="60" cy="60" r="48" class="ring-track"/>
-          <circle cx="60" cy="60" r="48" class="ring-fill ring-red" data-score="38"
-            stroke-dasharray="302" stroke-dashoffset="302" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num">38</span><span class="ring-label">Design</span></div>
-      </div>
-      <div class="ring-wrap ring-wrap--large" data-dim="composite">
-        <svg viewBox="0 0 140 140" class="ring-svg">
-          <circle cx="70" cy="70" r="58" class="ring-track"/>
-          <circle cx="70" cy="70" r="58" class="ring-fill ring-red" data-score="46"
-            stroke-dasharray="364" stroke-dashoffset="364" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num ring-num--large">46</span><span class="ring-label ring-label--large">Overall</span></div>
-      </div>
-      <div class="ring-wrap" data-dim="brand">
-        <svg viewBox="0 0 120 120" class="ring-svg">
-          <circle cx="60" cy="60" r="48" class="ring-track"/>
-          <circle cx="60" cy="60" r="48" class="ring-fill ring-orange" data-score="56"
-            stroke-dasharray="302" stroke-dashoffset="302" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num">56</span><span class="ring-label">Brand</span></div>
-      </div>
-      <div class="ring-wrap" data-dim="compete">
-        <svg viewBox="0 0 120 120" class="ring-svg">
-          <circle cx="60" cy="60" r="48" class="ring-track"/>
-          <circle cx="60" cy="60" r="48" class="ring-fill ring-orange" data-score="54"
-            stroke-dasharray="302" stroke-dashoffset="302" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num">54</span><span class="ring-label">Compete</span></div>
-      </div>
-      <div class="ring-wrap" data-dim="growth">
-        <svg viewBox="0 0 120 120" class="ring-svg">
-          <circle cx="60" cy="60" r="48" class="ring-track"/>
-          <circle cx="60" cy="60" r="48" class="ring-fill ring-orange" data-score="52"
-            stroke-dasharray="302" stroke-dashoffset="302" stroke-linecap="round"/>
-        </svg>
-        <div class="ring-inner"><span class="ring-num">52</span><span class="ring-label">Growth</span></div>
-      </div>
+      <div class="ring-desc">No schema, thin meta — families can't find the group</div>
+      <button class="drill-btn drill-search" onclick="switchMode('search',document.querySelector('.mode-search'))">Drill in →</button>
     </div>
-    <div class="rings-legend">
-      <span class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>0–39 Critical</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#f97316"></span>40–59 Needs Work</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#eab308"></span>60–74 Fair</span>
-      <span class="legend-item"><span class="legend-dot" style="background:#22c55e"></span>75–100 Strong</span>
+    <div class="ring-col">
+      <div class="ring-mode-label l-design">Design</div>
+      <div class="ring-sm">
+        <svg viewBox="0 0 110 110"><circle class="bg-r" cx="55" cy="55" r="48"/><circle cx="55" cy="55" r="48" class="ring-fill ring-red" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" data-score="38"/></svg>
+        <span class="score-sm" style="color:#ef4444">38</span><span class="score-sm-sub">/ 100</span>
+      </div>
+      <div class="ring-desc">Dated UX; conversion path unclear on home pages</div>
+      <button class="drill-btn drill-design" onclick="switchMode('design',document.querySelector('.mode-design'))">Drill in →</button>
     </div>
+    <div class="ring-col">
+      <div class="ring-mode-label l-brand">Brand</div>
+      <div class="ring-sm">
+        <svg viewBox="0 0 110 110"><circle class="bg-r" cx="55" cy="55" r="48"/><circle cx="55" cy="55" r="48" class="ring-fill ring-orange" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" data-score="56"/></svg>
+        <span class="score-sm" style="color:#f97316">56</span><span class="score-sm-sub">/ 100</span>
+      </div>
+      <div class="ring-desc">VFF accreditation and CQC record unheard by searchers</div>
+      <button class="drill-btn drill-brand" onclick="switchMode('brand',document.querySelector('.mode-brand'))">Drill in →</button>
+    </div>
+    <div class="ring-col">
+      <div class="ring-mode-label l-compete">Compete</div>
+      <div class="ring-sm">
+        <svg viewBox="0 0 110 110"><circle class="bg-r" cx="55" cy="55" r="48"/><circle cx="55" cy="55" r="48" class="ring-fill ring-orange" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" data-score="54"/></svg>
+        <span class="score-sm" style="color:#f97316">54</span><span class="score-sm-sub">/ 100</span>
+      </div>
+      <div class="ring-desc">Smaller rivals outrank on every commercial query</div>
+      <button class="drill-btn drill-compete" onclick="switchMode('compete',document.querySelector('.mode-compete'))">Drill in →</button>
+    </div>
+    <div class="ring-col">
+      <div class="ring-mode-label l-growth">Growth</div>
+      <div class="ring-sm">
+        <svg viewBox="0 0 110 110"><circle class="bg-r" cx="55" cy="55" r="48"/><circle cx="55" cy="55" r="48" class="ring-fill ring-orange" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" data-score="52"/></svg>
+        <span class="score-sm" style="color:#f97316">52</span><span class="score-sm-sub">/ 100</span>
+      </div>
+      <div class="ring-desc">No content engine; no email or retargeting capture</div>
+      <button class="drill-btn drill-growth" onclick="switchMode('growth',document.querySelector('.mode-growth'))">Drill in →</button>
+    </div>
+  </div>
+
+  <div class="score-legend">
+    <span><span class="dot dot-critical"></span> 0–39 Critical</span>
+    <span><span class="dot dot-needs-work"></span> 40–59 Needs Work</span>
+    <span><span class="dot dot-good"></span> 60–74 Fair</span>
+    <span><span class="dot dot-excellent"></span> 75–100 Strong</span>
   </div>
 
   <!-- Summary Strip -->
