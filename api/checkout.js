@@ -40,7 +40,7 @@ module.exports = async function handler(req, res) {
       return;
     }
 
-    const key = process.env.STRIPE_SECRET_KEY;
+    const key = (process.env.STRIPE_SECRET_KEY || '').trim();
     if (!key) {
       res.status(500).json({ error: 'Missing Stripe key' });
       return;
