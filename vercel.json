@@ -2,6 +2,9 @@
   "functions": {
     "api/checkout.js": {
       "memory": 128
+    },
+    "api/chat.js": {
+      "memory": 128
     }
   }
 }

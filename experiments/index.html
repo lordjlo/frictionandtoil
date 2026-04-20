@@ -217,6 +217,11 @@
       background: linear-gradient(135deg, #0e0e14 0%, #12121e 100%);
     }
 
+    /* Career Narrative — deep amber/black */
+    .card-career .card-visual {
+      background: linear-gradient(135deg, #0f0c07 0%, #1a1408 50%, #120f05 100%);
+    }
+
     .card-visual-inner {
       position: relative;
       z-index: 1;
@@ -483,6 +488,7 @@
     <div class="lab-ethos fade-up">
       <span class="lab-ethos-item"><span>—</span> EdTech</span>
       <span class="lab-ethos-item"><span>—</span> PsychTech</span>
+      <span class="lab-ethos-item"><span>—</span> CareerTech</span>
       <span class="lab-ethos-item"><span>—</span> More coming</span>
     </div>
   </section>
@@ -523,19 +529,23 @@
         </div>
       </div>
 
-      <!-- Coming Soon -->
-      <div class="card card-soon">
+      <!-- Career Narrative Architect -->
+      <div class="card card-career">
         <div class="card-visual">
           <div class="card-visual-inner">
-            <span class="soon-icon">⚗️</span>
-            <p class="soon-text">In the lab</p>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,150,58,0.6);margin-bottom:14px;">Red Thread</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#f0ede8;line-height:1.2;">Career Narrative<br><em style="color:rgba(201,150,58,0.8);">Architect</em></div>
+            <div style="width:40px;height:1px;background:rgba(201,150,58,0.4);margin:16px auto 0;"></div>
           </div>
         </div>
         <div class="card-body">
-          <p class="card-tag">Coming Soon</p>
-          <h2 class="card-title" style="color: var(--text-dim);">Next Experiment</h2>
-          <p class="card-desc">Something is in progress. We build when we find a problem worth solving. When it's ready, it'll be here.</p>
-          <span class="card-cta disabled">Not yet</span>
+          <p class="card-tag">CareerTech · Live</p>
+          <h2 class="card-title">Career Narrative Architect</h2>
+          <p class="card-desc">Uncover the 'Red Thread' running through your career. An AI-guided session that extracts your core strengths, failure-forged lessons, and translates them into a LinkedIn profile, impact resume, and outreach scripts.</p>
+          <a href="/experiments/Career-Narrative/" class="card-cta">
+            Start session
+            <svg viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
 
