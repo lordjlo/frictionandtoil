@@ -1326,6 +1326,65 @@
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav-links-desktop { display: flex; gap: 36px; }
+
+  /* ============ Nav dropdown ============ */
+  .nav-dropdown-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .nav-dropdown-wrap:hover .nav-dropdown,
+  .nav-dropdown-wrap:focus-within .nav-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: rgba(14,14,18,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 6px;
+    padding: 6px 0;
+    min-width: 210px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 200;
+  }
+  .nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px; height: 8px;
+    background: rgba(14,14,18,0.97);
+    border-left: 1px solid rgba(255,255,255,0.09);
+    border-top: 1px solid rgba(255,255,255,0.09);
+  }
+  .nav-dropdown a {
+    display: block;
+    padding: 9px 18px;
+    font-family: sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-dropdown a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.04);
+  }
+
   .wi-mobile-menu {
     display: none;
     position: fixed;
@@ -1364,7 +1423,20 @@
   <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION & TOIL</a>
   <div class="nav-links-desktop" style="list-style:none;">
     <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
-    <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
+    <div class="nav-dropdown-wrap">
+      <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
+      <div class="nav-dropdown">
+        <a href="#problem">Problem</a>
+        <a href="#cost">What it's costing you</a>
+        <a href="#solution">The Solution</a>
+        <a href="#intelligence">The Intelligence</a>
+        <a href="#covers">What the report covers</a>
+        <a href="#pricing">Why £750</a>
+        <a href="#sample">Sample report</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
     <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
     <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
   </div>
@@ -1473,7 +1545,7 @@
   </section>
 
   <!-- ============ SECTION 2 · THE PAIN ============ -->
-  <section class="pain">
+  <section class="pain" id="problem">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">The Problem</span>
@@ -1501,7 +1573,7 @@
   </section>
 
   <!-- ============ SECTION 3 · NEGATIVE IMPACTS ============ -->
-  <section class="flip-section dark">
+  <section class="flip-section dark" id="cost">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">What it&rsquo;s costing you</span>
@@ -1533,7 +1605,7 @@
   </section>
 
   <!-- ============ SECTION 4 · THE SOLUTION FLIP ============ -->
-  <section class="flip-section soft">
+  <section class="flip-section soft" id="solution">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">The Solution</span>
@@ -1565,7 +1637,7 @@
   </section>
 
   <!-- ============ SECTION 5 · WHAT WE LOOK AT ============ -->
-  <section class="intel">
+  <section class="intel" id="intelligence">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">The Intelligence</span>
@@ -1634,7 +1706,7 @@
   </section>
 
   <!-- ============ DIMENSIONS ============ -->
-  <section class="dimensions">
+  <section class="dimensions" id="covers">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">What the report covers</span>
@@ -1671,7 +1743,7 @@
   </section>
 
   <!-- ============ COMPARISON / WHY £750 ============ -->
-  <section class="compare">
+  <section class="compare" id="pricing">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Why &pound;750</span>
@@ -1702,7 +1774,7 @@
   </section>
 
   <!-- ============ SAMPLE REPORT ============ -->
-  <section class="sample">
+  <section class="sample" id="sample">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Sample report</span>
@@ -1760,7 +1832,7 @@
   </section>
 
   <!-- ============ TESTIMONIALS ============ -->
-  <section class="testimonials">
+  <section class="testimonials" id="testimonials">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Testimonials</span>
@@ -1794,7 +1866,7 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="faq">
+  <section class="faq" id="faq">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">FAQ</span>
@@ -1947,6 +2019,23 @@
       btn.disabled = false;
     }
   }
+</script>
+
+<script>
+  // smooth scroll with nav offset for dropdown links
+  document.querySelectorAll('.nav-dropdown a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        var target = document.getElementById(href.slice(1));
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
 </script>
 
 </body>
