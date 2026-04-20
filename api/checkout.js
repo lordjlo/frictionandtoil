@@ -34,43 +34,51 @@ function stripePost(path, params, secretKey) {
 }
 
 module.exports = async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  try {
+    if (req.method !== 'POST') {
+      res.status(405).json({ error: 'Method not allowed' });
+      return;
+    }
+
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      res.status(500).json({ error: 'Missing Stripe key' });
+      return;
+    }
+
+    const origin = req.headers.origin || 'https://frictionandtoil.com';
+
+    const params = {
+      mode: 'payment',
+      currency: 'gbp',
+      'line_items[0][price_data][currency]': 'gbp',
+      'line_items[0][price_data][unit_amount]': '75000',
+      'line_items[0][price_data][product_data][name]': 'Web Intelligence Report',
+      'line_items[0][price_data][product_data][description]':
+        'Five-dimension website intelligence report — Search, Design, Brand, Competitive position, and Growth. Delivered within 48 hours.',
+      'line_items[0][quantity]': '1',
+      allow_promotion_codes: 'true',
+      'custom_fields[0][key]': 'website_url',
+      'custom_fields[0][label][type]': 'custom',
+      'custom_fields[0][label][custom]': 'Your website URL',
+      'custom_fields[0][type]': 'text',
+      'custom_text[submit][message]':
+        'After payment we will be in touch within 24 hours to gather any additional context before delivering your report.',
+      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/web-intelligence/`,
+    };
+
+    const { status, body } = await stripePost('/v1/checkout/sessions', params, key);
+
+    if (status !== 200) {
+      console.error('Stripe error:', JSON.stringify(body));
+      res.status(status).json({ error: body.error?.message || 'Stripe error' });
+      return;
+    }
+
+    res.status(200).json({ url: body.url });
+  } catch (err) {
+    console.error('Handler error:', err.name, err.message, err.stack);
+    res.status(500).json({ error: err.message, name: err.name });
   }
-
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) {
-    return res.status(500).json({ error: 'Missing Stripe key' });
-  }
-
-  const origin = req.headers.origin || 'https://frictionandtoil.com';
-
-  const params = {
-    mode: 'payment',
-    currency: 'gbp',
-    'line_items[0][price_data][currency]': 'gbp',
-    'line_items[0][price_data][unit_amount]': '75000',
-    'line_items[0][price_data][product_data][name]': 'Web Intelligence Report',
-    'line_items[0][price_data][product_data][description]':
-      'Five-dimension website intelligence report — Search, Design, Brand, Competitive position, and Growth. Delivered within 48 hours.',
-    'line_items[0][quantity]': '1',
-    allow_promotion_codes: 'true',
-    'custom_fields[0][key]': 'website_url',
-    'custom_fields[0][label][type]': 'custom',
-    'custom_fields[0][label][custom]': 'Your website URL',
-    'custom_fields[0][type]': 'text',
-    'custom_text[submit][message]':
-      'After payment we will be in touch within 24 hours to gather any additional context before delivering your report.',
-    success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${origin}/web-intelligence/`,
-  };
-
-  const { status, body } = await stripePost('/v1/checkout/sessions', params, key);
-
-  if (status !== 200) {
-    console.error('Stripe error:', JSON.stringify(body));
-    return res.status(status).json({ error: body.error?.message || 'Stripe error' });
-  }
-
-  res.status(200).json({ url: body.url });
 };
