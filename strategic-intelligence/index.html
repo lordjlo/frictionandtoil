@@ -490,9 +490,59 @@
       footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .nav-links { display: none; }
+      nav { padding: 0 20px; }
     }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: #fff;
+      transition: all 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    @media (max-width: 700px) { .nav-hamburger { display: flex; } }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 56px 0 0 0;
+      background: rgba(10,10,15,0.97);
+      backdrop-filter: blur(12px);
+      z-index: 99;
+      flex-direction: column;
+      padding: 40px 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: var(--amber); }
   </style>
 </head>
 <body>
@@ -506,7 +556,22 @@
       <li><a href="/experiments/">Experiments</a></li>
       <li><a href="mailto:hello@frictionandtoil.com">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/strategic-intelligence/" class="active">Strategic Intelligence</a>
+    <a href="/web-intelligence/">Web Intelligence</a>
+    <a href="/experiments/">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com">Contact</a>
+  </div>
+  <script>
+    function toggleMobileMenu(btn) {
+      btn.classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+  </script>
 
   <!-- HERO -->
   <section class="hero">

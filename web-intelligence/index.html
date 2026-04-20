@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Friction & Toil — Web Intelligence Report</title>
-<meta name="description" content="A £500 intelligence report on your website. We typically find £70k–£120k in missed opportunity. 14-day money-back guarantee.">
+<meta name="description" content="A £750 intelligence report on your website. We typically find £70k–£120k in missed opportunity. 14-day money-back guarantee.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
   "description": "A five-dimension website intelligence report covering Search, Design, Brand, Competitive position, and Growth. Delivered as an interactive HTML dashboard within 48 hours.",
   "offers": {
     "@type": "Offer",
-    "price": "500",
+    "price": "750",
     "priceCurrency": "GBP",
     "availability": "https://schema.org/InStock"
   },
@@ -557,7 +557,7 @@
     flex: 1;
   }
 
-  /* ============ Comparison (Why £500?) ============ */
+  /* ============ Comparison (Why £750?) ============ */
   .compare { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .compare-grid {
     display: grid;
@@ -1303,19 +1303,81 @@
     .report-card { padding: 1.5rem 1.1rem; }
     .chip-row { grid-template-columns: repeat(2, 1fr); }
   }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #fff;
+    transition: all 0.25s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-links-desktop { display: flex; gap: 36px; }
+  .wi-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 56px 0 0 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 99;
+    flex-direction: column;
+    padding: 40px 32px;
+  }
+  .wi-mobile-menu.open { display: flex; }
+  .wi-mobile-menu a {
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .wi-mobile-menu a:last-child { border-bottom: none; }
+  .wi-mobile-menu a:hover { color: #fff; }
+  @media (max-width: 700px) {
+    .nav-links-desktop { display: none; }
+    .nav-hamburger { display: flex; }
+    .wi-nav { padding: 0 20px !important; }
+  }
 </style>
 </head>
 <body>
 
-<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
   <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION & TOIL</a>
-  <div style="display:flex;gap:36px;list-style:none;">
+  <div class="nav-links-desktop" style="list-style:none;">
     <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
     <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
     <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
     <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
   </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('wiMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="wi-mobile-menu" id="wiMobileMenu">
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
+  <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/experiments/">Experiments</a>
+  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+</div>
 <div style="height:56px"></div>
 
 <main id="top">
@@ -1333,7 +1395,7 @@
             <a href="mailto:hello@frictionandtoil.com?subject=Web%20Intelligence%20Report%20Order&amp;body=Website%20URL:%0ABusiness%20type:%0AFocus%20areas:" class="btn btn-white">Order your report</a>
           </div>
           <div class="hero-guarantee reveal d5">
-            &pound;500<span class="dot"></span>Delivered within 48 hours<span class="dot"></span>14-day money-back guarantee
+            &pound;750<span class="dot"></span>Delivered within 48 hours<span class="dot"></span>14-day money-back guarantee
           </div>
         </div>
 
@@ -1543,7 +1605,7 @@
             <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
           </div>
           <h3 class="intel-title">Revenue Gap Modelling</h3>
-          <p class="intel-desc">We don&rsquo;t just find problems &mdash; we model what they&rsquo;re costing you annually. A specific number, not a vague estimate. The figure that makes the &pound;500 feel irrelevant.</p>
+          <p class="intel-desc">We don&rsquo;t just find problems &mdash; we model what they&rsquo;re costing you annually. A specific number, not a vague estimate. The figure that makes the &pound;750 feel irrelevant.</p>
         </div>
         <div class="intel-card reveal d2" data-tone="indigo">
           <div class="intel-icon">
@@ -1607,12 +1669,12 @@
     </div>
   </section>
 
-  <!-- ============ COMPARISON / WHY £500 ============ -->
+  <!-- ============ COMPARISON / WHY £750 ============ -->
   <section class="compare">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Why &pound;500</span>
-        <h2 class="section-heading">Why &pound;500?</h2>
+        <span class="eyebrow">Why &pound;750</span>
+        <h2 class="section-heading">Why &pound;750?</h2>
         <p class="section-sub">The alternatives, for context.</p>
       </div>
       <div class="compare-grid">
@@ -1624,7 +1686,7 @@
         </div>
         <div class="compare-card is-featured reveal d2">
           <div class="compare-label">F&amp;T Web Intelligence</div>
-          <div class="compare-price">&pound;500</div>
+          <div class="compare-price">&pound;750</div>
           <div class="compare-desc">Five dimensions. Interactive dashboard. Competitor analysis. Revenue gap modelled. AI prompts included. 14-day money-back guarantee.</div>
           <div class="compare-tag">The intelligent option</div>
         </div>
@@ -1781,11 +1843,11 @@
   <section class="bottom-cta">
     <div class="container">
       <div class="bottom-cta-inner reveal">
-        <h2 class="bottom-headline">The cost of not knowing is already higher than &pound;500.</h2>
+        <h2 class="bottom-headline">The cost of not knowing is already higher than &pound;750.</h2>
         <p class="bottom-sub">Order today. Answer three questions. Receive your report within 48 hours.</p>
         <a href="mailto:hello@frictionandtoil.com?subject=Web%20Intelligence%20Report%20Order&amp;body=Website%20URL:%0ABusiness%20type:%0AFocus%20areas:" class="btn btn-amber">Order your report</a>
         <div class="bottom-small">
-          &pound;500<span class="dot"></span>14-day money-back guarantee<span class="dot"></span>hello@frictionandtoil.com
+          &pound;750<span class="dot"></span>14-day money-back guarantee<span class="dot"></span>hello@frictionandtoil.com
         </div>
       </div>
     </div>

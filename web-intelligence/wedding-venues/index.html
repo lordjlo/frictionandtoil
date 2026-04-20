@@ -616,6 +616,18 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .score-blurb{font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px}
 .tab-nav{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0;overflow-x:auto;scrollbar-width:thin;flex-wrap:wrap}
 @media(max-width:768px){.findings-grid{grid-template-columns:1fr}.two-col-grid{grid-template-columns:1fr}}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-links-desktop{display:flex;gap:36px}
+.wv-mobile-menu{display:none;position:fixed;inset:56px 0 0 0;background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);z-index:999;flex-direction:column;padding:40px 32px}
+.wv-mobile-menu.open{display:flex}
+.wv-mobile-menu a{font-family:sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s}
+.wv-mobile-menu a:last-child{border-bottom:none}
+.wv-mobile-menu a:hover{color:#fff}
+@media(max-width:700px){.nav-links-desktop{display:none}.nav-hamburger{display:flex}.wv-nav{padding:0 20px!important}}
 
 </style>
 <script>
@@ -703,15 +715,24 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 </head>
 <body>
 
-<nav style="position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+<nav class="wv-nav" style="position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
   <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION & TOIL</a>
-  <div style="display:flex;gap:36px;list-style:none;">
+  <div class="nav-links-desktop" style="list-style:none;">
     <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
     <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
     <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
     <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
   </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('wvMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="wv-mobile-menu" id="wvMobileMenu">
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
+  <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/experiments/">Experiments</a>
+  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+</div>
 <div style="height:56px"></div>
 
 <div class="global-header"><div class="container">
