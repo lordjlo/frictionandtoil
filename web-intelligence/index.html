@@ -1392,7 +1392,7 @@
           <p class="hero-amber reveal d2">You just don&rsquo;t know how much.</p>
           <p class="hero-sub reveal d3">In the time it takes to read this page, a potential client has searched for a business like yours &mdash; and found your competitor instead. Not because they&rsquo;re better. Because their website is visible and yours isn&rsquo;t.</p>
           <div class="hero-cta-row reveal d4">
-            <a href="mailto:hello@frictionandtoil.com?subject=Web%20Intelligence%20Report%20Order&amp;body=Website%20URL:%0ABusiness%20type:%0AFocus%20areas:" class="btn btn-white">Order your report</a>
+            <button class="btn btn-white" onclick="startCheckout(this)">Order your report</button>
           </div>
           <div class="hero-guarantee reveal d5">
             &pound;750<span class="dot"></span>Delivered within 48 hours<span class="dot"></span>14-day money-back guarantee
@@ -1845,7 +1845,7 @@
       <div class="bottom-cta-inner reveal">
         <h2 class="bottom-headline">The cost of not knowing is already higher than &pound;750.</h2>
         <p class="bottom-sub">Order today. Answer three questions. Receive your report within 48 hours.</p>
-        <a href="mailto:hello@frictionandtoil.com?subject=Web%20Intelligence%20Report%20Order&amp;body=Website%20URL:%0ABusiness%20type:%0AFocus%20areas:" class="btn btn-amber">Order your report</a>
+        <button class="btn btn-amber" onclick="startCheckout(this)">Order your report</button>
         <div class="bottom-small">
           &pound;750<span class="dot"></span>14-day money-back guarantee<span class="dot"></span>hello@frictionandtoil.com
         </div>
@@ -1929,6 +1929,23 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (el) { io.observe(el); });
   })();
+</script>
+
+<script>
+  async function startCheckout(btn) {
+    const original = btn.textContent;
+    btn.textContent = 'Redirecting…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/checkout', { method: 'POST' });
+      if (!res.ok) throw new Error('Request failed');
+      const { url } = await res.json();
+      window.location.href = url;
+    } catch {
+      btn.textContent = original;
+      btn.disabled = false;
+    }
+  }
 </script>
 
 </body>

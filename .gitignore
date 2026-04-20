@@ -1,3 +1,7 @@
 .DS_Store
 .gstack/
 files-FT/
+node_modules/
+.env
+.env.local
+.vercel

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Friction & Toil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #0c0c0c; color: #e8e8e8; font-family: 'Outfit', sans-serif; }
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+.check {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 32px;
+  font-size: 22px;
+}
+.heading {
+  font-weight: 200;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.sub {
+  font-weight: 300;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: #888;
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.divider { width: 40px; height: 0.5px; background: #333; margin: 0 auto 32px; }
+.steps {
+  list-style: none;
+  text-align: left;
+  max-width: 400px;
+  margin-bottom: 48px;
+}
+.steps li {
+  display: flex; align-items: flex-start; gap: 16px;
+  font-size: 0.9rem; color: #aaa; font-weight: 300;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.steps li:last-child { border-bottom: none; }
+.step-num {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: #666;
+  margin-top: 1px;
+}
+.back {
+  font-family: 'Outfit', sans-serif; font-weight: 300;
+  font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #555; text-decoration: none;
+  border-bottom: 1px solid #333;
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.back:hover { color: #999; border-color: #666; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="check">✓</div>
+  <h1 class="heading">Order confirmed.</h1>
+  <p class="sub">Your Web Intelligence Report is booked. Check your inbox for a confirmation email — we will be in touch within 24 hours.</p>
+  <div class="divider"></div>
+  <ol class="steps">
+    <li><span class="step-num">1</span><span>You will receive a confirmation email from Stripe and from us shortly.</span></li>
+    <li><span class="step-num">2</span><span>We may follow up with one or two brief questions to sharpen the report.</span></li>
+    <li><span class="step-num">3</span><span>Your interactive HTML report will be delivered within 48 hours.</span></li>
+  </ol>
+  <a href="/web-intelligence/" class="back">← Back to Web Intelligence</a>
+</div>
+</body>
+</html>
