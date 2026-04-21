@@ -52,7 +52,7 @@ module.exports = async function handler(req, res) {
       mode: 'payment',
       currency: 'gbp',
       'line_items[0][price_data][currency]': 'gbp',
-      'line_items[0][price_data][unit_amount]': '75000',
+      'line_items[0][price_data][unit_amount]': '100000',
       'line_items[0][price_data][product_data][name]': 'Web Intelligence Report',
       'line_items[0][price_data][product_data][description]':
         'Five-dimension website intelligence report — Search, Design, Brand, Competitive position, and Growth. Delivered within 48 hours.',
