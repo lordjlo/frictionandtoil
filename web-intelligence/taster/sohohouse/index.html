@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow">
+<title>Soho House — Website Intelligence Taster | F&T Intelligence Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:           #0a0a0f;
+    --bg-card:      rgba(255,255,255,0.03);
+    --bg-card-2:    rgba(255,255,255,0.06);
+    --border:       rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text:         #e8e8ed;
+    --text-2:       #8b8b9e;
+    --text-muted:   #5a5a6e;
+    --search:       #6366f1;
+    --design:       #c9963a;
+    --brand:        #10b981;
+    --compete:      #f43f5e;
+    --growth:       #06b6d4;
+    --green:        #22c55e;
+    --yellow:       #eab308;
+    --red:          #ef4444;
+    --orange:       #f97316;
+    --radius:       16px;
+    --radius-sm:    10px;
+    --radius-xs:    6px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand);
+    flex-shrink: 0;
+  }
+  .header-right {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 64px 40px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .hero h1 span {
+    color: var(--design);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 580px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .composite-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .composite-pill .score-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--yellow);
+  }
+
+  /* ── RINGS GRID ── */
+  .rings-section {
+    padding: 0 40px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .rings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 720px) {
+    .rings-grid { grid-template-columns: repeat(3, 1fr); }
+    .header { padding: 16px 20px; }
+    .hero { padding: 40px 20px 32px; }
+    .rings-section { padding: 0 20px 40px; }
+    .diagnostics-section, .findings-section, .coi-section, .cta-section { padding-left: 20px; padding-right: 20px; }
+  }
+  @media (max-width: 460px) {
+    .rings-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .ring-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .ring-card:hover { border-color: var(--border-hover); }
+  .ring-card svg {
+    width: 88px;
+    height: 88px;
+    overflow: visible;
+  }
+  .ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 5; }
+  .ring-fill { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 302; }
+  .ring-score {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+  .ring-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-2);
+    text-align: center;
+  }
+
+  /* ── DIAGNOSTIC ── */
+  .diagnostics-section {
+    padding: 0 40px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .diagnostic-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .diagnostic-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow));
+  }
+  .diag-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .diag-headline {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .diag-body {
+    font-size: 14px;
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 680px;
+  }
+
+  /* ── FINDINGS ── */
+  .findings-section {
+    padding: 0 40px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .finding-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    transition: border-color 0.2s;
+  }
+  .finding-card:hover { border-color: var(--border-hover); }
+  .finding-dim {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid currentColor;
+  }
+  .dim-search { color: var(--search); background: rgba(99,102,241,0.08); border-color: rgba(99,102,241,0.25); }
+  .dim-design { color: var(--design); background: rgba(201,150,58,0.08); border-color: rgba(201,150,58,0.25); }
+  .dim-brand  { color: var(--brand);  background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.25); }
+  .dim-compete{ color: var(--compete);background: rgba(244,63,94,0.08);  border-color: rgba(244,63,94,0.25); }
+  .dim-growth { color: var(--growth); background: rgba(6,182,212,0.08);  border-color: rgba(6,182,212,0.25); }
+
+  .finding-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .finding-body {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+
+  /* ── COI ── */
+  .coi-section {
+    padding: 0 40px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .coi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .coi-figure {
+    flex-shrink: 0;
+  }
+  .coi-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .coi-value {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--orange);
+    letter-spacing: -1px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .coi-range {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .coi-body {
+    flex: 1;
+    min-width: 240px;
+  }
+  .coi-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .coi-body p {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 0 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cta-card {
+    background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(16,185,129,0.04));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+  }
+  .cta-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .cta-card p {
+    font-size: 14px;
+    color: var(--text-2);
+    max-width: 480px;
+    margin: 0 auto 24px;
+    line-height: 1.65;
+  }
+  .blur-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 24px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--text);
+    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+  .cta-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-badge">
+    <div class="dot"></div>
+    Website Intelligence Taster
+  </div>
+  <div class="header-right">
+    F&T Intelligence Systems · April 2026<br/>
+    <span style="color:var(--text-muted);font-size:10px">Provisional — Quick Scan</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">5-Dimension Quick Scan · sohohouse.com</p>
+  <h1>Soho <span>House</span></h1>
+  <p class="hero-sub">Private members clubs / hospitality · Global · Provisional intelligence scorecard based on homepage, about, and membership page analysis.</p>
+  <div class="composite-pill">
+    Composite Score &nbsp;
+    <span class="score-num">71</span>
+    <span style="font-size:12px;color:var(--text-2)">&nbsp;/ 100</span>
+  </div>
+</section>
+
+<!-- RINGS GRID -->
+<section class="rings-section">
+  <div class="rings-grid">
+
+    <!-- Search: 50 -->
+    <div class="ring-card">
+      <svg viewBox="0 0 110 110">
+        <circle class="ring-bg" cx="55" cy="55" r="48"/>
+        <circle class="ring-fill" cx="55" cy="55" r="48"
+          stroke="var(--search)"
+          data-score="50"
+          style="stroke-dashoffset:302;filter:drop-shadow(0 0 5px var(--search))"/>
+        <text class="ring-score" x="55" y="55" fill="#f97316">50</text>
+      </svg>
+      <div class="ring-label">Search</div>
+    </div>
+
+    <!-- Design: 90 -->
+    <div class="ring-card">
+      <svg viewBox="0 0 110 110">
+        <circle class="ring-bg" cx="55" cy="55" r="48"/>
+        <circle class="ring-fill" cx="55" cy="55" r="48"
+          stroke="var(--design)"
+          data-score="90"
+          style="stroke-dashoffset:302;filter:drop-shadow(0 0 5px var(--design))"/>
+        <text class="ring-score" x="55" y="55" fill="#22c55e">90</text>
+      </svg>
+      <div class="ring-label">Design</div>
+    </div>
+
+    <!-- Brand: 85 -->
+    <div class="ring-card">
+      <svg viewBox="0 0 110 110">
+        <circle class="ring-bg" cx="55" cy="55" r="48"/>
+        <circle class="ring-fill" cx="55" cy="55" r="48"
+          stroke="var(--brand)"
+          data-score="85"
+          style="stroke-dashoffset:302;filter:drop-shadow(0 0 5px var(--brand))"/>
+        <text class="ring-score" x="55" y="55" fill="#22c55e">85</text>
+      </svg>
+      <div class="ring-label">Brand</div>
+    </div>
+
+    <!-- Compete: 50 -->
+    <div class="ring-card">
+      <svg viewBox="0 0 110 110">
+        <circle class="ring-bg" cx="55" cy="55" r="48"/>
+        <circle class="ring-fill" cx="55" cy="55" r="48"
+          stroke="var(--compete)"
+          data-score="50"
+          style="stroke-dashoffset:302;filter:drop-shadow(0 0 5px var(--compete))"/>
+        <text class="ring-score" x="55" y="55" fill="#f97316">50</text>
+      </svg>
+      <div class="ring-label">Compete</div>
+    </div>
+
+    <!-- Growth: 80 -->
+    <div class="ring-card">
+      <svg viewBox="0 0 110 110">
+        <circle class="ring-bg" cx="55" cy="55" r="48"/>
+        <circle class="ring-fill" cx="55" cy="55" r="48"
+          stroke="var(--growth)"
+          data-score="80"
+          style="stroke-dashoffset:302;filter:drop-shadow(0 0 5px var(--growth))"/>
+        <text class="ring-score" x="55" y="55" fill="#22c55e">80</text>
+      </svg>
+      <div class="ring-label">Growth</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section class="diagnostics-section">
+  <div class="diagnostic-card">
+    <p class="diag-eyebrow">Primary Finding</p>
+    <h2 class="diag-headline">Brand Giant, SEO Afterthought</h2>
+    <p class="diag-body">Soho House dominates through PR and word-of-mouth while organic search is ceded entirely to editorial roundups — the brand appears in those lists as a subject, not as the ranking site. With a 112,000-person waitlist, search may feel irrelevant, but category queries for "private members club" [city] are captured by competitors who will eventually convert applicants who can't get in. Schema is absent, meta descriptions are missing on key pages, and AI assistant queries on ChatGPT, Claude, and Gemini are likely answered by editorial sources rather than sohohouse.com itself. The full report shows exactly where and how much this is costing.</p>
+  </div>
+</section>
+
+<!-- TOP FINDINGS PER DIMENSION -->
+<section class="findings-section">
+  <p class="section-title">Key Findings by Dimension</p>
+  <div class="findings-grid">
+
+    <div class="finding-card">
+      <div class="finding-dim dim-search">Search · 50</div>
+      <p class="finding-title">No Schema, No Meta Descriptions, No Category Rankings</p>
+      <p class="finding-body">Key pages — About and Membership — returned no meta descriptions. No schema markup detected across the homepage or inner pages. The site does not rank page 1 for "private members club London" — editorial sites dominate those results.</p>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim dim-design">Design · 90</div>
+      <p class="finding-title">Luxury UX That Sets the Category Standard</p>
+      <p class="finding-body">Aspirational above-fold value proposition, clear primary CTAs, minimalist luxury visual hierarchy, and consistent brand application across pages. The H1 prioritises brand poetry over keyword targeting — a deliberate choice with an SEO trade-off.</p>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim dim-brand">Brand · 85</div>
+      <p class="finding-title">Strong Identity, Blurring at the Edges</p>
+      <p class="finding-body">Founder (Nick Jones) and CEO (Andrew Carnie) are named. Scale is quantified — 48 Houses, 19 countries, 8,000+ artworks, 112k waitlist (as of early 2025). "Club for creatives" differentiates but remains broad; the site never sharpens to name which creative industries it serves first.</p>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim dim-compete">Compete · 50</div>
+      <p class="finding-title">Invisible in Category Search, Pricing Hidden</p>
+      <p class="finding-body">No pricing visible on homepage or membership page — "Calculate pricing" gates the figure. Category keyword searches are dominated by Annabel's, The Arts Club, and editorial roundups. No evidence of competitor bidding defence on brand terms.</p>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim dim-growth">Growth · 80</div>
+      <p class="finding-title">Strong Funnel, Friction at the Pricing Gate</p>
+      <p class="finding-body">Newsletter capture, multiple CTAs, and a clear application path are all in place. The waitlist model (112,000+ applicants as of early 2025) validates demand. The missing piece: a transparency lever for non-applicants — no indication of what membership costs until users self-select into the funnel.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COI -->
+<section class="coi-section">
+  <p class="section-title">Estimated Cost of Inaction</p>
+  <div class="coi-card">
+    <div class="coi-figure">
+      <p class="coi-label">Annual Revenue at Risk</p>
+      <div class="coi-value">£190k–£380k</div>
+      <p class="coi-range">Provisional estimate · p.a.</p>
+    </div>
+    <div class="coi-body">
+      <h3>Foregone Organic Acquisition</h3>
+      <p>Based on ~12,000 monthly category searches ("private members club" cluster), zero current page-1 visibility, a conservative 0.5% luxury-sector conversion rate, and £3,800 avg. annual membership value. This is the organic channel Soho House is leaving to editorial sites and emerging competitors. The full report models this across 12 priority keywords with per-keyword revenue ceilings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-card">
+    <h3>The Full Report Goes Deeper</h3>
+    <p>This taster covers 3 pages and a keyword search. The full 5-dimension intelligence report covers 8–15 pages, 12-keyword traffic valuation, E-E-A-T signal audit, AI Share-of-Voice testing across 6 queries, competitor deep-dives, and a 90-day growth roadmap.</p>
+    <div class="blur-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Full report · Search · Design · Brand · Compete · Growth
+    </div>
+    <br/>
+    <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Soho%20House%20%E2%80%94%20Full%20Intelligence%20Report&body=Hi%2C%0A%0AI've%20seen%20the%20taster%20scorecard%20for%20Soho%20House%20and%20I'd%20like%20to%20discuss%20the%20full%20report.%0A%0AThanks">Request the Full Report →</a>
+    <p class="cta-sub">Free · No obligation · hello@frictionandtoil.com</p>
+  </div>
+</section>
+
+<footer>
+  F&T Intelligence Systems · sohohouse.com · April 2026 · Provisional Quick Scan
+</footer>
+
+<script>
+window.addEventListener('load', function() {
+  document.querySelectorAll('[data-score]').forEach(function(ring) {
+    var score = parseFloat(ring.getAttribute('data-score'));
+    var C = 302;
+    var target = C - (score / 100) * C;
+    ring.style.transition = 'none';
+    setTimeout(function() {
+      ring.style.transition = 'stroke-dashoffset 1.4s ease-out';
+      ring.style.strokeDashoffset = target;
+    }, 300);
+  });
+});
+</script>
+
+</body>
+</html>

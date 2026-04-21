@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>5 Hertford Street — Website Intelligence Taster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --search: #6366f1;
+    --design: #c9963a;
+    --brand: #10b981;
+    --compete: #f43f5e;
+    --growth: #06b6d4;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --blue: #3b82f6;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: conic-gradient(var(--search), var(--design), var(--brand), var(--compete), var(--growth), var(--search));
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .header .domain-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 14px;
+    margin-bottom: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* ── Composite score ── */
+  .composite-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+
+  .composite-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .composite-ring svg {
+    width: 160px;
+    height: 160px;
+    transform: rotate(-90deg);
+  }
+
+  .composite-ring .bg-circle {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 6;
+  }
+
+  .composite-ring .score-circle {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    stroke: url(#multiGrad);
+    filter: drop-shadow(0 0 8px rgba(99,102,241,0.5));
+    transition: stroke-dashoffset 1.6s ease-out;
+  }
+
+  .composite-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .composite-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .composite-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .composite-meta {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .composite-meta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .composite-meta p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── Score rings grid ── */
+  .rings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 600px) {
+    .rings-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .ring-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 12px 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .ring-card:hover { border-color: var(--border-hover); }
+
+  .ring-card svg {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+    display: block;
+    margin: 0 auto 10px;
+  }
+
+  .ring-card .bg-r {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 5;
+  }
+
+  .ring-card .score-r {
+    fill: none;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+    transition: stroke-dashoffset 1.4s ease-out;
+  }
+
+  .ring-score-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .ring-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+  }
+
+  /* ── Diagnostic ── */
+  .diagnostic-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--orange);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .diagnostic-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .diagnostic-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+
+  .diagnostic-body {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── COI card ── */
+  .coi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .coi-figure {
+    flex-shrink: 0;
+  }
+
+  .coi-range {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .coi-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .coi-body {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .coi-body h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .coi-body p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Findings ── */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .finding-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .finding-card:hover { border-color: var(--border-hover); }
+
+  .finding-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .dim-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .finding-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .finding-score-badge {
+    margin-left: auto;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .finding-bullets {
+    list-style: none;
+  }
+
+  .finding-bullets li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .finding-bullets li:last-child { border-bottom: none; }
+
+  .finding-bullets li::before {
+    content: '·';
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── Blur teaser ── */
+  .blur-section {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .blur-content {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.5;
+  }
+
+  .blur-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, rgba(10,10,15,0.7) 0%, rgba(10,10,15,0.3) 100%);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .blur-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .blur-overlay h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .blur-overlay p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 360px;
+    line-height: 1.6;
+  }
+
+  .fake-row {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    height: 56px;
+  }
+
+  /* ── CTA ── */
+  .cta-card {
+    background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(16,185,129,0.05) 100%);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    text-align: center;
+  }
+
+  .cta-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .cta-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--search);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .cta-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="multiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="25%" stop-color="#c9963a"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="75%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">
+      <div class="eyebrow-dot"></div>
+      Website Intelligence Taster — F&amp;T Intelligence Systems
+    </div>
+    <div class="domain-badge">5hertfordstreet.com</div>
+    <h1>5 Hertford Street</h1>
+    <p class="subtitle">5-dimension provisional scan · Private Members Clubs / Hospitality · April 2026</p>
+  </div>
+
+  <!-- Composite score -->
+  <div class="composite-block">
+    <div class="composite-ring">
+      <svg viewBox="0 0 160 160">
+        <circle class="bg-circle" cx="80" cy="80" r="70"/>
+        <circle class="score-circle" id="comp-circle" cx="80" cy="80" r="70"/>
+      </svg>
+      <div class="composite-label">
+        <span class="composite-number">31</span>
+        <span class="composite-sub">/ 100</span>
+      </div>
+    </div>
+    <div class="composite-meta">
+      <h2>Composite Score</h2>
+      <p>Across all five dimensions — Search, Design, Brand, Compete, and Growth — 5 Hertford Street scores 31/100. The club's extraordinary brand equity does not translate to digital performance: its website is effectively invisible to search engines, AI assistants, and any prospective member who isn't already inside the network.</p>
+    </div>
+  </div>
+
+  <!-- 5 dimension rings -->
+  <div class="rings-grid">
+
+    <!-- Search -->
+    <div class="ring-card">
+      <svg viewBox="0 0 80 80">
+        <circle class="bg-r" cx="40" cy="40" r="34"/>
+        <circle class="score-r" id="r-search" cx="40" cy="40" r="34"
+          stroke="#6366f1" style="filter:drop-shadow(0 0 4px rgba(99,102,241,0.6))"/>
+      </svg>
+      <span class="ring-score-val" style="color:#ef4444">15</span>
+      <span class="ring-label">Search</span>
+    </div>
+
+    <!-- Design -->
+    <div class="ring-card">
+      <svg viewBox="0 0 80 80">
+        <circle class="bg-r" cx="40" cy="40" r="34"/>
+        <circle class="score-r" id="r-design" cx="40" cy="40" r="34"
+          stroke="#c9963a" style="filter:drop-shadow(0 0 4px rgba(201,150,58,0.6))"/>
+      </svg>
+      <span class="ring-score-val" style="color:#ef4444">25</span>
+      <span class="ring-label">Design</span>
+    </div>
+
+    <!-- Brand -->
+    <div class="ring-card">
+      <svg viewBox="0 0 80 80">
+        <circle class="bg-r" cx="40" cy="40" r="34"/>
+        <circle class="score-r" id="r-brand" cx="40" cy="40" r="34"
+          stroke="#10b981" style="filter:drop-shadow(0 0 4px rgba(16,185,129,0.6))"/>
+      </svg>
+      <span class="ring-score-val" style="color:#f97316">55</span>
+      <span class="ring-label">Brand</span>
+    </div>
+
+    <!-- Compete -->
+    <div class="ring-card">
+      <svg viewBox="0 0 80 80">
+        <circle class="bg-r" cx="40" cy="40" r="34"/>
+        <circle class="score-r" id="r-compete" cx="40" cy="40" r="34"
+          stroke="#f43f5e" style="filter:drop-shadow(0 0 4px rgba(244,63,94,0.6))"/>
+      </svg>
+      <span class="ring-score-val" style="color:#f97316">50</span>
+      <span class="ring-label">Compete</span>
+    </div>
+
+    <!-- Growth -->
+    <div class="ring-card">
+      <svg viewBox="0 0 80 80">
+        <circle class="bg-r" cx="40" cy="40" r="34"/>
+        <circle class="score-r" id="r-growth" cx="40" cy="40" r="34"
+          stroke="#06b6d4" style="filter:drop-shadow(0 0 4px rgba(6,182,212,0.6))"/>
+      </svg>
+      <span class="ring-score-val" style="color:#ef4444">10</span>
+      <span class="ring-label">Growth</span>
+    </div>
+
+  </div>
+
+  <!-- Diagnostic -->
+  <div class="diagnostic-card">
+    <div class="diagnostic-eyebrow">Primary Diagnostic</div>
+    <div class="diagnostic-headline">Elite Brand, Zero Digital Sovereignty</div>
+    <p class="diagnostic-body">
+      5 Hertford Street is arguably the most powerful private members club in London — yet its digital footprint is controlled entirely by third parties. Wikipedia, Spear's, and luxury travel blogs define the narrative; the club's own site returns a 403 to anyone who isn't already inside. In an era of AI-powered search, that means the club has no say in how it's described, recommended, or compared — and rivals with better digital presence are capturing the consideration layer long before a prospective member even hears of 5 Hertford Street (5HS).
+    </p>
+  </div>
+
+  <!-- COI -->
+  <div class="coi-card">
+    <div class="coi-figure">
+      <div class="coi-range">£15k–£35k</div>
+      <div class="coi-label">Est. Annual Cost of Inaction</div>
+    </div>
+    <div class="coi-body">
+      <h4>Narrative &amp; Reputation Leakage</h4>
+      <p>While membership capacity is constrained by design, the absence of owned digital presence means the club forfeits control over its narrative in press, AI assistants, and editorial rankings — ceding the consideration layer to competitors and third-party commentators. The full Business Impact model is available in the complete report.</p>
+    </div>
+  </div>
+
+  <!-- Per-dimension findings -->
+  <div class="findings-grid">
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="dim-dot" style="background:var(--search)"></div>
+        <span class="finding-label">Search</span>
+        <span class="finding-score-badge" style="color:#ef4444">15/100</span>
+      </div>
+      <ul class="finding-bullets">
+        <li>Site blocks all crawlers — 403 on all pages; no extractable title, meta, or H1</li>
+        <li>No schema markup of any kind detected (LocalBusiness, Organization, etc.)</li>
+        <li>JS-wall architecture prevents indexing of any content beyond the homepage shell</li>
+        <li>Zero active content section — no blog, news, or member editorial present</li>
+        <li>Category keyword "private members club Mayfair" dominated by Annabel's, Arts Club</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="dim-dot" style="background:var(--design)"></div>
+        <span class="finding-label">Design</span>
+        <span class="finding-score-badge" style="color:#ef4444">25/100</span>
+      </div>
+      <ul class="finding-bullets">
+        <li>Site is intentionally opaque — no public value proposition or CTA visible</li>
+        <li>Deliberately withholds design convention in keeping with exclusivity ethos</li>
+        <li>No primary CTA, navigation structure, or conversion path for non-members</li>
+        <li>Brand credibility is entirely off-site — the site itself communicates nothing</li>
+        <li>Before/After redesign concepts are available in the full report</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="dim-dot" style="background:var(--brand)"></div>
+        <span class="finding-label">Brand</span>
+        <span class="finding-score-badge" style="color:#f97316">55/100</span>
+      </div>
+      <ul class="finding-bullets">
+        <li>Exceptional off-site brand equity — Wikipedia, Spear's, luxury press</li>
+        <li>Celebrity clientele (Clooney, DiCaprio, Prince William) creates powerful earned media</li>
+        <li>Zero owned brand narrative — all positioning controlled by third parties</li>
+        <li>No consistent digital tone of voice, no About page content accessible</li>
+        <li>Robin Birley's founder story is a major under-leveraged brand asset</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="dim-dot" style="background:var(--compete)"></div>
+        <span class="finding-label">Compete</span>
+        <span class="finding-score-badge" style="color:#f97316">50/100</span>
+      </div>
+      <ul class="finding-bullets">
+        <li>Strongest positioning in sector: "most secretive club in London" is genuinely unique</li>
+        <li>Annabel's and Arts Club dominate "best members clubs London" editorial rankings</li>
+        <li>No AI SoV — AI assistants recommend Soho House, Annabel's, Arts Club over 5HS</li>
+        <li>No paid brand protection — competitor coverage fills the search vacuum</li>
+        <li>Annual membership (£1,800) is actually the most competitively priced at the top tier</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-header">
+        <div class="dim-dot" style="background:var(--growth)"></div>
+        <span class="finding-label">Growth</span>
+        <span class="finding-score-badge" style="color:#ef4444">10/100</span>
+      </div>
+      <ul class="finding-bullets">
+        <li>Zero digital growth infrastructure — no email capture, CTA, or funnel</li>
+        <li>No social media presence detected (phones discouraged; photography banned)</li>
+        <li>Growth is 100% word-of-mouth — powerful but unscalable and unmeasured</li>
+        <li>No content marketing, no retargeting signals, no analytics layer visible</li>
+        <li>Waiting list model means conversion path is irrelevant — but narrative is not</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Blurred preview of full report -->
+  <div class="blur-section">
+    <div class="blur-content">
+      <div class="fake-row"></div>
+      <div class="fake-row"></div>
+      <div class="fake-row"></div>
+      <div class="fake-row" style="opacity:0.6"></div>
+      <div class="fake-row" style="opacity:0.3"></div>
+    </div>
+    <div class="blur-overlay">
+      <div class="blur-tag">Full Report</div>
+      <h3>30+ Dimensions. Full Business Impact Model.</h3>
+      <p>The complete Website Intelligence Dashboard covers 9 SEO tabs, 8 Design tabs, competitive deep dives, a £-denominated ROI model, and a 90-day growth attack plan — all in one self-contained HTML file.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card">
+    <h3>Need Help Implementing This Roadmap?</h3>
+    <p>This taster identifies the biggest opportunity for 5 Hertford Street. The full report goes five dimensions deep — with per-page SEO findings, a competitor attack plan, conversion copy, and a phased implementation timeline your team can act on.</p>
+    <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Website%20Intelligence%20Report%20%E2%80%94%205%20Hertford%20Street&body=Hi%2C%0A%0AI've reviewed the taster scorecard for 5hertfordstreet.com and I'd like to discuss the full report.%0A%0AThanks">Book a 30-Minute Strategy Call →</a>
+    <div class="cta-sub">Free · No obligation · We'll walk through the Top 3 Actions together</div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  F&amp;T Intelligence Systems · April 2026 · <a href="mailto:hello@frictionandtoil.com">hello@frictionandtoil.com</a>
+</footer>
+
+<script>
+  // Animate composite ring
+  window.addEventListener('load', function() {
+    var compCircle = document.getElementById('comp-circle');
+    var C = 2 * Math.PI * 70; // circumference for r=70: ~440
+    var score = 31;
+    var target = C - (score / 100) * C;
+    compCircle.style.transition = 'none';
+    compCircle.style.strokeDasharray = C;
+    compCircle.style.strokeDashoffset = C;
+    setTimeout(function() {
+      compCircle.style.transition = 'stroke-dashoffset 1.6s ease-out';
+      compCircle.style.strokeDashoffset = target;
+    }, 300);
+
+    // Animate small rings
+    var rings = [
+      { id: 'r-search',  score: 15 },
+      { id: 'r-design',  score: 25 },
+      { id: 'r-brand',   score: 55 },
+      { id: 'r-compete', score: 50 },
+      { id: 'r-growth',  score: 10 }
+    ];
+
+    var C_sm = 2 * Math.PI * 34; // circumference for r=34: ~214
+    rings.forEach(function(r, i) {
+      var el = document.getElementById(r.id);
+      if (!el) return;
+      el.style.strokeDasharray = C_sm;
+      el.style.strokeDashoffset = C_sm;
+      var t = C_sm - (r.score / 100) * C_sm;
+      setTimeout(function() {
+        el.style.transition = 'stroke-dashoffset 1.4s ease-out';
+        el.style.strokeDashoffset = t;
+      }, 400 + i * 100);
+    });
+  });
+</script>
+</body>
+</html>

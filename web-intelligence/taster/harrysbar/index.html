@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Harry's Bar — Website Intelligence Taster · F&T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --search: #6366f1;
+    --design: #c9963a;
+    --brand: #10b981;
+    --compete: #f43f5e;
+    --growth: #06b6d4;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --blue: #3b82f6;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .header .domain {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .header .tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── Composite Score ── */
+  .composite-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .composite-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+  }
+
+  .composite-ring svg {
+    width: 140px;
+    height: 140px;
+    transform: rotate(-90deg);
+  }
+
+  .composite-ring .ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 8;
+  }
+
+  .composite-ring .ring-fill {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339.3;
+    stroke-dashoffset: 339.3;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1);
+    filter: drop-shadow(0 0 8px rgba(249,115,22,0.5));
+  }
+
+  .composite-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .composite-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .composite-denom {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .composite-copy {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .composite-copy h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .composite-copy p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── Score Rings Grid ── */
+  .rings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .rings-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .ring-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 12px 16px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .ring-card:hover { border-color: var(--border-hover); }
+
+  .ring-sm-wrap {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 10px;
+  }
+
+  .ring-sm-wrap svg {
+    width: 72px;
+    height: 72px;
+    transform: rotate(-90deg);
+  }
+
+  .ring-sm-wrap .ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 6; }
+  .ring-sm-wrap .ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 188.5; stroke-dashoffset: 188.5; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+
+  .ring-sm-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    pointer-events: none;
+  }
+
+  .ring-dim-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .ring-dim-score {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ── Diagnostic Card ── */
+  .diagnostic-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--orange);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+
+  .diagnostic-card .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .diagnostic-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .diagnostic-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── COI Card ── */
+  .coi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .coi-figure {
+    flex-shrink: 0;
+  }
+
+  .coi-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .coi-period {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .coi-copy {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .coi-copy .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .coi-copy p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Findings Grid ── */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .findings-grid { grid-template-columns: 1fr; }
+  }
+
+  .finding-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .finding-card:hover { border-color: var(--border-hover); }
+
+  .finding-dim {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .finding-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .finding-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .finding-card ul li {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .finding-card ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  /* ── Blur Preview Notice ── */
+  .blur-notice {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blur-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .blur-row {
+    height: 12px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .blur-row:nth-child(odd) { width: 85%; }
+  .blur-row:nth-child(even) { width: 70%; }
+  .blur-row:nth-child(3) { width: 90%; }
+
+  .blur-notice h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .blur-notice p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 420px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+
+  /* ── CTA Button ── */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--text-secondary); }
+
+  /* ── Scan badge ── */
+  .scan-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(249,115,22,0.08);
+    border: 1px solid rgba(249,115,22,0.2);
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow"><span class="dot"></span> Website Intelligence Taster · F&amp;T</div>
+    <div class="scan-badge">Quick Scan · April 2026</div>
+    <h1>Harry's Bar</h1>
+    <p class="domain">harrysbar.co.uk · Private Members Club · Mayfair, London</p>
+    <p class="tagline">Provisional 5-dimension scorecard. Full report available on request.</p>
+  </div>
+
+  <!-- Composite Score -->
+  <div class="composite-block">
+    <div class="composite-ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="ring-bg" cx="60" cy="60" r="54"/>
+        <circle class="ring-fill" id="composite-ring" cx="60" cy="60" r="54"/>
+      </svg>
+      <div class="composite-label">
+        <span class="composite-num" id="composite-num">0</span>
+        <span class="composite-denom">/ 100</span>
+      </div>
+    </div>
+    <div class="composite-copy">
+      <h2>Composite Score</h2>
+      <p>Harry's Bar scores below 40 across four of five dimensions. The site functions as a digital door with no signage — exclusivity by design, but the web presence leaves commercial opportunity and brand authority on the table every day.</p>
+    </div>
+  </div>
+
+  <!-- 5 Dimension Rings -->
+  <div class="rings-grid">
+
+    <div class="ring-card">
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 72 72">
+          <circle class="ring-bg" cx="36" cy="36" r="30"/>
+          <circle class="ring-fill" id="ring-search" cx="36" cy="36" r="30" stroke="var(--search)" style="filter:drop-shadow(0 0 5px rgba(99,102,241,0.5))"/>
+        </svg>
+        <div class="ring-sm-label" style="color:var(--red)">35</div>
+      </div>
+      <div class="ring-dim-name">Search</div>
+      <div class="ring-dim-score">35 / 100</div>
+    </div>
+
+    <div class="ring-card">
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 72 72">
+          <circle class="ring-bg" cx="36" cy="36" r="30"/>
+          <circle class="ring-fill" id="ring-design" cx="36" cy="36" r="30" stroke="var(--design)" style="filter:drop-shadow(0 0 5px rgba(201,150,58,0.5))"/>
+        </svg>
+        <div class="ring-sm-label" style="color:var(--orange)">55</div>
+      </div>
+      <div class="ring-dim-name">Design</div>
+      <div class="ring-dim-score">55 / 100</div>
+    </div>
+
+    <div class="ring-card">
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 72 72">
+          <circle class="ring-bg" cx="36" cy="36" r="30"/>
+          <circle class="ring-fill" id="ring-brand" cx="36" cy="36" r="30" stroke="var(--brand)" style="filter:drop-shadow(0 0 5px rgba(16,185,129,0.5))"/>
+        </svg>
+        <div class="ring-sm-label" style="color:var(--red)">35</div>
+      </div>
+      <div class="ring-dim-name">Brand</div>
+      <div class="ring-dim-score">35 / 100</div>
+    </div>
+
+    <div class="ring-card">
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 72 72">
+          <circle class="ring-bg" cx="36" cy="36" r="30"/>
+          <circle class="ring-fill" id="ring-compete" cx="36" cy="36" r="30" stroke="var(--compete)" style="filter:drop-shadow(0 0 5px rgba(244,63,94,0.5))"/>
+        </svg>
+        <div class="ring-sm-label" style="color:var(--red)">35</div>
+      </div>
+      <div class="ring-dim-name">Compete</div>
+      <div class="ring-dim-score">35 / 100</div>
+    </div>
+
+    <div class="ring-card">
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 72 72">
+          <circle class="ring-bg" cx="36" cy="36" r="30"/>
+          <circle class="ring-fill" id="ring-growth" cx="36" cy="36" r="30" stroke="var(--growth)" style="filter:drop-shadow(0 0 5px rgba(6,182,212,0.5))"/>
+        </svg>
+        <div class="ring-sm-label" style="color:var(--red)">15</div>
+      </div>
+      <div class="ring-dim-name">Growth</div>
+      <div class="ring-dim-score">15 / 100</div>
+    </div>
+
+  </div>
+
+  <!-- Diagnostic -->
+  <div class="diagnostic-card">
+    <div class="label">Diagnostic Finding</div>
+    <h3>Invisible Online, Iconic Offline</h3>
+    <p>Harry's Bar is one of London's most storied private dining clubs — King Charles III, Madonna, Beyoncé, and Kate Moss among its regulars — yet the website offers virtually nothing: no copy above the fold, no meta description, no schema markup, no H1, and content depth that rivals a parking garage placard. The digital presence scores just 35/100, meaning every search for "private members club Mayfair" routes prospective members to competitors. The club's mystique is a deliberate strategy — but the current site doesn't even perform the minimum digital table-stakes for a venue of this calibre.</p>
+  </div>
+
+  <!-- COI -->
+  <div class="coi-card">
+    <div class="coi-figure">
+      <div class="coi-amount">£18k–£45k</div>
+      <div class="coi-period">estimated annual cost of inaction</div>
+    </div>
+    <div class="coi-copy">
+      <div class="label">Revenue Opportunity</div>
+      <p>Based on estimated monthly search demand for "private members club Mayfair" and related terms, with Harry's Bar currently invisible for non-branded queries. Assumes 0.5% conversion rate from organic enquiries, average member value of £4,000/yr. Every month of inaction forfeits an estimated £1,500–£3,750 in foregone membership revenue.</p>
+    </div>
+  </div>
+
+  <!-- Findings per Dimension -->
+  <div class="findings-grid">
+
+    <div class="finding-card">
+      <div class="finding-dim" style="color:var(--search)">Search · 35/100</div>
+      <h4>Near-Zero Organic Footprint</h4>
+      <ul>
+        <li>No meta description on any page</li>
+        <li>No H1 or schema markup detected</li>
+        <li>Not ranking page 1 for "private members club Mayfair"</li>
+        <li>Only 4 pages indexed; events page returns 404</li>
+        <li>No active content programme since April 2025</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim" style="color:var(--design)">Design · 55/100</div>
+      <h4>Luxury Aesthetic, Empty Canvas</h4>
+      <ul>
+        <li>No copy above the fold — purely visual/nav</li>
+        <li>No value proposition visible on homepage</li>
+        <li>Clean navigation and professional imagery</li>
+        <li>Consistent Birley Clubs aesthetic maintained</li>
+        <li>CTA exists but routes to external portal with no context</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim" style="color:var(--brand)">Brand · 35/100</div>
+      <h4>Heritage Untold, Story Unsold</h4>
+      <ul>
+        <li>No differentiation claim on homepage</li>
+        <li>Director Luciano Porcu not mentioned on site</li>
+        <li>No testimonials, press mentions, or social proof</li>
+        <li>Mark Birley / 1979 founding story absent from owned content</li>
+        <li>Famous patron roster (King Charles III, Beyoncé) not leveraged</li>
+      </ul>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-dim" style="color:var(--compete)">Compete · 35/100</div>
+      <h4>Same Playbook as Sister Clubs</h4>
+      <ul>
+        <li>Identical template to Annabel's and Mark's Club (same Birley group)</li>
+        <li>No differentiation vs 5 Hertford Street or 12 Hay Hill digitally</li>
+        <li>Pricing fully hidden; application routed to generic Birley portal</li>
+        <li>Surfaces in AI search results as "Top Choice" — one positive signal</li>
+        <li>No competitive content (comparison, editorial, or story-led pages)</li>
+      </ul>
+    </div>
+
+    <div class="finding-card" style="grid-column: span 2;">
+      <div class="finding-dim" style="color:var(--growth)">Growth · 15/100</div>
+      <h4>No Acquisition Engine Whatsoever</h4>
+      <ul>
+        <li>Zero email capture — no newsletter, lead magnet, or waitlist</li>
+        <li>Single CTA across entire site ("Apply for Membership")</li>
+        <li>Conversion path broken: visitor lands, reads nothing, clicks to external portal</li>
+        <li>Events page returns 404 — active programming not showcased</li>
+        <li>No content marketing; no analytics/retargeting signals detected</li>
+        <li>AI crawlers fully open (good), but nothing to index or cite</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Blurred Preview -->
+  <div class="blur-notice">
+    <div class="blur-rows">
+      <div class="blur-row"></div>
+      <div class="blur-row" style="margin-left:auto"></div>
+      <div class="blur-row"></div>
+      <div class="blur-row" style="width:60%;margin-left:auto"></div>
+      <div class="blur-row"></div>
+    </div>
+    <h3>Full Intelligence Report Available</h3>
+    <p>The complete report covers 9 SEO sub-checks, a full design critique with before/after wireframes, brand voice analysis, competitor deep dives on Annabel's and 5 Hertford Street, a 90-day growth plan, and a full Business Impact model.</p>
+    <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Harry's%20Bar%20—%20Full%20Intelligence%20Report&body=Hi%2C%0A%0AI've%20reviewed%20the%20taster%20scorecard%20for%20Harry's%20Bar%20and%20I'd%20like%20to%20discuss%20the%20full%20report.%0A%0AThanks">Request the Full Report →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>F&amp;T Intelligence Systems · April 2026</p>
+    <p style="margin-top:6px"><a href="mailto:hello@frictionandtoil.com">hello@frictionandtoil.com</a></p>
+    <p style="margin-top:10px;font-size:10px">Provisional scores derived from Quick Scan (3 page fetches + 1 keyword search). Full audit increases accuracy and adds 40+ additional checks per dimension.</p>
+  </footer>
+
+</div>
+
+<script>
+  // ── Ring animation ──
+  const scores = {
+    composite: { id: 'composite-ring', score: 35, C: 339.3 },
+    search:    { id: 'ring-search',    score: 35, C: 188.5 },
+    design:    { id: 'ring-design',    score: 55, C: 188.5 },
+    brand:     { id: 'ring-brand',     score: 35, C: 188.5 },
+    compete:   { id: 'ring-compete',   score: 35, C: 188.5 },
+    growth:    { id: 'ring-growth',    score: 15, C: 188.5 },
+  };
+
+  window.addEventListener('load', () => {
+    Object.entries(scores).forEach(([key, cfg]) => {
+      const el = document.getElementById(cfg.id);
+      if (!el) return;
+      const target = cfg.C - (cfg.score / 100) * cfg.C;
+      el.style.transition = 'none';
+      el.style.strokeDashoffset = cfg.C;
+      setTimeout(() => {
+        el.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1)';
+        el.style.strokeDashoffset = target;
+      }, 200);
+    });
+
+    // Composite counter
+    const numEl = document.getElementById('composite-num');
+    if (numEl) {
+      let current = 0;
+      const target = 35;
+      const duration = 1400;
+      const step = target / (duration / 16);
+      const interval = setInterval(() => {
+        current = Math.min(current + step, target);
+        numEl.textContent = Math.round(current);
+        if (current >= target) clearInterval(interval);
+      }, 16);
+    }
+  });
+</script>
+
+</body>
+</html>

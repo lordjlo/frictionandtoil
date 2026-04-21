@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Website Intelligence — The Arts Club | F&T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --search: #6366f1;
+    --design: #c9963a;
+    --brand: #10b981;
+    --compete: #f43f5e;
+    --growth: #06b6d4;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --blue: #3b82f6;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background grid ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .header-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .header-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .header .domain {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .header .date {
+    font-size: 12px;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* ── Composite score ── */
+  .composite-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+
+  .composite-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .composite-ring svg {
+    width: 160px;
+    height: 160px;
+    transform: rotate(-90deg);
+  }
+
+  .composite-ring .ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.06);
+    stroke-width: 8;
+  }
+
+  .composite-ring .ring-fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke: #eab308;
+    filter: drop-shadow(0 0 8px rgba(234,179,8,0.4));
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .composite-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .composite-label .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #eab308;
+    line-height: 1;
+  }
+
+  .composite-label .out {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .composite-text {
+    max-width: 340px;
+  }
+
+  .composite-text h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .composite-text p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── Score rings grid ── */
+  .rings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 600px) {
+    .rings-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .ring-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .ring-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+  }
+
+  .ring-sm {
+    position: relative;
+    width: 88px;
+    height: 88px;
+  }
+
+  .ring-sm svg {
+    width: 88px;
+    height: 88px;
+    transform: rotate(-90deg);
+  }
+
+  .ring-sm .ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 5; }
+  .ring-sm .ring-fill { fill: none; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 245; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+
+  .ring-sm-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ring-sm-label .score-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .ring-sm-label .score-denom {
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .ring-card .dim-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ── Diagnostic card ── */
+  .diagnostic-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagnostic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--yellow));
+  }
+
+  .diagnostic-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .diagnostic-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .diagnostic-body {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ── COI card ── */
+  .coi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .coi-figure {
+    flex-shrink: 0;
+  }
+
+  .coi-figure .amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .coi-figure .label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .coi-divider {
+    width: 1px;
+    height: 56px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .coi-body {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .coi-body h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .coi-body p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Findings grid ── */
+  .findings-section {
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .finding-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .finding-card:hover { border-color: var(--border-hover); }
+
+  .finding-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .finding-text h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .finding-text p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ── Blur preview teaser ── */
+  .blur-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .blur-content {
+    filter: blur(5px);
+    opacity: 0.4;
+    user-select: none;
+    margin-bottom: 24px;
+    line-height: 2;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .blur-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, transparent 0%, rgba(10,10,15,0.7) 40%, rgba(10,10,15,0.95) 100%);
+    padding: 32px;
+    gap: 14px;
+  }
+
+  .blur-overlay h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    max-width: 400px;
+    line-height: 1.3;
+  }
+
+  .blur-overlay p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--text);
+    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: opacity 0.2s;
+    margin-top: 8px;
+  }
+
+  .cta-btn:hover { opacity: 0.85; }
+
+  .cta-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── Badge ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .badge-amber { background: rgba(249,115,22,0.12); color: var(--orange); border-color: rgba(249,115,22,0.25); }
+  .badge-red { background: rgba(239,68,68,0.12); color: var(--red); border-color: rgba(239,68,68,0.25); }
+  .badge-green { background: rgba(34,197,94,0.12); color: var(--green); border-color: rgba(34,197,94,0.25); }
+  .badge-yellow { background: rgba(234,179,8,0.12); color: var(--yellow); border-color: rgba(234,179,8,0.25); }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-eyebrow">
+      <span class="dot"></span>
+      Website Intelligence · Taster Scorecard
+    </div>
+    <h1>The Arts Club</h1>
+    <p class="domain">theartsclub.co.uk · 40 Dover Street, Mayfair</p>
+    <p class="date">April 2026 · Provisional Scan · F&amp;T Intelligence Systems</p>
+  </div>
+
+  <!-- Composite score + headline -->
+  <div class="composite-block">
+    <div class="composite-ring">
+      <svg viewBox="0 0 160 160">
+        <circle class="ring-bg" cx="80" cy="80" r="70"/>
+        <circle class="ring-fill" id="composite-ring" cx="80" cy="80" r="70"
+          style="stroke-dashoffset: 440"/>
+      </svg>
+      <div class="composite-label">
+        <span class="num">56</span>
+        <span class="out">/ 100</span>
+      </div>
+    </div>
+    <div class="composite-text">
+      <h2>Composite Score: 56 / 100</h2>
+      <p>Strong brand heritage and premium positioning — held back by near-zero search visibility infrastructure, no public content programme, and an absence of schema markup that renders 160 years of cultural authority invisible to AI search engines.</p>
+    </div>
+  </div>
+
+  <!-- 5 Dimension rings -->
+  <div class="rings-grid">
+
+    <!-- Search -->
+    <div class="ring-card">
+      <div class="ring-sm">
+        <svg viewBox="0 0 88 88">
+          <circle class="ring-bg" cx="44" cy="44" r="39"/>
+          <circle class="ring-fill" id="ring-search" cx="44" cy="44" r="39"
+            style="stroke: var(--search); filter: drop-shadow(0 0 5px rgba(99,102,241,0.4)); stroke-dashoffset: 245"/>
+        </svg>
+        <div class="ring-sm-label">
+          <span class="score-num" style="color: var(--red)">35</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <span class="dim-label" style="color: var(--search)">Search</span>
+    </div>
+
+    <!-- Design -->
+    <div class="ring-card">
+      <div class="ring-sm">
+        <svg viewBox="0 0 88 88">
+          <circle class="ring-bg" cx="44" cy="44" r="39"/>
+          <circle class="ring-fill" id="ring-design" cx="44" cy="44" r="39"
+            style="stroke: var(--design); filter: drop-shadow(0 0 5px rgba(201,150,58,0.4)); stroke-dashoffset: 245"/>
+        </svg>
+        <div class="ring-sm-label">
+          <span class="score-num" style="color: var(--yellow)">70</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <span class="dim-label" style="color: var(--design)">Design</span>
+    </div>
+
+    <!-- Brand -->
+    <div class="ring-card">
+      <div class="ring-sm">
+        <svg viewBox="0 0 88 88">
+          <circle class="ring-bg" cx="44" cy="44" r="39"/>
+          <circle class="ring-fill" id="ring-brand" cx="44" cy="44" r="39"
+            style="stroke: var(--brand); filter: drop-shadow(0 0 5px rgba(16,185,129,0.4)); stroke-dashoffset: 245"/>
+        </svg>
+        <div class="ring-sm-label">
+          <span class="score-num" style="color: var(--yellow)">65</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <span class="dim-label" style="color: var(--brand)">Brand</span>
+    </div>
+
+    <!-- Compete -->
+    <div class="ring-card">
+      <div class="ring-sm">
+        <svg viewBox="0 0 88 88">
+          <circle class="ring-bg" cx="44" cy="44" r="39"/>
+          <circle class="ring-fill" id="ring-compete" cx="44" cy="44" r="39"
+            style="stroke: var(--compete); filter: drop-shadow(0 0 5px rgba(244,63,94,0.4)); stroke-dashoffset: 245"/>
+        </svg>
+        <div class="ring-sm-label">
+          <span class="score-num" style="color: var(--yellow)">60</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <span class="dim-label" style="color: var(--compete)">Compete</span>
+    </div>
+
+    <!-- Growth -->
+    <div class="ring-card">
+      <div class="ring-sm">
+        <svg viewBox="0 0 88 88">
+          <circle class="ring-bg" cx="44" cy="44" r="39"/>
+          <circle class="ring-fill" id="ring-growth" cx="44" cy="44" r="39"
+            style="stroke: var(--growth); filter: drop-shadow(0 0 5px rgba(6,182,212,0.4)); stroke-dashoffset: 245"/>
+        </svg>
+        <div class="ring-sm-label">
+          <span class="score-num" style="color: var(--orange)">50</span>
+          <span class="score-denom">/ 100</span>
+        </div>
+      </div>
+      <span class="dim-label" style="color: var(--growth)">Growth</span>
+    </div>
+
+  </div>
+
+  <!-- Diagnostic card -->
+  <div class="diagnostic-card">
+    <div class="diagnostic-eyebrow">Primary Finding</div>
+    <div class="diagnostic-headline">Heritage Brand Hidden Behind a Login Wall</div>
+    <p class="diagnostic-body">The Arts Club owns one of London's most powerful brand stories — 160 years of cultural patronage, a Mayfair address, and founding members including Charles Dickens — but buries almost all of its cultural programming behind a member portal. The homepage title tag reads "Homepage - The Arts Club," there is no schema markup on any page, and the events calendar is fully gated. This makes the club effectively invisible to AI search engines at the precise moment new rivals are building digital-first presences to compete for the next generation of members. Soho House and Annabel's are capturing non-branded category searches that The Arts Club should own. The full report reveals exactly where the authority gap opens and what a structured content strategy, schema layer, and AI visibility programme would return.</p>
+  </div>
+
+  <!-- COI estimate -->
+  <div class="coi-card">
+    <div class="coi-figure">
+      <div class="amount">£25k–£60k</div>
+      <div class="label">Est. annual cost of inaction</div>
+    </div>
+    <div class="coi-divider"></div>
+    <div class="coi-body">
+      <h3>Revenue Leakage from Search Invisibility</h3>
+      <p>Based on estimated non-branded search volume for "private members club London" category terms (~10,000 searches/month), current below-the-fold positioning, a 1% membership enquiry conversion rate, and an average first-year membership value of £4,800. Conservative range accounts for the club's selective intake model.</p>
+    </div>
+  </div>
+
+  <!-- Top findings by dimension -->
+  <div class="findings-section">
+    <div class="section-label">Key Findings by Dimension</div>
+    <div class="findings-grid">
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--search)"></div>
+        <div class="finding-text">
+          <h4>Search · 35/100</h4>
+          <p>No schema markup detected sitewide. Homepage title is "Homepage - The Arts Club" — not keyword-targeted. No public-facing blog or dated content. Events calendar fully gated.</p>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--design)"></div>
+        <div class="finding-text">
+          <h4>Design · 70/100</h4>
+          <p>Strong luxury presentation and consistent visual hierarchy. Clear primary CTA ("Discover Membership"). No visible testimonials or member social proof to validate the premium price point.</p>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--brand)"></div>
+        <div class="finding-text">
+          <h4>Brand · 65/100</h4>
+          <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--text-2)">
+            <li>160-year founding story and Mayfair heritage underutilised in owned content</li>
+            <li>No named leadership on About page</li>
+            <li>No on-site member testimonials or press accreditation visible</li>
+            <li>Cultural programming (art partnerships, talks, exhibitions) is gated — none of it builds public brand equity</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--compete)"></div>
+        <div class="finding-text">
+          <h4>Compete · 60/100</h4>
+          <p>Ranks page 1 for branded terms. Pricing is transparently published — a competitive advantage. However, Soho House and Annabel's dominate non-branded category searches with far richer public content ecosystems.</p>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--growth)"></div>
+        <div class="finding-text">
+          <h4>Growth · 50/100</h4>
+          <p>No email capture or newsletter sign-up visible. Cultural programming (podcasts, talks, exhibitions) exists but is gated — none of it builds SEO authority or AI citation potential. Retargeting status unconfirmed.</p>
+        </div>
+      </div>
+
+      <div class="finding-card">
+        <div class="finding-dot" style="background: var(--green)"></div>
+        <div class="finding-text">
+          <h4>Quick Win Available</h4>
+          <p>AI crawler access is fully open (robots.txt only blocks /wp-admin/). The club can immediately gain AI search citations by adding schema markup and publishing even a minimal public events digest.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Blur preview / CTA -->
+  <div class="blur-block">
+    <div class="blur-content">
+      Technical SEO audit across 12 pages · Schema markup remediation plan · Keyword gap analysis vs Soho House and Annabel's · Core Web Vitals risk assessment · E-E-A-T signal audit (7 signals) · AI Share-of-Voice test across 6 queries · Business Impact model (4 components) · £ COI breakdown by dimension · ROI multiple and payback period · Brand voice audit and recommended positioning statement · Media sentiment scan · Competitor deep dives · Differentiation gap analysis · 90-day traffic acquisition plan · Conversion copy variants · Growth metrics framework · Top 5 cross-dimension actions with timing strategy
+    </div>
+    <div class="blur-overlay">
+      <h3>The full report covers all 5 dimensions across 30+ audit modules</h3>
+      <p>Search infrastructure, design critique, brand intelligence, competitive landscape, and a growth engine blueprint — with a £-denominated business impact model and AI visibility strategy.</p>
+      <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Full%20Intelligence%20Report%20%E2%80%94%20The%20Arts%20Club&body=Hi%2C%0A%0AI've%20reviewed%20the%20taster%20scorecard%20for%20theartsclub.co.uk%20and%20I%27d%20like%20to%20discuss%20the%20full%20intelligence%20report.%0A%0AThanks">Request the Full Report →</a>
+      <span class="cta-sub">Free 30-minute brief · No obligation</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    F&amp;T Intelligence Systems · April 2026 · Provisional scan based on 3-page fetch + keyword search · Scores are indicative, not definitive.
+  </div>
+
+</div>
+
+<script>
+  // Ring animation on load
+  window.addEventListener('load', () => {
+    // Composite ring: r=70, C = 2π×70 ≈ 440
+    const composite = 56;
+    const cRing = document.getElementById('composite-ring');
+    if (cRing) {
+      const offset = 440 - (composite / 100) * 440;
+      cRing.style.transition = 'none';
+      setTimeout(() => {
+        cRing.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1)';
+        cRing.style.strokeDashoffset = offset;
+      }, 400);
+    }
+
+    // Small rings: r=39, C = 2π×39 ≈ 245
+    const dims = [
+      { id: 'ring-search', score: 35 },
+      { id: 'ring-design', score: 70 },
+      { id: 'ring-brand',  score: 65 },
+      { id: 'ring-compete',score: 60 },
+      { id: 'ring-growth', score: 50 }
+    ];
+
+    dims.forEach((d, i) => {
+      const el = document.getElementById(d.id);
+      if (!el) return;
+      const offset = 245 - (d.score / 100) * 245;
+      el.style.transition = 'none';
+      setTimeout(() => {
+        el.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)';
+        el.style.strokeDashoffset = offset;
+      }, 300 + i * 120);
+    });
+  });
+</script>
+
+</body>
+</html>

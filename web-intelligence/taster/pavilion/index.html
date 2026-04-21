@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pavilion Club — Website Intelligence Taster | F&T Intelligence Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --search: #6366f1;
+    --design: #c9963a;
+    --brand: #10b981;
+    --compete: #f43f5e;
+    --growth: #06b6d4;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --blue: #3b82f6;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+    --amber: #f97316;
+    --accent: #a5b4fc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .taster-header {
+    padding: 56px 24px 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .taster-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .header-eyebrow span {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .taster-header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .taster-header .domain {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .taster-header .sector-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+  }
+
+  /* ── COMPOSITE RING ── */
+  .composite-section {
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .composite-ring-wrap {
+    position: relative;
+    width: 180px; height: 180px;
+  }
+  .composite-ring-wrap svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .composite-ring-wrap .ring-bg {
+    fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 8;
+  }
+  .composite-ring-wrap .ring-fg {
+    fill: none; stroke: var(--yellow); stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    transition: stroke-dashoffset 1.6s ease-out;
+    filter: drop-shadow(0 0 8px rgba(234,179,8,0.4));
+  }
+  .composite-score-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .composite-score-label .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .composite-score-label .denom {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .composite-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── DIAGNOSTIC ── */
+  .diagnostic-card {
+    margin: 0 24px 40px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--orange);
+    max-width: 860px;
+    margin-left: auto; margin-right: auto;
+  }
+  .diagnostic-card .diag-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .diagnostic-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+  .diagnostic-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* ── COI CARD ── */
+  .coi-card {
+    margin: 0 24px 40px;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(6,182,212,0.04) 100%);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--radius);
+    max-width: 860px;
+    margin-left: auto; margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .coi-figure {
+    flex-shrink: 0;
+  }
+  .coi-figure .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .coi-figure .amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .coi-figure .suffix {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .coi-body p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  /* ── SCORE RINGS GRID ── */
+  .rings-section {
+    padding: 0 24px 48px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .rings-section h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .rings-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 640px) {
+    .rings-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .rings-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .ring-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 12px 16px;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ring-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+  }
+  .ring-card .ring-sm-wrap {
+    position: relative;
+    width: 80px; height: 80px;
+    margin: 0 auto 12px;
+  }
+  .ring-card .ring-sm-wrap svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .ring-card .ring-sm-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 5; }
+  .ring-card .ring-sm-fg {
+    fill: none; stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 1.4s ease-out;
+  }
+  .ring-card .ring-sm-score {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .ring-card .dim-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .ring-card .dim-bullets {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+  }
+  .ring-card .dim-bullets li {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    padding: 3px 0;
+    border-top: 1px solid var(--border);
+  }
+  .ring-card .dim-bullets li:first-child { border-top: none; }
+  .ring-card .dim-bullets li::before {
+    content: '→ ';
+    color: var(--text-muted);
+  }
+
+  /* ── BLURRED PREVIEW ── */
+  .blur-section {
+    margin: 0 24px 48px;
+    max-width: 860px;
+    margin-left: auto; margin-right: auto;
+  }
+  .blur-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .blur-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .blur-content {
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+  }
+  .blur-content p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .blur-content .fake-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .blur-content .fake-list li {
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-xs);
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .blur-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10,10,15,0.7) 40%, rgba(10,10,15,0.95) 100%);
+    border-radius: var(--radius);
+  }
+  .blur-overlay .unlock-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(165,180,252,0.1);
+    border: 1px solid rgba(165,180,252,0.2);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .blur-overlay h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .blur-overlay p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 320px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .unlock-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--accent);
+    color: #0a0a0f;
+    border-radius: var(--radius-sm);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+  }
+  .unlock-btn:hover { opacity: 0.88; }
+
+  /* ── CTA ── */
+  .cta-section {
+    margin: 0 24px 60px;
+    max-width: 860px;
+    margin-left: auto; margin-right: auto;
+    padding: 36px;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .cta-section h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .cta-section p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #0a0a0f;
+    border-radius: var(--radius-sm);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+    margin-bottom: 12px;
+    display: block;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn:hover { opacity: 0.88; }
+  .cta-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="taster-header">
+  <div class="header-eyebrow"><span></span>Website Intelligence Taster · April 2026</div>
+  <h1>Pavilion Club</h1>
+  <div class="domain">pavilion.club · Private Members Clubs / Hospitality</div>
+  <div class="sector-badge">4 London locations · Knightsbridge · Kensington · City · Fulham</div>
+</div>
+
+<!-- COMPOSITE SCORE -->
+<div class="composite-section">
+  <div class="composite-ring-wrap">
+    <svg viewBox="0 0 180 180">
+      <circle class="ring-bg" cx="90" cy="90" r="80"/>
+      <circle class="ring-fg" id="composite-ring" cx="90" cy="90" r="80"/>
+    </svg>
+    <div class="composite-score-label">
+      <div class="num">47</div>
+      <div class="denom">/ 100</div>
+    </div>
+  </div>
+  <div class="composite-label">Composite Intelligence Score — Amber: Needs Attention</div>
+</div>
+
+<!-- DIAGNOSTIC -->
+<div class="diagnostic-card">
+  <div class="diag-eyebrow">Primary Finding</div>
+  <h2>Invisible to Search, Brilliant in Person</h2>
+  <p>Pavilion's site is a JavaScript wall — search engines and AI assistants see only a title tag where there should be rich content, schema markup, and membership pathways. With membership from £350/month and four premium London locations, the club is leaving an estimated £18k–£45k/year in organic acquisition on the table. The full report reveals the technical and content strategy needed to match the in-person experience online.</p>
+</div>
+
+<!-- COI -->
+<div class="coi-card">
+  <div class="coi-figure">
+    <div class="label">Estimated Annual Cost of Inaction</div>
+    <div class="amount">£18k–£45k</div>
+    <div class="suffix">p.a. in foregone revenue</div>
+  </div>
+  <div class="coi-body">
+    <p>Organic search drives an estimated 40–60% of luxury hospitality enquiries at this price point. With Pavilion's JS-rendered site invisible to crawlers, every new member who finds the club is doing so despite the website, not because of it. The full Business Impact model quantifies the exact opportunity by location, keyword, and channel.</p>
+  </div>
+</div>
+
+<!-- DIMENSION SCORE RINGS -->
+<div class="rings-section">
+  <h3>5-Dimension Breakdown</h3>
+  <div class="rings-grid">
+
+    <!-- SEARCH -->
+    <div class="ring-card">
+      <div class="dim-label">Search</div>
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-sm-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-sm-fg" id="ring-search" cx="40" cy="40" r="35" stroke="var(--search)"/>
+        </svg>
+        <div class="ring-sm-score" style="color:#ef4444">15</div>
+      </div>
+      <ul class="dim-bullets">
+        <li>JS wall blocks crawlers</li>
+        <li>No meta description</li>
+        <li>No schema detected</li>
+        <li>No content programme</li>
+      </ul>
+    </div>
+
+    <!-- DESIGN -->
+    <div class="ring-card">
+      <div class="dim-label">Design</div>
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-sm-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-sm-fg" id="ring-design" cx="40" cy="40" r="35" stroke="var(--design)"/>
+        </svg>
+        <div class="ring-sm-score" style="color:#f97316">55</div>
+      </div>
+      <ul class="dim-bullets">
+        <li>Strong earned media</li>
+        <li>Premium visual identity</li>
+        <li>CTA path unverifiable</li>
+        <li>JS limits assessment</li>
+      </ul>
+    </div>
+
+    <!-- BRAND -->
+    <div class="ring-card">
+      <div class="dim-label">Brand</div>
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-sm-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-sm-fg" id="ring-brand" cx="40" cy="40" r="35" stroke="var(--brand)"/>
+        </svg>
+        <div class="ring-sm-score" style="color:#eab308">65</div>
+      </div>
+      <ul class="dim-bullets">
+        <li>Clear luxury positioning</li>
+        <li>Tom Kerridge differentiator</li>
+        <li>No named founder/team</li>
+        <li>Audience not explicit</li>
+      </ul>
+    </div>
+
+    <!-- COMPETE -->
+    <div class="ring-card">
+      <div class="dim-label">Compete</div>
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-sm-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-sm-fg" id="ring-compete" cx="40" cy="40" r="35" stroke="var(--compete)"/>
+        </svg>
+        <div class="ring-sm-score" style="color:#22c55e">80</div>
+      </div>
+      <ul class="dim-bullets">
+        <li>Distinct workspace hybrid</li>
+        <li>Page 1 brand visibility</li>
+        <li>4-location moat</li>
+        <li>AI SoV gap: critical</li>
+      </ul>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="ring-card">
+      <div class="dim-label">Growth</div>
+      <div class="ring-sm-wrap">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-sm-bg" cx="40" cy="40" r="35"/>
+          <circle class="ring-sm-fg" id="ring-growth" cx="40" cy="40" r="35" stroke="var(--growth)"/>
+        </svg>
+        <div class="ring-sm-score" style="color:#ef4444">20</div>
+      </div>
+      <ul class="dim-bullets">
+        <li>No email capture</li>
+        <li>No content marketing</li>
+        <li>Instagram only active</li>
+        <li>No conversion pathway</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- BLURRED FULL REPORT PREVIEW -->
+<div class="blur-section">
+  <div class="blur-card">
+    <h3>Full Intelligence Report — 5-Dimension Dashboard</h3>
+    <div class="blur-content" aria-hidden="true">
+      <p>The full report covers 47 individual audit checks across Technical SEO, Content Quality, Brand Positioning, Competitive Landscape, and Growth Engine. It includes a Business Impact model with per-keyword revenue valuation, a competitor deep-dive on Soho House, The Ned, and One Alfred Place, and a 90-day growth roadmap.</p>
+      <ul class="fake-list">
+        <li>Technical: JS rendering strategy — server-side rendering vs. pre-rendering cost analysis</li>
+        <li>Schema: LocalBusiness + Organization markup implementation guide for all 4 locations</li>
+        <li>Content: 12-article editorial calendar targeting high-intent membership search queries</li>
+        <li>Brand: Positioning statement refresh centred on the workspace-lifestyle hybrid category</li>
+        <li>Compete: AI Share-of-Voice — which competitor answers "best private members club London"</li>
+        <li>Growth: 3 conversion copy variants for the membership application pathway</li>
+        <li>Business Impact: £-denominated keyword valuation across 12 priority search terms</li>
+      </ul>
+      <p>The Strategic Timing Card prioritises 5 cross-dimension actions into Act Now, Optimal Window, and Later buckets with effort estimates and ROI projection per fix.</p>
+    </div>
+    <div class="blur-overlay">
+      <div class="unlock-badge">Full Report</div>
+      <h4>Unlock the Complete Dashboard</h4>
+      <p>47 audit checks, Business Impact model, competitor deep-dives, 90-day growth roadmap, and conversion copy — all in one interactive report.</p>
+      <a class="unlock-btn" href="mailto:hello@frictionandtoil.com?subject=Pavilion%20Club%20—%20Full%20Website%20Intelligence%20Report&body=Hi%2C%0A%0AI've reviewed the Pavilion Club taster scorecard and I'd like to unlock the full 5-dimension intelligence report.%0A%0AThanks">Unlock Full Report →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h3>Need Help Implementing This Roadmap?</h3>
+  <p>This taster identifies the single biggest opportunity. The full report gives you the exact technical fixes, content strategy, and growth plan — prioritised by revenue impact and effort. We can build a phased implementation plan tailored to your team's capacity.</p>
+  <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Pavilion%20Club%20—%20Website%20Intelligence%20Implementation&body=Hi%2C%0A%0AI've reviewed the Pavilion Club taster scorecard and I'd like to discuss implementation support.%0A%0AThanks">Book a 30-Minute Call →</a>
+  <div class="cta-sub">Free · No obligation · We'll walk through the top 3 actions together</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  F&amp;T Intelligence Systems · April 2026 · pavilion.club
+</footer>
+
+<script>
+window.addEventListener('load', function() {
+  // Composite ring (r=80, C=502.65)
+  const compositeRing = document.getElementById('composite-ring');
+  const C_large = 502.65;
+  const compositeScore = 47;
+  setTimeout(function() {
+    compositeRing.style.transition = 'stroke-dashoffset 1.6s ease-out';
+    compositeRing.style.strokeDashoffset = C_large - (compositeScore / 100) * C_large;
+  }, 200);
+
+  // Dimension rings (r=35, C=219.9)
+  const C_sm = 219.9;
+  const dims = [
+    { id: 'ring-search',  score: 15 },
+    { id: 'ring-design',  score: 55 },
+    { id: 'ring-brand',   score: 65 },
+    { id: 'ring-compete', score: 80 },
+    { id: 'ring-growth',  score: 20 }
+  ];
+  dims.forEach(function(d) {
+    const el = document.getElementById(d.id);
+    if (!el) return;
+    el.style.strokeDashoffset = C_sm;
+    setTimeout(function() {
+      el.style.transition = 'stroke-dashoffset 1.4s ease-out';
+      el.style.strokeDashoffset = C_sm - (d.score / 100) * C_sm;
+    }, 300);
+  });
+});
+</script>
+</body>
+</html>
