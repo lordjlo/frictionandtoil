@@ -803,7 +803,7 @@
   .testimonials { padding: clamp(5rem, 10vw, 8rem) 0; }
   .tgrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
   .tcard {
@@ -1271,6 +1271,7 @@
   @media (max-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
     .rings-wrap { max-width: 380px; margin: 0 auto; }
+    .tgrid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 960px) {
     .dim-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1897,6 +1898,17 @@
             <div>
               <div class="tname">James Rowley</div>
               <div class="ttitle">Marketing Director &middot; Professional Services Firm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal d3">
+          <p class="tquote">Truly exceptional service! These guys really know what they&rsquo;re doing, their advice is flawless and has really helped to maximise our website which is crucial in this day and age. Thank you once again!</p>
+          <div class="tmeta">
+            <div class="tavatar" data-c="search">AO</div>
+            <div>
+              <div class="tname">Angus O&rsquo;Donnell</div>
+              <div class="ttitle">Shop &amp; Bistro &middot; Covent Garden, UK</div>
             </div>
           </div>
         </div>
