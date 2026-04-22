@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture Intelligence Taster — Acme Consulting Ltd</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg-card:rgba(255,255,255,0.03);
+  --border:rgba(255,255,255,0.08);
+  --text:#e8e8ed;
+  --text-secondary:#8b8b9e;
+  --text-muted:#5a5a6e;
+  --radius:16px;--radius-sm:10px;
+}
+::selection{background:#6366f1;color:#fff}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(99,102,241,0.05) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(245,158,11,0.04) 0%,transparent 50%),
+             radial-gradient(ellipse at 50% 80%,rgba(16,185,129,0.03) 0%,transparent 50%);
+  z-index:-1;animation:drift 20s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(-2%,1%)}66%{transform:translate(1%,-1%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* HEADER */
+.taster-header{padding:48px 0 0;text-align:center}
+.header-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+.dot{width:6px;height:6px;border-radius:50%;animation:pulse 2s ease-in-out infinite;background:linear-gradient(90deg,#6366f1,#10b981,#f59e0b,#38bdf8,#f43f5e)}
+.taster-header h1{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;line-height:1.15;margin-bottom:8px;background:linear-gradient(135deg,#fff 0%,#6366f1 30%,#10b981 55%,#f59e0b 75%,#38bdf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.prepared-for{font-size:15px;color:var(--text-secondary);margin-bottom:8px;letter-spacing:.3px;font-weight:500}
+.taster-header .subtitle{font-size:15px;color:var(--text-secondary);margin-bottom:36px}
+
+/* SCORE RINGS */
+.rings-hero{display:flex;align-items:stretch;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:16px;overflow:hidden}
+.ring-col{flex:1;display:flex;flex-direction:column;align-items:center;padding:28px 12px;gap:10px;position:relative}
+.ring-col+.ring-col::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:var(--border)}
+.ring-mode-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;text-align:center}
+.ring-sm{width:110px;height:110px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.ring-sm svg{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
+.ring-sm svg circle{fill:none;stroke-width:4;stroke-linecap:round}
+.ring-sm svg .bg-r{stroke:rgba(255,255,255,.06)}
+.score-sm{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;line-height:1;position:relative;z-index:1}
+.score-sm-sub{font-size:10px;color:var(--text-muted);opacity:.5;position:relative;z-index:1}
+.ring-desc{font-size:11px;color:var(--text-muted);text-align:center;max-width:110px;line-height:1.4}
+
+/* SCORE LEGEND */
+.score-legend{display:flex;justify-content:center;gap:20px;padding:8px 0;margin-bottom:20px;font-size:12px;color:var(--text-muted)}
+.score-legend span{display:flex;align-items:center;gap:6px}
+.score-legend .ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* BAND CARD */
+.band-card{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.4);border-radius:var(--radius);padding:28px 36px;margin-bottom:20px;text-align:center;position:relative;overflow:hidden}
+.band-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#ef4444}
+.band-label-sub{font-size:13px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:500}
+.band-label-score{font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:700;color:#ef4444;line-height:1;margin-bottom:4px}
+.band-label-name{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:#ef4444;margin-bottom:12px}
+.band-label-desc{font-size:14px;color:var(--text-secondary);max-width:520px;margin:0 auto;line-height:1.6}
+
+/* MIRROR BRIEF */
+.mirror-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:20px;position:relative}
+.mirror-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#6366f1,#10b981);border-radius:var(--radius) 0 0 var(--radius)}
+.mirror-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:var(--text-muted);margin-bottom:12px}
+.mirror-text{font-size:15px;color:var(--text-secondary);line-height:1.7;font-style:italic}
+.mirror-fade{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(180deg,transparent,var(--bg));border-radius:0 0 var(--radius) var(--radius)}
+
+/* SIGNATURE FINDING */
+.sig-card{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.25);border-radius:var(--radius);padding:22px 28px;margin-bottom:20px;position:relative;overflow:hidden}
+.sig-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#10b981)}
+.sig-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:#a5b4fc;margin-bottom:10px}
+.sig-headline{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.35}
+.sig-one-line{font-size:14px;color:var(--text-secondary);line-height:1.6;font-style:italic;border-left:2px solid rgba(99,102,241,0.4);padding-left:12px;margin-bottom:10px}
+.sig-reveal{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* CONDITIONS TEASER */
+.conditions-teaser{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 28px;margin-bottom:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.conditions-stat{text-align:center;flex:1;min-width:100px}
+.conditions-stat .cs-num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;line-height:1}
+.conditions-stat .cs-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-top:4px}
+.conditions-divider{width:1px;height:60px;background:var(--border);flex-shrink:0}
+.conditions-text{flex:3;min-width:200px}
+.conditions-text p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+.conditions-text strong{color:var(--text)}
+
+/* BLURRED PREVIEW */
+.preview-zone{position:relative;overflow:hidden;border-radius:var(--radius);min-height:380px;margin-bottom:8px}
+.preview-content{filter:blur(5px);-webkit-filter:blur(5px);pointer-events:none;user-select:none;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.fake-label{height:11px;background:rgba(255,255,255,.04);border-radius:3px;margin-bottom:8px}
+.fake-para{height:9px;background:rgba(255,255,255,.025);border-radius:3px;margin-bottom:6px}
+.fake-tabs-bar{display:flex;gap:0;border-bottom:1px solid var(--border);padding:0 20px}
+.fake-tab{padding:14px 20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:2px solid transparent;white-space:nowrap}
+.fake-tab.active{color:#a5b4fc;border-bottom-color:#6366f1}
+.fake-body{padding:24px}
+.fake-findings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.fake-finding{padding:16px;background:rgba(255,255,255,.015);border:1px solid var(--border);border-radius:var(--radius-sm);border-left:3px solid transparent}
+.fake-text-lines{margin-top:8px}
+
+/* UNLOCK OVERLAY */
+.unlock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:10;background:linear-gradient(180deg,rgba(10,10,15,0.1) 0%,rgba(10,10,15,0.75) 35%,rgba(10,10,15,0.96) 75%);border-radius:var(--radius)}
+.lock-icon{font-size:34px;opacity:.65}
+.unlock-overlay h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;text-align:center;line-height:1.3;max-width:420px}
+.unlock-overlay p{font-size:14px;color:var(--text-secondary);max-width:420px;text-align:center;line-height:1.6}
+.unlock-cta{display:inline-block;padding:16px 40px;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:#1a1a2e;background:linear-gradient(135deg,#fbbf24,#c9963a);border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;margin-top:4px}
+.unlock-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,150,58,0.35)}
+.unlock-sub{font-size:12px;color:var(--text-muted);text-align:center;max-width:360px}
+
+/* FOOTER */
+.taster-footer{text-align:center;padding:40px 0 28px;font-size:11px;color:var(--text-muted);letter-spacing:.5px}
+.taster-footer a{color:var(--text-secondary);text-decoration:none}
+.taster-footer a:hover{color:var(--text)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .taster-header{padding:32px 0 0}
+  .taster-header h1{font-size:26px}
+  .rings-hero{flex-direction:column}
+  .ring-col{padding:20px 16px;flex-direction:row;gap:16px}
+  .ring-col+.ring-col::before{display:none}
+  .ring-sm{width:80px;height:80px;flex-shrink:0}
+  .score-sm{font-size:26px}
+  .ring-mode-label{font-size:10px;text-align:left}
+  .ring-desc{text-align:left;max-width:none}
+  .score-legend{flex-wrap:wrap;gap:10px 16px}
+  .band-card{padding:24px 20px}
+  .band-label-score{font-size:44px}
+  .band-label-name{font-size:18px}
+  .mirror-card{padding:20px 24px}
+  .fake-findings-grid{grid-template-columns:1fr}
+  .unlock-overlay h3{font-size:18px;padding:0 16px}
+  .unlock-overlay p{font-size:13px;padding:0 16px}
+  .unlock-cta{padding:14px 32px;font-size:14px}
+  .container{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="taster-header">
+    <div class="header-badge"><span class="dot"></span> Culture Intelligence Dashboard</div>
+    <h1>Acme Consulting Ltd</h1>
+    <div class="prepared-for">Powered by F&amp;T Intelligence Systems</div>
+    <p class="subtitle">Outside-in analysis prepared for The Corporate Culture Coach</p>
+  </div>
+
+  <!-- 5 SCORE RINGS -->
+  <div class="rings-hero">
+      <div class="ring-col">
+        <div class="ring-mode-label" style="color:#6366f1">Leadership Trust</div>
+        <div class="ring-sm">
+          <svg viewBox="0 0 110 110">
+            <circle class="bg-r" cx="55" cy="55" r="47" stroke-dasharray="295" stroke-dashoffset="0"/>
+            <circle class="fg-r" cx="55" cy="55" r="47"
+              stroke="#ef4444"
+              stroke-dasharray="295"
+              stroke-dashoffset="295"
+              data-offset="207"
+              style="filter:drop-shadow(0 0 6px #ef4444)"/>
+          </svg>
+          <span class="score-sm" style="color:#ef4444">30</span>
+          <span class="score-sm-sub">/100</span>
+        </div>
+        <div class="ring-desc">Critical concern</div>
+      </div>
+      <div class="ring-col">
+        <div class="ring-mode-label" style="color:#10b981">Culture Health</div>
+        <div class="ring-sm">
+          <svg viewBox="0 0 110 110">
+            <circle class="bg-r" cx="55" cy="55" r="47" stroke-dasharray="295" stroke-dashoffset="0"/>
+            <circle class="fg-r" cx="55" cy="55" r="47"
+              stroke="#ef4444"
+              stroke-dasharray="295"
+              stroke-dashoffset="295"
+              data-offset="207"
+              style="filter:drop-shadow(0 0 6px #ef4444)"/>
+          </svg>
+          <span class="score-sm" style="color:#ef4444">30</span>
+          <span class="score-sm-sub">/100</span>
+        </div>
+        <div class="ring-desc">Critical concern</div>
+      </div>
+      <div class="ring-col">
+        <div class="ring-mode-label" style="color:#f59e0b">Org. Stability</div>
+        <div class="ring-sm">
+          <svg viewBox="0 0 110 110">
+            <circle class="bg-r" cx="55" cy="55" r="47" stroke-dasharray="295" stroke-dashoffset="0"/>
+            <circle class="fg-r" cx="55" cy="55" r="47"
+              stroke="#ef4444"
+              stroke-dasharray="295"
+              stroke-dashoffset="295"
+              data-offset="207"
+              style="filter:drop-shadow(0 0 6px #ef4444)"/>
+          </svg>
+          <span class="score-sm" style="color:#ef4444">30</span>
+          <span class="score-sm-sub">/100</span>
+        </div>
+        <div class="ring-desc">Critical concern</div>
+      </div>
+      <div class="ring-col">
+        <div class="ring-mode-label" style="color:#38bdf8">Strategic Clarity</div>
+        <div class="ring-sm">
+          <svg viewBox="0 0 110 110">
+            <circle class="bg-r" cx="55" cy="55" r="47" stroke-dasharray="295" stroke-dashoffset="0"/>
+            <circle class="fg-r" cx="55" cy="55" r="47"
+              stroke="#ef4444"
+              stroke-dasharray="295"
+              stroke-dashoffset="295"
+              data-offset="207"
+              style="filter:drop-shadow(0 0 6px #ef4444)"/>
+          </svg>
+          <span class="score-sm" style="color:#ef4444">30</span>
+          <span class="score-sm-sub">/100</span>
+        </div>
+        <div class="ring-desc">Critical concern</div>
+      </div>
+      <div class="ring-col">
+        <div class="ring-mode-label" style="color:#f43f5e">People & Retention</div>
+        <div class="ring-sm">
+          <svg viewBox="0 0 110 110">
+            <circle class="bg-r" cx="55" cy="55" r="47" stroke-dasharray="295" stroke-dashoffset="0"/>
+            <circle class="fg-r" cx="55" cy="55" r="47"
+              stroke="#38bdf8"
+              stroke-dasharray="295"
+              stroke-dashoffset="295"
+              data-offset="112"
+              style="filter:drop-shadow(0 0 6px #38bdf8)"/>
+          </svg>
+          <span class="score-sm" style="color:#38bdf8">62</span>
+          <span class="score-sm-sub">/100</span>
+        </div>
+        <div class="ring-desc">Developing</div>
+      </div></div>
+
+  <!-- SCORE LEGEND -->
+  <div class="score-legend">
+    <span><i class="ldot" style="background:#ef4444;width:8px;height:8px;border-radius:50%;display:inline-block"></i>0–39 Critical</span>
+    <span><i class="ldot" style="background:#f97316;width:8px;height:8px;border-radius:50%;display:inline-block"></i>40–59 Needs Attention</span>
+    <span><i class="ldot" style="background:#38bdf8;width:8px;height:8px;border-radius:50%;display:inline-block"></i>60–79 Developing</span>
+    <span><i class="ldot" style="background:#22c55e;width:8px;height:8px;border-radius:50%;display:inline-block"></i>80+ Strong</span>
+  </div>
+
+  <!-- OVERALL BAND -->
+  <div class="band-card">
+    <div class="band-label-sub">Overall Culture Health Score</div>
+    <div class="band-label-score" style="color:#ef4444">36</div>
+    <div class="band-label-name" style="color:#ef4444">Critical</div>
+    <div class="band-label-desc">The signals we're seeing from outside Acme Consulting Ltd point to acute culture stress — leadership instability, employee dissatisfaction, and strategic drift visible in public data. This warrants a direct conversation.</div>
+  </div>
+
+  <!-- MIRROR BRIEF (2 sentences visible) -->
+  <div class="mirror-card">
+    <div class="mirror-label">What we see from the outside</div>
+    <div class="mirror-text">Acme Consulting Ltd presents a profile of a founder-led firm under PE performance pressure that has not yet made the transition from founder-dependent to professionally managed. Two director resignations in 18 months, a Glassdoor culture score of 2.5, and persistent reviewer references to &quot;lack of direction&quot; are consistent with a business where strategy lives in an individual rather than in a structure.</div>
+    <div class="mirror-fade"></div>
+  </div>
+
+  <!-- SIGNATURE FINDING -->
+  <div class="sig-card">
+    <div class="sig-label">Signature Finding</div>
+    <div class="sig-headline">Reviewers use &quot;lack of direction&quot; in 60% of Glassdoor posts</div>
+    <div class="sig-one-line">Acme Consulting's Glassdoor reviews reference &quot;lack of direction&quot; or &quot;no strategy&quot; in the majority of critical posts — and two directors have resigned in the past 18 months.</div>
+    <div class="sig-reveal">The strategy lives in the founder's head, not on paper — and the organisation is now paying for that in leadership turnover and disengagement.</div>
+  </div>
+
+  <!-- CONDITIONS TEASER -->
+  <div class="conditions-teaser">
+    <div class="conditions-stat">
+      <div class="cs-num" style="color:#f97316">4</div>
+      <div class="cs-label">Conditions<br>identified</div>
+    </div>
+    <div class="conditions-divider"></div>
+    <div class="conditions-stat">
+      <div class="cs-num" style="color:#ef4444">1</div>
+      <div class="cs-label">At critical<br>severity</div>
+    </div>
+    <div class="conditions-divider"></div>
+    <div class="conditions-text">
+      <p><strong>Board-level condition diagnosis included.</strong> Each condition is scored by Severity and Resolvability. The highest-scoring conditions — where the board cannot resolve the problem internally — are where transformation conversations land. Full condition breakdown in the discovery call.</p>
+    </div>
+  </div>
+
+  <!-- BLURRED PREVIEW + UNLOCK CTA -->
+  <div class="preview-zone">
+    <div class="preview-content">
+      <div class="fake-tabs-bar">
+        <div class="fake-tab active">Overview</div>
+        <div class="fake-tab">Leadership Trust</div>
+        <div class="fake-tab">Culture Health</div>
+        <div class="fake-tab">Org. Stability</div>
+        <div class="fake-tab">Strategic Clarity</div>
+        <div class="fake-tab">People &amp; Retention</div>
+      </div>
+      <div class="fake-body">
+        <div class="fake-findings-grid">
+          
+      <div class="fake-finding" style="border-left-color:#ef4444">
+        <div class="ff-title" style="height:12px;width:70%;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:8px"></div>
+        <div class="ff-body" style="height:8px;width:90%;background:rgba(255,255,255,0.03);border-radius:3px;margin-bottom:5px"></div>
+        <div class="ff-body" style="height:8px;width:65%;background:rgba(255,255,255,0.03);border-radius:3px"></div>
+      </div>
+      <div class="fake-finding" style="border-left-color:#f97316">
+        <div class="ff-title" style="height:12px;width:70%;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:8px"></div>
+        <div class="ff-body" style="height:8px;width:90%;background:rgba(255,255,255,0.03);border-radius:3px;margin-bottom:5px"></div>
+        <div class="ff-body" style="height:8px;width:65%;background:rgba(255,255,255,0.03);border-radius:3px"></div>
+      </div>
+      <div class="fake-finding" style="border-left-color:#eab308">
+        <div class="ff-title" style="height:12px;width:70%;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:8px"></div>
+        <div class="ff-body" style="height:8px;width:90%;background:rgba(255,255,255,0.03);border-radius:3px;margin-bottom:5px"></div>
+        <div class="ff-body" style="height:8px;width:65%;background:rgba(255,255,255,0.03);border-radius:3px"></div>
+      </div>
+      <div class="fake-finding" style="border-left-color:#6366f1">
+        <div class="ff-title" style="height:12px;width:70%;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:8px"></div>
+        <div class="ff-body" style="height:8px;width:90%;background:rgba(255,255,255,0.03);border-radius:3px;margin-bottom:5px"></div>
+        <div class="ff-body" style="height:8px;width:65%;background:rgba(255,255,255,0.03);border-radius:3px"></div>
+      </div>
+      <div class="fake-finding" style="border-left-color:#10b981">
+        <div class="ff-title" style="height:12px;width:70%;background:rgba(255,255,255,0.05);border-radius:3px;margin-bottom:8px"></div>
+        <div class="ff-body" style="height:8px;width:90%;background:rgba(255,255,255,0.03);border-radius:3px;margin-bottom:5px"></div>
+        <div class="ff-body" style="height:8px;width:65%;background:rgba(255,255,255,0.03);border-radius:3px"></div>
+      </div>
+        </div>
+        <div class="fake-text-lines">
+          <div class="fake-para" style="width:100%"></div>
+          <div class="fake-para" style="width:88%"></div>
+          <div class="fake-para" style="width:74%"></div>
+          <div class="fake-para" style="width:92%"></div>
+          <div class="fake-para" style="width:65%"></div>
+          <div class="fake-label" style="width:55%;margin-top:16px"></div>
+          <div class="fake-para" style="width:85%"></div>
+          <div class="fake-para" style="width:70%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="unlock-overlay">
+      <div class="lock-icon">🔒</div>
+      <h3>There's more — and it's specific to you</h3>
+      <p>Full dimension findings, the burning platform we've identified, the one question your board hasn't answered, and a recommended first step — all ready for a 30-minute conversation.</p>
+      <a class="unlock-cta" href="https://thecorporateculturecoach.co.uk/contact" target="_blank">Book a Culture Discovery Call</a>
+      <div class="unlock-sub">No pitch. No commitment. Just a conversation about what we're seeing.</div>
+    </div>
+  </div>
+
+  <div class="taster-footer">
+    Generated April 2026 &nbsp;·&nbsp;
+    <a href="https://thecorporateculturecoach.co.uk" target="_blank">thecorporateculturecoach.co.uk</a>
+    &nbsp;·&nbsp; Prepared for The Corporate Culture Coach &nbsp;·&nbsp; For Acme Consulting Ltd only
+    <br style="margin-top:6px">
+    <a href="https://frictionandtoil.com" target="_blank">F&amp;T Intelligence Systems · frictionandtoil.com</a>
+  </div>
+
+</div>
+
+<script>
+// Animate score rings on load
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return
+      e.target.querySelectorAll('.fg-r').forEach(c => {
+        const target = parseInt(c.dataset.offset, 10)
+        c.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1)'
+        c.style.strokeDashoffset = target
+      })
+      obs.unobserve(e.target)
+    })
+  }, { threshold: 0.15 })
+  document.querySelectorAll('.ring-sm').forEach(r => obs.observe(r))
+})
+</script>
+</body>
+</html>
