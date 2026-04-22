@@ -154,7 +154,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
 
@@ -218,6 +218,11 @@
     /* Coming Soon — muted */
     .card-soon .card-visual {
       background: linear-gradient(135deg, #0e0e14 0%, #12121e 100%);
+    }
+
+    /* Deal Brain — deep teal intelligence */
+    .card-dealbrain .card-visual {
+      background: linear-gradient(135deg, #071b20 0%, #0e3040 50%, #071820 100%);
     }
 
     /* Career Narrative — deep amber/black */
@@ -387,6 +392,7 @@
     .card:nth-child(1) { animation-delay: 0.2s; }
     .card:nth-child(2) { animation-delay: 0.32s; }
     .card:nth-child(3) { animation-delay: 0.44s; }
+    .card:nth-child(4) { animation-delay: 0.56s; }
 
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -492,6 +498,7 @@
       <span class="lab-ethos-item"><span>—</span> EdTech</span>
       <span class="lab-ethos-item"><span>—</span> PsychTech</span>
       <span class="lab-ethos-item"><span>—</span> CareerTech</span>
+      <span class="lab-ethos-item"><span>—</span> SalesTech</span>
       <span class="lab-ethos-item"><span>—</span> More coming</span>
     </div>
   </section>
@@ -545,6 +552,24 @@
           <p class="card-tag">CareerTech · Coming Soon</p>
           <h2 class="card-title">Career Narrative Architect</h2>
           <p class="card-desc">Uncover the 'Red Thread' running through your career. An AI-guided session that extracts your core strengths, failure-forged lessons, and translates them into a LinkedIn profile, impact resume, and outreach scripts.</p>
+        </div>
+      </div>
+
+      <!-- Deal Brain -->
+      <div class="card card-dealbrain">
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,150,58,0.6);margin-bottom:14px;">F&amp;T Intelligence</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#f0ede8;line-height:1.1;">Deal<br><em style="color:rgba(201,150,58,0.8);">Brain</em></div>
+            <div style="width:40px;height:1px;background:rgba(201,150,58,0.4);margin:16px auto 0;"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);margin-top:14px;letter-spacing:0.1em;">13 diagnostic dimensions</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">SalesTech · Experiment</p>
+          <h2 class="card-title">Deal Brain</h2>
+          <p class="card-desc">Deal Brain knows your deal better than you do. It researches your target, diagnoses the buying conditions, and maps every gap in your qualification — before you've asked a single question. The same engine that powers F&amp;T, pointed at the sell side.</p>
+          <span class="card-cta disabled">Coming Soon</span>
         </div>
       </div>
 
