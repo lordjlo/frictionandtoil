@@ -230,6 +230,11 @@
       background: linear-gradient(135deg, #0f0c07 0%, #1a1408 50%, #120f05 100%);
     }
 
+    /* Culture Intelligence — deep plum/slate */
+    .card-culture .card-visual {
+      background: linear-gradient(135deg, #120a1e 0%, #1e1035 50%, #0e0a18 100%);
+    }
+
     .card-visual-inner {
       position: relative;
       z-index: 1;
@@ -393,6 +398,7 @@
     .card:nth-child(2) { animation-delay: 0.32s; }
     .card:nth-child(3) { animation-delay: 0.44s; }
     .card:nth-child(4) { animation-delay: 0.56s; }
+    .card:nth-child(5) { animation-delay: 0.68s; }
 
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -499,6 +505,7 @@
       <span class="lab-ethos-item"><span>—</span> PsychTech</span>
       <span class="lab-ethos-item"><span>—</span> CareerTech</span>
       <span class="lab-ethos-item"><span>—</span> SalesTech</span>
+      <span class="lab-ethos-item"><span>—</span> PeopleTech</span>
       <span class="lab-ethos-item"><span>—</span> More coming</span>
     </div>
   </section>
@@ -552,6 +559,7 @@
           <p class="card-tag">CareerTech · Coming Soon</p>
           <h2 class="card-title">Career Narrative Architect</h2>
           <p class="card-desc">Uncover the 'Red Thread' running through your career. An AI-guided session that extracts your core strengths, failure-forged lessons, and translates them into a LinkedIn profile, impact resume, and outreach scripts.</p>
+          <span class="card-cta disabled">Coming Soon</span>
         </div>
       </div>
 
@@ -570,6 +578,27 @@
           <h2 class="card-title">Deal Brain</h2>
           <p class="card-desc">Deal Brain knows your deal better than you do. It researches your target, diagnoses the buying conditions, and maps every gap in your qualification — before you've asked a single question. The same engine that powers F&amp;T, pointed at the sell side.</p>
           <span class="card-cta disabled">Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Culture Intelligence -->
+      <div class="card card-culture">
+        <div class="card-visual">
+          <div class="card-visual-inner">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(201,150,58,0.6);margin-bottom:14px;">F&amp;T Intelligence</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#f0ede8;line-height:1.1;">Culture<br><em style="color:rgba(201,150,58,0.8);">Intelligence</em></div>
+            <div style="width:40px;height:1px;background:rgba(201,150,58,0.4);margin:16px auto 0;"></div>
+            <div style="font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.2);margin-top:14px;letter-spacing:0.1em;">5 diagnostic dimensions</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-tag">PeopleTech · Live</p>
+          <h2 class="card-title">Culture Intelligence</h2>
+          <p class="card-desc">An outside-in intelligence report that surfaces the cultural fracture before it becomes a crisis. Leadership trust, organisational stability, strategic clarity, retention risk — read from the signals your own people can't see any more. In partnership with The Corporate Culture Coach.</p>
+          <a href="/culture-intelligence/" class="card-cta">
+            Explore
+            <svg viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
 
