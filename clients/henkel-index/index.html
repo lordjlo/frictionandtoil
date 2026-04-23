@@ -564,6 +564,61 @@ a { color: var(--gold); text-decoration: none; }
   color: var(--text3);
   text-align: right;
 }
+
+/* ─── HAMBURGER NAV ──────────────────────────── */
+.hamburger-btn { background: none; border: none; cursor: pointer; padding: 8px 10px 8px 0; margin-right: 10px; display: flex; flex-direction: column; justify-content: center; gap: 5px; z-index: 300; flex-shrink: 0; }
+.hamburger-btn span { display: block; width: 18px; height: 1.5px; background: rgba(255,255,255,0.4); border-radius: 1px; transition: all 0.22s ease; }
+.hamburger-btn:hover span { background: rgba(255,255,255,0.7); }
+.hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-menu { position: fixed; top: 56px; left: 0; width: 230px; background: #0d1422; border-right: 1px solid var(--border2); border-bottom: 1px solid var(--border2); padding: 12px 0 16px; z-index: 250; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.18s ease, transform 0.18s ease; box-shadow: 8px 8px 32px rgba(0,0,0,0.5); }
+.nav-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.nav-menu-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); padding: 6px 18px 10px; }
+.nav-menu-item { display: block; padding: 8px 18px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.45); text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.nav-menu-item:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+.nav-menu-item.current { color: var(--gold); }
+.nav-menu-item.sub { padding-left: 30px; font-size: 11px; color: rgba(255,255,255,0.3); }
+.nav-menu-item.sub:hover { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.03); }
+.nav-menu-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.nav-menu-ext { display: block; padding: 7px 18px; font-size: 11px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
+.nav-menu-ext:hover { color: var(--text2); }
+.nav-backdrop { display: none; position: fixed; inset: 0; top: 56px; z-index: 240; }
+.nav-backdrop.open { display: block; }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 768px) {
+  .header { padding: 0 16px; }
+  .brand-title { display: none; }
+  .brand-divider { display: none; }
+  .brand-sub { font-size: 11px; }
+  .header-badges { gap: 6px; }
+  .badge-date { display: none; }
+  .main { padding: 24px 16px 60px; }
+  .page-title { font-size: 20px; }
+  .mif-hero { padding: 16px; }
+  .mif-text { font-size: 13px; line-height: 1.7; }
+  .mif-stats { gap: 12px; }
+  .mif-stat-val { font-size: 20px; }
+  .reports-grid { grid-template-columns: 1fr; gap: 16px; }
+  .report-card { padding: 20px; }
+  .signal-block { gap: 12px; }
+  .alerts-grid { grid-template-columns: 1fr; gap: 12px; }
+  .footer { padding: 20px 16px; flex-direction: column; gap: 8px; }
+  .footer-right { text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 18px; }
+  .page-desc { font-size: 12px; }
+  .mif-stat-val { font-size: 18px; }
+  .mif-stat-key { font-size: 8px; }
+  .report-card { padding: 16px; }
+  .card-entity { font-size: 18px; }
+  .card-desc { font-size: 12px; }
+  .signal-val { font-size: 16px; }
+  .card-cta { padding: 11px 16px; font-size: 12px; }
+}
 </style>
 </head>
 
@@ -571,6 +626,9 @@ a { color: var(--gold); text-decoration: none; }
 
 <!-- ─── HEADER ─────────────────────────────────────────────── -->
 <header class="header">
+  <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
   <div class="brand">
     <span class="brand-mark">F&amp;T</span>
     <span class="brand-title">Henkel AG &amp; Co. KGaA</span>
@@ -582,6 +640,17 @@ a { color: var(--gold); text-decoration: none; }
     <span class="badge badge-v">v5.2</span>
     <span class="badge badge-date">22 April 2026</span>
   </div>
+
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-label">Henkel Intelligence Package</div>
+    <a href="/clients/henkel-index" class="nav-menu-item current">Package Index</a>
+    <a href="/clients/henkel-group" class="nav-menu-item">Group Intelligence</a>
+    <a href="/clients/henkel-at" class="nav-menu-item">AT Separation</a>
+    <a href="/clients/henkel-at#ventures" class="nav-menu-item sub">↳ Ventures</a>
+    <div class="nav-menu-divider"></div>
+    <a href="https://www.frictionandtoil.com" class="nav-menu-ext">F&amp;T Intelligence ↗</a>
+  </div>
+  <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
 </header>
 
 <!-- ─── MAIN ───────────────────────────────────────────────── -->
@@ -766,9 +835,21 @@ a { color: var(--gold); text-decoration: none; }
   <div class="footer-right">
     Compiled: 22 April 2026<br>
     Tracks: Group · AT · Ventures<br>
-    Gate status: AT building · All others complete
+    Gate status: All tracks complete
   </div>
 </footer>
+
+<script>
+function toggleMenu() {
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('navMenu');
+  const backdrop = document.getElementById('navBackdrop');
+  const isOpen = menu.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  menu.classList.toggle('open', !isOpen);
+  backdrop.classList.toggle('open', !isOpen);
+}
+</script>
 
 </body>
 </html>

@@ -27,12 +27,32 @@ body { background: var(--bg); color: var(--text); font-family: var(--font); font
 a { color: var(--gold); text-decoration: none; }
 
 /* Site nav */
-.site-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; padding: 0 40px; height: 56px; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-.site-nav .brand { font-family: sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); text-decoration: none; margin-right: 48px; white-space: nowrap; }
+.site-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; padding: 0 20px; height: 56px; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.site-nav .brand { font-family: sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); text-decoration: none; white-space: nowrap; }
 .site-nav .brand:hover { color: rgba(255,255,255,0.6); transition: color 0.2s; }
-.site-nav .links { display: flex; gap: 36px; }
-.site-nav .links a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: rgba(255,255,255,0.28); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
-.site-nav .links a:hover { color: rgba(255,255,255,0.65); }
+
+/* Hamburger */
+.hamburger-btn { background: none; border: none; cursor: pointer; padding: 8px 10px 8px 4px; margin-right: 10px; display: flex; flex-direction: column; justify-content: center; gap: 5px; z-index: 300; }
+.hamburger-btn span { display: block; width: 18px; height: 1.5px; background: rgba(255,255,255,0.4); border-radius: 1px; transition: all 0.22s ease; }
+.hamburger-btn:hover span { background: rgba(255,255,255,0.7); }
+.hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Nav dropdown */
+.nav-menu { position: fixed; top: 56px; left: 0; width: 230px; background: #0d1422; border-right: 1px solid var(--border2); border-bottom: 1px solid var(--border2); padding: 12px 0 16px; z-index: 250; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.18s ease, transform 0.18s ease; box-shadow: 8px 8px 32px rgba(0,0,0,0.5); }
+.nav-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.nav-menu-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text3); padding: 6px 18px 10px; }
+.nav-menu-item { display: block; padding: 8px 18px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.45); text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.nav-menu-item:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); }
+.nav-menu-item.current { color: var(--gold); }
+.nav-menu-item.sub { padding-left: 30px; font-size: 11px; color: rgba(255,255,255,0.3); }
+.nav-menu-item.sub:hover { color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.03); }
+.nav-menu-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.nav-menu-ext { display: block; padding: 7px 18px; font-size: 11px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
+.nav-menu-ext:hover { color: var(--text2); }
+.nav-backdrop { display: none; position: fixed; inset: 0; top: 56px; z-index: 240; }
+.nav-backdrop.open { display: block; }
 
 /* Report header */
 .ft-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 56px; z-index: 100; }
@@ -222,18 +242,86 @@ a { color: var(--gold); text-decoration: none; }
 .footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-left { font-size: 11px; color: var(--text3); line-height: 1.6; }
 .footer-right { font-family: var(--mono); font-size: 10px; color: var(--text3); text-align: right; }
+
+/* ── Mobile subtab dropdown ──────────────────────── */
+.subtab-mobile { display: none; position: relative; margin-bottom: 20px; }
+.subtab-mobile-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius2); cursor: pointer; font-size: 12px; font-weight: 500; color: var(--gold); font-family: var(--font); gap: 10px; }
+.subtab-mobile-btn svg { flex-shrink: 0; transition: transform 0.2s; stroke: var(--gold); }
+.subtab-mobile-btn.open svg { transform: rotate(180deg); }
+.subtab-mobile-menu { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #0d1422; border: 1px solid var(--border2); border-radius: var(--radius2); z-index: 50; box-shadow: 0 8px 24px rgba(0,0,0,0.4); overflow: hidden; }
+.subtab-mobile-menu.open { display: block; }
+.subtab-mobile-menu button { display: block; width: 100%; text-align: left; padding: 10px 14px; background: none; border: none; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; font-family: var(--font); transition: all 0.15s; }
+.subtab-mobile-menu button:last-child { border-bottom: none; }
+.subtab-mobile-menu button:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.subtab-mobile-menu button.active { color: var(--gold); }
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 768px) {
+  .tab-panel { padding: 16px; }
+  .ft-header { padding: 0 16px; min-height: 48px; height: auto; padding-top: 8px; padding-bottom: 8px; flex-wrap: wrap; gap: 6px; }
+  .ft-company { font-size: 13px; }
+  .badge-date { display: none; }
+  .tab-btn { padding: 11px 12px; font-size: 11px; }
+  .rings-row { gap: 14px; }
+  .ring-svg { width: 80px; height: 80px; }
+  .stat-row { gap: 8px; }
+  .stat-item { min-width: calc(50% - 4px); flex: none; }
+  .mif-text { font-size: 14px; line-height: 1.7; }
+  .verdict-block { padding: 14px 16px; gap: 12px; }
+  .verdict-conviction { font-size: 24px; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .coi-figure { font-size: 32px; }
+  .person-card { padding: 16px; }
+  .footer { padding: 20px 16px; flex-direction: column; gap: 10px; }
+  .footer-right { text-align: left; }
+  .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .trigger-block { gap: 14px; }
+  .trigger-score-val { font-size: 38px; }
+}
+
+@media (max-width: 640px) {
+  .subtab-nav { display: none; }
+  .subtab-mobile { display: block; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .tab-panel { padding: 12px; }
+  .rings-row { gap: 10px; justify-content: center; }
+  .ring-svg { width: 68px; height: 68px; }
+  .ring-center { font-size: 13px; }
+  .ring-label { font-size: 9px; max-width: 70px; }
+  .stat-item { min-width: 100%; }
+  .tab-btn { padding: 10px 10px; font-size: 10px; }
+  .section-title { margin: 20px 0 12px; }
+  .mif-hero { padding: 16px; }
+  .mif-text { font-size: 13px; }
+  .coi-figure { font-size: 28px; }
+  .coi-plus { font-size: 17px; }
+  .decision-card { padding: 12px 14px; }
+}
 </style>
 </head>
 <body>
 
 <!-- Site nav -->
 <nav class="site-nav">
-  <a href="https://www.frictionandtoil.com" class="brand">F&T</a>
-  <div class="links">
-    <a href="https://www.frictionandtoil.com/clients/henkel">Package Index</a>
-    <a href="https://www.frictionandtoil.com/clients/henkel-group">Group Report</a>
-    <a href="https://www.frictionandtoil.com">F&T Intelligence</a>
+  <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Open navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://www.frictionandtoil.com" class="brand">F&amp;T</a>
+
+  <div class="nav-menu" id="navMenu">
+    <div class="nav-menu-label">Henkel Intelligence Package</div>
+    <a href="/clients/henkel-index" class="nav-menu-item">Package Index</a>
+    <a href="/clients/henkel-group" class="nav-menu-item">Group Intelligence</a>
+    <a href="/clients/henkel-at" class="nav-menu-item current">AT Separation</a>
+    <a href="#ventures" class="nav-menu-item sub" onclick="navToVentures(event)">↳ Ventures</a>
+    <div class="nav-menu-divider"></div>
+    <a href="https://www.frictionandtoil.com" class="nav-menu-ext">F&amp;T Intelligence ↗</a>
   </div>
+  <div class="nav-backdrop" id="navBackdrop" onclick="toggleMenu()"></div>
 </nav>
 
 <!-- Report header -->
@@ -483,12 +571,25 @@ a { color: var(--gold); text-decoration: none; }
     <strong style="color:var(--text2);">Gate Status:</strong> <span style="color:var(--amber);">PASSED C3 72/100 ≥ 49 threshold</span>
   </div>
 
-  <!-- Subtabs -->
+  <!-- Subtabs — desktop pills -->
   <div class="subtab-nav">
     <button class="subtab-btn active" onclick="switchSubtab('mp', 'briefing', this)">Situational Brief</button>
     <button class="subtab-btn" onclick="switchSubtab('mp', 'people', this)">People in the Room</button>
     <button class="subtab-btn" onclick="switchSubtab('mp', 'alerts', this)">Live Alerts</button>
     <button class="subtab-btn" onclick="switchSubtab('mp', 'decisions', this)">Five Decisions</button>
+  </div>
+  <!-- Subtabs — mobile dropdown -->
+  <div class="subtab-mobile" id="mp-mobile">
+    <button class="subtab-mobile-btn" onclick="toggleSubtabMenu('mp')">
+      <span class="subtab-mobile-label">Situational Brief</span>
+      <svg viewBox="0 0 10 6" width="10" height="6" fill="none"><path d="M1 1l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="subtab-mobile-menu" id="mp-mobile-menu">
+      <button class="active" onclick="mobileSubtab('mp','briefing','Situational Brief')">Situational Brief</button>
+      <button onclick="mobileSubtab('mp','people','People in the Room')">People in the Room</button>
+      <button onclick="mobileSubtab('mp','alerts','Live Alerts')">Live Alerts</button>
+      <button onclick="mobileSubtab('mp','decisions','Five Decisions')">Five Decisions</button>
+    </div>
   </div>
 
   <!-- Briefing -->
@@ -672,11 +773,25 @@ a { color: var(--gold); text-decoration: none; }
     <strong style="color:var(--text2);">Gate:</strong> <span style="color:var(--amber);">PASSED C3 72/100</span>
   </div>
 
+  <!-- Subtabs — desktop pills -->
   <div class="subtab-nav">
     <button class="subtab-btn active" onclick="switchSubtab('to', 'profiles', this)">People</button>
     <button class="subtab-btn" onclick="switchSubtab('to', 'pfas', this)">PFAS Imperative</button>
     <button class="subtab-btn" onclick="switchSubtab('to', 'apac', this)">APAC Succession</button>
     <button class="subtab-btn" onclick="switchSubtab('to', 'solve', this)">LOCTITE SOLVE</button>
+  </div>
+  <!-- Subtabs — mobile dropdown -->
+  <div class="subtab-mobile" id="to-mobile">
+    <button class="subtab-mobile-btn" onclick="toggleSubtabMenu('to')">
+      <span class="subtab-mobile-label">People</span>
+      <svg viewBox="0 0 10 6" width="10" height="6" fill="none"><path d="M1 1l4 4 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="subtab-mobile-menu" id="to-mobile-menu">
+      <button class="active" onclick="mobileSubtab('to','profiles','People')">People</button>
+      <button onclick="mobileSubtab('to','pfas','PFAS Imperative')">PFAS Imperative</button>
+      <button onclick="mobileSubtab('to','apac','APAC Succession')">APAC Succession</button>
+      <button onclick="mobileSubtab('to','solve','LOCTITE SOLVE')">LOCTITE SOLVE</button>
+    </div>
   </div>
 
   <!-- People -->
@@ -1031,6 +1146,63 @@ function switchSubtab(prefix, id, btn) {
   document.getElementById(prefix + '-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+// Hamburger menu
+function toggleMenu() {
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('navMenu');
+  const backdrop = document.getElementById('navBackdrop');
+  const isOpen = menu.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  menu.classList.toggle('open', !isOpen);
+  backdrop.classList.toggle('open', !isOpen);
+}
+
+// Mobile subtab dropdown toggle
+function toggleSubtabMenu(prefix) {
+  const menu = document.getElementById(prefix + '-mobile-menu');
+  const btn = document.querySelector('#' + prefix + '-mobile .subtab-mobile-btn');
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+
+// Mobile subtab switch
+function mobileSubtab(prefix, id, label) {
+  // Switch panel
+  document.querySelectorAll('[id^="' + prefix + '-"]').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(prefix + '-' + id);
+  if (panel) panel.classList.add('active');
+  // Sync desktop pills
+  const tab = document.querySelector('#tab-' + (prefix === 'mp' ? 'meetingprep' : 'techops'));
+  if (tab) tab.querySelectorAll('.subtab-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === label || b.onclick?.toString().includes(id));
+  });
+  // Update mobile label
+  const labelEl = document.querySelector('#' + prefix + '-mobile .subtab-mobile-label');
+  if (labelEl) labelEl.textContent = label;
+  // Sync mobile menu active states
+  const menuBtns = document.querySelectorAll('#' + prefix + '-mobile-menu button');
+  menuBtns.forEach(b => b.classList.toggle('active', b.textContent.trim() === label));
+  // Close menu
+  toggleSubtabMenu(prefix);
+}
+
+// Navigate to Ventures tab from menu
+function navToVentures(e) {
+  e.preventDefault();
+  toggleMenu();
+  const btn = document.querySelectorAll('.tab-btn')[3];
+  if (btn) { btn.click(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
+
+// Hash-based tab activation (e.g. /clients/henkel-at#ventures)
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash === '#ventures') {
+    const btn = document.querySelectorAll('.tab-btn')[3];
+    if (btn) btn.click();
+  }
+});
 
 // Animate ring scores on load
 window.addEventListener('load', () => {
