@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Henkel Adhesive Technologies — AT Separation Intelligence | F&T</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c14; --surface: #0f1623; --card: #141d2e; --card2: #1a2540;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+  --text: #e8ecf4; --text2: #8b97b0; --text3: #5a6680;
+  --gold: #c9a84c; --gold2: #e8c96a; --gold-dim: rgba(201,168,76,0.12);
+  --red: #e05252; --red-dim: rgba(224,82,82,0.1);
+  --amber: #e0923a; --amber-dim: rgba(224,146,58,0.1);
+  --green: #3cbb84; --green-dim: rgba(60,187,132,0.1);
+  --blue: #4a90d9; --blue-dim: rgba(74,144,217,0.1);
+  --purple: #8b6fd4; --purple-dim: rgba(139,111,212,0.1);
+  --font: 'Inter', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  --radius: 10px; --radius2: 6px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; min-height: 100vh; }
+a { color: var(--gold); text-decoration: none; }
+
+/* Site nav */
+.site-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; padding: 0 40px; height: 56px; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.site-nav .brand { font-family: sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); text-decoration: none; margin-right: 48px; white-space: nowrap; }
+.site-nav .brand:hover { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.site-nav .links { display: flex; gap: 36px; }
+.site-nav .links a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; color: rgba(255,255,255,0.28); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+.site-nav .links a:hover { color: rgba(255,255,255,0.65); }
+
+/* Report header */
+.ft-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 56px; z-index: 100; }
+.ft-brand { display: flex; align-items: center; gap: 12px; }
+.ft-brand-mark { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: var(--gold); background: var(--gold-dim); border: 1px solid var(--gold); padding: 3px 8px; border-radius: 3px; }
+.ft-company { font-size: 15px; font-weight: 600; color: var(--text); }
+.ft-badges { display: flex; gap: 8px; align-items: center; }
+.badge { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
+.badge-conf { background: rgba(224,82,82,0.12); color: var(--red); border: 1px solid rgba(224,82,82,0.3); }
+.badge-date { background: var(--card); color: var(--text3); border: 1px solid var(--border); font-family: var(--mono); }
+.badge-track { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(224,146,58,0.3); }
+
+/* Tab nav */
+.tab-nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn { font-size: 12px; font-weight: 500; color: var(--text3); padding: 14px 16px; border: none; background: none; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; letter-spacing: 0.03em; }
+.tab-btn:hover { color: var(--text2); }
+.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* Tab panels */
+.tab-panel { display: none; padding: 28px; max-width: 1300px; margin: 0 auto; }
+.tab-panel.active { display: block; }
+
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.card2 { background: var(--card2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 20px; }
+.card-title { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
+.card-title.gold { color: var(--gold); }
+.card-title.amber { color: var(--amber); }
+.card-title.red { color: var(--red); }
+.section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+/* Grids */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media(max-width:900px) { .grid-3,.grid-4 { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+@media(max-width:600px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+
+/* Ring scores */
+.rings-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-end; margin: 20px 0; }
+.ring-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.ring-svg { width: 96px; height: 96px; }
+.ring-track { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 8; }
+.ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); transform-origin: center; transform: rotate(-90deg); }
+.ring-center { font-family: var(--mono); font-size: 16px; font-weight: 500; fill: var(--text); }
+.ring-label { font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-align: center; color: var(--text3); text-transform: uppercase; line-height: 1.35; max-width: 90px; }
+
+/* MIF hero */
+.mif-hero { background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02)); border: 1px solid rgba(201,168,76,0.22); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px; }
+.mif-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.mif-text { font-size: 15px; font-style: italic; color: var(--text); line-height: 1.75; }
+
+/* Scenarios */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media(max-width:700px) { .scenario-grid { grid-template-columns: 1fr; } }
+.scenario-card { border-radius: var(--radius); padding: 20px; }
+.scenario-card.bear { background: rgba(224,82,82,0.08); border: 1px solid rgba(224,82,82,0.22); }
+.scenario-card.base { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.22); }
+.scenario-card.bull { background: rgba(60,187,132,0.08); border: 1px solid rgba(60,187,132,0.22); }
+.scenario-prob { font-family: var(--mono); font-size: 32px; font-weight: 500; line-height: 1; }
+.bear .scenario-prob { color: var(--red); }
+.base .scenario-prob { color: var(--blue); }
+.bull .scenario-prob { color: var(--green); }
+.scenario-name { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin: 6px 0 4px; color: var(--text2); }
+.scenario-ev { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; font-family: var(--mono); }
+.scenario-note { font-size: 11px; color: var(--text3); line-height: 1.55; }
+
+/* Decision cards */
+.decision-card { border-radius: var(--radius2); padding: 14px 16px; margin-bottom: 10px; background: var(--card); border-left: 3px solid var(--border2); }
+.decision-card.critical { border-left-color: var(--red); }
+.decision-card.high { border-left-color: var(--amber); }
+.decision-card.med { border-left-color: var(--blue); }
+.decision-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.decision-title { font-size: 13px; font-weight: 600; color: var(--text); flex: 1; min-width: 200px; }
+.badge-crit { background: rgba(224,82,82,0.12); color: var(--red); border: 1px solid rgba(224,82,82,0.3); }
+.badge-high { background: rgba(224,146,58,0.12); color: var(--amber); border: 1px solid rgba(224,146,58,0.3); }
+.badge-med { background: rgba(74,144,217,0.12); color: var(--blue); border: 1px solid rgba(74,144,217,0.3); }
+.badge-opening { background: rgba(224,146,58,0.12); color: var(--amber); border: 1px solid rgba(224,146,58,0.3); }
+.decision-meta { font-size: 11px; color: var(--text3); display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+.decision-body { font-size: 12px; color: var(--text2); line-height: 1.65; margin-top: 8px; }
+.decision-objection { font-size: 11px; color: var(--text3); background: var(--card2); border-radius: var(--radius2); padding: 8px 12px; margin-top: 8px; line-height: 1.55; }
+.decision-objection strong { color: var(--amber); }
+
+/* Verdict block */
+.verdict-block { background: var(--card2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+.verdict-badge-lg { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; padding: 8px 18px; border-radius: 6px; text-transform: uppercase; }
+.verdict-badge-lg.nogo { background: rgba(224,82,82,0.12); color: var(--red); border: 1px solid rgba(224,82,82,0.3); }
+.verdict-badge-lg.cgo { background: rgba(224,146,58,0.12); color: var(--amber); border: 1px solid rgba(224,146,58,0.3); }
+.verdict-badge-lg.go { background: rgba(60,187,132,0.12); color: var(--green); border: 1px solid rgba(60,187,132,0.3); }
+.verdict-conviction { font-family: var(--mono); font-size: 30px; color: var(--amber); line-height: 1; }
+.verdict-conviction.red { color: var(--red); }
+.verdict-conviction.green { color: var(--green); }
+.verdict-label { font-size: 9px; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+.verdict-text { font-size: 12px; color: var(--text2); line-height: 1.65; flex: 1; min-width: 280px; }
+
+/* CoI hero */
+.coi-hero { text-align: center; padding: 28px; background: linear-gradient(135deg, rgba(224,82,82,0.06), rgba(224,146,58,0.04)); border: 1px solid rgba(224,82,82,0.18); border-radius: var(--radius); }
+.coi-figure { font-family: var(--mono); font-size: 42px; font-weight: 500; color: var(--red); line-height: 1; }
+.coi-plus { font-family: var(--mono); font-size: 22px; color: var(--amber); margin-top: 6px; }
+.coi-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text3); margin-top: 6px; }
+.coi-breakdown { font-size: 11px; color: var(--text3); margin-top: 10px; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* Subtabs */
+.subtab-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.subtab-btn { font-size: 11px; font-weight: 500; color: var(--text3); padding: 7px 14px; border: 1px solid var(--border); background: var(--card); border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+.subtab-btn:hover { border-color: var(--border2); color: var(--text2); }
+.subtab-btn.active { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
+.subtab-panel { display: none; }
+.subtab-panel.active { display: block; }
+
+/* Prose */
+.prose { color: var(--text2); font-size: 13px; line-height: 1.75; }
+.prose p { margin-bottom: 14px; }
+.prose strong, .prose b { color: var(--text); font-weight: 600; }
+.prose ul, .prose ol { margin: 8px 0 14px 18px; }
+.prose li { margin-bottom: 6px; }
+.prose h4 { font-size: 13px; font-weight: 700; color: var(--text); margin: 18px 0 8px; }
+.prose h3 { font-size: 15px; font-weight: 700; color: var(--text); margin: 22px 0 10px; }
+.prose blockquote { border-left: 3px solid var(--gold); padding: 10px 16px; background: var(--gold-dim); border-radius: 0 6px 6px 0; margin: 14px 0; font-style: italic; color: var(--text); }
+
+/* Data table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
+.data-table th { background: var(--card2); color: var(--text3); font-weight: 600; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border2); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+.data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; line-height: 1.55; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table td:first-child { color: var(--text); font-weight: 500; }
+
+/* Person cards */
+.person-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+.person-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.person-title { font-size: 11px; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 14px; }
+.person-section { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin: 14px 0 6px; }
+.person-body { font-size: 12px; color: var(--text2); line-height: 1.7; }
+.person-frame { background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.2); border-radius: var(--radius2); padding: 10px 14px; margin-top: 12px; font-size: 12px; color: var(--text); font-style: italic; line-height: 1.6; }
+
+/* Alert cards */
+.alert-block { border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; }
+.alert-block.critical { background: rgba(224,82,82,0.07); border: 1px solid rgba(224,82,82,0.25); }
+.alert-block.high { background: rgba(224,146,58,0.07); border: 1px solid rgba(224,146,58,0.25); }
+.alert-block.medium { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); }
+.alert-block.watch { background: rgba(139,111,212,0.07); border: 1px solid rgba(139,111,212,0.2); }
+.alert-label { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
+.alert-block.critical .alert-label { color: var(--red); }
+.alert-block.high .alert-label { color: var(--amber); }
+.alert-block.medium .alert-label { color: var(--blue); }
+.alert-block.watch .alert-label { color: var(--purple); }
+.alert-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.alert-body { font-size: 12px; color: var(--text2); line-height: 1.65; }
+.alert-deadline { font-size: 11px; font-family: var(--mono); margin-top: 8px; }
+.alert-block.critical .alert-deadline { color: var(--red); }
+.alert-block.high .alert-deadline { color: var(--amber); }
+.alert-block.medium .alert-deadline { color: var(--blue); }
+.alert-block.watch .alert-deadline { color: var(--purple); }
+
+/* Trigger score */
+.trigger-block { background: var(--card2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.trigger-score-val { font-family: var(--mono); font-size: 48px; font-weight: 500; color: var(--amber); line-height: 1; }
+.trigger-score-denom { font-family: var(--mono); font-size: 20px; color: var(--text3); }
+.trigger-window { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-top: 4px; }
+.trigger-detail { flex: 1; min-width: 280px; }
+.trigger-table { width: 100%; font-size: 11px; margin-top: 8px; }
+.trigger-table td { padding: 4px 8px; border-bottom: 1px solid var(--border); color: var(--text2); }
+.trigger-table td:first-child { color: var(--text3); font-family: var(--mono); white-space: nowrap; }
+.trigger-table td:last-child { text-align: right; }
+.t-open { color: var(--amber); }
+.t-opening { color: var(--blue); }
+.t-closing { color: var(--text3); }
+.t-closed { color: var(--red); }
+
+/* Ventures section */
+.ventures-hero { background: linear-gradient(135deg, rgba(139,111,212,0.08), rgba(139,111,212,0.02)); border: 1px solid rgba(139,111,212,0.22); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; }
+.ventures-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple); background: var(--purple-dim); border: 1px solid rgba(139,111,212,0.3); padding: 3px 8px; border-radius: 3px; margin-bottom: 10px; }
+
+/* Stat blocks */
+.stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.stat-item { background: var(--card2); border: 1px solid var(--border); border-radius: var(--radius2); padding: 12px 16px; flex: 1; min-width: 120px; }
+.stat-val { font-family: var(--mono); font-size: 20px; font-weight: 500; color: var(--text); line-height: 1; }
+.stat-val.gold { color: var(--gold); }
+.stat-val.amber { color: var(--amber); }
+.stat-val.red { color: var(--red); }
+.stat-val.green { color: var(--green); }
+.stat-val.purple { color: var(--purple); }
+.stat-key { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-top: 4px; }
+
+/* Footer */
+.footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-left { font-size: 11px; color: var(--text3); line-height: 1.6; }
+.footer-right { font-family: var(--mono); font-size: 10px; color: var(--text3); text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- Site nav -->
+<nav class="site-nav">
+  <a href="https://www.frictionandtoil.com" class="brand">F&T</a>
+  <div class="links">
+    <a href="https://www.frictionandtoil.com/clients/henkel">Package Index</a>
+    <a href="https://www.frictionandtoil.com/clients/henkel-group">Group Report</a>
+    <a href="https://www.frictionandtoil.com">F&T Intelligence</a>
+  </div>
+</nav>
+
+<!-- Report header -->
+<header class="ft-header">
+  <div class="ft-brand">
+    <span class="ft-brand-mark">F&T</span>
+    <span class="ft-company">Henkel Adhesive Technologies</span>
+  </div>
+  <div class="ft-badges">
+    <span class="badge badge-track">AT Separation Intelligence</span>
+    <span class="badge badge-conf">Strictly Confidential</span>
+    <span class="badge badge-date">22 April 2026</span>
+  </div>
+</header>
+
+<!-- Tab navigation -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('overview', this)">Overview</button>
+  <button class="tab-btn" onclick="switchTab('meetingprep', this)">Meeting Prep</button>
+  <button class="tab-btn" onclick="switchTab('techops', this)">Tech &amp; Ops</button>
+  <button class="tab-btn" onclick="switchTab('ventures', this)">Ventures</button>
+  <button class="tab-btn" onclick="switchTab('risk', this)">Risk Register</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     TAB 1 — OVERVIEW
+═══════════════════════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+
+  <!-- MIF -->
+  <div class="mif-hero">
+    <p class="mif-label">Most Important Finding</p>
+    <p class="mif-text">Henkel Adhesive Technologies has spent €3.45 billion in 24 months building itself into a Sika-comparable specialty-chemicals platform — a public-company-in-waiting priced at ~€36B on Sika's 15.4× multiple against a Henkel Group EV of ~€34B. Three preparation tracks must run concurrently from Q2 2026 to preserve the 2028–29 CONDITIONAL GO window. Five decisions must be commissioned in the next 90 days. One is irreversible on 25 May 2026.</p>
+  </div>
+
+  <!-- Key stats row -->
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-val gold">~€36B</div>
+      <div class="stat-key">AT Standalone EV</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val amber">52 / 100</div>
+      <div class="stat-key">Trigger Score — Opening</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--blue)">2028–29</div>
+      <div class="stat-key">Conditional GO Window</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val red">25 May 2026</div>
+      <div class="stat-key">PFAS Derogation Deadline</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val amber">€211–458M</div>
+      <div class="stat-key">12-Month CoI — Direct</div>
+    </div>
+  </div>
+
+  <!-- Ring scores -->
+  <p class="section-title">Intelligence Rings — F&T Composite 68 / 100</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="rings-row" id="rings-container">
+
+      <div class="ring-item">
+        <svg class="ring-svg" viewBox="0 0 96 96">
+          <circle class="ring-track" cx="48" cy="48" r="44"/>
+          <circle class="ring-fill" cx="48" cy="48" r="44" stroke="var(--green)"
+            stroke-dasharray="276.46" stroke-dashoffset="276.46" data-target="71.88" id="r1"/>
+          <text class="ring-center" x="48" y="53" text-anchor="middle">74</text>
+        </svg>
+        <span class="ring-label">Strategic<br>Health</span>
+      </div>
+
+      <div class="ring-item">
+        <svg class="ring-svg" viewBox="0 0 96 96">
+          <circle class="ring-track" cx="48" cy="48" r="44"/>
+          <circle class="ring-fill" cx="48" cy="48" r="44" stroke="var(--amber)"
+            stroke-dasharray="276.46" stroke-dashoffset="276.46" data-target="121.64" id="r2"/>
+          <text class="ring-center" x="48" y="53" text-anchor="middle">56</text>
+        </svg>
+        <span class="ring-label">Web<br>Presence</span>
+      </div>
+
+      <div class="ring-item">
+        <svg class="ring-svg" viewBox="0 0 96 96">
+          <circle class="ring-track" cx="48" cy="48" r="44"/>
+          <circle class="ring-fill" cx="48" cy="48" r="44" stroke="var(--blue)"
+            stroke-dasharray="276.46" stroke-dashoffset="276.46" data-target="88.47" id="r3"/>
+          <text class="ring-center" x="48" y="53" text-anchor="middle">68</text>
+        </svg>
+        <span class="ring-label">Market<br>Position</span>
+      </div>
+
+      <div class="ring-item">
+        <svg class="ring-svg" viewBox="0 0 96 96">
+          <circle class="ring-track" cx="48" cy="48" r="44"/>
+          <circle class="ring-fill" cx="48" cy="48" r="44" stroke="var(--blue)"
+            stroke-dasharray="276.46" stroke-dashoffset="276.46" data-target="94.00" id="r4"/>
+          <text class="ring-center" x="48" y="53" text-anchor="middle">66</text>
+        </svg>
+        <span class="ring-label">Operational<br>Readiness</span>
+      </div>
+
+      <div class="ring-item">
+        <svg class="ring-svg" viewBox="0 0 96 96">
+          <circle class="ring-track" cx="48" cy="48" r="44"/>
+          <circle class="ring-fill" cx="48" cy="48" r="44" stroke="var(--gold)"
+            stroke-dasharray="276.46" stroke-dashoffset="276.46" data-target="88.47" id="rc"/>
+          <text class="ring-center" x="48" y="53" text-anchor="middle">68</text>
+        </svg>
+        <span class="ring-label">F&T<br>Composite</span>
+      </div>
+
+    </div>
+    <p style="font-size:11px;color:var(--text3);margin-top:4px;">Ring 1: STRONG — global #1 moat + M&A platform. Ring 2: COMPETENT but investor-unready — 12–18 month fix required. Ring 3: DUAL READING — blended 13% share; Tier-A dominance in threadlockers + EV structural adhesives. Ring 4: MODERATE — S/4HANA ERP fragmentation + three concurrent M&A integrations.</p>
+  </div>
+
+  <!-- Trigger score -->
+  <p class="section-title">Transformational Trigger Score</p>
+  <div class="trigger-block" style="margin-bottom:24px;">
+    <div style="text-align:center;">
+      <div><span class="trigger-score-val">52</span><span class="trigger-score-denom"> /100</span></div>
+      <div class="trigger-window">Window: Opening</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px;">One CLOSED binary blocking full OPEN</div>
+    </div>
+    <div class="trigger-detail">
+      <table class="trigger-table">
+        <tr><td>T3a — PFAS May 25 deadline</td><td class="t-open">OPEN · 10</td></tr>
+        <tr><td>T8 — APAC leadership vacancy</td><td class="t-open">OPEN · 10</td></tr>
+        <tr><td>T6 — M&A platform build</td><td class="t-opening">OPENING · 10</td></tr>
+        <tr><td>T9 — FTC Liquid Nails (SDNY)</td><td class="t-open">OPEN · 7</td></tr>
+        <tr><td>T13 — PFAS reformulation + CSRD</td><td class="t-open">OPEN · 7</td></tr>
+        <tr><td>T15 — Sperrfrist H2 2031</td><td class="t-opening">OPENING · 7</td></tr>
+        <tr><td>T3b — SAP S/4HANA readiness</td><td class="t-opening">OPENING · 7</td></tr>
+        <tr><td>T16 — Data sovereignty gap</td><td class="t-opening">OPENING · 7</td></tr>
+        <tr><td>T10 — Conglomerate discount</td><td class="t-opening">OPENING · 6</td></tr>
+        <tr><td>T7a — Bagel-Trah family pool</td><td class="t-closed">CLOSED · 0</td></tr>
+        <tr><td>T7b — No buy-side mandates</td><td class="t-closing">CLOSING · 0</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Separation verdicts -->
+  <p class="section-title">Separation Window Verdicts</p>
+  <div class="verdict-block">
+    <div>
+      <div class="verdict-badge-lg nogo">NO-GO</div>
+      <div class="verdict-label" style="margin-top:6px;">36-month horizon</div>
+    </div>
+    <div>
+      <div class="verdict-conviction red">22<span style="font-size:16px;">/100</span></div>
+      <div class="verdict-label">Conviction</div>
+    </div>
+    <p class="verdict-text">Three concurrent M&A integrations (Stahl, ATP, Seal for Life), SAP S/4HANA incomplete, no buy-side advisors mandated, Sperrfrist running. Probability of separation within 36 months: 15–20%.</p>
+  </div>
+
+  <div class="verdict-block">
+    <div>
+      <div class="verdict-badge-lg cgo">Conditional GO</div>
+      <div class="verdict-label" style="margin-top:6px;">2028–29 window</div>
+    </div>
+    <div>
+      <div class="verdict-conviction">62<span style="font-size:16px;">/100</span></div>
+      <div class="verdict-label">Conviction</div>
+    </div>
+    <p class="verdict-text">S/4HANA and Stahl integrations complete, PFAS derogation resolved, AT D&A disclosed, APAC succession named. Five 90-day decisions must be commissioned in Q2–Q3 2026 to preserve this window.</p>
+  </div>
+
+  <div class="verdict-block">
+    <div>
+      <div class="verdict-badge-lg go">GO</div>
+      <div class="verdict-label" style="margin-top:6px;">2030–31 optimal window</div>
+    </div>
+    <div>
+      <div class="verdict-conviction" style="color:var(--green);">74<span style="font-size:16px;">/100</span></div>
+      <div class="verdict-label">Conviction</div>
+    </div>
+    <p class="verdict-text">Optimal window preceding 2033 family pool expiry. Dual-track UmwG §15 pro-rata demerger — AT and Consumer Brands shares distributed pro-rata to all Henkel shareholders. Family pool proportional ownership preserved.</p>
+  </div>
+
+  <!-- Scenarios -->
+  <p class="section-title">Scenario Analysis — 2028–31 Separation EV</p>
+  <div class="scenario-grid">
+    <div class="scenario-card bear">
+      <div class="scenario-prob">25%</div>
+      <div class="scenario-name">Bear</div>
+      <div class="scenario-ev">€19–22B</div>
+      <p class="scenario-note">BYD/CATL in-source structural adhesives; PFAS derogation denied; Bagel-Trah rejects separation at CMD 2026. APAC revenue compression €400–500M. LOCTITE SOLVE moat unpriced.</p>
+    </div>
+    <div class="scenario-card base">
+      <div class="scenario-prob">50%</div>
+      <div class="scenario-name">Base</div>
+      <div class="scenario-ev">€29–34B</div>
+      <p class="scenario-note">CONDITIONAL GO 2028–29. SAP on track, Stahl integrated, PFAS managed, D&A disclosed. Sika 13× multiple on pro-forma EBITDA ~€2.34B. AT D&A voluntary disclosure compresses conglomerate discount.</p>
+    </div>
+    <div class="scenario-card bull">
+      <div class="scenario-prob">25%</div>
+      <div class="scenario-name">Bull</div>
+      <div class="scenario-ev">€33–36B+</div>
+      <p class="scenario-note">Activist trigger (Elliott/Cevian build-up) or Bagel-Trah endorsement at CMD 2026 accelerates to full GO 2028. LOCTITE SOLVE CAIO appointed Q2 2026. Full Sika 15.4× on ~€2.34B EBITDA.</p>
+    </div>
+  </div>
+
+  <!-- CoI -->
+  <p class="section-title">Cost of Inaction — 12 Months</p>
+  <div class="coi-hero" style="margin-bottom:16px;">
+    <div class="coi-figure">€211–458M</div>
+    <div class="coi-label">Direct Cash Leakage — 12 Months</div>
+    <div class="coi-plus">+ €1.3–2.0B Stranded Enterprise Value</div>
+    <div class="coi-breakdown">
+      SAP non-decision: €120–180M cash overrun (€10–15M/month) · PFAS reformulation envelope: €300–500M · EV positioning margin loss: €14–23M EBITDA · Stahl integration risk: €77–255M uncaptured EBITDA · KGaA governance discount: €1.0–1.5B stranded EV
+    </div>
+  </div>
+
+  <!-- Platform thesis -->
+  <p class="section-title">Platform Build Thesis — M&A Wave 2024–26</p>
+  <div class="card">
+    <table class="data-table">
+      <thead><tr><th>Deal</th><th>Close</th><th>EV</th><th>Revenue</th><th>Strategic Rationale</th></tr></thead>
+      <tbody>
+        <tr><td>Stahl Group (ex-Wendel)</td><td>H2 2026</td><td>€2.1B</td><td>€725M</td><td>Specialty coatings — leather, flex-pack, automotive. 19.5% operating margin. Sika Industry segment mirror.</td></tr>
+        <tr><td>ATP Adhesive Systems (ex-Arsenal)</td><td>Jan 2026</td><td>~€350M est.</td><td>~€270M</td><td>PSA, flexible packaging, industrial tapes. Deepens pressure-sensitive adhesive coverage.</td></tr>
+        <tr><td>Seal for Life Industries (ex-Arsenal)</td><td>Apr 2024</td><td>Undisclosed</td><td>~€250M</td><td>Infrastructure / pipeline / renewables coatings. EV infrastructure spend thesis.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text3);margin-top:10px;">Post-deal revenue run-rate: ~€11.9B. Post-Stahl EBITDA margin: 19.7–20.1% pre-synergies (Sika comparable: 21–22%). Total M&A committed in 24 months: €3.45B — 88% of five-year AT M&A budget. Seal for Life acquisition price not publicly disclosed; €600M cited as analyst estimate only.</p>
+  </div>
+
+</div><!-- /overview -->
+
+
+<!-- ═══════════════════════════════════════════════
+     TAB 2 — MEETING PREP
+═══════════════════════════════════════════════ -->
+<div id="tab-meetingprep" class="tab-panel">
+
+  <div class="mif-hero" style="margin-bottom:20px;">
+    <p class="mif-label">Meeting Prep Brief v2.0 — Commissioning the Five 90-Day Decisions</p>
+    <p class="mif-text">"We are not here to discuss separation. We are here to commission the preparation work that preserves separation as an option — and to ensure the board is aware of one irreversible gate that closes on 25 May 2026."</p>
+  </div>
+
+  <div style="font-size:12px;color:var(--text3);margin-bottom:20px;">
+    <strong style="color:var(--text2);">Primary Contact:</strong> Marco Swoboda (CFO) &nbsp;·&nbsp;
+    <strong style="color:var(--text2);">Secondary:</strong> Carsten Knobel (CEO) &nbsp;·&nbsp;
+    <strong style="color:var(--text2);">Governance Gate:</strong> Simone Bagel-Trah (Chair) &nbsp;·&nbsp;
+    <strong style="color:var(--text2);">Gate Status:</strong> <span style="color:var(--amber);">PASSED C3 72/100 ≥ 49 threshold</span>
+  </div>
+
+  <!-- Subtabs -->
+  <div class="subtab-nav">
+    <button class="subtab-btn active" onclick="switchSubtab('mp', 'briefing', this)">Situational Brief</button>
+    <button class="subtab-btn" onclick="switchSubtab('mp', 'people', this)">People in the Room</button>
+    <button class="subtab-btn" onclick="switchSubtab('mp', 'alerts', this)">Live Alerts</button>
+    <button class="subtab-btn" onclick="switchSubtab('mp', 'decisions', this)">Five Decisions</button>
+  </div>
+
+  <!-- Briefing -->
+  <div id="mp-briefing" class="subtab-panel active">
+    <div class="prose">
+      <p>Henkel Adhesive Technologies is the global number one in industrial adhesives, sealants, and functional coatings — a €10.67B platform with a 16.7% adjusted EBIT margin that has executed €3.45B of M&amp;A in 24 months at Sika-comparable multiples, runs its own Executive Committee and investor communications infrastructure, and on Sika's current LTM multiple of 15.4× applied to AT's pro-forma EBITDA of ~€2.34B, prices as a standalone at approximately €36B — against a Henkel Group EV today of ~€34B. The arithmetic is not advisory opinion: it is public market math available to every institutional investor who can read a Bloomberg screen. Consumer Brands is implicitly valued at near-zero or negative in every sum-of-the-parts model the sell-side can construct without a prospectus.</p>
+      <p><strong>What this meeting is not:</strong> A conversation about whether to separate AT. That decision belongs to a future Shareholders' Committee ratification process, requires Bagel-Trah ↔ von Unger alignment, and cannot be taken until the §15 UmwStG Sperrfrist expires in H2 2031 on a tax-neutral basis. No one in this meeting should walk away feeling they have been asked to endorse a separation.</p>
+      <p><strong>What this meeting is:</strong> A conversation about commissioning preparation work — three legal opinions, one IT programme decision, and one regulatory filing — that must begin by specific calendar dates if the 2028–31 separation optionality is to be preserved. The total cost of commissioning this work is structurally immaterial relative to the €211–458M direct leakage and €1.3–2.0B stranded EV that accumulates over 12 months of inaction.</p>
+      <p><strong>The single most important number:</strong> €10–15M. That is the monthly carve-out cost that accumulates for every month the SAP AT-specific S/4HANA instance decision is deferred. A 12-month delay is €120–180M in direct cash overrun — larger than the combined annual retainer of every advisor AT would need to commission full separation preparation work. The decision is free; the non-decision is not.</p>
+      <p><strong>The irreversible gate:</strong> 25 May 2026. The ECHA Scientific Committee on Socio-Economic Analysis (SEAC) consultation on the PFAS Universal Restriction closes on that date. No extension has been announced. If AT has not filed a product-specific PFAS derogation for its aerospace structural adhesive and Bonderite automotive lines before that date, the derogation path is permanently foreclosed. FEICA's industry consortia response cannot protect AT's OEM product lines, because FEICA represents the full European adhesives sector and cannot argue AT's proprietary qualification profiles to ECHA on AT's behalf. Solvay SA made this filing in 2024 for analogous fluoropolymer applications. AT has not.</p>
+      <p><strong>Entry point:</strong> Swoboda first. Three of the five 90-day decisions are anchored to the CFO. The financial cost-of-inaction framing is the most actionable register for commissioning preparation work. Knobel owns the dual-transformation thesis and provides strategic legitimacy. Bagel-Trah is the governance gate and should receive the Chair Mirror Brief separately.</p>
+    </div>
+  </div>
+
+  <!-- People -->
+  <div id="mp-people" class="subtab-panel">
+
+    <div class="person-card">
+      <div class="person-name">Marco Swoboda</div>
+      <div class="person-title">Group CFO, Henkel AG &amp; Co. KGaA</div>
+      <div class="person-section">Background</div>
+      <div class="person-body">CFO since 2017. Cognis alumni — shared network with EVP Mark Dorn (both at Cognis 1999–2008). Co-chaired the October 2025 AT-only investor webinar alongside Dorn. That was not an accident. Swoboda is the decision-maker on three of the five 90-day items: SAP instance pivot, §190 legal opinion, and voluntary D&A disclosure.</div>
+      <div class="person-section">Decision-Making Style</div>
+      <div class="person-body">Financial engineer. Thinks in balance sheet architecture, cash conversion, and credit rating sensitivity. The €8B EV swing from AT's EBITDA margin opacity is the right language. He controls the segment reporting decision and knows the D&A allocation issue better than anyone in the company.</div>
+      <div class="person-section">Professional Anxiety</div>
+      <div class="person-body">The Sperrfrist. The OLAPLEX and NYM acquisitions triggered the §15 UmwStG five-year lock on his watch. The legal opinion quantifying the €1.0–1.8B retroactive tax penalty has not been commissioned. That gap sits on his desk.</div>
+      <div class="person-section">What He Wants</div>
+      <div class="person-body">Permission — or at minimum non-objection — from Knobel and Bagel-Trah to commission the SAP instance decision, the §190 legal opinion, and the Sperrfrist quantification without those acts being interpreted as a commitment to separate. He needs political cover for preparation work that will become visible inside the organisation.</div>
+      <div class="person-section">What He Won't Say</div>
+      <div class="person-body">That the October 2025 AT-only investor webinar was, in his view, the inflection point at which AT's standalone capital-markets identity became a market fact rather than an internal option.</div>
+      <div class="person-frame">Frame for Swoboda: The CFO version of the Burning Platform — the €8B EV swing, the SAP monthly cost clock, the Sperrfrist quantification gap. His decisions are technical and delegable; they do not require Bagel-Trah ratification to commission. Make that explicit.</div>
+    </div>
+
+    <div class="person-card">
+      <div class="person-name">Carsten Knobel</div>
+      <div class="person-title">Group CEO, Henkel AG &amp; Co. KGaA</div>
+      <div class="person-section">Background</div>
+      <div class="person-body">CEO since January 2020. His dual-transformation thesis — AT as the growth engine, Consumer Brands as the turnaround candidate — has structurally delivered both halves. The thesis is within 24 months of its logical completion. His predecessor Semrau departed following an activist campaign (Bluebell Capital, 2021) targeting exactly the structural discount this brief addresses.</div>
+      <div class="person-section">Decision-Making Style</div>
+      <div class="person-body">Transformer. Frames decisions in terms of the value creation thesis, not operational detail. The right language is completion — the dual-transformation narrative completing on his governance horizon, the €1.0–1.5B governance discount unlocked by the §190 AG-conversion, separation optionality preserved rather than announced. Do not approach with SAP programme costs — those are Swoboda's domain.</div>
+      <div class="person-section">Professional Anxiety</div>
+      <div class="person-body">His contract. Inferred expiry 2028–29 from the Deutsche Bank Supervisory Board nomination (MEDIUM confidence — not publicly disclosed). If accurate, Knobel has one governance window in which to complete the dual-transformation thesis before succession changes the strategic context.</div>
+      <div class="person-section">What He Wants</div>
+      <div class="person-body">Strategic alignment from Bagel-Trah that commissioning preparation work is not interpreted as a family pool betrayal. His exposure is political, not financial — he needs to know that preparing the optionality, rather than announcing it, is consistent with the family's governance expectations.</div>
+      <div class="person-frame">Frame for Knobel: The dual-transformation completion thesis. The three decisions as the preparation work that completes what he started in 2020. The ask is "commission," not "decide." The framing is "preserve optionality," not "announce separation."</div>
+    </div>
+
+    <div class="person-card">
+      <div class="person-name">Simone Bagel-Trah</div>
+      <div class="person-title">Supervisory Board Chair / Henkel Family Pool Representative</div>
+      <div class="person-section">Background</div>
+      <div class="person-body">Chair since 2009. Descendant of Fritz Henkel (founder). Represents the 61.85% ordinary share bloc held by the Henkel Family Pool Aktienbindungsvertrag — approximately 178 parties, open-ended beyond 2033 (her stated position: the pool will not lapse). Active endorsement of separation is required; passive preservation of the pool is not the same as endorsement of a transaction.</div>
+      <div class="person-section">Decision-Making Style</div>
+      <div class="person-body">Continuity Steward. She asks one question about every significant decision: does this preserve or damage the family's 150-year legacy of unified stewardship? The word "split" will trigger resistance. The word "preservation" will open dialogue. A pro-rata UmwG §15 demerger, in which the family pool retains exactly proportional ownership of both entities, is structurally a value preservation event, not a breakup.</div>
+      <div class="person-section">Professional Anxiety</div>
+      <div class="person-body">Being surprised. The most damaging scenario: discovering that separation preparation work has been underway for months without her knowledge. The purpose of her involvement at this stage is precisely to prevent that surprise.</div>
+      <div class="person-section">What She Wants</div>
+      <div class="person-body">Assurance that "commissioning preparation" does not equal "announcing separation." She needs to hear: (1) the family pool's proportional ownership is preserved under any separation structure; (2) the Shareholders' Committee capital-markets bloc has not been privately mandated without her knowledge; (3) the Sperrfrist means no tax-neutral separation before H2 2031.</div>
+      <div class="person-frame">Frame for Bagel-Trah: The conglomerate discount as family value erosion, the pro-rata demerger as proportionality preservation. Do not lead with Bagel-Trah. Reach her through Swoboda's financial framing and Knobel's strategic narrative. Her involvement should feel like consultation, not confrontation.</div>
+    </div>
+
+  </div><!-- /mp-people -->
+
+  <!-- Alerts -->
+  <div id="mp-alerts" class="subtab-panel">
+
+    <div class="alert-block critical">
+      <div class="alert-label">Alert 1 — Critical / Irreversible</div>
+      <div class="alert-title">SEAC Consultation Closes 25 May 2026 — PFAS Derogation Window</div>
+      <div class="alert-body">The ECHA Scientific Committee on Socio-Economic Analysis consultation closes on 25 May 2026. No extension. FEICA's industry consortia response cannot protect AT's product-specific product lines — FEICA represents the full European adhesives sector and cannot argue AT's OEM-specific qualification profiles to ECHA. Solvay SA filed product-specific derogation requests for aerospace fluoropolymer applications through ECHA's own technical working groups in 2024. AT has not. The Commission opinion proceeds in 2027; transposition 2028–29 — the separation execution window — with AT's aerospace and automotive product lines unprotected.<br><br><strong>Governance question for the room:</strong> "Whose decision was it to rely on FEICA rather than file a Henkel-specific derogation — and when was that decision reviewed at board level?"</div>
+      <div class="alert-deadline">Deadline: 25 May 2026 — irreversible gate</div>
+    </div>
+
+    <div class="alert-block high">
+      <div class="alert-label">Alert 2 — Active / SDNY</div>
+      <div class="alert-title">FTC v. Henkel — Case No. 1:25-CV-10371-KPF, S.D.N.Y.</div>
+      <div class="alert-body">The Federal Trade Commission filed an antitrust complaint in the Southern District of New York in December 2025 to block Henkel's $725M acquisition of the Liquid Nails brand from PPG Industries. FTC alleges combined entity holds ~60% of US retail construction adhesives. FTC went directly to federal court for permanent injunction — bypassing traditional dual-track process. Parties agreed not to close until final judgment. No trial date set; case in pre-trial proceedings.<br><br><strong>Governance question:</strong> "Has the FTC SDNY case been modelled in the separation preparation scenario analysis — specifically, what does each resolution scenario (divestiture, block, settlement) mean for the US AT standalone narrative?"</div>
+      <div class="alert-deadline">Status: Pending SDNY — ongoing watch</div>
+    </div>
+
+    <div class="alert-block high">
+      <div class="alert-label">Alert 3 — Running / Structural</div>
+      <div class="alert-title">Sperrfrist Clock Running — H2 2031 Earliest Tax-Neutral Separation</div>
+      <div class="alert-body">The OLAPLEX and NYM acquisitions in early 2026 triggered the §15 UmwStG five-year lock. Tax-neutral separation under the UmwG §15 pro-rata demerger structure is not available before H2 2031. The €1.0–1.8B retroactive tax penalty for early separation has not been formally quantified in a commissioned legal opinion. One further Consumer Brands acquisition of ≥€500M before H2 2031 restarts the clock to 2033+.<br><br><strong>Governance question:</strong> "Is there a board-level decision framework for future CB M&A that accounts for Sperrfrist restart risk — and if not, who owns that guardrail?"</div>
+      <div class="alert-deadline">Clock started: early 2026 — earliest expiry H2 2031</div>
+    </div>
+
+    <div class="alert-block high">
+      <div class="alert-label">Alert 4 — Urgent / Operational</div>
+      <div class="alert-title">APAC Regional President Vacant — Carmen Chua Deceased 20 February 2026</div>
+      <div class="alert-body">Carmen Chua, AT APAC Regional President and AT Executive Committee member, was confirmed deceased on 20 February 2026. As of 22 April 2026 — 61 days later — no permanent successor has been named. APAC accounts for AT's highest-growth geography (EV/battery 15.6% CAGR). BYD and CATL are headquartered in China. Chinese domestic competitors (Shenzhen Jones Tech, Guangdong Liwang) are actively displacing AT in mass-market battery cell applications. For a separation narrative that depends on APAC as a primary growth pillar, a 61-day leadership vacancy is a standalone prospectus disclosure item.<br><br><strong>Governance question:</strong> "The APAC succession is Decision #4. It is now 61 days old. Who is the interim, who is in the succession pipeline, and what is the appointment timeline?"</div>
+      <div class="alert-deadline">Vacancy: 61 days — 30-day action deadline</div>
+    </div>
+
+  </div><!-- /mp-alerts -->
+
+  <!-- Decisions -->
+  <div id="mp-decisions" class="subtab-panel">
+
+    <div class="decision-card critical">
+      <div class="decision-header">
+        <div class="decision-title">Decision 2: File AT-Specific PFAS Derogation Before 25 May 2026</div>
+        <span class="badge badge-crit">30 Days — Critical</span>
+      </div>
+      <div class="decision-meta">
+        <span>Owner: Nigel Fay (CTO) + Head of Regulatory Affairs</span>
+        <span>Irreversible gate</span>
+      </div>
+      <div class="decision-body">Commission CTO Nigel Fay to file a product-specific PFAS derogation for AT's aerospace structural adhesive lines (Loctite EA 9365FST, EA 9394/9845 AERO) and Bonderite automotive metal pre-treatment applications directly with ECHA's technical working groups — distinct from, and in addition to, FEICA's industry consortia response. This decision is CTO-anchored and does not require Group CEO or Supervisory Board approval to execute; it requires a board-level confirmation that the FEICA-only approach has been reviewed and the AT-specific filing is authorised. That confirmation has not been recorded.</div>
+      <div class="decision-objection"><strong>Objection pre-empt:</strong> "We are already participating in FEICA." — Counter: FEICA participation is real but insufficient. FEICA cannot argue AT's OEM-specific qualification profiles to ECHA. The Solvay 2024 precedent confirms a separate company-specific filing is both procedurally available and strategically distinct. If the board has not explicitly decided that FEICA-only is AT's complete PFAS response, that decision has been made by default.</div>
+    </div>
+
+    <div class="decision-card high">
+      <div class="decision-header">
+        <div class="decision-title">Decision 4: Commission APAC Succession Plan</div>
+        <span class="badge badge-high">30 Days</span>
+      </div>
+      <div class="decision-meta">
+        <span>Owner: Mark Dorn (EVP AT) + Sylvie Nicol (CHRO)</span>
+        <span>Within AT operational authority</span>
+      </div>
+      <div class="decision-body">Name an interim APAC Regional President and commission a structured succession pipeline for the permanent appointment. The vacancy is 61 days old. The APAC seat is on the AT Executive Committee. Its absence is observable to CATL and BYD, whose contract renewals in the 2028 cycle will require a named AT senior counterpart with regional authority. The permanent appointment does not need to happen in 30 days — the named interim and committed timeline do.</div>
+    </div>
+
+    <div class="decision-card med">
+      <div class="decision-header">
+        <div class="decision-title">Decision 3: Determine AT-Specific SAP S/4HANA Instance</div>
+        <span class="badge badge-med">60 Days</span>
+      </div>
+      <div class="decision-meta">
+        <span>Owner: Marco Swoboda (CFO) + AT Head of Finance</span>
+        <span>€10–15M per month of non-decision</span>
+      </div>
+      <div class="decision-body">The Group-wide "RISE with SAP" programme is running without a disclosed AT-specific go-live decision. Each month of non-decision adds €10–15M to future carve-out execution cost. Decision binary: dedicated AT S/4HANA instance with committed go-live date (enabling 2028–29 carve-out readiness) or AT remains on Group shared clean core (meaning carve-out readiness depends on Group programme timeline).</div>
+      <div class="decision-objection"><strong>Objection pre-empt:</strong> "Separating the SAP instance will be expensive and disruptive." — Counter: Every month of non-decision costs €10–15M. The 12-month cost of deferral is €120–180M — enough to fund the full carve-out preparation programme. The disruption cost of a committed AT instance is one-time; the cost of non-decision is compounding.</div>
+    </div>
+
+    <div class="decision-card med">
+      <div class="decision-header">
+        <div class="decision-title">Decision 1: Commission §190 AG-Conversion + §15 Sperrfrist Legal Opinions</div>
+        <span class="badge badge-med">90 Days</span>
+      </div>
+      <div class="decision-meta">
+        <span>Owner: Marco Swoboda (CFO) + General Counsel</span>
+        <span>Two parallel opinions</span>
+      </div>
+      <div class="decision-body">Commission two parallel legal opinions: (1) a §190 UmwG feasibility opinion confirming the AG-conversion path for AT as a standalone public company, unlocking €1.0–1.5B of KGaA governance discount; (2) a §15 UmwStG Sperrfrist quantification opinion providing the Shareholders' Committee with a precise retroactive tax penalty figure — currently only a range (€1.0–1.8B ASSESSED). These are commissioning acts, not separation decisions. They produce information the Shareholders' Committee needs for any future capital-markets vote.</div>
+      <div class="decision-objection"><strong>Objection pre-empt:</strong> "Commissioning a §190 opinion will be read by the market as a separation signal." — Counter: Legal opinions are confidential instructions to counsel. They do not require disclosure until a transaction is public. The absence of an opinion — when the window has been available for 24 months — is the observable fact that investment banks track.</div>
+    </div>
+
+    <div class="decision-card med">
+      <div class="decision-header">
+        <div class="decision-title">Decision 5: Authorise Voluntary AT Segment D&A Disclosure</div>
+        <span class="badge badge-med">90 Days</span>
+      </div>
+      <div class="decision-meta">
+        <span>Owner: Marco Swoboda (CFO)</span>
+        <span>H2 2026 results or 2026 Annual Report</span>
+      </div>
+      <div class="decision-body">Authorise disclosure of AT segment-level depreciation and amortisation in the next reporting cycle. This single disclosure resolves the €8B EV swing in AT's standalone valuation, enables sell-side analysts to publish the first credible AT standalone model, and begins the market compression of the conglomerate discount without any separation announcement. It is an accounting disclosure decision, not a structural commitment.</div>
+    </div>
+
+  </div><!-- /mp-decisions -->
+
+</div><!-- /meetingprep -->
+
+
+<!-- ═══════════════════════════════════════════════
+     TAB 3 — TECH & OPS
+═══════════════════════════════════════════════ -->
+<div id="tab-techops" class="tab-panel">
+
+  <div class="mif-hero" style="margin-bottom:20px;">
+    <p class="mif-label">Tech &amp; Ops Lens — Three Operational Forcing Functions</p>
+    <p class="mif-text">The PFAS derogation is irreversible on 25 May 2026. The APAC succession is 61 days old and exposing AT's growth engine. The LOCTITE SOLVE AI moat cannot be priced for public markets without infrastructure that does not yet exist. All three are blocking the 2028–31 separation CONDITIONAL GO window.</p>
+  </div>
+
+  <div style="font-size:12px;color:var(--text3);margin-bottom:20px;">
+    <strong style="color:var(--text2);">Primary Contacts:</strong> Nigel Fay (CTO) · Mark Dorn (EVP AT) &nbsp;·&nbsp;
+    <strong style="color:var(--text2);">Primary Condition:</strong> <span style="color:var(--red);">PFAS Universal Restriction — C3 Regulatory Existential Risk</span> &nbsp;·&nbsp;
+    <strong style="color:var(--text2);">Gate:</strong> <span style="color:var(--amber);">PASSED C3 72/100</span>
+  </div>
+
+  <div class="subtab-nav">
+    <button class="subtab-btn active" onclick="switchSubtab('to', 'profiles', this)">People</button>
+    <button class="subtab-btn" onclick="switchSubtab('to', 'pfas', this)">PFAS Imperative</button>
+    <button class="subtab-btn" onclick="switchSubtab('to', 'apac', this)">APAC Succession</button>
+    <button class="subtab-btn" onclick="switchSubtab('to', 'solve', this)">LOCTITE SOLVE</button>
+  </div>
+
+  <!-- People -->
+  <div id="to-profiles" class="subtab-panel active">
+
+    <div class="person-card">
+      <div class="person-name">Nigel Fay</div>
+      <div class="person-title">Chief Technology Officer, Henkel AG &amp; Co. KGaA</div>
+      <div class="person-section">Background</div>
+      <div class="person-body">CTO with operational authority over Henkel's global R&amp;D network (€583M annual R&amp;D spend, ~3,000 FTEs, six AT-dedicated sites). Technical owner of the PFAS formulation portfolio — including LOCTITE SOLVE development, Bonderite metal pre-treatment chemistry, and the Bergquist thermal management materials that carry AT's highest PFAS concentration in electronics applications. Primary signatory on any ECHA derogation filing.</div>
+      <div class="person-section">Professional Lens</div>
+      <div class="person-body">Fay thinks in formulation envelopes, qualification cycles, and regulatory timelines. He understands the difference between FEICA consortia participation and a product-specific derogation because he has managed the FEICA relationship directly. The question is not whether he knows the gap exists — it is whether he has been given the organisational authority and the board-level signal to file independently of FEICA before 25 May.</div>
+      <div class="person-section">Professional Anxiety</div>
+      <div class="person-body">The aerospace requalification clock. If the PFAS restriction proceeds without a derogation covering AT's aerospace structural adhesive lines, Boeing, Safran, and Airbus qualification programmes — which took 5–10 years to achieve — face a 5–10 year requalification cycle for any PFAS-free substitute. The Loctite AF 8810/8812 proof-of-concept (April 2026) demonstrates that PFAS-free chemistry is directionally achievable — not that it is OEM-ready at the margin and performance levels of the restricted product lines.</div>
+      <div class="person-section">What He Won't Say</div>
+      <div class="person-body">The full revenue exposure from PFAS-dependent product lines by product family (Bonderite, Teroson, Aquence, Bergquist, aerospace Loctite). That breakdown — ASSESSED at 15–30% of AT's €10.7B revenue, or €1.6–3.2B — is the single most material unresolved data point in the separation thesis.</div>
+      <div class="person-frame">Frame for Fay: Three-part ask: (1) confirm FEICA participation status and whether an AT-specific filing has been drafted; (2) obtain board-level authorisation to file the AT-specific derogation before 25 May; (3) confirm the Boeing, Safran, Airbus qualification inventory and product-level PFAS exposure so the separation prospectus risk register can be priced. Frame #3 as prospectus preparation, not current regulatory risk.</div>
+    </div>
+
+    <div class="person-card">
+      <div class="person-name">Mark Dorn</div>
+      <div class="person-title">Executive Vice President, Adhesive Technologies</div>
+      <div class="person-section">Background</div>
+      <div class="person-body">AT divisional leader since 2019. Cognis alumnus (1999–2008), shared with Group CFO Swoboda. Built the AT Executive Committee, six-site R&amp;D structure, AT-specific M&amp;A apparatus, AT-specific investor comms, and LOCTITE SOLVE — all of which are, in operational terms, the infrastructure of a standalone company. The October 2025 AT-only investor webinar was co-chaired by Dorn and Swoboda. Dorn is the AT CEO in waiting.</div>
+      <div class="person-section">Professional Lens</div>
+      <div class="person-body">Operator-Strategist with Continuity-Architect instincts. Decision culture score: 6/10 (stable) — values analytical completeness before commitment, which means he moves slower than his external profile suggests. The APAC succession delay (61 days, no permanent appointment) and the LOCTITE SOLVE Trailblazer gap (in-production AI platform without a named CAIO) are both consistent with this tendency. The separation preparation sequence requires announced commitments — not just internal infrastructure.</div>
+      <div class="person-section">Professional Anxiety</div>
+      <div class="person-body">The APAC void. Carmen Chua was not a replaceable role for Dorn — she was the institutional relationship holder across CATL, BYD, Samsung SDI, and the Korean and Japanese automotive OEM tier-1 supply chains. Every AT-CATL and AT-BYD executive-level contact in Q2 2026 is happening without a named Regional President counterpart.</div>
+      <div class="person-section">What He Won't Say</div>
+      <div class="person-body">That the LOCTITE SOLVE platform is closer to a public-market AI narrative than anything Henkel Group has ever disclosed — and that its integration into Boeing and Airbus CAE environments represents a two-directional cyber attack surface for which no existing public-sector advisory exists. The cyber implications are significant; the disclosure implications for a separation prospectus are significant; and neither has been formally assessed.</div>
+      <div class="person-frame">Frame for Dorn: The CEO-building frame. The three decisions that convert AT from a division that is operationally ready to separate into an organisation that is documentably ready to separate. APAC succession makes the growth story investor-credible. CAIO appointment makes LOCTITE SOLVE priceable. PFAS derogation makes the aerospace revenue base legally protected. All three are within Dorn's operational authority to initiate now.</div>
+    </div>
+
+  </div><!-- /to-profiles -->
+
+  <!-- PFAS -->
+  <div id="to-pfas" class="subtab-panel">
+    <div class="alert-block critical" style="margin-bottom:20px;">
+      <div class="alert-label">Imperative 1 — May 25 — Fay's Decision — Irreversible</div>
+      <div class="alert-title">PFAS Derogation Filing — ECHA SEAC Consultation Closes 25 May 2026</div>
+      <div class="alert-body">AT's current PFAS regulatory response is participation in FEICA's industry consortia. FEICA cannot protect AT's product-specific lines — it represents the full European adhesives sector. The Solvay SA precedent (2024): filed product-specific PFAS derogation for aerospace fluoropolymer applications directly through ECHA technical working groups, distinct from any industry consortia response. AT has the same basis for an analogous filing. It has not filed.<br><br>If the consultation closes without an AT-specific filing, the Commission opinion proceeds in 2027 and transposition occurs in 2028–29 — the separation execution window — with AT's aerospace and automotive product lines unprotected. The OEM requalification exposure: 5–10 years for Boeing, Safran, and Airbus structural adhesive programmes at the moment the standalone prospectus is being prepared.</div>
+      <div class="alert-deadline">Action required before 25 May 2026</div>
+    </div>
+    <div class="prose">
+      <h4>Filing Scope</h4>
+      <p>The filing should cover: (a) aerospace structural adhesive lines — Loctite EA 9365FST, EA 9394, EA 9845 AERO — at the Montornès, Spain facility with active Airbus and Boeing OEM qualifications; (b) Bonderite metal pre-treatment lines for automotive body-in-white and powertrain coating applications. The filing must name specific product families, cite the OEM qualification timelines (5–10 years aerospace, 18–36 months automotive), and argue the social and economic cost of restriction without derogation — following the Solvay 2024 template.</p>
+      <h4>PFAS Exposure Quantification</h4>
+      <p>The full product-level PFAS inventory for AT's at-risk lines — Bonderite, Teroson automotive, Aquence electronics, Bergquist thermal management, aerospace Loctite — with revenue weight attached. This inventory resolves Council Q7 (PFAS exposure quantum: 15% or 30% of AT's €10.7B revenue?) and is the foundation of the separation prospectus risk register. ASSESSED range: €1.6–3.2B of AT revenue exposed. The exact figure is known to Fay and has not been presented to the Supervisory Board in the context of the separation thesis.</p>
+      <h4>Proof of Concept</h4>
+      <p>Loctite AF 8810/8812 PFAS-free anti-fingerprint coatings launched April 2026 — demonstrates AT can reformulate at product-line level. Trade press coverage was constructive. But this is a narrow application (automotive displays); the Bonderite/Teroson/Aquence portfolio breadth remains structurally exposed.</p>
+      <h4>Cost of Inaction</h4>
+      <table class="data-table">
+        <thead><tr><th>Consequence</th><th>Quantum</th><th>Reversibility</th></tr></thead>
+        <tbody>
+          <tr><td>PFAS reformulation envelope</td><td>€300–500M over 5 years</td><td>Partially reversible at higher cost</td></tr>
+          <tr><td>Standalone EV haircut</td><td>€1.45B (5% specialty premium compression)</td><td>Irreversible at derogation close</td></tr>
+          <tr><td>Boeing/Airbus requalification exposure</td><td>5–10 year clock from transposition</td><td>Irreversible if derogation missed</td></tr>
+          <tr><td>Separation prospectus liability</td><td>Open-ended — unquantified in any filing</td><td>Recoverable with disclosure only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /to-pfas -->
+
+  <!-- APAC -->
+  <div id="to-apac" class="subtab-panel">
+    <div class="alert-block high" style="margin-bottom:20px;">
+      <div class="alert-label">Imperative 2 — 30-Day Commitment — Dorn's Decision</div>
+      <div class="alert-title">APAC Regional President Vacant — 61 Days Without Permanent Successor</div>
+      <div class="alert-body">Carmen Chua, AT APAC Regional President and AT Executive Committee member, was confirmed deceased on 20 February 2026. As of 22 April 2026, no permanent successor has been named. AT's APAC geography accounts for the majority of EV/battery revenue growth at 15.6% CAGR. BYD and CATL are the two most important customer relationships in AT's forward revenue story. Chinese domestic competitors (Shenzhen Jones Tech, Guangdong Liwang) are actively competing on mass-market battery cell module applications at 30–40% below AT's contract rates.<br><br>Every AT-CATL and AT-BYD executive-level contact in Q2 2026 is occurring without a named APAC President counterpart. The vacancy is also a documented social engineering vector — ambiguity about AT's authorised APAC decision-maker is exploitable.</div>
+      <div class="alert-deadline">30-day action: name interim + commit appointment timeline</div>
+    </div>
+    <div class="prose">
+      <h4>EV Revenue Uncertainty (Council Q13)</h4>
+      <p>One source estimates AT's EV/e-mobility revenue at 6.5–8.5% of AT's €10.7B (€700–910M). Another estimates 18–20% (€1.9–2.1B). The 3× variance is directly attributable to AT's deliberate non-disclosure of the Mobility &amp; Electronics sub-segment breakdown. For the separation prospectus, this variance must be resolved into a disclosed number.</p>
+      <h4>BYD/CATL Vertical Integration Bear Scenario</h4>
+      <p>BYD and CATL CTP architecture standardisation is enabling Chinese domestic adhesives suppliers to compete on mass-market battery cell module applications. The bear case — BYD and CATL complete adhesives vertical integration, removing AT from mass-market CTP applications — represents a €400–500M run-rate AT revenue removal and a ~€2B compression in standalone EV at Sika multiples. AT's current structural defence is CATL/BYD specification of Loctite TLB 9300 APSi as the CTP reference product — a qualification relationship that requires a named APAC senior counterpart to maintain at the executive level.</p>
+      <h4>Succession Path</h4>
+      <p>The succession is within Dorn's authority and does not require board-level decision — it requires visibility and a committed timeline. Rajat Agarwal (NA President) is the insider-continuity option. The permanent appointment does not need to happen in 30 days — the named interim and committed timeline do.</p>
+    </div>
+  </div><!-- /to-apac -->
+
+  <!-- SOLVE -->
+  <div id="to-solve" class="subtab-panel">
+    <div class="alert-block medium" style="margin-bottom:20px;">
+      <div class="alert-label">Imperative 3 — Q4 2026 CAIO Decision — Dorn</div>
+      <div class="alert-title">LOCTITE SOLVE — In Production, Not Investor-Ready</div>
+      <div class="alert-body">LOCTITE SOLVE is in production as an AI-augmented specification and materials selection platform integrated into OEM CAE environments (Ansys, Siemens NX, CATIA). It is AT's most significant competitive technology investment since the core formulation portfolio. It is also the single most dangerous Trailblazer gap in AT's pre-separation readiness: no named Chief AI Officer, no disclosed hyperscaler partnership, no AI P&L, no ML monetisation framework for the formulation dataset. A separation F-1 prospectus that names LOCTITE SOLVE as a strategic competitive asset without a named AI governance lead, disclosed infrastructure partner, and quantified revenue contribution will be questioned by every analyst on the roadshow.</div>
+      <div class="alert-deadline">Action required: Q4 2026 CAIO appointment + hyperscaler commitment</div>
+    </div>
+    <div class="prose">
+      <h4>Competitive Context — 3M PIMLAD</h4>
+      <p>3M's Physics-Informed Machine Learning &amp; Accelerated Design (PIMLAD) was confirmed as commercially deployed at CES 2026 ("Ask 3M" feature). This is no longer a competitive intelligence gap — it is a confirmed production competitor to LOCTITE SOLVE. The competitive window in which LOCTITE SOLVE is a differentiating asset is approximately 24–36 months. Q4 2026 is the latest viable CAIO appointment date if the platform is to be investor-narrative-ready by the 2028–29 CONDITIONAL GO window.</p>
+      <p>BASF published peer-reviewed materials informatics research (ACS Q2 2024) using the same ML vector as LOCTITE SOLVE — attacking AT's formulation dataset moat from the same angle, with full academic publication and external validation.</p>
+      <h4>Cyber Risk — Two-Directional Attack Surface</h4>
+      <p>LOCTITE SOLVE's integration into Boeing and Airbus CAE environments creates a two-directional data access pathway — AT has read access to OEM simulation environments; OEM environments have AT material data integration points — for which no existing public-sector advisory (CISA, NCSC, BSI) has issued specific guidance. This is a novel attack vector for which AT's current CrowdStrike-standard cybersecurity posture may be insufficient. The NotPetya 2017 precedent (~$100M estimated Henkel impact, Sandworm/GRU attribution) establishes AT as a geopolitically targeted entity. The LOCTITE SOLVE integration compounds that exposure at the OEM level.</p>
+      <h4>Required Actions by Q4 2026</h4>
+      <ul>
+        <li>Name CAIO (or equivalent AI governance lead) — formalise hyperscaler partnership (Microsoft Azure / Google DeepMind are the two most credible candidates given AT's global OEM footprint)</li>
+        <li>Commission AI P&L framework attributing LOCTITE SOLVE's specification influence to AT margin at the product line level</li>
+        <li>Scope legacy PLM system modernisation (€40–80M) required to surface formulation dataset value in investor-grade disclosure</li>
+        <li>Commission cyber architecture review of LOCTITE SOLVE's OEM integration pathways before separation prospectus preparation begins</li>
+      </ul>
+    </div>
+  </div><!-- /to-solve -->
+
+</div><!-- /techops -->
+
+
+<!-- ═══════════════════════════════════════════════
+     TAB 4 — VENTURES
+═══════════════════════════════════════════════ -->
+<div id="tab-ventures" class="tab-panel">
+
+  <div class="ventures-hero">
+    <span class="ventures-badge">CVC Satellite Track</span>
+    <p class="mif-label" style="margin-top:8px;">Henkel Ventures — AT Separation Satellite Intelligence</p>
+    <p class="mif-text" style="font-size:13px;">Henkel Ventures' entire €300M portfolio will default to Group retention (70–72% probability). The Actnano acquisition thesis has collapsed. AT's only viable path to retaining venture intelligence is a structured continuity appointment — Vivian Titze as AT-portfolio steward — combined with a pivot from acquisition to commercial licensing for Actnano technology. Three executable actions. One window: Q3 2026 or forfeit.</p>
+  </div>
+
+  <!-- Ventures stats -->
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-val purple">€300M</div>
+      <div class="stat-key">Ventures AUM</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">24</div>
+      <div class="stat-key">Active Portfolio Companies</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val amber">~11</div>
+      <div class="stat-key">AT-Relevant Holdings</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val red">70–72%</div>
+      <div class="stat-key">Scenario A — Group Retention</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val" style="color:var(--blue);">28–30%</div>
+      <div class="stat-key">Scenario B — Carve-Out Residual</div>
+    </div>
+  </div>
+
+  <!-- Ventures structure -->
+  <p class="section-title">Why the Default Is Group Retention</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="prose">
+      <p>Henkel Ventures is a €300M, on-balance-sheet CVC vehicle (two tranches of €150M, 24 active portfolio companies, no external LPs, not AIFMD registered). UmwG §15 will <strong>not auto-transfer</strong> the portfolio to AT SpinCo on the separation effective date. Allocation is deliberate, not mechanical. Three structural forces drive the 70–72% Group-retention base rate:</p>
+      <ol>
+        <li><strong>Balance sheet default:</strong> The Group balance sheet is the default custody mechanism and nothing in the separation machinery dislodges it.</li>
+        <li><strong>Thom's institutional incentives:</strong> Marc Thom (Head of Henkel Ventures) consolidated the CVC franchise in November 2022. A carve-out shrinks his AUM, team, and co-investor standing.</li>
+        <li><strong>Co-investor ROFR asymmetry:</strong> Every ROFR, tag-along, and transfer-restriction provision in the underlying shareholder agreements requires affirmative counterparty consent to move a stake. Inaction preserves the status quo.</li>
+      </ol>
+      <p><strong>Scenario A is not a decision. It is the absence of one.</strong></p>
+    </div>
+  </div>
+
+  <!-- Actnano -->
+  <p class="section-title">Actnano — Acquisition Dead, Licensing Window Open</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="prose">
+      <p>Actnano Series C: $225M post-money (2024). Cap table: BMW i Ventures, Porsche Ventures, HELLA Ventures, TDK Ventures, Ericsson Ventures — all strategic OEM CVCs, each carrying ROFR rights. Acquisition probability: near-zero. Technology-to-revenue mismatch confirmed: Actnano addresses Bergquist (thermal interface / electronics encapsulants) only — <strong>&lt;10% of AT's PFAS-exposed revenue</strong>. Aerospace structurals and Bonderite are different chemistry classes entirely. ITAR compounding (US-headquartered target, aerospace PCB applications) adds a second ITAR vector to AT's existing Boeing/Airbus CAE exposure.</p>
+      <p>The residual path is <strong>commercial licensing</strong>: a PFAS-free Actnano conformal coatings licence for Bergquist electronics applications. Licensing window closes when Actnano's Series D round closes and new cap table provisions tighten bilateral negotiation terms.</p>
+      <h4>Licensing Term Requirements</h4>
+      <ul>
+        <li>Field-of-use carve-out: Bergquist electronics encapsulant lines only (ROFR applies to equity, not commercial licences — this is the structural opening)</li>
+        <li>ITAR firewall clause: licensing must be structured to prevent Actnano's aerospace PCB scope from dragging AT into a second ITAR vector</li>
+        <li>MFN pricing against BMW i Ventures / Porsche Ventures OEM channels</li>
+        <li>5-year minimum term to bridge the separation window</li>
+        <li>Series D dilution clause: licensing terms must survive new cap table provisions</li>
+      </ul>
+    </div>
+    <div class="alert-deadline" style="font-family:var(--mono);color:var(--amber);font-size:11px;margin-top:12px;">Action: Table commercial licensing term sheet before Actnano Series D closes</div>
+  </div>
+
+  <!-- Titze -->
+  <p class="section-title">Vivian Titze — Steward Appointment (Authority Question Unresolved)</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="prose">
+      <p>Titze is the named Rising Star 2026 in the Henkel Ventures talent review. She has portfolio exposure across a meaningful subset of AT-relevant holdings and has been building her network across the co-investor syndicate. She is the credible steward candidate because she is inside Ventures, trusted by Marc Thom, and ambitious enough to accept a structurally elevated mandate.</p>
+      <p><strong>The authority question is the binary:</strong></p>
+      <ul>
+        <li>If AT can appoint Titze as portfolio steward under its own operational authority: actionable in Q2/Q3 2026 with no Thom dependency.</li>
+        <li>If a Group-level mandate from Thom is required: appointment is gated on the same institutional dynamic that makes Scenario A 70–72% probable — and the strategy collapses.</li>
+      </ul>
+      <p><strong>Critical framing rule:</strong> If it is framed as "we would like to designate Vivian as AT liaison, with your sponsorship [Thom's]," it lands. If it is framed as "we are appointing Vivian to AT," it detonates Thom's co-operation. The Titze appointment is the test case for whether AT can frame Thom as a co-author of AT's venture continuity rather than a counterparty to a carve-out.</p>
+    </div>
+  </div>
+
+  <!-- Nine unnamed holdings -->
+  <p class="section-title">The Nine Unnamed Holdings — Largest Intelligence Gap</p>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="prose">
+      <p>Actnano and Feelit (sensor tech, Series A-III $8.3M, September 2025) are the only named AT-relevant holdings. Approximately nine of the ~11 AT-relevant holdings are not publicly identified. Each requires bilateral pre-separation partnership scoping, and each sits behind a co-investor consent architecture that AT does not currently hold a map of.</p>
+      <p>Intelligence Council Q9 scored 8.83 — the largest unaddressed gap in the Ventures file. Every month without this map is a month of lost partnership optionality. Pre-separation commercial agreements are executable now; post-separation, AT negotiates as an external party without portfolio insider position.</p>
+    </div>
+    <div class="decision-objection" style="margin-top:12px;"><strong>Required action:</strong> Request, through Thom's office, a portfolio disclosure memo scoped to all eleven AT-relevant holdings with co-investor and ROFR status. This is the first deliverable of the Titze steward mandate.</div>
+  </div>
+
+  <!-- Ventures scenarios -->
+  <p class="section-title">Venture Optionality Map</p>
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-title red">Scenario A — 70–72% Probability</div>
+      <div class="prose">
+        <p><strong>Group Retention.</strong> Portfolio stays with parent. AT SpinCo receives no Ventures assets. AT retains commercial relationships only where pre-separation contracts are in place at the separation effective date.</p>
+        <p><em>Advisory implication:</em> This is the disclosure baseline. The prospectus must be drafted to this scenario — with Scenario B elements framed as contingent commercial upside, not committed asset transfers.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--blue);">Scenario B — 28–30% Residual</div>
+      <div class="prose">
+        <p><strong>Structured carve-out of AT-relevant holdings.</strong> Bilateral negotiation between Group and AT SpinCo plus co-investor consent on each underlying shareholder agreement. Execution window 2028–29. 24–36 months from starting gun.</p>
+        <p><em>Advisory implication:</em> CONDITIONAL GO. Initiate carve-out workstream by <strong>Q3 2026</strong> or the window closes permanently. Any delay past that date collapses Scenario B to near-zero probability.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ventures Bridge -->
+  <div class="card" style="border-color:rgba(201,168,76,0.22);background:linear-gradient(135deg,rgba(201,168,76,0.05),rgba(201,168,76,0.01));">
+    <div class="card-title gold">Ventures Bridge Paragraph — F-1 Equivalent Prospectus</div>
+    <div class="prose">
+      <p style="font-style:italic;border-left:3px solid var(--gold);padding-left:12px;">⚠️ VERIFY BEFORE DEPLOY — This paragraph is ASSESSED. Each material claim requires independent verification against named source documents before F-1 inclusion. See Strategic Advisor Lens verification protocol.</p>
+      <table class="data-table" style="margin-top:12px;">
+        <thead><tr><th>Claim</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>€300M AUM, two-tranche structure</td><td style="color:var(--amber);">⚠️ UNVERIFIED — requires Ventures fund constitution memo</td></tr>
+          <tr><td>24 active portfolio companies, ~11 AT-relevant</td><td style="color:var(--amber);">⚠️ UNVERIFIED — requires Ventures portfolio register</td></tr>
+          <tr><td>Scenario A 70–72% probability</td><td style="color:var(--amber);">⚠️ FRAMING REQUIRED — F&T assessed probability, not source-document claim</td></tr>
+          <tr><td>Actnano cap table (BMW i Ventures, Porsche Ventures, HELLA Ventures, TDK Ventures, Ericsson Ventures)</td><td style="color:var(--amber);">⚠️ UNVERIFIED — requires Series C SHA or most recent stock ledger</td></tr>
+          <tr><td>&lt;10% PFAS relevance, Bergquist electronics only</td><td style="color:var(--amber);">⚠️ UNVERIFIED — basis (revenue or TAM) not confirmed</td></tr>
+          <tr><td>ITAR second-vector assessment</td><td style="color:var(--amber);">⚠️ OPINION REQUIRED — export-control counsel written opinion needed</td></tr>
+          <tr><td>Titze appointment pathway</td><td style="color:var(--amber);">⚠️ LEGAL MEMO REQUIRED — AT authority vs Group mandate not confirmed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /ventures -->
+
+
+<!-- ═══════════════════════════════════════════════
+     TAB 5 — RISK REGISTER
+═══════════════════════════════════════════════ -->
+<div id="tab-risk" class="tab-panel">
+
+  <p class="section-title">Active Risk Register — AT Separation Preparation</p>
+
+  <div class="alert-block critical">
+    <div class="alert-label">Risk 1 — Critical / Irreversible / 25 May 2026</div>
+    <div class="alert-title">PFAS Universal Restriction — ECHA SEAC Consultation Closure</div>
+    <div class="alert-body">SEAC consultation closes 25 May 2026. AT's current response: FEICA consortia only. Solvay SA made an AT-equivalent product-specific filing in 2024. AT has not. If the window closes unfiled, the Commission opinion proceeds in 2027 and transposition in 2028–29 — the separation execution window — with AT's aerospace structural adhesive and Bonderite automotive lines unprotected. Boeing, Safran, and Airbus requalification cycles are 5–10 years. No fast-path PFAS-free substitute formulation exists at OEM-grade performance specifications. PFAS exposure: ASSESSED at 15–30% of AT's €10.7B revenue (€1.6–3.2B), with €300–500M reformulation cost envelope and €1.45B standalone EV haircut from specialty premium compression.</div>
+    <div class="alert-deadline">Deadline: 25 May 2026 — no extensions available</div>
+  </div>
+
+  <div class="alert-block high">
+    <div class="alert-label">Risk 2 — Active / Federal Court — SDNY</div>
+    <div class="alert-title">FTC v. Henkel — Liquid Nails Antitrust — Case No. 1:25-CV-10371-KPF</div>
+    <div class="alert-body">Filed 15 December 2025. FTC alleges Loctite + Liquid Nails = combined ~60% US retail construction adhesives market share under Clayton Act §7 + FTC Act §5. FTC went directly to federal court for permanent injunction — bypassing traditional dual-track administrative process. $725M deal on ice pending judgment. No SDNY trial date set; case in pre-trial proceedings. FTC's procedural escalation signals an unusually aggressive posture that could extend into 2027. Full block forfeits $725M and caps AT's US construction adhesive position. Divestiture remedy may require AT to divest Loctite construction SKUs — directly reducing the SOTP basis for a standalone valuation. Resolution must precede any separation filing.</div>
+    <div class="alert-deadline">Status: Pending SDNY — ongoing watch. Full block probability elevated above original 15% given procedural escalation.</div>
+  </div>
+
+  <div class="alert-block critical">
+    <div class="alert-label">Risk 3 — Closed Binary / Blocking</div>
+    <div class="alert-title">Bagel-Trah Family Pool — 61.85% Controlling Block — CMD 2026 Signal Required</div>
+    <div class="alert-body">The Henkel Family Pool Aktienbindungsvertrag controls 61.85% of ordinary shares among ~178 parties. Chair Simone Bagel-Trah has stated publicly the pool will not lapse beyond 2033 — an open-ended structure requiring active endorsement for any separation. A CLOSED binary in the trigger assessment: AT's full separation window cannot open until CMD 2026 or an equivalent observable endorsement signal from Bagel-Trah. No observable endorsement signal exists as of April 2026. One further Consumer Brands acquisition of ≥€500M resets the Sperrfrist clock to 2033+, removing the family's economic incentive to endorse a separation in the 2028–31 window.</div>
+    <div class="alert-deadline">Monitor: CMD 2026 — single binary event that opens or closes the full thesis</div>
+  </div>
+
+  <div class="alert-block high">
+    <div class="alert-label">Risk 4 — Compounding / €10–15M / Month</div>
+    <div class="alert-title">SAP S/4HANA — AT-Specific Instance Decision Outstanding</div>
+    <div class="alert-body">Henkel Group "RISE with SAP" programme running 2025–2028. AT-specific go-live dates not disclosed. Clean Core architecture reduces carve-out complexity but does not eliminate it without an AT-specific milestone. Each month of non-decision adds €10–15M to carve-out execution cost; a 12-month slip adds €120–180M direct cash overrun and pushes separation window to 2032–33. Decision binary: AT-specific dedicated S/4HANA instance (enabling 2028–29 carve-out readiness) or AT remains on Group shared clean core (meaning carve-out readiness is undefined). CFO Swoboda assigned a 60-day decision on the instance question. As of 22 April 2026, this decision has not been publicly taken.</div>
+    <div class="alert-deadline">60-day decision deadline: Swoboda</div>
+  </div>
+
+  <div class="alert-block high">
+    <div class="alert-label">Risk 5 — Operational / 61 Days Unresolved</div>
+    <div class="alert-title">APAC Leadership Vacancy — Carmen Chua Deceased 20 February 2026</div>
+    <div class="alert-body">Carmen Chua, AT APAC Regional President and AT Executive Committee member, confirmed deceased 20 February 2026. No permanent successor named as of 22 April 2026 — 61 days. APAC is the primary EV/battery adhesives growth market (15.6% CAGR). Loctite TLB 9300 APSi is the CATL/BYD CTP reference product. Chinese domestic competitors (Shenzhen Jones Tech, Guangdong Liwang) are actively displacing AT in mass-market battery cell applications at 30–40% below AT's contract rates. Every AT-CATL and AT-BYD executive-level contact in Q2 2026 is occurring without a named Regional President counterpart. Social engineering risk: the vacancy creates exploitable ambiguity about AT's authorised APAC decision-maker. Bear scenario: BYD/CATL in-source structural adhesives — €400–500M revenue removal, ~€2B EV compression.</div>
+    <div class="alert-deadline">30-day action: Dorn names interim + commits permanent appointment timeline</div>
+  </div>
+
+  <div class="alert-block medium">
+    <div class="alert-label">Risk 6 — Valuation / €8B Swing</div>
+    <div class="alert-title">AT Standalone EBITDA Margin — €8B Enterprise Value Swing Risk</div>
+    <div class="alert-body">AT's segment-level D&A is not disclosed. AT EBITDA margin is inferred at 19.5–20% — but the range between a 15% bear-case and 22% bull-case margin alters the standalone EV by €8 billion at Sika peer multiples (13× LTM EV/EBITDA). This is the single most consequential gap in AT's capital-markets narrative. No sell-side analyst publishes an AT standalone model because the D&A data does not exist in the public domain. Voluntary D&A disclosure at the next reporting cycle (H2 2026 results or 2026 Annual Report) resolves the swing, enables sell-side standalone coverage, and begins the compression of the conglomerate discount without any separation announcement.</div>
+    <div class="alert-deadline">90-day action: Swoboda authorises voluntary AT D&A disclosure</div>
+  </div>
+
+  <div class="alert-block medium">
+    <div class="alert-label">Risk 7 — Technology / Closing Window</div>
+    <div class="alert-title">LOCTITE SOLVE vs 3M PIMLAD — AI Moat Closing Without CAIO</div>
+    <div class="alert-body">3M's Physics-Informed Machine Learning &amp; Accelerated Design (PIMLAD) confirmed commercially deployed at CES 2026 ("Ask 3M" feature). LOCTITE SOLVE is in production as an AI-augmented specification platform integrated into Boeing and Airbus CAE environments — but AT has no named Chief AI Officer, no disclosed hyperscaler partnership, no AI P&L, and no ML monetisation framework. A separation F-1 prospectus naming LOCTITE SOLVE as a strategic asset without governance infrastructure will be questioned by every institutional investor on the roadshow. The competitive window in which LOCTITE SOLVE is a differentiating asset — rather than one among several specialty chemicals AI platforms — is approximately 24–36 months.</div>
+    <div class="alert-deadline">Q4 2026 deadline: Dorn appoints CAIO + formalises hyperscaler partnership</div>
+  </div>
+
+  <div class="alert-block watch">
+    <div class="alert-label">Risk 8 — Structural / Sperrfrist</div>
+    <div class="alert-title">§15 UmwStG Sperrfrist — H2 2031 Earliest Tax-Neutral Separation</div>
+    <div class="alert-body">OLAPLEX and NYM acquisitions (early 2026) triggered the five-year lock. Tax-neutral separation under UmwG §15 not available before H2 2031. Retroactive penalty for early separation: €1.0–1.8B ASSESSED — no independent legal opinion commissioned. Any further Consumer Brands acquisition resets the clock. The legal work to commission the §15 Sperrfrist opinion and the §190 AG-conversion opinion must begin in Q3–Q4 2026: investment banks and transaction counsel are engaged 18–24 months before a decision window opens, and the CONDITIONAL GO window is 2028–29.</div>
+    <div class="alert-deadline">Q4 2026: Commission Sperrfrist legal opinion + §190 AG-conversion feasibility opinion</div>
+  </div>
+
+  <!-- Risk summary table -->
+  <p class="section-title">Risk Summary</p>
+  <table class="data-table">
+    <thead><tr><th>#</th><th>Risk</th><th>Status</th><th>Owner</th><th>Deadline</th></tr></thead>
+    <tbody>
+      <tr><td>R1</td><td>PFAS SEAC derogation window</td><td style="color:var(--red);">Critical / Irreversible</td><td>Nigel Fay</td><td>25 May 2026</td></tr>
+      <tr><td>R2</td><td>FTC Liquid Nails (SDNY 1:25-CV-10371-KPF)</td><td style="color:var(--amber);">Active / Federal court</td><td>General Counsel</td><td>Ongoing watch</td></tr>
+      <tr><td>R3</td><td>Bagel-Trah family pool — CMD 2026</td><td style="color:var(--red);">Closed binary / Blocking</td><td>Monitor</td><td>CMD 2026</td></tr>
+      <tr><td>R4</td><td>SAP S/4HANA instance decision</td><td style="color:var(--amber);">€10–15M / month compounding</td><td>Swoboda</td><td>60 days</td></tr>
+      <tr><td>R5</td><td>APAC leadership vacancy (Carmen Chua)</td><td style="color:var(--amber);">61 days unresolved</td><td>Dorn + Nicol</td><td>30 days</td></tr>
+      <tr><td>R6</td><td>AT EBITDA margin opacity — €8B EV swing</td><td style="color:var(--blue);">Resolvable by disclosure</td><td>Swoboda</td><td>90 days</td></tr>
+      <tr><td>R7</td><td>LOCTITE SOLVE vs PIMLAD — no CAIO</td><td style="color:var(--blue);">Q4 2026 window closing</td><td>Dorn</td><td>Q4 2026</td></tr>
+      <tr><td>R8</td><td>Sperrfrist §15 — no legal opinion commissioned</td><td style="color:var(--purple);">Watch / Q4 2026 action</td><td>Swoboda + GC</td><td>Q4 2026</td></tr>
+    </tbody>
+  </table>
+
+</div><!-- /risk -->
+
+
+<!-- ─── FOOTER ──────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-left">
+    <strong style="color:var(--text2);">Friction &amp; Toil Intelligence</strong><br>
+    Henkel Adhesive Technologies — AT Separation Intelligence · F&amp;T Intelligence System v5.2<br>
+    Strictly Confidential — Advisory Intelligence Only — Not for Distribution
+  </div>
+  <div class="footer-right">
+    Compiled: 22 April 2026<br>
+    Phase 4 Complete · Gate 4 PROCEED<br>
+    F&amp;T Intelligence System v5.2
+  </div>
+</footer>
+
+<script>
+// Tab switching
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Subtab switching
+function switchSubtab(prefix, id, btn) {
+  const panels = document.querySelectorAll('[id^="' + prefix + '-"]');
+  panels.forEach(p => p.classList.remove('active'));
+  btn.closest('.tab-panel').querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(prefix + '-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Animate ring scores on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.ring-fill').forEach(circle => {
+      const target = parseFloat(circle.getAttribute('data-target'));
+      circle.style.strokeDashoffset = target;
+    });
+  }, 200);
+});
+</script>
+</body>
+</html>
