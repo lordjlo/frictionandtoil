@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The AI Shift — Search Has a New Front Door | Friction &amp; Toil</title>
-<meta name="description" content="AI is intercepting your highest-intent customers before they reach your website. A data-led brief on the shift from search to AI-powered discovery — and where your business sits today.">
+<title>The AI Visibility Maturity Curve — Why Most UK Businesses Are Invisible to AI | Friction &amp; Toil</title>
+<meta name="description" content="The AI Visibility Maturity Curve: a four-rung framework (Invisible → Emerging → Cited → Recommended) that diagnoses where your business stands in AI-powered search — and exactly what it takes to move up.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Search Has a New Front Door: The 2025–2026 Shift to AI-Powered Discovery",
+  "headline": "The AI Visibility Maturity Curve: Why Most UK Businesses Are Invisible to the Tools Their Customers Use",
   "description": "A data-led intelligence brief on how AI is restructuring search, buyer behaviour, and website visibility — with evidence from Ofcom, Ahrefs, Aggarwal et al. (KDD 2024), and sector-specific data for hospitality, B2B, and events.",
   "author": {
     "@type": "Organization",
@@ -984,6 +984,66 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <div class="maturity-cta reveal">
         <p>Where do you sit today? You cannot fix what you cannot see.</p>
         <a href="/web-intelligence/" class="btn-primary">Find your rung — commission an audit <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOVING BETWEEN RUNGS ============ -->
+  <section class="prose-section" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">The Mechanics</span>
+        <h2 class="section-heading">What moves you between rungs.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The Maturity Curve is not a spectrum of effort. Each transition between rungs requires a specific, identifiable change — and the changes are not evenly distributed in cost or complexity. Most businesses are stuck at Invisible or Emerging not because the fixes are expensive, but because nobody has told them which fix applies to them specifically.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;">
+
+        <div class="reveal d1" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--search);border-radius:8px;padding:1.75rem;">
+          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--search);margin-bottom:0.5rem;">Invisible → Emerging</div>
+          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Unlock the front door.</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">The most common cause of Invisible status is a robots.txt file that blocks AI crawlers — often set years ago during a GDPR or security hardening exercise and never revisited. GPTBot, ClaudeBot, and PerplexityBot must be explicitly permitted.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">01</span><span>Audit robots.txt — permit GPTBot, ClaudeBot, PerplexityBot, GoogleOther</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">02</span><span>Add one Organisation or LocalBusiness schema block</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">03</span><span>Ensure core facts (name, location, what you do, who you serve) exist as plain HTML — not inside JavaScript, images, or iframes</span></li>
+          </ul>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: a single sprint. Zero budget required beyond developer time.</p>
+        </div>
+
+        <div class="reveal d2" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--design);border-radius:8px;padding:1.75rem;">
+          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--design);margin-bottom:0.5rem;">Emerging → Cited</div>
+          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Give AI something worth citing.</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">Emerging businesses are visible but unreliable. AI can find them but cannot accurately describe what they do or why they're different. The transition to Cited requires extractable, attributed, specific content — not more content, better-structured content.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">01</span><span>FAQ schema on your most-queried pages — the highest-leverage single schema type for citation frequency</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">02</span><span>A named expert or founder bio with verifiable credentials, as plain text on the page</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">03</span><span>At least one attributed, specific statistic per key service page (the +41% citation uplift is real)</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">04</span><span>Pricing or service scope visible as HTML text — not hidden behind "contact us"</span></li>
+          </ul>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: 2–4 weeks. Content-led, no significant rebuild required.</p>
+        </div>
+
+        <div class="reveal d3" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--brand);border-radius:8px;padding:1.75rem;">
+          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:0.5rem;">Cited → Recommended</div>
+          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Become the answer, not just a source.</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">Cited businesses appear when queried. Recommended businesses are selected — AI leads with their name, not alongside three competitors. The transition requires authority signals that extend beyond your own website.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">01</span><span>H1s and opening paragraphs structured to answer likely AI queries directly — the first sentence is the citation</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">02</span><span>Active presence on the 3–5 platforms your sector's AI trust hierarchy uses as authority sources</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">03</span><span>Attributed client quotations on the page — AI treats named voice as a credibility multiplier (+28% citation frequency)</span></li>
+            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">04</span><span>Consistent brand signals across every AI-indexed property — your own site, third-party profiles, trade press mentions</span></li>
+          </ul>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: 60–90 day programme. The rung most businesses cannot reach without an audit first.</p>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:400;color:var(--text-secondary);max-width:54ch;margin:0 auto 1.25rem;line-height:1.5;">The problem is not which rung you're on. It's not knowing which specific fixes move you to the next one — for your site, your sector, your competitors.</p>
+        <a href="/web-intelligence/" style="font-family:var(--body);font-size:0.95rem;font-weight:500;letter-spacing:0.04em;color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.4);padding-bottom:2px;">That's what the audit delivers &rarr;</a>
       </div>
     </div>
   </section>
