@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Intelligence Report — Website Audit for UK Businesses | Friction &amp; Toil</title>
-<meta name="description" content="A £1,000 intelligence report on your website. We typically find £15k–£150k in missed opportunity. Five dimensions: Search, Design, Brand, Competitive position, and Growth. Delivered in 48 hours.">
+<title>AI &amp; Web Intelligence Report — Website Audit | Friction &amp; Toil</title>
+<meta name="description" content="A £1,000 AI &amp; Web Intelligence report on your website. We measure where AI engines are citing you — and where they aren't — across five dimensions: Search, Design, Brand, Competitive position, and Growth. Delivered in 48 hours.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://frictionandtoil.com/web-intelligence/">
 <script defer src="/_vercel/insights/script.js"></script>
@@ -22,13 +22,51 @@
 {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Web Intelligence Report",
-  "description": "A five-dimension website intelligence report covering Search, Design, Brand, Competitive position, and Growth. Delivered as an interactive HTML dashboard within 48 hours.",
+  "name": "AI & Web Intelligence Report",
+  "description": "An AI & Web Intelligence report covering AI visibility (how often the site is cited by ChatGPT, Perplexity, Gemini, and Google AI Overviews) plus five web dimensions — Search, Design, Brand, Competitive position, and Growth. Delivered as an interactive HTML dashboard within 48 hours.",
+  "image": "https://frictionandtoil.com/Images/web-intelligence-og.png",
+  "sku": "FT-WIR-001",
+  "brand": {
+    "@type": "Brand",
+    "name": "Friction & Toil"
+  },
   "offers": {
     "@type": "Offer",
     "price": "1000",
     "priceCurrency": "GBP",
-    "availability": "https://schema.org/InStock"
+    "availability": "https://schema.org/InStock",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "GBP"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 2,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 0,
+          "unitCode": "DAY"
+        }
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "GB"
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "GB",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    }
   },
   "provider": {
     "@type": "Organization",
@@ -64,7 +102,7 @@
       "name": "How is this different from a free PageSpeed or SEO tool?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Free tools measure one thing. This report covers five dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It models the revenue gap, shows competitor activity, and gives a prioritised action plan."
+        "text": "Free tools measure one thing. This report covers AI visibility (where AI engines are citing you vs. your competitors) plus five web dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It places you on the AI Visibility Maturity Curve, models the revenue gap, shows competitor activity, and gives a prioritised action plan."
       }
     },
     {
@@ -312,19 +350,23 @@
   .hero h1 {
     font-family: var(--serif);
     font-weight: 300;
-    font-size: clamp(48px, 6vw, 80px);
-    line-height: 1.05;
-    letter-spacing: 0.04em;
+    font-size: clamp(3rem, 7.5vw, 6rem);
+    line-height: 1.04;
+    letter-spacing: 0.02em;
     color: var(--text);
     margin-bottom: 1.75rem;
   }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--design);
+  }
   .hero-sub {
     font-family: var(--body);
-    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
     color: var(--text-secondary);
-    max-width: 52ch;
+    max-width: 60ch;
     margin-bottom: 2.5rem;
-    line-height: 1.55;
+    line-height: 1.6;
   }
   .hero-cta-row {
     display: flex;
@@ -448,6 +490,138 @@
     font-size: 0.78rem;
     font-weight: 500;
     color: var(--text);
+  }
+
+  /* ============ AI Visibility Maturity Curve (Phase 1) ============ */
+  .mc-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.75rem;
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    background: linear-gradient(135deg, rgba(168,85,247,0.10) 0%, rgba(99,102,241,0.05) 100%);
+    border: 1px solid rgba(168,85,247,0.28);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mc-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #a855f7 0%, var(--search) 100%);
+  }
+  .mc-eyebrow, .mc-current-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .mc-ladder { display: flex; flex-direction: column; gap: 0.6rem; }
+  .mc-rung {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: transform 0.25s, background 0.25s, border-color 0.25s;
+  }
+  .mc-rung-passed {
+    background: rgba(168,85,247,0.05);
+    border-color: rgba(168,85,247,0.16);
+    opacity: 0.78;
+  }
+  .mc-rung-active {
+    background: rgba(168,85,247,0.14);
+    border-color: rgba(168,85,247,0.45);
+    box-shadow: 0 0 0 1px rgba(168,85,247,0.3), 0 6px 22px rgba(168,85,247,0.12);
+    transform: scale(1.015);
+  }
+  .mc-rung-next {
+    background: rgba(99,102,241,0.05);
+    border-color: rgba(99,102,241,0.22);
+    border-style: dashed;
+  }
+  .mc-num {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+  }
+  .mc-rung-passed .mc-num { background: rgba(168,85,247,0.18); color: #c084fc; }
+  .mc-rung-active .mc-num { background: #a855f7; color: #fff; box-shadow: 0 0 14px rgba(168,85,247,0.55); }
+  .mc-rung-next .mc-num { background: rgba(99,102,241,0.2); color: var(--search); }
+  .mc-body { min-width: 0; }
+  .mc-label {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .mc-rung-active .mc-label { color: #fff; }
+  .mc-desc {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .mc-range {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .mc-right { display: flex; align-items: center; }
+  .mc-current {
+    width: 100%;
+    padding: 1.5rem 1.6rem;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .mc-current-headline {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+    font-weight: 700;
+    color: #c084fc;
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+  }
+  .mc-current-sub {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+  .mc-trajectory-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .mc-trajectory {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.65;
+    padding: 0.85rem 1rem;
+    background: rgba(99,102,241,0.06);
+    border-left: 2px solid var(--search);
+    border-radius: 0 6px 6px 0;
+  }
+  @media (max-width: 900px) {
+    .mc-wrap { grid-template-columns: 1fr; gap: 1.25rem; }
   }
 
   /* ============ Cost of inaction ============ */
@@ -1451,14 +1625,13 @@
       <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-inner">
+          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &rarr;</a>
           <a href="#problem">Problem</a>
           <a href="#cost">What it's costing you</a>
           <a href="#solution">The Solution</a>
-          <a href="#intelligence">The Intelligence</a>
           <a href="#covers">What the report covers</a>
           <a href="#pricing">Pricing</a>
           <a href="#sample">Sample reports</a>
-          <a href="#testimonials">Testimonials</a>
           <a href="#faq">FAQ</a>
         </div>
       </div>
@@ -1474,6 +1647,7 @@
 <div class="wi-mobile-menu" id="wiMobileMenu">
   <a href="/strategic-intelligence/">Strategic Intelligence</a>
   <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/web-intelligence/the-shift/">The Shift</a>
   <a href="/culture-intelligence/">Culture Intelligence</a>
   <a href="/experiments/">Experiments</a>
   <a href="mailto:hello@frictionandtoil.com">Contact</a>
@@ -1487,16 +1661,16 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
-          <div class="badge-pill hero-badge reveal"><span class="tick"></span>Web Intelligence &middot; F&T Intelligence Systems</div>
-          <h1 class="reveal d1">Your website is losing<br>you money right now.</h1>
-          <p class="hero-amber reveal d2">You just don&rsquo;t know how much.</p>
-          <p class="hero-sub reveal d3">In the time it takes to read this page, a potential client has searched for a business like yours &mdash; and found your competitor instead. Not because they&rsquo;re better. Because their website is visible and yours isn&rsquo;t.</p>
-          <p class="reveal d4" style="font-family:sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#666;margin-bottom:14px;">Just three quick questions &mdash; part of the order process</p>
+          <div class="badge-pill hero-badge reveal"><span class="tick"></span>AI &amp; Web Intelligence &middot; F&T Intelligence Systems</div>
+          <h1 class="reveal d1">Your customers are <em>asking AI</em><br>where to go next.</h1>
+          <p class="hero-amber reveal d2">Most businesses aren&rsquo;t in the answer. That gap is costing you enquiries, reputation, and revenue &mdash; every day.</p>
+          <p class="hero-sub reveal d3">A family searching for a care home asked Gemini for recommendations. A couple planning a celebration asked ChatGPT for private members&rsquo; clubs in London. A group booking a pub lunch asked Google&rsquo;s AI what it suggested. In each case, AI chose who to recommend. Most businesses had no idea the conversation was even happening &mdash; and weren&rsquo;t in it. The Web Intelligence Report tells you exactly where you stand and what it takes to change that.</p>
           <div class="hero-cta-row reveal d4">
             <button class="btn btn-white" onclick="startCheckout(this)">Order your report</button>
+            <a href="/web-intelligence/pricing/#call" class="btn btn-ghost" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Not sure yet? Book a free 15-min call</a>
           </div>
           <div class="hero-guarantee reveal d5">
-            &pound;1,000 launch price<span class="dot"></span>Delivered within 48 hours<span class="dot"></span>14-day money-back guarantee &mdash; not satisfied with the depth or quality of the report? Full refund, no questions.
+            From &pound;750<span class="dot"></span>Delivered within 48 hours<span class="dot"></span>15-min walkthrough call included<span class="dot"></span>Rescan at half-price within 6 months
           </div>
         </div>
 
@@ -1572,12 +1746,75 @@
     </div>
   </section>
 
+  <!-- ============ MATURITY CURVE ============ -->
+  <section style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom:2.5rem;">
+        <span class="eyebrow">The AI Visibility Maturity Curve</span>
+        <h2 class="section-heading">Four rungs. Every business is on one.</h2>
+        <p class="section-sub">AI doesn&rsquo;t grade on a curve. It either recommends you or it doesn&rsquo;t. Your AI &amp; Web Intelligence Report places you on a specific rung &mdash; and shows exactly what it takes to climb to the next one.</p>
+      </div>
+
+      <!-- Maturity Curve display — mirrors the report dashboard card -->
+      <div class="mc-wrap reveal d1">
+        <div class="mc-left">
+          <div class="mc-eyebrow">AI Visibility Maturity</div>
+          <div class="mc-ladder">
+            <div class="mc-rung mc-rung-passed">
+              <div class="mc-num">1</div>
+              <div class="mc-body">
+                <div class="mc-label">Invisible</div>
+                <div class="mc-desc">AI never surfaces you. The conversation happens without you.</div>
+              </div>
+              <div class="mc-range">0 / 6</div>
+            </div>
+            <div class="mc-rung mc-rung-active">
+              <div class="mc-num">2</div>
+              <div class="mc-body">
+                <div class="mc-label">Emerging</div>
+                <div class="mc-desc">AI mentions you occasionally — incomplete, outdated, or missing the details that convert.</div>
+              </div>
+              <div class="mc-range">1–2 / 6</div>
+            </div>
+            <div class="mc-rung mc-rung-next">
+              <div class="mc-num">3</div>
+              <div class="mc-body">
+                <div class="mc-label">Cited</div>
+                <div class="mc-desc">AI includes you — but recommends your competitors over you. Present, not chosen.</div>
+              </div>
+              <div class="mc-range">3–4 / 6</div>
+            </div>
+            <div class="mc-rung">
+              <div class="mc-num">4</div>
+              <div class="mc-body">
+                <div class="mc-label">Recommended</div>
+                <div class="mc-desc">AI actively selects you. Your differentiators are clear, your evidence is current, you come up first.</div>
+              </div>
+              <div class="mc-range">5–6 / 6</div>
+            </div>
+          </div>
+        </div>
+        <div class="mc-right">
+          <div class="mc-current">
+            <div class="mc-current-eyebrow">Example report snapshot</div>
+            <div class="mc-current-headline">You are here — Emerging</div>
+            <div class="mc-current-sub">This is where most businesses we audit land. AI cites you on 1&ndash;2 of the 6 priority queries that drive enquiries in your category. Usually it&rsquo;s a single sustainability or heritage hook pulling citations through while everything else stays invisible.</div>
+            <div class="mc-trajectory-label">Next rung — Cited</div>
+            <div class="mc-trajectory">Adding the right schema, a named-expert bio, and extractable evidence lifts 2&ndash;3 more queries from &ldquo;Unlikely&rdquo; to &ldquo;Possible&rdquo; &mdash; enough to clear 3&thinsp;/&thinsp;6 and put you on the Cited rung. Usually a single dev sprint.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="reveal d2" style="margin-top:2rem;font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:400;font-style:italic;color:var(--text-secondary);text-align:center;">Most businesses we audit are at rung one or two. The AI &amp; Web Intelligence Report tells you exactly which &mdash; and what it takes to move up. <a href="/web-intelligence/the-shift/" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Read the full brief on why this matters &rarr;</a></p>
+    </div>
+  </section>
+
   <!-- ============ SECTION 2 · THE PAIN ============ -->
   <section class="pain" id="problem">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">The Problem</span>
-        <h2 class="section-heading">The internet changed. Most websites didn&rsquo;t.</h2>
+        <span class="eyebrow">What&rsquo;s happening right now</span>
+        <h2 class="section-heading">AI is having the conversation. Most businesses aren&rsquo;t in the room.</h2>
       </div>
       <div class="impact-stack">
         <div class="impact-card reveal d1">
@@ -1605,7 +1842,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">What it&rsquo;s costing you</span>
-        <h2 class="section-heading">Five ways your website is working against you.</h2>
+        <h2 class="section-heading">Every day without visibility is a day the gap widens.</h2>
       </div>
       <div class="flip-grid">
         <div class="flip-card reveal d1" data-tone="red">
@@ -1636,8 +1873,8 @@
   <section class="flip-section soft" id="solution">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">The Solution</span>
-        <h2 class="section-heading">One report. Complete picture. Clear priorities.</h2>
+        <span class="eyebrow">How we help</span>
+        <h2 class="section-heading">We show you exactly where you stand &mdash; and guide you to where you need to be.</h2>
       </div>
       <div class="flip-grid">
         <div class="flip-card reveal d1" data-tone="green">
@@ -1775,28 +2012,36 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Pricing</span>
-        <h2 class="section-heading">Why &pound;1,500?</h2>
-        <p class="section-sub">The alternatives, for context.</p>
+        <h2 class="section-heading">Three ways to get started.</h2>
+        <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 15-minute call first</a> &mdash; no obligation, no deck, no pitch.</p>
       </div>
       <div class="compare-grid">
         <div class="compare-card reveal d1">
-          <div class="compare-label">Full-service agency audit</div>
-          <div class="compare-price">&pound;2,500&ndash;&pound;8,000</div>
-          <div class="compare-desc">Typically covers search only. Takes 2&ndash;4 weeks. Delivered as a PDF. No competitor intelligence, no brand analysis, no growth modelling.</div>
-          <div class="compare-tag">The expensive option</div>
+          <div class="compare-label">Pay in full</div>
+          <div class="compare-price">&pound;750</div>
+          <div class="compare-desc">No guarantee, no questions. For buyers who&rsquo;ve seen enough and want to move fast.</div>
+          <div class="compare-tag" style="margin-top:auto">Lowest price</div>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="750">Order at &pound;750</button>
         </div>
         <div class="compare-card is-featured reveal d2">
-          <div class="compare-label">F&amp;T Web Intelligence</div>
+          <div class="compare-label">Pay in full &mdash; with guarantee &#9733;</div>
           <div class="compare-price">&pound;1,000</div>
-          <div class="compare-desc" style="margin-bottom:8px">Launch price &mdash; list price &pound;1,500. Five dimensions. Interactive dashboard. Competitor analysis. Revenue gap modelled. AI prompts included. 14-day money-back guarantee &mdash; not satisfied with the depth or quality of the report? Full refund, no questions.</div>
-          <div class="compare-tag">The intelligent option</div>
+          <div class="compare-desc">14-day money-back guarantee. Full refund if you don&rsquo;t find it useful &mdash; no questions asked. Includes a 15-minute walkthrough call after delivery and a half-price rescan within 6 months.</div>
+          <div class="compare-tag" style="margin-top:auto">Most popular</div>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
         </div>
         <div class="compare-card reveal d3">
-          <div class="compare-label">&pound;99/month SEO tool</div>
-          <div class="compare-price">&pound;1,188/yr</div>
-          <div class="compare-desc">Automated. No human review. No brand or competitor analysis. No revenue modelling. You interpret the data yourself.</div>
-          <div class="compare-tag">The DIY option</div>
+          <div class="compare-label">Pay monthly</div>
+          <div class="compare-price">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/mo &times; 3</span></div>
+          <div class="compare-desc">Spread the cost over three months. Full &pound;1,500 value. Access ends immediately if you cancel &mdash; noted in the T&amp;Cs. Includes the walkthrough call and 6-month rescan.</div>
+          <div class="compare-tag" style="margin-top:auto">Total: &pound;1,500</div>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="500mo">Start at &pound;500/mo</button>
         </div>
+      </div>
+      <div id="call" style="margin-top:3rem;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;text-align:center">
+        <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Not ready to commit? That&rsquo;s fine.</p>
+        <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">Book a free 15-minute call first. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
+        <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
       </div>
     </div>
   </section>
@@ -1953,7 +2198,7 @@
             How is this different from a free PageSpeed or SEO tool?
             <span class="faq-toggle" aria-hidden="true"></span>
           </summary>
-          <div class="faq-a">Free tools measure one thing &mdash; usually technical performance. This report covers five dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It models the revenue or credibility gap, shows you what competitors are doing, and gives you a prioritised action plan. It&rsquo;s intelligence, not a score.</div>
+          <div class="faq-a">Free tools measure one thing &mdash; usually technical performance. This report covers AI visibility (where AI engines are citing you vs. your competitors) plus five web dimensions: Search, Design, Brand, Competitive position, and Growth readiness. It places you on the AI Visibility Maturity Curve, models the revenue or credibility gap, shows you what competitors are doing, and gives you a prioritised action plan. It&rsquo;s intelligence, not a score.</div>
         </details>
         <details class="faq-item reveal d4">
           <summary class="faq-q">
@@ -2066,19 +2311,19 @@
 </script>
 
 <script>
-  async function startCheckout(btn) {
-    const original = btn.textContent;
+  const CHECKOUT_URLS = {
+    '750':   'https://buy.stripe.com/9B6fZi7BA2l134x5e51kA00',
+    '1000':  'https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01',
+    '500mo': 'https://buy.stripe.com/bJe00k9JI6BhbB35e51kA02'
+  };
+
+  function startCheckout(btn) {
+    const tier = btn.dataset.tier || '1000';
+    const url  = CHECKOUT_URLS[tier];
+    if (!url) return;
     btn.textContent = 'Redirecting…';
     btn.disabled = true;
-    try {
-      const res = await fetch('/api/checkout', { method: 'POST' });
-      if (!res.ok) throw new Error('Request failed');
-      const { url } = await res.json();
-      window.location.href = url;
-    } catch {
-      btn.textContent = original;
-      btn.disabled = false;
-    }
+    window.location.href = url;
   }
 </script>
 

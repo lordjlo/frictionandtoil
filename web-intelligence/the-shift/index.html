@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Shift — Search Has a New Front Door | Friction &amp; Toil</title>
+<meta name="description" content="AI is intercepting your highest-intent customers before they reach your website. A data-led brief on the shift from search to AI-powered discovery — and where your business sits today.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Search Has a New Front Door: The 2025–2026 Shift to AI-Powered Discovery",
+  "description": "A data-led intelligence brief on how AI is restructuring search, buyer behaviour, and website visibility — with evidence from Ofcom, Ahrefs, Aggarwal et al. (KDD 2024), and sector-specific data for hospitality, B2B, and events.",
+  "author": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "datePublished": "2026-04-23",
+  "keywords": "AI search visibility, generative engine optimization, GEO, AI Share of Voice, AI maturity curve, ChatGPT citations, Perplexity SEO"
+}
+</script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-soft: rgba(255,255,255,0.02);
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --text: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5a5a6e;
+  --search: #6366f1;
+  --design: #c9963a;
+  --brand: #10b981;
+  --compete: #f43f5e;
+  --growth: #06b6d4;
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---- Typography ---- */
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-sub {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin-top: 1.15rem;
+  line-height: 1.6;
+}
+.section-head { margin-bottom: 3.5rem; }
+.body-prose {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 68ch;
+}
+.body-prose p + p { margin-top: 1.25rem; }
+.body-prose strong { color: var(--text); font-weight: 600; }
+
+/* ---- Nav ---- */
+  .nav-dropdown-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .nav-dropdown-wrap:hover .nav-dropdown,
+  .nav-dropdown-wrap:focus-within .nav-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0s;
+  }
+  .nav-dropdown-wrap .nav-dropdown {
+    transition: opacity 0.18s ease 0.25s, transform 0.18s ease 0.25s;
+  }
+  .nav-dropdown-wrap:hover .nav-dropdown { transition-delay: 0s; }
+  .nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    padding-top: 12px;
+    background: transparent;
+    min-width: 210px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease 0s, transform 0.18s ease 0s;
+    z-index: 200;
+  }
+  .nav-dropdown-inner {
+    position: relative;
+    background: rgba(14,14,18,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 6px;
+    padding: 6px 0;
+  }
+  .nav-dropdown-inner::before {
+    content: '';
+    position: absolute;
+    top: 7px; left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px; height: 8px;
+    background: rgba(14,14,18,0.97);
+    border-left: 1px solid rgba(255,255,255,0.09);
+    border-top: 1px solid rgba(255,255,255,0.09);
+  }
+  .nav-dropdown a {
+    display: block;
+    padding: 9px 18px;
+    font-family: sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.04); }
+  .wi-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 56px 0 0 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(12px);
+    z-index: 99;
+    flex-direction: column;
+    padding: 40px 32px;
+  }
+  .wi-mobile-menu.open { display: flex; }
+  .wi-mobile-menu a {
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color 0.2s;
+  }
+  .wi-mobile-menu a:last-child { border-bottom: none; }
+  .wi-mobile-menu a:hover { color: #fff; }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    padding: 4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-links-desktop { display: flex; gap: 36px; }
+  @media (max-width: 700px) {
+    .nav-links-desktop { display: none; }
+    .nav-hamburger { display: flex; }
+    .wi-nav { padding: 0 20px !important; }
+  }
+
+/* ---- Hero ---- */
+.hero {
+  padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%; left: -15%;
+  width: 70%; height: 100%;
+  background: radial-gradient(circle at 25% 40%, rgba(99,102,241,0.08), transparent 55%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -20%; right: -10%;
+  width: 55%; height: 80%;
+  background: radial-gradient(circle at 75% 65%, rgba(201,150,58,0.05), transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 900px; }
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.kicker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--search);
+  box-shadow: 0 0 8px rgba(99,102,241,0.7);
+  animation: pulse-dot 2.4s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 0.35em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--design);
+}
+.hero-deck {
+  font-family: var(--body);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+}
+.hero-source {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+}
+
+/* ---- Stat Strip ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  overflow: hidden;
+  max-width: 820px;
+}
+.stat-cell {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.65rem;
+}
+.stat-num.col-search { color: var(--search); }
+.stat-num.col-design { color: var(--design); }
+.stat-num.col-growth { color: var(--growth); }
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.stat-source {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Prose Section ---- */
+.prose-section { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.prose-section .container { display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+.prose-label { position: sticky; top: 6rem; }
+@media (max-width: 800px) {
+  .prose-section .container { grid-template-columns: 1fr; gap: 2rem; }
+  .prose-label { position: static; }
+}
+
+/* ---- Maturity Curve ---- */
+.maturity { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.maturity-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+.maturity-track::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 0px);
+  right: calc(12.5% + 0px);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.4), rgba(201,150,58,0.4), rgba(16,185,129,0.4), rgba(6,182,212,0.4));
+  z-index: 0;
+}
+.maturity-rung {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.rung-node {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid;
+  background: var(--bg);
+  margin-bottom: 1.5rem;
+  transition: transform 0.25s;
+}
+.maturity-rung:hover .rung-node { transform: scale(1.1); }
+.rung-1 .rung-node { border-color: rgba(99,102,241,0.5);  color: var(--search); }
+.rung-2 .rung-node { border-color: rgba(201,150,58,0.5); color: var(--design); }
+.rung-3 .rung-node { border-color: rgba(16,185,129,0.5); color: var(--brand); }
+.rung-4 .rung-node { border-color: rgba(6,182,212,0.5);  color: var(--growth); }
+.rung-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem 1.25rem;
+  width: 100%;
+  text-align: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.maturity-rung:hover .rung-card {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+.rung-1 .rung-card { border-top: 3px solid var(--search); }
+.rung-2 .rung-card { border-top: 3px solid var(--design); }
+.rung-3 .rung-card { border-top: 3px solid var(--brand); }
+.rung-4 .rung-card { border-top: 3px solid var(--growth); }
+.rung-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+.rung-1 .rung-name { color: var(--search); }
+.rung-2 .rung-name { color: var(--design); }
+.rung-3 .rung-name { color: var(--brand); }
+.rung-4 .rung-name { color: var(--growth); }
+.rung-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.maturity-cta {
+  text-align: center;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.maturity-cta p {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 700px) {
+  .maturity-track { flex-direction: column; gap: 1.5rem; }
+  .maturity-track::before { display: none; }
+}
+
+/* ---- Evidence Cards ---- */
+.evidence { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.evidence-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.25s, transform 0.25s;
+}
+.evidence-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); }
+.evidence-stat {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.evidence-card:nth-child(1) .evidence-stat { color: var(--search); }
+.evidence-card:nth-child(2) .evidence-stat { color: var(--design); }
+.evidence-card:nth-child(3) .evidence-stat { color: var(--brand); }
+.evidence-label {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.evidence-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.evidence-cite {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .evidence-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Sector Cards ---- */
+.sectors { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.sector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.sector-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition: background 0.25s, transform 0.25s;
+}
+.sector-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); }
+.sector-tag {
+  font-family: var(--body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  display: inline-block;
+  width: fit-content;
+}
+.sector-card:nth-child(1) .sector-tag { background: rgba(201,150,58,0.12); color: var(--design); border: 1px solid rgba(201,150,58,0.25); }
+.sector-card:nth-child(2) .sector-tag { background: rgba(99,102,241,0.12); color: var(--search); border: 1px solid rgba(99,102,241,0.25); }
+.sector-card:nth-child(3) .sector-tag { background: rgba(16,185,129,0.12); color: var(--brand); border: 1px solid rgba(16,185,129,0.25); }
+.sector-headline {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+.sector-body {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.sector-signal {
+  margin-top: 0.5rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.sector-signal strong { color: var(--text-secondary); font-weight: 500; }
+@media (max-width: 700px) {
+  .sector-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Problems ---- */
+.problems { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.problem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background 0.25s;
+}
+.problem-card:hover { background: var(--bg-card-hover); }
+.problem-card:nth-child(1) { border-left: 3px solid var(--compete); }
+.problem-card:nth-child(2) { border-left: 3px solid var(--search); }
+.problem-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.problem-body {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.problem-example {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 700px) {
+  .problem-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Closing Argument ---- */
+.closing {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.closing-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.closing h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.closing-body {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.closing-body p + p { margin-top: 1.2rem; }
+.closing-cta { margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.1rem 2.2rem;
+  background: #fff;
+  color: #0a0a0f;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.btn-primary:hover {
+  background: var(--design);
+  color: #14100a;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -16px rgba(201,150,58,0.5);
+}
+.btn-primary .arrow { transition: transform 0.25s; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.cta-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Briefing ---- */
+.briefing {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--border);
+}
+.briefing-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.briefing h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.briefing-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 48ch;
+}
+.briefing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.briefing-form input {
+  padding: 0.9rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.briefing-form input:focus { border-color: var(--search); }
+.briefing-form input::placeholder { color: var(--text-muted); }
+.btn-amber {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.95rem 1.75rem;
+  background: var(--design);
+  color: #14100a;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-amber:hover { background: #b08125; transform: translateY(-1px); }
+.form-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .briefing-inner { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0 2rem;
+}
+.footer-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+.footer-brand {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.footer-centre {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.footer-right {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: right;
+  transition: color 0.2s ease;
+}
+.footer-right:hover { color: var(--design); }
+.footer-copy {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Mobile nav ---- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  padding: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: rgba(10,10,15,0.97);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem var(--gutter) 2rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 0.9rem 0;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--text); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ---- Reveal animation ---- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.40s; } .reveal.d6 { transition-delay: 0.48s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <div class="nav-links-desktop" style="list-style:none;">
+    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
+    <div class="nav-dropdown-wrap">
+      <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:#fff;text-decoration:none;text-transform:uppercase;">Web Intelligence</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &rarr;</a>
+          <a href="/web-intelligence/#problem">Problem</a>
+          <a href="/web-intelligence/#cost">What it's costing you</a>
+          <a href="/web-intelligence/#solution">The Solution</a>
+          <a href="/web-intelligence/#covers">What the report covers</a>
+          <a href="/web-intelligence/#pricing">Pricing</a>
+          <a href="/web-intelligence/#sample">Sample reports</a>
+          <a href="/web-intelligence/#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <a href="/culture-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Culture Intelligence</a>
+    <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('shiftMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-mobile-menu" id="shiftMobileMenu">
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
+  <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/web-intelligence/the-shift/">The Shift</a>
+  <a href="/culture-intelligence/">Culture Intelligence</a>
+  <a href="/experiments/">Experiments</a>
+  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+</div>
+<div style="height:56px"></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-kicker reveal">
+          <span class="kicker-dot"></span>
+          Intelligence Brief &middot; Web Intelligence &middot; April 2026
+        </div>
+        <h1 class="reveal d1">Search Has a<br><em>New Front Door.</em></h1>
+        <p class="hero-deck reveal d2">AI is intercepting your highest-intent customers before they ever reach your website. This brief explains what is happening, why it matters for your specific sector, and where your business stands in the new economy.</p>
+
+        <div class="stat-strip reveal d3">
+          <div class="stat-cell">
+            <div class="stat-num col-search">1.8bn</div>
+            <div class="stat-desc">UK ChatGPT visits in 8 months of 2025 — up from 368m the year before</div>
+            <span class="stat-source">Ofcom Online Nation, December 2025</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">−58%</div>
+            <div class="stat-desc">Average click-loss on the top organic result when Google shows an AI Overview</div>
+            <span class="stat-source">Ahrefs, December 2025 · ~300k keywords</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-growth">83%</div>
+            <div class="stat-desc">of searches that trigger an AI Overview end without a single click to any website</div>
+            <span class="stat-source">Similarweb, July 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE SHIFT INTRO ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">The Shift</span>
+        <h2 class="section-heading">The decade-old playbook has expired.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>For a decade, the formula was simple: rank on page 1, generate clicks, work your funnel. That formula still holds for a shrinking slice of queries. For the rest, AI has already answered the question before your listing appears.</p>
+        <p>54% of UK adults now use AI tools — rising to 79% of 16–24-year-olds and 74% of 25–34-year-olds. <strong>94% of B2B buyers</strong> use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey. Your buyers are not opening five tabs to compare options. They are asking AI for the final answer.</p>
+        <p>UK AI Overviews launched on 15 August 2024. The UK has now been operating with AI-summarised search results for the better part of two years. The shift is not approaching. It is underway.</p>
+        <p>If your brand is not part of the AI answer, you don't exist in that buyer's world. Not because your product is inferior. Because your website is not structured to be read, understood, and cited by the systems making the recommendation.</p>
+        <p>This brief explains the mechanics — and gives you a framework to diagnose where your business stands today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MATURITY CURVE ============ -->
+  <section class="maturity">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The AI Maturity Curve</span>
+        <h2 class="section-heading">Every business on the web falls into one of four categories.</h2>
+        <p class="section-sub">The Agentic Web does not grade on a curve. Based on over a dozen structural and content citation-factor checks, every business currently sits at one of four rungs. The question is which one is yours.</p>
+      </div>
+
+      <div class="maturity-track">
+        <div class="maturity-rung rung-1 reveal d1">
+          <div class="rung-node">01</div>
+          <div class="rung-card">
+            <div class="rung-name">Invisible</div>
+            <div class="rung-desc">AI crawlers find nothing credible to work with. No structured data, no citeable facts, possibly blocked from crawling entirely. When a buyer asks about your category, you are absent from the answer.</div>
+          </div>
+        </div>
+        <div class="maturity-rung rung-2 reveal d2">
+          <div class="rung-node">02</div>
+          <div class="rung-card">
+            <div class="rung-name">Emerging</div>
+            <div class="rung-desc">Partial signals exist. Some schema, some third-party mentions, but fragmented. AI occasionally surfaces your name but cannot accurately describe what you do or why you're different.</div>
+          </div>
+        </div>
+        <div class="maturity-rung rung-3 reveal d3">
+          <div class="rung-node">03</div>
+          <div class="rung-card">
+            <div class="rung-name">Cited</div>
+            <div class="rung-desc">AI reliably mentions you. Your core facts are extractable. But you're cited passively — appearing when queried, not yet positioned as the recommended answer.</div>
+          </div>
+        </div>
+        <div class="maturity-rung rung-4 reveal d4">
+          <div class="rung-node">04</div>
+          <div class="rung-card">
+            <div class="rung-name">Recommended</div>
+            <div class="rung-desc">AI selects you. Your content is structured for agent consumption, your differentiators are factual and extractable, your authority signals are strong enough that LLMs lead with your name.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="maturity-cta reveal">
+        <p>Where do you sit today? You cannot fix what you cannot see.</p>
+        <a href="/web-intelligence/" class="btn-primary">Find your rung — commission an audit <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CITATION MECHANICS ============ -->
+  <section class="evidence">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Evidence</span>
+        <h2 class="section-heading">You solved for User Experience.<br>Now you must solve for Agent Experience.</h2>
+        <p class="section-sub">You have spent years making your website beautiful for humans. Human-beautiful websites are often invisible to AI. The mechanics of AI citation are documented — and they are not what most marketers expect.</p>
+      </div>
+
+      <div class="body-prose reveal" style="margin-bottom: 3rem;">
+        <p>AI crawlers operate on a token budget. If your site is bloated, renders late, or buries core facts inside JavaScript, the AI burns through its budget and leaves without understanding what you do. Your competitor — with a technically inferior product but a cleaner information architecture — gets cited instead.</p>
+        <p>A peer-reviewed study published at KDD 2024 (Aggarwal et al., <em>Generative Engine Optimization</em>) measured what actually increases a page's likelihood of being cited in a generative engine response. The findings are specific, replicable, and actionable.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-card reveal d1">
+          <div class="evidence-stat">+41%</div>
+          <div class="evidence-label">Statistics &amp; Verified Data</div>
+          <div class="evidence-desc">Pages that include specific, attributed statistics see a 41% improvement in citation frequency in generative engine responses. Generic claims are ignored; verifiable numbers are cited.</div>
+          <div class="evidence-cite">Aggarwal et al. · KDD 2024 · arXiv:2311.09735</div>
+        </div>
+        <div class="evidence-card reveal d2">
+          <div class="evidence-stat">+28%</div>
+          <div class="evidence-label">Direct Quotations</div>
+          <div class="evidence-desc">Attributed quotations — from clients, experts, or authoritative sources — increase citation likelihood by 28%. AI models treat attributed voice as a credibility signal.</div>
+          <div class="evidence-cite">Aggarwal et al. · KDD 2024 · arXiv:2311.09735</div>
+        </div>
+        <div class="evidence-card reveal d3">
+          <div class="evidence-stat">#2</div>
+          <div class="evidence-label">Schema Markup (JSON-LD)</div>
+          <div class="evidence-desc">Structured data is the second most important ranking factor for Perplexity — second only to page freshness. A single FAQ schema addition was shown to double citation frequency in A/B testing.</div>
+          <div class="evidence-cite">FirstPageSage, 2025 · Perplexity ranking factors study</div>
+        </div>
+      </div>
+
+      <div class="body-prose reveal" style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+        <p>There is a further complexity most businesses have not yet confronted: <strong>different AI models cite different pages</strong>. A URL cited reliably in ChatGPT may be completely invisible in Perplexity, and vice versa. There is no single "AI visibility" — there is ChatGPT visibility, Perplexity visibility, Google AI Overviews visibility, and Gemini visibility, and they can diverge sharply by vertical. Monitoring requires model specificity, not a single score.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTOR EVIDENCE ============ -->
+  <section class="sectors">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Evidence From Your Sector</span>
+        <h2 class="section-heading">This is not a distant trend.<br>It is live in your market, right now.</h2>
+        <p class="section-sub">The shift looks different by vertical. But it is happening across all of them — and in several sectors, the infrastructure for AI-intermediated commerce is already in place.</p>
+      </div>
+
+      <div class="sector-grid">
+        <div class="sector-card reveal d1">
+          <span class="sector-tag">Hospitality</span>
+          <div class="sector-headline">Hotels are being booked from inside ChatGPT conversations.</div>
+          <div class="sector-body">Two-thirds of travellers now use AI in trip planning. One in three use AI to actually book. Google rolled out AI-powered restaurant booking in the UK in 2025. The Hotels Network has integrated live hotel availability directly inside ChatGPT — not as a recommendation, as a booking interface.</div>
+          <div class="sector-signal"><strong>Signal:</strong> ChatGPT referrals to hotel websites grew ~300% in a few months. Customer Alliance, 2025.</div>
+        </div>
+        <div class="sector-card reveal d2">
+          <span class="sector-tag">B2B &amp; Professional Services</span>
+          <div class="sector-headline">Google is now the validation step, not the starting point.</div>
+          <div class="sector-body">94% of B2B buyers use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey. Research happens in AI. Shortlisting happens in AI. Google is used afterwards to confirm what AI already decided. For professional services — accountancy, legal, consultancy — the discovery conversation has already moved.</div>
+          <div class="sector-signal"><strong>Signal:</strong> Gartner forecasts $15 trillion of B2B spend intermediated by AI agents by 2028. November 2025.</div>
+        </div>
+        <div class="sector-card reveal d3">
+          <span class="sector-tag">Venues &amp; Events</span>
+          <div class="sector-headline">Couples are shortlisting venues without ever opening a browser tab.</div>
+          <div class="sector-body">More than half of engaged couples in 2025–2026 report using AI tools during planning. The Knot Worldwide integrated its entire vendor marketplace — venues, photographers, caterers — directly inside ChatGPT. If your venue is not in that conversation, it is not on the shortlist.</div>
+          <div class="sector-signal"><strong>Signal:</strong> The Knot Worldwide vendor marketplace now searchable inside ChatGPT. Glossy.co, 2025.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE TWO HIDDEN PROBLEMS ============ -->
+  <section class="problems">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Two Problems Most Businesses Don't Know They Have</span>
+        <h2 class="section-heading">The bake-off is happening without you.</h2>
+        <p class="section-sub">Beyond visibility, two specific failure modes are costing businesses enquiries and revenue — silently, before a buyer has ever visited their site.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal d1">
+          <div class="problem-title">The Vendor Bake-Off Problem</div>
+          <div class="problem-body">Enterprise buyers are asking AI to compare vendors directly — pricing, features, support. If your pricing is hidden behind "contact us," buried in a PDF, or locked inside an image, AI cannot include you in the comparison. You lose the bake-off silently, before the buyer has ever visited your site.</div>
+          <div class="problem-example">"Compare Vendor A and Vendor B on price, features, and customer support."</div>
+          <div class="problem-body" style="margin-top:1rem;">AI cannot include you in this answer if your data isn't cleanly extractable as HTML text. It will either hallucinate your features or skip you entirely — and recommend a competitor with a simpler information architecture.</div>
+        </div>
+        <div class="problem-card reveal d2">
+          <div class="problem-title">The Citation Consensus Problem</div>
+          <div class="problem-body">AI does not only read your website. It reads everything the internet has already said about you — niche forums, sector publications, trade press, third-party review sites. For every vertical, there are specific platforms AI treats as authoritative sources.</div>
+          <div class="problem-example">For consumer queries: Reddit. For B2B services: specialist trade press and industry bodies. For hospitality: sector-specific review aggregators.</div>
+          <div class="problem-body" style="margin-top:1rem;">Being absent from the platforms your sector's AI trust hierarchy uses is as damaging as having a broken website. Most businesses have no idea which platforms matter for their specific vertical.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ARGUMENT ============ -->
+  <section class="closing">
+    <div class="container">
+      <div class="closing-inner reveal">
+        <span class="eyebrow" style="display:block;text-align:center;margin-bottom:1.5rem;">The Timing Question</span>
+        <h2>The question is not whether this is happening. It is when the tipping point reaches your vertical.</h2>
+        <div class="closing-body">
+          <p>AI platforms still drive a fraction of total internet traffic compared to Google. Google handles 14 billion searches a day; it is not going anywhere overnight. That is not the point.</p>
+          <p>The point is that AI Overviews are already eroding click-through rates on Google by 58% for the queries that trigger them. The businesses being cited in AI answers today are building a compounding advantage. Citation positions compound as models retrain and reinforce existing sources.</p>
+          <p>The businesses that are Recommended in AI results 18 months from now are the ones getting audited today. The question is not whether to act — it is whether you have the lead time to act before your vertical tips.</p>
+        </div>
+        <div class="closing-cta">
+          <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">→</span></a>
+          <span class="cta-sub">From £750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing" style="color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.15);">View all pricing options</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BRIEFING ============ -->
+  <section class="briefing">
+    <div class="container">
+      <div class="briefing-inner">
+        <div class="reveal">
+          <span class="eyebrow">Monthly Intelligence Briefing</span>
+          <h2>Citation behaviour shifts as models retrain.</h2>
+          <p class="briefing-sub">The rules of Generative Engine Optimisation are being written in real time. Retrieval patterns shift. Citation factors evolve. We track it monthly and share what matters for UK businesses — no consultancy noise, just the intelligence.</p>
+        </div>
+        <form class="briefing-form reveal d2" onsubmit="return false;">
+          <input type="email" placeholder="Your work email" autocomplete="email">
+          <button type="submit" class="btn-amber">Subscribe to the Briefing</button>
+          <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">Friction &amp; Toil</div>
+      <div class="footer-centre">frictionandtoil.com</div>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
