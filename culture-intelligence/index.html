@@ -7,7 +7,20 @@
 <meta name="description" content="Culture eats strategy for breakfast. An outside-in intelligence report that surfaces the cultural fractures leadership can't see — before they show up in turnover, Glassdoor, or a failed transformation. In partnership with The Corporate Culture Coach.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://frictionandtoil.com/culture-intelligence/">
-<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0HGLBD1WS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z0HGLBD1WS');
+  function trackLead(service) {
+    gtag('event', 'generate_lead', {
+      'service_name': service,
+      'event_category': 'lead_generation',
+      'event_label': service
+    });
+  }
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0HGLBD1WS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -815,8 +828,8 @@
           <p class="hero-amber reveal d2">And nobody in the room wants to admit it.</p>
           <p class="hero-sub reveal d3">An outside-in intelligence report that surfaces the cultural fracture before it becomes a crisis. Leadership trust, organisational stability, strategic clarity, retention risk &mdash; read from the signals your own people can&rsquo;t see any more. Delivered with our friends at The Corporate Culture Coach.</p>
           <div class="hero-cta-row reveal d4">
-            <a class="btn btn-white" href="mailto:hello@frictionandtoil.com?subject=Culture%20Intelligence%20enquiry">Start a conversation <span class="arrow">&rarr;</span></a>
-            <a class="btn btn-ghost" href="/culture-intelligence/sample/">See a sample report</a>
+            <a class="btn btn-white" href="mailto:hello@frictionandtoil.com?subject=Culture%20Intelligence%20enquiry" onclick="trackLead('culture_intelligence_start_conversation')">Start a conversation <span class="arrow">&rarr;</span></a>
+            <a class="btn btn-ghost" href="/culture-intelligence/sample/" onclick="trackLead('culture_intelligence_view_sample_hero')">See a sample report</a>
           </div>
           <div class="hero-guarantee reveal d5">
             Pricing on request<span class="dot"></span>Delivered within 10 working days<span class="dot"></span>No pitch, no commitment &mdash; just a conversation about what we&rsquo;re seeing
@@ -991,11 +1004,11 @@
           <h3>Acme Consulting Ltd &mdash; Critical (36/100)</h3>
           <p>Founder-led firm under PE performance pressure. Two director resignations in 18 months. Glassdoor references to &ldquo;lack of direction&rdquo; in the majority of critical posts.</p>
           <p>The strategy lives in the founder&rsquo;s head, not on paper &mdash; and the organisation is now paying for that in leadership turnover and disengagement.</p>
-          <a class="sample-link" href="/culture-intelligence/sample/">Open the full sample report <span class="arrow">&rarr;</span></a>
+          <a class="sample-link" href="/culture-intelligence/sample/" onclick="trackLead('culture_intelligence_view_sample_text')">Open the full sample report <span class="arrow">&rarr;</span></a>
           <p class="sample-foot">Every report goes this deep. Across every dimension. For your actual business.</p>
         </div>
 
-        <a class="sample-preview reveal d2" href="/culture-intelligence/sample/" style="text-decoration:none;display:block">
+        <a class="sample-preview reveal d2" href="/culture-intelligence/sample/" style="text-decoration:none;display:block" onclick="trackLead('culture_intelligence_view_sample_preview')">
           <div class="sample-preview-label">Culture Intelligence &middot; Sample</div>
           <div class="sample-preview-title">Acme Consulting Ltd</div>
           <div class="sample-chips">
@@ -1067,7 +1080,7 @@
       <div class="bottom-cta-inner reveal">
         <h2 class="bottom-headline">Are you aware of your own cultural challenges?</h2>
         <p class="bottom-sub">By the time the data admits the problem, the damage is already priced in. Let&rsquo;s have the conversation before that.</p>
-        <a class="btn btn-accent" href="mailto:hello@frictionandtoil.com?subject=Culture%20Intelligence%20enquiry">Start a conversation <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-accent" href="mailto:hello@frictionandtoil.com?subject=Culture%20Intelligence%20enquiry" onclick="trackLead('culture_intelligence_start_conversation_bottom')">Start a conversation <span class="arrow">&rarr;</span></a>
         <div class="bottom-small">
           Pricing on request<span class="dot"></span>Delivered within 10 working days<span class="dot"></span>No pitch, no commitment
         </div>
@@ -1082,7 +1095,7 @@
     <div class="footer-row">
       <div class="footer-brand">Friction &amp; Toil</div>
       <div class="footer-centre">frictionandtoil.com</div>
-      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right" onclick="trackLead('culture_intelligence_footer_contact')">hello@frictionandtoil.com</a>
     </div>
     <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
   </div>

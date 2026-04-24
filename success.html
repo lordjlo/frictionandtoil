@@ -11,6 +11,20 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Z0HGLBD1WS');
+  // Track purchase event for Web Intelligence Report
+  gtag('event', 'purchase', {
+    "transaction_id": "T_" + new Date().getTime(),
+    "value": 1000.00,
+    "currency": "GBP",
+    "items": [
+      {
+        "item_id": "WI_REPORT_1000",
+        "item_name": "Web Intelligence Report",
+        "price": 1000.00,
+        "quantity": 1
+      }
+    ]
+  });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&family=Cormorant:ital,wght@1,300&display=swap" rel="stylesheet">

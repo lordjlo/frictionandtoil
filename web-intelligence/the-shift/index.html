@@ -511,7 +511,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .sectors { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
 .sector-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-top: 3rem;
 }
@@ -540,6 +540,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .sector-card:nth-child(1) .sector-tag { background: rgba(201,150,58,0.12); color: var(--design); border: 1px solid rgba(201,150,58,0.25); }
 .sector-card:nth-child(2) .sector-tag { background: rgba(99,102,241,0.12); color: var(--search); border: 1px solid rgba(99,102,241,0.25); }
 .sector-card:nth-child(3) .sector-tag { background: rgba(16,185,129,0.12); color: var(--brand); border: 1px solid rgba(16,185,129,0.25); }
+.sector-card:nth-child(4) .sector-tag { background: rgba(6,182,212,0.12); color: var(--growth); border: 1px solid rgba(6,182,212,0.25); }
 .sector-headline {
   font-family: var(--display);
   font-weight: 600;
@@ -983,7 +984,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
       <div class="maturity-cta reveal">
         <p>Where do you sit today? You cannot fix what you cannot see.</p>
-        <a href="/web-intelligence/" class="btn-primary">Find your rung — commission an audit <span class="arrow">→</span></a>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;">
+          <a href="/web-intelligence/#ai-search-report" class="btn-primary">AI Search Report &mdash; £250, 24 hours <span class="arrow">→</span></a>
+          <a href="/web-intelligence/" style="font-family:var(--body);font-size:0.9rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-secondary)'">Full report — all five dimensions →</a>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1rem;">£250 credited toward the full report if you upgrade within 90 days.</p>
       </div>
     </div>
   </section>
@@ -1100,16 +1105,22 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
       <div class="sector-grid">
         <div class="sector-card reveal d1">
-          <span class="sector-tag">Hospitality</span>
-          <div class="sector-headline">Hotels are being booked from inside ChatGPT conversations.</div>
-          <div class="sector-body">Two-thirds of travellers now use AI in trip planning. One in three use AI to actually book. Google rolled out AI-powered restaurant booking in the UK in 2025. The Hotels Network has integrated live hotel availability directly inside ChatGPT — not as a recommendation, as a booking interface.</div>
-          <div class="sector-signal"><strong>Signal:</strong> ChatGPT referrals to hotel websites grew ~300% in a few months. Customer Alliance, 2025.</div>
+          <span class="sector-tag">Hotels, Dining &amp; Pubs</span>
+          <div class="sector-headline">Guests are choosing where to stay, eat, and drink inside AI conversations.</div>
+          <div class="sector-body">Two-thirds of travellers now use AI in trip planning. One in three use it to book. Google AI Overviews now intercept the discovery searches that fill dining rooms and function spaces — "pubs near me with a garden", "best Sunday lunch in [city]" — displaying hours, menus, and booking links without a single click to your site. The Hotels Network has integrated live availability directly inside ChatGPT as a booking interface, not a recommendation.</div>
+          <div class="sector-signal"><strong>Signal:</strong> ChatGPT referrals to hotel websites grew ~300% in months. Pub chain discovery queries now trigger AI Overviews in over 60% of cases. Customer Alliance, 2025.</div>
         </div>
         <div class="sector-card reveal d2">
           <span class="sector-tag">B2B &amp; Professional Services</span>
           <div class="sector-headline">Google is now the validation step, not the starting point.</div>
           <div class="sector-body">94% of B2B buyers use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey. Research happens in AI. Shortlisting happens in AI. Google is used afterwards to confirm what AI already decided. For professional services — accountancy, legal, consultancy — the discovery conversation has already moved.</div>
           <div class="sector-signal"><strong>Signal:</strong> Gartner forecasts $15 trillion of B2B spend intermediated by AI agents by 2028. November 2025.</div>
+        </div>
+        <div class="sector-card reveal d4">
+          <span class="sector-tag">Care</span>
+          <div class="sector-headline">Families compare care homes before making a single phone call.</div>
+          <div class="sector-body">Adult children searching for care options now use AI to build a shortlist before any provider contact. Without schema markup, a care group's CQC ratings, bed availability, specialist care types, and location data cannot be extracted by AI recommendation engines — even when the group is the dominant local provider. Competitors with structured data surface in AI responses; providers without it are absent from the conversation entirely.</div>
+          <div class="sector-signal"><strong>Signal:</strong> "Care homes near me" and "dementia care [city]" queries now trigger AI Overviews on Google UK in the majority of cases, displaying competitor names, ratings, and contact details above all organic listings.</div>
         </div>
         <div class="sector-card reveal d3">
           <span class="sector-tag">Venues &amp; Events</span>
@@ -1161,6 +1172,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
         <div class="closing-cta">
           <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">→</span></a>
           <span class="cta-sub">From £750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing" style="color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.15);">View all pricing options</a></span>
+          <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.25rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Not ready for the full report? Start with AI visibility only &mdash; £250 &rarr;</a>
         </div>
       </div>
     </div>

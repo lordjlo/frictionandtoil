@@ -8,7 +8,20 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://frictionandtoil.com/strategic-intelligence/">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0HGLBD1WS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z0HGLBD1WS');
+    function trackLead(service) {
+      gtag('event', 'generate_lead', {
+        'service_name': service,
+        'event_category': 'lead_generation',
+        'event_label': service
+      });
+    }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -686,7 +699,7 @@
             </div>
           </div>
         </div>
-        <a href="mailto:hello@frictionandtoil.com?subject=Strategic Advisor Briefing" class="panel-cta">
+        <a href="mailto:hello@frictionandtoil.com?subject=Strategic Intelligence Enquiry" class="panel-cta" onclick="trackLead('strategic_intelligence_ceo_brief')">
           Commission a brief
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -735,7 +748,7 @@
             </div>
           </div>
         </div>
-        <a href="mailto:hello@frictionandtoil.com?subject=Meeting Prep Intelligence" class="panel-cta">
+        <a href="mailto:hello@frictionandtoil.com?subject=Culture Intelligence Enquiry" class="panel-cta" onclick="trackLead('strategic_intelligence_culture_brief')">
           Commission a brief
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -780,7 +793,7 @@
             </div>
           </div>
         </div>
-        <a href="mailto:hello@frictionandtoil.com?subject=Technology and Operational Intelligence" class="panel-cta">
+        <a href="mailto:hello@frictionandtoil.com?subject=Technology and Operational Intelligence" class="panel-cta" onclick="trackLead('strategic_intelligence_tech_ops_brief')">
           Commission a brief
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -816,7 +829,7 @@
         <h3>These are commissioned engagements.</h3>
         <p>No self-serve. No templates. Built for a specific target, a specific decision, a specific moment.</p>
       </div>
-      <a href="mailto:hello@frictionandtoil.com" class="bottom-cta">hello@frictionandtoil.com</a>
+      <a href="mailto:hello@frictionandtoil.com" class="bottom-cta" onclick="trackLead('strategic_intelligence_bottom_contact')">hello@frictionandtoil.com</a>
     </div>
   </div>
 

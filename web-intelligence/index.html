@@ -14,6 +14,13 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Z0HGLBD1WS');
+  function trackLead(service) {
+    gtag('event', 'generate_lead', {
+      'service_name': service,
+      'event_category': 'lead_generation',
+      'event_label': service
+    });
+  }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2010,12 +2017,48 @@
     </div>
   </section>
 
+  <!-- ============ AI SEARCH REPORT (£250 ENTRY TIER) ============ -->
+  <section id="ai-search-report" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Entry point</span>
+        <h2 class="section-heading">Not sure yet? Start with AI visibility.</h2>
+        <p class="section-sub">One dimension. One deliverable. A clear answer to whether AI engines can see your business — and what to do about it.</p>
+      </div>
+
+      <div class="reveal d2" style="max-width:720px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:clamp(2rem,4vw,3rem);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem;">
+          <span style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--text);">AI Search Report</span>
+          <div style="display:flex;align-items:baseline;gap:0.5rem;">
+            <span style="font-family:var(--body);font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:700;color:var(--text);">&pound;250</span>
+            <span style="font-size:0.85rem;color:var(--text-secondary);">one-off</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6;">A focused audit of one dimension only — your AI visibility. Where your business sits on the Maturity Curve, which AI engines can and can&rsquo;t find you, and the single change that moves the needle fastest. Delivered as a standalone HTML file within 24 hours.</p>
+
+        <ul style="list-style:none;padding:0;margin:0 0 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.85rem;">
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">AI Maturity Rung</strong> — Invisible / Emerging / Cited / Recommended</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">AI Share of Voice</strong> — scored across 6 target queries</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Citation Host Map</strong> — which publishers AI trusts in your sector</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Vendor Bake-Off readiness</strong> — can AI extract your pricing and features?</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">One priority action</strong> — the single change that improves your rung fastest</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Upgrade credit</strong> — &pound;250 off the full Web Intelligence Report if you want all five dimensions</span></li>
+        </ul>
+
+        <button class="btn btn-white" style="width:100%;justify-content:center;font-size:0.95rem;" onclick="startCheckout(this)" data-tier="250">Order AI Search Report &mdash; &pound;250 &rarr;</button>
+
+        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Delivered within 24 hours as a standalone HTML file. Upgrade credit applied automatically if you order the full report within 90 days.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ COMPARISON / WHY £750 ============ -->
   <section class="compare" id="pricing">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Pricing</span>
-        <h2 class="section-heading">Three ways to get started.</h2>
+        <h2 class="section-heading">Full report &mdash; five dimensions, 48 hours.</h2>
         <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 15-minute call first</a> &mdash; no obligation, no deck, no pitch.</p>
       </div>
       <div class="compare-grid">
@@ -2049,6 +2092,40 @@
     </div>
   </section>
 
+  <!-- ============ MONTHLY AI PULSE ============ -->
+  <section style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">After the report</span>
+        <h2 class="section-heading">Your Maturity Rung is a snapshot, not a guarantee.</h2>
+        <p class="section-sub">AI models retrain. Competitors add schema. Citation patterns shift. The improvements you implement after the report can be undercut within months — quietly, with no warning on your analytics dashboard.</p>
+      </div>
+
+      <div class="reveal d2" style="max-width:680px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:clamp(2rem,4vw,3rem);">
+        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.75rem;">
+          <span style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--text);">Monthly AI Pulse</span>
+          <span style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--design);">&pound;150/mo</span>
+        </div>
+
+        <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6;">A standing check that your rung is holding and your work is counting. Delivered on the first working day of each month as a one-page briefing — no dashboards to log into.</p>
+
+        <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.85rem;">
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Maturity Rung status</strong> — held, at risk, or dropped, and why</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">AI SoV re-simulation</strong> — same 6 target queries from your report, re-scored</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Competitor movement watch</strong> — if a named rival improves their citation signals, you'll know before it shows in your visibility</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">robots.txt clean check</strong> — the one technical slip that silently blocks all AI crawlers overnight</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">One recommended action</strong> for the coming month</span></li>
+        </ul>
+
+        <a href="PULSE_STRIPE_URL" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:1rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.95rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background 0.2s;box-sizing:border-box;" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Start Monthly AI Pulse &mdash; &pound;150/mo &rarr;</a>
+
+        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Available to Web Intelligence Report clients only. Rolling subscription &mdash; cancel anytime.</p>
+      </div>
+
+      <p class="reveal d3" style="font-size:0.85rem;color:var(--text-muted);text-align:center;max-width:56ch;margin:1.5rem auto 0;line-height:1.6;">Already on the &pound;1,000 or payment plan? Your half-price rescan is separate &mdash; that&rsquo;s a full re-audit, not a monthly check. Most clients run both: Pulses between rescans, a full re-audit every 6&ndash;12 months.</p>
+    </div>
+  </section>
+
   <!-- ============ SAMPLE REPORTS ============ -->
   <section class="sample" id="sample">
     <div class="container">
@@ -2059,7 +2136,7 @@
       </div>
 
       <div class="report-card reveal d1" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;background:transparent;border:none;padding:0">
-        <a href="/web-intelligence/demo/" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #10b981;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#10b981';this.style.borderColor='rgba(255,255,255,0.08)'">
+        <a href="/web-intelligence/demo/" onclick="trackLead('web_intelligence_view_sample_wedding')" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #10b981;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#10b981';this.style.borderColor='rgba(255,255,255,0.08)'">
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a6e">Hospitality · Weddings</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#e8e8ed">UK Luxury Wedding Venue</div>
           <div class="chip-row" style="gap:6px">
@@ -2072,7 +2149,7 @@
           <div style="font-size:12px;color:#8b8b9e">£45k–£90k / yr opportunity identified</div>
         </a>
 
-        <a href="/web-intelligence/demo/" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #6366f1;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#6366f1';this.style.borderColor='rgba(255,255,255,0.08)'">
+        <a href="/web-intelligence/demo/" onclick="trackLead('web_intelligence_view_sample_care')" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #6366f1;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#6366f1';this.style.borderColor='rgba(255,255,255,0.08)'">
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a6e">Health &amp; Social Care</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#e8e8ed">UK Care Home Group</div>
           <div class="chip-row" style="gap:6px">
@@ -2085,7 +2162,7 @@
           <div style="font-size:12px;color:#8b8b9e">£12k–£18k / yr opportunity identified</div>
         </a>
 
-        <a href="/web-intelligence/demo/" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #c9963a;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#c9963a';this.style.borderColor='rgba(255,255,255,0.08)'">
+        <a href="/web-intelligence/demo/" onclick="trackLead('web_intelligence_view_sample_coaching')" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #c9963a;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#c9963a';this.style.borderColor='rgba(255,255,255,0.08)'">
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a6e">Professional Services</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#e8e8ed">UK B2B Coaching Consultancy</div>
           <div class="chip-row" style="gap:6px">
@@ -2098,7 +2175,7 @@
           <div style="font-size:12px;color:#8b8b9e">£15k–£40k / yr opportunity identified</div>
         </a>
 
-        <a href="/web-intelligence/demo/" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #06b6d4;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#06b6d4';this.style.borderColor='rgba(255,255,255,0.08)'">
+        <a href="/web-intelligence/demo/" onclick="trackLead('web_intelligence_view_sample_beer')" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #06b6d4;border-radius:12px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#06b6d4';this.style.borderColor='rgba(255,255,255,0.08)'">
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a6e">Food &amp; Drink · Hospitality</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#e8e8ed">UK Craft Beer Bar &amp; Bottle Shop</div>
           <div class="chip-row" style="gap:6px">
@@ -2111,7 +2188,7 @@
           <div style="font-size:12px;color:#8b8b9e">£14k–£18k / yr opportunity identified</div>
         </a>
 
-        <a href="/web-intelligence/members-club/" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #8b5cf6;border-radius:12px;transition:border-color .2s;grid-column:1/3;max-width:calc(50% - 8px);margin:0 auto;width:100%" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#8b5cf6';this.style.borderColor='rgba(255,255,255,0.08)'">
+        <a href="/web-intelligence/members-club/" onclick="trackLead('web_intelligence_view_sample_members')" style="text-decoration:none;display:flex;flex-direction:column;gap:10px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-top:3px solid #8b5cf6;border-radius:12px;transition:border-color .2s;grid-column:1/3;max-width:calc(50% - 8px);margin:0 auto;width:100%" onmouseover="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseout="this.style.borderTopColor='#8b5cf6';this.style.borderColor='rgba(255,255,255,0.08)'">
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5a5a6e">Hospitality · Private Members</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#e8e8ed">UK Private Members Club</div>
           <div class="chip-row" style="gap:6px">
@@ -2243,7 +2320,7 @@
     <div class="footer-row">
       <div class="footer-brand">Friction &amp; Toil</div>
       <div class="footer-centre">frictionandtoil.com</div>
-      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right" onclick="trackLead('web_intelligence_footer_contact')">hello@frictionandtoil.com</a>
     </div>
     <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
   </div>
@@ -2315,12 +2392,14 @@
 
 <script>
   const CHECKOUT_URLS = {
+    '250':   'AI_SEARCH_STRIPE_URL',
     '750':   'https://buy.stripe.com/9B6fZi7BA2l134x5e51kA00',
     '1000':  'https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01',
     '500mo': 'https://buy.stripe.com/bJe00k9JI6BhbB35e51kA02'
   };
 
   function startCheckout(btn) {
+    trackLead('web_intelligence_checkout_start');
     const tier = btn.dataset.tier || '1000';
     const url  = CHECKOUT_URLS[tier];
     if (!url) return;

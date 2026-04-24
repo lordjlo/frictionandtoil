@@ -13,6 +13,13 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Z0HGLBD1WS');
+  function trackLead(service) {
+    gtag('event', 'generate_lead', {
+      'service_name': service,
+      'event_category': 'lead_generation',
+      'event_label': service
+    });
+  }
 </script>
 <meta name="google-site-verification" content="u-Hdjvm4n0PnQnuZmLzXoyy1YWwKJZ1KgoRO2_ua9iU">
 <link rel="canonical" href="https://frictionandtoil.com/">
@@ -573,7 +580,7 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
           <span class="tag">Financial Analysis</span>
           <span class="tag">Tech &amp; Ops</span>
         </div>
-        <a href="/strategic-intelligence/" class="product-cta cta-strategic">
+        <a href="/strategic-intelligence/" class="product-cta cta-strategic" onclick="trackLead('strategic_intelligence')">
           Learn more
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -591,7 +598,7 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
           <span class="tag">AI Search Visibility</span>
           <span class="tag">Revenue Model</span>
         </div>
-        <a href="/web-intelligence/" class="product-cta cta-web">
+        <a href="/web-intelligence/" class="product-cta cta-web" onclick="trackLead('web_intelligence')">
           Order a report — £1,000
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -609,7 +616,7 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
           <span class="tag">People &amp; Retention</span>
           <span class="tag">Outside-in</span>
         </div>
-        <a href="/culture-intelligence/" class="product-cta cta-culture">
+        <a href="/culture-intelligence/" class="product-cta cta-culture" onclick="trackLead('culture_intelligence')">
           Learn more
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -625,7 +632,7 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
       <div class="proof-divider"></div>
       <div class="proof-text" style="color:rgba(255,255,255,0.25)">
         Both products are built by F&T — not automated tools, not outsourced teams. Every report is a structured intelligence process combining live research, competitor analysis, AI search visibility testing, and human review.<br><br>
-        <a href="mailto:hello@frictionandtoil.com" style="color:rgba(255,255,255,0.4);text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px">hello@frictionandtoil.com</a>
+        <a href="mailto:hello@frictionandtoil.com" onclick="trackLead('email_contact')" style="color:rgba(255,255,255,0.4);text-decoration:none;font-family:'Inter',sans-serif;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px">hello@frictionandtoil.com</a>
       </div>
     </div>
   </div>
