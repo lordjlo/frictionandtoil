@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Friction &amp; Toil Web Intelligence</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9YM8NWRH3M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9YM8NWRH3M');
+  gtag('event', 'purchase_confirmed', { event_category: 'conversion', event_label: 'web_intelligence' });
+</script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: rgba(255,255,255,0.03);
+  --border: rgba(255,255,255,0.08);
+  --text: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5a5a6e;
+  --search: #6366f1;
+  --design: #c9963a;
+  --brand: #10b981;
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --body: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--body);
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  gap: 2rem;
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--text);
+  text-decoration: none;
+  margin-right: auto;
+  letter-spacing: -0.01em;
+}
+
+.nav-link {
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: #fff; }
+
+/* ── MAIN ── */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 7rem var(--gutter) 5rem;
+}
+
+.confirm-wrap {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+}
+
+.confirm-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+}
+
+.confirm-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #10b981;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.confirm-headline {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.confirm-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+/* ── STEPS ── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  min-width: 2rem;
+  padding-top: 0.15rem;
+}
+
+.step-body {}
+
+.step-title {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.step-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.step-timing {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--brand);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── CONTACT ── */
+.confirm-contact {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.confirm-contact a {
+  color: var(--design);
+  text-decoration: none;
+}
+
+.confirm-contact a:hover {
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--text-secondary); }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem var(--gutter);
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">FRICTION &amp; TOIL</a>
+  <a href="/web-intelligence/" class="nav-link">Web Intelligence</a>
+  <a href="mailto:hello@frictionandtoil.com" class="nav-link">Contact</a>
+</nav>
+
+<main>
+  <div class="confirm-wrap">
+
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+
+    <h1 class="confirm-headline">Order confirmed.</h1>
+    <p class="confirm-sub">
+      You'll receive a Stripe receipt by email. Here's what happens next.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-title">We'll email you three short questions</div>
+          <div class="step-desc">
+            Primary audience, top 3 competitor URLs, and any focus areas you want prioritised.
+            Usually takes under five minutes to answer. No form — just reply to the email.
+          </div>
+          <span class="step-timing">Within the hour</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-title">The audit begins</div>
+          <div class="step-desc">
+            We run the full diagnostic across all five dimensions — search visibility, design,
+            brand, competitive positioning, and growth signals — plus AI Share of Voice testing
+            across six target queries.
+          </div>
+          <span class="step-timing">Immediately after intake</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-title">Your report lands in your inbox</div>
+          <div class="step-desc">
+            A single, self-contained HTML file — open it in any browser, no login required.
+            If you ordered the full report, we'll also schedule your 15-minute walkthrough call.
+          </div>
+          <span class="step-timing">Within 48 hours</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="confirm-contact">
+      Questions in the meantime? Email us at
+      <a href="mailto:hello@frictionandtoil.com">hello@frictionandtoil.com</a>
+      — we're a small team and respond same day.
+    </p>
+
+    <a href="/web-intelligence/" class="back-link">← Back to Web Intelligence</a>
+
+  </div>
+</main>
+
+<footer>
+  <a href="/">Friction &amp; Toil</a> &nbsp;&middot;&nbsp;
+  <a href="/web-intelligence/">Web Intelligence</a> &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@frictionandtoil.com">hello@frictionandtoil.com</a>
+</footer>
+
+</body>
+</html>
