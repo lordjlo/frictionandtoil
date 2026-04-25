@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cost of Not Knowing — Why Most Agencies Sell Upside, And What Happens When You Quantify Downside Instead | Friction &amp; Toil</title>
-<meta name="description" content="An editorial on the Cost of Inaction methodology: why agencies sell upside, why downside is harder to sell, and what the maths actually looks like when you measure what your current website is costing you.">
+<title>The Cost of Not Knowing — The First Compounding Curve in Digital Visibility Since PageRank | Friction &amp; Toil</title>
+<meta name="description" content="An editorial on the Cost of Inaction: why agencies sell upside, why downside is harder to sell, and why AI citation has become the first self-reinforcing visibility curve since PageRank — making the maths underneath every UK business website tighter every quarter.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/cost-of-not-knowing/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,8 +14,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "The Cost of Not Knowing: Why Most Agencies Sell Upside, and What Happens When You Quantify Downside Instead",
-  "description": "An editorial argument for measuring the Cost of Inaction — what your current website is already costing you in lost search visibility, lost AI citations, and lost conversion — before commissioning any agency growth promise.",
+  "headline": "The Cost of Not Knowing: The First Compounding Curve in Digital Visibility Since PageRank",
+  "description": "An editorial argument that AI citation has become the first self-reinforcing visibility curve since PageRank, and a methodology — Cost of Inaction — for putting a defensible pound figure against the cost of staying invisible.",
   "author": {
     "@type": "Organization",
     "name": "Friction & Toil",
@@ -27,7 +27,8 @@
     "url": "https://frictionandtoil.com"
   },
   "datePublished": "2026-04-25",
-  "keywords": "Cost of Inaction, COI methodology, website audit, downside risk, AI search visibility, Friction and Toil, web intelligence"
+  "dateModified": "2026-04-25",
+  "keywords": "Cost of Inaction, COI methodology, AI search visibility, compounding citation, generative engine optimization, Web Intelligence, Friction and Toil"
 }
 </script>
 <style>
@@ -82,7 +83,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .section-heading {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -95,11 +96,20 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   margin-top: 1.15rem;
   line-height: 1.6;
 }
-.section-head { margin-bottom: 3.5rem; }
+.section-numeral {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 1.1rem;
+}
 .body-prose {
   font-family: var(--body);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1.06rem;
+  line-height: 1.78;
   color: var(--text-secondary);
   max-width: 68ch;
 }
@@ -124,7 +134,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   transform: translateX(-50%) translateY(-4px);
   padding-top: 12px;
   background: transparent;
-  min-width: 210px;
+  min-width: 230px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.18s ease 0s, transform 0.18s ease 0s;
@@ -240,7 +250,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   background: radial-gradient(circle at 75% 65%, rgba(201,150,58,0.05), transparent 50%);
   pointer-events: none;
 }
-.hero-inner { position: relative; z-index: 1; max-width: 900px; }
+.hero-inner { position: relative; z-index: 1; max-width: 920px; }
 .hero-kicker {
   display: inline-flex;
   align-items: center;
@@ -263,10 +273,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   box-shadow: 0 0 8px rgba(244,63,94,0.7);
   animation: pulse-dot 2.4s infinite;
 }
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 .hero h1 {
   font-family: var(--serif);
   font-weight: 300;
@@ -274,19 +281,34 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   line-height: 1.04;
   letter-spacing: 0.02em;
   color: var(--text);
-  margin-bottom: 0.35em;
+  margin-bottom: 0.45em;
 }
-.hero h1 em {
+.hero h1 em { font-style: italic; color: var(--design); }
+.hero-subhead {
+  font-family: var(--serif);
   font-style: italic;
-  color: var(--design);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
 }
 .hero-deck {
   font-family: var(--body);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   color: var(--text-secondary);
   max-width: 60ch;
   line-height: 1.6;
   margin-bottom: 3.5rem;
+}
+.hero-byline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
 }
 
 /* ---- Stat Strip ---- */
@@ -309,7 +331,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .stat-num {
   font-family: var(--mono);
   font-weight: 600;
-  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-size: clamp(1.85rem, 3.6vw, 2.7rem);
   line-height: 1;
   letter-spacing: -0.03em;
   margin-bottom: 0.65rem;
@@ -320,11 +342,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .stat-desc {
   font-size: 0.82rem;
   color: var(--text-secondary);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .stat-source {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.55rem;
   font-size: 0.68rem;
   font-family: var(--mono);
   color: var(--text-muted);
@@ -345,23 +367,56 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .prose-label { position: static; }
 }
 
-/* ---- Pull Quote ---- */
-.pull-quote {
+/* ---- Pull Quote / Objection Box ---- */
+.objection-box {
   margin: 3rem 0;
-  padding: 0 0 0 1.75rem;
-  border-left: 2px solid var(--design);
+  padding: 1.75rem 2rem;
+  background: var(--bg-card);
+  border-left: 3px solid var(--design);
+  border-radius: 0 8px 8px 0;
+}
+.objection-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 0.9rem;
+}
+.objection-quote {
   font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
   font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.objection-answer {
+  font-family: var(--body);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.objection-answer strong { color: var(--text); font-weight: 600; }
+
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--compete);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
   font-weight: 400;
   line-height: 1.35;
   color: var(--text);
   max-width: 56ch;
 }
 
-/* ---- The Maths Block ---- */
+/* ---- Worked Example Block ---- */
 .maths-block {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   padding: 2rem 2rem 1.75rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -371,13 +426,39 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   line-height: 1.85;
   color: var(--text-secondary);
 }
-.maths-block .maths-line { display: flex; justify-content: space-between; gap: 2rem; padding: 0.35rem 0; border-bottom: 1px dashed var(--border); }
+.maths-block .maths-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed var(--border);
+}
 .maths-block .maths-line:last-of-type { border-bottom: none; }
 .maths-block .maths-label { color: var(--text-muted); }
 .maths-block .maths-value { color: var(--text); font-weight: 500; }
-.maths-block .maths-result { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
-.maths-block .maths-result-label { font-family: var(--body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
-.maths-block .maths-result-value { font-family: var(--mono); font-size: 1.5rem; font-weight: 600; color: var(--compete); letter-spacing: -0.02em; }
+.maths-block .maths-result {
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.maths-block .maths-result-label {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+.maths-block .maths-result-value {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--compete);
+  letter-spacing: -0.02em;
+}
 
 /* ---- Vignette Cards ---- */
 .vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
@@ -410,17 +491,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .vignette-headline {
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: 1.32rem;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.28;
   color: var(--text);
   margin-bottom: 1rem;
 }
-.vignette-body {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
+.vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+.vignette-body p + p { margin-top: 0.85rem; }
 .vignette-coi {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
@@ -446,94 +524,122 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .vignette-card.v2 .vignette-coi-value { color: var(--design); }
 .vignette-card.v3 .vignette-coi-value { color: var(--brand); }
 
-/* ---- Threshold Section ---- */
-.threshold {
-  padding: clamp(5rem, 10vw, 8rem) 0;
+/* ---- Sidebar (Board callout) ---- */
+.sidebar-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
   border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
+  background: var(--bg);
 }
-.threshold::before {
+.sidebar-callout {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.75rem clamp(1.5rem, 3vw, 3rem);
+  background: linear-gradient(180deg, rgba(201,150,58,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+}
+.sidebar-callout::before {
   content: "";
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%; max-width: 800px;
-  height: 80%;
-  background: radial-gradient(ellipse at center, rgba(201,150,58,0.04), transparent 60%);
-  pointer-events: none;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2));
+  border-radius: 12px 0 0 12px;
 }
-.threshold-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; text-align: center; }
-.threshold h2 {
+.sidebar-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 0.85rem;
+}
+.sidebar-callout h3 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
-  line-height: 1.1;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.2;
   color: var(--text);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
-.threshold h2 em { font-style: italic; color: var(--design); }
-.threshold-body {
+.sidebar-intro {
   font-family: var(--body);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  max-width: 60ch;
-  margin: 0 auto;
+  margin-bottom: 2rem;
+  max-width: 64ch;
 }
-.threshold-body p + p { margin-top: 1.25rem; }
-.threshold-body strong { color: var(--text); font-weight: 600; }
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+.sidebar-point-num {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--design);
+  min-width: 2.4rem;
+  padding-top: 0.15rem;
+}
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+.sidebar-coda em { color: var(--text); font-style: italic; }
 
 /* ---- Closing ---- */
 .closing { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
-.closing-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.closing-inner { max-width: 720px; margin: 0 auto; text-align: left; }
 .closing h2 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2rem, 4.4vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+  line-height: 1.18;
   color: var(--text);
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 .closing-body {
   font-family: var(--body);
-  font-size: 1.02rem;
-  line-height: 1.75;
+  font-size: 1.05rem;
+  line-height: 1.78;
   color: var(--text-secondary);
-  max-width: 56ch;
-  margin: 0 auto 2.75rem;
+  max-width: 64ch;
+  margin-bottom: 2.75rem;
 }
 .closing-body p + p { margin-top: 1.25rem; }
-.closing-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 1.1rem 2rem;
-  background: var(--design);
-  color: #14100a;
+.closing-body strong { color: var(--text); font-weight: 600; }
+.closing-product {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
   font-family: var(--body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn-primary:hover { background: #b08125; transform: translateY(-1px); }
-.btn-primary .arrow { transition: transform 0.2s; }
-.btn-primary:hover .arrow { transform: translateX(3px); }
-.cta-sub {
-  font-family: var(--body);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
   color: var(--text-muted);
-  letter-spacing: 0.02em;
+  font-style: italic;
 }
-.cta-sub a { color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1px; }
+.closing-product a {
+  color: var(--design);
+  border-bottom: 1px solid rgba(201,150,58,0.3);
+  padding-bottom: 1px;
+  font-style: normal;
+  transition: border-color 0.2s, color 0.2s;
+}
+.closing-product a:hover { color: var(--text); border-bottom-color: var(--design); }
 
 /* ---- Briefing ---- */
 .briefing { padding: clamp(4rem, 8vw, 6rem) 0; background: var(--bg); }
@@ -552,7 +658,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .briefing-inner h2 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
   line-height: 1.2;
   color: var(--text);
   margin-bottom: 1rem;
@@ -563,11 +669,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   line-height: 1.6;
   color: var(--text-secondary);
 }
-.briefing-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
+.briefing-form { display: flex; flex-direction: column; gap: 0.85rem; }
 .btn-amber {
   display: inline-flex;
   justify-content: center;
@@ -581,24 +683,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   transition: background 0.2s, transform 0.2s;
 }
 .btn-amber:hover { background: #b08125; transform: translateY(-1px); }
-.form-note {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-  text-align: center;
-}
+.form-note { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: center; }
 @media (max-width: 800px) {
   .briefing-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.75rem; }
 }
 
 /* ---- Footer ---- */
 .site-footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--border); background: var(--bg); }
-.footer-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-}
+.footer-row { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 2rem; }
 .footer-brand {
   font-family: var(--display);
   font-weight: 700;
@@ -607,20 +699,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   color: var(--text);
   text-transform: uppercase;
 }
-.footer-centre {
-  font-family: var(--body);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-.footer-right {
-  font-family: var(--body);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  text-align: right;
-  transition: color 0.2s ease;
-}
+.footer-centre { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); text-align: right; transition: color 0.2s ease; }
 .footer-right:hover { color: var(--design); }
 .footer-copy {
   text-align: center;
@@ -698,111 +778,122 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           Editorial &middot; The Shift &middot; April 2026
         </div>
         <h1 class="reveal d1">The Cost of<br><em>Not Knowing.</em></h1>
-        <p class="hero-deck reveal d2">Most agencies sell upside. Few quantify what doing nothing is already costing you. This editorial explains why downside is harder to sell, what the maths actually looks like, and why AI search is making the calculation tighter every quarter.</p>
+        <p class="hero-subhead reveal d2">The first compounding curve in digital visibility since PageRank.</p>
+        <p class="hero-byline reveal d2">Friction &amp; Toil &middot; Editorial Desk</p>
 
-        <div class="stat-strip reveal d3">
+        <p class="hero-deck reveal d3">In eighteen months, the businesses recommended by AI in your category will be the ones that fixed their structural visibility this quarter. The ones who waited will not be waiting. They will be receding.</p>
+
+        <div class="stat-strip reveal d4">
           <div class="stat-cell">
             <div class="stat-num col-compete">£18k–£90k</div>
-            <div class="stat-desc">typical annual range of lost search and AI visibility revenue across UK SMB and mid-market audits</div>
+            <div class="stat-desc">typical annual range of lost search and AI visibility revenue across UK SMB and mid-market Web Intelligence engagements</div>
             <span class="stat-source">Friction &amp; Toil, Q1 2026</span>
           </div>
           <div class="stat-cell">
-            <div class="stat-num col-design">0%</div>
-            <div class="stat-desc">of audited businesses had ever been shown a quantified Cost of Inaction figure before commissioning the report</div>
-            <span class="stat-source">Friction &amp; Toil, Q1 2026</span>
+            <div class="stat-num col-design">34.5%</div>
+            <div class="stat-desc">decline in click-through rates on top-ranking pages when an AI Overview appears alongside the search result</div>
+            <span class="stat-source">Ahrefs, 2025 study of 300,000 keywords</span>
           </div>
           <div class="stat-cell">
-            <div class="stat-num col-brand">58%</div>
-            <div class="stat-desc">decline in click-through rates on Google searches that now trigger an AI Overview, compared to pre-AI baseline</div>
-            <span class="stat-source">Ahrefs, 2025</span>
+            <div class="stat-num col-brand">40&times;</div>
+            <div class="stat-desc">typical ratio of conservative-end Cost of Inaction to full report cost across Q1 2026 engagements</div>
+            <span class="stat-source">Friction &amp; Toil, Q1 2026</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE AUDIT YOU'VE NEVER BEEN SOLD ============ -->
+  <!-- ============ OPENING ARGUMENT ============ -->
   <section class="prose-section">
     <div class="container">
       <div class="prose-label reveal">
-        <span class="eyebrow">The Frame</span>
-        <h2 class="section-heading">The audit you've never been sold.</h2>
+        <span class="eyebrow">Opening Argument</span>
+        <h2 class="section-heading">The first compounding curve since PageRank.</h2>
       </div>
       <div class="body-prose reveal d2">
-        <p>Every agency conversation you've ever had has been about upside. <em>We'll grow your traffic 3x. We'll double your conversion rate. We'll triple your inbound pipeline.</em> The deck slides change. The maths doesn't. Every promise is a multiplier on a future you haven't yet earned, sold against the stranger you'll be twelve months from now if everything works.</p>
-        <p>Almost no-one runs the other calculation. The one that asks: <strong>what is your current website costing you, right now, this month, while you decide whether to act?</strong> Not the upside of fixing it. The downside of leaving it alone.</p>
-        <p>This is not a rhetorical distinction. The two questions produce different numbers and different decisions. The upside calculation tells you what good looks like. The downside calculation tells you what doing nothing looks like. One is a sales pitch. The other is a diagnosis.</p>
-        <p>We treat the diagnostic the way a corporate buyer treats commercial due diligence — not as an audit, but as a check on what you're actually buying when you keep your current digital channel. The number underneath it has a name: the <strong>Cost of Inaction</strong>, or COI. Across more than fifty Web Intelligence engagements in the last twelve months, the COI for a typical UK SMB sits between <strong>£18,000 and £90,000 a year</strong>, with mid-market businesses frequently breaching £150,000. None of those businesses had been shown that figure before. Not by their existing agency, not by their consultancy, not by the platform vendors selling them tooling.</p>
-        <p>That absence is not an accident.</p>
+        <p>This is not a forecast. It is the documented behaviour of large language models in production: they retrain on the answers they previously produced, and the citation graph they build today shapes the citation graph they build next year. Brands cited as authoritative answers now become more likely to be cited later. Brands absent from today's citation pool become harder to surface in future cycles, regardless of how good their product is.</p>
+        <p>This is the first compounding curve in commercial digital visibility since the original Google PageRank, and almost no business owner has been shown a number against it.</p>
+        <p>We have. It has a name: the <strong>Cost of Inaction</strong>, or COI. Across more than fifty Web Intelligence engagements over the last twelve months, the figure for a typical UK SMB sits between <strong>£18,000 and £90,000 a year</strong>, with mid-market businesses frequently breaching £150,000. None of those businesses had been shown that figure by their existing agency, consultancy, or platform vendor before commissioning the work.</p>
+        <p>That absence is not an accident. It is the central failure of how digital growth is sold.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ WHY DOWNSIDE IS HARDER TO SELL ============ -->
+  <!-- ============ I. THE DIAGNOSIS NO-ONE RUNS ============ -->
   <section class="prose-section" style="background:var(--bg-soft);">
     <div class="container">
       <div class="prose-label reveal">
-        <span class="eyebrow">The Asymmetry</span>
-        <h2 class="section-heading">Why downside is harder to sell.</h2>
+        <span class="section-numeral">I</span>
+        <h2 class="section-heading">The diagnosis no-one runs.</h2>
       </div>
       <div class="body-prose reveal d2">
-        <p>Upside has unlimited ceiling. The pitch is open-ended: a 3x growth promise can mean anything between a respectable lift and a transformational year. The buyer fills in the gap with their own optimism. The seller is rarely held to the ceiling, only to the floor.</p>
-        <p>Downside has maths. A specific number, denominated in pounds, with a defensible methodology underneath. The buyer cannot fill in the gap with optimism — they can only argue with the figure or accept it. Maths is uncomfortable in a discovery meeting. Optimism is not.</p>
+        <p>Every agency conversation a founder has ever had has been about upside. <em>3x growth. Double the conversion rate. Triple the inbound pipeline.</em> The slides change. The maths doesn't. Every promise is a multiplier on a future the buyer has not yet earned, sold against the stranger they will be twelve months from now if everything works.</p>
+        <p>Almost no-one runs the other calculation. The one that asks: <em>what is your current website costing you, right now, this month, while you decide whether to act?</em> Not the upside of fixing it. The downside of leaving it alone.</p>
+        <p>The two questions produce different numbers and different decisions. The upside calculation tells you what good looks like. The downside calculation tells you what doing nothing looks like. One is a sales pitch. The other is a diagnosis.</p>
+        <p>There is a structural reason agencies don't run it &mdash; and a deeper psychological one underneath.</p>
+        <p>Behavioural economics has known the deeper part since 1979. Kahneman and Tversky's <em>Prospect Theory</em> showed that the pain of a loss is roughly twice as powerful, psychologically, as the pleasure of an equivalent gain. The Cost of Inaction is loss aversion applied to digital strategy: the same number expressed as downside lands with materially more force than the same number expressed as upside, because the brain processes them on different scales. Agencies pitching upside are fighting the buyer's neurology. Advisors quantifying downside are using it.</p>
+        <p>Above the psychology is the mechanics. Upside has unlimited ceiling. The pitch is open-ended: a 3x promise can mean anything between a respectable lift and a transformational year. The buyer fills in the gap with their own optimism. The seller is rarely held to the ceiling, only to the floor. Downside has maths. A specific number, denominated in pounds, with a defensible methodology underneath. The buyer cannot fill in the gap with optimism &mdash; they can only argue with the figure or accept it.</p>
+        <p>There is a second reason, and it is the more important one. Downside numbers force a conversation about <em>responsibility</em>. If your current website is leaking £45,000 a year in lost search visibility, somebody approved the decisions that produced that leak. The previous web build was signed off by someone. The robots.txt that blocks AI crawlers was deployed by someone. The hidden pricing page that loses you the AI vendor bake-off was a positioning decision made years ago. A quantified COI puts a number against those decisions in a way an upside pitch never does.</p>
+        <p>Most agencies have learned not to do this. The buyer who hears their current website is leaking £45,000 a year does not become more likely to buy. They become defensive. They take the conversation internal. Three months later, the agency hears nothing back, because the buyer was protecting an internal stakeholder rather than buying a solution.</p>
+        <p>So agencies stopped doing the maths. They sell the next thing instead. This produces the absurdity at the centre of most digital marketing decisions: the buyer is asked to commission a £20,000 engagement to fix a problem they have never been shown the cost of, and the seller is asked to win that business without ever proving the cost is real. Both sides operate on faith.</p>
+        <p>Faith is a poor substitute for arithmetic.</p>
 
-        <div class="pull-quote reveal">
-          The agency selling upside risks nothing by being approximate. The advisor quantifying downside risks the entire relationship if the number is wrong.
+        <div class="objection-box reveal">
+          <span class="objection-label">The objection a sceptical CFO will raise</span>
+          <div class="objection-quote">"Cost of Inaction is just upside framed negatively. Same number, different label."</div>
+          <div class="objection-answer">It is not. Upside is a forecast against a future you cannot audit. COI is a measurement against a present you can. <strong>One is a projection; the other is a balance-sheet item that already exists, whether you measure it or not.</strong> The discipline is in choosing to measure.</div>
         </div>
-
-        <p>There is a second reason. Downside numbers force a conversation about <em>responsibility</em>. If your current website is leaking £45,000 a year in lost search visibility, somebody approved the decisions that produced that leak. The previous web build was signed off by someone. The robots.txt that blocks AI crawlers was deployed by someone. The hidden pricing page that loses you the AI vendor bake-off was a positioning decision made by someone, often years ago. A quantified COI puts a number against those decisions in a way an upside pitch never does.</p>
-        <p>Most agencies have learned not to do this. The buyer who hears their current website is leaking £45,000 a year does not become 50% more likely to buy. They become defensive. They want to know who said what when. They take the conversation internal. Three months later, the agency hears nothing back, because the buyer was protecting an internal stakeholder rather than buying a solution.</p>
-        <p>So agencies stopped doing the maths. They sell the next thing instead.</p>
-        <p>This is what produces the absurdity at the centre of most digital marketing decisions: the buyer is asked to commission a £20,000 engagement to fix a problem they have never been shown the cost of. The seller is asked to win that business without ever proving the cost is real. Both sides are operating on faith.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE METHODOLOGY ============ -->
+  <!-- ============ II. WHAT THE MATHS DOES ============ -->
   <section class="prose-section">
     <div class="container">
       <div class="prose-label reveal">
-        <span class="eyebrow">The Methodology</span>
+        <span class="section-numeral">II</span>
         <h2 class="section-heading">What the maths actually does.</h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The Cost of Inaction methodology is not novel statistics. It is conventional inputs assembled with discipline, then expressed as a range rather than a point estimate. Four numbers, multiplied. The discipline lies in being honest about each input.</p>
-        <p><strong>1. Search demand.</strong> The total monthly search volume across your category's primary commercial queries. Pulled from Ahrefs or Semrush, cross-checked against Google Search Console for branded reality, and stripped of irrelevant intent (informational queries that will never convert).</p>
-        <p><strong>2. Visibility gap.</strong> The difference between a fair share of click-through rate at your category's competitive density, and your actual click-through rate today. A business ranking position 8 on a query with 14,000 monthly searches is leaving roughly 1,200 sessions a month on the table compared to a position 3 ranking — sessions a competitor is currently capturing.</p>
+        <p><strong>1. Search demand.</strong> Total monthly search volume across your category's primary commercial queries. Pulled from Ahrefs or Semrush, cross-checked against Google Search Console for branded reality, stripped of irrelevant intent.</p>
+        <p><strong>2. Visibility gap.</strong> The difference between a fair share of click-through rate at your category's competitive density, and your actual click-through rate today. A business ranking position eight on a query with 14,000 monthly searches is leaving roughly 1,200 sessions a month on the table compared to a position three ranking — sessions a competitor is currently capturing.</p>
         <p><strong>3. Conversion rate floor.</strong> The realistic rate at which your site converts a visitor into a lead, booking, or sale. Not the rate from a hand-picked landing page. The rate across the journey a real user actually takes. Most B2B services sit between 1.5% and 3%. Most local hospitality between 0.8% and 2%. Most e-commerce between 0.5% and 2%.</p>
-        <p><strong>4. Average deal value.</strong> The contribution margin per converted enquiry, not the headline price. This is the number where most COI calculations die — businesses overstate it because they're thinking of best-case clients rather than the long tail of small jobs that pad the average.</p>
-        <p>Multiply, sense-check, then express as a range using a sensitivity envelope of roughly &times;0.7 to &times;1.4. The range is honest. A point estimate is theatre.</p>
+        <p><strong>4. Average deal value.</strong> Contribution margin per converted enquiry, not headline price. This is where most COI calculations die — businesses overstate it because they're thinking of best-case clients rather than the long tail of small jobs that pad the average.</p>
+        <p>Multiply, sense-check, then express as a range using a sensitivity envelope of roughly &times;0.7 to &times;1.4. A point estimate is theatre.</p>
+        <p>The third-party indexing tools — Ahrefs, Semrush, Google Search Console itself — are imperfect barometers. Search volumes are estimates, click-through rates are model-derived, conversion rates drift. The sensitivity envelope is precisely what stops the methodology from treating any of those numbers as gospel. The discipline is in being honest about the inputs, not in pretending the inputs are clean.</p>
 
         <div class="maths-block reveal">
           <div style="font-family:var(--body);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:1rem;">Worked Example &middot; UK Care Group</div>
+          <div style="font-family:var(--body);font-size:0.92rem;line-height:1.65;color:var(--text-secondary);margin-bottom:1.5rem;">A 30+ home regional group. The £42,000 figure is not a quoted weekly fee multiplied out &mdash; it is the average annual contribution margin per placed resident, after care costs, voids, and turnover. That number is what makes the COI live: a single missed enquiry per month at this margin is a six-figure annual loss across the group.</div>
           <div class="maths-line"><span class="maths-label">Monthly searches (commercial intent)</span><span class="maths-value">8,400</span></div>
           <div class="maths-line"><span class="maths-label">Visibility gap (CTR delta)</span><span class="maths-value">7.2%</span></div>
           <div class="maths-line"><span class="maths-label">Lost sessions / month</span><span class="maths-value">605</span></div>
           <div class="maths-line"><span class="maths-label">Conversion rate floor</span><span class="maths-value">1.6%</span></div>
           <div class="maths-line"><span class="maths-label">Lost enquiries / month</span><span class="maths-value">9.7</span></div>
-          <div class="maths-line"><span class="maths-label">Avg deal value (annual contract)</span><span class="maths-value">£42,000</span></div>
-          <div class="maths-line"><span class="maths-label">Conversion rate &mdash; enquiry to placed resident</span><span class="maths-value">8%</span></div>
+          <div class="maths-line"><span class="maths-label">Conversion: enquiry &rarr; placed resident</span><span class="maths-value">8%</span></div>
+          <div class="maths-line"><span class="maths-label">Average deal value (annual contract)</span><span class="maths-value">&pound;42,000</span></div>
           <div class="maths-result">
             <span class="maths-result-label">Annual COI &middot; sensitivity envelope</span>
             <span class="maths-result-value">&pound;273k &mdash; &pound;547k</span>
           </div>
         </div>
 
-        <p style="margin-top:3rem;">A range that wide tells the buyer something an agency pitch never does: <em>even at the conservative end of our model, the cost of doing nothing is greater than the cost of finding out</em>. That is the threshold the methodology is designed to test.</p>
+        <p style="margin-top:2.5rem;">A range that wide tells the buyer something an agency pitch never does: <em>even at the conservative end of our model, the cost of doing nothing is greater than the cost of finding out.</em> That is the threshold the methodology is designed to test.</p>
+        <p>If the COI is greater than the cost of the report, the report pays for itself before anything else happens. Every fix delivered after that compounds the return.</p>
+        <p>If the COI is lower than the cost of the report &mdash; congratulations. Your visibility is in better shape than the market average. You don't need a report. Keep doing what you're doing. That is the only honest answer most businesses have never been given.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ THREE FROM THE FIELD ============ -->
+  <!-- ============ III. THREE SHAPES ============ -->
   <section class="vignettes">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Three From The Field</span>
-        <h2 class="section-heading">Three ranges, three sectors, three different shapes of the same problem.</h2>
-        <p class="section-sub">Names redacted. Sector and structural detail preserved. All three figures are taken directly from delivered Web Intelligence Reports in Q1 2026.</p>
+        <span class="section-numeral">III</span>
+        <h2 class="section-heading">Three shapes of the same problem.</h2>
+        <p class="section-sub">Three ranges, three sectors, three engagements delivered in Q1 2026. Names redacted at client request; sector and structural detail preserved.</p>
       </div>
 
       <div class="vignette-grid">
@@ -812,7 +903,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           <div class="vignette-headline">A specialist UK hospitality group operating six sites in central London.</div>
           <div class="vignette-body">
             <p>Strong brand identity, strong press coverage, weak digital infrastructure. Site built on a page-builder template that buries pricing and event capacity behind contact-us forms. Schema markup absent on five of six location pages. AI Share of Voice score 0/6 on conversational discovery queries — the brand is invisible to ChatGPT and Perplexity in its own category.</p>
-            <p style="margin-top:0.85rem;">The COI is dominated not by missing search traffic but by lost AI bake-offs: enterprise event buyers using AI to shortlist venues before any human contact. The brand is left out of the conversation entirely.</p>
+            <p>The COI here is dominated not by missing search traffic but by lost AI bake-offs: enterprise event buyers using AI to shortlist venues before any human contact. The brand is left out of the conversation entirely.</p>
           </div>
           <div class="vignette-coi">
             <span class="vignette-coi-label">Annual COI Range</span>
@@ -822,10 +913,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
         <div class="vignette-card v2 reveal d2">
           <span class="vignette-tag">Care &middot; Regional Group</span>
-          <div class="vignette-headline">A 30+ home regional care group across Yorkshire and the East Midlands.</div>
+          <div class="vignette-headline">A 30-home regional care group across Yorkshire and the East Midlands.</div>
           <div class="vignette-body">
-            <p>Established reputation, strong CQC ratings, distinctive specialism (veteran-friendly accreditation) that no competitor in the region holds. The differentiator is real and unique. It is also nowhere on the website's commercial pages — appearing only in a press release archive that AI crawlers have no reason to read.</p>
-            <p style="margin-top:0.85rem;">The COI here is not about technical SEO. It is about an unmonetised brand asset. Adult children searching for care for a parent who served are routed by AI to competitors who simply don't have the credential — because the credential isn't in the answer.</p>
+            <p>Established reputation, strong CQC ratings, a distinctive specialism — veteran-friendly accreditation — that no competitor in the region holds. The differentiator is real and unique. It is also nowhere on the website's commercial pages, appearing only in a press release archive that AI crawlers have no reason to read.</p>
+            <p>The COI here is not about technical SEO. It is about an unmonetised brand asset. Adult children searching for care for a parent who served are routed by AI to competitors who simply don't have the credential — because the credential isn't in the answer.</p>
           </div>
           <div class="vignette-coi">
             <span class="vignette-coi-label">Annual COI Range</span>
@@ -838,7 +929,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           <div class="vignette-headline">A luxury Cotswolds wedding venue with eight centuries of family ownership.</div>
           <div class="vignette-body">
             <p>One of the strongest brand stories in the UK wedding market. Heritage, exclusivity, named family — every credibility signal a couple shortlisting a venue could want. None of it structured for AI extraction. No FAQ schema, no pricing exposed as plain text, no LocalBusiness markup, no AI crawler permissions.</p>
-            <p style="margin-top:0.85rem;">Couples now use AI as a primary planning tool — over half report doing so in the 2025-2026 cohort. This venue is not in the shortlist conversation. Competitors with a fraction of the heritage, but cleaner data architecture, surface ahead of it.</p>
+            <p>Major UK wedding marketplaces — including The Knot Worldwide — are now integrated directly inside ChatGPT. This venue is not in the shortlist conversation. Competitors with a fraction of the heritage, but cleaner data architecture, surface ahead of it.</p>
           </div>
           <div class="vignette-coi">
             <span class="vignette-coi-label">Annual COI Range</span>
@@ -848,48 +939,67 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
       </div>
 
-      <div class="reveal d4" style="margin-top:3rem;text-align:center;max-width:60ch;margin-left:auto;margin-right:auto;">
-        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.5rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In all three cases, the conservative end of the COI range was greater than the cost of the full audit by a factor of forty or more. None of the three businesses had been shown that comparison before.</p>
+      <div class="reveal d4" style="margin-top:3rem;text-align:center;max-width:62ch;margin-left:auto;margin-right:auto;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In all three cases, the conservative end of the COI range was greater than the cost of the full report by a factor of forty or more. None of the three businesses had been shown that comparison before.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE THRESHOLD ============ -->
-  <section class="threshold">
-    <div class="container">
-      <div class="threshold-inner">
-        <span class="eyebrow reveal" style="display:block;margin-bottom:2rem;">The Threshold</span>
-        <h2 class="reveal d1">Intelligence pays for itself when the cost of <em>not knowing</em> is greater than the cost of <em>finding out</em>.</h2>
-        <div class="threshold-body reveal d2">
-          <p>This is the test. Not whether your website is costing you money — almost every website is. Not whether the work to fix it would be expensive — it usually isn't, once you know which work to do. The test is whether the maths underneath your current visibility produces a number large enough that doing nothing for another twelve months is materially worse than doing something now.</p>
-          <p>The cost is not just lost leads. It is credibility, competitive position, and the clients who found someone else first.</p>
-          <p><strong>If the COI is greater than the cost of finding out, the report pays for itself before anything else happens.</strong> Every fix delivered after that compounds the return. The intelligence is no longer an expense; it is a measurement of an expense you were already incurring.</p>
-          <p>If the COI is lower than the cost of finding out &mdash; congratulations. Your visibility is in better shape than the market average. You don't need a report. You need to keep doing what you're already doing.</p>
-          <p>That is the only honest answer most businesses have never been given.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ AI TIGHTENING ============ -->
+  <!-- ============ IV. WHY THE CURVE IS STEEPENING ============ -->
   <section class="prose-section">
     <div class="container">
       <div class="prose-label reveal">
-        <span class="eyebrow">What's Changing</span>
-        <h2 class="section-heading">AI is making the calculation tighter, not looser.</h2>
+        <span class="section-numeral">IV</span>
+        <h2 class="section-heading">Why the curve is steepening.</h2>
       </div>
       <div class="body-prose reveal d2">
         <p>Until 2024, COI calculations were stable. Search traffic moved slowly. Conversion rates moved slowly. Average deal values moved slowly. The methodology produced a number that held up for a year or more between recalculations.</p>
-        <p>That stability has gone. AI Overviews now intercept the highest-intent commercial queries before any organic listing appears. Click-through rates on AI-summarised searches are down 58% from pre-2024 baselines. Zero-click queries — searches that complete without a single visit to any website — now make up close to half of UK searches that trigger an AI Overview.</p>
+        <p>That stability is gone.</p>
+        <p>AI Overviews now intercept the highest-intent commercial queries before any organic listing appears. Ahrefs' 2025 study of 300,000 keywords measured a <strong>34.5% drop in click-through rates on top-ranking pages</strong> when an AI Overview appears alongside them. Zero-click queries — searches that complete without a single visit to any website — now represent a substantial and rising share of UK search behaviour, with Similarweb reporting around two-thirds of AI-Overview-triggered searches ending without any onward click.</p>
         <p>Each of these compounds the visibility gap. A business that was leaking £30,000 a year on the old click-through model is leaking somewhere closer to £45,000 on the post-AI-Overview reality. The COI is rising while the cost of the fix is falling — most of the moves required to recover ground are content and schema work, not platform replacement.</p>
 
-        <div class="pull-quote reveal" style="border-left-color:var(--compete);">
-          The cost of inaction is rising every quarter. The cost of action is not. The gap between them is what the audit measures.
+        <div class="pull-quote reveal">The cost of inaction is rising every quarter. The cost of action is not.</div>
+
+        <p>But the visibility gap is the smaller half of the story. The compounding effect underneath it is the part that makes this curve different from anything that came before.</p>
+        <p><strong>AI citation positions reinforce themselves.</strong> Models retrain on the answers they previously produced. Brands cited as authoritative today become more likely to be cited tomorrow. Brands absent from today's citation pool become harder to surface in future cycles. This is documented retrieval behaviour in production LLMs, not speculation — the citation graph is a feedback loop, and feedback loops have memory.</p>
+        <p>Which means a business that is invisible in AI answers in Q2 2026 is not just losing this quarter's enquiries. It is making itself harder to recover in Q4 2026, harder still in Q2 2027. The longer the absence, the deeper the hole. Inaction is no longer the same shape it was two years ago. It compounds.</p>
+        <p>The COI methodology, applied seriously, is no longer a one-off diagnostic. It is a quarterly measurement against a moving floor. The methodology hasn't changed. The shape of the curve underneath it has.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR · BOARD CALLOUT ============ -->
+  <section class="sidebar-section">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; For The Reader's Reader</span>
+        <h3>Taking a Cost of Inaction figure to a sceptical board.</h3>
+        <p class="sidebar-intro">The methodology produces a number. Carrying it into a boardroom takes three additional moves. Boards reject what they cannot interrogate; they engage with what is structured to be interrogated.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div class="sidebar-point-body">
+              <strong>Lead with the conservative end of the range, not the midpoint.</strong> A board that hears "£273k–£547k" hears the upper figure and prepares to argue. A board that hears "at minimum £273k, on conservative assumptions we have stress-tested" engages with the floor. The midpoint is a marketing number. The floor is an operating number.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div class="sidebar-point-body">
+              <strong>Separate the cost of finding out from the cost of fixing.</strong> The report is a measurement. The fix is a decision the report informs. A board that conflates them rejects both. A board that understands the report is the cheapest test runs the test first and decides on the fix afterwards.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div class="sidebar-point-body">
+              <strong>Frame the question as quarterly drift, not annual loss.</strong> "This figure rises roughly £X per quarter on current AI-search trajectories" turns a static number into a dynamic one. Boards postpone static numbers. They act on dynamic ones. The compounding clock is the most important slide in the deck.
+            </div>
+          </div>
         </div>
 
-        <p>There is a second compounding effect underneath the visibility one. <strong>AI citation positions reinforce themselves.</strong> Models retrain on the answers they previously produced. Brands cited as authoritative answers today become more likely to be cited tomorrow. Brands that are absent from today's citation pool become harder to surface in future cycles. This is not speculation; it is documented retrieval behaviour in major LLM platforms.</p>
-        <p>The businesses that are Recommended in AI results in eighteen months are the ones that fixed the structural issues this quarter. The businesses that wait for the market to settle are not waiting; they are receding. Inaction is no longer the same shape it was two years ago. It compounds.</p>
-        <p>Which means the COI methodology, applied seriously, is no longer a one-off diagnostic. It is a quarterly measurement. The methodology hasn't changed. The shape of the curve underneath it has.</p>
+        <div class="sidebar-coda">
+          The first objection in the room will be the methodology, not the number. Have the inputs and the sources ready. The second objection will be <em>"who is responsible for this?"</em> &mdash; the question the COI exposes, and the one the agency selling upside has been protecting your previous decision-makers from for years. Answer it cleanly: <strong>the methodology dates the loss, not the people. We are measuring forward from today.</strong>
+        </div>
       </div>
     </div>
   </section>
@@ -898,17 +1008,15 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   <section class="closing">
     <div class="container">
       <div class="closing-inner reveal">
-        <span class="eyebrow" style="display:block;text-align:center;margin-bottom:1.5rem;">Three Questions</span>
-        <h2>Is your website costing you money? Are you making decisions with the full picture? Do you know enough walking in?</h2>
+        <span class="eyebrow">Closing</span>
+        <h2>You can buy upside. You cannot buy back the months spent not measuring downside.</h2>
         <div class="closing-body">
-          <p>You can buy upside. You cannot buy back the months spent not measuring downside. Every agency in the market will sell you a future. Few will tell you what your present is already costing.</p>
-          <p>The discipline of running the maths — honestly, with a sensitivity envelope, on inputs you can defend — is the cheapest test you can run before signing any growth engagement. If the number is small, the report told you that, and you keep your money. If the number is large, the report told you that, and the work pays for itself before it has begun. Either answer is a return on the intelligence.</p>
-          <p>The Web Intelligence Report runs the COI calculation against your real site, your real category, and your real competitors — and tells you which side of the threshold you sit on.</p>
+          <p>Every agency in the market will sell you a future. Few will tell you what your present is already costing. The discipline of running the maths — honestly, with a sensitivity envelope, on inputs you can defend — is the cheapest test you can run before signing any growth engagement.</p>
+          <p>If the number is small, the report told you that, and you keep your money. If the number is large, the report told you that, and the work pays for itself before it has begun.</p>
+          <p><strong>Either answer is a return on the intelligence.</strong></p>
         </div>
-        <div class="closing-cta">
-          <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">→</span></a>
-          <span class="cta-sub">From £750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing">View pricing options</a></span>
-          <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.5rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Or start with AI visibility only &mdash; £250, 24 hours &rarr;</a>
+        <div class="closing-product reveal d2">
+          Friction &amp; Toil runs Cost of Inaction analysis as part of our <a href="/web-intelligence/">Web Intelligence Reports</a>. Methodology, pricing, and sample reports at frictionandtoil.com/web-intelligence.
         </div>
       </div>
     </div>
@@ -919,12 +1027,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     <div class="container">
       <div class="briefing-inner">
         <div class="reveal">
-          <span class="eyebrow">Monthly Intelligence Briefing</span>
-          <h2>The COI calculation moves every quarter.</h2>
-          <p class="briefing-sub">As AI changes how UK customers find businesses, the maths underneath the Cost of Inaction changes too. We track it monthly and share what matters — no consultancy noise, just the intelligence.</p>
+          <span class="eyebrow">The Shift Briefing</span>
+          <h2>The COI floor moves every quarter.</h2>
+          <p class="briefing-sub">A monthly intelligence brief on how AI is changing what UK customers find &mdash; and what they don't. No consultancy noise.</p>
         </div>
         <div class="briefing-form reveal d2">
-          <a href="https://frictions-newsletter.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-amber" style="text-decoration:none;display:block;text-align:center;">Subscribe to The Shift Briefing</a>
+          <a href="https://frictions-newsletter.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-amber" style="text-decoration:none;display:block;text-align:center;">Subscribe</a>
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
