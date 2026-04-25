@@ -233,6 +233,30 @@ main {
   text-decoration: underline;
 }
 
+.calendly-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.85rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(201,150,58,0.45);
+  border-radius: 4px;
+  color: #c9963a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, border-color 0.2s;
+}
+.calendly-cta:hover {
+  background: rgba(201,150,58,0.08);
+  border-color: rgba(201,150,58,0.7);
+}
+.calendly-note {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
 .back-link {
   display: inline-block;
   margin-top: 2rem;
@@ -311,14 +335,20 @@ footer a:hover { color: var(--text-secondary); }
           <div class="step-title">Your report lands in your inbox</div>
           <div class="step-desc">
             A single, self-contained HTML file — open it in any browser, no login required.
-            If you ordered the full report, we'll also schedule your 15-minute walkthrough call.
+            If you ordered the Report + Strategy Call, book your session using the link below.
           </div>
           <span class="step-timing">Within 48 hours</span>
         </div>
       </div>
     </div>
 
-    <p class="confirm-contact">
+    <div style="text-align:center;margin-top:2.5rem;padding:1.5rem;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.02);">
+      <p style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem;">Report + Strategy Call customers</p>
+      <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" class="calendly-cta">Book your 30-minute walkthrough &rarr;</a>
+      <p class="calendly-note">30 minutes &mdash; we&rsquo;ll walk you through what the report found</p>
+    </div>
+
+    <p class="confirm-contact" style="margin-top:2rem;">
       Questions in the meantime? Email us at
       <a href="mailto:hello@frictionandtoil.com">hello@frictionandtoil.com</a>
       — we're a small team and respond same day.

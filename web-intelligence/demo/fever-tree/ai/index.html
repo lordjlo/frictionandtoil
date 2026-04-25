@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Search Report — fever-tree.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.15);
+  --text:#e8e8ed;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;
+  --design:#c9963a;--search:#6366f1;--green:#22c55e;--red:#ef4444;--orange:#f97316;--yellow:#eab308;
+  --ai:#a855f7;--ai-bg:rgba(168,85,247,0.12);--ai-border:rgba(168,85,247,0.3);--ai-glow:rgba(168,85,247,0.45);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+/* Header */
+.report-header{padding:3rem 0 2rem;border-bottom:1px solid var(--border)}
+.report-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.75rem}
+.report-title{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.report-meta{font-size:13px;color:var(--text-muted)}
+/* Rung card */
+.rung-card{margin:2.5rem 0;padding:2.5rem;background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:var(--radius);position:relative;overflow:hidden}
+.rung-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--ai-glow);border-radius:50%;filter:blur(80px);opacity:0.3;pointer-events:none}
+.rung-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--ai);margin-bottom:0.75rem}
+.rung-name{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.rung-sov{font-size:14px;color:var(--text-secondary);margin-bottom:1.5rem}
+.rung-trajectory{font-size:14px;color:var(--text);padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:3px solid var(--ai);border-radius:0 var(--radius-xs) var(--radius-xs) 0;line-height:1.6}
+.ladder{display:flex;gap:0;margin-top:1.75rem}
+.rung-step{flex:1;padding:0.6rem 0.5rem;text-align:center;font-size:11px;font-weight:600;border:1px solid var(--border);margin-right:-1px}
+.rung-step:first-child{border-radius:var(--radius-xs) 0 0 var(--radius-xs)}
+.rung-step:last-child{border-radius:0 var(--radius-xs) var(--radius-xs) 0;margin-right:0}
+.rung-step.active{background:var(--ai);border-color:var(--ai);color:#fff}
+.rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
+.rung-step.next{color:var(--text-muted)}
+/* Section */
+.report-section{margin:2.5rem 0;padding-top:2.5rem;border-top:1px solid var(--border)}
+.section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.5rem}
+.section-title{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:1.25rem}
+/* SoV table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+td:first-child{color:var(--text);font-weight:500}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25)}
+.badge-amber{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.25)}
+.badge-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25)}
+/* Status card */
+.status-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:1rem}
+.status-card h4{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:0.5rem}
+.status-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+/* Action card */
+.action-card{padding:2rem;background:rgba(201,150,58,0.08);border:1px solid rgba(201,150,58,0.25);border-radius:var(--radius);margin:2.5rem 0}
+.action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--design);margin-bottom:0.5rem}
+.action-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.75rem}
+.action-detail{font-size:13px;color:var(--text-secondary);line-height:1.7}
+/* Upgrade CTA */
+.upgrade-cta{margin:3rem 0;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.upgrade-cta h3{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:0.75rem}
+.upgrade-cta p{font-size:13px;color:var(--text-secondary);max-width:50ch;margin:0 auto 1.5rem;line-height:1.6}
+.upgrade-cta .code-block{display:inline-block;font-family:var(--mono);font-size:13px;background:rgba(255,255,255,0.06);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:var(--radius-xs);color:var(--text);margin-bottom:1.5rem;letter-spacing:1px}
+.btn-upgrade{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.9rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background .2s}
+.btn-upgrade:hover{background:#b08125}
+footer{margin-top:4rem;padding:2rem 0;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="report-header">
+    <div class="report-eyebrow">F&amp;T Intelligence · AI Search Report</div>
+    <div class="report-title">fever-tree.com</div>
+    <div class="report-meta">AI Search dimension · April 2026 · Delivered by Friction &amp; Toil</div>
+  </header>
+
+  <!-- MATURITY RUNG CARD -->
+  <div class="rung-card">
+    <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
+    <div class="rung-name">Emerging</div>
+    <div class="rung-sov">AI Share of Voice: 2 / 6 queries where AI would cite you</div>
+    <div class="rung-trajectory">Add Product and FAQ structured data to every fever-tree.com product page — this is the single fix most likely to move Fever-Tree from Emerging to Cited for "compare premium tonic waters" and "best cocktail mixer" searches, where AI engines currently extract specs from Difford's Guide and Amazon instead of your own site.</div>
+    <div class="ladder">
+      <div class="rung-step passed">Invisible</div>
+      <div class="rung-step active">Emerging</div>
+      <div class="rung-step next">Cited</div>
+      <div class="rung-step next">Recommended</div>
+    </div>
+  </div>
+
+  <!-- AI SoV TABLE -->
+  <div class="report-section">
+    <div class="section-label">AI Share of Voice</div>
+    <div class="section-title">Six target queries — who surfaces, and why</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Query</th>
+          <th>Verdict</th>
+          <th>Factors met</th>
+          <th>Who surfaces instead</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"Fever-Tree tonic water"</td>
+          <td><span class="badge badge-green">Likely Cited</span></td>
+          <td>4 / 5</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>"Fever-Tree mixer range"</td>
+          <td><span class="badge badge-amber">Possible</span></td>
+          <td>3 / 5</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>"best premium tonic water for gin UK"</td>
+          <td><span class="badge badge-red">Unlikely</span></td>
+          <td>1 / 5</td>
+          <td>Tasting Table, Craft Gin Club</td>
+        </tr>
+        <tr>
+          <td>"premium cocktail mixers comparison"</td>
+          <td><span class="badge badge-red">Unlikely</span></td>
+          <td>1 / 5</td>
+          <td>Sporked, Difford's Guide</td>
+        </tr>
+        <tr>
+          <td>"best ginger beer for Moscow mule"</td>
+          <td><span class="badge badge-red">Unlikely</span></td>
+          <td>1 / 5</td>
+          <td>Sporked, Feast &amp; West</td>
+        </tr>
+        <tr>
+          <td>"what is the best tonic water?"</td>
+          <td><span class="badge badge-red">Unlikely</span></td>
+          <td>1 / 5</td>
+          <td>Tasting Table, Imbibe Magazine</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;">Scores are assessed against documented AI citation factors based on structural and content signals. Live prompt testing against ChatGPT, Perplexity, Gemini, and Copilot is available as a retainer add-on.</p>
+  </div>
+
+  <!-- CITATION HOST MAP -->
+  <div class="report-section">
+    <div class="section-label">Citation Host Map</div>
+    <div class="section-title">The publishers that control your AI reputation in Premium Beverages / Cocktail Mixers</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Host</th>
+          <th>AI citation frequency</th>
+          <th>Your presence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>diffordsguide.com</td>
+          <td>High</td>
+          <td><span class="badge badge-green">Active</span></td>
+        </tr>
+        <tr>
+          <td>tastingtable.com</td>
+          <td>High</td>
+          <td><span class="badge badge-green">Active</span></td>
+        </tr>
+        <tr>
+          <td>masterofmalt.com</td>
+          <td>High</td>
+          <td><span class="badge badge-green">Active</span></td>
+        </tr>
+        <tr>
+          <td>imbibemagazine.com</td>
+          <td>Medium</td>
+          <td><span class="badge badge-amber">Mentioned</span></td>
+        </tr>
+        <tr>
+          <td>craftginclub.co.uk</td>
+          <td>Medium</td>
+          <td><span class="badge badge-amber">Mentioned</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in your sector. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them — it's their placement brief.</p>
+  </div>
+
+  <!-- VENDOR BAKE-OFF -->
+  <div class="report-section">
+    <div class="section-label">Vendor Bake-Off Readiness</div>
+    <div class="section-title">Can AI compare you head-to-head when asked?</div>
+    <div class="status-card">
+      <h4>Bake-Off Absent (0 / 3)</h4>
+      <p>No pricing is visible as HTML text anywhere on the site — purchasing redirects entirely to third-party retail partners (Waitrose, Amazon, Ocado). Product features are presented in marketing prose rather than structured tables or lists. There are no competitor comparison claims backed by specific numbers or specifications. When AI engines answer "compare Fever-Tree vs Q Mixers vs Double Dutch," they pull every spec from Difford's Guide profiles and Amazon listings — because fever-tree.com provides no machine-readable product data of its own.</p>
+    </div>
+  </div>
+
+  <!-- AI CRAWLER ACCESS -->
+  <div class="report-section">
+    <div class="section-label">AI Crawler Access</div>
+    <div class="section-title">Can AI engines read your site?</div>
+    <div class="status-card">
+      <h4>Fully Open</h4>
+      <p>No AI crawlers are blocked. GPTBot, ClaudeBot, PerplexityBot, GoogleOther, CCBot, anthropic-ai, OAI-SearchBot — all have unrestricted access to fever-tree.com. The only Disallow rule is <code style="font-family:var(--mono);font-size:12px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px;">/admin</code>. This is the correct configuration. Crawler access is not the bottleneck here.</p>
+    </div>
+  </div>
+
+  <!-- ONE RECOMMENDED ACTION -->
+  <div class="action-card">
+    <div class="action-label">Your next move</div>
+    <div class="action-title">Add product schema to all mixer pages</div>
+    <div class="action-detail">Fever-Tree's product pages contain zero structured data — no schema.org/Product markup, no ItemList, no FAQ schema. When AI engines are asked to compare premium tonic waters or recommend a Moscow Mule mixer, they extract ingredients, formats, and specs from Difford's Guide and Amazon listings rather than from fever-tree.com itself. Adding Product schema (name, description, ingredients as structured properties, available pack sizes) to every product page makes each SKU directly extractable by AI citation engines. This is a single sprint dev task with no content rewrites required — and it directly targets the primary citation gap across all 6 audited queries.</div>
+  </div>
+
+  <!-- UPGRADE CTA -->
+  <div class="upgrade-cta">
+    <h3>Get the full five-dimension report</h3>
+    <p>This report covers AI Search only. The full Web Intelligence Report adds Design, Brand, Competitive position, and Growth — with a £-denominated business impact model and three competitor deep-dives.</p>
+    <p style="font-size:13px;color:var(--text-secondary);margin:0 auto 0.75rem;line-height:1.6;">Your £250 credit toward the full report:</p>
+    <div class="code-block">AI-SEARCH-UPGRADE</div>
+    <br>
+    <a href="https://www.frictionandtoil.com/web-intelligence/#pricing" class="btn-upgrade">View full report options →</a>
+  </div>
+
+  <footer>F&amp;T Intelligence Systems · April 2026 · hello@frictionandtoil.com</footer>
+
+</div>
+</body>
+</html>
