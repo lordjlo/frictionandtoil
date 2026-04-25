@@ -9,13 +9,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9YM8NWRH3M"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0HGLBD1WS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-9YM8NWRH3M');
-  gtag('event', 'purchase_confirmed', { event_category: 'conversion', event_label: 'web_intelligence' });
+  gtag('config', 'G-Z0HGLBD1WS');
+  // Track purchase event for Web Intelligence Report
+  gtag('event', 'purchase', {
+    "transaction_id": "T_" + new Date().getTime(),
+    "value": 1000.00,
+    "currency": "GBP",
+    "items": [
+      {
+        "item_id": "WI_REPORT_1000",
+        "item_name": "Web Intelligence Report",
+        "price": 1000.00,
+        "quantity": 1
+      }
+    ]
+  });
 </script>
 <style>
 :root {

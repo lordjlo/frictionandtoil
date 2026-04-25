@@ -1683,7 +1683,7 @@
           <p class="hero-sub reveal d3">A family searching for a care home asked Gemini for recommendations. A couple planning a celebration asked ChatGPT for private members&rsquo; clubs in London. A group booking a pub lunch asked Google&rsquo;s AI what it suggested. In each case, AI chose who to recommend. Most businesses had no idea the conversation was even happening &mdash; and weren&rsquo;t in it. The Web Intelligence Report tells you exactly where you stand and what it takes to change that.</p>
           <div class="hero-cta-row reveal d4">
             <a href="#ai-search-report" class="btn btn-white" onclick="trackLead('web_intelligence_cta_hero')">See pricing options &rarr;</a>
-            <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" class="btn btn-ghost" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Not sure yet? Book a free 15-min call</a>
+            <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" class="btn btn-ghost" onclick="trackLead('web_intelligence_book_call')" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Not sure yet? Book a free 15-min call</a>
           </div>
           <div class="hero-guarantee reveal d5">
             From &pound;250<span class="dot"></span>AI Search Report in 24 hours<span class="dot"></span>Full report from &pound;750, 48 hours<span class="dot"></span>15-min walkthrough call included
@@ -2077,27 +2077,27 @@
           <div class="compare-price">&pound;750</div>
           <div class="compare-desc">No guarantee, no questions. For buyers who&rsquo;ve seen enough and want to move fast.</div>
           <div class="compare-tag" style="margin-top:auto">Lowest price</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="750">Order at &pound;750</button>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_750'); startCheckout(this)" data-tier="750">Order at &pound;750</button>
         </div>
         <div class="compare-card is-featured reveal d2">
           <div class="compare-label">Pay in full &mdash; with guarantee &#9733;</div>
           <div class="compare-price">&pound;1,000</div>
           <div class="compare-desc">14-day money-back guarantee. Full refund if you don&rsquo;t find it useful &mdash; no questions asked. Includes a 15-minute walkthrough call after delivery and a half-price rescan within 6 months.</div>
           <div class="compare-tag" style="margin-top:auto">Most popular</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_1000'); startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
         </div>
         <div class="compare-card reveal d3">
           <div class="compare-label">Pay monthly</div>
           <div class="compare-price">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/mo &times; 3</span></div>
           <div class="compare-desc">Spread the cost over three months. Full &pound;1,500 value. Access ends immediately if you cancel &mdash; noted in the T&amp;Cs. Includes the walkthrough call and 6-month rescan.</div>
           <div class="compare-tag" style="margin-top:auto">Total: &pound;1,500</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="startCheckout(this)" data-tier="500mo">Start at &pound;500/mo</button>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_500mo'); startCheckout(this)" data-tier="500mo">Start at &pound;500/mo</button>
         </div>
       </div>
       <div id="call" style="margin-top:3rem;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;text-align:center">
         <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Not ready to commit? That&rsquo;s fine.</p>
         <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">Book a free 15-minute call first. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
-        <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
+        <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
       </div>
     </div>
   </section>
