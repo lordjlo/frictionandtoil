@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cost of Not Knowing — Why Most Agencies Sell Upside, And What Happens When You Quantify Downside Instead | Friction &amp; Toil</title>
+<meta name="description" content="An editorial on the Cost of Inaction methodology: why agencies sell upside, why downside is harder to sell, and what the maths actually looks like when you measure what your current website is costing you.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/cost-of-not-knowing/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Cost of Not Knowing: Why Most Agencies Sell Upside, and What Happens When You Quantify Downside Instead",
+  "description": "An editorial argument for measuring the Cost of Inaction — what your current website is already costing you in lost search visibility, lost AI citations, and lost conversion — before commissioning any agency growth promise.",
+  "author": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "datePublished": "2026-04-25",
+  "keywords": "Cost of Inaction, COI methodology, website audit, downside risk, AI search visibility, Friction and Toil, web intelligence"
+}
+</script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-soft: rgba(255,255,255,0.02);
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --text: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5a5a6e;
+  --search: #6366f1;
+  --design: #c9963a;
+  --brand: #10b981;
+  --compete: #f43f5e;
+  --growth: #06b6d4;
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---- Typography ---- */
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-sub {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin-top: 1.15rem;
+  line-height: 1.6;
+}
+.section-head { margin-bottom: 3.5rem; }
+.body-prose {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 68ch;
+}
+.body-prose p + p { margin-top: 1.25rem; }
+.body-prose strong { color: var(--text); font-weight: 600; }
+.body-prose em { color: var(--text); font-style: italic; }
+
+/* ---- Nav ---- */
+.nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+.nav-dropdown-wrap:hover .nav-dropdown,
+.nav-dropdown-wrap:focus-within .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+.nav-dropdown-wrap .nav-dropdown { transition: opacity 0.18s ease 0.25s, transform 0.18s ease 0.25s; }
+.nav-dropdown-wrap:hover .nav-dropdown { transition-delay: 0s; }
+.nav-dropdown {
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding-top: 12px;
+  background: transparent;
+  min-width: 210px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease 0s, transform 0.18s ease 0s;
+  z-index: 200;
+}
+.nav-dropdown-inner {
+  position: relative;
+  background: rgba(14,14,18,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 6px 0;
+}
+.nav-dropdown-inner::before {
+  content: '';
+  position: absolute;
+  top: 7px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px; height: 8px;
+  background: rgba(14,14,18,0.97);
+  border-left: 1px solid rgba(255,255,255,0.09);
+  border-top: 1px solid rgba(255,255,255,0.09);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 9px 18px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.04); }
+
+.wi-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 56px 0 0 0;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(12px);
+  z-index: 99;
+  flex-direction: column;
+  padding: 40px 32px;
+}
+.wi-mobile-menu.open { display: flex; }
+.wi-mobile-menu a {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s;
+}
+.wi-mobile-menu a:last-child { border-bottom: none; }
+.wi-mobile-menu a:hover { color: #fff; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  padding: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-links-desktop { display: flex; gap: 36px; }
+@media (max-width: 700px) {
+  .nav-links-desktop { display: none; }
+  .nav-hamburger { display: flex; }
+  .wi-nav { padding: 0 20px !important; }
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%; left: -15%;
+  width: 70%; height: 100%;
+  background: radial-gradient(circle at 25% 40%, rgba(244,63,94,0.07), transparent 55%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -20%; right: -10%;
+  width: 55%; height: 80%;
+  background: radial-gradient(circle at 75% 65%, rgba(201,150,58,0.05), transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 900px; }
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.kicker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--compete);
+  box-shadow: 0 0 8px rgba(244,63,94,0.7);
+  animation: pulse-dot 2.4s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 0.35em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--design);
+}
+.hero-deck {
+  font-family: var(--body);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+}
+
+/* ---- Stat Strip ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  overflow: hidden;
+  max-width: 820px;
+}
+.stat-cell {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.65rem;
+}
+.stat-num.col-compete { color: var(--compete); }
+.stat-num.col-design { color: var(--design); }
+.stat-num.col-brand { color: var(--brand); }
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.stat-source {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+}
+
+/* ---- Prose Section ---- */
+.prose-section { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.prose-section .container { display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+.prose-label { position: sticky; top: 6rem; }
+@media (max-width: 800px) {
+  .prose-section .container { grid-template-columns: 1fr; gap: 2rem; }
+  .prose-label { position: static; }
+}
+
+/* ---- Pull Quote ---- */
+.pull-quote {
+  margin: 3rem 0;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--design);
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 56ch;
+}
+
+/* ---- The Maths Block ---- */
+.maths-block {
+  margin-top: 3rem;
+  padding: 2rem 2rem 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+.maths-block .maths-line { display: flex; justify-content: space-between; gap: 2rem; padding: 0.35rem 0; border-bottom: 1px dashed var(--border); }
+.maths-block .maths-line:last-of-type { border-bottom: none; }
+.maths-block .maths-label { color: var(--text-muted); }
+.maths-block .maths-value { color: var(--text); font-weight: 500; }
+.maths-block .maths-result { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
+.maths-block .maths-result-label { font-family: var(--body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
+.maths-block .maths-result-value { font-family: var(--mono); font-size: 1.5rem; font-weight: 600; color: var(--compete); letter-spacing: -0.02em; }
+
+/* ---- Vignette Cards ---- */
+.vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.vignette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.vignette-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.vignette-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.vignette-card.v1 { border-top: 3px solid var(--compete); }
+.vignette-card.v2 { border-top: 3px solid var(--design); }
+.vignette-card.v3 { border-top: 3px solid var(--brand); }
+.vignette-tag {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.vignette-headline {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.vignette-body {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.vignette-coi {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.vignette-coi-label {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.vignette-coi-value {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.vignette-card.v1 .vignette-coi-value { color: var(--compete); }
+.vignette-card.v2 .vignette-coi-value { color: var(--design); }
+.vignette-card.v3 .vignette-coi-value { color: var(--brand); }
+
+/* ---- Threshold Section ---- */
+.threshold {
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.threshold::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; max-width: 800px;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(201,150,58,0.04), transparent 60%);
+  pointer-events: none;
+}
+.threshold-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; text-align: center; }
+.threshold h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+}
+.threshold h2 em { font-style: italic; color: var(--design); }
+.threshold-body {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.threshold-body p + p { margin-top: 1.25rem; }
+.threshold-body strong { color: var(--text); font-weight: 600; }
+
+/* ---- Closing ---- */
+.closing { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.closing-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.closing h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.closing-body {
+  font-family: var(--body);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin: 0 auto 2.75rem;
+}
+.closing-body p + p { margin-top: 1.25rem; }
+.closing-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.1rem 2rem;
+  background: var(--design);
+  color: #14100a;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: #b08125; transform: translateY(-1px); }
+.btn-primary .arrow { transition: transform 0.2s; }
+.btn-primary:hover .arrow { transform: translateX(3px); }
+.cta-sub {
+  font-family: var(--body);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.cta-sub a { color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 1px; }
+
+/* ---- Briefing ---- */
+.briefing { padding: clamp(4rem, 8vw, 6rem) 0; background: var(--bg); }
+.briefing-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.briefing-inner h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.briefing-sub {
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.briefing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.btn-amber {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.95rem 1.75rem;
+  background: var(--design);
+  color: #14100a;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-amber:hover { background: #b08125; transform: translateY(-1px); }
+.form-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+@media (max-width: 800px) {
+  .briefing-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.75rem; }
+}
+
+/* ---- Footer ---- */
+.site-footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--border); background: var(--bg); }
+.footer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+.footer-brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+.footer-centre {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.footer-right {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: right;
+  transition: color 0.2s ease;
+}
+.footer-right:hover { color: var(--design); }
+.footer-copy {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .footer-row { grid-template-columns: 1fr; text-align: center; }
+  .footer-right { text-align: center; }
+}
+
+/* ---- Reveal animation ---- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <div class="nav-links-desktop">
+    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
+    <div class="nav-dropdown-wrap">
+      <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:#fff;text-decoration:none;text-transform:uppercase;">Web Intelligence</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/web-intelligence/the-shift/">The Shift</a>
+          <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--design) !important">Cost of Not Knowing &rarr;</a>
+          <a href="/web-intelligence/#problem">Problem</a>
+          <a href="/web-intelligence/#cost">What it's costing you</a>
+          <a href="/web-intelligence/#solution">The Solution</a>
+          <a href="/web-intelligence/#pricing">Pricing</a>
+          <a href="/web-intelligence/#sample">Sample reports</a>
+          <a href="/web-intelligence/#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <a href="/culture-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Culture Intelligence</a>
+    <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('coiMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-mobile-menu" id="coiMobileMenu">
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
+  <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/web-intelligence/the-shift/">The Shift</a>
+  <a href="/web-intelligence/the-shift/cost-of-not-knowing/">Cost of Not Knowing</a>
+  <a href="/culture-intelligence/">Culture Intelligence</a>
+  <a href="/experiments/">Experiments</a>
+  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+</div>
+<div style="height:56px"></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-kicker reveal">
+          <span class="kicker-dot"></span>
+          Editorial &middot; The Shift &middot; April 2026
+        </div>
+        <h1 class="reveal d1">The Cost of<br><em>Not Knowing.</em></h1>
+        <p class="hero-deck reveal d2">Most agencies sell upside. Few quantify what doing nothing is already costing you. This editorial explains why downside is harder to sell, what the maths actually looks like, and why AI search is making the calculation tighter every quarter.</p>
+
+        <div class="stat-strip reveal d3">
+          <div class="stat-cell">
+            <div class="stat-num col-compete">£18k–£90k</div>
+            <div class="stat-desc">typical annual range of lost search and AI visibility revenue across UK SMB and mid-market audits</div>
+            <span class="stat-source">Friction &amp; Toil, Q1 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">0%</div>
+            <div class="stat-desc">of audited businesses had ever been shown a quantified Cost of Inaction figure before commissioning the report</div>
+            <span class="stat-source">Friction &amp; Toil, Q1 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-brand">58%</div>
+            <div class="stat-desc">decline in click-through rates on Google searches that now trigger an AI Overview, compared to pre-AI baseline</div>
+            <span class="stat-source">Ahrefs, 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE AUDIT YOU'VE NEVER BEEN SOLD ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">The Frame</span>
+        <h2 class="section-heading">The audit you've never been sold.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>Every agency conversation you've ever had has been about upside. <em>We'll grow your traffic 3x. We'll double your conversion rate. We'll triple your inbound pipeline.</em> The deck slides change. The maths doesn't. Every promise is a multiplier on a future you haven't yet earned, sold against the stranger you'll be twelve months from now if everything works.</p>
+        <p>Almost no-one runs the other calculation. The one that asks: <strong>what is your current website costing you, right now, this month, while you decide whether to act?</strong> Not the upside of fixing it. The downside of leaving it alone.</p>
+        <p>This is not a rhetorical distinction. The two questions produce different numbers and different decisions. The upside calculation tells you what good looks like. The downside calculation tells you what doing nothing looks like. One is a sales pitch. The other is a diagnosis.</p>
+        <p>We call the second number the <strong>Cost of Inaction</strong>, or COI. Across more than fifty audits in the last twelve months, the COI for a typical UK SMB sits between <strong>£18,000 and £90,000 a year</strong>, with mid-market businesses frequently breaching £150,000. None of the businesses we audited had been shown that figure before. Not by their existing agency, not by their consultancy, not by the platform vendors selling them tooling.</p>
+        <p>That absence is not an accident.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY DOWNSIDE IS HARDER TO SELL ============ -->
+  <section class="prose-section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">The Asymmetry</span>
+        <h2 class="section-heading">Why downside is harder to sell.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>Upside has unlimited ceiling. The pitch is open-ended: a 3x growth promise can mean anything between a respectable lift and a transformational year. The buyer fills in the gap with their own optimism. The seller is rarely held to the ceiling, only to the floor.</p>
+        <p>Downside has maths. A specific number, denominated in pounds, with a defensible methodology underneath. The buyer cannot fill in the gap with optimism — they can only argue with the figure or accept it. Maths is uncomfortable in a discovery meeting. Optimism is not.</p>
+
+        <div class="pull-quote reveal">
+          The agency selling upside risks nothing by being approximate. The advisor quantifying downside risks the entire relationship if the number is wrong.
+        </div>
+
+        <p>There is a second reason. Downside numbers force a conversation about <em>responsibility</em>. If your current website is leaking £45,000 a year in lost search visibility, somebody approved the decisions that produced that leak. The previous web build was signed off by someone. The robots.txt that blocks AI crawlers was deployed by someone. The hidden pricing page that loses you the AI vendor bake-off was a positioning decision made by someone, often years ago. A quantified COI puts a number against those decisions in a way an upside pitch never does.</p>
+        <p>Most agencies have learned not to do this. The buyer who hears their current website is leaking £45,000 a year does not become 50% more likely to buy. They become defensive. They want to know who said what when. They take the conversation internal. Three months later, the agency hears nothing back, because the buyer was protecting an internal stakeholder rather than buying a solution.</p>
+        <p>So agencies stopped doing the maths. They sell the next thing instead.</p>
+        <p>This is what produces the absurdity at the centre of most digital marketing decisions: the buyer is asked to commission a £20,000 engagement to fix a problem they have never been shown the cost of. The seller is asked to win that business without ever proving the cost is real. Both sides are operating on faith.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE METHODOLOGY ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">The Methodology</span>
+        <h2 class="section-heading">What the maths actually does.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The Cost of Inaction methodology is not novel statistics. It is conventional inputs assembled with discipline, then expressed as a range rather than a point estimate. Four numbers, multiplied. The discipline lies in being honest about each input.</p>
+        <p><strong>1. Search demand.</strong> The total monthly search volume across your category's primary commercial queries. Pulled from Ahrefs or Semrush, cross-checked against Google Search Console for branded reality, and stripped of irrelevant intent (informational queries that will never convert).</p>
+        <p><strong>2. Visibility gap.</strong> The difference between a fair share of click-through rate at your category's competitive density, and your actual click-through rate today. A business ranking position 8 on a query with 14,000 monthly searches is leaving roughly 1,200 sessions a month on the table compared to a position 3 ranking — sessions a competitor is currently capturing.</p>
+        <p><strong>3. Conversion rate floor.</strong> The realistic rate at which your site converts a visitor into a lead, booking, or sale. Not the rate from a hand-picked landing page. The rate across the journey a real user actually takes. Most B2B services sit between 1.5% and 3%. Most local hospitality between 0.8% and 2%. Most e-commerce between 0.5% and 2%.</p>
+        <p><strong>4. Average deal value.</strong> The contribution margin per converted enquiry, not the headline price. This is the number where most COI calculations die — businesses overstate it because they're thinking of best-case clients rather than the long tail of small jobs that pad the average.</p>
+        <p>Multiply, sense-check, then express as a range using a sensitivity envelope of roughly &times;0.7 to &times;1.4. The range is honest. A point estimate is theatre.</p>
+
+        <div class="maths-block reveal">
+          <div style="font-family:var(--body);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:1rem;">Worked Example &middot; UK Care Group</div>
+          <div class="maths-line"><span class="maths-label">Monthly searches (commercial intent)</span><span class="maths-value">8,400</span></div>
+          <div class="maths-line"><span class="maths-label">Visibility gap (CTR delta)</span><span class="maths-value">7.2%</span></div>
+          <div class="maths-line"><span class="maths-label">Lost sessions / month</span><span class="maths-value">605</span></div>
+          <div class="maths-line"><span class="maths-label">Conversion rate floor</span><span class="maths-value">1.6%</span></div>
+          <div class="maths-line"><span class="maths-label">Lost enquiries / month</span><span class="maths-value">9.7</span></div>
+          <div class="maths-line"><span class="maths-label">Avg deal value (annual contract)</span><span class="maths-value">£42,000</span></div>
+          <div class="maths-line"><span class="maths-label">Conversion rate &mdash; enquiry to placed resident</span><span class="maths-value">8%</span></div>
+          <div class="maths-result">
+            <span class="maths-result-label">Annual COI &middot; sensitivity envelope</span>
+            <span class="maths-result-value">&pound;273k &mdash; &pound;547k</span>
+          </div>
+        </div>
+
+        <p style="margin-top:3rem;">A range that wide tells the buyer something an agency pitch never does: <em>even at the conservative end of our model, the cost of doing nothing is greater than the cost of finding out</em>. That is the threshold the methodology is designed to test.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THREE FROM THE FIELD ============ -->
+  <section class="vignettes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Three From The Field</span>
+        <h2 class="section-heading">Three ranges, three sectors, three different shapes of the same problem.</h2>
+        <p class="section-sub">Names redacted. Sector and structural detail preserved. All three figures are taken directly from delivered Web Intelligence Reports in Q1 2026.</p>
+      </div>
+
+      <div class="vignette-grid">
+
+        <div class="vignette-card v1 reveal d1">
+          <span class="vignette-tag">Hospitality &middot; Multi-Site</span>
+          <div class="vignette-headline">A specialist UK hospitality group operating six sites in central London.</div>
+          <div class="vignette-body">
+            <p>Strong brand identity, strong press coverage, weak digital infrastructure. Site built on a page-builder template that buries pricing and event capacity behind contact-us forms. Schema markup absent on five of six location pages. AI Share of Voice score 0/6 on conversational discovery queries — the brand is invisible to ChatGPT and Perplexity in its own category.</p>
+            <p style="margin-top:0.85rem;">The COI is dominated not by missing search traffic but by lost AI bake-offs: enterprise event buyers using AI to shortlist venues before any human contact. The brand is left out of the conversation entirely.</p>
+          </div>
+          <div class="vignette-coi">
+            <span class="vignette-coi-label">Annual COI Range</span>
+            <span class="vignette-coi-value">£62k &mdash; £125k</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v2 reveal d2">
+          <span class="vignette-tag">Care &middot; Regional Group</span>
+          <div class="vignette-headline">A 30+ home regional care group across Yorkshire and the East Midlands.</div>
+          <div class="vignette-body">
+            <p>Established reputation, strong CQC ratings, distinctive specialism (veteran-friendly accreditation) that no competitor in the region holds. The differentiator is real and unique. It is also nowhere on the website's commercial pages — appearing only in a press release archive that AI crawlers have no reason to read.</p>
+            <p style="margin-top:0.85rem;">The COI here is not about technical SEO. It is about an unmonetised brand asset. Adult children searching for care for a parent who served are routed by AI to competitors who simply don't have the credential — because the credential isn't in the answer.</p>
+          </div>
+          <div class="vignette-coi">
+            <span class="vignette-coi-label">Annual COI Range</span>
+            <span class="vignette-coi-value">£45k &mdash; £90k</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v3 reveal d3">
+          <span class="vignette-tag">Wedding Venue &middot; Country House</span>
+          <div class="vignette-headline">A luxury Cotswolds wedding venue with eight centuries of family ownership.</div>
+          <div class="vignette-body">
+            <p>One of the strongest brand stories in the UK wedding market. Heritage, exclusivity, named family — every credibility signal a couple shortlisting a venue could want. None of it structured for AI extraction. No FAQ schema, no pricing exposed as plain text, no LocalBusiness markup, no AI crawler permissions.</p>
+            <p style="margin-top:0.85rem;">Couples now use AI as a primary planning tool — over half report doing so in the 2025-2026 cohort. This venue is not in the shortlist conversation. Competitors with a fraction of the heritage, but cleaner data architecture, surface ahead of it.</p>
+          </div>
+          <div class="vignette-coi">
+            <span class="vignette-coi-label">Annual COI Range</span>
+            <span class="vignette-coi-value">£45k &mdash; £90k</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;text-align:center;max-width:60ch;margin-left:auto;margin-right:auto;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.5rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In all three cases, the conservative end of the COI range was greater than the cost of the full audit by a factor of forty or more. None of the three businesses had been shown that comparison before.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE THRESHOLD ============ -->
+  <section class="threshold">
+    <div class="container">
+      <div class="threshold-inner">
+        <span class="eyebrow reveal" style="display:block;margin-bottom:2rem;">The Threshold</span>
+        <h2 class="reveal d1">The audit pays for itself when the cost of <em>not knowing</em> is greater than the cost of <em>finding out</em>.</h2>
+        <div class="threshold-body reveal d2">
+          <p>This is the test. Not whether your business has a website problem — almost every business does. Not whether the work to fix it would be expensive — it usually isn't, once you know which work to do. The test is whether the maths underneath your current visibility produces a number large enough that doing nothing for another twelve months is materially worse than doing something now.</p>
+          <p><strong>If the COI is greater than the cost of finding out, the audit pays for itself before anything else happens.</strong> Every fix delivered after that compounds the return. The audit is no longer an expense; it is a measurement of an expense you were already incurring.</p>
+          <p>If the COI is lower than the cost of finding out — congratulations. Your visibility is in better shape than the market average. You don't need an audit. You need to keep doing what you're already doing.</p>
+          <p>That is the only honest answer most businesses have never been given.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI TIGHTENING ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">What's Changing</span>
+        <h2 class="section-heading">AI is making the calculation tighter, not looser.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>Until 2024, COI calculations were stable. Search traffic moved slowly. Conversion rates moved slowly. Average deal values moved slowly. The methodology produced a number that held up for a year or more between recalculations.</p>
+        <p>That stability has gone. AI Overviews now intercept the highest-intent commercial queries before any organic listing appears. Click-through rates on AI-summarised searches are down 58% from pre-2024 baselines. Zero-click queries — searches that complete without a single visit to any website — now make up close to half of UK searches that trigger an AI Overview.</p>
+        <p>Each of these compounds the visibility gap. A business that was leaking £30,000 a year on the old click-through model is leaking somewhere closer to £45,000 on the post-AI-Overview reality. The COI is rising while the cost of the fix is falling — most of the moves required to recover ground are content and schema work, not platform replacement.</p>
+
+        <div class="pull-quote reveal" style="border-left-color:var(--compete);">
+          The cost of inaction is rising every quarter. The cost of action is not. The gap between them is what the audit measures.
+        </div>
+
+        <p>There is a second compounding effect underneath the visibility one. <strong>AI citation positions reinforce themselves.</strong> Models retrain on the answers they previously produced. Brands cited as authoritative answers today become more likely to be cited tomorrow. Brands that are absent from today's citation pool become harder to surface in future cycles. This is not speculation; it is documented retrieval behaviour in major LLM platforms.</p>
+        <p>The businesses that are Recommended in AI results in eighteen months are the ones that fixed the structural issues this quarter. The businesses that wait for the market to settle are not waiting; they are receding. Inaction is no longer the same shape it was two years ago. It compounds.</p>
+        <p>Which means the COI methodology, applied seriously, is no longer a one-off diagnostic. It is a quarterly measurement. The methodology hasn't changed. The shape of the curve underneath it has.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="container">
+      <div class="closing-inner reveal">
+        <span class="eyebrow" style="display:block;text-align:center;margin-bottom:1.5rem;">The Argument, In Three Lines</span>
+        <h2>You can buy upside. You cannot buy back the months spent not measuring downside.</h2>
+        <div class="closing-body">
+          <p>Every agency in the market will sell you a future. Few will tell you what your present is costing. The discipline of running the maths — honestly, with a sensitivity envelope, on inputs you can defend — is the cheapest test you can run before signing any growth engagement.</p>
+          <p>If the number is small, the audit told you that, and you keep your money. If the number is large, the audit told you that, and the work pays for itself before it has begun. Either answer is a return on the diagnostic.</p>
+          <p>The Web Intelligence Report runs the COI calculation against your real site, your real category, and your real competitors — and tells you which side of the threshold you sit on.</p>
+        </div>
+        <div class="closing-cta">
+          <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">→</span></a>
+          <span class="cta-sub">From £750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing">View pricing options</a></span>
+          <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.5rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Or start with AI visibility only &mdash; £250, 24 hours &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BRIEFING ============ -->
+  <section class="briefing">
+    <div class="container">
+      <div class="briefing-inner">
+        <div class="reveal">
+          <span class="eyebrow">Monthly Intelligence Briefing</span>
+          <h2>The COI calculation moves every quarter.</h2>
+          <p class="briefing-sub">As AI changes how UK customers find businesses, the maths underneath the Cost of Inaction changes too. We track it monthly and share what matters — no consultancy noise, just the intelligence.</p>
+        </div>
+        <div class="briefing-form reveal d2">
+          <a href="https://frictions-newsletter.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-amber" style="text-decoration:none;display:block;text-align:center;">Subscribe to The Shift Briefing</a>
+          <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">Friction &amp; Toil</div>
+      <div class="footer-centre">frictionandtoil.com</div>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
