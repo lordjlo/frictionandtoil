@@ -7,5 +7,25 @@
     "api/chat.js": {
       "memory": 128
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/web-intelligence/the-shift/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=300, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/web-intelligence/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
 }
