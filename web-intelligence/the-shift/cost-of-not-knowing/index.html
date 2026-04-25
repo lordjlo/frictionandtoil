@@ -367,6 +367,35 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .prose-label { position: static; }
 }
 
+/* ---- Chapter-Break Quote ---- */
+.chapter-break {
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.chapter-break::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--design);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.chapter-break-quote {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+
 /* ---- Pull Quote / Objection Box ---- */
 .objection-box {
   margin: 3rem 0;
@@ -815,8 +844,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
         <p>In 1998, Google's PageRank algorithm decided that links were votes. The businesses that understood this first built moats that lasted a decade. Today, LLMs are building the next foundational graph: the citation feedback loop. Models retrain on the answers they previously produced, and the citation graph they build today shapes the citation graph they build next year. Brands cited as authoritative answers now become more likely to be cited later. Brands absent from today's citation pool become harder to surface in future cycles, regardless of how good their product is.</p>
         <p>This is not a forecast. It is documented retrieval behaviour in production LLMs &mdash; the first compounding curve in commercial digital visibility since the original PageRank, and almost no business owner has been shown a number against it.</p>
         <p>We have. It has a name: the <strong>Cost of Inaction</strong>, or COI. Across more than fifty Web Intelligence engagements over the last twelve months, the figure for a typical UK SMB sits between <strong>£18,000 and £90,000 a year</strong>, with mid-market businesses frequently breaching £150,000. None of those businesses had been shown that figure by their existing agency, consultancy, or platform vendor before commissioning the work.</p>
-        <p>That absence is not an accident. It is the central failure of how digital growth is sold.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      That absence is not an accident. It is the central failure of how digital growth is sold.
     </div>
   </section>
 
