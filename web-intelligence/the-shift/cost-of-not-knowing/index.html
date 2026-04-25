@@ -745,6 +745,51 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .footer-right { text-align: center; }
 }
 
+/* ---- Read Next ---- */
+.read-next { padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.read-next-inner { max-width: 760px; margin: 0 auto; padding: 0 var(--gutter); }
+.read-next-eyebrow {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.read-next-link {
+  display: block;
+  padding: 2.25rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.read-next-link:hover { border-color: var(--design); transform: translateY(-2px); background: var(--bg-card-hover); }
+.read-next-link h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.22;
+}
+.read-next-link p {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+.read-next-arrow {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--design);
+  letter-spacing: 0.04em;
+}
+
 /* ---- Reveal animation ---- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -766,8 +811,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:#fff;text-decoration:none;text-transform:uppercase;">Web Intelligence</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-inner">
-          <a href="/web-intelligence/the-shift/">The Shift</a>
-          <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--design) !important">Cost of Not Knowing &rarr;</a>
+          <a href="/web-intelligence/the-shift/">The Shift &mdash; Maturity Curve</a>
+          <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--design) !important">The Shift &mdash; Cost of Not Knowing &rarr;</a>
           <a href="/web-intelligence/#problem">Problem</a>
           <a href="/web-intelligence/#cost">What it's costing you</a>
           <a href="/web-intelligence/#solution">The Solution</a>
@@ -1053,6 +1098,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           Friction &amp; Toil runs Cost of Inaction analysis as part of our <a href="/web-intelligence/">Web Intelligence Reports</a>. Methodology, pricing, and sample reports at frictionandtoil.com/web-intelligence.
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ READ NEXT ============ -->
+  <section class="read-next">
+    <div class="read-next-inner reveal">
+      <span class="read-next-eyebrow">Read next from The Shift</span>
+      <a href="/web-intelligence/the-shift/" class="read-next-link">
+        <h3>The AI Visibility Maturity Curve</h3>
+        <p>A four-rung framework &mdash; Invisible, Emerging, Cited, Recommended &mdash; for diagnosing where your business sits in AI-powered search, and what specifically moves you to the next rung.</p>
+        <span class="read-next-arrow">Continue reading &rarr;</span>
+      </a>
     </div>
   </section>
 

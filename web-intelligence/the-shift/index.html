@@ -840,6 +840,51 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .nav-hamburger { display: flex; }
 }
 
+/* ---- Read Next ---- */
+.read-next { padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.read-next-inner { max-width: 760px; margin: 0 auto; padding: 0 var(--gutter); }
+.read-next-eyebrow {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.read-next-link {
+  display: block;
+  padding: 2.25rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.read-next-link:hover { border-color: var(--design); transform: translateY(-2px); background: var(--bg-card-hover); }
+.read-next-link h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.22;
+}
+.read-next-link p {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+.read-next-arrow {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--design);
+  letter-spacing: 0.04em;
+}
+
 /* ---- Reveal animation ---- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -862,7 +907,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:#fff;text-decoration:none;text-transform:uppercase;">Web Intelligence</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-inner">
-          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &rarr;</a>
+          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &mdash; Maturity Curve &rarr;</a>
+          <a href="/web-intelligence/the-shift/cost-of-not-knowing/">The Shift &mdash; Cost of Not Knowing</a>
           <a href="/web-intelligence/#problem">Problem</a>
           <a href="/web-intelligence/#cost">What it's costing you</a>
           <a href="/web-intelligence/#solution">The Solution</a>
@@ -884,7 +930,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 <div class="wi-mobile-menu" id="shiftMobileMenu">
   <a href="/strategic-intelligence/">Strategic Intelligence</a>
   <a href="/web-intelligence/">Web Intelligence</a>
-  <a href="/web-intelligence/the-shift/">The Shift</a>
+  <a href="/web-intelligence/the-shift/">The Shift &mdash; Maturity Curve</a>
+  <a href="/web-intelligence/the-shift/cost-of-not-knowing/">The Shift &mdash; Cost of Not Knowing</a>
   <a href="/culture-intelligence/">Culture Intelligence</a>
   <a href="/experiments/">Experiments</a>
   <a href="mailto:hello@frictionandtoil.com">Contact</a>
@@ -1175,6 +1222,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.25rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Not ready for the full report? Start with AI visibility only &mdash; £250 &rarr;</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ READ NEXT ============ -->
+  <section class="read-next">
+    <div class="read-next-inner reveal">
+      <span class="read-next-eyebrow">Read next from The Shift</span>
+      <a href="/web-intelligence/the-shift/cost-of-not-knowing/" class="read-next-link">
+        <h3>The Cost of Not Knowing</h3>
+        <p>The first compounding curve in digital visibility since PageRank. Why most agencies sell upside, and what happens when you quantify downside instead &mdash; with a worked methodology and three case studies from Q1 2026.</p>
+        <span class="read-next-arrow">Continue reading &rarr;</span>
+      </a>
     </div>
   </section>
 
