@@ -757,6 +757,56 @@
     flex: 1;
   }
 
+  /* ============ Free Score Form ============ */
+  .score-form-section { padding: clamp(5rem, 10vw, 7rem) 0; border-top: 1px solid var(--border); }
+  .score-form-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .score-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .score-form .field-full { grid-column: 1 / -1; }
+  .score-form label {
+    display: block;
+    font-family: var(--body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .score-form input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+  .score-form input::placeholder { color: var(--text-muted); }
+  .score-form input:focus { border-color: var(--design); }
+  .score-form-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 600px) {
+    .score-form { grid-template-columns: 1fr; }
+    .score-form .field-full { grid-column: 1; }
+  }
+
   /* ============ Comparison (Why £750?) ============ */
   .compare { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .compare-grid {
@@ -2208,6 +2258,40 @@
         <button class="btn btn-white" style="width:100%;justify-content:center;font-size:0.95rem;" onclick="trackLead('ai_search_report_250'); startCheckout(this)" data-tier="250">Order AI Search Report &mdash; &pound;250 &rarr;</button>
 
         <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Delivered within 24 hours as a standalone HTML file. Upgrade credit applied automatically if you order the full report within 90 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FREE SCORE FORM ============ -->
+  <section class="score-form-section">
+    <div class="container">
+      <div class="score-form-wrap reveal">
+        <span class="eyebrow">Free score</span>
+        <h2 class="section-heading">Find out where you stand — free.</h2>
+        <p class="section-sub">Submit your URL and we'll run your AI &amp; Web Intelligence score. Delivered to your inbox within the hour. No pitch sequence.</p>
+
+        <form class="score-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST">
+          <div class="field-full">
+            <label for="sf-url">Your website URL</label>
+            <input type="url" id="sf-url" name="website_url" placeholder="https://www.yoursite.co.uk" required>
+          </div>
+          <div class="field-full">
+            <label for="sf-email">Your email</label>
+            <input type="email" id="sf-email" name="email" placeholder="you@yourcompany.com" required>
+          </div>
+          <div>
+            <label for="sf-customer">Who is your ideal customer?</label>
+            <input type="text" id="sf-customer" name="ideal_customer" placeholder="e.g. HR directors at mid-size firms">
+          </div>
+          <div>
+            <label for="sf-competitor">Who is your main competitor?</label>
+            <input type="text" id="sf-competitor" name="main_competitor" placeholder="e.g. competitor.co.uk">
+          </div>
+          <div class="field-full" style="margin-top:0.5rem;">
+            <button type="submit" class="btn btn-amber btn-full" onclick="trackLead('free_score_form')">Get my free score <span class="arrow">&rarr;</span></button>
+          </div>
+        </form>
+        <p class="score-form-note">We run a real audit — not an automated checker. You'll receive a scored breakdown across Search, Design, Brand, Compete, and Growth.</p>
       </div>
     </div>
   </section>
