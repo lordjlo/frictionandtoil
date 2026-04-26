@@ -310,6 +310,157 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   letter-spacing: 0.05em;
   margin-top: 2rem;
 }
+.hero-byline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+/* ---- Section numeral (I, II, III, IV) ---- */
+.section-numeral {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 1.1rem;
+}
+
+/* ---- Chapter-Break Quote ---- */
+.chapter-break {
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter, 1.5rem);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.chapter-break::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--design);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.chapter-break-quote {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+
+/* ---- Pull Quote ---- */
+.pull-quote {
+  margin: 2.75rem 0 2.25rem;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--design);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 56ch;
+}
+
+/* ---- Sidebar Callout (self-audit) ---- */
+.sidebar-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.sidebar-callout {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.75rem clamp(1.5rem, 3vw, 3rem);
+  background: linear-gradient(180deg, rgba(201,150,58,0.05), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+}
+.sidebar-callout::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2));
+  border-radius: 12px 0 0 12px;
+}
+.sidebar-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 0.85rem;
+}
+.sidebar-callout h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.sidebar-intro {
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 64ch;
+}
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.25rem 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-point:last-child { border-bottom: none; }
+.sidebar-point-num {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--design);
+  min-width: 2.4rem;
+  padding-top: 0.15rem;
+}
+.sidebar-point-title {
+  font-family: var(--display, var(--body));
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+}
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
 
 /* ---- Stat Strip ---- */
 .stat-strip {
@@ -961,6 +1112,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           Intelligence Brief &middot; Web Intelligence &middot; April 2026
         </div>
         <h1 class="reveal d1">Search Has a<br><em>New Front Door.</em></h1>
+        <p class="hero-byline reveal d2">By Frank Graham, Founder</p>
         <p class="hero-deck reveal d2">AI is intercepting your highest-intent customers before they ever reach your website. This brief explains what is happening, why it matters for your specific sector, and where your business stands in the new economy.</p>
 
         <div class="stat-strip reveal d3">
@@ -984,10 +1136,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     </div>
   </section>
 
+  <!-- ============ CHAPTER BREAK I ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">&ldquo;The buyer&rsquo;s first question is no longer &lsquo;which result is best.&rsquo; It is &lsquo;which answer am I being given.&rsquo;&rdquo;</div>
+  </section>
+
   <!-- ============ THE SHIFT INTRO ============ -->
   <section class="prose-section">
     <div class="container">
       <div class="prose-label reveal">
+        <span class="section-numeral">I</span>
         <span class="eyebrow">The Shift</span>
         <h2 class="section-heading">The decade-old playbook has expired.</h2>
       </div>
@@ -1001,10 +1159,16 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     </div>
   </section>
 
+  <!-- ============ CHAPTER BREAK II ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">&ldquo;The Agentic Web does not grade on a curve. It either recommends you, or it does not.&rdquo;</div>
+  </section>
+
   <!-- ============ MATURITY CURVE ============ -->
   <section class="maturity">
     <div class="container">
       <div class="section-head reveal">
+        <span class="section-numeral">II</span>
         <span class="eyebrow">The AI Maturity Curve</span>
         <h2 class="section-heading">Every business on the web falls into one of four categories.</h2>
         <p class="section-sub">The Agentic Web does not grade on a curve. Based on over a dozen structural and content citation-factor checks, every business currently sits at one of four rungs. The question is which one is yours.</p>
@@ -1052,15 +1216,74 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     </div>
   </section>
 
+  <!-- ============ SIDEBAR CALLOUT — SELF-AUDIT ============ -->
+  <section class="sidebar-section">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">A 5-Question Self-Audit</span>
+        <h3>Where do you actually rank?</h3>
+        <p class="sidebar-intro">Before you commission a report, run this in five minutes. The answers are usually less flattering than the brand deck. They are also the truest measure of where you sit on the curve right now &mdash; not where you think you sit, not where your agency told you last year, but what the model is actually saying about you today.</p>
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div>
+              <div class="sidebar-point-title">Search your own brand in ChatGPT.</div>
+              <div class="sidebar-point-body">Does the model describe you correctly? Does it cite a source? Does it know what you sell, where, and to whom? <strong>If the answer is no, you are at Invisible or Emerging &mdash; regardless of what your SEO dashboard says.</strong></div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div>
+              <div class="sidebar-point-title">Ask the model your category question.</div>
+              <div class="sidebar-point-body">&ldquo;Recommend a [your category] in [your geography].&rdquo; Are you in the answer? Are you named in the first three? <strong>If you are not, the citation graph is recommending someone else &mdash; and that someone else is winning the enquiry you used to win.</strong></div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div>
+              <div class="sidebar-point-title">Ask &ldquo;who should I hire for X.&rdquo;</div>
+              <div class="sidebar-point-body">A buyer&rsquo;s real query. Not &ldquo;what is X&rdquo; &mdash; that is a researcher&rsquo;s query. The hire query separates Cited from Recommended. <strong>You only sit at Recommended if your name is in the first sentence of the answer.</strong></div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">04</div>
+            <div>
+              <div class="sidebar-point-title">Check who AI names instead of you.</div>
+              <div class="sidebar-point-body">List the competitors the model recommends. <strong>That list is your real competitive set in 2026 &mdash; not the one in your strategy deck.</strong> The brands the model names are the ones you are now competing with for the same enquiry, regardless of whether you used to consider them peers.</div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">05</div>
+            <div>
+              <div class="sidebar-point-title">Repeat across three engines.</div>
+              <div class="sidebar-point-body">ChatGPT, Claude, Perplexity, Gemini, and Brave do not agree. <strong>You need to be cited across at least three to call yourself Recommended.</strong> One model loving you is a fluke. Three models converging on you is a citation graph.</div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-coda">
+          <strong>Score yourself honestly.</strong> 0&ndash;1 yes = Invisible. 2 = Emerging. 3 = Cited. 4&ndash;5 = Recommended. Most businesses we audit answer yes to one. Almost none answer yes to four.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK III ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">&ldquo;Most businesses are stuck not because the fixes are expensive, but because nobody has told them which fix applies to them.&rdquo;</div>
+  </section>
+
   <!-- ============ MOVING BETWEEN RUNGS ============ -->
   <section class="prose-section" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="prose-label reveal" style="position:static">
+        <span class="section-numeral">III</span>
         <span class="eyebrow">The Mechanics</span>
         <h2 class="section-heading">What moves you between rungs.</h2>
       </div>
       <div class="body-prose reveal d2">
-        <p>The Maturity Curve is not a spectrum of effort. Each transition between rungs requires a specific, identifiable change — and the changes are not evenly distributed in cost or complexity. Most businesses are stuck at Invisible or Emerging not because the fixes are expensive, but because nobody has told them which fix applies to them specifically.</p>
+        <p>The Maturity Curve is not a spectrum of effort. Each transition between rungs requires a specific, identifiable change &mdash; and the changes are not evenly distributed in cost or complexity. Most businesses are stuck at Invisible or Emerging not because the fixes are expensive, but because nobody has told them which fix applies to them specifically.</p>
+        <div class="pull-quote reveal">Indexing is not citation. Citation is not recommendation. Most playbooks confuse the first with the last.</div>
+        <p>The first jump &mdash; Invisible to Emerging &mdash; is almost always a robots.txt or schema fix that costs nothing. The hardest jump &mdash; Cited to Recommended &mdash; is editorial weight, third-party corroboration, and a citation graph the model has been re-reading for months. The work is sequential. There is no leapfrog.</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;grid-column:1/-1;">
@@ -1112,13 +1335,19 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     </div>
   </section>
 
+  <!-- ============ CHAPTER BREAK IV ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">&ldquo;You solved for User Experience for ten years. The next ten will be won on Agent Experience.&rdquo;</div>
+  </section>
+
   <!-- ============ CITATION MECHANICS ============ -->
   <section class="evidence">
     <div class="container">
       <div class="section-head reveal">
+        <span class="section-numeral">IV</span>
         <span class="eyebrow">The Evidence</span>
         <h2 class="section-heading">You solved for User Experience.<br>Now you must solve for Agent Experience.</h2>
-        <p class="section-sub">You have spent years making your website beautiful for humans. Human-beautiful websites are often invisible to AI. The mechanics of AI citation are documented — and they are not what most marketers expect.</p>
+        <p class="section-sub">You have spent years making your website beautiful for humans. Human-beautiful websites are often invisible to AI. The mechanics of AI citation are documented &mdash; and they are not what most marketers expect.</p>
       </div>
 
       <div class="body-prose reveal" style="margin-bottom: 3rem;">
@@ -1148,7 +1377,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       </div>
 
       <div class="body-prose reveal" style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
-        <p>There is a further complexity most businesses have not yet confronted: <strong>different AI models cite different pages</strong>. A URL cited reliably in ChatGPT may be completely invisible in Perplexity, and vice versa. There is no single "AI visibility" — there is ChatGPT visibility, Perplexity visibility, Google AI Overviews visibility, and Gemini visibility, and they can diverge sharply by vertical. Monitoring requires model specificity, not a single score.</p>
+        <div class="pull-quote">There is no single &ldquo;AI visibility.&rdquo; There is ChatGPT visibility, Perplexity visibility, Gemini visibility &mdash; and they can diverge sharply by vertical.</div>
+        <p>Different AI models cite different pages. A URL cited reliably in ChatGPT may be completely invisible in Perplexity, and vice versa. Monitoring requires model specificity, not a single score. The brand that scores well across three or more engines is the brand the citation graph has converged on. The brand that scores in only one is winning a fluke, not a seat.</p>
       </div>
     </div>
   </section>
