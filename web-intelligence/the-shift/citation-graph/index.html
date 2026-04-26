@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Citation Graph Doesn't Read Your Drafts — Three Ways Editorial Dies in 2026 | Friction &amp; Toil</title>
+<meta name="description" content="Three failure modes that kill founder editorial in 2026 — publish-and-pray, structural illegibility, and AI path-dependency — and the single discipline that fixes all of them. With a 30-day discoverability audit.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/citation-graph/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Citation Graph Doesn't Read Your Drafts.">
+<meta property="og:description" content="Three ways editorial dies in 2026, and the one discipline that fixes all of them.">
+<meta property="og:url" content="https://frictionandtoil.com/web-intelligence/the-shift/citation-graph/">
+<meta property="og:site_name" content="Friction &amp; Toil">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Citation Graph Doesn't Read Your Drafts.">
+<meta name="twitter:description" content="Three ways editorial dies in 2026, and the one discipline that fixes all of them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Citation Graph Doesn't Read Your Drafts: Three Ways Editorial Dies in 2026",
+  "description": "An editorial argument that founder editorial in 2026 fails for three structural reasons — publish-and-pray, illegibility, and path-dependency — and that the discipline that addresses all three is the same: treat each piece as a position in a compounding citation graph, not a finished artefact.",
+  "author": {
+    "@type": "Person",
+    "name": "Frank Graham",
+    "jobTitle": "Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Friction & Toil"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "datePublished": "2026-04-26",
+  "dateModified": "2026-04-26",
+  "keywords": "citation graph, generative engine optimization, AI search visibility, founder editorial, GEO, schema markup, AI Overviews, Perplexity, ChatGPT, Friction and Toil"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why doesn't ChatGPT mention my company when I ask about my industry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is usually a path-dependency problem. The earliest references the model encountered about your category have anchored its prior, and your more recent work isn't generating enough fresh, structured signal to update that prior. The fix is deliberate publishing into the gap — pieces specifically designed to contradict the outdated position with extractable, well-cited content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between writing well and writing for AI search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Writing well is about argument, voice, and clarity for a human reader. Writing for AI search is about extractability — whether models can cheaply parse and cite your key claims. The two are not opposed, but they are different skills. A piece that argues beautifully but presents no schema, FAQ blocks, or structured methodology will be illegible to the systems that increasingly decide which humans see it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I make sure ChatGPT and Perplexity cite my articles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three structural moves matter most. First, validate Article and FAQPage schema on every piece you publish. Second, ensure your robots.txt explicitly allows GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, and Applebot-Extended. Third, build extraction surfaces directly into your writing — methodology blocks, pull-quotes, structured asides, and an FAQ at the foot. Citation favours structure over eloquence."
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-soft: rgba(255,255,255,0.02);
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --text: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5a5a6e;
+  --search: #6366f1;
+  --design: #c9963a;
+  --brand: #10b981;
+  --compete: #f43f5e;
+  --growth: #06b6d4;
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-sub {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin-top: 1.15rem;
+  line-height: 1.6;
+}
+.section-numeral {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 1.1rem;
+}
+.body-prose {
+  font-family: var(--body);
+  font-size: 1.06rem;
+  line-height: 1.78;
+  color: var(--text-secondary);
+  max-width: 68ch;
+}
+.body-prose p + p { margin-top: 1.25rem; }
+.body-prose strong { color: var(--text); font-weight: 600; }
+.body-prose em { color: var(--text); font-style: italic; }
+
+/* ---- Nav ---- */
+.nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+.nav-dropdown-wrap:hover .nav-dropdown,
+.nav-dropdown-wrap:focus-within .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
+}
+.nav-dropdown-wrap .nav-dropdown { transition: opacity 0.18s ease 0.25s, transform 0.18s ease 0.25s; }
+.nav-dropdown-wrap:hover .nav-dropdown { transition-delay: 0s; }
+.nav-dropdown {
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding-top: 12px;
+  background: transparent;
+  min-width: 230px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease 0s, transform 0.18s ease 0s;
+  z-index: 200;
+}
+.nav-dropdown-inner {
+  position: relative;
+  background: rgba(14,14,18,0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px;
+  padding: 6px 0;
+}
+.nav-dropdown-inner::before {
+  content: '';
+  position: absolute;
+  top: 7px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px; height: 8px;
+  background: rgba(14,14,18,0.97);
+  border-left: 1px solid rgba(255,255,255,0.09);
+  border-top: 1px solid rgba(255,255,255,0.09);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 9px 18px;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.04); }
+
+.wi-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 56px 0 0 0;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(12px);
+  z-index: 99;
+  flex-direction: column;
+  padding: 40px 32px;
+}
+.wi-mobile-menu.open { display: flex; }
+.wi-mobile-menu a {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s;
+}
+.wi-mobile-menu a:last-child { border-bottom: none; }
+.wi-mobile-menu a:hover { color: #fff; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  padding: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-links-desktop { display: flex; gap: 36px; }
+@media (max-width: 700px) {
+  .nav-links-desktop { display: none; }
+  .nav-hamburger { display: flex; }
+  .wi-nav { padding: 0 20px !important; }
+}
+
+/* ---- Hero ---- */
+.hero {
+  padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%; left: -15%;
+  width: 70%; height: 100%;
+  background: radial-gradient(circle at 25% 40%, rgba(99,102,241,0.07), transparent 55%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -20%; right: -10%;
+  width: 55%; height: 80%;
+  background: radial-gradient(circle at 75% 65%, rgba(201,150,58,0.05), transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 920px; }
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.kicker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--search);
+  box-shadow: 0 0 8px rgba(99,102,241,0.7);
+  animation: pulse-dot 2.4s infinite;
+}
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 0.45em;
+}
+.hero h1 em { font-style: italic; color: var(--design); }
+.hero-subhead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+.hero-deck {
+  font-family: var(--body);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+}
+.hero-byline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+/* ---- Stat Strip ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  overflow: hidden;
+  max-width: 880px;
+}
+.stat-cell {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.65rem;
+}
+.stat-num.col-search { color: var(--search); }
+.stat-num.col-design { color: var(--design); }
+.stat-num.col-compete { color: var(--compete); }
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.stat-source {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+}
+
+/* ---- Prose Section ---- */
+.prose-section { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.prose-section .container { display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+.prose-label { position: sticky; top: 6rem; }
+@media (max-width: 800px) {
+  .prose-section .container { grid-template-columns: 1fr; gap: 2rem; }
+  .prose-label { position: static; }
+}
+
+/* ---- Chapter-Break Quote ---- */
+.chapter-break {
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.chapter-break::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--design);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.chapter-break-quote {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+
+/* ---- Pull Quote ---- */
+.pull-quote {
+  margin: 2.75rem 0 2.25rem;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--design);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 56ch;
+}
+
+/* ---- Sidebar (Audit callout) ---- */
+.sidebar-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.sidebar-callout {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 2.75rem clamp(1.5rem, 3vw, 3rem);
+  background: linear-gradient(180deg, rgba(99,102,241,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+}
+.sidebar-callout::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--search), rgba(99,102,241,0.2));
+  border-radius: 12px 0 0 12px;
+}
+.sidebar-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--search);
+  margin-bottom: 0.85rem;
+}
+.sidebar-callout h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.sidebar-intro {
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 64ch;
+}
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.25rem 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-point:last-child { border-bottom: none; }
+.sidebar-point-num {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--search);
+  min-width: 2.4rem;
+  padding-top: 0.15rem;
+}
+.sidebar-point-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+}
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-point-body em { color: var(--text); font-style: italic; }
+.sidebar-coda {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+
+/* ---- Closing ---- */
+.closing { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.closing-inner { max-width: 720px; margin: 0 auto; text-align: left; }
+.closing h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+  line-height: 1.18;
+  color: var(--text);
+  margin-bottom: 2.25rem;
+}
+.closing-body {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--text-secondary);
+  max-width: 64ch;
+  margin-bottom: 2.75rem;
+}
+.closing-body p + p { margin-top: 1.25rem; }
+.closing-body strong { color: var(--text); font-weight: 600; }
+.closing-product {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.closing-product a {
+  color: var(--design);
+  border-bottom: 1px solid rgba(201,150,58,0.3);
+  padding-bottom: 1px;
+  font-style: normal;
+  transition: border-color 0.2s, color 0.2s;
+}
+.closing-product a:hover { color: var(--text); border-bottom-color: var(--design); }
+
+/* ---- FAQ ---- */
+.faq-section { padding: clamp(4rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+.faq-inner { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.9vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+}
+.faq-a {
+  font-family: var(--body);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ---- Briefing ---- */
+.briefing { padding: clamp(4rem, 8vw, 6rem) 0; background: var(--bg); }
+.briefing-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.briefing-inner h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.briefing-sub { font-family: var(--body); font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); }
+.briefing-form { display: flex; flex-direction: column; gap: 0.85rem; }
+.btn-amber {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.95rem 1.75rem;
+  background: var(--design);
+  color: #14100a;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-amber:hover { background: #b08125; transform: translateY(-1px); }
+.form-note { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: center; }
+@media (max-width: 800px) {
+  .briefing-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.75rem; }
+}
+
+/* ---- Footer ---- */
+.site-footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--border); background: var(--bg); }
+.footer-row { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 2rem; }
+.footer-brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+.footer-centre { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); text-align: right; transition: color 0.2s ease; }
+.footer-right:hover { color: var(--design); }
+.footer-copy {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .footer-row { grid-template-columns: 1fr; text-align: center; }
+  .footer-right { text-align: center; }
+}
+
+/* ---- Read Next ---- */
+.read-next { padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.read-next-inner { max-width: 760px; margin: 0 auto; padding: 0 var(--gutter); }
+.read-next-eyebrow {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.read-next-link {
+  display: block;
+  padding: 2.25rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.read-next-link:hover { border-color: var(--design); transform: translateY(-2px); background: var(--bg-card-hover); }
+.read-next-link h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.22;
+}
+.read-next-link p {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+.read-next-arrow {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--design);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Reveal animation ---- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <div class="nav-links-desktop">
+    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
+    <div class="nav-dropdown-wrap">
+      <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:#fff;text-decoration:none;text-transform:uppercase;">Web Intelligence</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &mdash; Maturity Curve</a>
+          <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--growth) !important">The Shift &mdash; Cost of Not Knowing</a>
+          <a href="/web-intelligence/the-shift/citation-graph/" style="color:var(--brand) !important">The Shift &mdash; Citation Graph &rarr;</a>
+          <a href="/web-intelligence/#problem">Problem</a>
+          <a href="/web-intelligence/#cost">What it's costing you</a>
+          <a href="/web-intelligence/#solution">The Solution</a>
+          <a href="/web-intelligence/#pricing">Pricing</a>
+          <a href="/web-intelligence/#sample">Sample reports</a>
+          <a href="/web-intelligence/#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <a href="/culture-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Culture Intelligence</a>
+    <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('cgMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-mobile-menu" id="cgMobileMenu">
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
+  <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/web-intelligence/the-shift/">The Shift &mdash; Maturity Curve</a>
+  <a href="/web-intelligence/the-shift/cost-of-not-knowing/">Cost of Not Knowing</a>
+  <a href="/web-intelligence/the-shift/citation-graph/">Citation Graph</a>
+  <a href="/culture-intelligence/">Culture Intelligence</a>
+  <a href="/experiments/">Experiments</a>
+  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+</div>
+<div style="height:56px"></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-kicker reveal">
+          <span class="kicker-dot"></span>
+          Editorial &middot; The Shift &middot; April 2026
+        </div>
+        <h1 class="reveal d1">The Citation Graph<br>Doesn't Read<br><em>Your Drafts.</em></h1>
+        <p class="hero-subhead reveal d2">Three ways editorial dies in 2026, and the one discipline that fixes all of them.</p>
+        <p class="hero-byline reveal d2">By Frank Graham, Founder</p>
+
+        <p class="hero-deck reveal d3">Most founder editorial fails not because the writing is bad, but because publication is treated as the end of the work, not the start. The piece you ship next week is either entering the citation graph or being forgotten by it. There is no neutral state.</p>
+
+        <div class="stat-strip reveal d4">
+          <div class="stat-cell">
+            <div class="stat-num col-search">U-shaped</div>
+            <div class="stat-desc">Models reliably extract information at the very beginning of a sequence but fail to retrieve content placed in the middle of a retrieval window</div>
+            <span class="stat-source">"Lost in the Middle" &middot; Liu et al., Stanford, 2023</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">&lt; 24 hours</div>
+            <div class="stat-desc">Median half-life of a LinkedIn post before its engagement and distribution decay to near zero</div>
+            <span class="stat-source">Scott Graffius, Lifespan of Social Media Posts, 2025 update</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-compete">~30% / 70%</div>
+            <div class="stat-desc">Writing is roughly 30% of the work. The other 70% &mdash; the part that decides whether the piece is cited, surfaced, retrieved, remembered &mdash; is engineering</div>
+            <span class="stat-source">Friction &amp; Toil &middot; Editorial Discoverability framework</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPENING ARGUMENT ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="eyebrow">Opening Argument</span>
+        <h2 class="section-heading">Every piece is either compounding or evaporating.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The argument of the last <em>Shift</em> was that AI citation positions reinforce themselves. Brands cited as authoritative today become more likely to be cited tomorrow. Brands absent from the citation pool now become harder to surface in future cycles, and the gap compounds.</p>
+        <p>That logic does not stop at the brand level. It applies, with uncomfortable precision, to the editorial those brands publish. Every piece you ship is either entering the citation graph or being forgotten by it. There is no neutral state. The piece you wrote last quarter is, right now, either accumulating credibility or accumulating absence &mdash; and almost no founder treats it as a live position rather than a finished artefact.</p>
+        <p>This is why most founder editorial fails. Not because the writing is bad. Because the writing is treated as the work, when it is roughly 30% of the work. The other 70% &mdash; the part that decides whether the piece is cited, surfaced, retrieved, remembered &mdash; is engineering, and almost no founder does it.</p>
+        <p>What follows is three failure modes a founder will recognise, and the diagnostic discipline underneath all of them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      Three different headaches. One discipline that fixes them.
+    </div>
+  </section>
+
+  <!-- ============ I. PUBLISH-AND-PRAY ============ -->
+  <section class="prose-section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">I</span>
+        <h2 class="section-heading">Publish-and-pray &mdash; the founder who hits send and waits.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The most common failure mode in founder editorial is the easiest one to describe.</p>
+        <p>A founder spends three weekends on a piece. It is good. It is original. It says something they actually believe. They publish it on a Tuesday morning, post the link to LinkedIn with a three-sentence framing, and watch the engagement: forty likes, six comments, two reshares, a private DM from someone who liked it. By Friday, the post is buried. By the following Tuesday, the piece is invisible. Three months later, the founder concludes that editorial doesn't work for their business and stops writing.</p>
+        <p>What actually happened is not that editorial doesn't work. It is that the founder treated publication as the end of the project, when publication is the start of it. The piece existed for 72 hours. After that, it depended entirely on systems the founder never engaged with: the LinkedIn algorithm's decay curve, the absence of inbound links, the lack of any signal to search engines or LLMs that this piece was worth indexing prominently.</p>
+        <p>The mechanics of editorial decay are unforgiving. A LinkedIn post peaks in reach within four hours and has a median half-life of less than 24 hours. A piece without inbound links has no way to communicate authority to Google's ranking systems, regardless of how good the content is. A piece without structured data is parseable to humans but illegible to the systems that decide which humans see it. None of these are fixable retroactively without significant effort. All of them are trivial to address before publication.</p>
+        <p>The failure is not in the writing. It is in the assumption that good writing earns its own distribution. It does not, and has not for at least a decade.</p>
+        <p>What the discipline looks like, in operating terms: the piece needs at least five direct outreaches to named individuals on the day it ships, three trade-press pitches in the first week, and a fragmentation cadence on social &mdash; the same piece broken into four or five separately-shareable pulls over thirty days. None of this is glamorous work. All of it materially changes whether the piece survives its first month.</p>
+        <p>The deeper point is what <em>not doing</em> this work costs. A piece that doesn't get cited in its first 30 days does not just fail to travel. It actively trains the systems around it that this author and this topic are not authoritative. Future pieces by the same founder, on the same topic, start from a slightly worse position. The absence compounds.</p>
+
+        <div class="pull-quote reveal">A piece you don't fight for is a piece the algorithm forgets you wrote.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ II. THE PIECE THE MODELS COULDN'T READ ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">II</span>
+        <h2 class="section-heading">The piece the models couldn't read &mdash; illegibility as silent killer.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The second failure mode is harder to spot because the founder did everything they were supposed to.</p>
+        <p>They wrote carefully. They published properly. They shared with thought. They did the outreach. The piece even got modest pickup &mdash; a couple of newsletter mentions, a handful of LinkedIn reshares from people whose opinion they respect. By all visible metrics, the piece worked. Six months later, they Google their own argument, and find nothing. They ask ChatGPT about the topic they wrote 4,000 words on, and the model has never heard of them. They check Perplexity. The pieces it cites are weaker than theirs, by writers with smaller audiences. Their own work is nowhere.</p>
+        <p>This is not a writing problem. It is a structural illegibility problem, and it is the silent killer of mid-market founder editorial in 2026.</p>
+        <p>A piece that does not present its key claims as extractable units &mdash; schema-marked headers, FAQ blocks, structured methodology, well-formed citations &mdash; is a piece that requires inferential work to summarise. Models can do that work, but at the margin, they prefer not to. Given a choice between two pieces making similar claims, the citation graph picks the one whose structure makes the citation cheap. Beautiful prose is expensive to extract. Bullet-pointed methodology is free.</p>
+        <p>This is the part of the new search reality that mid-market founders, raised on the idea that quality content wins, find hardest to accept. The citation graph is not adjudicating quality. It is adjudicating <em>extractability</em>. The two correlate weakly at best.</p>
+        <p>The technical inputs are unromantic and well-documented: Article schema with proper author and publisher metadata; FAQ schema for any question-and-answer block; BreadcrumbList schema for navigation; Open Graph metadata for social previews. A robots.txt that explicitly permits the AI crawlers you want indexing your work &mdash; GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended &mdash; is no longer optional. None of these are technically difficult. Most CMSes generate them automatically, but most automatically-generated implementations are incomplete in ways the founder cannot see without checking.</p>
+        <p>There is also a content-shape question that sits underneath the technical one. A piece argued in beautiful flowing prose, with no extractable units, is a piece the citation graph cannot easily quote. A piece that includes a clearly-labelled methodology section, a CFO objection box, a worked example with a table, and a sidebar with three numbered moves, is a piece that gives the graph four extractable surfaces. The first piece may be better writing. The second piece is more citable writing. They are not the same skill, and conflating them is the most expensive mistake in modern founder communication.</p>
+        <p>The remedy is not to write worse. It is to write the same argument with deliberate extraction surfaces built in &mdash; pull-quotes, structured asides, methodology blocks, FAQs at the foot. The argument lives in the prose. The citations live in the structure. Both jobs need doing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ III. PATH-DEPENDENCY ============ -->
+  <section class="prose-section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">III</span>
+        <h2 class="section-heading">The first impression the model never forgets.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The third failure mode is the most uncomfortable, because it is the one a founder typically discovers too late to do anything cheap about.</p>
+        <p>A founder asks ChatGPT about themselves, or their company, or their category. The model responds &mdash; fluently, confidently, with citations. The description is wrong. Not factually wrong, exactly. Tonally wrong. Positionally wrong. The model has decided the company is a marketing agency when they have repositioned as a strategy consultancy.</p>
+        <p>This is not a hallucination. It is path-dependency.</p>
+        <p>Citation graphs are sticky. In 2023, Stanford researchers (Liu et al.) published <em>"Lost in the Middle,"</em> demonstrating that large language models suffer from profound primacy bias during retrieval. They exhibit a U-shaped performance curve, heavily weighting information placed at the very beginning of a sequence and effectively ignoring what comes after.</p>
+        <p>When applied to a founder's digital footprint over time, this mechanism anchors the AI's prior. The first cluster of references the model encounters about a person or brand gets weighted disproportionately in subsequent answers. If the earliest material positioned a founder as a <em>digital marketer</em>, the model will keep describing them that way long after they have rebranded as a <em>web intelligence advisor</em>.</p>
+        <p>The dormant Medium account from 2021. The LinkedIn posts from when they were figuring out their voice. The guest podcast appearance they barely remember. These are not warm-up. These are foundational. By the time the founder is writing their flagship piece, the model has often already decided who they are.</p>
+        <p><em>This is documented for retrieval behaviour and emerging in training-data analysis; the behavioural extension to founder positioning is inferred, not directly measured. But the inference is expensive to ignore.</em></p>
+        <p>This produces the most painful version of the COI logic, because the cost is hidden. The founder writes their best work, properly distributes it, gets it cited correctly &mdash; and the citations are read against an existing model-position that is years out of date. The piece does not move the needle as much as it should. The founder cannot see why, because the model never tells them what its prior was.</p>
+        <p>The remedy is not subtle, but it is uncomfortable. It involves auditing what the major models currently say about you and your company, identifying where the position is wrong, and <em>deliberately publishing into the gap</em> &mdash; pieces specifically designed to give the citation graph fresh, well-structured, extractable signal that contradicts the outdated prior.</p>
+
+        <div class="pull-quote reveal">The model has already decided who you are. The only question is whether you agree.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IV. WHY ALL THREE ARE THE SAME PROBLEM ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">IV</span>
+        <h2 class="section-heading">Why all three are the same problem.</h2>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The three failure modes look different. A founder experiencing publish-and-pray has a discoverability problem. A founder experiencing illegibility has an extractability problem. A founder experiencing path-dependency has a positioning problem. Three different headaches.</p>
+        <p>But the underlying physics is the same in all three. Each is a symptom of treating editorial as a finished artefact rather than a position in a graph that compounds. The graph rewards founders who treat each piece as a deliberate move in a long game; it punishes founders who treat each piece as a one-off broadcast.</p>
+        <p>Until 2024, the assumption that publishing was the work was not catastrophic. Editorial sat on a website. Search engines indexed it linearly. A founder who wrote well and shared modestly could expect a fair shake at the discoverability lottery, because the lottery was largely run on the surface signal of the piece itself.</p>
+        <p>That world is gone. The citation graph has memory. It rewards consistency, structure, extractability, and authority signal &mdash; not effort, eloquence, or sincerity. Founders who do not internalise this difference will keep producing editorial that they think is excellent and the world will keep treating as approximate.</p>
+        <p>The discipline that addresses all three failure modes is the same discipline. <strong>Treat each piece as a position in a compounding system.</strong> Engineer its discoverability before publication. Build extraction surfaces into the writing itself. Audit what the systems currently say about you, and publish into the gap deliberately. None of this is glamorous. All of it is the work that the writing was always supposed to be the start of.</p>
+        <p>The piece you publish next week will either compound or evaporate. The citation graph is already counting. It does not read your drafts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR · 30-DAY AUDIT ============ -->
+  <section class="sidebar-section">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; For The Reader's Reader</span>
+        <h3>The 30-Day Discoverability Audit.</h3>
+        <p class="sidebar-intro">Run this on your most recent piece of editorial. Five checks. Anything that fails is a structural leak; fix it before publishing the next piece.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div>
+              <div class="sidebar-point-title">Does the page validate as Article schema?</div>
+              <div class="sidebar-point-body">Run the URL through Google's Rich Results Test. If Article doesn't validate, the citation graph cannot reliably parse who wrote it, when, or what publication it sits under. <strong>This is the foundational signal.</strong></div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div>
+              <div class="sidebar-point-title">Is there an FAQ block at the foot of the piece?</div>
+              <div class="sidebar-point-body">Three to five questions a reader would actually ask, answered in two to four sentences each, schema-marked as FAQPage. <strong>This is the single highest-leverage move for AI Overview pickup and Perplexity citation.</strong></div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div>
+              <div class="sidebar-point-title">Does the OG image render the headline?</div>
+              <div class="sidebar-point-body">Open the URL in LinkedIn Post Inspector. If the preview shows your logo on a generic background instead of the actual headline, you are losing roughly half the click-through you would otherwise earn from every share.</div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">04</div>
+            <div>
+              <div class="sidebar-point-title">Does robots.txt explicitly allow AI crawlers?</div>
+              <div class="sidebar-point-body">Open <em>yourdomain.com/robots.txt</em>. Confirm none of GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, or Applebot-Extended are disallowed. If they are, your editorial is invisible to the systems your readers most use to find it.</div>
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">05</div>
+            <div>
+              <div class="sidebar-point-title">What does each major model currently say about you?</div>
+              <div class="sidebar-point-body">Run the same query in ChatGPT, Perplexity, Claude, and Gemini: <em>"Tell me about [your name] and [your company]."</em> If they describe you as someone you used to be, you have a path-dependency problem and the next piece you publish should be designed to correct it.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-coda">
+          The five checks together take less than thirty minutes per piece. <strong>The discipline is in running them every time, not in passing them once.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="container">
+      <div class="closing-inner reveal">
+        <span class="eyebrow">Closing</span>
+        <h2>Three different headaches. One discipline that fixes them.</h2>
+        <div class="closing-body">
+          <p>You can write better. You can publish more. Neither will help if the work is being absorbed by systems you have never engineered for. The citation graph is not adjudicating quality. It is adjudicating extractability, consistency, and authority signal &mdash; a different competition, with different rules, that most founders are still playing the previous version of.</p>
+          <p>The discipline that fixes publish-and-pray, illegibility, and path-dependency is the same discipline. Treat editorial as positioning, not artefact. Engineer the discoverability before the publication. Build extraction surfaces into the prose. Audit what the systems already think of you, and publish into the gap until they think differently.</p>
+          <p><strong>The first answer most founders reach is to write more. The right answer is to write the same amount, with deliberate engineering of what happens next. The second is harder. It is also the only one that compounds.</strong></p>
+        </div>
+        <div class="closing-product reveal d2">
+          Friction &amp; Toil runs Editorial Discoverability audits as part of our <a href="/web-intelligence/">Web Intelligence Reports</a>. Methodology, pricing, and sample reports at frictionandtoil.com/web-intelligence.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-inner">
+        <span class="eyebrow reveal" style="text-align:center;">Frequently Asked Questions</span>
+        <h2 class="section-heading reveal d1" style="font-size:clamp(1.7rem,3vw,2.3rem);text-align:center;margin-bottom:2.5rem;">Quick answers for the citation graph.</h2>
+
+        <div class="faq-item reveal d1">
+          <div class="faq-q">Why doesn't ChatGPT mention my company when I ask about my industry?</div>
+          <div class="faq-a">This is usually a path-dependency problem. The earliest references the model encountered about your category have anchored its prior, and your more recent work isn't generating enough fresh, structured signal to update that prior. The fix is deliberate publishing into the gap &mdash; pieces specifically designed to contradict the outdated position with extractable, well-cited content.</div>
+        </div>
+
+        <div class="faq-item reveal d2">
+          <div class="faq-q">What's the difference between writing well and writing for AI search?</div>
+          <div class="faq-a">Writing well is about argument, voice, and clarity for a human reader. Writing for AI search is about extractability &mdash; whether models can cheaply parse and cite your key claims. The two are not opposed, but they are different skills. A piece that argues beautifully but presents no schema, FAQ blocks, or structured methodology will be illegible to the systems that increasingly decide which humans see it.</div>
+        </div>
+
+        <div class="faq-item reveal d3">
+          <div class="faq-q">How do I make sure ChatGPT and Perplexity cite my articles?</div>
+          <div class="faq-a">Three structural moves matter most. First, validate Article and FAQPage schema on every piece you publish. Second, ensure your robots.txt explicitly allows GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, and Applebot-Extended. Third, build extraction surfaces directly into your writing &mdash; methodology blocks, pull-quotes, structured asides, and an FAQ at the foot. Citation favours structure over eloquence.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READ NEXT ============ -->
+  <section class="read-next">
+    <div class="read-next-inner reveal">
+      <span class="read-next-eyebrow">Read next from The Shift</span>
+      <a href="/web-intelligence/the-shift/cost-of-not-knowing/" class="read-next-link">
+        <h3>The Cost of Not Knowing</h3>
+        <p>The first compounding curve in digital visibility since PageRank. Why agencies sell upside, why downside is harder to sell, and a methodology for putting a defensible pound figure against the cost of staying invisible &mdash; with three case studies from Q1 2026.</p>
+        <span class="read-next-arrow">Continue reading &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ BRIEFING ============ -->
+  <section class="briefing">
+    <div class="container">
+      <div class="briefing-inner">
+        <div class="reveal">
+          <span class="eyebrow">The Shift Briefing</span>
+          <h2>Citation behaviour shifts as models retrain.</h2>
+          <p class="briefing-sub">The rules of Generative Engine Optimisation are being written in real time. Retrieval patterns shift. Citation factors evolve. We track it monthly and share what matters for UK businesses &mdash; no consultancy noise.</p>
+        </div>
+        <div class="briefing-form reveal d2">
+          <a href="https://frictions-newsletter.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-amber" style="text-decoration:none;display:block;text-align:center;">Subscribe to The Shift Briefing</a>
+          <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">Friction &amp; Toil</div>
+      <div class="footer-centre">frictionandtoil.com</div>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
