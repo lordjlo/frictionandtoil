@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The AI Visibility Maturity Curve — Why Most UK Businesses Are Invisible to AI | Friction &amp; Toil</title>
-<meta name="description" content="The AI Visibility Maturity Curve: a four-rung framework (Invisible → Emerging → Cited → Recommended) that diagnoses where your business stands in AI-powered search — and exactly what it takes to move up.">
+<meta name="description" content="The decade of User Experience is over. The next decade is won on Agent Experience. An intelligence brief on how AI is restructuring search and visibility for UK businesses, with a four-rung Maturity Curve and the citation mechanics that move you between rungs.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/">
 <meta property="og:type" content="article">
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The AI Visibility Maturity Curve: Why Most UK Businesses Are Invisible to the Tools Their Customers Use",
-  "description": "A data-led intelligence brief on how AI is restructuring search, buyer behaviour, and website visibility — with evidence from Ofcom, Ahrefs, Aggarwal et al. (KDD 2024), and sector-specific data for hospitality, B2B, and events.",
+  "description": "An intelligence brief on the move from User Experience to Agent Experience. Diagnoses where UK businesses sit on a four-rung AI Maturity Curve (Invisible → Emerging → Cited → Recommended) and the citation mechanics that move them between rungs — sourced to Ofcom, Pew Research, Ahrefs, Aggarwal et al. (KDD 2024), Forrester/6sense, Gartner, Semrush and The Knot Worldwide.",
   "author": {
     "@type": "Organization",
     "name": "Friction & Toil",
@@ -1046,6 +1046,268 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   letter-spacing: 0.04em;
 }
 
+/* ---- Rung Block (collapsed Curve + Mechanics) ---- */
+.rung-section { padding: clamp(5rem, 9vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.rung-section .container { max-width: 980px; }
+.rung-block {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.rung-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.rung-block.r1::before { background: var(--search); }
+.rung-block.r2::before { background: var(--design); }
+.rung-block.r3::before { background: var(--brand); }
+.rung-block.r4::before { background: var(--growth); }
+.rung-block-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.rung-block-num {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+.rung-block.r1 .rung-block-num { color: var(--search); }
+.rung-block.r2 .rung-block-num { color: var(--design); }
+.rung-block.r3 .rung-block-num { color: var(--brand); }
+.rung-block.r4 .rung-block-num { color: var(--growth); }
+.rung-block-name {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.rung-block-desc {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.rung-block-diagnosis {
+  background: var(--bg-soft);
+  border-left: 2px solid var(--text-muted);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.rung-block-diagnosis strong { color: var(--text); font-weight: 600; }
+.rung-transition {
+  border-top: 1px dashed var(--border);
+  padding-top: 1.5rem;
+}
+.rung-transition-label {
+  font-family: var(--display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.rung-block.r1 .rung-transition-label { color: var(--search); }
+.rung-block.r2 .rung-transition-label { color: var(--design); }
+.rung-block.r3 .rung-transition-label { color: var(--brand); }
+.rung-transition h4 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+  line-height: 1.35;
+}
+.rung-transition p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+.rung-transition ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.rung-transition li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.rung-transition li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+.rung-block.r1 .rung-transition li::before { background: var(--search); }
+.rung-block.r2 .rung-transition li::before { background: var(--design); }
+.rung-block.r3 .rung-transition li::before { background: var(--brand); }
+.rung-effort {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  font-style: normal;
+}
+.rung-effort em { color: var(--text); font-style: normal; font-weight: 500; }
+
+/* ---- Evidence Table ---- */
+.evidence-table-wrap {
+  margin: 2.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--body);
+  background: var(--bg-card);
+}
+.evidence-table th,
+.evidence-table td {
+  padding: 1.1rem 1.25rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.evidence-table th {
+  background: var(--bg-soft);
+  font-family: var(--display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.evidence-table tr:last-child td { border-bottom: none; }
+.evidence-table td strong { color: var(--text); font-weight: 600; }
+.evidence-table td:first-child { color: var(--text); font-weight: 500; width: 25%; }
+.evidence-table td:last-child {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  width: 22%;
+}
+@media (max-width: 760px) {
+  .evidence-table td:last-child { white-space: normal; }
+  .evidence-table th, .evidence-table td { padding: 0.85rem 0.9rem; font-size: 0.85rem; }
+}
+
+/* ---- Sources / Footnotes ---- */
+.sources {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.sources .container { max-width: 880px; }
+.sources h2 {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.sources ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: sourcenum;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.sources li {
+  counter-increment: sourcenum;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  padding-left: 2.25rem;
+  position: relative;
+}
+.sources li::before {
+  content: counter(sourcenum);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  width: 1.75rem;
+  text-align: right;
+}
+.sources li strong { color: var(--text-secondary); font-weight: 600; }
+.sources li em { color: var(--text-secondary); }
+.sources li a {
+  color: var(--design);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,150,58,0.25);
+  word-break: break-all;
+}
+.sources li a:hover { color: var(--text); }
+
+/* ---- Where You Stand CTA ---- */
+.where-you-stand {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+  text-align: center;
+}
+.where-you-stand .container { max-width: 760px; }
+.where-you-stand .eyebrow { display: block; text-align: center; margin-bottom: 1.5rem; }
+.where-you-stand h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+.where-you-stand p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ---- Reveal animation ---- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -1112,7 +1374,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           Intelligence Brief &middot; Web Intelligence &middot; April 2026
         </div>
         <h1 class="reveal d1">Search Has a<br><em>New Front Door.</em></h1>
-        <p class="hero-byline reveal d2">By Frank Graham, Founder</p>
+        <p class="hero-byline reveal d2">By Frank Graham</p>
         <p class="hero-deck reveal d2">AI is intercepting your highest-intent customers before they ever reach your website. This brief explains what is happening, why it matters for your specific sector, and where your business stands in the new economy.</p>
 
         <div class="stat-strip reveal d3">
@@ -1127,9 +1389,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
             <span class="stat-source">Ahrefs, December 2025 · ~300k keywords</span>
           </div>
           <div class="stat-cell">
-            <div class="stat-num col-growth">83%</div>
-            <div class="stat-desc">of searches that trigger an AI Overview end without a single click to any website</div>
-            <span class="stat-source">Similarweb, July 2025</span>
+            <div class="stat-num col-growth">8% vs 15%</div>
+            <div class="stat-desc">Click-through when an AI summary appears in Google&rsquo;s results, versus when it does not &mdash; nearly half</div>
+            <span class="stat-source">Pew Research Center, July 2025 &middot; 68,879 queries</span>
           </div>
         </div>
       </div>
@@ -1150,12 +1412,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
         <h2 class="section-heading">The decade-old playbook has expired.</h2>
       </div>
       <div class="body-prose reveal d2">
-        <p>For a decade, the formula was simple: rank on page 1, generate clicks, work your funnel. That formula still holds for a shrinking slice of queries. For the rest, AI has already answered the question before your listing appears.</p>
-        <p>54% of UK adults now use AI tools — rising to 79% of 16–24-year-olds and 74% of 25–34-year-olds. <strong>94% of B2B buyers</strong> use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey. Your buyers are not opening five tabs to compare options. They are asking AI for the final answer.</p>
-        <p>UK AI Overviews launched on 15 August 2024. The UK has now been operating with AI-summarised search results for the better part of two years. The shift is not approaching. It is underway.</p>
+        <p>For ten years, the formula was simple. Rank on page one. Generate clicks. Work your funnel. That formula still holds for a shrinking slice of queries. For the rest, AI has already answered the question before your listing appears.</p>
+        <p>54% of UK adults now use AI tools &mdash; rising to 79% of 16&ndash;24-year-olds and 74% of 25&ndash;34-year-olds (<em>Ofcom, Adults&rsquo; Media Use and Attitudes, April 2026</em>). <strong>94% of B2B buyers</strong> report using ChatGPT, Copilot, Perplexity, or Claude during the purchase journey (<em>Forrester / 6sense, 2025</em>). Your buyers are not opening five tabs to compare options. They are asking AI for the final answer.</p>
+        <p>UK AI Overviews launched on 15 August 2024. We have now been operating with AI-summarised search results for the better part of two years. The shift is not approaching. It has happened, and it is now compounding.</p>
         <p>The shorthand for what comes next is the <strong>Agentic Web</strong>: a web in which AI agents &mdash; not users sifting through ten blue links &mdash; synthesise information, weigh sources, and make active recommendations on the buyer&rsquo;s behalf. The unit of competition is no longer the click. It is the citation.</p>
-        <p>If your brand is not part of the AI answer, you don't exist in that buyer's world. Not because your product is inferior. Because your website is not structured to be read, understood, and cited by the systems making the recommendation.</p>
-        <p>This brief explains the mechanics — and gives you a framework to diagnose where your business stands today.</p>
+        <p>If your brand is not part of the AI answer, you do not exist in that buyer&rsquo;s world. Not because your product is inferior. Because your website is not structured to be read, understood, and cited by the systems making the recommendation.</p>
+        <p>There is a useful frame for what has changed. For a decade, every serious website optimised for <strong>User Experience</strong> &mdash; speed, clarity, conversion, delight. UX was the discipline that won. The next decade will be won on <strong>Agent Experience</strong>: speed of comprehension, clarity of fact, extractability of structure, density of citation. AX is what the new front door is built for. The brands that recognise this early will compound. The brands that do not will be invisible by the time they notice.</p>
+        <p>This brief explains the mechanics &mdash; and gives you a framework to diagnose where your business stands today.</p>
       </div>
     </div>
   </section>
@@ -1165,47 +1428,88 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     <div class="chapter-break-quote reveal">&ldquo;The Agentic Web does not grade on a curve. It either recommends you, or it does not.&rdquo;</div>
   </section>
 
-  <!-- ============ MATURITY CURVE ============ -->
-  <section class="maturity">
+  <!-- ============ MATURITY CURVE (rung-by-rung with transitions) ============ -->
+  <section class="rung-section">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">II</span>
-        <span class="eyebrow">The AI Maturity Curve</span>
-        <h2 class="section-heading">Every business on the web falls into one of four categories.</h2>
-        <p class="section-sub">The Agentic Web does not grade on a curve. Based on over a dozen structural and content citation-factor checks, every business currently sits at one of four rungs. The question is which one is yours.</p>
+        <span class="eyebrow">The Maturity Curve</span>
+        <h2 class="section-heading">Every business on the web sits on one of four rungs.</h2>
+        <p class="section-sub">The Agentic Web does not grade on a curve. Each transition between rungs requires a specific, identifiable change &mdash; and the changes are not evenly distributed in cost or complexity. Most businesses are stuck not because the fixes are expensive, but because nobody has told them which fix applies to them.</p>
       </div>
 
-      <div class="maturity-track">
-        <div class="maturity-rung rung-1 reveal d1">
-          <div class="rung-node">01</div>
-          <div class="rung-card">
-            <div class="rung-name">Invisible</div>
-            <div class="rung-desc">AI crawlers find nothing credible to work with. No structured data, no citeable facts, possibly blocked from crawling entirely. When a buyer asks about your category, you are absent from the answer.</div>
-          </div>
+      <div class="pull-quote reveal" style="margin-bottom:3rem;">Indexing is not citation. Citation is not recommendation. Most playbooks confuse the first with the last.</div>
+
+      <div class="rung-block r1 reveal d1">
+        <div class="rung-block-head">
+          <span class="rung-block-num">01 &middot; Rung One</span>
+          <h3 class="rung-block-name">Invisible</h3>
         </div>
-        <div class="maturity-rung rung-2 reveal d2">
-          <div class="rung-node">02</div>
-          <div class="rung-card">
-            <div class="rung-name">Emerging</div>
-            <div class="rung-desc">Partial signals exist. Some schema, some third-party mentions, but fragmented. AI occasionally surfaces your name but cannot accurately describe what you do or why you're different.</div>
-          </div>
-        </div>
-        <div class="maturity-rung rung-3 reveal d3">
-          <div class="rung-node">03</div>
-          <div class="rung-card">
-            <div class="rung-name">Cited</div>
-            <div class="rung-desc">AI reliably mentions you. Your core facts are extractable. But you're cited passively — appearing when queried, not yet positioned as the recommended answer.</div>
-          </div>
-        </div>
-        <div class="maturity-rung rung-4 reveal d4">
-          <div class="rung-node">04</div>
-          <div class="rung-card">
-            <div class="rung-name">Recommended</div>
-            <div class="rung-desc">AI selects you. Your content is structured for agent consumption, your differentiators are factual and extractable, your authority signals are strong enough that LLMs lead with your name.</div>
-          </div>
+        <p class="rung-block-desc">AI crawlers find nothing credible to work with. No structured data, no citeable facts, possibly blocked from crawling entirely. When a buyer asks about your category, you are absent from the answer.</p>
+        <div class="rung-block-diagnosis"><strong>Diagnosis.</strong> Search your own brand in ChatGPT. If the model cannot describe you correctly, cite a source, and identify what you sell and to whom &mdash; you are here, regardless of what your SEO dashboard says.</div>
+        <div class="rung-transition">
+          <div class="rung-transition-label">The move to Emerging</div>
+          <h4>Unlock the front door.</h4>
+          <p>The most common cause of Invisible status is a <code style="font-family:var(--mono);font-size:0.85em;color:var(--text);">robots.txt</code> file blocking AI crawlers, often set years ago during a GDPR or security hardening exercise and never revisited. GPTBot, ClaudeBot, and PerplexityBot must be explicitly permitted.</p>
+          <ul>
+            <li>Audit <code style="font-family:var(--mono);font-size:0.85em;color:var(--text);">robots.txt</code> &mdash; permit GPTBot, ClaudeBot, PerplexityBot, GoogleOther</li>
+            <li>Add one Organisation or LocalBusiness schema block</li>
+            <li>Ensure core facts (name, location, what you do, who you serve) exist as plain HTML &mdash; not inside JavaScript, images, or iframes</li>
+          </ul>
+          <p class="rung-effort"><em>Effort:</em> a single sprint. Zero budget beyond developer time.</p>
         </div>
       </div>
 
+      <div class="rung-block r2 reveal d2">
+        <div class="rung-block-head">
+          <span class="rung-block-num">02 &middot; Rung Two</span>
+          <h3 class="rung-block-name">Emerging</h3>
+        </div>
+        <p class="rung-block-desc">Partial signals exist. Some schema, some third-party mentions, but fragmented. AI occasionally surfaces your name but cannot accurately describe what you do or why you are different.</p>
+        <div class="rung-block-diagnosis"><strong>Diagnosis.</strong> Ask the model your category question &mdash; <em>&ldquo;Recommend a [your category] in [your geography].&rdquo;</em> You may be mentioned, but you are not in the first three names. The citation graph is recommending someone else, and that someone else is winning the enquiry you used to win.</div>
+        <div class="rung-transition">
+          <div class="rung-transition-label">The move to Cited</div>
+          <h4>Give AI something worth citing.</h4>
+          <p>Emerging businesses are visible but unreliable. The transition to Cited requires extractable, attributed, specific content &mdash; not more content, better-structured content. A peer-reviewed Princeton study at KDD 2024 (<em>Aggarwal et al., Generative Engine Optimization</em>) measured this directly: the top-performing on-page methods &mdash; adding verified statistics, incorporating attributed quotations, and citing credible sources &mdash; delivered a <strong style="color:var(--design);">30&ndash;40% relative improvement</strong> in citation visibility, with the strongest single result a <strong style="color:var(--design);">41% lift on Position-Adjusted Word Count</strong>.</p>
+          <ul>
+            <li>FAQ schema on your most-queried pages &mdash; the highest-leverage single schema type for citation frequency, shown to double citation frequency in independent A/B testing (<em>Growth Marshal, Perplexity Sonar analysis, June 2025</em>)</li>
+            <li>A named expert or founder bio with verifiable credentials, as plain text on the page</li>
+            <li>At least one specific, attributed statistic per key service page</li>
+            <li>Pricing or service scope visible as HTML text &mdash; not hidden behind &ldquo;contact us&rdquo;</li>
+          </ul>
+          <p class="rung-effort"><em>Effort:</em> two to four weeks. Content-led, no significant rebuild required.</p>
+        </div>
+      </div>
+
+      <div class="rung-block r3 reveal d3">
+        <div class="rung-block-head">
+          <span class="rung-block-num">03 &middot; Rung Three</span>
+          <h3 class="rung-block-name">Cited</h3>
+        </div>
+        <p class="rung-block-desc">AI reliably mentions you. Your core facts are extractable. But you are cited passively &mdash; appearing when queried, not yet positioned as the recommended answer.</p>
+        <div class="rung-block-diagnosis"><strong>Diagnosis.</strong> Ask the model the buyer&rsquo;s real query &mdash; <em>&ldquo;Who should I hire for X?&rdquo;</em> Not <em>&ldquo;What is X?&rdquo;</em> &mdash; that is a researcher&rsquo;s query. The hire query separates Cited from Recommended. You only sit at Recommended if your name is in the first sentence of the answer.</div>
+        <div class="rung-transition">
+          <div class="rung-transition-label">The move to Recommended</div>
+          <h4>Become the answer, not just a source.</h4>
+          <p>Cited businesses appear when queried. Recommended businesses are selected. AI leads with their name, not alongside three competitors. The transition requires authority signals that extend beyond your own website.</p>
+          <ul>
+            <li>H1s and opening paragraphs structured to answer likely AI queries directly &mdash; the first sentence is the citation</li>
+            <li>Active presence on the three to five platforms your sector&rsquo;s AI trust hierarchy treats as authoritative</li>
+            <li>Attributed client quotations on the page &mdash; the same KDD study found attributed voice among the strongest single citation drivers in generative responses</li>
+            <li>Consistent brand signals across every AI-indexed property: your own site, third-party profiles, trade press mentions</li>
+          </ul>
+          <p class="rung-effort"><em>Effort:</em> a 60&ndash;90 day programme. The rung most businesses cannot reach without an audit first.</p>
+        </div>
+      </div>
+
+      <div class="rung-block r4 reveal d4">
+        <div class="rung-block-head">
+          <span class="rung-block-num">04 &middot; Rung Four</span>
+          <h3 class="rung-block-name">Recommended</h3>
+        </div>
+        <p class="rung-block-desc">AI selects you. Your content is structured for agent consumption, your differentiators are factual and extractable, your authority signals are strong enough that LLMs lead with your name.</p>
+        <div class="rung-block-diagnosis"><strong>Diagnosis.</strong> Repeat your category, hire, and comparison queries across at least three engines &mdash; ChatGPT, Claude, Perplexity, Gemini, Brave. They do not agree. One model loving you is a fluke. Three models converging on you is a citation graph. Recommended is what consensus looks like.</div>
+      </div>
     </div>
   </section>
 
@@ -1213,257 +1517,199 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   <section class="sidebar-section">
     <div class="container">
       <div class="sidebar-callout reveal">
-        <span class="sidebar-tag">A 5-Question Self-Audit</span>
-        <h3>Where do you actually rank?</h3>
-        <p class="sidebar-intro">Before you commission a report, run this in five minutes. The answers are usually less flattering than the brand deck. They are also the truest measure of where you sit on the curve right now &mdash; not where you think you sit, not where your agency told you last year, but what the model is actually saying about you today.</p>
+        <span class="sidebar-tag">The Five-Question Audit</span>
+        <h3>Run this in five minutes.</h3>
+        <p class="sidebar-intro">Before you commission a report, run this in five minutes. The answers are usually less flattering than the brand deck. They are also the truest measure of where you sit on the curve right now.</p>
         <div class="sidebar-points">
           <div class="sidebar-point">
             <div class="sidebar-point-num">01</div>
             <div>
               <div class="sidebar-point-title">Search your own brand in ChatGPT.</div>
-              <div class="sidebar-point-body">Does the model describe you correctly? Does it cite a source? Does it know what you sell, where, and to whom? <strong>If the answer is no, you are at Invisible or Emerging &mdash; regardless of what your SEO dashboard says.</strong></div>
+              <div class="sidebar-point-body">Does the model describe you correctly? Does it cite a source?</div>
             </div>
           </div>
           <div class="sidebar-point">
             <div class="sidebar-point-num">02</div>
             <div>
               <div class="sidebar-point-title">Ask the model your category question.</div>
-              <div class="sidebar-point-body">&ldquo;Recommend a [your category] in [your geography].&rdquo; Are you in the answer? Are you named in the first three? <strong>If you are not, the citation graph is recommending someone else &mdash; and that someone else is winning the enquiry you used to win.</strong></div>
+              <div class="sidebar-point-body">Are you in the answer? In the first three?</div>
             </div>
           </div>
           <div class="sidebar-point">
             <div class="sidebar-point-num">03</div>
             <div>
               <div class="sidebar-point-title">Ask &ldquo;who should I hire for X.&rdquo;</div>
-              <div class="sidebar-point-body">A buyer&rsquo;s real query. Not &ldquo;what is X&rdquo; &mdash; that is a researcher&rsquo;s query. The hire query separates Cited from Recommended. <strong>You only sit at Recommended if your name is in the first sentence of the answer.</strong></div>
+              <div class="sidebar-point-body">Is your name in the first sentence?</div>
             </div>
           </div>
           <div class="sidebar-point">
             <div class="sidebar-point-num">04</div>
             <div>
               <div class="sidebar-point-title">Check who AI names instead of you.</div>
-              <div class="sidebar-point-body">List the competitors the model recommends. <strong>That list is your real competitive set in 2026 &mdash; not the one in your strategy deck.</strong> The brands the model names are the ones you are now competing with for the same enquiry, regardless of whether you used to consider them peers.</div>
+              <div class="sidebar-point-body">That list is your real competitive set in 2026 &mdash; not the one in your strategy deck.</div>
             </div>
           </div>
           <div class="sidebar-point">
             <div class="sidebar-point-num">05</div>
             <div>
               <div class="sidebar-point-title">Repeat across three engines.</div>
-              <div class="sidebar-point-body">ChatGPT, Claude, Perplexity, Gemini, and Brave do not agree. <strong>You need to be cited across at least three to call yourself Recommended.</strong> One model loving you is a fluke. Three models converging on you is a citation graph.</div>
+              <div class="sidebar-point-body">Convergence beats fluke.</div>
             </div>
           </div>
         </div>
         <div class="sidebar-coda">
-          <strong>Score yourself honestly.</strong> 0&ndash;1 yes = Invisible. 2 = Emerging. 3 = Cited. 4&ndash;5 = Recommended. Most businesses we audit answer yes to one. Almost none answer yes to four.
+          <strong>Score honestly.</strong> 0&ndash;1 yes = Invisible. 2 = Emerging. 3 = Cited. 4&ndash;5 = Recommended. Most businesses we audit answer yes to one. Almost none answer yes to four.
         </div>
-      </div>
-
-      <div class="maturity-cta reveal" style="margin-top:3rem;">
-        <p>If you scored 0, 1, or 2 &mdash; that is the gap the report closes. You cannot fix what you cannot see.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;">
-          <a href="/web-intelligence/#ai-search-report" class="btn-primary">AI Search Report &mdash; &pound;250, 24 hours <span class="arrow">&rarr;</span></a>
-          <a href="/web-intelligence/" style="font-family:var(--body);font-size:0.9rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-secondary)'">Full report &mdash; all five dimensions &rarr;</a>
-        </div>
-        <p style="font-family:var(--body);font-style:normal;font-size:1.05rem;font-weight:500;color:var(--text-secondary);margin-top:1.25rem;">&pound;250 credited toward the full report if you upgrade within 90 days.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ CHAPTER BREAK III ============ -->
-  <section class="chapter-break">
-    <div class="chapter-break-quote reveal">&ldquo;Most businesses are stuck not because the fixes are expensive, but because nobody has told them which fix applies to them.&rdquo;</div>
-  </section>
-
-  <!-- ============ MOVING BETWEEN RUNGS ============ -->
-  <section class="prose-section" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="prose-label reveal" style="position:static">
-        <span class="section-numeral">III</span>
-        <span class="eyebrow">The Mechanics</span>
-        <h2 class="section-heading">What moves you between rungs.</h2>
-      </div>
-      <div class="body-prose reveal d2">
-        <p>The Maturity Curve is not a spectrum of effort. Each transition between rungs requires a specific, identifiable change &mdash; and the changes are not evenly distributed in cost or complexity. Most businesses are stuck at Invisible or Emerging not because the fixes are expensive, but because nobody has told them which fix applies to them specifically.</p>
-        <div class="pull-quote reveal">Indexing is not citation. Citation is not recommendation. Most playbooks confuse the first with the last.</div>
-        <p>The first jump &mdash; Invisible to Emerging &mdash; is almost always a robots.txt or schema fix that costs nothing. The hardest jump &mdash; Cited to Recommended &mdash; is editorial weight, third-party corroboration, and a citation graph the model has been re-reading for months. The work is sequential. There is no leapfrog.</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem;grid-column:1/-1;">
-
-        <div class="reveal d1" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--search);border-radius:8px;padding:1.75rem;">
-          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--search);margin-bottom:0.5rem;">Invisible → Emerging</div>
-          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Unlock the front door.</h3>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">The most common cause of Invisible status is a robots.txt file that blocks AI crawlers — often set years ago during a GDPR or security hardening exercise and never revisited. GPTBot, ClaudeBot, and PerplexityBot must be explicitly permitted.</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">01</span><span>Audit robots.txt — permit GPTBot, ClaudeBot, PerplexityBot, GoogleOther</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">02</span><span>Add one Organisation or LocalBusiness schema block</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--search);flex-shrink:0;">03</span><span>Ensure core facts (name, location, what you do, who you serve) exist as plain HTML — not inside JavaScript, images, or iframes</span></li>
-          </ul>
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: a single sprint. Zero budget required beyond developer time.</p>
-        </div>
-
-        <div class="reveal d2" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--design);border-radius:8px;padding:1.75rem;">
-          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--design);margin-bottom:0.5rem;">Emerging → Cited</div>
-          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Give AI something worth citing.</h3>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">Emerging businesses are visible but unreliable. AI can find them but cannot accurately describe what they do or why they're different. The transition to Cited requires extractable, attributed, specific content — not more content, better-structured content.</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">01</span><span>FAQ schema on your most-queried pages — the highest-leverage single schema type for citation frequency</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">02</span><span>A named expert or founder bio with verifiable credentials, as plain text on the page</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">03</span><span>At least one attributed, specific statistic per key service page. <strong style="color:var(--design);">Pages that include verified, attributed statistics are cited 41% more often</strong> in generative engine responses (Aggarwal et al., KDD 2024).</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--design);flex-shrink:0;">04</span><span>Pricing or service scope visible as HTML text — not hidden behind "contact us"</span></li>
-          </ul>
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: 2–4 weeks. Content-led, no significant rebuild required.</p>
-        </div>
-
-        <div class="reveal d3" style="background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--brand);border-radius:8px;padding:1.75rem;">
-          <div style="font-family:var(--display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brand);margin-bottom:0.5rem;">Cited → Recommended</div>
-          <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:1rem;line-height:1.3;">Become the answer, not just a source.</h3>
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.25rem;">Cited businesses appear when queried. Recommended businesses are selected — AI leads with their name, not alongside three competitors. The transition requires authority signals that extend beyond your own website.</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.6rem;">
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">01</span><span>H1s and opening paragraphs structured to answer likely AI queries directly — the first sentence is the citation</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">02</span><span>Active presence on the 3–5 platforms your sector's AI trust hierarchy uses as authority sources</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">03</span><span>Attributed client quotations on the page. <strong style="color:var(--brand);">Direct, attributed quotations lift citation likelihood by 28%</strong> &mdash; AI models treat named voice as a credibility signal (Aggarwal et al., KDD 2024).</span></li>
-            <li style="font-size:0.82rem;color:var(--text-secondary);display:flex;gap:0.6rem;"><span style="color:var(--brand);flex-shrink:0;">04</span><span>Consistent brand signals across every AI-indexed property — your own site, third-party profiles, trade press mentions</span></li>
-          </ul>
-          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);">Typical effort: 60–90 day programme. The rung most businesses cannot reach without an audit first.</p>
-        </div>
-
-      </div>
-
-      <div class="reveal d4" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);text-align:center;grid-column:1/-1;">
-        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:400;color:var(--text-secondary);max-width:54ch;margin:0 auto 1.25rem;line-height:1.5;">The problem is not which rung you're on. It's not knowing which specific fixes move you to the next one — for your site, your sector, your competitors.</p>
-        <a href="/web-intelligence/" style="font-family:var(--body);font-size:0.95rem;font-weight:500;letter-spacing:0.04em;color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.4);padding-bottom:2px;">That's what the audit delivers &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CHAPTER BREAK IV ============ -->
+  <!-- ============ CHAPTER BREAK III (UX → AX) ============ -->
   <section class="chapter-break">
     <div class="chapter-break-quote reveal">&ldquo;You solved for User Experience for ten years. The next ten will be won on Agent Experience.&rdquo;</div>
   </section>
 
-  <!-- ============ CITATION MECHANICS ============ -->
+  <!-- ============ III. THE MECHANICS OF CITATION ============ -->
   <section class="evidence">
     <div class="container">
       <div class="section-head reveal">
-        <span class="section-numeral">IV</span>
-        <span class="eyebrow">The Evidence</span>
+        <span class="section-numeral">III</span>
+        <span class="eyebrow">The Mechanics of Citation</span>
         <h2 class="section-heading">You solved for User Experience.<br>Now you must solve for Agent Experience.</h2>
         <p class="section-sub">You have spent years making your website beautiful for humans. Human-beautiful websites are often invisible to AI. The mechanics of AI citation are documented &mdash; and they are not what most marketers expect.</p>
       </div>
 
-      <div class="body-prose reveal" style="margin-bottom: 3rem;">
-        <p>AI crawlers operate on a token budget. If your site is bloated, renders late, or buries core facts inside JavaScript, the AI burns through its budget and leaves without understanding what you do. Your competitor — with a technically inferior product but a cleaner information architecture — gets cited instead.</p>
-        <p>A peer-reviewed study published at KDD 2024 (Aggarwal et al., <em>Generative Engine Optimization</em>) measured what actually increases a page's likelihood of being cited in a generative engine response. The findings are specific, replicable, and actionable.</p>
+      <div class="body-prose reveal" style="margin-bottom: 1rem;">
+        <p>AI crawlers operate on a token budget. If your site is bloated, renders late, or buries core facts inside JavaScript, the AI burns through its budget and leaves without understanding what you do. Your competitor &mdash; with a technically inferior product but a cleaner information architecture &mdash; gets cited instead.</p>
+        <p>The Princeton/KDD work on generative engines (<em>Aggarwal et al., 2024</em>) provides the most rigorous public evidence of what actually moves the needle. Three findings stand out for any business being read by an LLM.</p>
       </div>
 
-      <div class="evidence-grid">
-        <div class="evidence-card reveal d1">
-          <div class="evidence-stat">+41%</div>
-          <div class="evidence-label">Statistics &amp; Verified Data</div>
-          <div class="evidence-desc">Pages that include specific, attributed statistics see a 41% improvement in citation frequency in generative engine responses. Generic claims are ignored; verifiable numbers are cited.</div>
-          <div class="evidence-cite">Aggarwal et al. · KDD 2024 · arXiv:2311.09735</div>
-        </div>
-        <div class="evidence-card reveal d2">
-          <div class="evidence-stat">+28%</div>
-          <div class="evidence-label">Direct Quotations</div>
-          <div class="evidence-desc">Attributed quotations — from clients, experts, or authoritative sources — increase citation likelihood by 28%. AI models treat attributed voice as a credibility signal.</div>
-          <div class="evidence-cite">Aggarwal et al. · KDD 2024 · arXiv:2311.09735</div>
-        </div>
-        <div class="evidence-card reveal d3">
-          <div class="evidence-stat">#2</div>
-          <div class="evidence-label">Schema Markup (JSON-LD)</div>
-          <div class="evidence-desc">Structured data is the second most important ranking factor for Perplexity — second only to page freshness. A single FAQ schema addition was shown to double citation frequency in A/B testing.</div>
-          <div class="evidence-cite">FirstPageSage, 2025 · Perplexity ranking factors study</div>
-        </div>
+      <div class="evidence-table-wrap reveal d2">
+        <table class="evidence-table">
+          <thead>
+            <tr><th>Lever</th><th>Finding</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Statistics &amp; verified data</td>
+              <td>Adding specific, attributed numbers was among the top three methods, contributing to the <strong>30&ndash;40% relative improvement</strong> in citation visibility delivered by the best on-page strategies.</td>
+              <td>Aggarwal et al., KDD 2024</td>
+            </tr>
+            <tr>
+              <td>Direct attributed quotations</td>
+              <td>Adding credible, attributed quotations was the <strong>single most effective method</strong> in the <em>People &amp; Society</em>, <em>Explanation</em>, and <em>History</em> domains in the study.</td>
+              <td>Aggarwal et al., KDD 2024</td>
+            </tr>
+            <tr>
+              <td>Structured data (JSON-LD)</td>
+              <td>Independent A/B testing on Perplexity&rsquo;s Sonar found pages with FAQ schema <strong>doubled citation frequency</strong> and were cited roughly six hours faster than non-schema controls.</td>
+              <td>Growth Marshal, June 2025</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="body-prose reveal" style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <div class="body-prose reveal" style="margin-top: 2rem;">
         <div class="pull-quote">There is no single &ldquo;AI visibility.&rdquo; There is ChatGPT visibility, Perplexity visibility, Gemini visibility &mdash; and they can diverge sharply by vertical.</div>
-        <p>Different AI models cite different pages. A URL cited reliably in ChatGPT may be completely invisible in Perplexity, and vice versa. Monitoring requires model specificity, not a single score. The brand that scores well across three or more engines is the brand the citation graph has converged on. The brand that scores in only one is winning a fluke, not a seat.</p>
+        <p>A URL cited reliably in one engine may be invisible in another. Monitoring requires model specificity, not a single score. The brand that scores well across three or more engines is the brand the citation graph has converged on. The brand that scores in only one is winning a fluke, not a seat.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTOR EVIDENCE ============ -->
+  <!-- ============ IV. THE TWO FAILURE MODES (promoted) ============ -->
+  <section class="problems">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-numeral">IV</span>
+        <span class="eyebrow">The Failure Modes</span>
+        <h2 class="section-heading">Two failure modes nobody is pricing in.</h2>
+        <p class="section-sub">Beyond the visibility curve, two specific failure modes are costing businesses enquiries and revenue silently &mdash; before a buyer has ever visited the website. These are the mechanics most marketing leaders have not yet absorbed.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal d1">
+          <div class="problem-title">The Vendor Bake-Off Problem</div>
+          <div class="problem-body">Enterprise buyers are asking AI to compare vendors directly &mdash; pricing, features, support, implementation time. The query is no longer <em>&ldquo;what are my options&rdquo;</em>; it is <em>&ldquo;compare Vendor A and Vendor B on price, features, and customer support.&rdquo;</em></div>
+          <div class="problem-body" style="margin-top:1rem;">If your pricing is hidden behind &ldquo;contact us&rdquo;, buried in a PDF, or locked inside an image, AI cannot include you in the comparison. It will either hallucinate your features or skip you entirely &mdash; and recommend a competitor with a simpler information architecture.</div>
+          <div class="problem-example" style="margin-top:1rem;"><strong style="color:var(--text);background:linear-gradient(180deg,transparent 60%,rgba(244,63,94,0.18) 60%);padding:0 0.15em;">You lose the bake-off silently, before the buyer has ever visited your site.</strong> You will never know it happened. There is no analytics event for &ldquo;AI declined to mention you.&rdquo;</div>
+        </div>
+        <div class="problem-card reveal d2">
+          <div class="problem-title">The Citation Consensus Problem</div>
+          <div class="problem-body">AI does not only read your website. It reads everything the internet has already said about you &mdash; niche forums, sector publications, trade press, third-party review sites, regulator listings. For every vertical, there are specific platforms AI treats as authoritative.</div>
+          <div class="problem-body" style="margin-top:1rem;">For consumer queries: Reddit, increasingly. For B2B services: specialist trade press, industry bodies, professional registers. For hospitality: sector-specific review aggregators. For care: regulator data and family-facing comparison sites.</div>
+          <div class="problem-body" style="margin-top:1rem;">Being absent from the platforms your sector&rsquo;s AI trust hierarchy uses is as damaging as having a broken website. Most businesses have no idea which platforms matter for their specific vertical &mdash; which means they are competing against rivals who have already cornered the citation graph without anyone noticing.</div>
+          <div class="problem-example" style="margin-top:1rem;">This is why monitoring across three engines matters. It is not a thoroughness exercise. It is the only way to see whose citation graph the models are converging on. The answer is not always who you would expect.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V. SECTOR EVIDENCE (corrected) ============ -->
   <section class="sectors">
     <div class="container">
       <div class="section-head reveal">
+        <span class="section-numeral">V</span>
         <span class="eyebrow">Evidence From Your Sector</span>
         <h2 class="section-heading">This is not a distant trend.<br>It is live in your market, right now.</h2>
-        <p class="section-sub">The shift looks different by vertical. But it is happening across all of them — and in several sectors, the infrastructure for AI-intermediated commerce is already in place.</p>
+        <p class="section-sub">The shift looks different by vertical, but it is happening across all of them &mdash; and in several sectors, the infrastructure for AI-intermediated commerce is already in place.</p>
       </div>
 
       <div class="sector-grid">
         <div class="sector-card reveal d1">
           <span class="sector-tag">Hotels, Dining &amp; Pubs</span>
           <div class="sector-headline">Guests are choosing where to stay, eat, and drink inside AI conversations.</div>
-          <div class="sector-body">Two-thirds of travellers now use AI in trip planning. One in three use it to book. Google AI Overviews now intercept the discovery searches that fill dining rooms and function spaces — "pubs near me with a garden", "best Sunday lunch in [city]" — displaying hours, menus, and booking links without a single click to your site. The Hotels Network has integrated live availability directly inside ChatGPT as a booking interface, not a recommendation.</div>
-          <div class="sector-signal"><strong>Signal:</strong> ChatGPT referrals to hotel websites grew ~300% in months. Pub chain discovery queries now trigger AI Overviews in over 60% of cases. Customer Alliance, 2025.</div>
+          <div class="sector-body"><strong>One in three travellers now use AI to plan or book trips</strong>, up from a much smaller base in 2024 (<em>Phocuswright, August 2025; Adyen, 2025 Hospitality and Travel Report</em>). Google AI Overviews intercept the discovery searches that fill dining rooms and function spaces &mdash; <em>&ldquo;pubs near me with a garden&rdquo;</em>, <em>&ldquo;best Sunday lunch in [city]&rdquo;</em> &mdash; displaying hours, menus, and booking links without a single click to your site.</div>
+          <div class="sector-signal"><strong>Signal:</strong> ChatGPT outbound referral traffic to the open web grew <strong>206% year-on-year in 2025</strong>, and the number of unique domains receiving ChatGPT referrals tripled from roughly 71,000 to 260,000 over the same period (<em>Semrush, February 2026</em>). The discovery layer is widening, fast &mdash; and the brands inside it now will compound the advantage.</div>
         </div>
         <div class="sector-card reveal d2">
           <span class="sector-tag">B2B &amp; Professional Services</span>
           <div class="sector-headline">Google is now the validation step, not the starting point.</div>
-          <div class="sector-body">94% of B2B buyers use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey. Research happens in AI. Shortlisting happens in AI. Google is used afterwards to confirm what AI already decided. For professional services — accountancy, legal, consultancy — the discovery conversation has already moved.</div>
-          <div class="sector-signal"><strong>Signal:</strong> Gartner forecasts $15 trillion of B2B spend intermediated by AI agents by 2028. November 2025.</div>
+          <div class="sector-body">94% of B2B buyers use ChatGPT, Copilot, Perplexity, or Claude during the purchase journey (<em>Forrester / 6sense, 2025</em>). Research happens in AI. Shortlisting happens in AI. Google is used afterwards to confirm what AI has already decided. For accountancy, legal, and consultancy, the discovery conversation has already moved.</div>
+          <div class="sector-signal"><strong>Signal:</strong> Gartner forecasts that <strong>by 2028, 90% of B2B buying will be AI-agent intermediated, with over $15 trillion of B2B spend flowing through AI-agent exchanges</strong> (<em>Gartner press release, 21 October 2025</em>). That is not a directional prediction. That is a category-level forecast from the firm enterprises use to set IT strategy.</div>
         </div>
         <div class="sector-card reveal d4">
           <span class="sector-tag">Care</span>
           <div class="sector-headline">Families compare care homes before making a single phone call.</div>
-          <div class="sector-body">Adult children searching for care options now use AI to build a shortlist before any provider contact. Without schema markup, a care group's CQC ratings, bed availability, specialist care types, and location data cannot be extracted by AI recommendation engines — even when the group is the dominant local provider. Competitors with structured data surface in AI responses; providers without it are absent from the conversation entirely.</div>
-          <div class="sector-signal"><strong>Signal:</strong> "Care homes near me" and "dementia care [city]" queries now trigger AI Overviews on Google UK in the majority of cases, displaying competitor names, ratings, and contact details above all organic listings.</div>
+          <div class="sector-body">Adult children searching for care options now use AI to build a shortlist before any provider contact. Without schema markup, a care group&rsquo;s CQC ratings, bed availability, specialist care types, and location data cannot be cleanly extracted by AI recommendation engines &mdash; even when the group is the dominant local provider. Competitors with structured data surface; providers without it are absent from the conversation entirely.</div>
+          <div class="sector-signal"><strong>Signal:</strong> Around <strong>30% of Google searches in the UK now return an AI Overview</strong>, with 53% of adults reporting they see these summaries often (<em>Ofcom, Online Nation 2025</em>). For local-intent queries &mdash; <em>&ldquo;care homes near me&rdquo;</em>, <em>&ldquo;dementia care [city]&rdquo;</em> &mdash; the AI Overview now displays competitor names, ratings, and contact details above all organic listings.</div>
         </div>
         <div class="sector-card reveal d3">
           <span class="sector-tag">Venues &amp; Events</span>
           <div class="sector-headline">Couples are shortlisting venues without ever opening a browser tab.</div>
-          <div class="sector-body">More than half of engaged couples in 2025–2026 report using AI tools during planning. The Knot Worldwide integrated its entire vendor marketplace — venues, photographers, caterers — directly inside ChatGPT. If your venue is not in that conversation, it is not on the shortlist.</div>
-          <div class="sector-signal"><strong>Signal:</strong> The Knot Worldwide vendor marketplace now searchable inside ChatGPT. Glossy.co, 2025.</div>
+          <div class="sector-body"><strong>36% of couples now use AI tools for wedding planning &mdash; nearly double the rate at the start of 2025</strong> (<em>The Knot Worldwide, February 2026</em>). And the infrastructure for AI-mediated booking is already live: in February 2026, The Knot Worldwide launched the wedding industry&rsquo;s first dedicated app inside ChatGPT, surfacing its vendor marketplace &mdash; venues, photographers, caterers &mdash; directly within the chat interface (<em>BusinessWire, 3 February 2026</em>).</div>
+          <div class="sector-signal"><strong>Signal:</strong> If your venue is not in that conversation, it is not on the shortlist. The discovery moment has moved.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE TWO HIDDEN PROBLEMS ============ -->
-  <section class="problems">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Two Problems Most Businesses Don't Know They Have</span>
-        <h2 class="section-heading">The bake-off is happening without you.</h2>
-        <p class="section-sub">Beyond visibility, two specific failure modes are costing businesses enquiries and revenue — silently, before a buyer has ever visited their site.</p>
-      </div>
-
-      <div class="problem-grid">
-        <div class="problem-card reveal d1">
-          <div class="problem-title">The Vendor Bake-Off Problem</div>
-          <div class="problem-body">Enterprise buyers are asking AI to compare vendors directly &mdash; pricing, features, support. <strong style="color:var(--text);background:linear-gradient(180deg,transparent 60%,rgba(244,63,94,0.18) 60%);padding:0 0.15em;">If your pricing is hidden behind &ldquo;contact us,&rdquo; buried in a PDF, or locked inside an image, AI cannot include you in the comparison. You lose the bake-off silently, before the buyer has ever visited your site.</strong></div>
-          <div class="problem-example">"Compare Vendor A and Vendor B on price, features, and customer support."</div>
-          <div class="problem-body" style="margin-top:1rem;">AI cannot include you in this answer if your data isn't cleanly extractable as HTML text. It will either hallucinate your features or skip you entirely — and recommend a competitor with a simpler information architecture.</div>
-        </div>
-        <div class="problem-card reveal d2">
-          <div class="problem-title">The Citation Consensus Problem</div>
-          <div class="problem-body">AI does not only read your website. It reads everything the internet has already said about you — niche forums, sector publications, trade press, third-party review sites. For every vertical, there are specific platforms AI treats as authoritative sources.</div>
-          <div class="problem-example">For consumer queries: Reddit. For B2B services: specialist trade press and industry bodies. For hospitality: sector-specific review aggregators.</div>
-          <div class="problem-body" style="margin-top:1rem;">Being absent from the platforms your sector's AI trust hierarchy uses is as damaging as having a broken website. Most businesses have no idea which platforms matter for their specific vertical.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CLOSING ARGUMENT ============ -->
+  <!-- ============ VI. THE TIMING QUESTION (concession cut) ============ -->
   <section class="closing">
     <div class="container">
       <div class="closing-inner reveal">
+        <span class="section-numeral" style="display:block;text-align:center;margin-bottom:0.5rem;">VI</span>
         <span class="eyebrow" style="display:block;text-align:center;margin-bottom:1.5rem;">The Timing Question</span>
-        <h2>The question is not whether this is happening. It is when the tipping point reaches your vertical.</h2>
+        <h2>The question is when the tipping point reaches your vertical.</h2>
         <div class="closing-body">
-          <p>AI platforms still drive a fraction of total internet traffic compared to Google. Google handles 14 billion searches a day; it is not going anywhere overnight. That is not the point.</p>
-          <p>The point is that AI Overviews are already eroding click-through rates on Google by 58% for the queries that trigger them. The businesses being cited in AI answers today are building a compounding advantage. Citation positions compound as models retrain and reinforce existing sources.</p>
-          <p>The businesses that are Recommended in AI results 18 months from now are the ones getting audited today. The question is not whether to act — it is whether you have the lead time to act before your vertical tips.</p>
+          <p>AI Overviews are already eroding click-through on the queries that trigger them &mdash; by 58% on the top organic result (<em>Ahrefs, December 2025</em>), with the click rate falling from 15% to just 8% on AI-summarised pages (<em>Pew Research, July 2025</em>).</p>
+          <p>The businesses being cited in AI answers today are building a compounding advantage. Citation positions reinforce themselves: models retrain on a web that already cites you, third-party platforms reference you because the models do, and the citation graph thickens around your name. The brands that are Recommended in AI results 18 months from now are the ones being audited today.</p>
+          <p>The question is not whether to act. It is whether you have the lead time to act before your vertical tips.</p>
         </div>
-        <div class="closing-cta">
-          <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">→</span></a>
-          <span class="cta-sub">From £750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing" style="color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.15);">View all pricing options</a></span>
-          <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.25rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Not ready for the full report? Start with AI visibility only &mdash; £250 &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHERE YOU STAND — single CTA ============ -->
+  <section class="where-you-stand">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">Where You Stand, Specifically</span>
+        <h2>You cannot fix what you cannot see.</h2>
+        <p>If you scored 0, 1, or 2 on the audit &mdash; that is the gap a Web Intelligence Report closes. The rungs are universal. The fixes are not. Which <code style="font-family:var(--mono);font-size:0.85em;color:var(--text);">robots.txt</code> lines, which schema, which third-party platforms, which competitors are eating your citation share &mdash; those answers are specific to your site, your sector, your buyers.</p>
+        <div class="closing-cta" style="margin-top:2rem;">
+          <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">&rarr;</span></a>
+          <span class="cta-sub">From &pound;750 &middot; Delivered within 48 hours &middot; <a href="/web-intelligence/#pricing" style="color:var(--text-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.15);">View all pricing options</a></span>
+          <a href="/web-intelligence/#ai-search-report" style="font-family:var(--body);font-size:0.88rem;font-weight:500;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:2px;transition:color 0.2s;margin-top:0.25rem;" onmouseover="this.style.color='var(--design)'" onmouseout="this.style.color='var(--text-secondary)'">Not ready for the full report? Start with AI visibility only &mdash; &pound;250 &rarr;</a>
         </div>
       </div>
     </div>
@@ -1495,6 +1741,27 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES ============ -->
+  <section class="sources">
+    <div class="container">
+      <h2>Sources &amp; references</h2>
+      <ol>
+        <li><strong>Ofcom, <em>Online Nation 2025</em></strong> &mdash; published 10 December 2025. <a href="https://www.ofcom.org.uk/media-use-and-attitudes/online-habits/from-apps-to-ai-search-how-the-uk-goes-online-in-2025" target="_blank" rel="noopener">ofcom.org.uk</a></li>
+        <li><strong>Ofcom, <em>Adults&rsquo; Media Use and Attitudes Report</em></strong> &mdash; published 2 April 2026. Source for 54% / 79% / 74% AI tool adoption.</li>
+        <li><strong>Ahrefs, <em>AI Overviews Reduce Clicks by 58% &mdash; Update</em></strong> &mdash; Ryan Law, December 2025. 300,000-keyword sample. <a href="https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/" target="_blank" rel="noopener">ahrefs.com</a></li>
+        <li><strong>Pew Research Center, <em>Google users are less likely to click on links when an AI summary appears</em></strong> &mdash; July 2025. 68,879 queries from 900 US adults. <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener">pewresearch.org</a></li>
+        <li><strong>Forrester / 6sense, <em>2025 Buyer Experience Report</em></strong> &mdash; survey of ~4,000 global B2B buyers; 94% LLM-usage finding.</li>
+        <li><strong>Gartner, <em>Top Strategic Predictions for 2026 and Beyond</em></strong> &mdash; press release, 21 October 2025. <em>&ldquo;By 2028, 90% of B2B buying will be AI agent intermediated, pushing over $15 trillion of B2B spend through AI agent exchanges.&rdquo;</em> <a href="https://www.gartner.com/en/newsroom/press-releases/2025-10-21-gartner-unveils-top-predictions-for-it-organizations-and-users-in-2026-and-beyond" target="_blank" rel="noopener">gartner.com</a></li>
+        <li><strong>Aggarwal, P., Murahari, V., Rajpurohit, T., Kalyan, A., Narasimhan, K., Deshpande, A.</strong> <em>GEO: Generative Engine Optimization.</em> In <em>Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD &rsquo;24)</em>, Barcelona, August 2024. arXiv:2311.09735. <a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="noopener">arxiv.org/abs/2311.09735</a></li>
+        <li><strong>Growth Marshal, <em>The 2025 Perplexity Playbook: Sonar Ranking Factors</em></strong> &mdash; Kurt Fischman, June 2025. Source for the FAQ-schema A/B testing results and structured-data ranking.</li>
+        <li><strong>Phocuswright, <em>AI in Travel Planning &mdash; 2025 Update</em></strong> &mdash; August 2025. Source for one-third of US travellers using AI for trip planning.</li>
+        <li><strong>Adyen, <em>2025 Hospitality and Travel Report</em></strong> &mdash; August 2025. Source for one in three global travellers booking with AI, up 74% YoY.</li>
+        <li><strong>Semrush, <em>ChatGPT Traffic Analysis: Insights from 17 Months of Clickstream Data</em></strong> &mdash; February 2026. Source for 206% YoY growth in ChatGPT outbound referrals and the 71k &rarr; 260k unique-domain expansion. <a href="https://www.semrush.com/blog/chatgpt-search-insights/" target="_blank" rel="noopener">semrush.com</a></li>
+        <li><strong>The Knot Worldwide, <em>Launches the Wedding Industry&rsquo;s First App Within ChatGPT</em></strong> &mdash; BusinessWire press release, 3 February 2026. Source for the 36% AI-tool adoption figure and the integration launch. <a href="https://www.businesswire.com/news/home/20260202639400/en/The-Knot-Worldwide-Launches-The-Wedding-Industrys-First-App-Within-ChatGPT" target="_blank" rel="noopener">businesswire.com</a></li>
+      </ol>
     </div>
   </section>
 
