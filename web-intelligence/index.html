@@ -1125,6 +1125,344 @@
   }
   .ft-showcase-col:first-child .ft-format-link { color: var(--text-secondary); font-weight: 500; }
 
+  /* ---- Big Brands showcase ---- */
+  .big-brands {
+    background: #08080d;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 6rem 0;
+  }
+  .big-brands-intro {
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+  .big-brands-intro strong { color: var(--text); font-weight: 600; }
+  .bb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+    margin-bottom: 2rem;
+  }
+  .bb-card {
+    position: relative;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px 26px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s, box-shadow 0.25s;
+    min-height: 380px;
+    overflow: hidden;
+  }
+  .bb-card::before {
+    content: '';
+    position: absolute;
+    inset: -40% -20% auto auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.25;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .bb-card.rung-invisible::before { background: radial-gradient(circle, #f87171 0%, transparent 70%); }
+  .bb-card.rung-emerging::before { background: radial-gradient(circle, #fbbf24 0%, transparent 70%); }
+  .bb-card.rung-cited::before { background: radial-gradient(circle, #a78bfa 0%, transparent 70%); }
+  .bb-card:hover {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+  }
+  .bb-card:hover::before { opacity: 0.4; }
+  .bb-card > * { position: relative; z-index: 1; }
+  .bb-card-meta { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .bb-card-sector {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .bb-card-brand {
+    font-family: var(--display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+  .bb-card-domain {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .bb-scorepanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 18px 10px 18px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 4px;
+  }
+  .bb-aisov {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .bb-aisov-num { font-size: 4.2rem; }
+  .bb-aisov-denom {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 2px;
+  }
+  .bb-card.rung-invisible .bb-aisov-num { color: #f87171; }
+  .bb-card.rung-emerging .bb-aisov-num { color: #fbbf24; }
+  .bb-card.rung-cited .bb-aisov-num { color: #a78bfa; }
+  .bb-aisov-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  .bb-aisov-tag {
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .bb-card.rung-invisible .bb-aisov-tag { color: #f87171; }
+  .bb-card.rung-emerging .bb-aisov-tag { color: #fbbf24; }
+  .bb-card.rung-cited .bb-aisov-tag { color: #a78bfa; }
+  .bb-querystrip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    width: 100%;
+    margin-top: 16px;
+  }
+  .bb-qcell {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.02);
+  }
+  .bb-qcell.cited {
+    background: rgba(167, 139, 250, 0.14);
+    border-color: rgba(167, 139, 250, 0.45);
+    color: #c4b5fd;
+  }
+  .bb-querystrip-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  .bb-subgrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 100%;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255,255,255,0.08);
+  }
+  .bb-subgrid-label {
+    grid-column: 1 / -1;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .bb-subcell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .bb-sub-val {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .bb-sub-val.s-search { color: #818cf8; }
+  .bb-sub-val.s-brand { color: #22c55e; }
+  .bb-sub-val.s-compete { color: #38bdf8; }
+  .bb-sub-val.s-compete-low { color: #f87171; }
+  .bb-sub-val.s-growth { color: #2dd4bf; }
+  .bb-sub-lbl {
+    font-size: 0.54rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .bb-rung-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bb-rung-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .bb-rung-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 7px 14px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: 1px solid;
+  }
+  .bb-rung-pill::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .bb-rung-invisible {
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.3);
+    background: rgba(248, 113, 113, 0.08);
+  }
+  .bb-rung-invisible::before { background: #f87171; }
+  .bb-rung-emerging {
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+    background: rgba(251, 191, 36, 0.08);
+  }
+  .bb-rung-emerging::before { background: #fbbf24; }
+  .bb-rung-cited {
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.35);
+    background: rgba(167, 139, 250, 0.1);
+  }
+  .bb-rung-cited::before { background: #a78bfa; }
+  .bb-ladder {
+    display: flex;
+    gap: 6px;
+  }
+  .bb-ladder-step {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.06);
+  }
+  .bb-ladder-step.on-invisible { background: #f87171; }
+  .bb-ladder-step.on-emerging { background: #fbbf24; }
+  .bb-ladder-step.on-cited { background: #a78bfa; }
+  .bb-headline {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.55rem;
+    line-height: 1.12;
+    color: var(--text);
+    letter-spacing: -0.025em;
+    margin: 0;
+    flex: 1;
+  }
+  .bb-headline span {
+    display: block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-top: 4px;
+  }
+  .bb-card.rung-invisible .bb-headline span {
+    background-image: linear-gradient(95deg, #f87171 0%, #fb923c 60%, #fbbf24 100%);
+  }
+  .bb-card.rung-emerging .bb-headline span {
+    background-image: linear-gradient(95deg, #fbbf24 0%, #fb923c 50%, #f87171 100%);
+  }
+  .bb-card.rung-cited .bb-headline span {
+    background-image: linear-gradient(95deg, #a78bfa 0%, #818cf8 55%, #38bdf8 100%);
+  }
+  .bb-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .bb-card-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--design);
+    letter-spacing: 0.02em;
+  }
+  .bb-card-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .bb-disclaimer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
+  .bb-pivot {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .bb-pivot p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .bb-grid { grid-template-columns: 1fr; }
+    .bb-card { min-height: auto; }
+  }
+
   /* ---- Sector divider ---- */
   .sector-divider {
     display: flex;
@@ -2293,6 +2631,207 @@
           </div>
         </form>
         <p class="score-form-note">We run a real audit — not an automated checker. You'll receive a scored breakdown across Search, Design, Brand, Compete, and Growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVEN THE BIG BRANDS ============ -->
+  <section class="big-brands" id="big-brands">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <span class="eyebrow">Portfolio &middot; Live audits</span>
+        <h2 class="section-heading">Even the big brands aren&rsquo;t getting this right.</h2>
+        <p class="section-sub" style="margin-left:auto;margin-right:auto;">We ran the same AI Search audit we&rsquo;d run for you on five of the largest brands in the world. Most of them are still invisible to ChatGPT, Perplexity and Google AI Overviews &mdash; for queries their customers are typing every day.</p>
+      </div>
+
+      <p class="big-brands-intro reveal d1">
+        These aren&rsquo;t scraped scores. We pulled live HTML, checked schema, tested AI Share of Voice across 6 prompts, and mapped each brand to the <strong>F&amp;T AI Visibility Maturity Curve</strong>. Click any card for the full diagnostic.
+      </p>
+
+      <div class="bb-grid reveal d2">
+        <a href="/web-intelligence/big-brands/costco/" onclick="trackLead('big_brand_view_costco')" class="bb-card rung-invisible band-needswork">
+          <div class="bb-card-meta">
+            <span class="bb-card-sector">Membership retail</span>
+            <span class="bb-card-brand">Costco UK</span>
+            <span class="bb-card-domain">costco.co.uk</span>
+          </div>
+          <h3 class="bb-headline">A &pound;4B brand that <span>AI can&rsquo;t read</span></h3>
+          <div class="bb-scorepanel">
+            <div class="bb-aisov"><span class="bb-aisov-num">0</span><span class="bb-aisov-denom">/6</span></div>
+            <div class="bb-aisov-label">AI Share of Voice</div>
+            <div class="bb-aisov-tag">Invisible</div>
+            <div class="bb-subgrid">
+              <div class="bb-subgrid-label">Web intelligence sub-scores</div>
+              <div class="bb-subcell"><span class="bb-sub-val s-search">52</span><span class="bb-sub-lbl">Search</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-brand">62</span><span class="bb-sub-lbl">Brand</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-compete-low">58</span><span class="bb-sub-lbl">Compete</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-growth">55</span><span class="bb-sub-lbl">Growth</span></div>
+            </div>
+          </div>
+          <div class="bb-rung-block">
+            <span class="bb-rung-label">AI Maturity Rung</span>
+            <span class="bb-rung-pill bb-rung-invisible">Rung 1 &middot; Invisible</span>
+            <div class="bb-ladder" aria-hidden="true">
+              <span class="bb-ladder-step on-invisible"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+            </div>
+          </div>
+          <div class="bb-card-foot">
+            <span class="bb-card-tag">AI Search audit</span>
+            <span class="bb-card-link">View report &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/web-intelligence/big-brands/taylor-swift/" onclick="trackLead('big_brand_view_taylor_swift')" class="bb-card rung-invisible band-needswork">
+          <div class="bb-card-meta">
+            <span class="bb-card-sector">Music &middot; Artist</span>
+            <span class="bb-card-brand">Taylor Swift</span>
+            <span class="bb-card-domain">taylorswift.com</span>
+          </div>
+          <h3 class="bb-headline">The world&rsquo;s most searched name. <span>AI&rsquo;s biggest blind spot.</span></h3>
+          <div class="bb-scorepanel">
+            <div class="bb-aisov"><span class="bb-aisov-num">0</span><span class="bb-aisov-denom">/6</span></div>
+            <div class="bb-aisov-label">AI Share of Voice</div>
+            <div class="bb-aisov-tag">Invisible</div>
+            <div class="bb-subgrid">
+              <div class="bb-subgrid-label">Web intelligence sub-scores</div>
+              <div class="bb-subcell"><span class="bb-sub-val s-search">52</span><span class="bb-sub-lbl">Search</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-brand">82</span><span class="bb-sub-lbl">Brand</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-compete-low">58</span><span class="bb-sub-lbl">Compete</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-growth">61</span><span class="bb-sub-lbl">Growth</span></div>
+            </div>
+          </div>
+          <div class="bb-rung-block">
+            <span class="bb-rung-label">AI Maturity Rung</span>
+            <span class="bb-rung-pill bb-rung-invisible">Rung 1 &middot; Invisible</span>
+            <div class="bb-ladder" aria-hidden="true">
+              <span class="bb-ladder-step on-invisible"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+            </div>
+          </div>
+          <div class="bb-card-foot">
+            <span class="bb-card-tag">AI Search audit</span>
+            <span class="bb-card-link">View report &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/web-intelligence/big-brands/barclays/" onclick="trackLead('big_brand_view_barclays')" class="bb-card rung-emerging band-solid">
+          <div class="bb-card-meta">
+            <span class="bb-card-sector">Retail banking</span>
+            <span class="bb-card-brand">Barclays</span>
+            <span class="bb-card-domain">barclays.co.uk</span>
+          </div>
+          <h3 class="bb-headline">High-street authority. <span>No AI presence.</span></h3>
+          <div class="bb-scorepanel">
+            <div class="bb-aisov"><span class="bb-aisov-num">2</span><span class="bb-aisov-denom">/6</span></div>
+            <div class="bb-aisov-label">AI Share of Voice</div>
+            <div class="bb-aisov-tag">Emerging</div>
+            <div class="bb-subgrid">
+              <div class="bb-subgrid-label">Web intelligence sub-scores</div>
+              <div class="bb-subcell"><span class="bb-sub-val s-search">72</span><span class="bb-sub-lbl">Search</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-brand">70</span><span class="bb-sub-lbl">Brand</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-compete-low">62</span><span class="bb-sub-lbl">Compete</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-growth">60</span><span class="bb-sub-lbl">Growth</span></div>
+            </div>
+          </div>
+          <div class="bb-rung-block">
+            <span class="bb-rung-label">AI Maturity Rung</span>
+            <span class="bb-rung-pill bb-rung-emerging">Rung 2 &middot; Emerging</span>
+            <div class="bb-ladder" aria-hidden="true">
+              <span class="bb-ladder-step on-emerging"></span>
+              <span class="bb-ladder-step on-emerging"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+            </div>
+          </div>
+          <div class="bb-card-foot">
+            <span class="bb-card-tag">AI Search audit</span>
+            <span class="bb-card-link">View report &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/web-intelligence/big-brands/samsung/" onclick="trackLead('big_brand_view_samsung')" class="bb-card rung-emerging band-solid">
+          <div class="bb-card-meta">
+            <span class="bb-card-sector">Consumer electronics</span>
+            <span class="bb-card-brand">Samsung UK</span>
+            <span class="bb-card-domain">samsung.com/uk</span>
+          </div>
+          <h3 class="bb-headline">Galaxy-class brand. <span>No AI footprint.</span></h3>
+          <div class="bb-scorepanel">
+            <div class="bb-aisov"><span class="bb-aisov-num">2</span><span class="bb-aisov-denom">/6</span></div>
+            <div class="bb-aisov-label">AI Share of Voice</div>
+            <div class="bb-aisov-tag">Emerging</div>
+            <div class="bb-subgrid">
+              <div class="bb-subgrid-label">Web intelligence sub-scores</div>
+              <div class="bb-subcell"><span class="bb-sub-val s-search">72</span><span class="bb-sub-lbl">Search</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-brand">82</span><span class="bb-sub-lbl">Brand</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-compete">75</span><span class="bb-sub-lbl">Compete</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-growth">68</span><span class="bb-sub-lbl">Growth</span></div>
+            </div>
+          </div>
+          <div class="bb-rung-block">
+            <span class="bb-rung-label">AI Maturity Rung</span>
+            <span class="bb-rung-pill bb-rung-emerging">Rung 2 &middot; Emerging</span>
+            <div class="bb-ladder" aria-hidden="true">
+              <span class="bb-ladder-step on-emerging"></span>
+              <span class="bb-ladder-step on-emerging"></span>
+              <span class="bb-ladder-step"></span>
+              <span class="bb-ladder-step"></span>
+            </div>
+          </div>
+          <div class="bb-card-foot">
+            <span class="bb-card-tag">AI Search audit</span>
+            <span class="bb-card-link">View report &rarr;</span>
+          </div>
+        </a>
+
+        <a href="/web-intelligence/big-brands/nike/" onclick="trackLead('big_brand_view_nike')" class="bb-card rung-cited band-strong">
+          <div class="bb-card-meta">
+            <span class="bb-card-sector">Sportswear</span>
+            <span class="bb-card-brand">Nike UK</span>
+            <span class="bb-card-domain">nike.com/gb</span>
+          </div>
+          <h3 class="bb-headline">Ranks #1 everywhere. <span>One fix from dominating AI.</span></h3>
+          <div class="bb-scorepanel">
+            <div class="bb-aisov"><span class="bb-aisov-num">4</span><span class="bb-aisov-denom">/6</span></div>
+            <div class="bb-aisov-label">AI Share of Voice</div>
+            <div class="bb-aisov-tag">Cited</div>
+            <div class="bb-subgrid">
+              <div class="bb-subgrid-label">Web intelligence sub-scores</div>
+              <div class="bb-subcell"><span class="bb-sub-val s-search">82</span><span class="bb-sub-lbl">Search</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-brand">91</span><span class="bb-sub-lbl">Brand</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-compete">80</span><span class="bb-sub-lbl">Compete</span></div>
+              <div class="bb-subcell"><span class="bb-sub-val s-growth">85</span><span class="bb-sub-lbl">Growth</span></div>
+            </div>
+          </div>
+          <div class="bb-rung-block">
+            <span class="bb-rung-label">AI Maturity Rung</span>
+            <span class="bb-rung-pill bb-rung-cited">Rung 3 &middot; Cited</span>
+            <div class="bb-ladder" aria-hidden="true">
+              <span class="bb-ladder-step on-cited"></span>
+              <span class="bb-ladder-step on-cited"></span>
+              <span class="bb-ladder-step on-cited"></span>
+              <span class="bb-ladder-step"></span>
+            </div>
+          </div>
+          <div class="bb-card-foot">
+            <span class="bb-card-tag">AI Search audit</span>
+            <span class="bb-card-link">View report &rarr;</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="bb-disclaimer reveal d2">
+        Independent portfolio audits &middot; not commissioned by the brands listed &middot; methodology identical to client work.
+      </p>
+
+      <div class="bb-pivot reveal d3">
+        <p>If five of the biggest brands in the world are still on Rung 1 or 2 &mdash; what does that say about your category?</p>
+        <a href="#score-form" class="btn btn-amber" onclick="trackLead('big_brands_to_score_form')">Get my free AI Search score <span class="arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
