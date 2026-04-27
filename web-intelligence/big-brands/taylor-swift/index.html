@@ -35,6 +35,16 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .sub-s{display:flex;flex-direction:column;align-items:center;gap:3px}
 .sub-s-val{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700}
 .sub-s-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
+.diagnosis{max-width:1100px;margin:0 auto 32px;padding:0 40px}
+.diagnosis-card{padding:2rem 2.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
+.diagnosis-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--orange);margin-bottom:0.75rem}
+.diagnosis-title{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;margin-bottom:1.25rem}
+.diagnosis-intro{font-size:14px;color:var(--text-secondary);line-height:1.65;margin-bottom:1.5rem;max-width:820px}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.finding{padding:18px 20px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;border-left:3px solid var(--red)}
+.finding-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:var(--red);letter-spacing:1.5px;margin-bottom:6px}
+.finding-h{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3}
+.finding-p{font-size:13px;color:var(--text-secondary);line-height:1.55}
 .rung-wrap{max-width:1100px;margin:0 auto;padding:0 40px 64px}
 .rung-card{padding:2.5rem;background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:var(--radius);position:relative;overflow:hidden}
 .rung-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--ai-glow);border-radius:50%;filter:blur(80px);opacity:0.3;pointer-events:none}
@@ -88,6 +98,30 @@ footer{padding:24px 40px;border-top:1px solid var(--border);max-width:1100px;mar
 <section style="max-width:900px;margin:0 auto 48px;padding:24px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;">
   <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:10px;">Why this brand sits in a corporate audit</div>
   <p style="font-size:0.96rem;line-height:1.65;color:var(--text-secondary);margin:0;">Taylor Swift Productions Inc. is a $1.6bn commercial enterprise &mdash; merchandise, touring (Eras: $2.2bn gross), licensing, and direct-to-fan e-commerce on taylorswift.com. Forbes, Bloomberg and the Wall Street Journal cover the operation as a branded business, not a personality. We audit the <strong>commercial domain</strong> against the same AI Search methodology used for Costco, Samsung and Nike: how citable is the official .com versus the third-party sites (Wikipedia, Spotify, Ticketmaster, Genius) that AI engines currently surface for fan and buyer intent queries. This is commercial commentary on a publicly accessible web property &mdash; not a personal critique.</p>
+</section>
+<section class="diagnosis">
+  <div class="diagnosis-card">
+    <div class="diagnosis-eyebrow">Root cause &middot; Access control</div>
+    <div class="diagnosis-title">A site that's deliberately closed to the engines that now decide visibility.</div>
+    <p class="diagnosis-intro">Unlike Costco UK &mdash; whose problem is structural absence &mdash; taylorswift.com fails at a different layer. The infrastructure is live, the brand equity is enormous, but the site actively blocks AI crawlers and offers no entity markup for the ones that do reach it. The result: AI engines route every fan and buyer query to Wikipedia, Spotify, Ticketmaster and Genius instead of the official commercial property.</p>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-num">01</div>
+        <div class="finding-h">GPTBot disallowed in robots.txt</div>
+        <div class="finding-p">OpenAI's training and retrieval crawler is blocked outright. ChatGPT cannot index, summarise, or cite content from taylorswift.com &mdash; so it cites Wikipedia and Spotify by default.</div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">02</div>
+        <div class="finding-h">No MusicArtist or Event schema</div>
+        <div class="finding-p">The world's largest touring artist has no entity markup on her own domain. AI engines have no machine-readable signal that this is the canonical source for tour dates, releases, or merchandise.</div>
+      </div>
+      <div class="finding">
+        <div class="finding-num">03</div>
+        <div class="finding-h">Branded-house with broken internal graph</div>
+        <div class="finding-p">Dead internal links and JS-rendered navigation prevent crawlers from reaching the commerce surface. Even unblocked engines cannot map the store, the tour, or the catalogue from the homepage.</div>
+      </div>
+    </div>
+  </div>
 </section>
 <div class="rung-wrap">
   <div class="rung-card">
