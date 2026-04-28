@@ -320,8 +320,8 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
 <nav class="ft-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);">
   <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION & TOIL</a>
   <div class="nav-links-desktop" style="list-style:none;">
-    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
     <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
+    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
     <a href="/culture-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Culture Intelligence</a>
     <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
     <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
@@ -331,8 +331,8 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
   </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/strategic-intelligence/">Strategic Intelligence</a>
   <a href="/web-intelligence/">Web Intelligence</a>
+  <a href="/strategic-intelligence/">Strategic Intelligence</a>
   <a href="/culture-intelligence/">Culture Intelligence</a>
   <a href="/experiments/">Experiments</a>
   <a href="mailto:hello@frictionandtoil.com">Contact</a>
@@ -576,24 +576,6 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
 
     <div class="products-grid">
 
-      <div class="product-card card-strategic">
-        <div class="product-label">Strategic Intelligence</div>
-        <div class="product-title">Full-spectrum company intelligence.</div>
-        <p class="product-desc">A complete intelligence portal built for the meeting, the deal, or the board decision. CEO strategy lens, M&amp;A conviction score, competitive landscape, financial deep-dive, meeting prep, technology &amp; operations audit, and people intelligence — all in one interactive command centre.</p>
-        <div class="product-tags">
-          <span class="tag">M&amp;A Verdict</span>
-          <span class="tag">CEO Strategy</span>
-          <span class="tag">Competitive Landscape</span>
-          <span class="tag">Meeting Prep</span>
-          <span class="tag">Financial Analysis</span>
-          <span class="tag">Tech &amp; Ops</span>
-        </div>
-        <a href="/strategic-intelligence/" class="product-cta cta-strategic" onclick="trackLead('strategic_intelligence')">
-          Learn more
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
       <div class="product-card card-web">
         <div class="product-label">Web Intelligence</div>
         <div class="product-title">What your website is costing you.</div>
@@ -608,6 +590,24 @@ body { min-height: 100%; background: #0c0c0c; color: #e8e8e8; }
         </div>
         <a href="/web-intelligence/" class="product-cta cta-web" onclick="trackLead('web_intelligence')">
           Order a report — £1,000
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="product-card card-strategic">
+        <div class="product-label">Strategic Intelligence</div>
+        <div class="product-title">Full-spectrum company intelligence.</div>
+        <p class="product-desc">A complete intelligence portal built for the meeting, the deal, or the board decision. CEO strategy lens, M&amp;A conviction score, competitive landscape, financial deep-dive, meeting prep, technology &amp; operations audit, and people intelligence — all in one interactive command centre.</p>
+        <div class="product-tags">
+          <span class="tag">M&amp;A Verdict</span>
+          <span class="tag">CEO Strategy</span>
+          <span class="tag">Competitive Landscape</span>
+          <span class="tag">Meeting Prep</span>
+          <span class="tag">Financial Analysis</span>
+          <span class="tag">Tech &amp; Ops</span>
+        </div>
+        <a href="/strategic-intelligence/" class="product-cta cta-strategic" onclick="trackLead('strategic_intelligence')">
+          Learn more
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>

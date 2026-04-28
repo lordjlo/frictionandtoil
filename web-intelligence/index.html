@@ -811,13 +811,15 @@
     .score-form .field-full { grid-column: 1; }
   }
 
-  /* ============ Comparison (Why £750?) ============ */
+  /* ============ Comparison ============ */
   .compare { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .compare-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     align-items: stretch;
+    max-width: 880px;
+    margin: 0 auto;
   }
   .compare-card {
     position: relative;
@@ -1734,13 +1736,13 @@
   /* ============ Footer ============ */
   .site-footer {
     border-top: 1px solid var(--border);
-    padding: 2.5rem 0 2rem;
+    padding: 3rem 0 2rem;
   }
-  .footer-row {
+  .footer-grid {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 1.5rem;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
   }
   .footer-brand {
     font-family: var(--display);
@@ -1748,25 +1750,46 @@
     font-size: 0.95rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    margin-bottom: 0.85rem;
   }
-  .footer-centre {
+  .footer-tagline {
     font-family: var(--body);
     font-size: 0.85rem;
     color: var(--text-secondary);
     letter-spacing: 0.04em;
-    text-align: center;
+    margin-bottom: 0.85rem;
+    max-width: 32ch;
   }
-  .footer-right {
+  .footer-email {
     font-family: var(--body);
     font-size: 0.85rem;
     color: var(--text-secondary);
-    text-align: right;
+    text-decoration: none;
     transition: color 0.2s ease;
   }
-  .footer-right:hover { color: var(--design); }
+  .footer-email:hover { color: var(--design); }
+  .footer-col-title {
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 1rem;
+  }
+  .footer-col-link {
+    display: block;
+    font-family: var(--body);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.35rem 0;
+    transition: color 0.2s ease;
+  }
+  .footer-col-link:hover { color: #fff; }
   .footer-copy {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border);
     font-size: 0.78rem;
@@ -2031,8 +2054,7 @@
     .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
     .stat:last-child { border-bottom: none; }
     .report-head { flex-direction: column; align-items: flex-start; }
-    .footer-row { grid-template-columns: 1fr; text-align: center; gap: 1rem; }
-    .footer-right, .footer-centre { text-align: center; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: left; }
     .brand { font-size: 0.88rem; letter-spacing: 0.16em; }
     .header-link { font-size: 0.8rem; }
     .hero-cta-row { flex-direction: column; align-items: stretch; }
@@ -2049,7 +2071,7 @@
   }
 
   .nav-hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
@@ -2058,6 +2080,8 @@
     cursor: pointer;
     padding: 4px;
     margin-left: auto;
+    position: relative;
+    z-index: 110;
   }
   .nav-hamburger span {
     display: block;
@@ -2069,153 +2093,106 @@
   .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .nav-links-desktop { display: flex; gap: 36px; }
 
-  /* ============ Nav dropdown ============ */
-  .nav-dropdown-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .nav-dropdown-wrap:hover .nav-dropdown,
-  .nav-dropdown-wrap:focus-within .nav-dropdown {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-    transition-delay: 0s;
-  }
-  .nav-dropdown-wrap .nav-dropdown {
-    transition: opacity 0.18s ease 0.25s, transform 0.18s ease 0.25s;
-  }
-  .nav-dropdown-wrap:hover .nav-dropdown {
-    transition-delay: 0s;
-  }
-  .nav-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-4px);
-    padding-top: 12px;
-    background: transparent;
-    min-width: 210px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.18s ease 0s, transform 0.18s ease 0s;
-    transition-delay: 0s;
-    z-index: 200;
-  }
-  .nav-dropdown-inner {
-    position: relative;
+  /* ============ Hamburger panel (right-aligned, desktop + mobile) ============ */
+  .wi-panel {
+    position: fixed;
+    top: 64px;
+    right: 16px;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     background: rgba(14,14,18,0.97);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.09);
     border-radius: 6px;
-    padding: 6px 0;
+    padding: 18px 0 10px;
+    z-index: 99;
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
   }
-  .nav-dropdown-inner::before {
-    content: '';
-    position: absolute;
-    top: 7px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 8px; height: 8px;
-    background: rgba(14,14,18,0.97);
-    border-left: 1px solid rgba(255,255,255,0.09);
-    border-top: 1px solid rgba(255,255,255,0.09);
+  .wi-panel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
-  .nav-dropdown a {
+  .wi-panel-group + .wi-panel-group {
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .wi-panel-title {
     display: block;
-    padding: 9px 18px;
+    padding: 0 22px 6px;
     font-family: sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.38);
+  }
+  .wi-panel a {
+    display: block;
+    padding: 10px 22px;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
     text-decoration: none;
     transition: color 0.15s, background 0.15s;
-    white-space: nowrap;
   }
-  .nav-dropdown a:hover {
+  .wi-panel a:hover,
+  .wi-panel a:focus-visible {
     color: #fff;
     background: rgba(255,255,255,0.04);
+    outline: none;
   }
-
-  .wi-mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 56px 0 0 0;
-    background: rgba(10,10,10,0.97);
-    backdrop-filter: blur(12px);
-    z-index: 99;
-    flex-direction: column;
-    padding: 40px 32px;
-  }
-  .wi-mobile-menu.open { display: flex; }
-  .wi-mobile-menu a {
-    font-family: sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    transition: color 0.2s;
-  }
-  .wi-mobile-menu a:last-child { border-bottom: none; }
-  .wi-mobile-menu a:hover { color: #fff; }
+  body.wi-panel-locked { overflow: hidden; }
   @media (max-width: 700px) {
-    .nav-links-desktop { display: none; }
-    .nav-hamburger { display: flex; }
     .wi-nav { padding: 0 20px !important; }
+    .wi-panel {
+      right: 12px;
+      width: calc(100vw - 24px);
+    }
   }
 </style>
 </head>
 <body>
 
 <nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
-  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap">FRICTION & TOIL</a>
-  <div class="nav-links-desktop" style="list-style:none;">
-    <a href="/strategic-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Strategic Intelligence</a>
-    <div class="nav-dropdown-wrap">
-      <a href="/web-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Web Intelligence</a>
-      <div class="nav-dropdown">
-        <div class="nav-dropdown-inner">
-          <a href="/web-intelligence/the-shift/" style="color:var(--design) !important">The Shift &mdash; Maturity Curve</a>
-          <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--growth) !important">The Shift &mdash; Cost of Not Knowing</a>
-          <a href="/web-intelligence/the-shift/citation-graph/" style="color:var(--brand) !important">The Shift &mdash; Citation Graph</a>
-          <a href="#problem">Problem</a>
-          <a href="#cost">What it's costing you</a>
-          <a href="#solution">The Solution</a>
-          <a href="#covers">What the report covers</a>
-          <a href="#big-brands" style="color:var(--compete) !important">Big Brands &mdash; Live Audits</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#sample">Sample reports</a>
-          <a href="#faq">FAQ</a>
-        </div>
-      </div>
-    </div>
-    <a href="/culture-intelligence/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Culture Intelligence</a>
-    <a href="/experiments/" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Experiments</a>
-    <a href="mailto:hello@frictionandtoil.com" style="font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a>
-  </div>
-  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('wiMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;white-space:nowrap" onclick="trackLead('web_intelligence_logo_home')">FRICTION &amp; TOIL</a>
+  <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="wi-mobile-menu" id="wiMobileMenu">
-  <a href="/strategic-intelligence/">Strategic Intelligence</a>
-  <a href="/web-intelligence/">Web Intelligence</a>
-  <a href="/web-intelligence/the-shift/">The Shift &mdash; Maturity Curve</a>
-  <a href="/web-intelligence/the-shift/cost-of-not-knowing/">The Shift &mdash; Cost of Not Knowing</a>
-  <a href="/web-intelligence/the-shift/citation-graph/">The Shift &mdash; Citation Graph</a>
-  <a href="/web-intelligence/#big-brands">Big Brands &mdash; Live Audits</a>
-  <a href="/culture-intelligence/">Culture Intelligence</a>
-  <a href="/experiments/">Experiments</a>
-  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+<div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">On this page</span>
+    <a href="#maturity" role="menuitem">Maturity curve</a>
+    <a href="#cost" role="menuitem">What it's costing you</a>
+    <a href="#covers" role="menuitem">The report</a>
+    <a href="#big-brands" role="menuitem">Big Brands &mdash; Live Audits</a>
+    <a href="#sample" role="menuitem">Sample reports</a>
+    <a href="#ai-search-report" role="menuitem">Score me</a>
+    <a href="#pricing" role="menuitem">Pricing</a>
+    <a href="#faq" role="menuitem">FAQ</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Briefings</span>
+    <a href="/web-intelligence/the-shift/" role="menuitem">The Shift</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">More from F&amp;T</span>
+    <a href="/strategic-intelligence/" role="menuitem">Strategic Intelligence</a>
+    <a href="/culture-intelligence/" role="menuitem">Culture Intelligence</a>
+    <a href="mailto:hello@frictionandtoil.com" role="menuitem" onclick="trackLead('web_intelligence_panel_contact')">Contact</a>
+  </div>
 </div>
 <div style="height:56px"></div>
 
@@ -2233,10 +2210,10 @@
           <p class="hero-sub reveal d3">A family searching for a care home asked Gemini for recommendations. A couple planning a celebration asked ChatGPT for private members&rsquo; clubs in London. A group booking a pub lunch asked Google&rsquo;s AI what it suggested. In each case, AI chose who to recommend. Most businesses had no idea the conversation was even happening &mdash; and weren&rsquo;t in it. The Web Intelligence Report tells you exactly where you stand and what it takes to change that.</p>
           <div class="hero-cta-row reveal d4">
             <a href="#ai-search-report" class="btn btn-white" onclick="trackLead('web_intelligence_cta_hero')">See pricing options &rarr;</a>
-            <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" class="btn btn-ghost" onclick="trackLead('web_intelligence_book_call')" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Not sure yet? Book a free 15-min call</a>
+            <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" class="btn btn-ghost" onclick="trackLead('web_intelligence_book_call')" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Talk it through first. Book a free 15-min call</a>
           </div>
           <div class="hero-guarantee reveal d5">
-            From &pound;250<span class="dot"></span>AI Search Report in 24 hours<span class="dot"></span>Full report from &pound;750, 48 hours<span class="dot"></span>30-min walkthrough call included
+            From &pound;250<span class="dot"></span>AI Search Report in 24 hours<span class="dot"></span>Full report &pound;1,000, 48 hours<span class="dot"></span>30-min walkthrough call included
           </div>
         </div>
 
@@ -2313,7 +2290,7 @@
   </section>
 
   <!-- ============ MATURITY CURVE ============ -->
-  <section style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);">
+  <section id="maturity" style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-head reveal" style="margin-bottom:2.5rem;">
         <span class="eyebrow">The AI Visibility Maturity Curve</span>
@@ -2847,42 +2824,37 @@
     </div>
   </section>
 
-  <!-- ============ COMPARISON / WHY £750 ============ -->
+  <!-- ============ COMPARISON ============ -->
   <section class="compare" id="pricing">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Pricing</span>
         <h2 class="section-heading">Full report &mdash; five dimensions, 48 hours.</h2>
-        <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 30-minute call first</a> &mdash; no obligation, no deck, no pitch.</p>
+        <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 15-minute call first</a> &mdash; no obligation, no deck, no pitch.</p>
         <p class="section-sub" style="margin-top:0.75rem;font-size:0.9rem;">Already have an AI Search Report? Your &pound;250 is credited &mdash; apply code <span style="font-family:var(--mono);font-size:0.85rem;color:var(--text);background:rgba(255,255,255,0.06);padding:0.15em 0.5em;border-radius:3px;border:1px solid var(--border);">AI-SEARCH-UPGRADE</span> at checkout.</p>
       </div>
       <div class="compare-grid">
-        <div class="compare-card reveal d1">
-          <div class="compare-label">Pay in full</div>
-          <div class="compare-price">&pound;750</div>
-          <div class="compare-desc">No guarantee, no questions. For buyers who&rsquo;ve seen enough and want to move fast.</div>
-          <div class="compare-tag" style="margin-top:auto">Lowest price</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_750'); startCheckout(this)" data-tier="750">Order at &pound;750</button>
-        </div>
-        <div class="compare-card is-featured reveal d2">
-          <div class="compare-label">Pay in full &mdash; with guarantee &#9733;</div>
+        <div class="compare-card is-featured reveal d1">
+          <div class="compare-label">Pay today &mdash; with guarantee &#9733;</div>
           <div class="compare-price">&pound;1,000</div>
+          <div style="font-family:var(--body);font-size:0.85rem;font-weight:500;color:var(--text-secondary);margin-top:-0.25rem;letter-spacing:0.01em;">Save &pound;500 vs. paying over 3 months</div>
           <div class="compare-desc">14-day money-back guarantee. Full refund if you don&rsquo;t find it useful &mdash; no questions asked. Includes a 30-minute walkthrough call after delivery and a half-price rescan within 6 months.</div>
-          <div class="compare-tag" style="margin-top:auto">Most popular</div>
+          <div class="compare-tag" style="margin-top:auto">Launch price &mdash; rises to &pound;1,500</div>
           <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_1000'); startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
         </div>
-        <div class="compare-card reveal d3">
-          <div class="compare-label">Pay monthly</div>
-          <div class="compare-price">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-secondary)">/mo &times; 3</span></div>
-          <div class="compare-desc">Spread the cost over three months. Full &pound;1,500 value. Access ends immediately if you cancel &mdash; noted in the T&amp;Cs. Includes the walkthrough call and 6-month rescan.</div>
+        <div class="compare-card reveal d2">
+          <div class="compare-label">Pay over 3 months</div>
+          <div class="compare-price" style="color:var(--text-secondary)">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-muted)">/mo &times; 3</span></div>
+          <div style="font-family:var(--body);font-size:0.82rem;color:var(--text-muted);margin-top:-0.25rem;letter-spacing:0.01em;">Total &pound;1,500 &mdash; same report, spread over 3 months</div>
+          <div class="compare-desc">Same report, same 48-hour delivery, same 14-day money-back guarantee. &pound;500 today, &pound;500 at 30 days, &pound;500 at 60 days. Walkthrough call and 6-month rescan included. Cancel anytime &mdash; access ends with the cancelled payment.</div>
           <div class="compare-tag" style="margin-top:auto">Total: &pound;1,500</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_500mo'); startCheckout(this)" data-tier="500mo">Start at &pound;500/mo</button>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_500mo'); startCheckout(this)" data-tier="500mo">Pay over 3 months &rarr;</button>
         </div>
       </div>
       <div id="call" style="margin-top:3rem;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;text-align:center">
-        <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Not ready to commit? That&rsquo;s fine.</p>
-        <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">Book a free 30-minute call first. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
-        <a href="https://calendly.com/frictionandtoil/30min" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 30-minute call &rarr;</a>
+        <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Talk it through first.</p>
+        <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">15 minutes. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
+        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
       </div>
     </div>
   </section>
@@ -2960,7 +2932,7 @@
 
           <a href="/web-intelligence/demo/fever-tree/" onclick="trackLead('web_intelligence_view_fever_full')" class="ft-showcase-col">
             <div class="ft-format-badge">Full Intelligence Report</div>
-            <div class="ft-format-price">From £750</div>
+            <div class="ft-format-price">£1,000</div>
             <div class="ft-format-score">5 dimensions · 7 tabs · fully interactive</div>
             <div class="ft-format-finding">Search 50 · Design 70 · Brand 85 · Compete 50 · Growth 85</div>
             <div class="ft-format-link">Open full report →</div>
@@ -3146,7 +3118,7 @@
         <p class="bottom-sub">Start with AI visibility only. Upgrade to the full report anytime.</p>
         <a href="#ai-search-report" class="btn btn-amber" onclick="trackLead('web_intelligence_cta_bottom')">See pricing options &rarr;</a>
         <div class="bottom-small">
-          From &pound;250 &mdash; AI visibility only<span class="dot"></span>Full report from &pound;750<span class="dot"></span>14-day money-back guarantee on the &pound;1,000 tier
+          From &pound;250 &mdash; AI visibility only<span class="dot"></span>Full report &pound;1,000<span class="dot"></span>14-day money-back guarantee included
         </div>
       </div>
     </div>
@@ -3157,10 +3129,22 @@
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-row">
-      <div class="footer-brand">Friction &amp; Toil</div>
-      <div class="footer-centre">frictionandtoil.com</div>
-      <a href="mailto:hello@frictionandtoil.com" class="footer-right" onclick="trackLead('web_intelligence_footer_contact')">hello@frictionandtoil.com</a>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Friction &amp; Toil</div>
+        <p class="footer-tagline">Intelligence systems for businesses where geography is not a barrier.</p>
+        <a href="mailto:hello@frictionandtoil.com" class="footer-email" onclick="trackLead('web_intelligence_footer_contact')">hello@frictionandtoil.com</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Briefings</div>
+        <a href="/web-intelligence/the-shift/" class="footer-col-link">The Shift</a>
+      </div>
+      <div>
+        <div class="footer-col-title">More from F&amp;T</div>
+        <a href="/" class="footer-col-link">Friction &amp; Toil home</a>
+        <a href="/strategic-intelligence/" class="footer-col-link">Strategic Intelligence</a>
+        <a href="/culture-intelligence/" class="footer-col-link">Culture Intelligence</a>
+      </div>
     </div>
     <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
   </div>
@@ -3233,7 +3217,6 @@
 <script>
   const CHECKOUT_URLS = {
     '250':   'https://buy.stripe.com/9B63cw9JIaRx20t9ul1kA03',
-    '750':   'https://buy.stripe.com/9B6fZi7BA2l134x5e51kA00',
     '1000':  'https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01',
     '500mo': 'https://buy.stripe.com/bJe00k9JI6BhbB35e51kA02'
   };
@@ -3250,20 +3233,53 @@
 </script>
 
 <script>
-  // smooth scroll with nav offset for dropdown links
-  document.querySelectorAll('.nav-dropdown a').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      var href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        var target = document.getElementById(href.slice(1));
-        if (target) {
-          var top = target.getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({ top: top, behavior: 'smooth' });
-        }
+  // Hamburger panel: open/close, escape, outside click, scroll lock, smooth-scroll for in-page anchors
+  (function () {
+    var btn = document.getElementById('wiMenuBtn');
+    var panel = document.getElementById('wiPanel');
+    if (!btn || !panel) return;
+
+    function setOpen(open) {
+      panel.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('wi-panel-locked', open);
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!panel.classList.contains('open'));
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) {
+        setOpen(false);
+        btn.focus();
       }
     });
-  });
+
+    panel.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href');
+        if (href && href.charAt(0) === '#') {
+          e.preventDefault();
+          var target = document.getElementById(href.slice(1));
+          if (target) {
+            var top = target.getBoundingClientRect().top + window.scrollY - 72;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
+        setOpen(false);
+      });
+    });
+  })();
 </script>
 
 </body>
