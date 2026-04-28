@@ -23,12 +23,16 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Z0HGLBD1WS');
-  function trackLead(service) {
-    gtag('event', 'generate_lead', {
+  function trackLead(service, email) {
+    var params = {
       'service_name': service,
       'event_category': 'lead_generation',
       'event_label': service
-    });
+    };
+    if (email) {
+      params['email'] = email;
+    }
+    gtag('event', 'generate_lead', params);
   }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2616,7 +2620,7 @@
         <h2 class="section-heading">Find out where you stand — free.</h2>
         <p class="section-sub">Submit your URL and we'll run your AI &amp; Web Intelligence score. Delivered to your inbox within 24 hours. No pitch sequence.</p>
 
-        <form class="score-form" action="https://formspree.io/f/xbdqbnla" method="POST">
+        <form class="score-form" action="https://formspree.io/f/xbdqbnla" method="POST" onsubmit="trackLead('free_score_form', document.getElementById('sf-email').value)">
           <div class="field-full">
             <label for="sf-url">Your website URL</label>
             <input type="text" id="sf-url" name="website_url" placeholder="www.yoursite.co.uk" required>
@@ -2634,7 +2638,7 @@
             <input type="text" id="sf-competitor" name="main_competitor" placeholder="e.g. competitor.co.uk">
           </div>
           <div class="field-full" style="margin-top:0.5rem;">
-            <button type="submit" class="btn btn-amber btn-full" onclick="trackLead('free_score_form')">Get my free score <span class="arrow">&rarr;</span></button>
+            <button type="submit" class="btn btn-amber btn-full">Get my free score <span class="arrow">&rarr;</span></button>
           </div>
         </form>
         <p class="score-form-note">We run a real audit — not an automated checker. You'll receive a scored breakdown across Search, Design, Brand, Compete, and Growth.</p>
