@@ -51,15 +51,15 @@
       Measured across three components: organic visibility gap on non-branded category queries, conversion leakage from retail redirects (all purchasing routed to Amazon/Waitrose/Ocado), and AI Share-of-Voice erosion as competitors accumulate category citations. At FTSE scale, the real risk is brand authority compounding over time — not just this year's revenue. Full model in Search → Business Impact tab.  The £18k–£45k/year estimate covers measurable organic traffic and citation gaps. It is a conservative floor — the larger risk at FTSE scale is category authority erosion as Q Mixers, Double Dutch, and lifestyle press surrogates accumulate AI citations that compound quarterly. The full methodology is in the Search → Business Impact tab.
 
     EXEC SUMMARY PROSE (2-4 sentences each):
-      Fever-Tree owns the premium mixer category in retail and on-trade — FTSE 250, approximately 30% UK market share, the brand bartenders ask for by name. But on the open web, that category leadership disappears the moment the search query stops including 'Fever-Tree'. Zero schema markup across the entire site, no category landing pages targeting non-branded queries, and all retail traffic redirected out to Amazon, Waitrose, and Ocado — when a curious gin drinker asks AI 'what's the best tonic water?', Fever-Tree is invisible. Estimated annual revenue foregone from missing organic search rankings on non-branded category queries and zero AI Share-of-Voice across 4 of 6 tested searches. The larger risk at FTSE scale is brand authority compounding: every quarter Fever-Tree is absent from 'best tonic' and 'premium mixer' AI answers, Q Mixers and Double Dutch accrue category authority that becomes progressively harder to reclaim. Deploying Product + Organization + FAQPage schema across the full mixer range is a one-to-two-week engineering sprint. It immediately makes Fever-Tree eligible for AI citation on every non-branded category query — the single highest-return technical action in this report. Currently, zero structured data exists across the entire site.
-      The 2004 founder story — Tim Warrillow and Charles Rolls sourcing original quinine from the Democratic Republic of the Congo to reinvent proper tonic water — is the most compelling origin in the category. No competitor can claim it. It is almost entirely absent from the homepage and sub-page hero copy. Surface it prominently and it compounds E-E-A-T authority for years. <li><strong>Deploy Product + Organization + FAQPage schema sitewide</strong> — currently zero structured data; single highest-leverage technical fix</li>
+      Fever-Tree owns the premium mixer category in retail and on-trade — FTSE 250, approximately 30% UK tonic water value share, the brand bartenders ask for by name. But on the open web, that category leadership disappears the moment the search query stops including 'Fever-Tree'. Zero schema markup across the entire site, no category landing pages targeting non-branded queries, and all retail traffic redirected out to Amazon, Waitrose, and Ocado — when a curious gin drinker asks AI 'what's the best tonic water?', Fever-Tree is invisible. Estimated annual revenue foregone from missing organic search rankings on non-branded category queries and zero AI Share-of-Voice across 4 of 6 tested searches. The larger risk at FTSE scale is brand authority compounding: every quarter Fever-Tree is absent from 'best tonic' and 'premium mixer' AI answers, Q Mixers and Double Dutch accrue category authority that becomes progressively harder to reclaim. Deploying Product + Organization + FAQPage schema across the full mixer range is a one-to-two-week engineering sprint. It immediately makes Fever-Tree eligible for AI citation on every non-branded category query — the single highest-return technical action in this report. Currently, zero structured data exists across the entire site.
+      The 2004 founder story — Tim Warrillow and Charles Rolls sourcing original quinine from the Democratic Republic of Congo to reinvent proper tonic water — is the most compelling origin in the category. No competitor can claim it. It is almost entirely absent from the homepage and sub-page hero copy. Surface it prominently and it compounds E-E-A-T authority for years. <li><strong>Deploy Product + Organization + FAQPage schema sitewide</strong> — currently zero structured data; single highest-leverage technical fix</li>
         <li><strong>Build category landing pages for non-branded queries</strong> — "best premium tonic water", "best ginger beer", "premium cocktail mixers" — no page targets these</li>
-        <li><strong>Activate citation placements with Craft Gin Club, The Gin Is In, Olive Magazine</strong> — they cover the category but Fever-Tree is Mentioned not Active</li>
-        <li><strong>Restructure trade page for Bake-Off readiness</strong> — make pricing tier comparisons machine-readable so AI can compare Fever-Tree head-to-head with Q Mixers and Double Dutch</li>
+        <li><strong>Activate citation placements with Craft Gin Club, The Gin Is In, Olive Magazine</strong> — they cover the category but Fever-Tree appears only as a passing mention — not actively recommended by AI in any category query</li>
+        <li><strong>Restructure the trade page so AI can compare Fever-Tree against Q Mixers and Double Dutch</strong> — make pricing tier comparisons machine-readable so AI can compare Fever-Tree head-to-head with Q Mixers and Double Dutch</li>
         <li><strong>Surface the founder story (Tim Warrillow / Charles Rolls / DRC quinine 2004)</strong> above the fold — currently buried; this is the unfair advantage and the number one E-E-A-T signal</li>
 
     DASHBOARD NARRATIVE:
-      Category leader in retail, invisible in AI search — the gap between brand authority and digital citation is the defining risk Fever-Tree's product and brand are genuinely category-defining — FTSE 250, ~30% UK premium mixer market share, cited by Difford's Guide and Tasting Table. But zero schema markup, no category landing pages, and all commerce routed off-site mean that when AI answers 'what's the best tonic water?', Tasting Table and Craft Gin Club surface instead of the brand that invented the category. The fix is technical and fast.
+      Category leader in retail, invisible in AI search — the gap between brand authority and digital citation is the defining risk Fever-Tree's product and brand are genuinely category-defining — FTSE 250, ~30% UK tonic water value share, cited by Difford's Guide and Tasting Table. But zero schema markup, no category landing pages, and all commerce routed off-site mean that when AI answers 'what's the best tonic water?', Tasting Table and Craft Gin Club surface instead of the brand that invented the category. The fix is technical and fast.
       Add Product + Organization schema to the homepage and top 5 mixer pages — one sprint, permanent AI citation eligibility Schema is the single gating factor for AI citations on non-branded queries. Fever-Tree currently has zero. This is a developer task with no copywriting required.
 
     AI SEARCH:
@@ -769,6 +769,20 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .tab-nav{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0;overflow-x:auto;scrollbar-width:thin;flex-wrap:wrap}
 @media(max-width:768px){.findings-grid{grid-template-columns:1fr}.two-col-grid{grid-template-columns:1fr}}
 
+.nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;position:relative;z-index:110}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.wi-panel{position:fixed;top:64px;right:16px;width:320px;max-width:calc(100vw - 32px);max-height:calc(100vh - 80px);overflow-y:auto;background:rgba(14,14,18,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09);border-radius:6px;padding:18px 0 10px;z-index:99;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 0.18s ease,transform 0.18s ease}
+.wi-panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.wi-panel-group + .wi-panel-group{margin-top:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06)}
+.wi-panel-title{display:block;padding:0 22px 6px;font-family:sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.wi-panel a{display:block;padding:10px 22px;font-family:sans-serif;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.78);text-decoration:none;transition:color 0.15s,background 0.15s}
+.wi-panel a:hover,.wi-panel a:focus-visible{color:#fff;background:rgba(255,255,255,0.04);outline:none}
+body.wi-panel-locked{overflow:hidden}
+@media(max-width:700px){.wi-panel{right:12px;width:calc(100vw - 24px)}}
+.ft-demo-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;padding:7px 24px;background:rgba(10,10,15,0.94);border-top:1px solid rgba(255,255,255,0.07);font-size:11px;color:var(--text-muted);text-align:center;line-height:1.5;backdrop-filter:blur(6px)}
 </style>
 <script>
 const LOCK_STATE = { dashboard:false, search:false, design:false, brand:false, compete:false, growth:false };
@@ -854,6 +868,51 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 </script>
 </head>
 <body>
+<div class="ft-demo-bar">Independent portfolio audit &nbsp;·&nbsp; Not commissioned by, affiliated with, or endorsed by Fever-Tree Drinks PLC &nbsp;·&nbsp; Public-domain methodology identical to F&amp;T client work — commercial commentary on a publicly accessible web property &nbsp;·&nbsp; Scores are point-in-time observations and may change as the brand updates its site</div>
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Web Intelligence</span>
+    <a href="/web-intelligence/" role="menuitem">&larr; Back to Web Intelligence</a>
+    <a href="/web-intelligence/#pricing" role="menuitem">Pricing</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Industry Examples</span>
+    <a href="/web-intelligence/wedding-venues/" role="menuitem">Wedding Venues</a>
+    <a href="/web-intelligence/care-homes/" role="menuitem">Care Homes</a>
+    <a href="/web-intelligence/coaching/" role="menuitem">Coaching</a>
+    <a href="/web-intelligence/members-club/" role="menuitem">Members&rsquo; Clubs</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Sample Reports</span>
+    <a href="/web-intelligence/demo/" role="menuitem">Sample dashboards</a>
+    <a href="/web-intelligence/demo/fever-tree/" role="menuitem">Fever-Tree</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Big Brands &mdash; Live Audits</span>
+    <a href="/web-intelligence/big-brands/costco/" role="menuitem">Costco UK</a>
+    <a href="/web-intelligence/big-brands/taylor-swift/" role="menuitem">Taylor Swift</a>
+    <a href="/web-intelligence/big-brands/barclays/" role="menuitem">Barclays</a>
+    <a href="/web-intelligence/big-brands/samsung/" role="menuitem">Samsung UK</a>
+    <a href="/web-intelligence/big-brands/nike/" role="menuitem">Nike</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Briefings</span>
+    <a href="/web-intelligence/the-shift/" role="menuitem">The Shift</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">More from F&amp;T</span>
+    <a href="/strategic-intelligence/" role="menuitem">Strategic Intelligence</a>
+    <a href="/culture-intelligence/" role="menuitem">Culture Intelligence</a>
+    <a href="mailto:hello@frictionandtoil.com" role="menuitem">Contact</a>
+  </div>
+</div>
+<div style="height:56px"></div>
 
 <div class="global-header"><div class="container">
   <div class="header-badge"><span class="dot dot-multi"></span> AI &amp; Web Intelligence Dashboard</div>
@@ -908,7 +967,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
     </div>
     <div class="exec-section">
       <h2>Bottom Line</h2>
-      <p>Fever-Tree owns the premium mixer category in retail and on-trade — FTSE 250, approximately 30% UK market share, the brand bartenders ask for by name. But on the open web, that category leadership disappears the moment the search query stops including 'Fever-Tree'. Zero schema markup across the entire site, no category landing pages targeting non-branded queries, and all retail traffic redirected out to Amazon, Waitrose, and Ocado — when a curious gin drinker asks AI 'what's the best tonic water?', Fever-Tree is invisible.</p>
+      <p>Fever-Tree owns the premium mixer category in retail and on-trade — FTSE 250, approximately 30% UK tonic water value share, the brand bartenders ask for by name. But on the open web, that category leadership disappears the moment the search query stops including 'Fever-Tree'. Zero schema markup across the entire site, no category landing pages targeting non-branded queries, and all retail traffic redirected out to Amazon, Waitrose, and Ocado — when a curious gin drinker asks AI 'what's the best tonic water?', Fever-Tree is invisible.</p>
     </div>
     <div class="exec-section">
       <h2>Business Impact</h2>
@@ -921,15 +980,15 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
     </div>
     <div class="exec-section">
       <h2>Unfair Advantage</h2>
-      <p>The 2004 founder story — Tim Warrillow and Charles Rolls sourcing original quinine from the Democratic Republic of the Congo to reinvent proper tonic water — is the most compelling origin in the category. No competitor can claim it. It is almost entirely absent from the homepage and sub-page hero copy. Surface it prominently and it compounds E-E-A-T authority for years.</p>
+      <p>The 2004 founder story — Tim Warrillow and Charles Rolls sourcing original quinine from the Democratic Republic of Congo to reinvent proper tonic water — is the most compelling origin in the category. No competitor can claim it. It is almost entirely absent from the homepage and sub-page hero copy. Surface it prominently and it compounds E-E-A-T authority for years.</p>
     </div>
     <div class="exec-section">
       <h2>Top 5 Actions</h2>
       <ul>
         <li><strong>Deploy Product + Organization + FAQPage schema sitewide</strong> — currently zero structured data; single highest-leverage technical fix</li>
         <li><strong>Build category landing pages for non-branded queries</strong> — "best premium tonic water", "best ginger beer", "premium cocktail mixers" — no page targets these</li>
-        <li><strong>Activate citation placements with Craft Gin Club, The Gin Is In, Olive Magazine</strong> — they cover the category but Fever-Tree is Mentioned not Active</li>
-        <li><strong>Restructure trade page for Bake-Off readiness</strong> — make pricing tier comparisons machine-readable so AI can compare Fever-Tree head-to-head with Q Mixers and Double Dutch</li>
+        <li><strong>Activate citation placements with Craft Gin Club, The Gin Is In, Olive Magazine</strong> — they cover the category but Fever-Tree appears only as a passing mention — not actively recommended by AI in any category query</li>
+        <li><strong>Restructure the trade page so AI can compare Fever-Tree against Q Mixers and Double Dutch</strong> — make pricing tier comparisons machine-readable so AI can compare Fever-Tree head-to-head with Q Mixers and Double Dutch</li>
         <li><strong>Surface the founder story (Tim Warrillow / Charles Rolls / DRC quinine 2004)</strong> above the fold — currently buried; this is the unfair advantage and the number one E-E-A-T signal</li>
       </ul>
     </div>
@@ -1179,7 +1238,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 
   <div class="summary-strip">
     <div class="headline">Category leader in retail, invisible in AI search — the gap between brand authority and digital citation is the defining risk</div>
-    <div class="subline">Fever-Tree's product and brand are genuinely category-defining — FTSE 250, ~30% UK premium mixer market share, cited by Difford's Guide and Tasting Table. But zero schema markup, no category landing pages, and all commerce routed off-site mean that when AI answers 'what's the best tonic water?', Tasting Table and Craft Gin Club surface instead of the brand that invented the category. The fix is technical and fast.</div>
+    <div class="subline">Fever-Tree's product and brand are genuinely category-defining — FTSE 250, ~30% UK tonic water value share, cited by Difford's Guide and Tasting Table. But zero schema markup, no category landing pages, and all commerce routed off-site mean that when AI answers 'what's the best tonic water?', Tasting Table and Craft Gin Club surface instead of the brand that invented the category. The fix is technical and fast.</div>
   </div>
 
   <!-- Revenue Impact card -->
@@ -1313,7 +1372,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
         <ul>
           <li>Activate PR placement campaign on Craft Gin Club, Olive Magazine, The Gin Is In</li>
           <li>Full content pillar (category education: how tonic is made, quinine sourcing, cocktail guides)</li>
-          <li>Bake-Off readiness on trade page — machine-readable comparison against Q Mixers, Double Dutch</li>
+          <li>AI-readable comparison on trade page — machine-readable head-to-head against Q Mixers and Double Dutch</li>
         </ul>
       </div>
     </div>
@@ -2788,7 +2847,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;background:#1a1a2e;border-radius:6px;padding:12px;border:1px solid #2a2a3e">
           <span style="font-size:18px;font-weight:700;color:#c9a96e;min-width:28px">4</span>
-          <div><p style="margin:0;font-size:13px;font-weight:600;color:#e8e8f0">Range Breadth — 40+ SKUs</p><p style="margin:4px 0 0;font-size:12px;color:#aaa">No single-SKU competitor matches Fever-Tree's range depth. This is a practical differentiator for on-trade buyers and supermarket shoppers. Making range breadth visually prominent and schema-marked converts it into a structured AI signal.</p></div>
+          <div><p style="margin:0;font-size:13px;font-weight:600;color:#e8e8f0">Range Breadth — 20+ SKUs</p><p style="margin:4px 0 0;font-size:12px;color:#aaa">No single-SKU competitor matches Fever-Tree's range depth. This is a practical differentiator for on-trade buyers and supermarket shoppers. Making range breadth visually prominent and schema-marked converts it into a structured AI signal.</p></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;background:#1a1a2e;border-radius:6px;padding:12px;border:1px solid #2a2a3e">
           <span style="font-size:18px;font-weight:700;color:#c9a96e;min-width:28px">5</span>
@@ -2867,11 +2926,11 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
   <div class="prompt-grid">
     <div class="prompt-block">
       <div class="prompt-label">Brand Voice Guide</div>
-      <div class="prompt-content">Write a brand voice guide for Fever-Tree (fever-tree.com) — the premium cocktail mixer brand founded in 2004 by Tim Warrillow and Charles Rolls. Key facts: quinine from the DRC (highest botanical purity source), ginger from Ivory Coast and Nigeria, cloves from Madagascar, category creator in premium mixers, on-trade standard in UK cocktail bars. Voice reference: Difford's Guide editorial — authoritative, ingredient-led, specific, never generic or lifestyle-vague. Include: (1) 5-word voice description, (2) do/don't word list (20 words each), (3) 3 example sentence pairs (before/after rewrite), (4) single editorial test question to apply to any new copy.</div>
+      <div class="prompt-content">Write a brand voice guide for Fever-Tree (fever-tree.com) — the premium cocktail mixer brand founded in 2004 by Tim Warrillow and Charles Rolls. Key facts: quinine from the DRC (highest botanical purity source), ginger from Ivory Coast, cloves from Madagascar, category creator in premium mixers, on-trade standard in UK cocktail bars. Voice reference: Difford's Guide editorial — authoritative, ingredient-led, specific, never generic or lifestyle-vague. Include: (1) 5-word voice description, (2) do/don't word list (20 words each), (3) 3 example sentence pairs (before/after rewrite), (4) single editorial test question to apply to any new copy.</div>
     </div>
     <div class="prompt-block">
       <div class="prompt-label">Positioning Statement Variants</div>
-      <div class="prompt-content">Write 5 positioning statement variants for Fever-Tree. Each must be: under 30 words, include at least one specific verifiable fact (not just adjectives), be unchallengeable by any competitor, and pass the "could a bartender cite this to a customer?" test. Key facts to draw from: founded 2004 by Tim Warrillow and Charles Rolls, quinine from DRC, ginger from Ivory Coast, cloves from Madagascar, category creator, 40+ SKUs, on-trade market leader UK. Return each variant with a 1-sentence rationale.</div>
+      <div class="prompt-content">Write 5 positioning statement variants for Fever-Tree. Each must be: under 30 words, include at least one specific verifiable fact (not just adjectives), be unchallengeable by any competitor, and pass the "could a bartender cite this to a customer?" test. Key facts to draw from: founded 2004 by Tim Warrillow and Charles Rolls, quinine from DRC, ginger from Ivory Coast, cloves from Madagascar, category creator, 20+ SKUs, on-trade market leader UK. Return each variant with a 1-sentence rationale.</div>
     </div>
     <div class="prompt-block">
       <div class="prompt-label">Founder Profile Page Copy</div>
@@ -3237,7 +3296,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
     </div>
     <div class="prompt-block">
       <div class="prompt-label">Provenance Hub Page Copy</div>
-      <div class="prompt-content">Write a 600-word page for fever-tree.com/provenance/ targeting ingredient provenance queries ("where does quinine come from", "best ginger beer ingredients", "natural tonic water ingredients"). Fever-Tree's sourcing story: quinine from the Democratic Republic of Congo, ginger from the Ivory Coast and Nigeria, cloves from Madagascar, spring water from natural sources. No competitor has an equivalent provenance page. Structure: H1 with primary keyword, 3 sections covering each hero ingredient with sourcing region, quality selection process, and why it matters for flavour. Meta title (60 chars) and description (155 chars) required. Tone: authoritative, editorial, premium.</div>
+      <div class="prompt-content">Write a 600-word page for fever-tree.com/provenance/ targeting ingredient provenance queries ("where does quinine come from", "best ginger beer ingredients", "natural tonic water ingredients"). Fever-Tree's sourcing story: quinine from the Democratic Republic of Congo, ginger from the Ivory Coast, cloves from Madagascar, spring water from natural sources. No competitor has an equivalent provenance page. Structure: H1 with primary keyword, 3 sections covering each hero ingredient with sourcing region, quality selection process, and why it matters for flavour. Meta title (60 chars) and description (155 chars) required. Tone: authoritative, editorial, premium.</div>
     </div>
     <div class="prompt-block">
       <div class="prompt-label">Why Fever-Tree Comparison Page Copy</div>
@@ -3633,5 +3692,26 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 
 </footer>
 
+<script>
+(function(){
+  var btn = document.getElementById('wiMenuBtn');
+  var panel = document.getElementById('wiPanel');
+  if (!btn || !panel) return;
+  function setOpen(open){
+    panel.classList.toggle('open', open);
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('wi-panel-locked', open);
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); setOpen(!panel.classList.contains('open')); });
+  document.addEventListener('click', function(e){
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    setOpen(false);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) { setOpen(false); btn.focus(); } });
+})();
+</script>
 </body>
 </html>

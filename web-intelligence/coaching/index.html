@@ -524,9 +524,66 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .ro-5 .ro-num{background:rgba(6,182,212,.12);border-color:var(--growth-border);color:#67e8f9}
 .ro-6 .ro-num{background:rgba(255,255,255,.06);border-color:var(--border);color:var(--text-muted)}
 @media(max-width:768px){.guide-steps{grid-template-columns:1fr}.score-explainer{grid-template-columns:repeat(2,1fr)}}
+.nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;position:relative;z-index:110}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.wi-panel{position:fixed;top:64px;right:16px;width:320px;max-width:calc(100vw - 32px);max-height:calc(100vh - 80px);overflow-y:auto;background:rgba(14,14,18,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09);border-radius:6px;padding:18px 0 10px;z-index:99;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 0.18s ease,transform 0.18s ease}
+.wi-panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.wi-panel-group + .wi-panel-group{margin-top:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06)}
+.wi-panel-title{display:block;padding:0 22px 6px;font-family:sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.wi-panel a{display:block;padding:10px 22px;font-family:sans-serif;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.78);text-decoration:none;transition:color 0.15s,background 0.15s}
+.wi-panel a:hover,.wi-panel a:focus-visible{color:#fff;background:rgba(255,255,255,0.04);outline:none}
+body.wi-panel-locked{overflow:hidden}
+@media(max-width:700px){.wi-panel{right:12px;width:calc(100vw - 24px)}}
 </style>
 </head>
 <body>
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Web Intelligence</span>
+    <a href="/web-intelligence/" role="menuitem">&larr; Back to Web Intelligence</a>
+    <a href="/web-intelligence/#pricing" role="menuitem">Pricing</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Industry Examples</span>
+    <a href="/web-intelligence/wedding-venues/" role="menuitem">Wedding Venues</a>
+    <a href="/web-intelligence/care-homes/" role="menuitem">Care Homes</a>
+    <a href="/web-intelligence/coaching/" role="menuitem">Coaching</a>
+    <a href="/web-intelligence/members-club/" role="menuitem">Members&rsquo; Clubs</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Sample Reports</span>
+    <a href="/web-intelligence/demo/" role="menuitem">Sample dashboards</a>
+    <a href="/web-intelligence/demo/fever-tree/" role="menuitem">Fever-Tree</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Big Brands &mdash; Live Audits</span>
+    <a href="/web-intelligence/big-brands/costco/" role="menuitem">Costco UK</a>
+    <a href="/web-intelligence/big-brands/taylor-swift/" role="menuitem">Taylor Swift</a>
+    <a href="/web-intelligence/big-brands/barclays/" role="menuitem">Barclays</a>
+    <a href="/web-intelligence/big-brands/samsung/" role="menuitem">Samsung UK</a>
+    <a href="/web-intelligence/big-brands/nike/" role="menuitem">Nike</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Briefings</span>
+    <a href="/web-intelligence/the-shift/" role="menuitem">The Shift</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">More from F&amp;T</span>
+    <a href="/strategic-intelligence/" role="menuitem">Strategic Intelligence</a>
+    <a href="/culture-intelligence/" role="menuitem">Culture Intelligence</a>
+    <a href="mailto:hello@frictionandtoil.com" role="menuitem">Contact</a>
+  </div>
+</div>
+<div style="height:56px"></div>
 
 <!-- ═══ GLOBAL HEADER ═══ -->
 <div class="global-header">
@@ -900,7 +957,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <h3>Revenue Currently Invisible to Your Business</h3>
       <p>Conservative modelling based on 500 monthly organic visits post-migration, a 2% discovery call conversion rate, and 30% close rate at £8,000 average engagement value. This is revenue from organic search alone — LinkedIn, referrals, and email are additive.</p>
       <div class="revenue-caveat">Range reflects assumptions about traffic ramp-up speed and conversion rates. Actual results depend on content investment and sales process.</div>
-      <button onclick="document.getElementById('exec-summary').classList.add('active')" style="margin-top:12px;padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(99,102,241,0.1);color:#a5b4fc;border:1px solid rgba(99,102,241,0.25);cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">Download Executive Summary →</button>
+      <button style="margin-top:12px;padding:8px 20px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(99,102,241,0.06);color:rgba(165,180,252,0.45);border:1px solid rgba(99,102,241,0.15);cursor:default" title="Available in your delivered report">Download Executive Summary →</button>
     </div>
   </div>
 
@@ -1743,7 +1800,7 @@ AOS.init({ once: true, offset: 80 });</div></div></div></div></div></div>
       <ul>
         <li><strong>Write meta descriptions for all 4 pages</strong> — 30 min, highest CTR impact (Search)</li>
         <li><strong>Replace magenta accent with deep navy / charcoal</strong> — 1 hour, single CSS change (Design)</li>
-        <li><strong>Add a licensed proprietary methodology methodology section to every service page</strong> — 2 hours, with link to tricres.com (Brand)</li>
+        <li><strong>Add a licensed proprietary methodology section to every service page</strong> — 2 hours, with link to tricres.com (Brand)</li>
       </ul>
     </div>
 
@@ -1754,7 +1811,7 @@ AOS.init({ once: true, offset: 80 });</div></div></div></div></div></div>
 
     <div class="exec-section">
       <h2>Unfair Advantage</h2>
-      <p>The a licensed proprietary methodology methodology licence is a genuine competitive moat — no identified competitor holds it. Combined with 20+ years of MD-level leadership experience, this positions the business as a credentialed specialist, not another generic coach. This asset is currently underexploited across every page of the site.</p>
+      <p>A licensed proprietary methodology licence is a genuine competitive moat — no identified competitor holds it. Combined with 20+ years of MD-level leadership experience, this positions the business as a credentialed specialist, not another generic coach. This asset is currently underexploited across every page of the site.</p>
     </div>
 
     <div class="exec-actions">
@@ -1910,6 +1967,27 @@ window.addEventListener('load', () => {
     }, 300);
   });
 });
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('wiMenuBtn');
+  var panel = document.getElementById('wiPanel');
+  if (!btn || !panel) return;
+  function setOpen(open){
+    panel.classList.toggle('open', open);
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('wi-panel-locked', open);
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); setOpen(!panel.classList.contains('open')); });
+  document.addEventListener('click', function(e){
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    setOpen(false);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) { setOpen(false); btn.focus(); } });
+})();
 </script>
 </body>
 </html>

@@ -40,24 +40,19 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 /* ============ Nav ============ */
 .wi-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)}
 .nav-brand{font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;margin-right:48px;white-space:nowrap}
-.nav-links-desktop{display:flex;gap:36px;list-style:none}
-.nav-link{font-family:sans-serif;font-size:11px;font-weight:500;letter-spacing:0.15em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
-.nav-link:hover,.nav-link.active{color:#fff}
-.nav-dropdown-wrap{position:relative;display:flex;align-items:center}
-.nav-dropdown-wrap:hover .nav-dropdown,.nav-dropdown-wrap:focus-within .nav-dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
-.nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(12,12,18,0.97);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px;min-width:180px;opacity:0;pointer-events:none;transition:all 0.2s;backdrop-filter:blur(12px)}
-.nav-dropdown a{display:block;padding:8px 12px;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;border-radius:6px;transition:all 0.15s;letter-spacing:0.03em}
-.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,0.06)}
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
+.nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
 .nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.wi-mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.08);padding:16px 24px;flex-direction:column;gap:0;z-index:99}
-.wi-mobile-menu.open{display:flex}
-.wi-mobile-menu a{font-family:sans-serif;font-size:13px;font-weight:500;letter-spacing:0.12em;color:rgba(255,255,255,0.7);text-decoration:none;text-transform:uppercase;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s}
-.wi-mobile-menu a:last-child{border-bottom:none}
-.wi-mobile-menu a:hover{color:#fff}
+.wi-panel{position:fixed;top:64px;right:16px;width:320px;max-width:calc(100vw - 32px);max-height:calc(100vh - 80px);overflow-y:auto;background:rgba(14,14,18,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09);border-radius:6px;padding:18px 0 10px;z-index:99;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 0.18s ease,transform 0.18s ease}
+.wi-panel.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.wi-panel-group + .wi-panel-group{margin-top:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06)}
+.wi-panel-title{display:block;padding:0 22px 6px;font-family:sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.wi-panel a{display:block;padding:10px 22px;font-family:sans-serif;font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.78);text-decoration:none;transition:color 0.15s,background 0.15s}
+.wi-panel a:hover,.wi-panel a:focus-visible{color:#fff;background:rgba(255,255,255,0.04);outline:none}
+body.wi-panel-locked{overflow:hidden}
+@media(max-width:700px){.wi-panel{right:12px;width:calc(100vw - 24px)}}
 
 /* ============ Layout ============ */
 .container{max-width:1160px;margin:0 auto;padding:0 24px}
@@ -81,8 +76,14 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 /* ============ Cards grid ============ */
 .cards-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-bottom:80px}
 .cards-grid .sample-card{grid-column:span 2}
-.cards-grid .sample-card:nth-child(4){grid-column:2/span 2}
-.cards-grid .sample-card:nth-child(5){grid-column:4/span 2}
+.cards-grid .sample-card:nth-child(1){grid-column:1/-1}
+.cards-grid .sample-card:nth-child(5){grid-column:2/span 2}
+.cards-grid .sample-card:nth-child(6){grid-column:4/span 2}
+.card-fevertree::before{background:linear-gradient(90deg,var(--design),var(--growth))}
+.card-fevertree{border-color:rgba(201,150,58,0.25)}
+.card-fevertree:hover{border-color:rgba(201,150,58,0.45)}
+.featured-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(201,150,58,0.12);border:1px solid rgba(201,150,58,0.3);border-radius:100px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--design);margin-bottom:14px;align-self:flex-start}
+.demo-disclaimer-note{font-size:11px;color:var(--text-muted);text-align:center;margin:-32px 0 40px;line-height:1.6}
 .sample-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px 24px;display:flex;flex-direction:column;gap:0;transition:border-color .25s,background .25s;text-decoration:none;color:inherit;position:relative;overflow:hidden}
 .sample-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
 .card-wedding::before{background:linear-gradient(90deg,var(--brand),var(--design))}
@@ -147,8 +148,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 @media(max-width:1100px){
   .cards-grid{grid-template-columns:repeat(2,1fr)}
   .cards-grid .sample-card{grid-column:auto}
-  .cards-grid .sample-card:nth-child(4){grid-column:auto}
+  .cards-grid .sample-card:nth-child(1){grid-column:auto}
   .cards-grid .sample-card:nth-child(5){grid-column:auto}
+  .cards-grid .sample-card:nth-child(6){grid-column:auto}
 }
 @media(max-width:900px){
   .cards-grid{grid-template-columns:1fr}
@@ -159,8 +161,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   .demo-hero{padding:48px 0 32px}
   .demo-hero h1{font-size:28px}
   .demo-hero .sub{font-size:15px}
-  .nav-links-desktop{display:none}
-  .nav-hamburger{display:flex}
   .footer-row{grid-template-columns:1fr;text-align:center}
   .footer-right{text-align:center}
   .score-legend{gap:12px;flex-wrap:wrap}
@@ -171,23 +171,47 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 <!-- ============ NAV ============ -->
 <nav class="wi-nav">
-  <a href="/" class="nav-brand">Friction &amp; Toil</a>
-  <div class="nav-links-desktop">
-    <a href="/strategic-intelligence/" class="nav-link">Strategic Intelligence</a>
-    <a href="/web-intelligence/" class="nav-link active">Web Intelligence</a>
-    <a href="/experiments/" class="nav-link">Experiments</a>
-    <a href="mailto:hello@frictionandtoil.com" class="nav-link">Contact</a>
-  </div>
-  <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('wiMobileMenu').classList.toggle('open');this.classList.toggle('open')">
+  <a href="/" class="nav-brand">FRICTION &amp; TOIL</a>
+  <button class="nav-hamburger" id="wiMenuBtn" style="display:flex" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="wi-mobile-menu" id="wiMobileMenu">
-  <a href="/strategic-intelligence/">Strategic Intelligence</a>
-  <a href="/web-intelligence/">Web Intelligence</a>
-  <a href="/web-intelligence/demo/">Sample Reports</a>
-  <a href="/experiments/">Experiments</a>
-  <a href="mailto:hello@frictionandtoil.com">Contact</a>
+<div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Web Intelligence</span>
+    <a href="/web-intelligence/" role="menuitem">&larr; Back to Web Intelligence</a>
+    <a href="/web-intelligence/#pricing" role="menuitem">Pricing</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Industry Examples</span>
+    <a href="/web-intelligence/wedding-venues/" role="menuitem">Wedding Venues</a>
+    <a href="/web-intelligence/care-homes/" role="menuitem">Care Homes</a>
+    <a href="/web-intelligence/coaching/" role="menuitem">Coaching</a>
+    <a href="/web-intelligence/members-club/" role="menuitem">Members&rsquo; Clubs</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Sample Reports</span>
+    <a href="/web-intelligence/demo/" role="menuitem">Sample dashboards</a>
+    <a href="/web-intelligence/demo/fever-tree/" role="menuitem">Fever-Tree</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Big Brands &mdash; Live Audits</span>
+    <a href="/web-intelligence/big-brands/costco/" role="menuitem">Costco UK</a>
+    <a href="/web-intelligence/big-brands/taylor-swift/" role="menuitem">Taylor Swift</a>
+    <a href="/web-intelligence/big-brands/barclays/" role="menuitem">Barclays</a>
+    <a href="/web-intelligence/big-brands/samsung/" role="menuitem">Samsung UK</a>
+    <a href="/web-intelligence/big-brands/nike/" role="menuitem">Nike</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Briefings</span>
+    <a href="/web-intelligence/the-shift/" role="menuitem">The Shift</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">More from F&amp;T</span>
+    <a href="/strategic-intelligence/" role="menuitem">Strategic Intelligence</a>
+    <a href="/culture-intelligence/" role="menuitem">Culture Intelligence</a>
+    <a href="mailto:hello@frictionandtoil.com" role="menuitem">Contact</a>
+  </div>
 </div>
 <div class="spacer-nav"></div>
 
@@ -199,7 +223,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       Sample Reports
     </div>
     <h1>Web Intelligence — in action</h1>
-    <p class="sub">Five anonymised reports across different sectors. Real findings, real scores. Same interactive format you receive on delivery.</p>
+    <p class="sub">One named-brand showcase plus five anonymised sector reports. Real findings, real scores. Same interactive format you receive on delivery.</p>
     <p class="note">All reports delivered as a hosted HTML dashboard · No login required · View on any device</p>
     <div class="score-legend">
       <span><span class="ldot ldot-r"></span>Critical (0–39)</span>
@@ -207,6 +231,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <span><span class="ldot ldot-y"></span>Good (60–79)</span>
       <span><span class="ldot ldot-g"></span>Excellent (80+)</span>
     </div>
+    <p class="demo-disclaimer-note">Independent portfolio audits. Not commissioned by, affiliated with, or endorsed by any of the brands listed. Public-domain methodology identical to F&amp;T client work — commercial commentary on publicly accessible web properties. Scores are point-in-time observations and may change as each brand updates its site.</p>
   </div>
 </section>
 
@@ -214,6 +239,40 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section style="padding-bottom:40px">
   <div class="container">
     <div class="cards-grid">
+
+      <!-- ── FEVER-TREE SHOWCASE ── -->
+      <div class="sample-card card-fevertree">
+        <div class="featured-badge">Named-Brand Showcase</div>
+        <div class="card-header">
+          <div class="card-meta">
+            <div class="card-sector">Food &amp; Drink · FTSE 250</div>
+            <div class="card-title">Fever-Tree Drinks PLC</div>
+            <div class="card-descriptor">Premium mixer category leader · ~30% UK tonic water value share · AIM: FEVR</div>
+          </div>
+          <div class="composite-badge">
+            <div class="composite-num" style="color:#eab308">68</div>
+            <div class="composite-label">Composite</div>
+          </div>
+        </div>
+        <div class="card-diagnostic">
+          Category leader in retail and on-trade — yet invisible in AI search. Zero schema markup, no category landing pages, and all commerce routed off-site means Q Mixers and Double Dutch answer "what's the best tonic?" while Fever-Tree is absent from the AI layer it should own.
+        </div>
+        <div class="dim-scores">
+          <div class="dim-chip"><span class="chip-label">Search</span><span class="chip-val s">50</span><span class="chip-dot" style="background:#f97316"></span></div>
+          <div class="dim-chip"><span class="chip-label">Design</span><span class="chip-val d">70</span><span class="chip-dot" style="background:#eab308"></span></div>
+          <div class="dim-chip"><span class="chip-label">Brand</span><span class="chip-val b">85</span><span class="chip-dot" style="background:#22c55e"></span></div>
+          <div class="dim-chip"><span class="chip-label">Compete</span><span class="chip-val c">50</span><span class="chip-dot" style="background:#f97316"></span></div>
+          <div class="dim-chip"><span class="chip-label">Growth</span><span class="chip-val g">85</span><span class="chip-dot" style="background:#22c55e"></span></div>
+        </div>
+        <div class="coi-strip">
+          <span class="coi-label">Opportunity identified</span>
+          <span class="coi-value">£18k – £45k / yr</span>
+        </div>
+        <a class="card-cta" href="./fever-tree/">
+          Open the full report
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
 
       <!-- ── WEDDING VENUE ── -->
       <div class="sample-card card-wedding">
@@ -510,13 +569,25 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </footer>
 
 <script>
-// Close mobile menu on nav link click
-document.querySelectorAll('.wi-mobile-menu a').forEach(function(a){
-  a.addEventListener('click',function(){
-    document.getElementById('wiMobileMenu').classList.remove('open');
-    document.querySelector('.nav-hamburger').classList.remove('open');
+(function(){
+  var btn = document.getElementById('wiMenuBtn');
+  var panel = document.getElementById('wiPanel');
+  if (!btn || !panel) return;
+  function setOpen(open){
+    panel.classList.toggle('open', open);
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('wi-panel-locked', open);
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); setOpen(!panel.classList.contains('open')); });
+  document.addEventListener('click', function(e){
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    setOpen(false);
   });
-});
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && panel.classList.contains('open')) { setOpen(false); btn.focus(); } });
+})();
 </script>
 </body>
 </html>
