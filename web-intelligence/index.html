@@ -394,6 +394,15 @@
     gap: 1rem;
     align-items: center;
   }
+  .hero-outcome {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 1.25rem 0 1.75rem;
+  }
   .hero-guarantee {
     margin-top: 1.5rem;
     font-size: 0.84rem;
@@ -2205,12 +2214,12 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="badge-pill hero-badge reveal"><span class="tick"></span>AI &amp; Web Intelligence &middot; F&T Intelligence Systems</div>
-          <a href="/web-intelligence/the-shift/" class="reveal" style="display:inline-block;margin-top:0.875rem;font-family:var(--body);font-size:0.85rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.4);padding-bottom:2px;transition:color 0.2s, border-color 0.2s;" onmouseover="this.style.color='#e0b35a';this.style.borderColor='rgba(224,179,90,0.7)'" onmouseout="this.style.color='var(--design)';this.style.borderColor='rgba(201,150,58,0.4)'">Read our latest briefing &mdash; The Shift &rarr;</a>
+          <p class="hero-outcome reveal">Find out what your website is costing you.</p>
           <h1 class="reveal d1">Your customers are <em>asking AI</em><br>where to go next.</h1>
           <p class="hero-amber reveal d2">Most businesses aren&rsquo;t in the answer. That gap is costing you enquiries, reputation, and revenue &mdash; every day.</p>
           <p class="hero-sub reveal d3">A family searching for a care home asked Gemini for recommendations. A couple planning a celebration asked ChatGPT for private members&rsquo; clubs in London. A group booking a pub lunch asked Google&rsquo;s AI what it suggested. In each case, AI chose who to recommend. Most businesses had no idea the conversation was even happening &mdash; and weren&rsquo;t in it. The Web Intelligence Report tells you exactly where you stand and what it takes to change that.</p>
           <div class="hero-cta-row reveal d4">
-            <a href="#ai-search-report" class="btn btn-white" onclick="trackLead('web_intelligence_cta_hero')">See pricing options &rarr;</a>
+            <a href="#free-score" class="btn btn-white" onclick="trackLead('web_intelligence_cta_hero')">Get a free score &rarr;</a>
             <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" class="btn btn-ghost" onclick="trackLead('web_intelligence_book_call')" style="border:1px solid rgba(255,255,255,0.18);color:var(--text-secondary);padding:1rem 1.9rem;border-radius:6px;font-family:var(--body);font-size:0.95rem;font-weight:500;display:inline-flex;align-items:center;gap:0.5rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.18)';this.style.color='var(--text-secondary)'">Talk it through first. Book a free 15-min call</a>
           </div>
           <div class="hero-guarantee reveal d5">
@@ -2591,7 +2600,7 @@
   </section>
 
   <!-- ============ FREE SCORE FORM ============ -->
-  <section class="score-form-section">
+  <section class="score-form-section" id="free-score">
     <div class="container">
       <div class="score-form-wrap reveal">
         <span class="eyebrow">Free score</span>
