@@ -84,49 +84,39 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .diagnostic .headline{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:6px}
 .diagnostic .subline{font-size:14px;color:var(--text-secondary);line-height:1.6;max-width:600px;margin:0 auto}
 
-/* ── BLURRED PREVIEW ── */
-.preview-zone{position:relative;overflow:hidden;border-radius:var(--radius);min-height:420px}
-.preview-content{filter:blur(5px);-webkit-filter:blur(5px);pointer-events:none;user-select:none;padding:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+/* ── DEPTH SIGNAL PANELS ── */
+.depth-panels{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
+.depth-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;position:relative;overflow:hidden}
+.depth-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--search),var(--design))}
+.panel-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:16px}
+.panel-caption{font-size:13px;color:var(--text-muted);margin-top:14px;font-style:italic}
+.code-block{background:#0d0d14;border:1px solid rgba(99,102,241,0.2);border-radius:var(--radius-sm);padding:18px 20px;font-family:'JetBrains Mono','Fira Code','Courier New',monospace;font-size:12px;line-height:1.7;color:#a5b4fc;overflow-x:auto;white-space:pre}
+.copy-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px}
+.copy-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px}
+.copy-col-label.current{color:#f87171}.copy-col-label.recommended{color:#4ade80}
+.copy-col-text{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;line-height:1.3;color:var(--text)}
+.copy-col-text.recommended{color:#fff}
+.copy-col{padding:18px 20px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.025);border:1px solid var(--border)}
+.copy-col.recommended{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.2)}
+.action-card{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:var(--radius-sm);padding:20px 22px;margin-top:4px}
+.action-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.effort-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;white-space:nowrap}
+.action-desc{font-size:14px;color:var(--text-secondary);line-height:1.6}
 
-/* Fake tab bar */
-.fake-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);padding:0 20px}
-.fake-tab{padding:14px 20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:2px solid transparent;white-space:nowrap}
-.fake-tab.ft-active{color:#a5b4fc;border-bottom-color:#6366f1}
-
-/* Fake mode buttons */
-.fake-modes{display:flex;gap:6px;padding:16px 20px;flex-wrap:wrap}
-.fake-mode{padding:8px 16px;border-radius:100px;font-size:11px;font-weight:500;border:1px solid var(--border);color:var(--text-muted)}
-.fake-mode.fm-active{background:rgba(99,102,241,0.12);border-color:rgba(99,102,241,0.25);color:#a5b4fc}
-
-/* Fake content blocks */
-.fake-body{padding:20px}
-.fake-section-title{height:14px;width:180px;background:rgba(255,255,255,.05);border-radius:4px;margin-bottom:16px}
-.fake-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
-.fake-card{padding:16px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm)}
-.fake-card .fc-label{height:8px;width:60%;background:rgba(255,255,255,.04);border-radius:3px;margin-bottom:10px}
-.fake-card .fc-score{height:20px;width:40px;background:rgba(255,255,255,.04);border-radius:3px;margin-bottom:8px}
-.fake-card .fc-bar{height:3px;border-radius:2px;background:rgba(255,255,255,.03);overflow:hidden}
-.fake-card .fc-bar-fill{height:100%;border-radius:2px}
-.fake-text{margin-top:16px}
-.fake-text .fl{height:10px;background:rgba(255,255,255,.03);border-radius:4px;margin-bottom:8px}
-.fake-text .fl:nth-child(1){width:100%}.fake-text .fl:nth-child(2){width:88%}.fake-text .fl:nth-child(3){width:74%}
-.fake-text .fl:nth-child(4){width:92%}.fake-text .fl:nth-child(5){width:65%}.fake-text .fl:nth-child(6){width:80%}
-.fake-findings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.fake-finding{padding:16px;background:rgba(255,255,255,.015);border:1px solid var(--border);border-radius:var(--radius-sm);border-left:3px solid}
-.fake-finding:nth-child(1){border-left-color:#ef4444}.fake-finding:nth-child(2){border-left-color:#f97316}
-.fake-finding:nth-child(3){border-left-color:#eab308}.fake-finding:nth-child(4){border-left-color:#6366f1}
-.fake-finding .ff-title{height:10px;width:70%;background:rgba(255,255,255,.04);border-radius:3px;margin-bottom:8px}
-.fake-finding .ff-body{height:8px;width:90%;background:rgba(255,255,255,.025);border-radius:3px;margin-bottom:5px}
-.fake-finding .ff-body:last-child{width:60%}
-
-/* ── UNLOCK OVERLAY ── */
-.unlock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:10;background:linear-gradient(180deg,rgba(10,10,15,0.15) 0%,rgba(10,10,15,0.75) 40%,rgba(10,10,15,0.95) 80%);border-radius:var(--radius)}
-.unlock-overlay .lock-icon{font-size:36px;opacity:.7}
-.unlock-overlay h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;text-align:center;line-height:1.3;max-width:420px}
-.unlock-overlay p{font-size:14px;color:var(--text-secondary);max-width:420px;text-align:center;line-height:1.6}
-.unlock-cta{display:inline-block;padding:16px 40px;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:#1a1a2e;background:linear-gradient(135deg,#fbbf24,#c9963a);border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;margin-top:4px}
-.unlock-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,150,58,0.35)}
-.unlock-sub{font-size:12px;color:var(--text-muted);margin-top:4px;text-align:center;max-width:360px}
+/* ── THREE-WAY CTA BLOCK ── */
+.cta-block{background:linear-gradient(135deg,rgba(99,102,241,0.08) 0%,rgba(201,150,58,0.06) 100%);border:1px solid rgba(201,150,58,0.2);border-radius:var(--radius);padding:36px 40px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#fbbf24,#c9963a)}
+.cta-primary{display:block;width:100%;padding:17px 24px;border-radius:100px;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#1a1a2e;background:linear-gradient(135deg,#fbbf24,#c9963a);text-decoration:none;transition:transform .2s,box-shadow .2s;margin-bottom:10px}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,150,58,0.4)}
+.cta-guarantee{font-size:12px;color:var(--text-muted);margin-bottom:20px}
+.cta-divider{font-size:12px;color:var(--text-muted);margin:4px 0 10px;letter-spacing:.5px}
+.cta-secondary{display:block;width:100%;padding:15px 24px;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:var(--text);background:transparent;border:1.5px solid rgba(255,255,255,0.2);text-decoration:none;transition:border-color .2s,background .2s;margin-bottom:8px}
+.cta-secondary:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.04)}
+.cta-note{font-size:12px;color:var(--text-muted);margin-bottom:20px}
+.cta-note code{font-family:'JetBrains Mono','Fira Code',monospace;background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;font-size:11px;color:var(--text-secondary)}
+.cta-link-row{margin-top:4px}
+.cta-link-text{font-size:14px;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px;transition:color .2s,border-color .2s}
+.cta-link-text:hover{color:var(--text);border-bottom-color:rgba(255,255,255,0.4)}
 
 /* ── FOOTER ── */
 .taster-footer{text-align:center;padding:40px 0 28px;font-size:11px;color:var(--text-muted);letter-spacing:.5px}
@@ -153,12 +143,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   .diagnostic{padding:18px 20px}
   .diagnostic .headline{font-size:16px}
   .diagnostic .subline{font-size:13px}
-  .fake-grid{grid-template-columns:repeat(2,1fr)}
-  .fake-findings{grid-template-columns:1fr}
-  .fake-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .unlock-overlay h3{font-size:18px;padding:0 16px}
-  .unlock-overlay p{font-size:13px;padding:0 16px}
-  .unlock-cta{padding:14px 32px;font-size:14px}
+  .copy-compare{grid-template-columns:1fr}
+  .depth-panel{padding:22px 20px}
+  .cta-block{padding:28px 20px}
 }
 @media(max-width:375px){
   .taster-header h1{font-size:20px}
@@ -203,55 +190,68 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     <div class="subline" id="t-subline"></div>
   </div>
 
-  <!-- Blurred preview -->
-  <div class="preview-zone">
-    <div class="preview-content">
-      <div class="fake-modes">
-        <div class="fake-mode fm-active">Dashboard</div>
-        <div class="fake-mode">Search</div>
-        <div class="fake-mode">Design</div>
-        <div class="fake-mode">Brand</div>
-        <div class="fake-mode">Compete</div>
-        <div class="fake-mode">Growth</div>
-      </div>
-      <div class="fake-tabs">
-        <div class="fake-tab ft-active">Overview</div>
-        <div class="fake-tab">Technical SEO</div>
-        <div class="fake-tab">Content</div>
-        <div class="fake-tab">Keywords</div>
-        <div class="fake-tab">Authority</div>
-        <div class="fake-tab">Business Impact</div>
-        <div class="fake-tab">AI Prompt</div>
-      </div>
-      <div class="fake-body">
-        <div class="fake-section-title"></div>
-        <div class="fake-grid">
-          <div class="fake-card"><div class="fc-label"></div><div class="fc-score"></div><div class="fc-bar"><div class="fc-bar-fill" style="width:22%;background:var(--search)"></div></div></div>
-          <div class="fake-card"><div class="fc-label"></div><div class="fc-score"></div><div class="fc-bar"><div class="fc-bar-fill" style="width:28%;background:var(--search)"></div></div></div>
-          <div class="fake-card"><div class="fc-label"></div><div class="fc-score"></div><div class="fc-bar"><div class="fc-bar-fill" style="width:24%;background:var(--search)"></div></div></div>
-          <div class="fake-card"><div class="fc-label"></div><div class="fc-score"></div><div class="fc-bar"><div class="fc-bar-fill" style="width:16%;background:var(--search)"></div></div></div>
-          <div class="fake-card"><div class="fc-label"></div><div class="fc-score"></div><div class="fc-bar"><div class="fc-bar-fill" style="width:18%;background:var(--search)"></div></div></div>
-        </div>
-        <div class="fake-findings">
-          <div class="fake-finding"><div class="ff-title"></div><div class="ff-body"></div><div class="ff-body"></div></div>
-          <div class="fake-finding"><div class="ff-title"></div><div class="ff-body"></div><div class="ff-body"></div></div>
-          <div class="fake-finding"><div class="ff-title"></div><div class="ff-body"></div><div class="ff-body"></div></div>
-          <div class="fake-finding"><div class="ff-title"></div><div class="ff-body"></div><div class="ff-body"></div></div>
-        </div>
-        <div class="fake-text">
-          <div class="fl"></div><div class="fl"></div><div class="fl"></div>
-          <div class="fl"></div><div class="fl"></div><div class="fl"></div>
-        </div>
-      </div>
+  <!-- Depth signal panels -->
+  <div class="depth-panels">
+
+    <!-- Panel 1: Schema snippet -->
+    <div class="depth-panel">
+      <div class="panel-eyebrow">From your report — paste into &lt;head&gt;</div>
+      <pre class="code-block">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Fever-Tree",
+  "url": "https://www.fever-tree.com",
+  "description": "Premium mixers for premium spirits. Fever-Tree crafts the world's finest tonic waters, ginger beers, and cocktail mixers.",
+  "sameAs": [
+    "https://www.instagram.com/fevertreedrinks",
+    "https://www.facebook.com/FeverTreeDrinks",
+    "https://twitter.com/FeverTreeDrinks",
+    "https://www.linkedin.com/company/fever-tree"
+  ]
+}</pre>
+      <div class="panel-caption">Ready to paste. No developer briefing required.</div>
     </div>
 
-    <!-- Unlock overlay — CTA is LOCKED. Do not change copy without updating this template. -->
-    <div class="unlock-overlay">
-      <div class="lock-icon">🔒</div>
-      <h3>We believe you are leaving money on the table.</h3>
-      <p>The full report shows you exactly where and why — and what to do about it.</p>
-      <a class="unlock-cta" id="t-cta" href="#">See the full report — £750 →</a>
-      <div class="unlock-sub">14-day money-back guarantee. If you don't find it useful, we'll refund in full.</div>
+    <!-- Panel 2: Before/after hero copy -->
+    <div class="depth-panel">
+      <div class="panel-eyebrow">From your report — 3 A/B variants ready</div>
+      <div class="copy-compare">
+        <div class="copy-col">
+          <div class="copy-col-label current">Current</div>
+          <div class="copy-col-text">The original taste.</div>
+        </div>
+        <div class="copy-col recommended">
+          <div class="copy-col-label recommended">Recommended</div>
+          <div class="copy-col-text recommended">The mixer that made the gin better.</div>
+        </div>
+      </div>
+      <div class="panel-caption">Pre-written, tested against the brief — hand to a copywriter or use as-is.</div>
+    </div>
+
+    <!-- Panel 3: First action -->
+    <div class="depth-panel">
+      <div class="panel-eyebrow">Your 30-day plan — first action</div>
+      <div class="action-card">
+        <div class="action-title">
+          Add semantic H1 to homepage
+          <span class="effort-badge">15 min · 1 dev file</span>
+        </div>
+        <div class="action-desc">Fever-Tree's homepage has no H1 tag. Adding one with "premium cocktail mixers" as the keyword is the single highest-leverage technical fix — search engines have nothing to rank.</div>
+      </div>
+      <div class="panel-caption">Every action in the full report includes an effort estimate and a priority rank.</div>
+    </div>
+
+  </div>
+
+  <!-- Three-way CTA -->
+  <div class="cta-block">
+    <a class="cta-primary" href="https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01">Unlock the full report — £1,000</a>
+    <div class="cta-guarantee">14-day money-back guarantee. If you don't find it useful, we'll refund in full.</div>
+    <div class="cta-divider">or</div>
+    <a class="cta-secondary" href="https://buy.stripe.com/9B63cw9JIaRx20t9ul1kA03">Start with AI visibility only — £250</a>
+    <div class="cta-note">£250 is credited against the full report. Use code <code>AI-SEARCH-UPGRADE</code> at checkout.</div>
+    <div class="cta-link-row">
+      <a class="cta-link-text" href="https://calendly.com/frictionandtoil/30min">Or book a free 30-min call →</a>
     </div>
   </div>
 
@@ -322,7 +322,6 @@ document.getElementById('t-prepared').textContent = 'Prepared for ' + C.clientNa
 document.getElementById('t-revenue').textContent = C.revenueRange;
 document.getElementById('t-headline').textContent = C.diagnosticHeadline;
 document.getElementById('t-subline').textContent = C.diagnosticSubline;
-document.getElementById('t-cta').href = C.ctaLink;
 
 var hero = document.getElementById('rings-hero');
 var modes = ['search', 'design', 'brand', 'compete', 'growth'];
