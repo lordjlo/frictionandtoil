@@ -2171,6 +2171,20 @@
       width: calc(100vw - 24px);
     }
   }
+
+  /* WYMB guarantee — stack on mobile */
+  .wymb-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1.4fr);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .wymb-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2594,6 +2608,11 @@
           <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">→</span><span><strong style="color:var(--text);font-weight:500;">Upgrade credit</strong>: &pound;250 off the full Web Intelligence Report if you want all five dimensions</span></li>
         </ul>
 
+        <div style="text-align:center;margin-bottom:1rem;">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1.5px solid rgba(6,182,212,0.45);border-radius:100px;font-size:12px;font-weight:600;color:#67e8f9;background:rgba(6,182,212,0.07);letter-spacing:0.01em;">
+            <span style="opacity:.7;">↑</span> &pound;250 credited against the full report &nbsp;&middot;&nbsp; code <span style="font-family:var(--mono);letter-spacing:0.04em;font-size:11px;">AI-SEARCH-UPGRADE</span>
+          </span>
+        </div>
         <button class="btn btn-white" style="width:100%;justify-content:center;font-size:0.95rem;" onclick="trackLead('ai_search_report_250'); startCheckout(this)" data-tier="250">Order AI Search Report &mdash; &pound;250 &rarr;</button>
 
         <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Delivered within 24 hours as a standalone HTML file. Upgrade credit applied automatically if you order the full report within 90 days.</p>
@@ -2867,6 +2886,67 @@
         <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Talk it through first.</p>
         <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">15 minutes. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
         <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANNUAL INTELLIGENCE PLAN ============ -->
+  <section id="annual-plan" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">For returning clients</span>
+        <h2 class="section-heading">Annual Intelligence Plan.</h2>
+        <p class="section-sub">A standing relationship for clients who want their visibility tracked, not just measured once.</p>
+      </div>
+
+      <div class="reveal d2" style="max-width:680px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:clamp(2rem,4vw,3rem);">
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 0.85rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-radius:999px;font-family:var(--body);font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#10b981;margin-bottom:1.5rem;">For returning clients</div>
+
+        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.5rem;flex-wrap:wrap;">
+          <span style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--text);">Annual Intelligence Plan</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+          <span style="font-family:var(--body);font-size:1.1rem;font-weight:600;color:var(--design);">&pound;2,500/yr</span>
+          <span style="font-family:var(--body);font-size:0.88rem;color:var(--text-muted);">Quarterly billing &middot; cancel anytime</span>
+        </div>
+
+        <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.85rem;">
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">1 full rescan per year</strong> &mdash; the complete five-dimension report, refreshed</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">2 mid-year AI Search refreshes</strong> &mdash; targeted re-scores between full rescans</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">Benchmark tracking</strong> &mdash; see how your Maturity Rung moves over time</span></li>
+        </ul>
+
+        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('annual_plan_enquire')" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:1rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.95rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background 0.2s;box-sizing:border-box;" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Talk to us about the Annual Plan &rarr;</a>
+
+        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Available after your first Full Intelligence Report.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WIN YOUR MONEY BACK ============ -->
+  <section id="guarantee" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="reveal d1 wymb-grid" style="max-width:1000px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:8px;padding:clamp(2rem,4vw,3.25rem);">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:1rem;color:#10b981;">Guarantee</span>
+          <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;letter-spacing:-0.01em;color:var(--text);margin:0;">Win Your Money Back.</h2>
+        </div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.5rem;">
+          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
+            <div>
+              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">Implement the top 3 actions, see measurable improvement within 90 days &mdash; or full refund.</p>
+              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">Most clients see a change in AI search visibility within 30 days. The 90-day window is there because we&rsquo;re confident in the work, not because you&rsquo;ll need it.</p>
+            </div>
+          </li>
+          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
+            <div>
+              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">14-day unconditional money-back guarantee on every report.</p>
+              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">No implementation required. If it&rsquo;s not useful, we refund &mdash; no questions asked.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
