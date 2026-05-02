@@ -10,7 +10,6 @@ The pitch is editorial-first. We are not asking for a backlink. We are sending a
 
 ```
 Frank Graham
-Founder
 
 Friction & Toil
 Intelligence that changes what you do next
@@ -38,7 +37,6 @@ Both pieces here: https://frictionandtoil.com/web-intelligence/
 No ask. If it lands, it lands. If it would make a guest spot or a co-written piece, I'm in.
 
 Frank Graham
-Founder
 
 Friction & Toil
 Intelligence that changes what you do next
@@ -61,7 +59,6 @@ Just published the framework I was gesturing at — the AI Visibility Maturity C
 Both on [The Shift][1]. Worth a 6-minute read. If it sharpens anything you're working on, tell me. If it's wrong, tell me twice.
 
 Frank Graham
-Founder
 
 Friction & Toil
 Intelligence that changes what you do next
