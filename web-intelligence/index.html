@@ -2185,6 +2185,60 @@
       gap: 1.75rem;
     }
   }
+
+  /* Sticky section sub-nav */
+  .wi-subnav {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0 40px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .wi-subnav.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .wi-subnav a {
+    font-family: var(--body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 4px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .wi-subnav a:hover { color: var(--text); }
+  .wi-subnav a.is-active {
+    color: var(--text);
+    border-bottom-color: var(--design);
+  }
+  .wi-subnav .sep {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    user-select: none;
+  }
+  @media (max-width: 768px) {
+    .wi-subnav { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -2194,6 +2248,17 @@
   <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+</nav>
+<nav class="wi-subnav" id="wiSubnav" aria-label="Section navigation">
+  <a href="#covers" data-target="covers">How it works</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="#pricing" data-target="pricing">Pricing</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="#sample" data-target="sample">Examples</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="#free-score" data-target="free-score">Free score</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="#faq" data-target="faq">FAQs</a>
 </nav>
 <div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
   <div class="wi-panel-group">
@@ -3306,6 +3371,44 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Sticky section sub-nav: visibility + active link tracking
+  (function () {
+    var sub = document.getElementById('wiSubnav');
+    if (!sub) return;
+    var hero = document.querySelector('.hero');
+    var links = {};
+    sub.querySelectorAll('a[data-target]').forEach(function (a) {
+      links[a.dataset.target] = a;
+    });
+    var sections = Object.keys(links)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    if (!('IntersectionObserver' in window)) {
+      sub.classList.add('is-visible');
+      return;
+    }
+
+    if (hero) {
+      new IntersectionObserver(function (entries) {
+        sub.classList.toggle('is-visible', !entries[0].isIntersecting);
+      }, { threshold: 0, rootMargin: '-94px 0px 0px 0px' }).observe(hero);
+    } else {
+      sub.classList.add('is-visible');
+    }
+
+    var activeIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove('is-active'); });
+          var link = links[entry.target.id];
+          if (link) link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    sections.forEach(function (s) { activeIo.observe(s); });
   })();
 </script>
 
