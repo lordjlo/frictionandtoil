@@ -2192,37 +2192,35 @@
     top: 56px;
     left: 0;
     right: 0;
-    z-index: 99;
-    height: 38px;
+    z-index: 98;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
-    padding: 0 40px;
+    gap: 0;
     background: rgba(10,10,10,0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--border);
     opacity: 0;
-    transform: translateY(-8px);
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity 0.2s ease;
   }
   .wi-subnav.is-visible {
     opacity: 1;
-    transform: translateY(0);
     pointer-events: auto;
   }
   .wi-subnav a {
     font-family: var(--body);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     text-decoration: none;
-    padding: 4px 2px;
-    border-bottom: 1px solid transparent;
+    padding: 0 1.4rem;
+    line-height: 40px;
+    border-bottom: 1.5px solid transparent;
     transition: color 0.15s ease, border-color 0.15s ease;
     white-space: nowrap;
   }
@@ -2233,7 +2231,8 @@
   }
   .wi-subnav .sep {
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.6rem;
+    pointer-events: none;
     user-select: none;
   }
   @media (max-width: 768px) {
@@ -3366,7 +3365,6 @@
   (function () {
     var sub = document.getElementById('wiSubnav');
     if (!sub) return;
-    var hero = document.querySelector('.hero');
     var links = {};
     sub.querySelectorAll('a[data-target]').forEach(function (a) {
       links[a.dataset.target] = a;
@@ -3375,29 +3373,31 @@
       .map(function (id) { return document.getElementById(id); })
       .filter(Boolean);
 
-    if (!('IntersectionObserver' in window)) {
-      sub.classList.add('is-visible');
-      return;
+    var ticking = false;
+    function onScroll() {
+      sub.classList.toggle('is-visible', window.scrollY > 500);
+      ticking = false;
     }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+    onScroll();
 
-    if (hero) {
-      new IntersectionObserver(function (entries) {
-        sub.classList.toggle('is-visible', !entries[0].isIntersecting);
-      }, { threshold: 0, rootMargin: '-94px 0px 0px 0px' }).observe(hero);
-    } else {
-      sub.classList.add('is-visible');
+    if ('IntersectionObserver' in window) {
+      var activeIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            Object.keys(links).forEach(function (k) { links[k].classList.remove('is-active'); });
+            var link = links[entry.target.id];
+            if (link) link.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      sections.forEach(function (s) { activeIo.observe(s); });
     }
-
-    var activeIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          Object.keys(links).forEach(function (k) { links[k].classList.remove('is-active'); });
-          var link = links[entry.target.id];
-          if (link) link.classList.add('is-active');
-        }
-      });
-    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-    sections.forEach(function (s) { activeIo.observe(s); });
   })();
 </script>
 
