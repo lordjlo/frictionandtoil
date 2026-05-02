@@ -8,6 +8,18 @@
       "memory": 128
     }
   },
+  "redirects": [
+    {
+      "source": "/web-intelligence/care-homes/:path*",
+      "destination": "/web-intelligence/",
+      "permanent": true
+    },
+    {
+      "source": "/web-intelligence/coaching/:path*",
+      "destination": "/web-intelligence/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/web-intelligence/the-shift/(.*)",
