@@ -2054,17 +2054,17 @@
   /* ============ Cost & Cure side-by-side ============ */
   .cost-cure-section { padding: clamp(4rem, 8vw, 7rem) 0; border-top: 1px solid var(--border); }
   .cost-cure-stack { display: flex; flex-direction: column; gap: 0.85rem; max-width: 980px; margin: 0 auto; }
-  .cc-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 1.85rem; }
-  .cc-row-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--text); margin: 0 0 1.1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
-  .cc-row-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .cc-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem 1.85rem; }
+  .cc-row-title { font-family: var(--display); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
+  .cc-row-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
   .cc-without, .cc-with { padding-left: 1rem; border-left: 2px solid; }
   .cc-without { border-color: rgba(244,63,94,0.5); }
   .cc-with { border-color: rgba(16,185,129,0.5); }
-  .cc-label { display: block; font-family: var(--mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .cc-label { display: block; font-family: var(--mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.5rem; }
   .cc-without .cc-label { color: #f87171; }
   .cc-with .cc-label { color: #34d399; }
-  .cc-without p, .cc-with p { font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
-  .cc-without strong, .cc-with strong { color: var(--text); }
+  .cc-without p, .cc-with p { font-family: var(--body); font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+  .cc-without strong, .cc-with strong { color: var(--text); font-weight: 600; }
   @media (max-width: 700px) {
     .cc-row-pair { grid-template-columns: 1fr; gap: 1.25rem; }
     .cc-row { padding: 1.25rem 1.35rem; }
