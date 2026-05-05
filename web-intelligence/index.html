@@ -2051,6 +2051,25 @@
     color: var(--text-muted);
   }
 
+  /* ============ Cost & Cure side-by-side ============ */
+  .cost-cure-section { padding: clamp(4rem, 8vw, 7rem) 0; border-top: 1px solid var(--border); }
+  .cost-cure-stack { display: flex; flex-direction: column; gap: 0.85rem; max-width: 980px; margin: 0 auto; }
+  .cc-row { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 1.85rem; }
+  .cc-row-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--text); margin: 0 0 1.1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--border); }
+  .cc-row-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .cc-without, .cc-with { padding-left: 1rem; border-left: 2px solid; }
+  .cc-without { border-color: rgba(244,63,94,0.5); }
+  .cc-with { border-color: rgba(16,185,129,0.5); }
+  .cc-label { display: block; font-family: var(--mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .cc-without .cc-label { color: #f87171; }
+  .cc-with .cc-label { color: #34d399; }
+  .cc-without p, .cc-with p { font-size: 0.92rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+  .cc-without strong, .cc-with strong { color: var(--text); }
+  @media (max-width: 700px) {
+    .cc-row-pair { grid-template-columns: 1fr; gap: 1.25rem; }
+    .cc-row { padding: 1.25rem 1.35rem; }
+  }
+
   /* ============ Responsive (v4 additions) ============ */
   @media (max-width: 1080px) {
     .flip-grid { grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
@@ -2345,6 +2364,7 @@
         </div>
 
         <div class="rings-wrap reveal d2" aria-hidden="true">
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);background:var(--bg);padding:0.3rem 0.85rem;border:1px solid var(--border);border-radius:999px;white-space:nowrap;z-index:2;">Example audit</div>
           <svg class="rings-svg" viewBox="0 0 260 260">
             <!-- five concentric rings, radii 118 / 100 / 82 / 64 / 46 -->
             <!-- stroke-width 8, 18 unit gap between ring centres (10px clear) -->
@@ -2500,66 +2520,87 @@
     </div>
   </section>
 
-  <!-- ============ SECTION 3 · NEGATIVE IMPACTS ============ -->
-  <section class="flip-section dark" id="cost">
+  <!-- ============ COST & CURE COMPARISON ============ -->
+  <section class="cost-cure-section" id="cost-cure">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">What it&rsquo;s costing you</span>
-        <h2 class="section-heading">Every day without visibility is a day the gap widens.</h2>
+        <span class="eyebrow">Without it. With it.</span>
+        <h2 class="section-heading">Same five things. Two outcomes.</h2>
+        <p class="section-sub">The five things at risk if you stay invisible. The same five, fixed, with the report.</p>
       </div>
-      <div class="flip-grid">
-        <div class="flip-card reveal d1" data-tone="red">
-          <h3 class="flip-title">Revenue</h3>
-          <p class="flip-desc">Clients who should find you are finding competitors. <strong>Lost enquiries don&rsquo;t come back.</strong></p>
-        </div>
-        <div class="flip-card reveal d2" data-tone="red">
-          <h3 class="flip-title">Reputation</h3>
-          <p class="flip-desc">Wikipedia, TripAdvisor, and third-party directories are telling your story. <strong>Not you.</strong></p>
-        </div>
-        <div class="flip-card reveal d3" data-tone="red">
-          <h3 class="flip-title">Position</h3>
-          <p class="flip-desc">Competitors appear in AI recommendations, Google features, and voice search. You don&rsquo;t. <strong>The gap widens daily.</strong></p>
-        </div>
-        <div class="flip-card reveal d4" data-tone="red">
-          <h3 class="flip-title">Visibility</h3>
-          <p class="flip-desc">Six channels deciding whether customers find you. You may be invisible on most. <strong>You won&rsquo;t know which.</strong></p>
-        </div>
-        <div class="flip-card reveal d5" data-tone="red">
-          <h3 class="flip-title">Confidence</h3>
-          <p class="flip-desc">Website decisions made without data. <strong>You&rsquo;re guessing.</strong> The report ends that.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ SECTION 4 · THE SOLUTION FLIP ============ -->
-  <section class="flip-section soft" id="solution">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">How we help</span>
-        <h2 class="section-heading">We show you exactly where you stand. Then guide you to where you need to be.</h2>
-      </div>
-      <div class="flip-grid">
-        <div class="flip-card reveal d1" data-tone="green">
-          <h3 class="flip-title">Revenue</h3>
-          <p class="flip-desc">Lost enquiries modelled as a specific <strong>&pound; figure</strong>. The fixes that deliver fastest return, ranked.</p>
+      <div class="cost-cure-stack reveal d1">
+
+        <div class="cc-row">
+          <h3 class="cc-row-title">Revenue</h3>
+          <div class="cc-row-pair">
+            <div class="cc-without">
+              <span class="cc-label">Without the report</span>
+              <p>Clients who should find you are finding competitors. <strong>Lost enquiries don&rsquo;t come back.</strong></p>
+            </div>
+            <div class="cc-with">
+              <span class="cc-label">With the report</span>
+              <p>Lost enquiries modelled as a specific <strong>&pound; figure</strong>. The fixes that deliver fastest return, ranked.</p>
+            </div>
+          </div>
         </div>
-        <div class="flip-card reveal d2" data-tone="green">
-          <h3 class="flip-title">Reputation</h3>
-          <p class="flip-desc">Your brand story, told properly. Schema, structure, and citation signals that <strong>put you back in control</strong>.</p>
+
+        <div class="cc-row">
+          <h3 class="cc-row-title">Reputation</h3>
+          <div class="cc-row-pair">
+            <div class="cc-without">
+              <span class="cc-label">Without the report</span>
+              <p>Wikipedia, TripAdvisor, and third-party directories are telling your story. <strong>Not you.</strong></p>
+            </div>
+            <div class="cc-with">
+              <span class="cc-label">With the report</span>
+              <p>Your brand story, told properly. Schema, structure, and citation signals that <strong>put you back in control</strong>.</p>
+            </div>
+          </div>
         </div>
-        <div class="flip-card reveal d3" data-tone="green">
-          <h3 class="flip-title">Position</h3>
-          <p class="flip-desc">Appear where competitors are being recommended. A prioritised plan to <strong>close the gap</strong> on Google, on AI engines, everywhere that matters.</p>
+
+        <div class="cc-row">
+          <h3 class="cc-row-title">Position</h3>
+          <div class="cc-row-pair">
+            <div class="cc-without">
+              <span class="cc-label">Without the report</span>
+              <p>Competitors appear in AI recommendations, Google features, and voice search. You don&rsquo;t. <strong>The gap widens daily.</strong></p>
+            </div>
+            <div class="cc-with">
+              <span class="cc-label">With the report</span>
+              <p>Appear where competitors are being recommended. A prioritised plan to <strong>close the gap</strong> on Google, on AI engines, everywhere that matters.</p>
+            </div>
+          </div>
         </div>
-        <div class="flip-card reveal d4" data-tone="green">
-          <h3 class="flip-title">Visibility</h3>
-          <p class="flip-desc">A complete map of where you appear and where you don&rsquo;t. Search, AI platforms, maps, directories. <strong>No blind spots.</strong></p>
+
+        <div class="cc-row">
+          <h3 class="cc-row-title">Visibility</h3>
+          <div class="cc-row-pair">
+            <div class="cc-without">
+              <span class="cc-label">Without the report</span>
+              <p>Six channels deciding whether customers find you. You may be invisible on most. <strong>You won&rsquo;t know which.</strong></p>
+            </div>
+            <div class="cc-with">
+              <span class="cc-label">With the report</span>
+              <p>A complete map of where you appear and where you don&rsquo;t. Search, AI platforms, maps, directories. <strong>No blind spots.</strong></p>
+            </div>
+          </div>
         </div>
-        <div class="flip-card reveal d5" data-tone="green">
-          <h3 class="flip-title">Confidence</h3>
-          <p class="flip-desc">Your website, competitors, and market in one intelligence picture. Actions ranked by impact. <strong>Delivered in 48 hours.</strong></p>
+
+        <div class="cc-row">
+          <h3 class="cc-row-title">Confidence</h3>
+          <div class="cc-row-pair">
+            <div class="cc-without">
+              <span class="cc-label">Without the report</span>
+              <p>Website decisions made without data. <strong>You&rsquo;re guessing.</strong></p>
+            </div>
+            <div class="cc-with">
+              <span class="cc-label">With the report</span>
+              <p>Your website, competitors, and market in one intelligence picture. Actions ranked by impact. <strong>Delivered in 48 hours.</strong></p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -2637,7 +2678,7 @@
 
       <!-- Group 3: Methodology -->
       <div class="intel-group">
-        <span class="intel-group-label">What it&rsquo;s costing you</span>
+        <span class="intel-group-label">How we count it</span>
         <div class="intel-grid" style="grid-template-columns:1fr;max-width:380px;margin:0 auto;">
           <div class="intel-card reveal d1" data-tone="amber">
             <div class="intel-icon">
@@ -2974,104 +3015,6 @@
     </div>
   </section>
 
-  <!-- ============ COMPARISON ============ -->
-  <section class="compare" id="pricing">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Pricing</span>
-        <h2 class="section-heading">Full report. Five dimensions, 48 hours.</h2>
-        <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 15-minute call first</a>. No obligation, no deck, no pitch.</p>
-        <p class="section-sub" style="margin-top:0.75rem;font-size:0.9rem;">Already have an AI Search Report? Your &pound;250 is credited. Apply code <span style="font-family:var(--mono);font-size:0.85rem;color:var(--text);background:rgba(255,255,255,0.06);padding:0.15em 0.5em;border-radius:3px;border:1px solid var(--border);">AI-SEARCH-UPGRADE</span> at checkout.</p>
-      </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;max-width:60ch;margin:0 auto 1.5rem;">The Cost of Inaction is modelled against the organic traffic going to competitors who rank for the queries your site should own, multiplied by your average booking value. A specific number, not an estimate.</p>
-      <div class="compare-grid">
-        <div class="compare-card is-featured reveal d1">
-          <div class="compare-label">Pay today &middot; with guarantee &#9733;</div>
-          <div class="compare-price">&pound;1,000</div>
-          <div style="font-family:var(--body);font-size:0.85rem;font-weight:500;color:var(--text-secondary);margin-top:-0.25rem;letter-spacing:0.01em;">Save &pound;500 vs. paying over 3 months</div>
-          <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:0.4rem 0 0.9rem;line-height:1.5;">Or spread it: <span style="color:var(--text);font-weight:500;">&pound;500 today &middot; &pound;500 at 30 days &middot; &pound;500 at 60 days</span>. Same report, same delivery.</p>
-          <div class="compare-desc">14-day money-back guarantee. Full refund if you don&rsquo;t find it useful, no questions asked. Includes a 30-minute walkthrough call after delivery and a half-price rescan within 6 months.</div>
-          <div class="compare-tag" style="margin-top:auto">Launch price. Rises to &pound;1,500</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_1000'); startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
-        </div>
-        <div class="compare-card reveal d2">
-          <div class="compare-label">Pay over 3 months</div>
-          <div class="compare-price" style="color:var(--text-secondary)">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-muted)">/mo &times; 3</span></div>
-          <div style="font-family:var(--body);font-size:0.82rem;color:var(--text-muted);margin-top:-0.25rem;letter-spacing:0.01em;">Total &pound;1,500. Same report, spread over 3 months.</div>
-          <div class="compare-desc">Same report, same 48-hour delivery, same 14-day money-back guarantee. &pound;500 today, &pound;500 at 30 days, &pound;500 at 60 days. Walkthrough call and 6-month rescan included. Cancel anytime. Access ends with the cancelled payment.</div>
-          <div class="compare-tag" style="margin-top:auto">Total: &pound;1,500</div>
-          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_500mo'); startCheckout(this)" data-tier="500mo">Pay over 3 months &rarr;</button>
-        </div>
-      </div>
-      <div id="call" style="margin-top:3rem;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;text-align:center">
-        <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Talk it through first.</p>
-        <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">15 minutes. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
-        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ANNUAL INTELLIGENCE PLAN ============ -->
-  <section id="annual-plan" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">For returning clients</span>
-        <h2 class="section-heading">Annual Intelligence Plan.</h2>
-        <p class="section-sub">A standing relationship for clients who want their visibility tracked, not just measured once.</p>
-      </div>
-
-      <div class="reveal d2" style="max-width:680px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:clamp(2rem,4vw,3rem);">
-        <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 0.85rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-radius:999px;font-family:var(--body);font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#10b981;margin-bottom:1.5rem;">For returning clients</div>
-
-        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.5rem;flex-wrap:wrap;">
-          <span style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--text);">Annual Intelligence Plan</span>
-        </div>
-        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-          <span style="font-family:var(--body);font-size:1.1rem;font-weight:600;color:var(--design);">&pound;2,500/yr</span>
-          <span style="font-family:var(--body);font-size:0.88rem;color:var(--text-muted);">Quarterly billing &middot; cancel anytime</span>
-        </div>
-
-        <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.85rem;">
-          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">1 full rescan per year.</strong> The complete five-dimension report, refreshed.</span></li>
-          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">2 mid-year AI Search refreshes.</strong> Targeted re-scores between full rescans.</span></li>
-          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">Benchmark tracking.</strong> See how your Maturity Rung moves over time.</span></li>
-        </ul>
-
-        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('annual_plan_enquire')" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:1rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.95rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background 0.2s;box-sizing:border-box;" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Talk to us about the Annual Plan &rarr;</a>
-
-        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Available after your first Full Intelligence Report.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ WIN YOUR MONEY BACK ============ -->
-  <section id="guarantee" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
-    <div class="container">
-      <div class="reveal d1 wymb-grid" style="max-width:1000px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:8px;padding:clamp(2rem,4vw,3.25rem);">
-        <div>
-          <span class="eyebrow" style="display:block;margin-bottom:1rem;color:#10b981;">Guarantee</span>
-          <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;letter-spacing:-0.01em;color:var(--text);margin:0;">Win Your Money Back.</h2>
-        </div>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.5rem;">
-          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
-            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
-            <div>
-              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">Implement the top 3 actions, see measurable improvement within 90 days. Or full refund.</p>
-              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">Most clients see a change in AI search visibility within 30 days. The 90-day window is there because we&rsquo;re confident in the work, not because you&rsquo;ll need it.</p>
-            </div>
-          </li>
-          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
-            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
-            <div>
-              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">14-day unconditional money-back guarantee on every report.</p>
-              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">No implementation required. If it&rsquo;s not useful, we refund. No questions asked.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ SAMPLE REPORTS ============ -->
   <section class="sample" id="sample">
     <div class="container">
@@ -3177,7 +3120,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">What arrives</span>
         <h2 class="section-heading">A diagnosis is the easy half.<br><em style="font-style:italic;color:var(--text-secondary);font-weight:400;">Yours comes with the fix.</em></h2>
-        <p class="section-sub">Most audits identify the problem and walk away. Yours arrives with three things they don&rsquo;t. You can act on it without hiring a developer, copywriter or agency.</p>
+        <p class="section-sub">Most audits identify the problem and walk away. Yours arrives with three things they don&rsquo;t, so <strong>you can act on it without hiring a developer, copywriter or agency.</strong></p>
       </div>
 
       <div class="reveal d1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:var(--max);margin:0 auto 3rem;">
@@ -3303,6 +3246,104 @@
   </section>
 
 
+  <!-- ============ COMPARISON ============ -->
+  <section class="compare" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="section-heading">Full report. Five dimensions, 48 hours.</h2>
+        <p class="section-sub">Not sure which is right? <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" style="color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.35);">Book a free 15-minute call first</a>. No obligation, no deck, no pitch.</p>
+        <p class="section-sub" style="margin-top:0.75rem;font-size:0.9rem;">Already have an AI Search Report? Your &pound;250 is credited. Apply code <span style="font-family:var(--mono);font-size:0.85rem;color:var(--text);background:rgba(255,255,255,0.06);padding:0.15em 0.5em;border-radius:3px;border:1px solid var(--border);">AI-SEARCH-UPGRADE</span> at checkout.</p>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;max-width:60ch;margin:0 auto 1.5rem;">The Cost of Inaction is modelled against the organic traffic going to competitors who rank for the queries your site should own, multiplied by your average booking value. A specific number, not an estimate.</p>
+      <div class="compare-grid">
+        <div class="compare-card is-featured reveal d1">
+          <div class="compare-label">Pay today &middot; with guarantee &#9733;</div>
+          <div class="compare-price">&pound;1,000</div>
+          <div style="font-family:var(--body);font-size:0.85rem;font-weight:500;color:var(--text-secondary);margin-top:-0.25rem;letter-spacing:0.01em;">Save &pound;500 vs. paying over 3 months</div>
+          <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:0.4rem 0 0.9rem;line-height:1.5;">Or spread it: <span style="color:var(--text);font-weight:500;">&pound;500 today &middot; &pound;500 at 30 days &middot; &pound;500 at 60 days</span>. Same report, same delivery.</p>
+          <div class="compare-desc">14-day money-back guarantee. Full refund if you don&rsquo;t find it useful, no questions asked. Includes a 30-minute walkthrough call after delivery and a half-price rescan within 6 months.</div>
+          <div class="compare-tag" style="margin-top:auto">Launch price. Rises to &pound;1,500</div>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_1000'); startCheckout(this)" data-tier="1000">Order at &pound;1,000</button>
+        </div>
+        <div class="compare-card reveal d2">
+          <div class="compare-label">Pay over 3 months</div>
+          <div class="compare-price" style="color:var(--text-secondary)">&pound;500<span style="font-size:1rem;font-weight:400;color:var(--text-muted)">/mo &times; 3</span></div>
+          <div style="font-family:var(--body);font-size:0.82rem;color:var(--text-muted);margin-top:-0.25rem;letter-spacing:0.01em;">Total &pound;1,500. Same report, spread over 3 months.</div>
+          <div class="compare-desc">Same report, same 48-hour delivery, same 14-day money-back guarantee. &pound;500 today, &pound;500 at 30 days, &pound;500 at 60 days. Walkthrough call and 6-month rescan included. Cancel anytime. Access ends with the cancelled payment.</div>
+          <div class="compare-tag" style="margin-top:auto">Total: &pound;1,500</div>
+          <button class="btn btn-white" style="width:100%;margin-top:1.25rem;justify-content:center" onclick="trackLead('web_intelligence_order_500mo'); startCheckout(this)" data-tier="500mo">Pay over 3 months &rarr;</button>
+        </div>
+      </div>
+      <div id="call" style="margin-top:3rem;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;text-align:center">
+        <p style="font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.6rem);font-weight:400;margin-bottom:0.75rem;">Talk it through first.</p>
+        <p style="font-size:0.95rem;color:var(--text-secondary);max-width:52ch;margin:0 auto 1.5rem;">15 minutes. We&rsquo;ll walk through what the report covers and whether it&rsquo;s the right move for your business. No deck, no pitch.</p>
+        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('web_intelligence_book_call')" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.95rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.92rem;font-weight:600;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Book a free 15-minute call &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANNUAL INTELLIGENCE PLAN ============ -->
+  <section id="annual-plan" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">For returning clients</span>
+        <h2 class="section-heading">Annual Intelligence Plan.</h2>
+        <p class="section-sub">A standing relationship for clients who want their visibility tracked, not just measured once.</p>
+      </div>
+
+      <div class="reveal d2" style="max-width:680px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:clamp(2rem,4vw,3rem);">
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 0.85rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);border-radius:999px;font-family:var(--body);font-size:0.7rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#10b981;margin-bottom:1.5rem;">For returning clients</div>
+
+        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.5rem;flex-wrap:wrap;">
+          <span style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--text);">Annual Intelligence Plan</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+          <span style="font-family:var(--body);font-size:1.1rem;font-weight:600;color:var(--design);">&pound;2,500/yr</span>
+          <span style="font-family:var(--body);font-size:0.88rem;color:var(--text-muted);">Quarterly billing &middot; cancel anytime</span>
+        </div>
+
+        <ul style="list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:0.85rem;">
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">1 full rescan per year.</strong> The complete five-dimension report, refreshed.</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">2 mid-year AI Search refreshes.</strong> Targeted re-scores between full rescans.</span></li>
+          <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.92rem;color:var(--text-secondary);line-height:1.5;"><span style="color:var(--design);font-weight:700;flex-shrink:0;margin-top:0.05em;">&rarr;</span><span><strong style="color:var(--text);font-weight:500;">Benchmark tracking.</strong> See how your Maturity Rung moves over time.</span></li>
+        </ul>
+
+        <a href="https://calendly.com/frictionandtoil/15mins" target="_blank" rel="noopener" onclick="trackLead('annual_plan_enquire')" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;padding:1rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.95rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background 0.2s;box-sizing:border-box;" onmouseover="this.style.background='#b08125'" onmouseout="this.style.background='var(--design)'">Talk to us about the Annual Plan &rarr;</a>
+
+        <p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin:1rem 0 0;">Available after your first Full Intelligence Report.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WIN YOUR MONEY BACK ============ -->
+  <section id="guarantee" style="padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="reveal d1 wymb-grid" style="max-width:1000px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid #10b981;border-radius:8px;padding:clamp(2rem,4vw,3.25rem);">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:1rem;color:#10b981;">Guarantee</span>
+          <h2 style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.05;letter-spacing:-0.01em;color:var(--text);margin:0;">Win Your Money Back.</h2>
+        </div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.5rem;">
+          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
+            <div>
+              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">Implement the top 3 actions, see measurable improvement within 90 days. Or full refund.</p>
+              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">Most clients see a change in AI search visibility within 30 days. The 90-day window is there because we&rsquo;re confident in the work, not because you&rsquo;ll need it.</p>
+            </div>
+          </li>
+          <li style="display:flex;gap:0.85rem;align-items:flex-start;">
+            <span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:0.2em;">&bull;</span>
+            <div>
+              <p style="font-family:var(--body);font-size:1rem;font-weight:600;color:var(--text);margin:0 0 0.4rem;line-height:1.4;">14-day unconditional money-back guarantee on every report.</p>
+              <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.55;margin:0;">No implementation required. If it&rsquo;s not useful, we refund. No questions asked.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TESTIMONIALS ============ -->
   <section class="testimonials" id="testimonials">
     <div class="container">
@@ -3371,7 +3412,7 @@
             What if I have multiple sites or locations?
             <span class="faq-toggle" aria-hidden="true"></span>
           </summary>
-          <div class="faq-a">Contact us at <a href="mailto:hello@frictionandtoil.com" style="color: var(--design); text-decoration: none;">hello@frictionandtoil.com</a>. Multi-site reports are available and priced separately.</div>
+          <div class="faq-a">Multi-site reports start from <strong>&pound;600 per site for 5+ sites</strong>. White-label rates available for agencies. Email <a href="mailto:hello@frictionandtoil.com" style="color: var(--design); text-decoration: none;">hello@frictionandtoil.com</a> for a tailored quote.</div>
         </details>
         <details class="faq-item reveal d5">
           <summary class="faq-q">
