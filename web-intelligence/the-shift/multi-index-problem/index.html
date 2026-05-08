@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Buyer Isn't on the Engine You're Ranking On — The Multi-Index Problem | Friction &amp; Toil</title>
+<meta name="description" content="Three indexes (Google, Bing, and Brave) now power the major AI assistants, and they do not agree on who you are. The Multi-Index Problem, three crawler tiers, and what changes in the marketing director's quarterly report.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://frictionandtoil.com/web-intelligence/the-shift/multi-index-problem/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Your Buyer Isn't on the Engine You're Ranking On.">
+<meta property="og:description" content="The Multi-Index Problem, and why &lsquo;we rank #1 on Google&rsquo; is no longer the proxy for visibility it used to be.">
+<meta property="og:url" content="https://frictionandtoil.com/web-intelligence/the-shift/multi-index-problem/">
+<meta property="og:image" content="https://frictionandtoil.com/Images/web-intelligence-og.png">
+<meta property="og:site_name" content="Friction &amp; Toil">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Buyer Isn't on the Engine You're Ranking On.">
+<meta name="twitter:description" content="The Multi-Index Problem: three engines, three indexes, one dashboard reading from the wrong one.">
+<meta name="twitter:image" content="https://frictionandtoil.com/Images/web-intelligence-og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your Buyer Isn't on the Engine You're Ranking On: The Multi-Index Problem",
+  "description": "Three indexes now power the major AI assistants (Google, Bing, and Brave), and they do not agree on who you are. The structural change in commercial visibility since PageRank, the three crawler tiers underneath every major assistant, and what changes in the marketing director's quarterly report.",
+  "author": {
+    "@type": "Person",
+    "name": "Frank Graham",
+    "jobTitle": "Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Friction & Toil"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Friction & Toil",
+    "url": "https://frictionandtoil.com"
+  },
+  "datePublished": "2026-05-08",
+  "dateModified": "2026-05-08",
+  "keywords": "Multi-Index Problem, AI search visibility, Bing Webmaster Tools, Brave Search, Claude, ChatGPT, Perplexity, Gemini, GPTBot, ClaudeBot, robots.txt, generative engine optimization, Web Intelligence, Friction and Toil"
+}
+</script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-soft: rgba(255,255,255,0.02);
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+  --text: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5a5a6e;
+  --search: #6366f1;
+  --design: #c9963a;
+  --brand: #10b981;
+  --compete: #f43f5e;
+  --growth: #06b6d4;
+  --display: 'Space Grotesk', -apple-system, sans-serif;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --body: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ---- Typography ---- */
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.section-sub {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  margin-top: 1.15rem;
+  line-height: 1.6;
+}
+.section-numeral {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 1.1rem;
+}
+.body-prose {
+  font-family: var(--body);
+  font-size: 1.06rem;
+  line-height: 1.78;
+  color: var(--text-secondary);
+  max-width: 68ch;
+}
+.body-prose p + p { margin-top: 1.25rem; }
+.body-prose strong { color: var(--text); font-weight: 600; }
+.body-prose em { color: var(--text); font-style: italic; }
+.body-prose a {
+  color: var(--design);
+  border-bottom: 1px solid rgba(201,150,58,0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.body-prose a:hover { color: var(--text); border-bottom-color: var(--design); }
+
+/* ---- Hero ---- */
+.hero {
+  padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%; left: -15%;
+  width: 70%; height: 100%;
+  background: radial-gradient(circle at 25% 40%, rgba(99,102,241,0.07), transparent 55%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -20%; right: -10%;
+  width: 55%; height: 80%;
+  background: radial-gradient(circle at 75% 65%, rgba(201,150,58,0.05), transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 920px; }
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.kicker-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--search);
+  box-shadow: 0 0 8px rgba(99,102,241,0.7);
+  animation: pulse-dot 2.4s infinite;
+}
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  margin-bottom: 0.45em;
+}
+.hero h1 em { font-style: italic; color: var(--design); }
+.hero-subhead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+.hero-deck {
+  font-family: var(--body);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  line-height: 1.6;
+  margin-bottom: 3.5rem;
+}
+.hero-byline {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+/* ---- Stat Strip ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  overflow: hidden;
+  max-width: 820px;
+}
+.stat-cell {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+  text-align: center;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+  text-align: center;
+  animation: stat-throb 2.6s ease-in-out infinite;
+  transform-origin: center;
+  display: inline-block;
+}
+.stat-num.col-search { animation-delay: 0s; }
+.stat-num.col-compete { animation-delay: 0.45s; }
+.stat-num.col-design   { animation-delay: 0.9s; }
+@keyframes stat-throb {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.78; }
+}
+.stat-num.col-search { text-shadow: 0 0 18px rgba(99,102,241,0.45); }
+.stat-num.col-compete { text-shadow: 0 0 18px rgba(244,63,94,0.40); }
+.stat-num.col-design   { text-shadow: 0 0 18px rgba(201,150,58,0.40); }
+@media (prefers-reduced-motion: reduce) {
+  .stat-num { animation: none; }
+}
+.stat-num.col-search { color: var(--search); }
+.stat-num.col-design { color: var(--design); }
+.stat-num.col-compete { color: var(--compete); }
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.stat-source {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+}
+
+/* ---- Prose Section ---- */
+.prose-section { padding: clamp(5rem, 10vw, 8rem) 0; border-bottom: 1px solid var(--border); }
+.prose-section .container { display: grid; grid-template-columns: 1fr 1.8fr; gap: 5rem; align-items: start; }
+.prose-label { position: sticky; top: 6rem; }
+@media (max-width: 800px) {
+  .prose-section .container { grid-template-columns: 1fr; gap: 2rem; }
+  .prose-label { position: static; }
+}
+
+/* Split variant: container is block; sticky scope bounded to each .prose-subrow */
+.prose-section-split .container {
+  display: block;
+}
+.prose-subrow {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 5rem;
+  align-items: start;
+}
+.prose-subrow + .table-breakout { margin-top: 0.5rem; }
+.table-breakout + .prose-subrow { margin-top: 1.5rem; }
+.prose-subrow-spacer { /* keeps body-prose in column 2 of subrow */ }
+@media (max-width: 800px) {
+  .prose-subrow { grid-template-columns: 1fr; gap: 2rem; }
+  .prose-subrow-spacer { display: none; }
+}
+
+/* ---- Section TL;DR (left rail, under heading) ---- */
+.section-tldr {
+  display: block;
+  margin-top: 1.4rem;
+  padding: 0.85rem 1rem 0.85rem 1.05rem;
+  border-left: 2px solid var(--design);
+  background: linear-gradient(90deg, rgba(201,150,58,0.06), rgba(201,150,58,0.01));
+  border-radius: 0 4px 4px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.section-tldr-eyebrow {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--design);
+}
+
+/* TL;DR variant for vignettes section-head (centered layout) */
+.section-head .section-tldr {
+  max-width: 64ch;
+  margin-top: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ---- Table strap ---- */
+.table-strap {
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--design);
+  background: rgba(201,150,58,0.08);
+  border: 1px solid rgba(201,150,58,0.25);
+  border-radius: 999px;
+}
+
+/* ---- Scan Rail (sticky right-side action checklist) ---- */
+.scan-rail {
+  position: fixed;
+  top: 96px;
+  right: 24px;
+  width: 240px;
+  background: rgba(14,14,18,0.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 0.95rem 0.95rem;
+  z-index: 50;
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  font-family: var(--body);
+}
+.scan-rail.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scan-rail-head {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+.scan-rail-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 0.25rem;
+}
+.scan-rail-title {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+.scan-rail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.scan-rail-list a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.55rem;
+  align-items: start;
+  padding: 0.55rem 0.45rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+.scan-rail-list a:hover {
+  background: rgba(255,255,255,0.04);
+}
+.scan-rail-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--design);
+  padding-top: 0.1rem;
+}
+.scan-rail-text {
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  transition: color 0.18s;
+}
+.scan-rail-list a:hover .scan-rail-text { color: var(--text); }
+.scan-rail-foot {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+}
+@media (min-width: 1500px) {
+  .scan-rail { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scan-rail { transition: none; }
+}
+
+/* ---- Chapter-Break Quote ---- */
+.chapter-break {
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.chapter-break::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--design);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.chapter-break-quote {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.35;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+
+/* ---- Pull Quote ---- */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 0 0 0 1.75rem;
+  border-left: 2px solid var(--search);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 56ch;
+}
+
+/* ---- Crawler Tier Table ---- */
+.table-breakout {
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+.tier-table-wrap {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tier-table-caption {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+.tier-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-family: var(--body);
+  font-size: 0.82rem;
+  table-layout: fixed;
+}
+.tier-table thead th {
+  padding: 0.85rem 0.9rem;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.tier-table tbody td {
+  padding: 0.9rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.tier-table tbody tr:last-child td { border-bottom: none; }
+.tier-table tbody tr:hover td { background: var(--bg-card-hover); }
+.tier-name {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.tier-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.tier-bot {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--text);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.tier-bot-empty { color: var(--text-muted); font-style: italic; font-family: var(--body); font-size: 0.76rem; }
+.table-scroll-hint {
+  display: none;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+}
+@media (max-width: 900px) {
+  .table-scroll-hint { display: block; }
+}
+
+/* ---- Vignette Cards ---- */
+.vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.vignette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.vignette-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.vignette-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.vignette-card.v1 { border-top: 3px solid var(--search); }
+.vignette-card.v2 { border-top: 3px solid var(--design); }
+.vignette-card.v3 { border-top: 3px solid var(--compete); }
+.vignette-tag {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.vignette-headline {
+  font-family: var(--serif);
+  font-size: 1.32rem;
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+.vignette-body p + p { margin-top: 0.85rem; }
+.vignette-engine {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.vignette-engine-label {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.vignette-engine-value {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: right;
+}
+.vignette-card.v1 .vignette-engine-value { color: var(--search); }
+.vignette-card.v2 .vignette-engine-value { color: var(--design); }
+.vignette-card.v3 .vignette-engine-value { color: var(--compete); }
+
+/* ---- Sidebar (Self-Check) ---- */
+.sidebar-section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.sidebar-callout {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2.75rem clamp(1.5rem, 3vw, 3rem);
+  background: linear-gradient(180deg, rgba(201,150,58,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+}
+.sidebar-callout::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2));
+  border-radius: 12px 0 0 12px;
+}
+.sidebar-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--design);
+  margin-bottom: 0.85rem;
+}
+.sidebar-callout h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.sidebar-intro {
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 64ch;
+}
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+.sidebar-point-num {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--design);
+  min-width: 2.4rem;
+  padding-top: 0.15rem;
+}
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+.sidebar-coda em { color: var(--text); font-style: italic; }
+
+/* ---- Old/New Frame ---- */
+.frame-block {
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.frame-cell {
+  padding: 1.5rem 1.5rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.frame-cell.old { border-left: 3px solid var(--text-muted); opacity: 0.85; }
+.frame-cell.new { border-left: 3px solid var(--design); }
+.frame-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+.frame-cell.new .frame-label { color: var(--design); }
+.frame-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+@media (max-width: 700px) {
+  .frame-block { grid-template-columns: 1fr; }
+}
+
+/* ---- Closing ---- */
+.closing { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.closing-inner { max-width: 720px; margin: 0 auto; text-align: left; }
+.closing h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+  line-height: 1.18;
+  color: var(--text);
+  margin-bottom: 2.25rem;
+}
+.closing-body {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--text-secondary);
+  max-width: 64ch;
+  margin-bottom: 2.75rem;
+}
+.closing-body p + p { margin-top: 1.25rem; }
+.closing-body strong { color: var(--text); font-weight: 600; }
+.closing-product {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.closing-product a {
+  color: var(--design);
+  border-bottom: 1px solid rgba(201,150,58,0.3);
+  padding-bottom: 1px;
+  font-style: normal;
+  transition: border-color 0.2s, color 0.2s;
+}
+.closing-product a:hover { color: var(--text); border-bottom-color: var(--design); }
+
+/* ---- Briefing ---- */
+.briefing { padding: clamp(4rem, 8vw, 6rem) 0; background: var(--bg); }
+.briefing-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.briefing-inner h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.briefing-sub {
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+.briefing-form { display: flex; flex-direction: column; gap: 0.85rem; }
+.btn-amber {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.95rem 1.75rem;
+  background: var(--design);
+  color: #14100a;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-amber:hover { background: #b08125; transform: translateY(-1px); }
+.form-note { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; text-align: center; }
+@media (max-width: 800px) {
+  .briefing-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.75rem; }
+}
+
+/* ---- Footer ---- */
+.site-footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--border); background: var(--bg); }
+.footer-row { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 2rem; }
+.footer-brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  text-transform: uppercase;
+}
+.footer-centre { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 0.04em; text-align: center; }
+.footer-right { font-family: var(--body); font-size: 0.85rem; color: var(--text-secondary); text-align: right; transition: color 0.2s ease; }
+.footer-right:hover { color: var(--design); }
+.footer-copy {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 700px) {
+  .footer-row { grid-template-columns: 1fr; text-align: center; }
+  .footer-right { text-align: center; }
+}
+
+/* ---- Read Next ---- */
+.read-next { padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+.read-next-inner { max-width: 760px; margin: 0 auto; padding: 0 var(--gutter); }
+.read-next-eyebrow {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.read-next-link {
+  display: block;
+  padding: 2.25rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+}
+.read-next-link:hover { border-color: var(--design); transform: translateY(-2px); background: var(--bg-card-hover); }
+.read-next-link h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  line-height: 1.22;
+}
+.read-next-link p {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+.read-next-arrow {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--design);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Reveal animation ---- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.08s; } .reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; } .reveal.d4 { transition-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============ Persistent hamburger panel chrome ============ */
+.nav-hamburger { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; margin-left: auto; position: relative; z-index: 110; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: all 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.wi-panel { position: fixed; top: 64px; right: 16px; width: 320px; max-width: calc(100vw - 32px); max-height: calc(100vh - 80px); overflow-y: auto; background: rgba(14,14,18,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 18px 0 10px; z-index: 99; opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity 0.18s ease, transform 0.18s ease; }
+.wi-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.wi-panel-group + .wi-panel-group { margin-top: 8px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
+.wi-panel-title { display: block; padding: 0 22px 6px; font-family: sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+.wi-panel a { display: block; padding: 10px 22px; font-family: sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.15s, background 0.15s; }
+.wi-panel a:hover, .wi-panel a:focus-visible { color: #fff; background: rgba(255,255,255,0.04); outline: none; }
+.wi-panel a.wi-current { color: #fff; background: rgba(255,255,255,0.05); cursor: default; pointer-events: none; }
+.wi-panel a.wi-current::before { content: "▸ "; color: rgba(255,255,255,0.5); margin-right: 4px; }
+body.wi-panel-locked { overflow: hidden; }
+@media (max-width: 700px) { .wi-nav { padding: 0 20px !important; } .wi-panel { right: 12px; width: calc(100vw - 24px); } }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="wi-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;padding:0 40px;height:56px;background:rgba(10,10,10,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)">
+  <a href="/" style="font-family:sans-serif;font-size:13px;font-weight:700;letter-spacing:0.2em;color:#fff;text-decoration:none;white-space:nowrap">FRICTION &amp; TOIL</a>
+  <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">Briefings</span>
+    <a href="/web-intelligence/the-shift/" role="menuitem">The Shift: Maturity Curve</a>
+    <a href="/web-intelligence/the-shift/cost-of-not-knowing/" role="menuitem">Cost of Not Knowing</a>
+    <a href="/web-intelligence/the-shift/citation-graph/" role="menuitem">Citation Graph</a>
+    <a href="/web-intelligence/the-shift/multi-index-problem/" class="wi-current" aria-current="page" role="menuitem">Multi-Index Problem</a>
+  </div>
+  <div class="wi-panel-group">
+    <span class="wi-panel-title">More from F&amp;T</span>
+    <a href="/web-intelligence/" role="menuitem">Web &amp; AI</a>
+    <a href="/strategic-intelligence/" role="menuitem">Strategic</a>
+    <a href="/culture-intelligence/" role="menuitem">Culture</a>
+    <a href="/experiments/" role="menuitem">Experiments</a>
+    <a href="mailto:hello@frictionandtoil.com" role="menuitem">Contact</a>
+  </div>
+</div>
+<div style="height:56px"></div>
+
+<aside class="scan-rail" id="scanRail" aria-label="Multi-Index Self-Check rail">
+  <div class="scan-rail-head">
+    <span class="scan-rail-label">Self-Check</span>
+    <span class="scan-rail-title">5 minutes. One coffee.</span>
+  </div>
+  <ol class="scan-rail-list">
+    <li><a href="#sc-1" data-target="sc-1"><span class="scan-rail-num">01</span><span class="scan-rail-text">Run your category query in ChatGPT, Claude &amp; Gemini</span></a></li>
+    <li><a href="#sc-2" data-target="sc-2"><span class="scan-rail-num">02</span><span class="scan-rail-text">Claim Bing Webmaster Tools</span></a></li>
+    <li><a href="#sc-3" data-target="sc-3"><span class="scan-rail-num">03</span><span class="scan-rail-text">Search your brand on search.brave.com</span></a></li>
+    <li><a href="#sc-4" data-target="sc-4"><span class="scan-rail-num">04</span><span class="scan-rail-text">Audit robots.txt against the three bot tiers</span></a></li>
+    <li><a href="#sc-5" data-target="sc-5"><span class="scan-rail-num">05</span><span class="scan-rail-text">Run the comparison query in three models</span></a></li>
+  </ol>
+  <div class="scan-rail-foot">Click any item &rarr; full check</div>
+</aside>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-kicker reveal">
+          <span class="kicker-dot"></span>
+          Editorial &middot; The Shift &middot; May 2026
+        </div>
+        <h1 class="reveal d1">Your Buyer Isn't on the Engine<br>You're <em>Ranking On.</em></h1>
+        <p class="hero-subhead reveal d2">The Multi-Index Problem &mdash; and why &ldquo;we rank #1 on Google&rdquo; is no longer the proxy for visibility it used to be.</p>
+        <p class="hero-byline reveal d2">By Frank Graham</p>
+
+        <p class="hero-deck reveal d3">For two decades, marketing directors have measured visibility in one place. Google. The dashboard, the rank tracker, the agency report &mdash; all pointing at one engine, one map, one truth. That world held until late 2024. It does not hold now. Your buyer is on three engines, and you are ranked on one.</p>
+
+        <div class="stat-strip reveal d4">
+          <div class="stat-cell">
+            <div class="stat-num col-search">3</div>
+            <div class="stat-desc">indexes power the major AI assistants &mdash; Google, Bing, and Brave &mdash; and they do not agree on who you are</div>
+            <span class="stat-source">Anthropic, OpenAI, Perplexity crawler documentation, Feb 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-compete">0</div>
+            <div class="stat-desc">dashboards in most marketing directors' weekly reporting cover more than one of those three indexes</div>
+            <span class="stat-source">Friction &amp; Toil audit base, Q1 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">3</div>
+            <div class="stat-desc">tiers of crawler sit underneath every major AI assistant (training, search indexing, live retrieval), and most agency-set robots.txt files do not separate them correctly</div>
+            <span class="stat-source">Friction &amp; Toil audit base, Q1 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      The engine you are ranked on, and the engine your buyer is using, have quietly stopped being the same engine.
+    </div>
+  </section>
+
+  <!-- ============ I. THE MAP ISN'T THE TERRITORY ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">I</span>
+        <h2 class="section-heading">The map you've been reading isn't the territory.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Your agency dashboard tracks one engine. Your buyer is on three.
+        </span>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>A marketing director at a heritage hotel group runs a quarterly report. The agency dashboard is reassuring. #1 for &ldquo;luxury Cotswolds country house hotel.&rdquo; #2 for &ldquo;boutique hotel Oxfordshire.&rdquo; Top three on every commercial query that matters. The board nods. The retainer is renewed.</p>
+        <p>Three weeks later, an enquiry from a guest planning an anniversary mentions, in passing, that they had asked ChatGPT for a shortlist. The hotel was not on it. The marketing director makes a note to ask the agency. The agency replies that ChatGPT isn't in their tracking remit; it's &ldquo;an emerging channel.&rdquo; The conversation ends.</p>
+        <p>What the marketing director has just brushed against, without naming it, is the central change in commercial visibility since PageRank. <strong>The shortlist their buyer is being given is not generated from the index they have been ranking on.</strong> It is generated from a different index entirely. The rankings on the agency dashboard are real. They are also, increasingly, irrelevant to the conversation that decides whether the buyer ever hears the brand's name.</p>
+        <p>This is the <strong>Multi-Index Problem</strong>. And almost no UK marketing leader has been shown the shape of it yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ II. ONE BUYER, THREE ENGINES, THREE INDEXES ============ -->
+  <section class="prose-section" style="background:var(--bg-soft);">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">II</span>
+        <h2 class="section-heading">One buyer. Three engines. Three indexes.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Gemini reads Google. ChatGPT reads Bing. Claude reads Brave. The three indexes do not agree on who you are.
+        </span>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The architecture of AI search is not what most marketing directors assume. The assistants buyers are now using do not all read the same web. They read different webs, curated by different crawlers, ranked by different rules.</p>
+        <p>The breakdown matters because the implications cascade from it.</p>
+        <p><strong>Google's family</strong> (Gemini, Google AI Overviews, Gemini in Workspace, Apple Intelligence's web fallback) reads the Google index. This is the index every marketing director has been optimising for since 2008. It is comprehensive, sophisticated, and the home of the agency dashboard. It is also, increasingly, only one of three.</p>
+        <p><strong>Microsoft and OpenAI's family</strong> (ChatGPT, Microsoft Copilot, DuckDuckGo's chat) reads a Bing-foundational index. Bing supplies the underlying retrieval; OpenAI's own search crawler layers proprietary indexing on top. ChatGPT, by usage, is now the most-asked AI assistant in commercial contexts. The marketing director who has not claimed Bing Webmaster Tools is, functionally, hoping that what Bing happens to know about their business is accurate. As reported elsewhere in this series, research happens in AI; shortlisting happens in AI; Google is increasingly the validation step, not the starting point. For the family of assistants reading Bing, that mid-funnel reality is felt before any Google ranking is consulted.</p>
+        <p><strong>Anthropic's family</strong>, Claude, is widely evidenced to rely on Brave Search for web retrieval. Brave is the smallest of the three by raw scale, but is the only major web index built independently of Google and Microsoft. It indexes differently. It ranks differently. It values different signals. <strong>A brand that is well-represented on Google can be functionally invisible on Brave.</strong> A marketing director who has never run their brand name on <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a> cannot tell you what Claude believes about their business. Most cannot.</p>
+        <p>Two further engines round out the picture. <strong>Perplexity</strong> runs hybrid retrieval (its own crawler-built index plus third-party search providers), with a strong bias toward sources it considers authoritative: academic publications, established trade press, named experts. <strong>Brave's own assistant Leo</strong> reads the Brave index natively. Smaller volume, more strategically interesting in privacy-conscious B2B contexts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ III. THE MECHANISM ============ -->
+  <section class="prose-section prose-section-split">
+    <div class="container">
+      <div class="prose-subrow">
+        <div class="prose-label reveal">
+          <span class="section-numeral">III</span>
+          <h2 class="section-heading">The mechanism nobody briefed the marketing department on.</h2>
+          <span class="section-tldr">
+            <span class="section-tldr-eyebrow">In one line</span>
+            Three tiers of bot. Blocking GPTBot is one decision. Blocking OAI-SearchBot is what removes you from ChatGPT. Most agency-set robots.txt files don't separate them.
+          </span>
+        </div>
+        <div class="body-prose reveal d2">
+          <p>To understand why the indexes diverge, and why blocking the wrong bot is the single most common technical mistake we see in our audits, it is worth understanding the machinery underneath.</p>
+          <p>Every AI assistant that touches the live web does so through three different categories of bot, each doing a different job. They are routinely conflated, including by agencies. The conflation is the source of most of the visibility errors we encounter.</p>
+        </div>
+      </div>
+
+      <div class="table-breakout reveal">
+        <div class="table-strap">If you read one thing, read this</div>
+        <div class="tier-table-wrap">
+          <div class="tier-table-caption">Three tiers of crawler &middot; three different consequences</div>
+          <table class="tier-table">
+            <colgroup>
+              <col style="width:12%">
+              <col style="width:28%">
+              <col style="width:13%">
+              <col style="width:16%">
+              <col style="width:15%">
+              <col style="width:16%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>What it does</th>
+                <th>OpenAI</th>
+                <th>Anthropic</th>
+                <th>Perplexity</th>
+                <th>Google</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-name">Training</span></td>
+                <td class="tier-desc">Feeds the model's memory. Shapes what the AI knows about your brand even when not searching the live web.</td>
+                <td><span class="tier-bot">GPTBot</span></td>
+                <td><span class="tier-bot">ClaudeBot</span></td>
+                <td><span class="tier-bot-empty">No foundation training</span></td>
+                <td><span class="tier-bot">Google-Extended</span></td>
+              </tr>
+              <tr>
+                <td><span class="tier-name">Search indexing</span></td>
+                <td class="tier-desc">Builds the AI's own retrieval index. Determines whether your site can appear in the assistant's search answers.</td>
+                <td><span class="tier-bot">OAI-SearchBot</span></td>
+                <td><span class="tier-bot">Claude-SearchBot</span></td>
+                <td><span class="tier-bot">PerplexityBot</span></td>
+                <td><span class="tier-bot">Googlebot</span></td>
+              </tr>
+              <tr>
+                <td><span class="tier-name">Live retrieval</span></td>
+                <td class="tier-desc">Real-time fetches when a user asks the assistant a question.</td>
+                <td><span class="tier-bot">ChatGPT-User</span></td>
+                <td><span class="tier-bot">Claude-User</span></td>
+                <td><span class="tier-bot">Perplexity-User</span></td>
+                <td><span class="tier-bot-empty">handled inside Gemini grounding</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-scroll-hint">&larr; scroll &rarr;</div>
+      </div>
+
+      <div class="prose-subrow">
+        <div class="prose-subrow-spacer" aria-hidden="true"></div>
+        <div class="body-prose reveal">
+        <p>Two distinctions inside this taxonomy do most of the work, and both are routinely missed.</p>
+        <p>The first is <strong>what blocking actually blocks</strong>. A marketing director who tells their developer to &ldquo;block AI bots for IP reasons&rdquo; is, almost without exception, blocking the training tier: GPTBot, ClaudeBot, Google-Extended. This is a defensible decision if the goal is to stop AI companies using the brand's content to train future models. It is a catastrophic decision if the marketing director also wants the brand to appear in ChatGPT Search, Claude's web answers, or Gemini's AI Overviews. <strong>Blocking GPTBot does not stop ChatGPT Search from indexing the site. OAI-SearchBot does that.</strong> The two bots have different jobs and different consequences, and most agency-set robots.txt files we audit do not separate them correctly.</p>
+
+        <div class="pull-quote reveal">The most expensive technical mistake we find is silent. The brand simply stops being recommended by ChatGPT, and there is no event that names what happened.</div>
+
+        <p>The second is <strong>what robots.txt actually controls</strong>. Training and search-indexing bots respect robots.txt directives. They are autonomous crawlers, and they read the rulebook. Live-retrieval bots are a different category. ChatGPT-User, Claude-User, and Perplexity-User are classified by their operators as actions taken on behalf of a human user (closer to a browser fetch than to a crawl), and the robots.txt protocol is treated more permissively as a result. OpenAI's own documentation states explicitly that ChatGPT-User may not be governed by robots.txt in the same way as automated crawlers. The practical implication: robots.txt remains a strong instrument for training and indexing control, but a weaker one for user-initiated retrieval.</p>
+
+        <h3 style="font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.18;color:var(--text);margin-top:3rem;margin-bottom:1.25rem;">The underlying indexes: the layer beneath the bots.</h3>
+
+        <p>The crawler tiers explain what each AI vendor is doing on your website. They do not, on their own, explain which web your buyer is being shown. That answer sits one layer deeper, in the indexes the assistants ultimately retrieve from.</p>
+        <p><strong>ChatGPT's search foundation is Bing.</strong> Bing remains a critical foundation for ChatGPT Search visibility, with OpenAI's own search crawler layer sitting on top. Bing Webmaster Tools, unclaimed by the majority of UK businesses we audit, is the most direct lever a marketing director has on ChatGPT visibility.</p>
+        <p><strong>Claude's search foundation is Brave Search.</strong> Anthropic added Brave Search to its public subprocessor list in March 2025; independent analysis of Claude's search citations shows roughly 87% overlap with Brave's organic results. Anthropic's own product documentation describes the relationship in deliberately general terms, calling it &ldquo;a third-party search service provider selected by Anthropic.&rdquo; But the operational reality is that a brand which does not surface cleanly on <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a> is a brand Claude struggles to describe.</p>
+        <p><strong>Gemini's search foundation is Google's live search index:</strong> first-party, fully integrated, no intermediary. This is the only AI assistant in our list whose visibility maps directly onto Google ranking discipline.</p>
+        <p><strong>Perplexity is hybrid.</strong> Its own crawler builds a proprietary index, but its retrieval also draws on third-party search providers. The exact balance shifts; the operational point is that Perplexity weights authority signals (academic publications, established trade press, named experts) more heavily than the others.</p>
+        <p>Three indexes. Four assistants. Three tiers of bot per assistant. One marketing director, watching one dashboard.</p>
+        <p>The fixes for being correctly read by each tier of crawler, including which user-agents to permit, which schema to expose, and which Webmaster Tools to claim, are covered in <a href="/web-intelligence/the-shift/">the Maturity Curve piece</a> and <a href="/web-intelligence/the-shift/citation-graph/">the Citation Graph piece</a>. The point of this section is one layer above them: before you fix what each engine reads, you have to know which bots are reading for which engine, and which engines your buyer is actually on. Most marketing directors are still operating as though there is one bot, one engine, and one answer.</p>
+        <p>There are three of each. And the three do not always agree.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IV. WHAT THE DIVERGENCE COSTS ============ -->
+  <section class="vignettes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-numeral">IV</span>
+        <h2 class="section-heading">What the divergence actually costs.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Single-index Cost of Inaction was a third of the picture. Most marketing directors are reading the smallest third.
+        </span>
+        <p class="section-sub">The Multi-Index Problem is not a thought experiment. It produces specific, measurable losses across the sectors we audit most often. Three composites from our Q1 2026 audit base.</p>
+      </div>
+
+      <div class="vignette-grid">
+
+        <div class="vignette-card v1 reveal d1">
+          <span class="vignette-tag">01 &middot; The Bing Blindspot</span>
+          <div class="vignette-headline">A boutique London hotel group ranking strongly on Google, invisible inside ChatGPT.</div>
+          <div class="vignette-body">
+            <p>The Google ranking is real. The shortlist conversation is happening somewhere else. The underlying Bing index has stale or absent structured data for the property, and TripAdvisor's listings, heavily weighted by Bing, are out of date.</p>
+            <p>The dashboard says everything is working. ChatGPT, asked the category question, names three competitors.</p>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Engine missed</span>
+            <span class="vignette-engine-value">ChatGPT &middot; Copilot</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v2 reveal d2">
+          <span class="vignette-tag">02 &middot; The Brave Blindspot</span>
+          <div class="vignette-headline">A private members' club with strong FT and Tatler coverage, absent from Brave's index.</div>
+          <div class="vignette-body">
+            <p>Well-represented in Google's knowledge graph. Brave weights different authority signals, and the club has no presence on the platforms Brave's discovery engine reads.</p>
+            <p>Claude, increasingly used by exactly the senior professional demographic the club exists to attract, describes the club inaccurately, or not at all.</p>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Engine missed</span>
+            <span class="vignette-engine-value">Claude &middot; Leo</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v3 reveal d3">
+          <span class="vignette-tag">03 &middot; The Unclaimed Listing</span>
+          <div class="vignette-headline">A heritage estate offering weddings and private hire. Everything correct for Google; Bing Places untouched.</div>
+          <div class="vignette-body">
+            <p>Bing Places listing populated automatically with five-year-old data. Capacity figures wrong. Pricing absent. Contact route stale.</p>
+            <p>ChatGPT, asked for &ldquo;a private estate for a private hire weekend in the Home Counties,&rdquo; cites three competitors. The estate is not in the answer.</p>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Engine missed</span>
+            <span class="vignette-engine-value">ChatGPT &middot; Copilot</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;max-width:64ch;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In each case, the marketing dashboard says everything is working. In each case, the most expensive enquiries (couples shortlisting venues without ever opening a browser tab, members evaluating clubs through their AI assistant, guests planning escapes through ChatGPT) are happening in a place the dashboard cannot see.</p>
+      </div>
+
+      <div class="body-prose reveal" style="max-width:68ch;margin:3rem auto 0;">
+        <div class="pull-quote">The Cost of Inaction is no longer a single number against a single index. It is the sum of three blind spots, and most marketing directors are watching one of them.</div>
+        <p>There is a deeper layer underneath the three blind spots, and it deserves naming. AI does not only read your website. It reads the web's opinion of you. The Citation Consensus Problem named in <a href="/web-intelligence/the-shift/">the Maturity Curve piece</a> (the fact that AI reads niche forums, sector publications, trade press, professional registers, and review aggregators alongside your own site) applies with multiplied force in a multi-index world. Different aggregators feed different indexes. TripAdvisor's weight in Bing is not its weight in Brave. The Knot's integration sits inside ChatGPT, not Claude. A brand can be visible on the third-party platforms one index trusts and entirely absent from the platforms another index trusts. The Cost of Inaction methodology covered in <a href="/web-intelligence/the-shift/cost-of-not-knowing/">the previous Shift piece</a> calculates the visibility gap on a single index. The Multi-Index Problem is the recognition that the gap is now plural, and that the platforms feeding it are plural too.</p>
+        <p><strong>A marketing director measuring visibility on Google alone is, increasingly, measuring one third of their actual exposure.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V. WHAT CHANGES IN THE QUARTERLY REPORT ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral">V</span>
+        <h2 class="section-heading">What changes in the marketing director's quarterly report.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Run the category query in three assistants. Claim Bing Webmaster Tools. Retire &ldquo;#1 on Google&rdquo; as the answer to the visibility question.
+        </span>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The Multi-Index Problem is not solved by panic, and not solved by hiring three agencies. It is solved by changing what the quarterly report measures, and changing the standing assumption that &ldquo;we rank well on Google&rdquo; is the answer to the visibility question.</p>
+        <p>Three shifts, none of them expensive, sit at the heart of the discipline.</p>
+        <p><strong>The first is to broaden what &ldquo;visibility&rdquo; means in the standing report.</strong> A quarterly marketing report in 2026 that contains rankings only from Google is reporting on one third of the buyer's reality. The rest of it (what ChatGPT says when asked the brand's category question, what Claude says when asked for a recommendation, what Perplexity cites when asked for a comparison) is not in the report not because it cannot be measured, but because nobody has asked for it to be. Those answers are checkable in five minutes, by anybody, on any laptop. Most marketing directors have never run them.</p>
+        <p><strong>The second is to claim the ground that has been silently abandoned.</strong> Bing Webmaster Tools is free and takes ten minutes to set up. Most UK businesses we audit have never claimed it, which means ChatGPT and Copilot are reading whatever Bing has scraped automatically, with no input from the brand. <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a> is publicly searchable in three seconds. Most marketing directors have never tested it. These are not budget questions. They are noticing questions.</p>
+        <p><strong>The third is to retire &ldquo;we rank #1 on Google&rdquo; as a statement of marketing health.</strong> The line was adequate for a decade. It is no longer. Not because the Google ranking has stopped mattering (it has not), but because it is now one signal among at least three, and the other two are growing faster than the first.</p>
+
+        <div class="frame-block reveal">
+          <div class="frame-cell old">
+            <span class="frame-label">Old</span>
+            <p class="frame-quote">&ldquo;We rank #1 on Google.&rdquo;</p>
+          </div>
+          <div class="frame-cell new">
+            <span class="frame-label">New</span>
+            <p class="frame-quote">&ldquo;When our buyers ask ChatGPT, Claude, and Gemini about our category, we are in the answer, and we know which engines name us and which don't.&rdquo;</p>
+          </div>
+        </div>
+
+        <p>The old line was a status statement, checked once per quarter and written into a board pack. The new line is an ongoing question, checked every time a model retrains. <strong>A status statement says <em>we are visible</em>. A diagnostic asks <em>are we still visible, and on which surfaces?</em></strong> The first you report. The second you operate.</p>
+        <p>A marketing director presenting Google rankings to the board in 2026 without context for ChatGPT, Claude, and Perplexity visibility is presenting an incomplete picture. The board will not always notice the gap. The buyer is already in it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR · SELF-CHECK ============ -->
+  <section class="sidebar-section" id="self-check">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; For The Reader's Reader</span>
+        <h3>The Multi-Index Self-Check.</h3>
+        <p class="sidebar-intro">Five minutes. One coffee. This sidebar is not a re-run of the Five-Question Audit in the Maturity Curve piece &mdash; that audit asks whether you are visible at all. This one asks whether your visibility is consistent across the three engines that matter.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point" id="sc-1">
+            <div class="sidebar-point-num">01</div>
+            <div class="sidebar-point-body">
+              <strong>Run your category query in ChatGPT, Claude, and Gemini, side by side.</strong> &ldquo;Recommend a [your category] in [your geography].&rdquo; Note the differences. Are you in all three answers? In one? In none? Convergence across all three is the Recommended position. Divergence is where the Cost of Inaction is hiding.
+            </div>
+          </div>
+          <div class="sidebar-point" id="sc-2">
+            <div class="sidebar-point-num">02</div>
+            <div class="sidebar-point-body">
+              <strong>Check whether your domain is claimed in Bing Webmaster Tools.</strong> If it is not, ChatGPT and Copilot are reading whatever Bing scraped automatically. This is the most common silent failure we see in our audit base, and a 10-minute fix that materially changes ChatGPT visibility.
+            </div>
+          </div>
+          <div class="sidebar-point" id="sc-3">
+            <div class="sidebar-point-num">03</div>
+            <div class="sidebar-point-body">
+              <strong>Search your brand on <a href="https://search.brave.com" target="_blank" rel="noopener" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);">search.brave.com</a>.</strong> Not Brave Leo. The raw Brave index. If your brand does not surface cleanly with current information on the first page, Claude does not have a reliable reference for who you are.
+            </div>
+          </div>
+          <div class="sidebar-point" id="sc-4">
+            <div class="sidebar-point-num">04</div>
+            <div class="sidebar-point-body">
+              <strong>Audit your robots.txt against the three crawler tiers.</strong> Open <code style="font-family:var(--mono);font-size:0.9em;color:var(--text);">yourdomain.com/robots.txt</code>. Identify what is permitted and what is blocked across the three tiers: training (GPTBot, ClaudeBot, Google-Extended), search indexing (OAI-SearchBot, Claude-SearchBot, PerplexityBot), and live retrieval (ChatGPT-User, Claude-User, Perplexity-User). If you are blocking GPTBot but not OAI-SearchBot, you have made one decision. If you are blocking both, you have made a different decision. Most agency-set files do not distinguish.
+            </div>
+          </div>
+          <div class="sidebar-point" id="sc-5">
+            <div class="sidebar-point-num">05</div>
+            <div class="sidebar-point-body">
+              <strong>Ask each model the comparison query.</strong> &ldquo;Compare [your brand] with [your two main competitors].&rdquo; Run it in ChatGPT, Claude, and Perplexity. Note what each one says about you, and what it says about them. The aggregate is often the closest view a marketing director has of the citation graph buyers are being shown.
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-coda">
+          Score honestly. <strong>0&ndash;1 yes</strong> = your visibility reporting is built for a search world that no longer exists. <strong>2&ndash;3</strong> = you are partially adapted, and the gaps are addressable. <strong>4&ndash;5</strong> = you are operating with the visibility discipline of a 2026 brand, and your competitors mostly are not.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="container">
+      <div class="closing-inner reveal">
+        <span class="eyebrow">Closing</span>
+        <h2>One ranking is no longer one truth.</h2>
+        <div class="closing-body">
+          <p>Marketing directors at heritage venues, members' clubs, and country house hotels have spent fifteen years building the offline brand. The Google rank, when it came, was the digital echo of that brand. For most of that period, the echo was loud enough. One index, one ranking, one true statement: <em>we are visible to the buyer</em>.</p>
+          <p>That statement is now true on one third of the buyer's surface area. Sometimes less. The brand built carefully for a decade is being filtered, in real time, through three indexes that do not agree on what it stands for &mdash; and the dashboard in front of most marketing directors is reading from the one that is shrinking fastest as a share of the total.</p>
+          <p>The fix is not new agencies. It is not new platforms. It is the noticing that the question itself has changed. <strong>&ldquo;Are we visible?&rdquo; used to have one answer. It now has three, and the gap between them is where the lost enquiries live.</strong></p>
+          <p style="font-family:var(--serif);font-style:italic;color:var(--text);font-size:1.15rem;margin-top:1.75rem;">The brand is the same. The buyer is the same. The map is not.</p>
+        </div>
+        <div class="closing-product reveal d2">
+          Friction &amp; Toil's <a href="/web-intelligence/">Web Intelligence Reports</a> diagnose visibility across all three major AI indexes (Google, Bing, and Brave) alongside ChatGPT, Claude, and Perplexity citation behaviour. Methodology and sample reports at frictionandtoil.com/web-intelligence.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ READ NEXT ============ -->
+  <section class="read-next">
+    <div class="read-next-inner reveal">
+      <span class="read-next-eyebrow">Read next from The Shift</span>
+      <a href="/web-intelligence/the-shift/cost-of-not-knowing/" class="read-next-link">
+        <h3>The Cost of Not Knowing</h3>
+        <p>The first compounding curve in digital visibility since PageRank. Why agencies sell upside, and what happens when you quantify downside instead &mdash; with a worked methodology and three case studies from Q1 2026.</p>
+        <span class="read-next-arrow">Continue reading &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ BRIEFING ============ -->
+  <section class="briefing">
+    <div class="container">
+      <div class="briefing-inner">
+        <div class="reveal">
+          <span class="eyebrow">The Shift Briefing</span>
+          <h2>Three indexes. One monthly read.</h2>
+          <p class="briefing-sub">A monthly intelligence brief on how AI is changing what UK customers find &mdash; and what they don't. No consultancy noise.</p>
+        </div>
+        <div class="briefing-form reveal d2">
+          <a href="https://frictions-newsletter.beehiiv.com/subscribe" target="_blank" rel="noopener" class="btn-amber" style="text-decoration:none;display:block;text-align:center;">Subscribe</a>
+          <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">Friction &amp; Toil</div>
+      <div class="footer-centre">frictionandtoil.com</div>
+      <a href="mailto:hello@frictionandtoil.com" class="footer-right">hello@frictionandtoil.com</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Friction &amp; Toil. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<script>
+  // Scan rail: fade in after hero, fade out as the in-flow Self-Check sidebar enters view.
+  (function () {
+    var rail = document.getElementById('scanRail');
+    if (!rail) return;
+    var hero = document.querySelector('.hero');
+    var selfCheck = document.getElementById('self-check');
+    function update() {
+      if (window.innerWidth < 1500) { rail.classList.remove('in'); return; }
+      var scrolled = window.scrollY || document.documentElement.scrollTop;
+      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
+      var selfCheckTop = selfCheck ? selfCheck.getBoundingClientRect().top + window.scrollY : Infinity;
+      var pastHero = scrolled > heroBottom - 120;
+      var beforeSidebar = scrolled < selfCheckTop - 240;
+      rail.classList.toggle('in', pastHero && beforeSidebar);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    // Smooth-scroll on rail clicks, accounting for the fixed nav.
+    rail.querySelectorAll('a[data-target]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('data-target');
+        var target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.scrollY - 88;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var btn = document.getElementById('wiMenuBtn');
+    var panel = document.getElementById('wiPanel');
+    if (!btn || !panel) return;
+    function setOpen(open) {
+      panel.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('wi-panel-locked', open);
+    }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!panel.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!panel.classList.contains('open')) return;
+      if (panel.contains(e.target) || btn.contains(e.target)) return;
+      setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+    panel.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (link.classList.contains('wi-current')) {
+          e.preventDefault();
+          setOpen(false);
+          return;
+        }
+        var href = link.getAttribute('href');
+        if (href && href.charAt(0) === '#') {
+          e.preventDefault();
+          var target = document.getElementById(href.slice(1));
+          if (target) {
+            var top = target.getBoundingClientRect().top + window.scrollY - 72;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
+        setOpen(false);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
