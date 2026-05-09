@@ -934,6 +934,62 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   letter-spacing: 0.04em;
 }
 
+/* ---- Sources / Footnotes ---- */
+.sources {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.sources .container { max-width: 880px; }
+.sources h2 {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.sources ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: sourcenum;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.sources li {
+  counter-increment: sourcenum;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  padding-left: 2.25rem;
+  position: relative;
+}
+.sources li::before {
+  content: counter(sourcenum);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  width: 1.75rem;
+  text-align: right;
+}
+.sources li strong { color: var(--text-secondary); font-weight: 600; }
+.sources li em { color: var(--text-secondary); }
+.sources li a {
+  color: var(--design);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,150,58,0.25);
+  word-break: break-all;
+}
+.sources li a:hover { color: var(--text); }
+
 /* ---- Reveal animation ---- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -1257,7 +1313,7 @@ body.wi-panel-locked { overflow: hidden; }
 
         <p>The crawler tiers explain what each AI vendor is doing on your website. They do not, on their own, explain which web your buyer is being shown. That answer sits one layer deeper, in the indexes the assistants ultimately retrieve from.</p>
         <p><strong>ChatGPT's search foundation is Bing.</strong> Bing remains a critical foundation for ChatGPT Search visibility, with OpenAI's own search crawler layer sitting on top. Bing Webmaster Tools, unclaimed by the majority of UK businesses we audit, is the most direct lever a marketing director has on ChatGPT visibility.</p>
-        <p><strong>Claude's search foundation is Brave Search.</strong> Anthropic added Brave Search to its public subprocessor list in March 2025; independent analysis of Claude's search citations shows roughly 87% overlap with Brave's organic results. Anthropic's own product documentation describes the relationship in deliberately general terms, calling it &ldquo;a third-party search service provider selected by Anthropic.&rdquo; But the operational reality is that a brand which does not surface cleanly on <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a> is a brand Claude struggles to describe.</p>
+        <p><strong>Claude's search foundation is Brave Search.</strong> Anthropic publishes Brave Search as a subprocessor for Claude's web-search capability; the company's product documentation describes the relationship in deliberately general terms, calling it &ldquo;a third-party search service provider selected by Anthropic.&rdquo; The behavioural pattern across our own audits is consistent with that disclosure: brands that do not surface cleanly on <a href="https://search.brave.com" target="_blank" rel="noopener">search.brave.com</a> are brands Claude struggles to describe.</p>
         <p><strong>Gemini's search foundation is Google's live search index:</strong> first-party, fully integrated, no intermediary. This is the only AI assistant in our list whose visibility maps directly onto Google ranking discipline.</p>
         <p><strong>Perplexity is hybrid.</strong> Its own crawler builds a proprietary index, but its retrieval also draws on third-party search providers. The exact balance shifts; the operational point is that Perplexity weights authority signals (academic publications, established trade press, named experts) more heavily than the others.</p>
         <p>Three indexes. Four assistants. Three tiers of bot per assistant. One marketing director, watching one dashboard.</p>
@@ -1465,6 +1521,22 @@ body.wi-panel-locked { overflow: hidden; }
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES & REFERENCES ============ -->
+  <section class="sources">
+    <div class="container">
+      <h2>Sources &amp; references</h2>
+      <ol>
+        <li><strong>OpenAI, <em>Bots &amp; crawlers documentation</em></strong> &mdash; canonical reference for GPTBot (training), OAI-SearchBot (search indexing), and ChatGPT-User (live retrieval), including the note that ChatGPT-User performs user-initiated fetches that are not governed by robots.txt the same way automated crawlers are. <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener">platform.openai.com/docs/bots</a></li>
+        <li><strong>Anthropic, <em>What is ClaudeBot and other Anthropic crawlers?</em></strong> &mdash; canonical reference for ClaudeBot (training), Claude-SearchBot (search indexing), and Claude-User (live retrieval). <a href="https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler" target="_blank" rel="noopener">support.anthropic.com</a></li>
+        <li><strong>Anthropic, <em>Subprocessor list</em></strong> &mdash; lists Brave Search Inc. as a subprocessor providing third-party search results to Claude's web-search capability. <a href="https://www.anthropic.com/legal/subprocessors" target="_blank" rel="noopener">anthropic.com/legal/subprocessors</a></li>
+        <li><strong>Perplexity, <em>PerplexityBot documentation</em></strong> &mdash; describes PerplexityBot (search indexing) and Perplexity-User (live retrieval) and the hybrid retrieval model that combines Perplexity's own crawler with third-party search providers. <a href="https://docs.perplexity.ai/guides/bots" target="_blank" rel="noopener">docs.perplexity.ai/guides/bots</a></li>
+        <li><strong>Google, <em>Google-Extended &amp; Googlebot user-agent documentation</em></strong> &mdash; reference for Google-Extended (controls use of crawled pages for Gemini and Vertex AI training) and Googlebot (search indexing feeding Gemini grounding). <a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">developers.google.com</a></li>
+        <li><strong>Friction &amp; Toil audit base, Q1 2026</strong> &mdash; 42 commissioned Web Intelligence Reports across UK hospitality, professional services, and heritage venues. Source for the &ldquo;0 dashboards&rdquo; and &ldquo;3 tiers of crawler&rdquo; figures cited in the hero stat strip and for the three composite vignettes in section IV.</li>
+        <li><strong>Friction &amp; Toil live re-test, May 2026</strong> &mdash; 38-brand curl-based crawler-policy and schema scan re-running diagnostics from the audit base. Companion evidence for the multi-index visibility patterns described in this article.</li>
+      </ol>
     </div>
   </section>
 
