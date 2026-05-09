@@ -2362,6 +2362,8 @@
     padding: 0.5rem;
     cursor: zoom-in;
     transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
   }
   .mi-shot:hover { border-color: var(--design); transform: translateY(-1px); }
   .mi-shot::after {
@@ -2654,6 +2656,8 @@
 <nav class="wi-subnav" id="wiSubnav" aria-label="Section navigation">
   <a href="/web-intelligence/the-shift/">Briefs</a>
   <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="#multi-index-proof" data-target="multi-index-proof">Live demo</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
   <a href="#covers" data-target="covers">How it works</a>
   <span class="sep" aria-hidden="true">&middot;</span>
   <a href="#pricing" data-target="pricing">Pricing</a>
@@ -2667,6 +2671,7 @@
 <div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
   <div class="wi-panel-group">
     <span class="wi-panel-title">On this page</span>
+    <a href="#multi-index-proof" role="menuitem">Multi-Index live demo</a>
     <a href="#maturity" role="menuitem">Maturity curve</a>
     <a href="#cost-cure" role="menuitem">Cost &amp; cure</a>
     <a href="#covers" role="menuitem">The report</a>
@@ -2829,7 +2834,7 @@
             <span class="mi-engine-name">Perplexity</span>
             <span class="mi-engine-meta">Hybrid &middot; authority-weighted</span>
           </figcaption>
-          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/perplexity.jpg" alt="Perplexity's top 5 — Blenheim Palace, Sudeley Castle, Cornwell Manor, Hyde House, Euridge Manor" loading="lazy"></div>
+          <a class="mi-shot" href="/web-intelligence/img/multi-index/perplexity.jpg" target="_blank" rel="noopener" aria-label="View Perplexity's full screenshot"><img src="/web-intelligence/img/multi-index/perplexity.jpg" alt="Perplexity's top 5 — Blenheim Palace, Sudeley Castle, Cornwell Manor, Hyde House, Euridge Manor" loading="lazy"></a>
           <ol class="mi-list">
             <li>Blenheim Palace</li>
             <li>Sudeley Castle</li>
@@ -2845,7 +2850,7 @@
             <span class="mi-engine-name">Claude</span>
             <span class="mi-engine-meta">Anthropic &middot; reads Brave</span>
           </figcaption>
-          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/claude.jpg" alt="Claude's top 5 — Cripps Barn, Stone Barn, Lapstone Barn, Kingscote Barn, Hyde House" loading="lazy"></div>
+          <a class="mi-shot" href="/web-intelligence/img/multi-index/claude.jpg" target="_blank" rel="noopener" aria-label="View Claude's full screenshot"><img src="/web-intelligence/img/multi-index/claude.jpg" alt="Claude's top 5 — Cripps Barn, Stone Barn, Lapstone Barn, Kingscote Barn, Hyde House" loading="lazy"></a>
           <ol class="mi-list">
             <li>Cripps Barn</li>
             <li>Stone Barn</li>
@@ -2861,7 +2866,7 @@
             <span class="mi-engine-name">ChatGPT</span>
             <span class="mi-engine-meta">OpenAI &middot; reads Bing</span>
           </figcaption>
-          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/chatgpt.jpg" alt="ChatGPT's top 5 — Manor By The Lake, Cripps Barn, Stone Barn, Lapstone Barn, Hyde House" loading="lazy"></div>
+          <a class="mi-shot" href="/web-intelligence/img/multi-index/chatgpt.jpg" target="_blank" rel="noopener" aria-label="View ChatGPT's full screenshot"><img src="/web-intelligence/img/multi-index/chatgpt.jpg" alt="ChatGPT's top 5 — Manor By The Lake, Cripps Barn, Stone Barn, Lapstone Barn, Hyde House" loading="lazy"></a>
           <ol class="mi-list">
             <li>Manor By The Lake</li>
             <li>Cripps Barn</li>
@@ -2877,7 +2882,7 @@
             <span class="mi-engine-name">Gemini</span>
             <span class="mi-engine-meta">Google &middot; reads Google</span>
           </figcaption>
-          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/gemini.jpg" alt="Gemini's top 5 — Grittleton House, Great Tythe Barn, Elmore Court, Manor By The Lake, De Vere Tortworth Court" loading="lazy"></div>
+          <a class="mi-shot" href="/web-intelligence/img/multi-index/gemini.jpg" target="_blank" rel="noopener" aria-label="View Gemini's full screenshot"><img src="/web-intelligence/img/multi-index/gemini.jpg" alt="Gemini's top 5 — Grittleton House, Great Tythe Barn, Elmore Court, Manor By The Lake, De Vere Tortworth Court" loading="lazy"></a>
           <ol class="mi-list">
             <li>Grittleton House</li>
             <li>The Great Tythe Barn</li>
@@ -4147,8 +4152,21 @@
     var dlgClose = document.getElementById('miLightboxClose');
     if (!dlg || !dlgImg || typeof dlg.showModal !== 'function') return;
 
+    var coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
     document.querySelectorAll('#multi-index-proof .mi-shot').forEach(function (shot) {
-      shot.addEventListener('click', function () {
+      shot.addEventListener('click', function (e) {
+        // On touch devices let the anchor open the image natively — gives
+        // pinch-zoom in iOS/Android's built-in image viewer.
+        if (coarsePointer) {
+          if (typeof trackLead === 'function') {
+            var card2 = shot.closest('.mi-card');
+            var name2 = card2 ? card2.querySelector('.mi-engine-name') : null;
+            trackLead('web_intelligence_multi_index_zoom_' + (name2 ? name2.textContent.toLowerCase() : 'unknown'));
+          }
+          return;
+        }
+        e.preventDefault();
         var img = shot.querySelector('img');
         if (!img || !img.getAttribute('src')) return;
         var card = shot.closest('.mi-card');
