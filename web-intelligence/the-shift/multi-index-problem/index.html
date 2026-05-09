@@ -633,9 +633,44 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
 .vignette-body p + p { margin-top: 0.85rem; }
-.vignette-engine {
+.vignette-coi {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.vignette-coi-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.vignette-coi-label {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.vignette-coi-value {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: right;
+  color: var(--text-secondary);
+}
+.vignette-coi-row.full .vignette-coi-value {
+  font-size: 1.05rem;
+}
+.vignette-card.v1 .vignette-coi-row.full .vignette-coi-value { color: var(--search); }
+.vignette-card.v2 .vignette-coi-row.full .vignette-coi-value { color: var(--design); }
+.vignette-card.v3 .vignette-coi-row.full .vignette-coi-value { color: var(--compete); }
+.vignette-engine {
+  margin-top: 1rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -651,14 +686,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .vignette-engine-value {
   font-family: var(--mono);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-align: right;
+  color: var(--text-secondary);
 }
-.vignette-card.v1 .vignette-engine-value { color: var(--search); }
-.vignette-card.v2 .vignette-engine-value { color: var(--design); }
-.vignette-card.v3 .vignette-engine-value { color: var(--compete); }
 
 /* ---- Sidebar (Self-Check) ---- */
 .sidebar-section {
@@ -1346,6 +1379,16 @@ body.wi-panel-locked { overflow: hidden; }
             <p>The Google ranking is real. The shortlist conversation is happening somewhere else. The underlying Bing index has stale or absent structured data for the property, and TripAdvisor's listings, heavily weighted by Bing, are out of date.</p>
             <p>The dashboard says everything is working. ChatGPT, asked the category question, names three competitors.</p>
           </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Single-index COI</span>
+              <span class="vignette-coi-value">&pound;45k &mdash; &pound;70k</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Multi-index exposure</span>
+              <span class="vignette-coi-value">&pound;110k &mdash; &pound;165k</span>
+            </div>
+          </div>
           <div class="vignette-engine">
             <span class="vignette-engine-label">Engine missed</span>
             <span class="vignette-engine-value">ChatGPT &middot; Copilot</span>
@@ -1359,6 +1402,16 @@ body.wi-panel-locked { overflow: hidden; }
             <p>Well-represented in Google's knowledge graph. Brave weights different authority signals, and the club has no presence on the platforms Brave's discovery engine reads.</p>
             <p>Claude, increasingly used by exactly the senior professional demographic the club exists to attract, describes the club inaccurately, or not at all.</p>
           </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Single-index COI</span>
+              <span class="vignette-coi-value">&pound;35k &mdash; &pound;60k</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Multi-index exposure</span>
+              <span class="vignette-coi-value">&pound;85k &mdash; &pound;140k</span>
+            </div>
+          </div>
           <div class="vignette-engine">
             <span class="vignette-engine-label">Engine missed</span>
             <span class="vignette-engine-value">Claude &middot; Leo</span>
@@ -1371,6 +1424,16 @@ body.wi-panel-locked { overflow: hidden; }
           <div class="vignette-body">
             <p>Bing Places listing populated automatically with five-year-old data. Capacity figures wrong. Pricing absent. Contact route stale.</p>
             <p>ChatGPT, asked for &ldquo;a private estate for a private hire weekend in the Home Counties,&rdquo; cites three competitors. The estate is not in the answer.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Single-index COI</span>
+              <span class="vignette-coi-value">&pound;40k &mdash; &pound;75k</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Multi-index exposure</span>
+              <span class="vignette-coi-value">&pound;100k &mdash; &pound;160k</span>
+            </div>
           </div>
           <div class="vignette-engine">
             <span class="vignette-engine-label">Engine missed</span>
