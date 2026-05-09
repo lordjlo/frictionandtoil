@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mock — Multi-Index Proof Block (Web Intelligence hero follow-up)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-soft: rgba(255,255,255,0.02);
+    --bg-card: rgba(255,255,255,0.03);
+    --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed;
+    --text-secondary: #8b8b9e;
+    --text-muted: #5a5a6e;
+    --design: #c9963a;
+    --accent-rose: #f43f5e;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: var(--body); }
+
+  .label-bar {
+    background:#000;
+    border-bottom:1px solid var(--border);
+    padding: 14px 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .label-bar strong { color: var(--text); }
+  .label-bar em { font-style: normal; color: var(--text-muted); font-size: 10.5px; }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 1.25rem 0 1.5rem;
+  }
+  .section-sub {
+    font-family: var(--body);
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 64ch;
+    margin: 0;
+  }
+  .section-head { margin-bottom: 3rem; max-width: 900px; }
+  .section-head .eyebrow { display: block; margin-bottom: 1.25rem; }
+
+  /* ============ MULTI-INDEX PROOF BLOCK ============ */
+  #multi-index-proof {
+    padding: clamp(4rem, 8vw, 6rem) 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-soft);
+  }
+
+  .mi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .mi-card {
+    margin: 0;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+  }
+  .mi-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+
+  .mi-engine {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mi-engine-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .mi-engine-meta {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .mi-shot {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    aspect-ratio: 9 / 14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .mi-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  /* placeholder when image is missing — visible while you wire screenshots in */
+  .mi-shot::before {
+    content: 'screenshot pending';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.015),
+      rgba(255,255,255,0.015) 10px,
+      rgba(255,255,255,0.04) 10px,
+      rgba(255,255,255,0.04) 20px
+    );
+    pointer-events: none;
+  }
+  .mi-shot img:not([src=""]) { position: relative; z-index: 2; }
+
+  .mi-list {
+    list-style: decimal;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    font-family: var(--body);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .mi-list li { padding: 0.18rem 0; }
+  .mi-list li::marker { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* highlight Hyde House across the cards where it appears */
+  .mi-list li.mi-shared {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .mi-list li.mi-shared::after {
+    content: '↗ named in 3 of 4';
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--design);
+    border: 1px solid rgba(201,150,58,0.4);
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    vertical-align: 1px;
+  }
+  .mi-card[data-engine="gemini"] .mi-list li.mi-missing {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ============ TAKEAWAY STAT BLOCK ============ */
+  .mi-takeaway {
+    margin-top: 3rem;
+    padding: 2.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .mi-stat-mid { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .mi-stat-num {
+    display: block;
+    font-family: var(--serif);
+    font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--design);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.7rem;
+  }
+  .mi-stat-label {
+    font-family: var(--body);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  /* ============ COMMENTARY CALLOUT ============ */
+  .mi-commentary {
+    margin-top: 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .mi-comment {
+    padding: 1.5rem 1.6rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .mi-comment-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--design);
+  }
+  .mi-comment-body {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .mi-comment-body strong { color: var(--text); font-weight: 600; }
+  .mi-comment-body em { color: var(--text); font-style: italic; }
+
+  .mi-closing {
+    margin-top: 3rem;
+    max-width: 64ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .mi-closing p {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+    margin: 0 0 1.5rem;
+  }
+  .mi-closing p em { color: var(--design); font-style: italic; }
+  .mi-closing a {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--design);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,150,58,0.4);
+    padding-bottom: 2px;
+  }
+  .mi-closing a:hover { border-bottom-color: var(--design); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1100px) {
+    .mi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .mi-commentary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .mi-grid { grid-template-columns: 1fr; }
+    .mi-takeaway { grid-template-columns: 1fr; gap: 1.75rem; }
+    .mi-stat-mid {
+      border-left: none; border-right: none;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="label-bar">
+  <span><strong>Mock</strong> · Multi-Index Proof Block</span>
+  <em>Drops between hero and Maturity Curve on /web-intelligence/</em>
+</div>
+
+<!-- ============ MULTI-INDEX PROOF BLOCK ============ -->
+<section id="multi-index-proof">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">The Multi-Index Problem · live</span>
+      <h2 class="section-heading">One question. Four AI assistants.<br><em style="font-style:italic;color:var(--design);font-weight:500;">Four different shortlists.</em></h2>
+      <p class="section-sub">We asked Claude, ChatGPT, Gemini, and Perplexity the same question a real customer would ask: <em style="color:var(--text);font-style:italic;">&ldquo;I'm getting married and I want a big party — top 5 wedding venues in the Cotswolds.&rdquo;</em> No two engines returned the same shortlist.</p>
+    </div>
+
+    <div class="mi-grid">
+
+      <figure class="mi-card" data-engine="perplexity">
+        <figcaption class="mi-engine">
+          <span class="mi-engine-name">Perplexity</span>
+          <span class="mi-engine-meta">Hybrid · authority-weighted</span>
+        </figcaption>
+        <div class="mi-shot"><img src="../web-intelligence/img/multi-index/perplexity.png" alt="Perplexity's top 5 — Blenheim Palace, Sudeley Castle, Cornwell Manor, Hyde House, Euridge Manor"></div>
+        <ol class="mi-list">
+          <li>Blenheim Palace</li>
+          <li>Sudeley Castle</li>
+          <li>Cornwell Manor</li>
+          <li class="mi-shared">Hyde House</li>
+          <li>Euridge Manor</li>
+        </ol>
+      </figure>
+
+      <figure class="mi-card" data-engine="claude">
+        <figcaption class="mi-engine">
+          <span class="mi-engine-name">Claude</span>
+          <span class="mi-engine-meta">Anthropic · reads Brave</span>
+        </figcaption>
+        <div class="mi-shot"><img src="../web-intelligence/img/multi-index/claude.png" alt="Claude's top 5 — Cripps Barn, Stone Barn, Lapstone Barn, Kingscote Barn, Hyde House"></div>
+        <ol class="mi-list">
+          <li>Cripps Barn</li>
+          <li>Stone Barn</li>
+          <li>Lapstone Barn</li>
+          <li>Kingscote Barn</li>
+          <li class="mi-shared">Hyde House</li>
+        </ol>
+      </figure>
+
+      <figure class="mi-card" data-engine="chatgpt">
+        <figcaption class="mi-engine">
+          <span class="mi-engine-name">ChatGPT</span>
+          <span class="mi-engine-meta">OpenAI · reads Bing</span>
+        </figcaption>
+        <div class="mi-shot"><img src="../web-intelligence/img/multi-index/chatgpt.png" alt="ChatGPT's top 5 — Manor By The Lake, Cripps Barn, Stone Barn, Lapstone Barn, Hyde House"></div>
+        <ol class="mi-list">
+          <li>Manor By The Lake</li>
+          <li>Cripps Barn</li>
+          <li>Stone Barn</li>
+          <li>Lapstone Barn</li>
+          <li class="mi-shared">Hyde House</li>
+        </ol>
+      </figure>
+
+      <figure class="mi-card" data-engine="gemini">
+        <figcaption class="mi-engine">
+          <span class="mi-engine-name">Gemini</span>
+          <span class="mi-engine-meta">Google · reads Google</span>
+        </figcaption>
+        <div class="mi-shot"><img src="../web-intelligence/img/multi-index/gemini.png" alt="Gemini's top 5 — Grittleton House, Great Tythe Barn, Elmore Court, Manor By The Lake, De Vere Tortworth Court"></div>
+        <ol class="mi-list">
+          <li>Grittleton House</li>
+          <li>The Great Tythe Barn</li>
+          <li>Elmore Court</li>
+          <li>Manor By The Lake</li>
+          <li class="mi-missing">— no Hyde House —</li>
+        </ol>
+      </figure>
+
+    </div>
+
+    <div class="mi-takeaway">
+      <div class="mi-stat">
+        <span class="mi-stat-num">20</span>
+        <span class="mi-stat-label">distinct venues named<br>across four answers</span>
+      </div>
+      <div class="mi-stat mi-stat-mid">
+        <span class="mi-stat-num">1</span>
+        <span class="mi-stat-label">venue named in<br>more than two answers</span>
+      </div>
+      <div class="mi-stat">
+        <span class="mi-stat-num">0</span>
+        <span class="mi-stat-label">venues named in<br>all four answers</span>
+      </div>
+    </div>
+
+    <div class="mi-commentary">
+      <div class="mi-comment">
+        <span class="mi-comment-tag">The Hyde House signal</span>
+        <p class="mi-comment-body"><strong>Hyde House appears in three answers</strong> — Perplexity, Claude, and ChatGPT — and is missing from the fourth: Gemini. That single absence is the Multi-Index Problem in one venue. Hyde House is well-represented on the Bing- and Brave-fed surfaces that feed three of these assistants. It is invisible on Google's first-party stack, which is the only one Gemini reads.</p>
+      </div>
+      <div class="mi-comment">
+        <span class="mi-comment-tag">What this looks like in your category</span>
+        <p class="mi-comment-body">Twenty venues named. None present everywhere. <strong>The buyer's shortlist depends on which AI they happened to open.</strong> If you are rank #1 on Google but absent from Bing Webmaster Tools, you are visible to Gemini and invisible to ChatGPT. If you are well-cited in trade press but thin on Brave, you are visible to Perplexity and invisible to Claude. <em>Four engines, four shortlists, one buyer.</em></p>
+      </div>
+    </div>
+
+    <div class="mi-closing">
+      <p>Your buyer is asking the same question. Which engines name <em>you?</em></p>
+      <a href="/web-intelligence/the-shift/multi-index-problem/">Read the full briefing on the Multi-Index Problem &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
