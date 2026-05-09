@@ -2342,20 +2342,48 @@
     background: #000;
     border: 1px solid var(--border);
     margin-bottom: 1rem;
-    aspect-ratio: 9 / 14;
+    height: clamp(340px, 30vw, 460px);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding: 0.5rem;
+    cursor: zoom-in;
+    transition: border-color 0.2s, transform 0.2s;
   }
+  .mi-shot:hover { border-color: var(--design); transform: translateY(-1px); }
+  .mi-shot::after {
+    content: '⤢';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.65);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .mi-shot:hover::after { opacity: 1; }
   .mi-shot img {
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     position: relative;
     z-index: 2;
+    border-radius: 4px;
   }
   .mi-shot::before {
     content: 'screenshot pending';
@@ -2516,6 +2544,90 @@
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       padding: 1.75rem 0;
     }
+  }
+
+  /* ============ MULTI-INDEX LIGHTBOX ============ */
+  .mi-lightbox {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgba(8,8,12,0.96);
+    color: var(--text);
+    overflow: hidden;
+  }
+  .mi-lightbox::backdrop {
+    background: rgba(8,8,12,0.96);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .mi-lightbox[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .mi-lightbox img {
+    max-width: min(94vw, 1100px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+  .mi-lightbox-caption {
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.4);
+    white-space: nowrap;
+  }
+  .mi-lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 1.25rem;
+    line-height: 1;
+    font-family: var(--body);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .mi-lightbox-close:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--design);
+  }
+  .mi-lightbox-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
   }
 </style>
 </head>
@@ -2793,6 +2905,13 @@
       </div>
 
     </div>
+
+    <dialog id="miLightbox" class="mi-lightbox" aria-label="Screenshot full view">
+      <span class="mi-lightbox-caption" id="miLightboxCaption"></span>
+      <button type="button" class="mi-lightbox-close" id="miLightboxClose" aria-label="Close full view">&times;</button>
+      <img id="miLightboxImg" src="" alt="">
+      <span class="mi-lightbox-hint">Click anywhere or press Esc to close</span>
+    </dialog>
   </section>
 
   <!-- ============ MATURITY CURVE ============ -->
@@ -3999,6 +4118,44 @@
         }
         setOpen(false);
       });
+    });
+  })();
+</script>
+
+<script>
+  // Multi-Index Proof Block — click-to-zoom lightbox
+  (function () {
+    var dlg = document.getElementById('miLightbox');
+    var dlgImg = document.getElementById('miLightboxImg');
+    var dlgCap = document.getElementById('miLightboxCaption');
+    var dlgClose = document.getElementById('miLightboxClose');
+    if (!dlg || !dlgImg || typeof dlg.showModal !== 'function') return;
+
+    document.querySelectorAll('#multi-index-proof .mi-shot').forEach(function (shot) {
+      shot.addEventListener('click', function () {
+        var img = shot.querySelector('img');
+        if (!img || !img.getAttribute('src')) return;
+        var card = shot.closest('.mi-card');
+        var engineName = card ? card.querySelector('.mi-engine-name') : null;
+        dlgImg.src = img.src;
+        dlgImg.alt = img.alt || '';
+        if (dlgCap) dlgCap.textContent = engineName ? engineName.textContent : '';
+        dlg.showModal();
+        if (typeof trackLead === 'function') {
+          trackLead('web_intelligence_multi_index_zoom_' + (engineName ? engineName.textContent.toLowerCase() : 'unknown'));
+        }
+      });
+    });
+
+    if (dlgClose) dlgClose.addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) {
+      // close when clicking the backdrop or the dialog itself (but not the close button or image)
+      if (e.target === dlg || e.target === dlgImg || e.target.classList.contains('mi-lightbox-hint') || e.target.classList.contains('mi-lightbox-caption')) {
+        dlg.close();
+      }
+    });
+    dlg.addEventListener('close', function () {
+      dlgImg.src = '';
     });
   })();
 </script>
