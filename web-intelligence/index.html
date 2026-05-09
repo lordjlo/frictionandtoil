@@ -2503,6 +2503,99 @@
   }
   .mi-coda a:hover { border-bottom-color: var(--design); }
 
+  .mi-reassurance {
+    margin-top: 1.5rem;
+    padding: 2.5rem 2.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .mi-reassurance-tag {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+  .mi-reassurance h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.55rem, 2.6vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 0 0 1rem;
+  }
+  .mi-reassurance h3 em { color: var(--design); font-style: italic; font-weight: 500; }
+  .mi-reassurance-intro {
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 1.75rem;
+    max-width: 64ch;
+  }
+  .mi-reassurance-intro strong { color: var(--text); font-weight: 600; }
+  .mi-reassurance-intro em { color: var(--text); font-style: italic; }
+  .mi-reassurance-list {
+    counter-reset: mr;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem 2rem;
+  }
+  .mi-reassurance-list li {
+    counter-increment: mr;
+    position: relative;
+    padding-left: 2.25rem;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .mi-reassurance-list li::before {
+    content: counter(mr, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--design);
+  }
+  .mi-reassurance-list li strong {
+    display: block;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .mi-reassurance-opportunity {
+    margin: 1.85rem 0 0;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 64ch;
+  }
+  .mi-reassurance-opportunity strong {
+    color: var(--design);
+    font-style: normal;
+    font-weight: 600;
+  }
+  @media (max-width: 700px) {
+    .mi-reassurance { padding: 2rem 1.5rem; }
+    .mi-reassurance-list { grid-template-columns: 1fr; }
+  }
+
   .mi-takeaway {
     margin-top: 3rem;
     padding: 2.25rem 1.5rem;
@@ -2975,7 +3068,20 @@
         <p>Same query. Three Google surfaces &mdash; Gemini, Search AI Overview, and AI Mode. <strong>Three different shortlists.</strong> Only Manor By The Lake appeared in all three. <em>The Multi-Index Problem isn&rsquo;t just between engines &mdash; it&rsquo;s within them.</em> <a href="/web-intelligence/the-shift/multi-index-problem/#within-google" onclick="trackLead('web_intelligence_within_google_link')">Read the full breakdown &rarr;</a></p>
       </div>
 
-      <div class="mi-closing reveal d5">
+      <div class="mi-reassurance reveal d5">
+        <span class="mi-reassurance-tag">What this means for you</span>
+        <h3>The fix is <em>one discipline</em>, not six.</h3>
+        <p class="mi-reassurance-intro">Six AI surfaces sounds like six strategies. It isn&rsquo;t. It&rsquo;s <strong>one foundation, applied once, that pays off in six places.</strong></p>
+        <ol class="mi-reassurance-list">
+          <li><strong>One canonical site.</strong> Proper schema, named experts, current evidence, extractable facts. The job your website has always had &mdash; done well enough that an AI can read it.</li>
+          <li><strong>Claimed on every Webmaster Tool.</strong> Google Search Console, Bing Webmaster Tools, and a clean Brave-search check. Most businesses we audit have one of the three. Almost none have all three.</li>
+          <li><strong>Consistent third-party presence.</strong> Different aggregators feed different indexes. The trade press, review sites, and registers each engine trusts &mdash; covered once, you&rsquo;re covered across surfaces.</li>
+          <li><strong>A standing audit across the surfaces.</strong> Replaces &ldquo;how do we rank on Google?&rdquo; with the only question that now matters: <em>are we present where the buyer is asking?</em></li>
+        </ol>
+        <p class="mi-reassurance-opportunity"><strong>You&rsquo;re not behind.</strong> Almost no business we audit has fixed this. The directors who start the discipline this quarter aren&rsquo;t catching up &mdash; they&rsquo;re claiming the position before competitors notice the game has changed.</p>
+      </div>
+
+      <div class="mi-closing reveal d6">
         <p>Your buyer is asking the same question. Which engines name <em>you?</em></p>
         <a href="/web-intelligence/the-shift/multi-index-problem/" onclick="trackLead('web_intelligence_multi_index_proof_link')">Read the full briefing on the Multi-Index Problem &rarr;</a>
       </div>
