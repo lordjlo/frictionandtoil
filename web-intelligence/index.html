@@ -2294,6 +2294,229 @@
     .pkg-row-2 { grid-template-columns: 1fr !important; }
     .pkg-row-3 { grid-template-columns: 1fr !important; }
   }
+
+  /* ============ MULTI-INDEX PROOF BLOCK ============ */
+  .mi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .mi-card {
+    margin: 0;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+  }
+  .mi-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .mi-engine {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .mi-engine-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .mi-engine-meta {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .mi-shot {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    aspect-ratio: 9 / 14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .mi-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    position: relative;
+    z-index: 2;
+  }
+  .mi-shot::before {
+    content: 'screenshot pending';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.015),
+      rgba(255,255,255,0.015) 10px,
+      rgba(255,255,255,0.04) 10px,
+      rgba(255,255,255,0.04) 20px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  .mi-list {
+    list-style: decimal;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    font-family: var(--body);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .mi-list li { padding: 0.18rem 0; }
+  .mi-list li::marker { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .mi-list li.mi-shared { color: var(--text); font-weight: 500; }
+  .mi-list li.mi-shared::after {
+    content: '↗ named in 3 of 4';
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--design);
+    border: 1px solid rgba(201,150,58,0.4);
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    vertical-align: 1px;
+  }
+  .mi-card[data-engine="gemini"] .mi-list li.mi-missing {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .mi-takeaway {
+    margin-top: 3rem;
+    padding: 2.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .mi-stat-mid { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .mi-stat-num {
+    display: block;
+    font-family: var(--serif);
+    font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--design);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.7rem;
+  }
+  .mi-stat-label {
+    font-family: var(--body);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .mi-commentary {
+    margin-top: 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .mi-comment {
+    padding: 1.5rem 1.6rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .mi-comment-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--design);
+  }
+  .mi-comment-body {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .mi-comment-body strong { color: var(--text); font-weight: 600; }
+  .mi-comment-body em { color: var(--text); font-style: italic; }
+
+  .mi-closing {
+    margin-top: 3rem;
+    max-width: 64ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .mi-closing p {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+    margin: 0 0 1.5rem;
+  }
+  .mi-closing p em { color: var(--design); font-style: italic; }
+  .mi-closing a {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--design);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,150,58,0.4);
+    padding-bottom: 2px;
+  }
+  .mi-closing a:hover { border-bottom-color: var(--design); }
+
+  @media (max-width: 1100px) {
+    .mi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .mi-commentary { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .mi-grid { grid-template-columns: 1fr; }
+    .mi-takeaway { grid-template-columns: 1fr; gap: 1.75rem; }
+    .mi-stat-mid {
+      border-left: none; border-right: none;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2340,7 +2563,7 @@
     <a href="/web-intelligence/the-shift/multi-index-problem/" role="menuitem">Multi-Index Problem</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Real-Life Stories</span>
+    <span class="wi-panel-title">Stories of Realisation</span>
     <a href="/web-intelligence/real-life-stories/" role="menuitem">All four stories</a>
     <a href="/web-intelligence/real-life-stories/#the-invisible-landmark" role="menuitem">01 &middot; The Invisible Landmark</a>
     <a href="/web-intelligence/real-life-stories/#the-club-that-didnt-exist" role="menuitem">02 &middot; The Club That Didn't Exist</a>
@@ -2369,7 +2592,7 @@
           <span style="font-family:var(--serif);font-style:italic;font-size:0.95rem;line-height:1.25;color:var(--text);">Search has a new front door <span style="color:#c9963a;">&rarr;</span></span>
         </a>
         <a href="/web-intelligence/real-life-stories/" class="brief-link" onclick="trackLead('web_intelligence_hero_stories_link')" style="display:inline-flex;align-items:center;gap:0.9rem;padding:0.55rem 1.1rem 0.55rem 1rem;border:1px solid rgba(255,255,255,0.12);border-radius:999px;background:rgba(255,255,255,0.02);text-decoration:none;max-width:100%;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='rgba(201,150,58,0.5)';this.style.background='rgba(201,150,58,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.02)'">
-          <span style="font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#c9963a;white-space:nowrap;">Real-Life Stories</span>
+          <span style="font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#c9963a;white-space:nowrap;">Stories of Realisation</span>
           <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);flex-shrink:0;"></span>
           <span style="font-family:var(--serif);font-style:italic;font-size:0.95rem;line-height:1.25;color:var(--text);">Read here <span style="color:#c9963a;">&rarr;</span></span>
         </a>
@@ -2464,6 +2687,114 @@
     </div>
   </section>
 
+  <!-- ============ MULTI-INDEX PROOF BLOCK ============ -->
+  <section id="multi-index-proof" style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);background:var(--bg-soft);">
+    <div class="container">
+
+      <div class="section-head reveal" style="margin-bottom:3rem;">
+        <span class="eyebrow">The Multi-Index Problem &middot; live</span>
+        <h2 class="section-heading">One question. Four AI assistants.<br><em style="font-style:italic;color:var(--design);font-weight:500;">Four different shortlists.</em></h2>
+        <p class="section-sub">We asked Claude, ChatGPT, Gemini, and Perplexity the same question a real customer would ask: <em style="color:var(--text);font-style:italic;">&ldquo;I&rsquo;m getting married and I want a big party &mdash; top 5 wedding venues in the Cotswolds.&rdquo;</em> No two engines returned the same shortlist.</p>
+      </div>
+
+      <div class="mi-grid reveal d1">
+
+        <figure class="mi-card" data-engine="perplexity">
+          <figcaption class="mi-engine">
+            <span class="mi-engine-name">Perplexity</span>
+            <span class="mi-engine-meta">Hybrid &middot; authority-weighted</span>
+          </figcaption>
+          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/perplexity.jpg" alt="Perplexity's top 5 — Blenheim Palace, Sudeley Castle, Cornwell Manor, Hyde House, Euridge Manor" loading="lazy"></div>
+          <ol class="mi-list">
+            <li>Blenheim Palace</li>
+            <li>Sudeley Castle</li>
+            <li>Cornwell Manor</li>
+            <li class="mi-shared">Hyde House</li>
+            <li>Euridge Manor</li>
+          </ol>
+        </figure>
+
+        <figure class="mi-card" data-engine="claude">
+          <figcaption class="mi-engine">
+            <span class="mi-engine-name">Claude</span>
+            <span class="mi-engine-meta">Anthropic &middot; reads Brave</span>
+          </figcaption>
+          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/claude.jpg" alt="Claude's top 5 — Cripps Barn, Stone Barn, Lapstone Barn, Kingscote Barn, Hyde House" loading="lazy"></div>
+          <ol class="mi-list">
+            <li>Cripps Barn</li>
+            <li>Stone Barn</li>
+            <li>Lapstone Barn</li>
+            <li>Kingscote Barn</li>
+            <li class="mi-shared">Hyde House</li>
+          </ol>
+        </figure>
+
+        <figure class="mi-card" data-engine="chatgpt">
+          <figcaption class="mi-engine">
+            <span class="mi-engine-name">ChatGPT</span>
+            <span class="mi-engine-meta">OpenAI &middot; reads Bing</span>
+          </figcaption>
+          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/chatgpt.jpg" alt="ChatGPT's top 5 — Manor By The Lake, Cripps Barn, Stone Barn, Lapstone Barn, Hyde House" loading="lazy"></div>
+          <ol class="mi-list">
+            <li>Manor By The Lake</li>
+            <li>Cripps Barn</li>
+            <li>Stone Barn</li>
+            <li>Lapstone Barn</li>
+            <li class="mi-shared">Hyde House</li>
+          </ol>
+        </figure>
+
+        <figure class="mi-card" data-engine="gemini">
+          <figcaption class="mi-engine">
+            <span class="mi-engine-name">Gemini</span>
+            <span class="mi-engine-meta">Google &middot; reads Google</span>
+          </figcaption>
+          <div class="mi-shot"><img src="/web-intelligence/img/multi-index/gemini.jpg" alt="Gemini's top 5 — Grittleton House, Great Tythe Barn, Elmore Court, Manor By The Lake, De Vere Tortworth Court" loading="lazy"></div>
+          <ol class="mi-list">
+            <li>Grittleton House</li>
+            <li>The Great Tythe Barn</li>
+            <li>Elmore Court</li>
+            <li>Manor By The Lake</li>
+            <li class="mi-missing">&mdash; no Hyde House &mdash;</li>
+          </ol>
+        </figure>
+
+      </div>
+
+      <div class="mi-takeaway reveal d2">
+        <div class="mi-stat">
+          <span class="mi-stat-num">20</span>
+          <span class="mi-stat-label">distinct venues named<br>across four answers</span>
+        </div>
+        <div class="mi-stat mi-stat-mid">
+          <span class="mi-stat-num">1</span>
+          <span class="mi-stat-label">venue named in<br>more than two answers</span>
+        </div>
+        <div class="mi-stat">
+          <span class="mi-stat-num">0</span>
+          <span class="mi-stat-label">venues named in<br>all four answers</span>
+        </div>
+      </div>
+
+      <div class="mi-commentary reveal d3">
+        <div class="mi-comment">
+          <span class="mi-comment-tag">The Hyde House signal</span>
+          <p class="mi-comment-body"><strong>Hyde House appears in three answers</strong> &mdash; Perplexity, Claude, and ChatGPT &mdash; and is missing from the fourth: Gemini. That single absence is the Multi-Index Problem in one venue. Hyde House is well-represented on the Bing- and Brave-fed surfaces that feed three of these assistants. It is invisible on Google&rsquo;s first-party stack, which is the only one Gemini reads.</p>
+        </div>
+        <div class="mi-comment">
+          <span class="mi-comment-tag">What this looks like in your category</span>
+          <p class="mi-comment-body">Twenty venues named. None present everywhere. <strong>The buyer&rsquo;s shortlist depends on which AI they happened to open.</strong> If you are rank #1 on Google but absent from Bing Webmaster Tools, you are visible to Gemini and invisible to ChatGPT. If you are well-cited in trade press but thin on Brave, you are visible to Perplexity and invisible to Claude. <em>Four engines, four shortlists, one buyer.</em></p>
+        </div>
+      </div>
+
+      <div class="mi-closing reveal d4">
+        <p>Your buyer is asking the same question. Which engines name <em>you?</em></p>
+        <a href="/web-intelligence/the-shift/multi-index-problem/" onclick="trackLead('web_intelligence_multi_index_proof_link')">Read the full briefing on the Multi-Index Problem &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ============ MATURITY CURVE ============ -->
   <section id="maturity" style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);">
     <div class="container">
@@ -2526,46 +2857,6 @@
       <div class="reveal d2" style="margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);text-align:center;">
         <p style="font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,1.85rem);font-weight:600;line-height:1.45;color:var(--text);max-width:46ch;margin:0 auto 1.25rem;">Most businesses we audit are at <strong>rung one or two</strong>. The report tells you exactly which, and what it takes to move up.</p>
         <a href="/web-intelligence/the-shift/" style="font-family:var(--body);font-size:0.95rem;font-weight:500;letter-spacing:0.04em;color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.4);padding-bottom:2px;">Read the full brief on why this matters &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ REAL-LIFE STORIES ============ -->
-  <section id="real-life-stories" style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);background:var(--bg-soft);">
-    <div class="container">
-      <div class="section-head reveal" style="margin-bottom:3rem;">
-        <span class="eyebrow">Real-Life Stories</span>
-        <h2 class="section-heading">The briefings explain the mechanics. The stories tell you what it feels like.</h2>
-        <p class="section-sub">Four short stories from the moment a business owner realised the room they were standing in had stopped doing the selling.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-        <a href="/web-intelligence/real-life-stories/#the-invisible-landmark" class="reveal d1" style="display:flex;flex-direction:column;padding:1.85rem 1.65rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color 0.2s,transform 0.2s,background 0.2s;min-height:240px;" onmouseover="this.style.borderColor='var(--design)';this.style.transform='translateY(-3px)';this.style.background='var(--bg-card-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.background='var(--bg-card)'">
-          <span style="font-family:var(--mono);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.85rem;">No. 01</span>
-          <div style="font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2;color:var(--text);margin-bottom:1rem;">The Invisible Landmark</div>
-          <p style="font-family:var(--serif);font-style:italic;font-size:0.98rem;line-height:1.5;color:var(--text-secondary);margin-bottom:1.4rem;flex:1;">If your reputation isn't doing the selling anymore, what is?</p>
-          <span style="font-family:var(--body);font-size:0.78rem;font-weight:600;color:var(--design);letter-spacing:0.04em;">Read story &rarr;</span>
-        </a>
-        <a href="/web-intelligence/real-life-stories/#the-club-that-didnt-exist" class="reveal d2" style="display:flex;flex-direction:column;padding:1.85rem 1.65rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color 0.2s,transform 0.2s,background 0.2s;min-height:240px;" onmouseover="this.style.borderColor='var(--design)';this.style.transform='translateY(-3px)';this.style.background='var(--bg-card-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.background='var(--bg-card)'">
-          <span style="font-family:var(--mono);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.85rem;">No. 02</span>
-          <div style="font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2;color:var(--text);margin-bottom:1rem;">The Club That Didn't Exist</div>
-          <p style="font-family:var(--serif);font-style:italic;font-size:0.98rem;line-height:1.5;color:var(--text-secondary);margin-bottom:1.4rem;flex:1;">If discretion reads as silence, who's still listening?</p>
-          <span style="font-family:var(--body);font-size:0.78rem;font-weight:600;color:var(--design);letter-spacing:0.04em;">Read story &rarr;</span>
-        </a>
-        <a href="/web-intelligence/real-life-stories/#the-50000-silence" class="reveal d3" style="display:flex;flex-direction:column;padding:1.85rem 1.65rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color 0.2s,transform 0.2s,background 0.2s;min-height:240px;" onmouseover="this.style.borderColor='var(--design)';this.style.transform='translateY(-3px)';this.style.background='var(--bg-card-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.background='var(--bg-card)'">
-          <span style="font-family:var(--mono);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.85rem;">No. 03</span>
-          <div style="font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2;color:var(--text);margin-bottom:1rem;">The &pound;50,000 Silence</div>
-          <p style="font-family:var(--serif);font-style:italic;font-size:0.98rem;line-height:1.5;color:var(--text-secondary);margin-bottom:1.4rem;flex:1;">How many of the deals you "lost on price" did you lose before the price was ever discussed?</p>
-          <span style="font-family:var(--body);font-size:0.78rem;font-weight:600;color:var(--design);letter-spacing:0.04em;">Read story &rarr;</span>
-        </a>
-        <a href="/web-intelligence/real-life-stories/#the-10-second-truth" class="reveal d4" style="display:flex;flex-direction:column;padding:1.85rem 1.65rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:border-color 0.2s,transform 0.2s,background 0.2s;min-height:240px;" onmouseover="this.style.borderColor='var(--design)';this.style.transform='translateY(-3px)';this.style.background='var(--bg-card-hover)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.background='var(--bg-card)'">
-          <span style="font-family:var(--mono);font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.85rem;">No. 04</span>
-          <div style="font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.2;color:var(--text);margin-bottom:1rem;">The 10-Second Truth</div>
-          <p style="font-family:var(--serif);font-style:italic;font-size:0.98rem;line-height:1.5;color:var(--text-secondary);margin-bottom:1.4rem;flex:1;">What's been ticked, untouched, in the room you haven't visited?</p>
-          <span style="font-family:var(--body);font-size:0.78rem;font-weight:600;color:var(--design);letter-spacing:0.04em;">Read story &rarr;</span>
-        </a>
-      </div>
-      <div class="reveal" style="text-align:center;margin-top:2.75rem;">
-        <a href="/web-intelligence/real-life-stories/" style="font-family:var(--body);font-size:0.95rem;font-weight:500;letter-spacing:0.04em;color:var(--design);text-decoration:none;border-bottom:1px solid rgba(201,150,58,0.4);padding-bottom:2px;">All four stories &rarr;</a>
       </div>
     </div>
   </section>
@@ -3528,7 +3819,7 @@
       <div>
         <div class="footer-col-title">Briefings</div>
         <a href="/web-intelligence/the-shift/" class="footer-col-link">The Shift</a>
-        <a href="/web-intelligence/real-life-stories/" class="footer-col-link">Real-Life Stories</a>
+        <a href="/web-intelligence/real-life-stories/" class="footer-col-link">Stories of Realisation</a>
       </div>
       <div>
         <div class="footer-col-title">More from F&amp;T</div>
