@@ -18,6 +18,7 @@
 <link rel="canonical" href="https://frictionandtoil.com/web-intelligence/">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0HGLBD1WS"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -2316,14 +2317,25 @@
   .mi-engine {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    padding-bottom: 0.9rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    padding-bottom: 1rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--border);
   }
+  .mi-engine-icon {
+    color: var(--design);
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
   .mi-engine-name {
     font-family: var(--serif);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--text);
     letter-spacing: -0.01em;
@@ -2803,16 +2815,17 @@
   <section id="multi-index-proof" style="padding:clamp(4rem,8vw,6rem) 0;border-bottom:1px solid var(--border);background:var(--bg-soft);">
     <div class="container">
 
-      <div class="section-head reveal" style="margin-bottom:3rem;">
+      <div class="section-head reveal" style="margin-bottom:3rem;text-align:center;margin-left:auto;margin-right:auto;">
         <span class="eyebrow">The Multi-Index Problem &middot; live</span>
         <h2 class="section-heading">One question. Four AI assistants.<br><em style="font-style:italic;color:var(--design);font-weight:500;">Four different shortlists.</em></h2>
-        <p class="section-sub">We asked Claude, ChatGPT, Gemini, and Perplexity the same question a real customer would ask: <em style="color:var(--text);font-style:italic;">&ldquo;I&rsquo;m getting married and I want a big party &mdash; top 5 wedding venues in the Cotswolds.&rdquo;</em> No two engines returned the same shortlist.</p>
+        <p class="section-sub" style="margin-left:auto;margin-right:auto;">We asked Claude, ChatGPT, Gemini, and Perplexity the same question a real customer would ask: <em style="color:var(--text);font-style:italic;">&ldquo;I&rsquo;m getting married and I want a big party &mdash; top 5 wedding venues in the Cotswolds.&rdquo;</em> No two engines returned the same shortlist.</p>
       </div>
 
       <div class="mi-grid reveal d1">
 
         <figure class="mi-card" data-engine="perplexity">
           <figcaption class="mi-engine">
+            <iconify-icon class="mi-engine-icon" icon="simple-icons:perplexity" aria-hidden="true"></iconify-icon>
             <span class="mi-engine-name">Perplexity</span>
             <span class="mi-engine-meta">Hybrid &middot; authority-weighted</span>
           </figcaption>
@@ -2828,6 +2841,7 @@
 
         <figure class="mi-card" data-engine="claude">
           <figcaption class="mi-engine">
+            <iconify-icon class="mi-engine-icon" icon="simple-icons:anthropic" aria-hidden="true"></iconify-icon>
             <span class="mi-engine-name">Claude</span>
             <span class="mi-engine-meta">Anthropic &middot; reads Brave</span>
           </figcaption>
@@ -2843,6 +2857,7 @@
 
         <figure class="mi-card" data-engine="chatgpt">
           <figcaption class="mi-engine">
+            <iconify-icon class="mi-engine-icon" icon="simple-icons:openai" aria-hidden="true"></iconify-icon>
             <span class="mi-engine-name">ChatGPT</span>
             <span class="mi-engine-meta">OpenAI &middot; reads Bing</span>
           </figcaption>
@@ -2858,6 +2873,7 @@
 
         <figure class="mi-card" data-engine="gemini">
           <figcaption class="mi-engine">
+            <iconify-icon class="mi-engine-icon" icon="simple-icons:googlegemini" aria-hidden="true"></iconify-icon>
             <span class="mi-engine-name">Gemini</span>
             <span class="mi-engine-meta">Google &middot; reads Google</span>
           </figcaption>
