@@ -2603,11 +2603,11 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     text-align: center;
   }
-  .mi-stat-mid { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .mi-stat + .mi-stat { border-left: 1px solid var(--border); }
   .mi-stat-num {
     display: block;
     font-family: var(--serif);
@@ -2692,14 +2692,21 @@
   @media (max-width: 760px) {
     .mi-commentary { grid-template-columns: 1fr; }
   }
+  @media (max-width: 760px) {
+    .mi-takeaway { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .mi-stat + .mi-stat { border-left: none; }
+    .mi-stat:nth-child(2n) { border-left: 1px solid var(--border); }
+    .mi-stat:nth-child(n+3) { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  }
   @media (max-width: 560px) {
     .mi-grid { grid-template-columns: 1fr; }
     .mi-takeaway { grid-template-columns: 1fr; gap: 1.75rem; }
-    .mi-stat-mid {
-      border-left: none; border-right: none;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
+    .mi-stat + .mi-stat {
+      border-left: none !important;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
     }
+    .mi-stat:nth-child(2n) { border-left: none; }
   }
 
   /* ============ MULTI-INDEX LIGHTBOX ============ */
@@ -3042,9 +3049,13 @@
           <span class="mi-stat-num">14</span>
           <span class="mi-stat-label">distinct venues named<br>across four answers</span>
         </div>
-        <div class="mi-stat mi-stat-mid">
+        <div class="mi-stat">
           <span class="mi-stat-num">1</span>
           <span class="mi-stat-label">venue named in<br>3 of 4 answers</span>
+        </div>
+        <div class="mi-stat">
+          <span class="mi-stat-num">4</span>
+          <span class="mi-stat-label">venues named in<br>2 of 4 answers</span>
         </div>
         <div class="mi-stat">
           <span class="mi-stat-num">0</span>
