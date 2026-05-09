@@ -2453,6 +2453,55 @@
     color: var(--text-muted);
     font-style: italic;
   }
+  .mi-absence {
+    margin-top: 0.7rem;
+    padding: 0.4rem 0.7rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    text-align: center;
+    font-style: italic;
+  }
+  .mi-coda {
+    margin-top: 2.25rem;
+    padding: 1.6rem 1.75rem;
+    background: rgba(201,150,58,0.05);
+    border: 1px solid rgba(201,150,58,0.22);
+    border-radius: 12px;
+  }
+  .mi-coda-tag {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--design);
+    margin-bottom: 0.6rem;
+  }
+  .mi-coda p {
+    font-family: var(--body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .mi-coda strong { color: var(--text); font-weight: 600; }
+  .mi-coda em { color: var(--text); font-style: italic; }
+  .mi-coda a {
+    color: var(--design);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,150,58,0.4);
+    padding-bottom: 1px;
+    white-space: nowrap;
+  }
+  .mi-coda a:hover { border-bottom-color: var(--design); }
 
   .mi-takeaway {
     margin-top: 3rem;
@@ -2888,8 +2937,9 @@
             <li>The Great Tythe Barn</li>
             <li>Elmore Court</li>
             <li>Manor By The Lake</li>
-            <li class="mi-missing">&mdash; no Hyde House &mdash;</li>
+            <li>De Vere Tortworth Court</li>
           </ol>
+          <div class="mi-absence">&darr; Hyde House didn&rsquo;t make Gemini&rsquo;s list</div>
         </figure>
 
       </div>
@@ -2920,7 +2970,12 @@
         </div>
       </div>
 
-      <div class="mi-closing reveal d4">
+      <div class="mi-coda reveal d4">
+        <span class="mi-coda-tag">And it gets worse &middot; even within Google itself</span>
+        <p>Same query. Three Google surfaces &mdash; Gemini, Search AI Overview, and AI Mode. <strong>Three different shortlists.</strong> Only Manor By The Lake appeared in all three. <em>The Multi-Index Problem isn&rsquo;t just between engines &mdash; it&rsquo;s within them.</em> <a href="/web-intelligence/the-shift/multi-index-problem/#within-google" onclick="trackLead('web_intelligence_within_google_link')">Read the full breakdown &rarr;</a></p>
+      </div>
+
+      <div class="mi-closing reveal d5">
         <p>Your buyer is asking the same question. Which engines name <em>you?</em></p>
         <a href="/web-intelligence/the-shift/multi-index-problem/" onclick="trackLead('web_intelligence_multi_index_proof_link')">Read the full briefing on the Multi-Index Problem &rarr;</a>
       </div>

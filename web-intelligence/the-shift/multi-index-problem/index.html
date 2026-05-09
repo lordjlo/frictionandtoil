@@ -1090,6 +1090,68 @@ body.wi-panel-locked { overflow: hidden; }
     </div>
   </section>
 
+  <!-- ============ II ½. WITHIN ONE ENGINE ============ -->
+  <section class="prose-section" id="within-google">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral" style="font-size:0.78em;letter-spacing:-0.02em;">II &frac12;</span>
+        <h2 class="section-heading">And even within one engine, the answers diverge.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Three Google surfaces &mdash; Gemini, Search AI Overview, AI Mode &mdash; produce three different shortlists for the same query. The shared index is not the shared answer.
+        </span>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>The Multi-Index Problem, as set out above, is the gap between Google, Bing, and Brave. That gap is the floor of the problem, not the ceiling. Even the same company, querying its own index for the same buyer asking the same question, returns different answers depending on which surface the buyer chose to open.</p>
+        <p>To test it cleanly, we ran a single query &mdash; <em>&ldquo;I&rsquo;m getting married and I want a big party &mdash; top 5 wedding venues in the Cotswolds&rdquo;</em> &mdash; through three Google products, within minutes of each other.</p>
+
+        <div class="wg-grid reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin:2.25rem 0;">
+          <div style="padding:1.4rem 1.4rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;">
+            <div style="font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--design);margin-bottom:0.4rem;">Gemini</div>
+            <div style="font-family:var(--mono);font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.1rem;padding-bottom:0.9rem;border-bottom:1px solid var(--border);">The assistant</div>
+            <ol style="list-style:decimal;list-style-position:inside;margin:0;padding:0;font-family:var(--body);font-size:0.92rem;line-height:1.7;color:var(--text-secondary);">
+              <li>Grittleton House</li>
+              <li>The Great Tythe Barn</li>
+              <li>Elmore Court</li>
+              <li style="color:var(--text);font-weight:600;">Manor By The Lake <span style="color:var(--design);">&starf;</span></li>
+              <li>De Vere Tortworth Court</li>
+            </ol>
+          </div>
+          <div style="padding:1.4rem 1.4rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;">
+            <div style="font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--design);margin-bottom:0.4rem;">Google Search</div>
+            <div style="font-family:var(--mono);font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.1rem;padding-bottom:0.9rem;border-bottom:1px solid var(--border);">AI Overview</div>
+            <ol style="list-style:decimal;list-style-position:inside;margin:0;padding:0;font-family:var(--body);font-size:0.92rem;line-height:1.7;color:var(--text-secondary);">
+              <li>Stone Barn</li>
+              <li style="color:var(--text);font-weight:600;">Manor By The Lake <span style="color:var(--design);">&starf;</span></li>
+              <li>Blenheim Palace</li>
+              <li>Cripps Barn</li>
+              <li>The Frogmill</li>
+            </ol>
+          </div>
+          <div style="padding:1.4rem 1.4rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;">
+            <div style="font-family:var(--mono);font-size:0.65rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--design);margin-bottom:0.4rem;">Google</div>
+            <div style="font-family:var(--mono);font-size:0.62rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.1rem;padding-bottom:0.9rem;border-bottom:1px solid var(--border);">AI Mode</div>
+            <ol style="list-style:decimal;list-style-position:inside;margin:0;padding:0;font-family:var(--body);font-size:0.92rem;line-height:1.7;color:var(--text-secondary);">
+              <li>Stone Barn</li>
+              <li>Blenheim Palace</li>
+              <li style="color:var(--text);font-weight:600;">Manor By The Lake <span style="color:var(--design);">&starf;</span></li>
+              <li>Sudeley Castle &amp; Gardens</li>
+              <li>Cotswolds Hotel &amp; Spa</li>
+            </ol>
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin:-1rem 0 2rem;"><span style="color:var(--design);">&starf;</span> &nbsp; named in all three Google surfaces</p>
+
+        <p>Three Google products. Three different shortlists. Only one venue &mdash; Manor By The Lake &mdash; appears in all three. <strong>Gemini, the assistant, shares only that one venue with the other two surfaces.</strong> Search&rsquo;s AI Overview and AI Mode share three (Stone Barn, Manor By The Lake, Blenheim) but disagree on the remaining two. Two new venues enter the conversation that none of our four cross-engine tests named at all: The Frogmill, surfaced only by AI Overview, and Cotswolds Hotel &amp; Spa, surfaced only by AI Mode.</p>
+        <p>The implication for the marketing director&rsquo;s mental model is significant. The standing assumption &mdash; <em>&ldquo;if we&rsquo;re indexed by Google, we&rsquo;re visible across Google&rsquo;s products&rdquo;</em> &mdash; is no longer true. Each surface applies its own retrieval bias, ranking weights, and sourcing rules on top of the shared index. The shared index is not the shared answer; it is the input. The AI Overview prioritises differently from AI Mode. AI Mode prioritises differently from Gemini. Gemini, in turn, has its own opinionated retrieval logic that produces a list almost no other Google surface confirms.</p>
+
+        <div class="pull-quote reveal">If the same company can&rsquo;t agree with itself, &ldquo;Google ranking&rdquo; stops describing visibility. It describes one third of one third.</div>
+
+        <p>This loops directly back to the central argument of section II: the marketing director who treats &ldquo;Gemini visibility&rdquo; as a stand-in for &ldquo;Google AI visibility&rdquo; is making the same category error a buyer makes when they treat one assistant&rsquo;s answer as the buyer&rsquo;s truth. There are at least three Google surfaces, with at least three different definitions of who matters. Tracking only one of them is, again, watching the smallest screen in the room.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ III. THE MECHANISM ============ -->
   <section class="prose-section prose-section-split">
     <div class="container">
