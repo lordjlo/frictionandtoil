@@ -1624,57 +1624,169 @@ function copyQ(btn) {
   <!-- ── AI SEARCH ── -->
   <div id="tab-seo-aisearch" class="tab-content"><div class="container">
 
-    <!-- Maturity Rung -->
-    <div class="maturity-card">
+    <style>
+      /* Phase 6a pilot 2026-05-10: Blocked banner + post-unblock projection panel + 18-cell grid styles. Inline scoped to this tab. Phase B formalisation moves these to references/ai-search/report-template.html. */
+      #tab-seo-aisearch .maturity-blocked{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.4)}
+      #tab-seo-aisearch .maturity-blocked::before{background:#ef4444}
+      #tab-seo-aisearch .ladder-5{gap:6px}
+      #tab-seo-aisearch .rung.rung-blocked{background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.5);box-shadow:0 0 0 3px rgba(239,68,68,0.18)}
+      #tab-seo-aisearch .rung.rung-blocked .rung-num{color:#ef4444;font-size:18px}
+      #tab-seo-aisearch .rung.next-projected{border-style:solid;border-color:rgba(201,150,58,0.55);background:rgba(201,150,58,0.08);box-shadow:0 0 0 2px rgba(201,150,58,0.14)}
+      #tab-seo-aisearch .rung.next-projected .rung-num{color:var(--design)}
+      #tab-seo-aisearch .rung.next-projected .rung-label::after{content:" · projection target";font-size:10px;color:var(--design);font-weight:500;text-transform:none;letter-spacing:0}
+      #tab-seo-aisearch .projection-card{background:linear-gradient(180deg,rgba(168,85,247,0.05),rgba(168,85,247,0.02));border:1px solid rgba(168,85,247,0.3);border-radius:var(--radius);padding:24px 28px;margin-bottom:24px}
+      #tab-seo-aisearch .projection-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ai);font-weight:700;margin-bottom:10px}
+      #tab-seo-aisearch .projection-headline{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:14px}
+      #tab-seo-aisearch .projection-headline strong{color:var(--ai)}
+      #tab-seo-aisearch .projection-cta{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:20px;padding:12px 16px;background:rgba(168,85,247,0.06);border-left:3px solid var(--ai);border-radius:0 6px 6px 0}
+      #tab-seo-aisearch .projection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+      #tab-seo-aisearch .projection-engine{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+      #tab-seo-aisearch .engine-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+      #tab-seo-aisearch .engine-sub{font-size:11px;color:var(--text-muted);font-weight:400}
+      #tab-seo-aisearch .engine-score{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--text);margin-bottom:8px}
+      #tab-seo-aisearch .engine-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+      #tab-seo-aisearch .engine-fill{height:100%;border-radius:100px;transition:width .3s}
+      #tab-seo-aisearch .engine-fill-partial{background:var(--orange)}
+      #tab-seo-aisearch .engine-fill-strong{background:var(--green)}
+      #tab-seo-aisearch .engine-fill-weak{background:var(--red)}
+      #tab-seo-aisearch .projection-what-unlocks{font-size:13px;color:var(--text-secondary);line-height:1.6;padding-top:12px;border-top:1px solid var(--border)}
+      #tab-seo-aisearch .sov-banner{padding:14px 18px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.25);border-radius:8px;margin-bottom:16px;font-size:13px;color:var(--text-secondary);line-height:1.6}
+      #tab-seo-aisearch .sov-banner strong{color:var(--red)}
+      #tab-seo-aisearch .sov-grid td{vertical-align:top}
+      #tab-seo-aisearch .cell-factors{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.4}
+      @media (max-width: 720px){
+        #tab-seo-aisearch .projection-grid{grid-template-columns:1fr}
+      }
+    </style>
+
+    <!-- Maturity Rung: Blocked banner -->
+    <div class="maturity-card maturity-blocked">
       <div class="maturity-left">
         <div class="maturity-eyebrow">AI Visibility Maturity Curve</div>
-        <ul class="ladder">
-          <li class="rung active"><span class="rung-num">1</span><span class="rung-label">Invisible</span><span class="rung-range">0/6</span></li>
-          <li class="rung next"><span class="rung-num">2</span><span class="rung-label">Emerging</span><span class="rung-range">1–2/6</span></li>
-          <li class="rung"><span class="rung-num">3</span><span class="rung-label">Cited</span><span class="rung-range">3–4/6</span></li>
-          <li class="rung"><span class="rung-num">4</span><span class="rung-label">Recommended</span><span class="rung-range">5–6/6</span></li>
+        <ul class="ladder ladder-5">
+          <li class="rung active rung-blocked"><span class="rung-num">!</span><span class="rung-label">Blocked</span><span class="rung-range">robots.txt</span></li>
+          <li class="rung"><span class="rung-num">1</span><span class="rung-label">Invisible</span><span class="rung-range">0/18</span></li>
+          <li class="rung"><span class="rung-num">2</span><span class="rung-label">Emerging</span><span class="rung-range">1–5/18</span></li>
+          <li class="rung next-projected"><span class="rung-num">3</span><span class="rung-label">Cited</span><span class="rung-range">6–12/18</span></li>
+          <li class="rung"><span class="rung-num">4</span><span class="rung-label">Recommended</span><span class="rung-range">13–18/18</span></li>
         </ul>
       </div>
       <div class="maturity-right">
         <div class="maturity-eyebrow">Current rung</div>
-        <div class="maturity-headline">Invisible</div>
-        <p class="maturity-sub">Wild scores 1/6 on AI Share-of-Voice queries. The single passing query is a brand-direct search ("Wild Branding Studio Mel Matthews") — the studio's own properties surface, but on every non-brand query the studio is absent.</p>
+        <div class="maturity-headline">Blocked</div>
+        <p class="maturity-sub">AI cannot read your site. The robots.txt blocks GPTBot and ClaudeBot, two of the four critical AI bots, which overrides every other score. No structural improvement matters until this is fixed.</p>
         <div class="trajectory">
-          <span class="trajectory-label">Next rung unlocked by</span>
-          Edit the Squarespace robots.txt to remove the Disallow rules for the eleven blocked AI bots. Once unblocked, existing brand-name and portfolio content becomes citation-eligible immediately. Maturity rung Invisible → Emerging within 2–6 weeks. No other change required for this jump.
+          <span class="trajectory-label">Single highest-leverage fix</span>
+          Edit the Squarespace robots.txt to remove the Disallow rules for GPTBot, ClaudeBot, anthropic-ai, GoogleOther, and CCBot. Zero cost, ~5-minute edit, unlocks every other AI-search lever.
         </div>
       </div>
     </div>
 
-    <!-- AI Bot Access Audit -->
-    <div class="section-title">AI Bot Access Audit — robots.txt</div>
-    <div class="intel-card" style="border-color:var(--red-border);background:var(--red-bg)">
-      <div class="intel-header" style="color:var(--red)">Status: Partially Blocked — 11 of 13 major AI bots disallowed</div>
-      <p>The Squarespace-injected robots.txt boilerplate explicitly disallows GPTBot, ClaudeBot, anthropic-ai, Google-Extended, GoogleOther, CCBot, Applebot-Extended, Bytespider, AI2Bot, Amazonbot, and cohere-ai. Only PerplexityBot and OAI-SearchBot are not blocked. <strong>Critical finding — primary citation barrier.</strong> Fix complexity: trivial (30-minute Code Injection edit).</p>
+    <!-- Post-Unblock Projection Panel (Phase A pilot 2026-05-10) -->
+    <div class="projection-card">
+      <div class="projection-eyebrow">First-stage aspirational quick fix</div>
+      <div class="projection-headline">5 minutes from Blocked to <strong>Cited (11/18)</strong></div>
+      <p class="projection-cta"><strong>5 minutes unlocks AI citation on 11 of 18 queries.</strong> The robots.txt edit moves you from "AI cannot see you" to "AI cites you on brand, package, and local queries" across Google, Bing-powered ChatGPT, and Brave-powered Perplexity.</p>
+
+      <div class="projection-grid">
+        <div class="projection-engine">
+          <div class="engine-label">Google</div>
+          <div class="engine-score">3 / 6</div>
+          <div class="engine-bar"><div class="engine-fill engine-fill-partial" style="width:50%"></div></div>
+        </div>
+        <div class="projection-engine">
+          <div class="engine-label">Bing <span class="engine-sub">(powers ChatGPT search + browse)</span></div>
+          <div class="engine-score">4 / 6</div>
+          <div class="engine-bar"><div class="engine-fill engine-fill-partial" style="width:67%"></div></div>
+        </div>
+        <div class="projection-engine">
+          <div class="engine-label">Brave <span class="engine-sub">(powers Claude search + Perplexity)</span></div>
+          <div class="engine-score">4 / 6</div>
+          <div class="engine-bar"><div class="engine-fill engine-fill-partial" style="width:67%"></div></div>
+        </div>
+      </div>
+
+      <div class="projection-what-unlocks">
+        <strong>What unlocks at Cited:</strong> You jump straight to Cited (rung 3), skipping Invisible and Emerging entirely. Your existing content already meets Cited-level structural readiness; the bot block was the only barrier. Current page-level structural factors (named authority on /about, external citation signals from the Humberstone book and press, branded direct-answer formatting) become visible. Lift toward Recommended requires further work: LocalBusiness + Service schema (closes Google local + service-query gaps), literal-phrase H2 titles (closes Bing tokenisation gap), Reddit / community presence on r/branding or r/smallbusiness (closes Brave forum-bias gap), name Mel as the designer in every case study (closes named-authority gap on portfolio).
+      </div>
     </div>
 
-    <!-- AI SoV Query Table -->
-    <div class="section-title">AI Share-of-Voice Test — 6 queries, 5 citation factors each</div>
-    <table class="audit-table">
-      <thead><tr><th>Query</th><th>Factors met</th><th>Verdict</th><th>Who surfaces instead</th></tr></thead>
+    <!-- AI Bot Access Audit -->
+    <div class="section-title">AI Bot Access Audit (robots.txt)</div>
+    <div class="intel-card" style="border-color:var(--red-border);background:var(--red-bg)">
+      <div class="intel-header" style="color:var(--red)">Status: Partially Blocked. GPTBot + ClaudeBot trigger the Blocked rung.</div>
+      <p>5 of 7 canonical AI bots are disallowed in the Squarespace robots.txt: <strong>GPTBot</strong> (ChatGPT training), <strong>ClaudeBot</strong> (Claude reads + cites), <strong>anthropic-ai</strong> (Claude legacy alias), <strong>GoogleOther</strong> (Gemini training), and <strong>CCBot</strong> (Common Crawl, feeds third-party LLMs). OAI-SearchBot and PerplexityBot are allowed. Six additional training-only crawlers are also blocked (Google-Extended, Applebot-Extended, Amazonbot, Bytespider, AI2Bot, cohere-ai). <strong>Critical finding: GPTBot and ClaudeBot are two of the four critical bots whose disallow forces the Blocked rung regardless of /18 score.</strong> Fix complexity: trivial (~5-minute Squarespace Settings → Advanced → Code Injection edit).</p>
+    </div>
+
+    <!-- AI SoV Grid: 18 cells (6 queries x 3 engines), post-unblock projection -->
+    <div class="section-title">AI Share-of-Voice Grid: 6 queries × 3 engines = 18 cells</div>
+
+    <div class="sov-banner">
+      <strong>All 18 cells are currently forced Unlikely under the Blocked rung override.</strong>
+      Verdicts shown below are the post-unblock structural projection: what AI engines would see once robots.txt is fixed. A fresh live measurement will be possible 2–4 weeks after the unblock takes effect.
+    </div>
+
+    <table class="audit-table sov-grid">
+      <thead>
+        <tr>
+          <th rowspan="2">Query</th>
+          <th colspan="3" style="text-align:center">Post-unblock projection</th>
+        </tr>
+        <tr>
+          <th>Google</th>
+          <th>Bing <span style="font-weight:400;color:var(--text-muted)">(ChatGPT)</span></th>
+          <th>Brave <span style="font-weight:400;color:var(--text-muted)">(Claude · Perplexity)</span></th>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td>"brand identity designer for wellbeing therapists wellness practitioners UK"</td><td>1/5</td><td><span class="badge sov-weak">Unlikely</span></td><td>Monroe Creative, Be More You, Verum, Rebus</td></tr>
-        <tr><td>"brand stylist for holistic therapists complete brand package"</td><td>1/5</td><td><span class="badge sov-weak">Unlikely</span></td><td>Virtuwell Balance, Bethany Works, Diana Design</td></tr>
-        <tr><td>"best brand designer for wellness brands UK"</td><td>1/5</td><td><span class="badge sov-weak">Unlikely</span></td><td>Neon Rocks, Monroe Creative, Make Us Care</td></tr>
-        <tr><td>"brand designer Marlow Buckinghamshire"</td><td>1/5</td><td><span class="badge sov-weak">Unlikely</span></td><td>Designbury, Studio Gina, CCMEDIA</td></tr>
-        <tr><td>Brand-direct: "Wild Branding Studio Mel Matthews"</td><td>4/5</td><td><span class="badge sov-strong">Likely</span></td><td>(Wild's own surfaces)</td></tr>
-        <tr><td>"branding for therapists guide"</td><td>0/5</td><td><span class="badge sov-weak">Unlikely</span></td><td>Bethany Works, Becky Lord, Reframe Practice</td></tr>
+        <tr>
+          <td><strong>Q1 brand:</strong> "Wild Branding Studio"</td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">3/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">3/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">3/5 factors</div></td>
+        </tr>
+        <tr>
+          <td><strong>Q2 reviews:</strong> "Wild Branding Studio reviews"</td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+        </tr>
+        <tr>
+          <td><strong>Q3 local:</strong> "brand designer Marlow Buckinghamshire"</td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">2/5 factors · LocalBusiness schema penalty (Google local)</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+        </tr>
+        <tr>
+          <td><strong>Q4 superlative:</strong> "best brand identity designer for wellness brands UK"</td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors</div></td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors · Bing tokenisation on multi-word superlative</div></td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors · Brave Reddit forum bias on "best" queries</div></td>
+        </tr>
+        <tr>
+          <td><strong>Q5 package:</strong> "brand identity package for wellness practitioners UK"</td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+          <td><span class="badge sov-partial">Possible</span><div class="cell-factors">2/5 factors</div></td>
+        </tr>
+        <tr>
+          <td><strong>Q6 question-format:</strong> "where can I find a brand designer for holistic therapists in the UK?"</td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors · question-format favours FAQPage schema (absent)</div></td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors · same FAQPage gap</div></td>
+          <td><span class="badge sov-weak">Unlikely</span><div class="cell-factors">1/5 factors · Brave surfaces community Q&amp;A; Wild absent</div></td>
+        </tr>
       </tbody>
     </table>
-    <p class="prose"><strong>AI SoV Score: 1/6.</strong> The single passing query is brand-direct — it tells us the brand exists in the indexable web, not that the brand is competitive in category search.</p>
-    <p class="prose" style="font-size:12px;color:var(--text-muted);font-style:italic;margin-top:8px">These prompts are simulated against the public AI answer layer using the evidence factors the models currently weight. Live results vary by user, location, and model version — but the structural signals driving citations are stable and measurable.</p>
+
+    <p class="prose"><strong>Composite projection: 11/18.</strong> Google 3/6 · Bing 4/6 · Brave 4/6. Lands the studio at Cited rung once robots.txt is unblocked. The branded, reputation, and use-case queries pass Possible across all engines; superlative and question-format queries fail on schema and external-link gaps.</p>
+    <p class="prose" style="font-size:12px;color:var(--text-muted);font-style:italic;margin-top:8px">Scoring methodology: 5 citation factors per cell (direct-answer format, named authority, fact density, schema markup, external citation signals). Likely Cited = 4–5 factors; Possible = 2–3; Unlikely = 0–1. Per-engine adjustments documented per cell where they shift the verdict from the factor-count baseline. Live results vary by user, location, and model version; structural signals driving citations are stable and measurable.</p>
 
     <!-- Citation Host Map -->
     <div class="section-title">Citation Host Map — where AI engines pull from for the wellbeing-branding sector</div>
     <table class="audit-table">
       <thead><tr><th>Host</th><th>Citation frequency</th><th>Wild's presence</th></tr></thead>
       <tbody>
-        <tr><td>DesignRush</td><td><span class="badge badge-red">High</span></td><td><span class="badge badge-green">Active</span> (basic listing)</td></tr>
+        <tr><td>DesignRush</td><td><span class="badge badge-red">High</span></td><td><span class="badge badge-amber">Mentioned</span> (basic listing, no profile content)</td></tr>
         <tr><td>Clutch</td><td><span class="badge badge-red">High</span></td><td><span class="badge badge-red">Absent</span></td></tr>
         <tr><td>Reddit (/r/branding, /r/Entrepreneur, /r/smallbusiness)</td><td><span class="badge badge-amber">Medium</span></td><td><span class="badge badge-red">Absent</span></td></tr>
         <tr><td>Trustpilot</td><td><span class="badge badge-amber">Medium</span></td><td><span class="badge badge-red">Absent</span></td></tr>
@@ -1690,15 +1802,15 @@ function copyQ(btn) {
     <!-- Bake-Off Readiness -->
     <div class="section-title">Vendor Bake-Off Readiness</div>
     <div class="intel-card" style="border-color:var(--orange-border);background:var(--orange-bg)">
-      <div class="intel-header" style="color:var(--orange)">Status: Bake-Off Partial — 1 of 3</div>
+      <div class="intel-header" style="color:var(--orange)">Status: Bake-Off Partial (1 of 3)</div>
       <table class="audit-table" style="margin-top:12px;background:transparent">
         <tbody>
-          <tr><td>Pricing as extractable HTML text</td><td><span class="badge badge-red">Fail</span></td><td>No price published anywhere</td></tr>
-          <tr><td>Feature data as semantic table or list</td><td><span class="badge badge-green">Pass</span></td><td>/brand-design lists deliverables as bullets</td></tr>
-          <tr><td>Comparison claims supported by specific factual differentiators</td><td><span class="badge badge-red">Fail</span></td><td>Claims aspirational ("authentic", "soulful"), not specific</td></tr>
+          <tr><td>Pricing as extractable HTML text</td><td><span class="badge badge-green">Pass</span></td><td>/brand-design publishes "From £4,500 + VAT, delivered over 8–12 weeks" as plain HTML text (not gated, not image-only). <em>Change since prior audit: pricing was previously hidden behind email enquiry.</em></td></tr>
+          <tr><td>Feature data as semantic table or list</td><td><span class="badge badge-red">Fail</span></td><td>Service tiers (Part One / Part Two / Part Three) use bullet-list headers that expand into prose paragraphs; no comparable feature tables AI engines can extract head-to-head. <em>Methodology-strict reading shifts this from prior Pass to Fail.</em></td></tr>
+          <tr><td>Comparison claims supported by specific factual differentiators</td><td><span class="badge badge-red">Fail</span></td><td>Claims aspirational ("seamless", "authentic", "soulful", "magical") without named competitor differentiators or specific outcome metrics.</td></tr>
         </tbody>
       </table>
-      <p style="margin-top:14px"><strong>Adding a published "from £X,XXX" price anchor moves the score to 2/3 (Bake-Off Ready). Adding specific factual differentiators moves the score to 3/3.</strong></p>
+      <p style="margin-top:14px"><strong>Composition shifted since prior audit: pricing now published (Pass) but feature data fails methodology-strict reading (bullets-into-prose, not parseable feature tables). Net score still 1/3 Partial. Adding a structured feature comparison table moves to 2/3. Adding specific factual differentiators moves to 3/3 (Bake-Off Ready).</strong></p>
     </div>
 
     <!-- Research Flags -->
