@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
+Disallow: /web-intelligence/taster/
+# /taster/ pages are cold-email landing pages, not canonical marketing
+# content. Per-file noindex coverage is inconsistent across the 33 slugs;
+# this site-wide disallow is defence in depth. Framework-label updates
+# happen at cold-email dispatch (JIT pre-send checklist), not in
+# batched marketing-page updates. See skills-library/migrations/2026-05-
+# ai-search-realignment.md Phase 5 scope notes. Note: the AI crawlers
+# below have their own per-bot blocks and ignore the wildcard rule;
+# they will continue to crawl /taster/. If that becomes a leak vector
+# (legacy framing surfacing in ChatGPT/Claude answers), add Disallow:
+# /web-intelligence/taster/ to each named AI-crawler block.
 
 # AI search crawlers — explicitly welcome
 # OpenAI / ChatGPT
