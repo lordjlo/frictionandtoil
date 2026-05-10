@@ -6,6 +6,9 @@
     },
     "api/chat.js": {
       "memory": 128
+    },
+    "api/indexnow.js": {
+      "memory": 128
     }
   },
   "redirects": [
