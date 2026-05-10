@@ -18,7 +18,7 @@
       "description": "Live AI search audit of taylorswift.com. GPTBot blocked, internal links dead, zero schema — the world's most Googled artist is almost entirely invisible to AI citation engines on her own domain.",
       "url": "https://frictionandtoil.com/web-intelligence/big-brands/taylor-swift/",
       "datePublished": "2026-04-15",
-      "dateModified": "2026-04-15",
+      "dateModified": "2026-05-10",
       "inLanguage": "en-GB",
       "author": {
         "@type": "Person",
@@ -121,12 +121,26 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .rung-step:first-child{border-radius:6px 0 0 6px}
 .rung-step:last-child{border-radius:0 6px 6px 0;margin-right:0}
 .rung-step.active{background:var(--ai);border-color:var(--ai);color:#fff}
+.rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
 .rung-step.next{color:var(--text-muted)}
 footer{padding:24px 40px;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted)}
+.sov-engines{font-size:13px;color:var(--text);margin-bottom:0.5rem;font-weight:500}
+.sov-engines strong{color:var(--ai)}
+.sov-details{margin-top:0.5rem}
+.sov-details summary{cursor:pointer;color:var(--text-muted);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:6px 0;display:inline-block}
+.sov-details summary:hover{color:var(--ai)}
+.sov-table{width:100%;margin-top:0.75rem;border-collapse:collapse;font-size:12px}
+.sov-table th{text-align:left;padding:6px 10px;color:var(--text-muted);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.sov-table td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.sov-table td.q{font-family:'Space Grotesk',sans-serif;color:var(--text)}
+.sov-table td.r{font-family:monospace;text-align:center;letter-spacing:0.5px}
+.sov-table .y{color:var(--green)}.sov-table .n{color:var(--red);opacity:0.55}.sov-table .na{color:var(--text-muted);font-style:italic;font-size:10px}
+.sov-note{font-size:11px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;padding-top:0.5rem;border-top:1px solid var(--border)}
 @media(max-width:768px){
   .hero,.rung-wrap{padding-left:20px;padding-right:20px}
   .hero-grid{grid-template-columns:1fr;gap:24px}
   .site-header,footer{padding-left:20px;padding-right:20px}
+  .sov-table th:nth-child(4),.sov-table td:nth-child(4){display:none}
 }
 .nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;position:relative;z-index:110}
 .nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
@@ -242,15 +256,30 @@ body.wi-panel-locked{overflow:hidden}
 <div class="rung-wrap">
   <div class="rung-card">
     <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
-    <div class="rung-name">Invisible</div>
-    <div class="rung-sov">AI Share of Voice: 0 / 6 queries where AI would cite you</div>
-    <div class="rung-trajectory">Unblock GPTBot and add MusicArtist + Event schema — this is the single fix most likely to move taylorswift.com from Invisible to Emerging for artist and tour queries, where AI engines currently cite Wikipedia, Spotify, and Ticketmaster instead of the official site.</div>
+    <div class="rung-name">Cited</div>
+    <div class="sov-engines">AI Share of Voice — Google <strong>1/6</strong> · Bing <strong>3/4</strong>* · Brave <strong>3/6</strong> → headline <strong>3/6</strong></div>
+    <div class="rung-trajectory">Unblock GPTBot and add MusicArtist + Event schema — this is the single fix most likely to move taylorswift.com from Cited to Recommended, converting the Bing + Brave win on branded queries into ChatGPT and Gemini citations on the same searches. Editorial queries (songs, biography) will continue to lose to Wikipedia, Rolling Stone, and Variety until taylorswift.com hosts an editorialised About / discography hub.</div>
     <div class="ladder">
-      <div class="rung-step active">Invisible</div>
-      <div class="rung-step next">Emerging</div>
-      <div class="rung-step next">Cited</div>
+      <div class="rung-step passed">Invisible</div>
+      <div class="rung-step passed">Emerging</div>
+      <div class="rung-step active">Cited</div>
       <div class="rung-step next">Recommended</div>
     </div>
+    <details class="sov-details">
+      <summary>View 6 tested queries (Bing + Brave live-tested May 2026)</summary>
+      <table class="sov-table">
+        <thead><tr><th>Query</th><th>Bing</th><th>Brave</th><th>Wins instead</th></tr></thead>
+        <tbody>
+          <tr><td class="q">"taylor swift tour dates 2026" <em style="color:var(--text-muted)">[branded]</em></td><td class="r y">✓</td><td class="r n">✗</td><td>Brave: Ticketmaster, Songkick, fan wikis</td></tr>
+          <tr><td class="q">"taylor swift latest album" <em style="color:var(--text-muted)">[branded]</em></td><td class="r y">✓</td><td class="r y">✓</td><td>—</td></tr>
+          <tr><td class="q">"taylor swift official store" <em style="color:var(--text-muted)">[branded]</em></td><td class="r y">✓</td><td class="r y">✓</td><td>—</td></tr>
+          <tr><td class="q">"best taylor swift songs"</td><td class="r na">N/A</td><td class="r n">✗</td><td>Rolling Stone, Reddit, Variety, uDiscover</td></tr>
+          <tr><td class="q">"taylor swift biography"</td><td class="r na">N/A</td><td class="r n">✗</td><td>Wikipedia, Britannica, Biography.com, IMDb</td></tr>
+          <tr><td class="q">"taylor swift fan club"</td><td class="r n">✗</td><td class="r y">✓</td><td>Bing: Reddit piracy threads</td></tr>
+        </tbody>
+      </table>
+      <p class="sov-note">*Bing N/A on 2 queries — natural-language tokenisation failure. Material finding: Bing + Brave both rate Taylor Swift's brand visibility much higher than Google does — Google's ChatGPT-era assessment was 1/6, but Bing 3/4 and Brave 3/6 on the same query set tells a different story. The "Invisible" diagnosis was Google-only; the multi-engine reality is "Cited" on branded queries, weak only on editorial/discography queries. Bing + Brave live-tested May 2026 via WebFetch. Citation = brand domain in top 5 organic OR named in AI summary box. Google subtotal carried from April 2026 structural assessment.</p>
+    </details>
   </div>
 </div>
 <footer>

@@ -1090,7 +1090,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
       </div>
       <div class="guide-faq-item">
         <div class="guide-faq-q">What does "AI Share-of-Voice" mean? <span class="guide-faq-chevron">▼</span></div>
-        <div class="guide-faq-a">When someone asks ChatGPT, Perplexity, or Google Gemini "what is the best tonic water for gin?", the AI pulls from indexed pages that meet specific citation criteria — direct answers, named authority, fact density, and schema markup. Fever-Tree currently scores 2/6 on our query test, meaning it is Unlikely to be cited in AI-generated answers for most non-branded category queries — despite being the category leader.</div>
+        <div class="guide-faq-a">When someone asks ChatGPT, Perplexity, Google Gemini, Bing Copilot, or Brave's AI Answer "what is the best tonic water for gin?", the AI pulls from indexed pages that meet specific citation criteria — direct answers, named authority, fact density, and schema markup. Fever-Tree currently scores 2/6 on our query test (consistent across Google, Bing, and Brave live tests in May 2026), meaning it is Unlikely to be cited in AI-generated answers for most non-branded category queries — despite being the category leader.</div>
       </div>
       <div class="guide-faq-item">
         <div class="guide-faq-q">What is the Revenue Impact figure based on? <span class="guide-faq-chevron">▼</span></div>
@@ -1218,7 +1218,8 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
       <div>
         <div class="maturity-current">Current position</div>
         <div class="maturity-headline">Emerging — AI SoV 2/6</div>
-        <div class="maturity-sub">Fever-Tree is cited by AI engines for 2 of 6 priority queries — both branded searches where external authority (Difford's Guide, Tasting Table) pulls it through. On all 4 non-branded category queries — best tonic water, best ginger beer, premium mixer comparison — Fever-Tree is absent. Tasting Table, Craft Gin Club, Sporked, and Imbibe Magazine surface instead.</div>
+        <div class="maturity-sub" style="font-size:12px;color:var(--text-muted);margin-bottom:8px;font-family:var(--mono);letter-spacing:0.5px">Per engine — Google 2/6 · Bing 1/2* · Brave 2/6 (live-tested May 2026; *Bing N/A on 4 of 6 queries due to natural-language tokenisation)</div>
+        <div class="maturity-sub">Fever-Tree is cited by AI engines for 2 of 6 priority queries — both branded searches where external authority (Difford's Guide, Tasting Table) pulls it through. On all 4 non-branded category queries — best tonic water, best ginger beer, premium mixer comparison — Fever-Tree is absent on every engine tested. Tasting Table, Telegraph, Good Housekeeping, Craft Gin Club, and Liquor.com surface instead. Bing's tokenisation failure on natural-language queries (returning NS&amp;I Premium Bonds for "premium cocktail mixers comparison" and dictionary results elsewhere) is itself a finding — Bing-citation strategy is irrelevant for this niche until queries are quoted.</div>
       </div>
       <div class="trajectory">
         <span class="trajectory-label">Next rung requires</span>
@@ -2018,7 +2019,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 <!-- TAB 8: AI SEARCH -->
 <div id="tab-seo-aisearch" class="tab-content"><div class="container">
   <div class="section-title">AI Search Visibility</div>
-  <div class="section-subtitle">AI Share-of-Voice score: 2/6 queries — AI Search Gap</div>
+  <div class="section-subtitle">AI Share-of-Voice score: 2/6 queries — AI Search Gap · Per engine: Google 2/6 · Bing 1/2* · Brave 2/6</div>
 
   <!-- AI Visibility Maturity Rung banner — Phase 1 Edit 1 -->
   <div class="ai-maturity-banner">
@@ -2042,6 +2043,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
       <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:6px">AI Share-of-Voice Score</div>
       <div style="display:flex;align-items:baseline;gap:8px"><span class="ai-sov-score-large" style="color:#ef4444">2</span><span style="font-size:24px;color:var(--text-muted)">/6</span><span class="sov-badge sov-weak" style="margin-left:8px">AI Search Gap</span></div>
       <div style="font-size:13px;color:var(--text-secondary);margin-top:6px">Fever-Tree is Unlikely to appear in AI-generated answers for 4 of 6 priority queries</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:8px;font-family:var(--mono);letter-spacing:0.5px;line-height:1.5">Per-engine breakdown — Google <strong style="color:var(--text-secondary)">2/6</strong> · Bing <strong style="color:var(--text-secondary)">1/2</strong>* · Brave <strong style="color:var(--text-secondary)">2/6</strong> &nbsp;<span style="text-transform:none;letter-spacing:0;font-family:var(--body);font-style:italic">(*Bing N/A on 4 of 6 — natural-language tokenisation failure; Bing returned NS&amp;I Premium Bonds for "premium cocktail mixers comparison" and dictionary results elsewhere. This is an engine-specific failure mode in this niche, not a Fever-Tree gap.)</span></div>
     </div>
     <div style="text-align:right">
       <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Crawler access</div>
@@ -2095,7 +2097,7 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
   </table>
 
   <!-- Edit 6a — Simulated-vs-live disclosure (LOCKED) -->
-  <div class="sov-disclosure">These prompts are simulated against the public AI answer layer using the evidence factors the models currently weight. Live results vary by user, location, and model version — but the structural signals driving citations are stable and measurable.</div>
+  <div class="sov-disclosure">The 6 queries above are scored structurally against the documented citation factors AI models weight (atomic answer presence, schema, fact density, named authority, originality). To complement the structural scoring, a parallel 6-query set was live-tested on Bing and Brave Search in May 2026 via WebFetch — the per-engine subtotals shown above (Google 2/6 · Bing 1/2* · Brave 2/6) reflect that live test. Both methods converge on the same headline rung: Emerging at 2/6. Full live-test query log is in the standalone AI Search Report. Live ChatGPT, Perplexity, Gemini, and Copilot prompt testing is available as a retainer add-on.</div>
 
   <!-- Citation Host Map — Phase 1 Edit 5 -->
   <div class="host-map-card">

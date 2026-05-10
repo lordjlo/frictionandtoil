@@ -18,7 +18,7 @@
       "description": "Live AI search audit of Nike UK (nike.com/gb). Inconsistent product schema limits AI rich result capture at scale — the only gap between Nike's dominant organic presence and full AI search authority.",
       "url": "https://frictionandtoil.com/web-intelligence/big-brands/nike/",
       "datePublished": "2026-04-15",
-      "dateModified": "2026-04-15",
+      "dateModified": "2026-05-10",
       "inLanguage": "en-GB",
       "author": {
         "@type": "Person",
@@ -114,10 +114,23 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
 .rung-step.next{color:var(--text-muted)}
 footer{padding:24px 40px;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted)}
+.sov-engines{font-size:13px;color:var(--text);margin-bottom:0.5rem;font-weight:500}
+.sov-engines strong{color:var(--ai)}
+.sov-details{margin-top:0.5rem}
+.sov-details summary{cursor:pointer;color:var(--text-muted);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:6px 0;display:inline-block}
+.sov-details summary:hover{color:var(--ai)}
+.sov-table{width:100%;margin-top:0.75rem;border-collapse:collapse;font-size:12px}
+.sov-table th{text-align:left;padding:6px 10px;color:var(--text-muted);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border)}
+.sov-table td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.sov-table td.q{font-family:'Space Grotesk',sans-serif;color:var(--text)}
+.sov-table td.r{font-family:monospace;text-align:center;letter-spacing:0.5px}
+.sov-table .y{color:var(--green)}.sov-table .n{color:var(--red);opacity:0.55}.sov-table .na{color:var(--text-muted);font-style:italic;font-size:10px}
+.sov-note{font-size:11px;color:var(--text-muted);margin-top:0.75rem;line-height:1.5;padding-top:0.5rem;border-top:1px solid var(--border)}
 @media(max-width:768px){
   .hero,.rung-wrap{padding-left:20px;padding-right:20px}
   .hero-grid{grid-template-columns:1fr;gap:24px}
   .site-header,footer{padding-left:20px;padding-right:20px}
+  .sov-table th:nth-child(4),.sov-table td:nth-child(4){display:none}
 }
 .nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto;position:relative;z-index:110}
 .nav-hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:all 0.25s}
@@ -206,8 +219,23 @@ body.wi-panel-locked{overflow:hidden}
   <div class="rung-card">
     <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
     <div class="rung-name">Cited</div>
-    <div class="rung-sov">AI Share of Voice: 4 / 6 queries where AI would cite you</div>
-    <div class="rung-trajectory">Standardise Product schema across all category and product pages — this is the final fix needed to move nike.com/gb from Cited to Recommended, converting the brand's dominant organic presence into consistent AI citation across every product, comparison, and category query.</div>
+    <div class="sov-engines">AI Share of Voice — Google <strong>4/6</strong> · Bing <strong>3/4</strong>* · Brave <strong>1/6</strong> → headline <strong>4/6</strong></div>
+    <div class="rung-trajectory">Standardise Product schema across all category and product pages — this is the final fix needed to move nike.com/gb from Cited to Recommended, converting the brand's dominant organic presence into consistent AI citation across every product, comparison, and category query. Brave is the weakest engine for Nike (1/6) because it surfaces editorial reviewers (RunnersWorld, Marathon Handbook, Telegraph) ahead of brand-owned product pages on every "best" query.</div>
+    <details class="sov-details">
+      <summary>View 6 tested queries (Bing + Brave live-tested May 2026)</summary>
+      <table class="sov-table">
+        <thead><tr><th>Query</th><th>Bing</th><th>Brave</th><th>Wins instead</th></tr></thead>
+        <tbody>
+          <tr><td class="q">"best running shoes 2026"</td><td class="r n">✗</td><td class="r n">✗</td><td>RunnersWorld, Marathon Handbook, RunRepeat</td></tr>
+          <tr><td class="q">"nike air max 90 review" <em style="color:var(--text-muted)">[branded]</em></td><td class="r y">✓</td><td class="r n">✗</td><td>Brave: Flipkart, Buyary, RunRepeat, Esquire</td></tr>
+          <tr><td class="q">"best gym trainers uk"</td><td class="r na">N/A</td><td class="r n">✗</td><td>Telegraph, Marie Claire, Independent, GQ</td></tr>
+          <tr><td class="q">"nike vs adidas running shoes"</td><td class="r y">✓</td><td class="r n">✗</td><td>Brave: comparison blogs</td></tr>
+          <tr><td class="q">"best football boots uk"</td><td class="r na">N/A</td><td class="r n">✗</td><td>footballboots.co.uk, Decathlon, FourFourTwo, Sports Direct</td></tr>
+          <tr><td class="q">"nike uk official store" <em style="color:var(--text-muted)">[branded]</em></td><td class="r y">✓</td><td class="r y">✓</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="sov-note">*Bing N/A on 2 queries — natural-language tokenisation failure. Bing handles Nike's brand homepage well (3/4 effective) but cannot evaluate "best [product]" queries reliably. Brave's 1/6 is the most honest editorial signal: even on branded review queries, Brave prioritises independent reviewers over Nike's own pages. Bing + Brave live-tested May 2026 via WebFetch. Citation = brand domain in top 5 organic OR named in AI summary box. Google subtotal carried from April 2026 structural assessment.</p>
+    </details>
     <div class="ladder">
       <div class="rung-step passed">Invisible</div>
       <div class="rung-step passed">Emerging</div>

@@ -140,7 +140,7 @@ body.wi-panel-locked{overflow:hidden}
   <div class="rung-card">
     <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
     <div class="rung-name">Emerging</div>
-    <div class="rung-sov">AI Share of Voice: 2 / 6 queries where AI would cite you</div>
+    <div class="rung-sov">AI Share of Voice — Google <strong style="color:var(--ai)">2/6</strong> · Bing <strong style="color:var(--ai)">1/2</strong>* · Brave <strong style="color:var(--ai)">2/6</strong> → headline <strong style="color:var(--ai)">2/6</strong> &nbsp;<span style="color:var(--text-muted);font-size:11px">*Bing N/A on 4 of 6 queries (tokenisation failure)</span></div>
     <div class="rung-trajectory">Add Product and FAQ structured data to every fever-tree.com product page — this is the single fix most likely to move Fever-Tree from Emerging to Cited for "compare premium tonic waters" and "best cocktail mixer" searches, where AI engines currently extract specs from Difford's Guide and Amazon instead of your own site.</div>
     <div class="ladder">
       <div class="rung-step passed">Invisible</div>
@@ -158,8 +158,9 @@ body.wi-panel-locked{overflow:hidden}
       <thead>
         <tr>
           <th>Query</th>
-          <th>Verdict</th>
-          <th>Factors met</th>
+          <th>Structural verdict</th>
+          <th>Bing</th>
+          <th>Brave</th>
           <th>Who surfaces instead</th>
         </tr>
       </thead>
@@ -167,42 +168,48 @@ body.wi-panel-locked{overflow:hidden}
         <tr>
           <td>"Fever-Tree tonic water"</td>
           <td><span class="badge badge-green">Likely Cited</span></td>
-          <td>4 / 5</td>
+          <td style="text-align:center;color:var(--green);font-family:var(--mono)">✓</td>
+          <td style="text-align:center;color:var(--green);font-family:var(--mono)">✓</td>
           <td>—</td>
         </tr>
         <tr>
           <td>"Fever-Tree mixer range"</td>
           <td><span class="badge badge-amber">Possible</span></td>
-          <td>3 / 5</td>
-          <td>—</td>
+          <td style="text-align:center;color:var(--red);font-family:var(--mono);opacity:0.55">✗</td>
+          <td style="text-align:center;color:var(--green);font-family:var(--mono)">✓</td>
+          <td>Bing tokenised to NHS / fever results</td>
         </tr>
         <tr>
           <td>"best premium tonic water for gin UK"</td>
           <td><span class="badge badge-red">Unlikely</span></td>
-          <td>1 / 5</td>
-          <td>Tasting Table, Craft Gin Club</td>
+          <td style="text-align:center;color:var(--text-muted);font-family:var(--mono);font-style:italic;font-size:11px">N/A</td>
+          <td style="text-align:center;color:var(--red);font-family:var(--mono);opacity:0.55">✗</td>
+          <td>Telegraph, Good Housekeeping, Craft Gin Club</td>
         </tr>
         <tr>
           <td>"premium cocktail mixers comparison"</td>
           <td><span class="badge badge-red">Unlikely</span></td>
-          <td>1 / 5</td>
-          <td>Sporked, Difford's Guide</td>
+          <td style="text-align:center;color:var(--text-muted);font-family:var(--mono);font-style:italic;font-size:11px">N/A</td>
+          <td style="text-align:center;color:var(--red);font-family:var(--mono);opacity:0.55">✗</td>
+          <td>Amazon, goodtimein, Funkin (Bing returned NS&amp;I Premium Bonds)</td>
         </tr>
         <tr>
           <td>"best ginger beer for Moscow mule"</td>
           <td><span class="badge badge-red">Unlikely</span></td>
-          <td>1 / 5</td>
-          <td>Sporked, Feast &amp; West</td>
+          <td style="text-align:center;color:var(--text-muted);font-family:var(--mono);font-style:italic;font-size:11px">N/A</td>
+          <td style="text-align:center;color:var(--red);font-family:var(--mono);opacity:0.55">✗</td>
+          <td>Slightly Pretentious, Savory Reviews, Feast &amp; West</td>
         </tr>
         <tr>
           <td>"what is the best tonic water?"</td>
           <td><span class="badge badge-red">Unlikely</span></td>
-          <td>1 / 5</td>
-          <td>Tasting Table, Imbibe Magazine</td>
+          <td style="text-align:center;color:var(--text-muted);font-family:var(--mono);font-style:italic;font-size:11px">N/A</td>
+          <td style="text-align:center;color:var(--red);font-family:var(--mono);opacity:0.55">✗</td>
+          <td>Tasting Table, Good Housekeeping, Bon Appétit, Liquor.com</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;">Scores are assessed against documented AI citation factors based on structural and content signals. Live prompt testing against ChatGPT, Perplexity, Gemini, and Copilot is available as a retainer add-on.</p>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;"><strong>Structural verdict</strong> — assessed against documented AI citation factors based on structural and content signals (Likely Cited / Possible / Unlikely). <strong>Bing &amp; Brave</strong> — live-tested May 2026 via WebFetch on bing.com and search.brave.com (citation = fever-tree.com in top 5 organic OR named in AI summary box). Bing N/A on 4 of 6 queries due to natural-language tokenisation failure (Bing returned dictionary / NS&amp;I Premium Bonds / NHS results for unquoted natural-language queries — a known engine-specific failure mode in this niche, not a Fever-Tree gap). Live prompt testing against ChatGPT, Perplexity, Gemini, and Copilot is available as a retainer add-on.</p>
   </div>
 
   <!-- CITATION HOST MAP -->
