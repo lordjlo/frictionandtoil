@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Search Report: nike.com | F&amp;T Intelligence</title>
+<meta name="description" content="Live AI search audit of nike.com under F&T's /18 methodology + Fix 2 (403-degraded mode). Maturity Rung: Cited bottom edge (6/18). Brand-reputation flag triggered across all three engines.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.frictionandtoil.com/web-intelligence/big-brands/nike/full-report/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Search Report: nike.com | F&amp;T Intelligence">
+<meta property="og:description" content="Live AI search audit of Nike under F&T's /18 methodology. Cited bottom edge (6/18). Google AI summary names Nike #1 as the biggest sportswear brand of 2026; Brave Q4 doesn't name Nike at all. Engine asymmetry on the same superlative query.">
+<meta property="og:url" content="https://www.frictionandtoil.com/web-intelligence/big-brands/nike/full-report/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Search Report: nike.com | F&amp;T Intelligence">
+<meta name="twitter:description" content="Nike AI Search audit. Cited 6/18. Brand-reputation flag triggered. M16 Edge-blocked Unverified via Fix 2 degraded mode.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.15);
+  --text:#e8e8ed;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;
+  --design:#c9963a;--search:#6366f1;--green:#22c55e;--red:#ef4444;--orange:#f97316;--yellow:#eab308;
+  --ai:#a855f7;--ai-bg:rgba(168,85,247,0.12);--ai-border:rgba(168,85,247,0.3);--ai-glow:rgba(168,85,247,0.45);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+.breadcrumb{padding:1.25rem 0 0;font-size:12px;color:var(--text-muted)}
+.breadcrumb a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.breadcrumb a:hover{border-bottom-color:var(--text-secondary)}
+.report-header{padding:2rem 0 2rem;border-bottom:1px solid var(--border)}
+.report-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.75rem}
+.report-title{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.report-meta{font-size:13px;color:var(--text-muted)}
+.disclosure{margin:1.5rem 0;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text-secondary);line-height:1.6}
+.disclosure strong{color:var(--text)}
+.rung-card{margin:2.5rem 0;padding:2.5rem;background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:var(--radius);position:relative;overflow:hidden}
+.rung-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--ai-glow);border-radius:50%;filter:blur(80px);opacity:0.3;pointer-events:none}
+.rung-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--ai);margin-bottom:0.75rem}
+.rung-name{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.rung-sov{font-size:14px;color:var(--text-secondary);margin-bottom:1.5rem}
+.rung-trajectory{font-size:14px;color:var(--text);padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:3px solid var(--ai);border-radius:0 var(--radius-xs) var(--radius-xs) 0;line-height:1.6}
+.engine-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem}
+.engine-bar{padding:0.85rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-xs)}
+.engine-bar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.5rem}
+.engine-bar-score{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.engine-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.engine-bar-fill{height:100%;background:var(--ai);border-radius:100px;transition:width 0.6s}
+.engine-bar-fill.fill-strong{background:var(--green)}
+.engine-bar-fill.fill-partial{background:var(--orange)}
+.engine-bar-fill.fill-weak{background:var(--red)}
+.engine-bar-sub{font-size:10px;color:var(--text-muted);margin-top:0.4rem}
+.ladder{display:flex;gap:0;margin-top:1.75rem}
+.rung-step{flex:1;padding:0.6rem 0.5rem;text-align:center;font-size:11px;font-weight:600;border:1px solid var(--border);margin-right:-1px}
+.rung-step:first-child{border-radius:var(--radius-xs) 0 0 var(--radius-xs)}
+.rung-step:last-child{border-radius:0 var(--radius-xs) var(--radius-xs) 0;margin-right:0}
+.rung-step.active{background:var(--ai);border-color:var(--ai);color:#fff}
+.rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
+.rung-step.next{color:var(--text-muted)}
+.cell-factors{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.4}
+.fix2-banner{padding:14px 18px;background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.25);border-radius:8px;margin:1.5rem 0;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.fix2-banner strong{color:var(--yellow)}
+.report-section{margin:2.5rem 0;padding-top:2.5rem;border-top:1px solid var(--border)}
+.section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.5rem}
+.section-title{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:1.25rem}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+td:first-child{color:var(--text);font-weight:500}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25)}
+.badge-amber{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.25)}
+.badge-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25)}
+.badge-yellow{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.25)}
+.engine-col{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600}
+.status-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:1rem}
+.status-card.unverified{background:rgba(234,179,8,0.05);border-color:rgba(234,179,8,0.25)}
+.status-card h4{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:0.5rem}
+.status-card.unverified h4{color:var(--yellow)}
+.status-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+.notable-card{padding:1.5rem 1.75rem;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:var(--radius);margin:1.5rem 0}
+.notable-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--red);margin-bottom:0.5rem}
+.notable-title{font-family:var(--display);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.notable-body{font-size:13px;color:var(--text-secondary);line-height:1.7}
+.action-card{padding:2rem;background:rgba(201,150,58,0.08);border:1px solid rgba(201,150,58,0.25);border-radius:var(--radius);margin:2.5rem 0}
+.action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--design);margin-bottom:0.5rem}
+.action-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.75rem}
+.action-detail{font-size:13px;color:var(--text-secondary);line-height:1.7}
+.upgrade-cta{margin:3rem 0;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.upgrade-cta h3{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:0.75rem}
+.upgrade-cta p{font-size:13px;color:var(--text-secondary);max-width:55ch;margin:0 auto 1.5rem;line-height:1.6}
+.upgrade-cta .code-block{display:inline-block;font-family:var(--mono);font-size:13px;background:rgba(255,255,255,0.06);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:var(--radius-xs);color:var(--text);margin-bottom:1.5rem;letter-spacing:1px}
+.btn-upgrade{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.9rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background .2s}
+.btn-upgrade:hover{background:#b08125}
+footer{margin-top:4rem;padding:2rem 0;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-muted)}
+@media(max-width:680px){.engine-bars{grid-template-columns:1fr}.ladder{display:grid;grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/web-intelligence/big-brands/nike/">&larr; Back to the Nike showcase</a>
+  </nav>
+
+  <header class="report-header">
+    <div class="report-eyebrow">F&amp;T Intelligence &middot; AI Search Report</div>
+    <div class="report-title">nike.com</div>
+    <div class="report-meta">AI Search dimension &middot; May 2026 &middot; Delivered by Friction &amp; Toil</div>
+  </header>
+
+  <div class="disclosure">
+    <strong>What this report measures:</strong> Nike's structural <em>citation probability</em> across Google, Bing (the index that powers ChatGPT search and ChatGPT browse mode), and Brave (the index that powers Anthropic Claude search and Perplexity). This is a snapshot of structural readiness, not live AI output drift. For ongoing tracking of how a brand's Maturity Rung moves over time, see the F&amp;T Annual Intelligence Plan (&pound;2,500/yr).
+  </div>
+
+  <div class="fix2-banner">
+    <strong>Audit-time note (Fix 2 degraded mode):</strong> direct fetch of nike.com returned HTTP 403 across multiple paths (likely CDN-level bot management; standard enterprise D2C pattern). Robots.txt rules could not be verified server-side. The 18-cell SoV grid was measured via Google + Bing + Brave search-engine indexes (each carries its own crawled copy of the site); 5-factor scoring for factors 1 to 4 was inferred from search-result snippets and is annotated below as <code>[snippet-inferred under 403]</code>. Factor 5 (External citation signals) was scored normally. Out-of-band browser-based verification of robots.txt is the recommended first follow-up; it appears as part of the Top Action below.
+  </div>
+
+  <div class="rung-card">
+    <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
+    <div class="rung-name">Cited</div>
+    <div class="rung-sov">AI Share of Voice: 6 / 18 cells across Google &middot; Bing &middot; Brave (6 queries &times; 3 engines). Bottom edge of the Cited band.</div>
+    <div class="rung-trajectory">Verify robots.txt rules out-of-band (CDN edge-block prevented server-side verification during this audit) and structure Product + Review JSON-LD schema on /running and /training category pages. Nike sits at the bottom edge of Cited (6/18). Branded queries (Q1, Q2) surface 4 to 5 nike.com URLs in the top 10 across Google + Brave; Bing's Q1 surface is more retailer-heavy (UK retailers fill #2 to #8). Category queries (Q3, Q4, Q5) route to specialised editorial reviewers (Runner's World, RunRepeat, Marathon Handbook, CNN Underscored, RTINGS) and ranking sites (Newsweek, InStyle, Vogue) where Nike is named in expert recommendations but never as the cited authority. Structuring Product + Review JSON-LD on category pages would establish brand-owned authority alongside the editorial-reviewer surface.</div>
+
+    <div class="engine-bars">
+      <div class="engine-bar">
+        <div class="engine-bar-label">Google &middot; Gemini</div>
+        <div class="engine-bar-score">2 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:33%"></div></div>
+        <div class="engine-bar-sub">Powers Google AI Overviews, Gemini</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Bing &middot; ChatGPT</div>
+        <div class="engine-bar-score">2 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:33%"></div></div>
+        <div class="engine-bar-sub">Powers ChatGPT search + ChatGPT browse</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Brave &middot; Claude</div>
+        <div class="engine-bar-score">2 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:33%"></div></div>
+        <div class="engine-bar-sub">Powers Claude search + Perplexity supplement</div>
+      </div>
+    </div>
+
+    <div class="ladder">
+      <div class="rung-step passed">Blocked</div>
+      <div class="rung-step passed">Invisible</div>
+      <div class="rung-step passed">Emerging</div>
+      <div class="rung-step active">Cited</div>
+      <div class="rung-step next">Recommended</div>
+    </div>
+  </div>
+
+  <div class="notable-card">
+    <div class="notable-label">Notable finding &middot; Brand reputation</div>
+    <div class="notable-title">Trustpilot dominates Q2 across all three engines uniformly</div>
+    <div class="notable-body">Trustpilot surfaces #1 on Google, Bing, and Brave for "Nike reviews". Reviews.io 3.27/5 from 548 reviews. ConsumerAffairs, Sitejabber, Influenster, Thingtesting all surface in top 10 on Google + Brave. Recurring customer-service themes across review hosts: order fulfilment delays, refund issues, declining apparel quality. For a D2C commerce brand like Nike, public review-host ratings directly affect SNKRS-app and nike.com conversion. The uniform Trustpilot dominance across all three engines is more material than the engine-anomalous Barclays pattern (where Bing surfaced only Nike-owned URLs for the same query type). The current report flags it under Notable findings only; belongs in a Brand panel of any full intelligence report.</div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">AI Share of Voice: 18-cell grid</div>
+    <div class="section-title">Six target queries &times; three engines. Who surfaces, and why.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Query</th>
+          <th class="engine-col">Google</th>
+          <th class="engine-col">Bing</th>
+          <th class="engine-col">Brave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Q1. "Nike running shoes" <div class="cell-factors" style="margin-top:4px">Branded with intent</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">3/5 factors [snippet-inferred under 403]. 5 nike.com URLs in top 10 (mens, running, womens, /running, sale-running). DICK'S #4, RunRepeat #6, Foot Locker #7, Running Warehouse #9, Amazon #10. Strong own-brand surface.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">3/5 factors [snippet-inferred under 403]. nike.com/gb/w/running-shoes #1. Sports Direct #2, Runner's World #3, Decathlon #4, JD Sports #5, GO Outdoors #6, RunRepeat #7, Foot Locker UK #8, Pro:Direct #9, British GQ #10. UK regional surface (nike.com/gb) + UK retailer pattern.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">3/5 factors [snippet-inferred under 403]. 4 nike.com URLs (mens running, running shoes, womens, /running). DICK'S #4, Forbes #6, RunRepeat #7, Reddit r/runninglifestyle #8, Runner's World #9, Foot Locker #10.</div></td>
+        </tr>
+        <tr>
+          <td>Q2. "Nike reviews" <div class="cell-factors" style="margin-top:4px">Branded reputation</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. Trustpilot #1, ConsumerAffairs #2, nike.com/help/a/product-review-tos #3, Google Storepages #4, Thingtesting #5, RunRepeat #6, Reviews.io #7, Running Shoes Guru #8, Sitejabber #9, YouTube #10. Nike's own page at #3 is the product-review TOS, not a customer-review aggregator. Brand-reputation flag triggered (see Notable finding above).</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors [snippet-inferred under 403]. Trustpilot #1, Reviews.io #2 (3.27/5 from 548 reviews), nike.com/gb/help/a/reviews #3, ConsumerAffairs #4, RunRepeat #5, SneakerLens #6, Run Testers #7. Mixed surface: Trustpilot dominates but Nike's own UK review-help page surfaces at #3.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors [snippet-inferred under 403]. Trustpilot #1, nike.com/help #2, ConsumerAffairs #3, RunRepeat #4, Thingtesting #5, Google Storepages #6, Reviews.io #7, Influenster #8, YouTube #9, Sitejabber #10. Brave gives Nike's own help page the #2 slot.</div></td>
+        </tr>
+        <tr>
+          <td>Q3. "best running shoes 2026" <div class="cell-factors" style="margin-top:4px">Commercial non-brand &middot; category</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. Run Testers #1, RunRepeat #2 (Nike Vaporfly 4 NAMED for racing), Sixminutemile, Urbanstaroma, RTINGS, Marathon Handbook, RunRepeat #7, Runners Gear Guide, ShoesTrace, YouTube. AI summary names Adidas Adizero EVO SL (overall best), ASICS Novablast 5, Saucony Endorphin Speed 5, Nike Vaporfly 4 (racing), Mizuno Neo Vista 2.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. Runner's World #1, RunRepeat #2, Run to the Finish #3, Marathon Handbook #4, Outdoor Gear Lab #5 (Nike NAMED in 'top models from Nike, Hoka, Saucony, NB, Asics'), Runnea, 220 Triathlon, Men's Fitness, Runners Cove, Runners Gear Guide.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors [snippet-inferred under 403]. Run Testers #1, Runner's World #2, Reddit r/beginnerrunning #3 (Brave forum-bias), RunRepeat #4, Sixminutemile #5, Urbanstaroma #6, RTINGS #7, Marathon Handbook #8, NYT running-shoe-history article #9, Runner's World #10. NO Nike in any snippet/title.</div></td>
+        </tr>
+        <tr>
+          <td>Q4. "best athletic brand 2026" <div class="cell-factors" style="margin-top:4px">Commercial non-brand &middot; superlative</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors [snippet-inferred under 403]. Newsweek, Athletic Brands, Athletic Brands, Athletech News, Warrior Addict, Vitality Athletic, Highsnobiety, The Good Trade, Glance, Dunnio Tailor. AI summary EXPLICITLY: "Nike takes the crown as the pinnacle of American sportswear in 2026... the Beaverton giant remaining the biggest sportswear brand in the world, dominating nearly every sport." Strongest single projection signal in this audit.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. Bing tokenisation failure on "best": 9 of 10 dictionary results.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors [snippet-inferred under 403]. Newsweek #1, InStyle #2, Vogue #3, AthleticBrands.org #4+#5, Athletech News #6, Highsnobiety #7, The Good Trade #8, Elle UK #9, Warrior Addict #10. NO Nike URL. NO Nike named in any snippet. Engine asymmetry: Google AI summary puts Nike at #1; Brave's Q4 surfaces don't mention Nike at all.</div></td>
+        </tr>
+        <tr>
+          <td>Q5. "best trainers for marathon training 2026" <div class="cell-factors" style="margin-top:4px">Use-case</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. CNN Underscored, RunToTheFinish, Run Testers, Marathon Handbook, Sundried, RunRepeat, Runna, StillIRun, Run Testers, iRunFar. AI summary names Hoka Clifton 9, Nike Vomero Plus (ZoomX cushioning), Nike Pegasus (daily trainer), Brooks Ghost 16, ASICS Novablast 5, Adidas Adizero Evo SL (value), Hoka Skyward X. Multiple Nike mentions; no nike.com URL.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. Bing tokenisation failure on "best": 10 of 10 dictionary results.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors [snippet-inferred under 403]. CNN Underscored #1, Runner's World #2, RunRepeat #3, Sundried #4, RunToTheFinish #5, Marathon Handbook #6, Newsweek #7, Run Testers #8+#9, RTINGS #10. NO nike.com URL. NO Nike in any snippet.</div></td>
+        </tr>
+        <tr>
+          <td>Q6. "should I buy Nike or Adidas" <div class="cell-factors" style="margin-top:4px">Question-format</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. RunToTheFinish, RushOrderTees, Apartstyle, Datahut blog, ND B Catalyst, Tyrone Eagle, Grailify, Marathon Handbook, StartupTalky, Good On You. AI summary balanced: Nike vs Adidas comparison, both named extensively (Nike $51bn revenue + 27% market share + premium tech vs Adidas $23bn + 13% + better value/fit). Nike named throughout; no nike.com URL.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. Bing tokenisation failure on "should": 10 of 10 dictionary modal-verb results.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors [snippet-inferred under 403]. Reddit r/unpopularopinion #1, Grailify #2, RunToTheFinish #3, U-Lace #4, Quora #5, SoleSeriouss #6, Quora #7, RushOrderTees #8, ND Catalyst #9, Facebook sneaker enthusiasts #10. Brave forum-bias visible (Reddit #1, Quora #5+#7, Facebook #10). NO nike.com URL.</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;">Each cell shows the citation-factor verdict (Likely / Possible / Unlikely) and how many of the 5 factors the relevant page is inferred to meet. The annotation <code>[snippet-inferred under 403]</code> indicates that page-content inspection was 403-blocked at the CDN edge; factors 1 to 4 were inferred from search-result snippets observed engine-side. Factor 5 (External citation signals) was scored normally. Bing tokenisation hits 3 of 6 queries (Q4, Q5 on "best"; Q6 on "should"). Bing index limitation, not site-side gap.</p>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Citation Host Map</div>
+    <div class="section-title">The publishers that control AI reputation in Athletic apparel</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Host</th>
+          <th>AI citation frequency</th>
+          <th>Nike's presence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Specialised running-shoe reviewers (Runner's World, RunRepeat, Run Testers, Marathon Handbook, Running Shoes Guru, CNN Underscored)</td>
+          <td>High</td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">Top-tier specialised authority for running-shoe queries. Surfaces #1 to #5 across all three engines for Q3 + Q5. Nike named in expert recommendations (Vaporfly 4 for racing, Vomero Plus for daily, Pegasus for everyday) but never the cited authority. Editorial outreach + product-sample programs are the available levers.</div></td>
+        </tr>
+        <tr>
+          <td>Trustpilot / Reviews.io / ConsumerAffairs / Sitejabber / Thingtesting (reputation hosts)</td>
+          <td>High for Q2 brand-reputation</td>
+          <td><span class="badge badge-amber">Active (mixed sentiment)</span><div class="cell-factors">Dominate Q2 across all three engines (Trustpilot #1 uniformly). Reviews.io 3.27/5 from 548 reviews. Customer-service complaints recurring. For Nike's D2C commerce model, public review-host ratings directly affect SNKRS-app + nike.com conversion. Belongs in a Brand panel of any full intelligence report.</div></td>
+        </tr>
+        <tr>
+          <td>Fashion + general media (Newsweek, InStyle, Vogue, Elle, Highsnobiety, GQ)</td>
+          <td>High for Q4 athletic-brand-superlative</td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">Drive the "best athletic brand" surface. Google AI summary names Nike as #1 explicitly. Brave Q4 doesn't name Nike at all. Engine asymmetry on the same query. Fashion-media outreach + product-launch press are the available levers.</div></td>
+        </tr>
+        <tr>
+          <td>UK + US retailers (DICK'S Sporting Goods, Foot Locker, Sports Direct, JD Sports, Decathlon, GO Outdoors, Pro:Direct Sport)</td>
+          <td>High for branded queries</td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">All carry Nike product. Surface heavily on Bing + Brave + Google for Q1. Retailer pages publish Nike model lists alongside Nike's own category pages. The retailer surface ranks alongside nike.com on branded queries: co-existence rather than competition.</div></td>
+        </tr>
+        <tr>
+          <td>Reddit (r/runninglifestyle, r/beginnerrunning, r/unpopularopinion, r/sneakerenthusiasts) + Quora</td>
+          <td>Medium-High (Brave-visible)</td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">Brave Q1 surfaces r/runninglifestyle at #8; Brave Q3 surfaces r/beginnerrunning at #3; Brave Q6 surfaces r/unpopularopinion at #1 + Quora at #5+#7. Forum-bias pattern on use-case + comparison queries. Verified-merchant or moderated AMA participation in r/Nike would shift Mentioned to Active on Brave specifically.</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in Athletic apparel. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them. It is their placement brief.</p>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Vendor Bake-Off Readiness</div>
+    <div class="section-title">Can AI compare Nike head-to-head when asked?</div>
+    <div class="status-card unverified">
+      <h4>Unverifiable under 403 edge-block</h4>
+      <p>Bake-Off Readiness checks (Pricing extractability, Feature data structure, Comparison claims supported) require direct page-content inspection on the pricing and product pages. The 403 edge-block prevented all direct fetches of nike.com surfaces during this audit. Verdict held as Unverifiable. Recommended follow-up: browser-based inspection of nike.com/w/running-shoes and nike.com/help/a/product-review-tos to confirm whether $ figures, comparison tables, and factual differentiators (vs Adidas / vs Puma / vs Under Armour) are present in HTML text. Without that verification, the &pound;250 product format cannot publish a Bake-Off Ready / Partial / Absent verdict on a 403-edge-blocked site.</p>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">AI Crawler Access</div>
+    <div class="section-title">Can AI engines read nike.com?</div>
+    <div class="status-card unverified">
+      <h4>Edge-blocked (Unverified)</h4>
+      <p>Direct fetch of robots.txt returned HTTP 403 across multiple paths (likely Akamai or Cloudflare bot management; standard enterprise D2C commerce pattern). Robots.txt rules cannot be verified server-side. The site MAY be Fully open, Partially blocked, or Fully blocked, but verification is impossible without browser-based inspection or admin-level access. AI bot accessibility flagged as Unverified pending out-of-band confirmation. The 18-cell SoV grid was measured via Google, Bing, and Brave search-engine indexes (which each carry their own crawled copies of the site), and 5-factor scoring for factors 1 to 4 was inferred from search-result snippets. Factor 5 (External citation signals) was scored normally engine-side.</p>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Multi-Engine Indexation</div>
+    <div class="section-title">Is Nike visible across the AI search substrate, not just Google?</div>
+    <div class="status-card unverified">
+      <h4>Partial (Unverified)</h4>
+      <p>Bingbot and Bravebot rules cannot be verified server-side (same 403 block). Both engines have crawled copies of nike.com surfaces (Bing 1 nike.com/gb URL at #1 plus 8 UK retailers in Q1; Brave 4 nike.com URLs in top 10 for Q1). Evidence that Bingbot and Bravebot were not blocked at the time the engines indexed. IndexNow not detected at canonical key-file paths (verification attempt 403-blocked). Out-of-band robots.txt audit recommended.</p>
+    </div>
+    <div class="status-card" style="margin-top:1rem;">
+      <h4>Standard recommendations</h4>
+      <p style="margin-bottom:0.75rem;"><strong>1. Verify in Bing Webmaster Tools</strong> at bing.com/webmasters. Submit sitemap. Bing's index powers ChatGPT search and ChatGPT browse mode. Roughly 30 minutes.</p>
+      <p style="margin-bottom:0.75rem;"><strong>2. Implement IndexNow.</strong> Generate key, host at <code>/&lt;key&gt;.txt</code>, ping endpoint on every publish. One call notifies Bing + Yandex + Seznam + Naver instantly. Roughly 1 hour.</p>
+      <p style="font-size:12px;color:var(--text-muted);"><strong>Brave note:</strong> No webmaster tools exist. Bravebot status is the only controllable surface and cannot be verified server-side while the CDN edge-block is in place.</p>
+    </div>
+  </div>
+
+  <div class="action-card">
+    <div class="action-label">Your next move</div>
+    <div class="action-title">Verify robots.txt + structure Product + Review JSON-LD on category pages</div>
+    <div class="action-detail"><strong>Verification step (mandatory under Fix 2):</strong> open https://www.nike.com/robots.txt in a browser or via the hosting console and confirm whether GPTBot / ClaudeBot / Bingbot / Bravebot are explicitly disallowed. The CDN edge-block prevented this audit from verifying server-side. Roughly 2 minutes. <strong>Lift step:</strong> structure Product + Review JSON-LD schema on /w/running-shoes, /w/mens-running-shoes, /w/womens-running-shoes, /w/training-shoes category pages so AI can extract Nike's product ratings, customer reviews, and price comparisons alongside the editorial-reviewer surfaces that currently win category citations. <strong>Why:</strong> Q3 (best running shoes 2026) routes Google, Bing, and Brave entirely to editorial reviewers (Runner's World, RunRepeat, Marathon Handbook, CNN Underscored, RTINGS, The Run Testers). Nike is named in editorial recommendations (Vaporfly 4 for racing, Vomero Plus for daily training, Pegasus for everyday miles) but no nike.com URL surfaces in top 10 on any engine. Structured Product schema with Review aggregation would establish brand-owned authority alongside the editorial surface. <strong>Effort:</strong> roughly 2 to 4 weeks for schema rollout, customer-review aggregation, and QA across category page templates.</div>
+  </div>
+
+  <div class="upgrade-cta">
+    <h3>Get the full five-dimension report</h3>
+    <p>This report covers AI Search only. The full Web Intelligence Report adds Design, Brand, Competitive position, and Growth &mdash; with a &pound;-denominated business impact model and three competitor deep-dives.</p>
+    <p style="font-size:13px;color:var(--text-secondary);margin:0 auto 0.75rem;line-height:1.6;">Your &pound;250 credit toward the full report:</p>
+    <div class="code-block">AI-SEARCH-UPGRADE</div>
+    <br>
+    <a href="https://www.frictionandtoil.com/web-intelligence/#pricing" class="btn-upgrade">View full report options &rarr;</a>
+  </div>
+
+  <footer>F&amp;T Intelligence Systems &middot; May 2026 &middot; hello@frictionandtoil.com</footer>
+
+</div>
+</body>
+</html>
