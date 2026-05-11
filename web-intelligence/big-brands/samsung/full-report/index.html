@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Search Report: samsung.com | F&amp;T Intelligence</title>
+<meta name="description" content="Live AI search audit of samsung.com under F&T's /18 methodology. Maturity Rung: Cited (mid-band 7/18). Strong on branded queries; absent on category queries. Bake-Off Partial.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.frictionandtoil.com/web-intelligence/big-brands/samsung/full-report/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Search Report: samsung.com | F&amp;T Intelligence">
+<meta property="og:description" content="Live AI search audit of Samsung under F&T's /18 methodology. Cited rung mid-band (7/18). UK product URLs dominate Bing + Brave for branded queries; absent on category.">
+<meta property="og:url" content="https://www.frictionandtoil.com/web-intelligence/big-brands/samsung/full-report/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Search Report: samsung.com | F&amp;T Intelligence">
+<meta name="twitter:description" content="Samsung AI Search audit. Cited rung mid-band 7/18. Bake-Off Partial. Top action: surface UK pricing as parseable HTML.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.15);
+  --text:#e8e8ed;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;
+  --design:#c9963a;--search:#6366f1;--green:#22c55e;--red:#ef4444;--orange:#f97316;--yellow:#eab308;
+  --ai:#a855f7;--ai-bg:rgba(168,85,247,0.12);--ai-border:rgba(168,85,247,0.3);--ai-glow:rgba(168,85,247,0.45);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+.breadcrumb{padding:1.25rem 0 0;font-size:12px;color:var(--text-muted)}
+.breadcrumb a{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.breadcrumb a:hover{border-bottom-color:var(--text-secondary)}
+.report-header{padding:2rem 0 2rem;border-bottom:1px solid var(--border)}
+.report-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.75rem}
+.report-title{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.report-meta{font-size:13px;color:var(--text-muted)}
+.disclosure{margin:1.5rem 0;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text-secondary);line-height:1.6}
+.disclosure strong{color:var(--text)}
+.rung-card{margin:2.5rem 0;padding:2.5rem;background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:var(--radius);position:relative;overflow:hidden}
+.rung-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--ai-glow);border-radius:50%;filter:blur(80px);opacity:0.3;pointer-events:none}
+.rung-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--ai);margin-bottom:0.75rem}
+.rung-name{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.rung-sov{font-size:14px;color:var(--text-secondary);margin-bottom:1.5rem}
+.rung-trajectory{font-size:14px;color:var(--text);padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:3px solid var(--ai);border-radius:0 var(--radius-xs) var(--radius-xs) 0;line-height:1.6}
+.engine-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem}
+.engine-bar{padding:0.85rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-xs)}
+.engine-bar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.5rem}
+.engine-bar-score{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.engine-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.engine-bar-fill{height:100%;background:var(--ai);border-radius:100px;transition:width 0.6s}
+.engine-bar-fill.fill-strong{background:var(--green)}
+.engine-bar-fill.fill-partial{background:var(--orange)}
+.engine-bar-fill.fill-weak{background:var(--red)}
+.engine-bar-sub{font-size:10px;color:var(--text-muted);margin-top:0.4rem}
+.ladder{display:flex;gap:0;margin-top:1.75rem}
+.rung-step{flex:1;padding:0.6rem 0.5rem;text-align:center;font-size:11px;font-weight:600;border:1px solid var(--border);margin-right:-1px}
+.rung-step:first-child{border-radius:var(--radius-xs) 0 0 var(--radius-xs)}
+.rung-step:last-child{border-radius:0 var(--radius-xs) var(--radius-xs) 0;margin-right:0}
+.rung-step.active{background:var(--ai);border-color:var(--ai);color:#fff}
+.rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
+.rung-step.next{color:var(--text-muted)}
+.cell-factors{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.4}
+.report-section{margin:2.5rem 0;padding-top:2.5rem;border-top:1px solid var(--border)}
+.section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.5rem}
+.section-title{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:1.25rem}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+td:first-child{color:var(--text);font-weight:500}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25)}
+.badge-amber{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.25)}
+.badge-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25)}
+.engine-col{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600}
+.status-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:1rem}
+.status-card h4{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:0.5rem}
+.status-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+.action-card{padding:2rem;background:rgba(201,150,58,0.08);border:1px solid rgba(201,150,58,0.25);border-radius:var(--radius);margin:2.5rem 0}
+.action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--design);margin-bottom:0.5rem}
+.action-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.75rem}
+.action-detail{font-size:13px;color:var(--text-secondary);line-height:1.7}
+.upgrade-cta{margin:3rem 0;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.upgrade-cta h3{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:0.75rem}
+.upgrade-cta p{font-size:13px;color:var(--text-secondary);max-width:55ch;margin:0 auto 1.5rem;line-height:1.6}
+.upgrade-cta .code-block{display:inline-block;font-family:var(--mono);font-size:13px;background:rgba(255,255,255,0.06);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:var(--radius-xs);color:var(--text);margin-bottom:1.5rem;letter-spacing:1px}
+.btn-upgrade{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.9rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background .2s}
+.btn-upgrade:hover{background:#b08125}
+footer{margin-top:4rem;padding:2rem 0;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-muted)}
+@media(max-width:680px){.engine-bars{grid-template-columns:1fr}.ladder{display:grid;grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/web-intelligence/big-brands/samsung/">&larr; Back to the Samsung showcase</a>
+  </nav>
+
+  <header class="report-header">
+    <div class="report-eyebrow">F&amp;T Intelligence &middot; AI Search Report</div>
+    <div class="report-title">samsung.com</div>
+    <div class="report-meta">AI Search dimension &middot; May 2026 &middot; Delivered by Friction &amp; Toil</div>
+  </header>
+
+  <div class="disclosure">
+    <strong>What this report measures:</strong> Samsung's structural <em>citation probability</em> across Google, Bing (the index that powers ChatGPT search and ChatGPT browse mode), and Brave (the index that powers Anthropic Claude search and Perplexity). This is a snapshot of structural readiness, not live AI output drift. For ongoing tracking of how a brand's Maturity Rung moves over time, see the F&amp;T Annual Intelligence Plan (&pound;2,500/yr).
+  </div>
+
+  <div class="rung-card">
+    <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
+    <div class="rung-name">Cited</div>
+    <div class="rung-sov">AI Share of Voice: 7 / 18 cells across Google &middot; Bing &middot; Brave (6 queries &times; 3 engines). Mid-band of the Cited rung.</div>
+    <div class="rung-trajectory">Surface UK product pricing as parseable HTML text on /smartphones/* pages. Samsung is mid-band Cited (7/18). Strong on branded queries (Bing surfaces samsung.com/uk #1 with the snippet "an AI phone featuring a customised processor"; Brave surfaces five UK product URLs in the top 10 for the S26 Ultra query) but absent on category queries (best Android phone, best UK smartphone, phone with best camera) where editorial reviewers and Reddit threads win the citation. Closing the Bake-Off Check 1 gap (pricing extractable) lifts the structural readiness from mid-Cited toward the upper Cited band. Converting tabbed product comparisons to semantic HTML tables (Check 2) is the second-stage lift.</div>
+
+    <div class="engine-bars">
+      <div class="engine-bar">
+        <div class="engine-bar-label">Google &middot; Gemini</div>
+        <div class="engine-bar-score">3 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-partial" style="width:50%"></div></div>
+        <div class="engine-bar-sub">Powers Google AI Overviews, Gemini</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Bing &middot; ChatGPT</div>
+        <div class="engine-bar-score">2 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:33%"></div></div>
+        <div class="engine-bar-sub">Powers ChatGPT search + ChatGPT browse</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Brave &middot; Claude</div>
+        <div class="engine-bar-score">2 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:33%"></div></div>
+        <div class="engine-bar-sub">Powers Claude search + Perplexity supplement</div>
+      </div>
+    </div>
+
+    <div class="ladder">
+      <div class="rung-step passed">Blocked</div>
+      <div class="rung-step passed">Invisible</div>
+      <div class="rung-step passed">Emerging</div>
+      <div class="rung-step active">Cited</div>
+      <div class="rung-step next">Recommended</div>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">AI Share of Voice: 18-cell grid</div>
+    <div class="section-title">Six target queries &times; three engines. Who surfaces, and why.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Query</th>
+          <th class="engine-col">Google</th>
+          <th class="engine-col">Bing</th>
+          <th class="engine-col">Brave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Q1. "Samsung Galaxy S26 Ultra" <div class="cell-factors" style="margin-top:4px">Branded with intent</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors. samsung.com/us product page at #5 + #10. Android Police, Trak.in, Digitimes, Sammy Fans editorial coverage fills the rest. Carriers + Amazon also surface. AI summary uses Samsung's own marketing copy.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">3/5 factors. samsung.com/uk/smartphones/galaxy-s26-ultra/ at #1 with the snippet "Meet the new Galaxy S26 Ultra, the latest AI phone." GSMArena #2. UK carriers (Three, Currys, Tesco Mobile, O2) fill #3 to #6. Strongest cell in the grid alongside Brave Q1.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">3/5 factors. samsung.com/uk/smartphones/galaxy-s26-ultra/ at #1, /buy/ at #2. UK carriers + retailers (O2, Currys, Uswitch, Carphone Warehouse, Tesco Mobile) at #3 to #8. The Guardian #10. Strongest UK-domain surface across all three engines.</div></td>
+        </tr>
+        <tr>
+          <td>Q2. "Samsung Galaxy reviews" <div class="cell-factors" style="margin-top:4px">Branded reputation</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors. samsung.com/us /reviews pages at #3 + #7. Tech Advisor, Best Buy, Consumer Affairs, GSMArena, TechRadar fill the rest. Mixed brand-owned and third-party. No dominant negative-sentiment review host.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors. samsung.com homepage #1, samsung-climatesolutions.com #2 (Samsung Climate sub-brand), Argos #3, Wikipedia #4, Selfridges #5, MoneySuperMarket #6, TechRadar #7. Brand-domain dominance.</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors. Which? #1, samsung.com/uk/smartphones/galaxy-s25/reviews/ #2, /galaxy-s25-ultra/reviews/ #3, PCMag #4, Reviews.io #5. Samsung's own /reviews pages place 2-3. Brand owns the positive-sentiment review surface.</div></td>
+        </tr>
+        <tr>
+          <td>Q3. "best Android phone 2026" <div class="cell-factors" style="margin-top:4px">Commercial non-brand &middot; category</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. Tech Advisor #1 (Pixel 10 Pro XL "finest smartphone you can buy"), PhoneArena #2, Stuff #3, Android Authority #5, Forbes #6, GSMArena #7. Samsung Galaxy S26 Ultra mentioned in snippets but no samsung.com URL. Pixel + OnePlus + Oppo named first.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. PCMag #1, WIRED #2 (Moto G Power 2026), Expert Reviews #3 (Pixel 10 named best), Android Authority #4, Forbes #5. Samsung named in snippets, no own URL. Same Pixel-led editorial pattern as Google.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. Reddit r/Smartphones at #1 (Brave forum-bias visible), WIRED #2, Tech Advisor #3, PCMag #4, PhoneBot #5 ("Samsung Galaxy S26 Ultra leads with 200MP quad-camera"), TechRadar #8 ("best Android phone ever"). Samsung named in 5 snippets, no own URL.</div></td>
+        </tr>
+        <tr>
+          <td>Q4. "best smartphone UK 2026" <div class="cell-factors" style="margin-top:4px">Commercial non-brand &middot; superlative</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. Tech Advisor #1, Expert Reviews #2 (Samsung Galaxy S25 Ultra named "best smartphone you can buy" in AI summary), Stuff, TechRadar UK, HTT Mobiles, Young Mobile UK fill the rest. Samsung positively mentioned but no own URL.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. Severe Bing tokenisation failure. "Best" tokenises to dictionary definitions: Cambridge, Merriam-Webster, Free Dictionary, WordReference, Oxford, Vocabulary.com, US Dictionary, YourDictionary, Collins. Nine of ten results. Hearst "BEST Magazine" brand at #9. Zero commercial relevance.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. Tech Advisor #1 (Pixel 10 Pro XL named), Stuff #2 (iPhone 17), Expert Reviews UK #3 (mentions Z Fold7 + S26 Ultra), TechRadar #4 (S25 Ultra + Z Fold 7 listed), iD Mobile #8 (S25 noted), HTT Mobiles #9 (S26 Ultra listed). Samsung models named in 4 to 5 positions, no samsung.com own URL.</div></td>
+        </tr>
+        <tr>
+          <td>Q5. "phone with best camera 2026" <div class="cell-factors" style="margin-top:4px">Use-case</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. PhotoBohemian #1, Digital Camera World #2 (S26 Ultra named "best for still photography"), GSMArena #3, PhoneArena #4 (Samsung named camera winner), Mobile Klinik #6, 91mobiles #8 (Samsung crown for camera). Samsung positively named as "best flagship camera phone"; no samsung.com URL.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. UK retailers dominate: Currys #1, Apple App Store #2, Argos #3, Tesco Mobile #4, Amazon UK #5, Carphone Warehouse #6, MoneySuperMarket #7. Aggregator-only surface. Samsung not surfaced by name in snippets for this query.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. PhotoBohemian #1, Digital Camera World #2, PCMag #3, Reddit r/Smartphones at #4 + #5 + #6 (three forum threads, Brave forum-bias), Independent #7, Amateur Photographer #9 (S26 Ultra mentioned), Tech Advisor #10. Samsung in 2 snippets, no own URL.</div></td>
+        </tr>
+        <tr>
+          <td>Q6. "should I buy Samsung Galaxy or iPhone" <div class="cell-factors" style="margin-top:4px">Question-format</div></td>
+          <td><span class="badge badge-amber">Possible</span><div class="cell-factors">2/5 factors. Samsung Community eu.community.samsung.com #3, Samsung Members r1.community.samsung.com #8 -- Samsung's own community surfaces. Trusted Reviews #1, Rokform #2, Tech in Deep #4, GoNextGen UK #5, Quora #6, Android Authority #7 fill the rest.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">0/5 factors. Severe Bing tokenisation failure. "Should" tokenises to modal-verb grammar references: Cambridge, British Council, Collins, Free Dictionary, English Club, Wiktionary, Dictionary.com. Ten of ten results. Most severe Bing failure of this audit.</div></td>
+          <td><span class="badge badge-red">Unlikely</span><div class="cell-factors">1/5 factors. Reddit r/Smartphones #1, GoNextGen UK #2 (Samsung positively named: "better battery life, storage and a better camera"), Mobiles.co.uk #3, Android Authority #4, Reddit r/samsung #5, Trusted Reviews #6, Back Market #7, Which? #8, Tech in Deep #9 (Samsung positive framing), Quora #10. Samsung positively named in 3 snippets but no samsung.com own URL. eu.community.samsung.com which surfaced on Google does NOT surface here.</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Citation Host Map</div>
+    <div class="section-title">The publishers that control AI reputation in Consumer electronics</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Host</th>
+          <th>AI citation frequency</th>
+          <th>Samsung's presence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TechRadar / Tech Advisor (UK editorial reviewers)</td>
+          <td>High</td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">Top-tier UK consumer-tech editorial. Both review Samsung flagships within weeks of release and surface across all three engines for branded and category queries. Cannot be made more Active (third-party editorial).</div></td>
+        </tr>
+        <tr>
+          <td>Which?</td>
+          <td>High (UK consumer authority)</td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">UK consumer-protection authority. Surfaces #1 on Brave Q2 with Samsung mobile phone reviews coverage. Independent-test-based; Samsung mentioned and ranked. Editorial outreach (provide hands-on units, share UK lab data) is the available lever.</div></td>
+        </tr>
+        <tr>
+          <td>PCMag UK / Expert Reviews UK / Trusted Reviews</td>
+          <td>High</td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">Samsung flagships reviewed and rated across these UK editorial hosts. Appears in best-of lists, dedicated reviews, comparison guides. Editorial outreach continues to be the lever for sustained presence.</div></td>
+        </tr>
+        <tr>
+          <td>Reddit (r/Smartphones, r/Samsung, r/AskUK)</td>
+          <td>Medium-High (Brave-visible)</td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">Surfaces at #1 of Brave for Q3 and Q6. Three Reddit threads in Brave top 10 for Q5. Forum-bias pattern means Reddit presence directly affects Cited-rung citation reach. r/samsung is the brand's own subreddit; verified-merchant or active-engagement program would shift signal.</div></td>
+        </tr>
+        <tr>
+          <td>UK carriers + retailers (Currys, Three, O2, Tesco Mobile, Carphone Warehouse, Argos)</td>
+          <td>Medium</td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">All carry Samsung product. Surface heavily in Bing and Brave top 10 for branded queries. Currys publishes the &pound;1,374 price for the S26 Ultra that Samsung's own canonical page hides. Third-party retailers publish what Samsung does not.</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in Consumer electronics. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them. It is their placement brief.</p>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Vendor Bake-Off Readiness</div>
+    <div class="section-title">Can AI compare Samsung head-to-head when asked?</div>
+    <div class="status-card">
+      <h4>Bake-Off Partial</h4>
+      <p>1 of 3 readiness checks pass. <strong>Pricing extractability:</strong> FAIL. The /smartphones/galaxy-s26-ultra/ landing page surfaces Reserve / Pre-order / Buy / Where-to-buy CTAs but no pound figures in HTML text; Currys.co.uk shows &pound;1,374.00 for the same product. <strong>Feature data structure:</strong> FAIL. Product spec comparisons exist via tabbed and carousel UI (S26 Ultra vs S26+ vs S26, plus S22 to S25 lineage) but NOT in semantic table or definition-list elements that AI can parse statically. <strong>Comparison claims:</strong> PASS. Factual claims present throughout (200MP camera, Snapdragon 8 Elite Gen 5, 39% NPU boost, 6.9-inch display) without unsupported marketing adjective dominance.</p>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">AI Crawler Access</div>
+    <div class="section-title">Can AI engines read samsung.com?</div>
+    <div class="status-card">
+      <h4>Fully open</h4>
+      <p>None of the 7 canonical AI bots (GPTBot, ClaudeBot, anthropic-ai, OAI-SearchBot, PerplexityBot, GoogleOther, CCBot) are globally disallowed. GPTBot, OAI-SearchBot, ChatGPT-User, and PerplexityBot share a User-agent block with Googlebot and the wildcard; the first directive is empty Disallow (no global block); subsequent Disallows are path-level operational only (search results, parking pages, Samsung's own /ai-search/ feature pages, system pages, contact-CEO form). None cover content surfaces. Bingbot and Bravebot fall under the wildcard rules and are also fully open. This is the optimal AI-crawler configuration.</p>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <div class="section-label">Multi-Engine Indexation</div>
+    <div class="section-title">Is Samsung visible across the AI search substrate, not just Google?</div>
+    <div class="status-card">
+      <h4>Partial</h4>
+      <p>Bingbot and Bravebot both allowed under the shared User-agent block (no per-bot restrictions). IndexNow not detected at canonical key-file paths and no x-indexnow header on the homepage. Sitemap is declared (80+ region-specific XML files, including www.samsung.com/sitemap.xml). The two standard recommendations below close to Multi-engine ready.</p>
+    </div>
+    <div class="status-card" style="margin-top:1rem;">
+      <h4>Standard recommendations</h4>
+      <p style="margin-bottom:0.75rem;"><strong>1. Verify in Bing Webmaster Tools</strong> at bing.com/webmasters. Submit sitemap. Bing's index powers ChatGPT search and ChatGPT browse mode. Roughly 30 minutes.</p>
+      <p style="margin-bottom:0.75rem;"><strong>2. Implement IndexNow.</strong> Generate key, host at <code>/&lt;key&gt;.txt</code>, ping endpoint on every publish. One call notifies Bing + Yandex + Seznam + Naver instantly. Roughly 1 hour.</p>
+      <p style="font-size:12px;color:var(--text-muted);"><strong>Brave note:</strong> No webmaster tools exist. Bravebot status above is the only controllable surface. Brave's index is otherwise fed by the Web Discovery Project (passive opt-in via Brave-browser users) plus a Bing-licensed fallback for sparse queries.</p>
+    </div>
+  </div>
+
+  <div class="action-card">
+    <div class="action-label">Your next move</div>
+    <div class="action-title">Surface UK pricing as parseable HTML on product pages</div>
+    <div class="action-detail"><strong>What:</strong> replace the Reserve / Pre-order / Buy / Where-to-buy CTAs on samsung.com/uk/smartphones/* product pages with rendered &pound; prices in HTML text (for example "&pound;1,374.00 starting" for the S26 Ultra). <strong>Why:</strong> Bake-Off Check 1 currently fails on every Samsung UK product page. The canonical landing pages hide prices behind CTA walls while Currys, Three, O2, and Tesco Mobile all surface them. AI cannot extract Samsung's own price for head-to-head comparison against iPhone or Pixel when Samsung's own page does not contain it. Closing this single gap lifts Bake-Off from Partial (1/3) to Ready-adjacent (2/3) and gives AI the price data point it needs for category-query comparison output. <strong>Effort:</strong> roughly 1 to 2 days for UK template change, content sign-off, and price-sync logic.</div>
+  </div>
+
+  <div class="upgrade-cta">
+    <h3>Get the full five-dimension report</h3>
+    <p>This report covers AI Search only. The full Web Intelligence Report adds Design, Brand, Competitive position, and Growth &mdash; with a &pound;-denominated business impact model and three competitor deep-dives.</p>
+    <p style="font-size:13px;color:var(--text-secondary);margin:0 auto 0.75rem;line-height:1.6;">Your &pound;250 credit toward the full report:</p>
+    <div class="code-block">AI-SEARCH-UPGRADE</div>
+    <br>
+    <a href="https://www.frictionandtoil.com/web-intelligence/#pricing" class="btn-upgrade">View full report options &rarr;</a>
+  </div>
+
+  <footer>F&amp;T Intelligence Systems &middot; May 2026 &middot; hello@frictionandtoil.com</footer>
+
+</div>
+</body>
+</html>
