@@ -1046,7 +1046,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     <div class="maturity-right">
       <div class="maturity-eyebrow">Current rung · Composite 5/18 across 3 engines</div>
       <div class="maturity-headline">Cited on Google and Brave. Invisible on Bing — and Bing is ChatGPT.</div>
-      <p class="maturity-sub"><strong>Bing is not just Bing.</strong> Microsoft Copilot is Bing-powered, and ChatGPT's browse-mode (the live-web answers ChatGPT gives most users) routes through Bing's index. So a 0/6 Bing score is functionally a 0/6 score across Copilot AND the most-used AI assistant on the planet. basskleph.com surfaces on Google (3/6) and Brave (3/6) for long-tail "finish tracks" queries, but Bing's strict tokenisation breaks unquoted natural-language queries in this niche. Translation: when a producer asks ChatGPT "best mentor to help me finish tracks", the answer is sourced from sites Bing can match — and Bass Kleph is not one of them today.</p>
+      <p class="maturity-sub"><strong>Bing is not just Bing.</strong> ChatGPT search and ChatGPT browse mode (the live-web answers ChatGPT gives most users) both route through Bing's index. So a 0/6 Bing score is functionally a 0/6 score across ChatGPT's search and browse modes, which is to say the most-used AI assistant on the planet. basskleph.com surfaces on Google (3/6) and Brave (3/6) for long-tail "finish tracks" queries, but Bing's strict tokenisation breaks unquoted natural-language queries in this niche. Translation: when a producer asks ChatGPT "best mentor to help me finish tracks", the answer is sourced from sites Bing can match — and Bass Kleph is not one of them today.</p>
       <div class="trajectory">
         <span class="trajectory-label">Next rung unlocked by</span>
         Adding Course and AggregateRating schema to all 8 product pages and /review, plus literal-phrase H2s like "Mixing course for electronic music producers" on the top 3 product pages so Bing's strict tokenisation can match. Estimated 6 to 8 hours of work. Lifts the rung from Cited to Recommended within a quarter as engines re-crawl.
@@ -1669,16 +1669,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     <div class="impact-block" style="border-color:var(--green-border);background:rgba(34,197,94,0.06)"><h4 style="color:var(--green)">AI Crawler Access — fully open</h4><p>robots.txt has zero Disallow rules. GPTBot, Google-Extended, ClaudeBot, Bingbot, PerplexityBot, CCBot, and Applebot are all permitted. This is a critical positive — competitor Sonic Academy actively blocks AI fetch with a 403. Bass Kleph's gap is what the bots find on arrival, not whether they can arrive. The fix is content and schema, not access.</p></div>
 
     <div class="section-title" style="font-size:17px;margin-bottom:10px;margin-top:24px">AI Maturity Curve</div>
-    <div class="section-subtitle">Where Bass Kleph sits today across the four-rung AI citation ladder</div>
+    <div class="section-subtitle">Where Bass Kleph sits today across the five-rung Maturity Curve</div>
     <div class="maturity-card">
       <div>
         <div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:8px;font-weight:600">Current Composite Rung</div>
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#c084fc;margin-bottom:10px">Cited</h3>
-        <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">5 of 18 query × engine cells return a Likely or Possible mention (28%). Long-tail "finish music" queries surface on Google and Brave. Bing returns useless results across all six unquoted queries — engine-specific tokenisation gap, not a client gap. <strong style="color:var(--text)">Bing matters because it powers Microsoft Copilot and ChatGPT's browse-mode</strong>: when a producer asks ChatGPT for a mentor recommendation, the answer is sourced from sites Bing can match. A 0/6 Bing score is a 0/6 score across Copilot and ChatGPT for most users.</p>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.6">6 of 18 query × engine cells return a Likely or Possible mention (33%). Long-tail "finish music" queries surface on Google and Brave. Bing returns useless results across all six unquoted queries — engine-specific tokenisation gap, not a client gap. <strong style="color:var(--text)">Bing matters because it powers ChatGPT search and ChatGPT browse mode</strong>: when a producer asks ChatGPT for a mentor recommendation, the answer is sourced from sites Bing can match. A 0/6 Bing score is a 0/6 score across ChatGPT's search and browse modes for most users.</p>
       </div>
       <div>
-        <div class="rung"><div class="rung-num">1</div><div><strong>Invisible</strong> — bots blocked or content gives no extractable signal. Bass Kleph passed this rung the moment robots.txt was opened.</div></div>
-        <div class="rung"><div class="rung-num">2</div><div><strong>Emerging</strong> — surfaces for niche brand queries. Crossed this with /about and /the-road-to-main-stage.</div></div>
+        <div class="rung passed"><div class="rung-num">✓</div><div><strong>Blocked</strong> — robots.txt closure prevents any AI citation. Bass Kleph passed this rung at site launch: robots.txt has zero Disallow rules, all 7 canonical AI bots permitted.</div></div>
+        <div class="rung passed"><div class="rung-num">1</div><div><strong>Invisible</strong> — bots open but content gives no extractable signal. Bass Kleph passed this rung the moment robots.txt opened and branded queries started surfacing the own domain.</div></div>
+        <div class="rung passed"><div class="rung-num">2</div><div><strong>Emerging</strong> — surfaces for niche brand queries. Crossed this with /about and /the-road-to-main-stage.</div></div>
         <div class="rung active"><div class="rung-num">3</div><div><strong style="color:#c084fc">Cited (current)</strong> — surfaces on long-tail "finish tracks" queries on Google + Brave. Mentioned in third-party Reddit + EDMProd. Held back by zero schema and engine-specific Bing failure.</div></div>
         <div class="rung next"><div class="rung-num">4</div><div><strong>Recommended</strong> — engines name Bass Kleph in answers to broad category queries ("best EDM mentor 2026"). Schema rollout + Producerhive editorial + Beat Academy-comparison content unlocks this within 6 months.</div></div>
       </div>
@@ -1690,10 +1691,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     <div class="ai-sov-header">
       <div>
         <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:4px">Composite AI SoV Score</div>
-        <div class="ai-sov-score-large sov-partial">5 / 18</div>
-        <div style="font-size:12px;color:var(--text-secondary);margin-top:4px">cells (28%) where Bass Kleph is Likely or Possible cited</div>
+        <div class="ai-sov-score-large sov-partial">6 / 18</div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:4px">cells (33%) where Bass Kleph is Likely or Possible cited</div>
       </div>
-      <span class="sov-badge sov-partial">Partial — Cited rung</span>
+      <span class="sov-badge sov-partial">Partial · Cited rung</span>
     </div>
 
     <table class="page-table">
@@ -1709,7 +1710,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </tbody>
     </table>
 
-    <div class="impact-block" style="margin-top:14px;border-color:var(--red-border);background:rgba(239,68,68,0.05)"><h4 style="color:var(--red)">Bing-specific gap — and Bing is ChatGPT</h4><p><strong style="color:var(--text)">This is the highest-stakes finding in the AI Search dimension.</strong> Microsoft Copilot is Bing-powered. ChatGPT's browse-mode (the live-web answers ChatGPT gives by default for most prompts) routes through Bing's index. So a 0/6 Bing score is functionally a 0/6 score across Copilot AND ChatGPT for most users — not a niche search engine concern, but a direct gap in the most-used AI assistant on the planet. Bing's natural-language tokenisation breaks for unquoted queries in this niche: "bass" tokenises to bass guitar, "finish" to dishwasher tablets, "best" to a dictionary article, "electronic" to consumer electronics. Fix is two-pronged: (a) literal-phrase H2s on the top 3 product pages so Bing's strict-match algorithm catches them ("Mixing course for electronic music producers"); (b) third-party placement on Producerhive and EDMProd category-listing pages where Bing's literal matcher does work.</p></div>
+    <div class="impact-block" style="margin-top:14px;border-color:var(--red-border);background:rgba(239,68,68,0.05)"><h4 style="color:var(--red)">Bing-specific gap: Bing is ChatGPT</h4><p><strong style="color:var(--text)">This is the highest-stakes finding in the AI Search dimension.</strong> ChatGPT search and ChatGPT browse mode (the live-web answers ChatGPT gives by default for most prompts) both route through Bing's index. So a 0/6 Bing score is functionally a 0/6 score across ChatGPT's search and browse modes for most users. This is not a niche search engine concern; it is a direct gap in the most-used AI assistant on the planet. Bing's natural-language tokenisation breaks for unquoted queries in this niche: "bass" tokenises to bass guitar, "finish" to dishwasher tablets, "best" to a dictionary article, "electronic" to consumer electronics. Fix is two-pronged: (a) literal-phrase H2s on the top 3 product pages so Bing's strict-match algorithm catches them ("Mixing course for electronic music producers"); (b) third-party placement on Producerhive and EDMProd category-listing pages where Bing's literal matcher does work.</p></div>
 
     <div class="impact-block" style="margin-top:10px;border-color:var(--orange);background:rgba(249,115,22,0.05)"><h4 style="color:var(--orange)">Brand reputation flag — surfaced via Brave Q6</h4><p>Brave's "Bass Kleph review reddit" query surfaces 2 negative Reddit threads at positions #2 and #4: <em>r/WeAreTheMusicMakers</em> Nov 2017 ("huge waste of money, didn't learn anything and bass seems very uninterested in your work") and a December 2018 thread on Road to Main Stage ("learned nothing new"). The threads are 7–8 years old but still ranking. Bass Kleph's own domain holds #1, and a 2021 r/edmproduction thread is neutral. Mitigation: publish 3–6 fresh student-success Reddit-shareable case studies and seed positive engagement on r/edmproduction over a 90-day window. Old threads do not need to be removed — they need to be pushed below the fold by fresher content. This finding will also be reflected in the Brand panel.</p></div>
 
@@ -1733,12 +1734,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     <table class="page-table">
       <thead><tr><th>Signal</th><th>Status</th><th>Detail</th></tr></thead>
       <tbody>
-        <tr><td>(a) Pricing extractable</td><td><span class="hm-partial">Partial</span></td><td>Road to Main Stage only ($174 × 4 or $594). PSS waitlisted, mentoring application-only.</td></tr>
-        <tr><td>(b) Feature / spec structured</td><td><span class="hm-partial">Partial</span></td><td>Road to Main Stage bulleted; Pro Sound Secrets is prose. Build structured spec blocks across all 3 tier pages.</td></tr>
-        <tr><td>(c) Comparison vs named competitors</td><td><span class="hm-fail">Absent</span></td><td>No "Bass Kleph vs Finish More Music" page. AI engines cannot construct a comparison answer with Bass Kleph in it.</td></tr>
+        <tr><td>(a) Pricing extractable</td><td><span class="hm-pass">Pass</span></td><td>/the-road-to-main-stage publishes "$594 / $174 × 4 / $1,594 Platinum" as plain HTML text. Note: Pro Sound Secrets remains waitlisted, mentoring application-only.</td></tr>
+        <tr><td>(b) Feature / spec structured</td><td><span class="hm-fail">Fail</span></td><td>Road to Main Stage uses bulleted curriculum (▶ symbols + Week 1-6 ordered sections); Pro Sound Secrets is prose. Methodology-strict binary reading fails this check until structured spec blocks land across all 3 tier pages.</td></tr>
+        <tr><td>(c) Comparison vs named competitors</td><td><span class="hm-fail">Fail</span></td><td>Page uses unattributed category comparisons ("Other 'high-end' music programs = $12,000+") with zero named competitors. AI engines cannot construct a head-to-head answer with Bass Kleph in it.</td></tr>
       </tbody>
     </table>
-    <div class="impact-block" style="margin-top:8px"><h4>Score: 1 / 3 — Bake-Off Partial</h4><p>The simplest unlock is Action 4: a single comparison page positioning Bass Kleph against Finish More Music, Finish Better Music, and Beat Academy. Estimated 6 hours, ~£6,000/yr COI recovery, and lifts Bake-Off score to 2/3 immediately.</p></div>
+    <div class="impact-block" style="margin-top:8px"><h4>Score: 1 / 3 (Bake-Off Partial)</h4><p>The simplest unlock is Action 4 from the v3 Top 5: a single comparison page positioning Bass Kleph against Finish More Music, Finish Better Music, and Beat Academy. Estimated 6 hours, ~£6,000/yr COI recovery, lifts Bake-Off to 2/3 immediately.</p></div>
   </div></div>
 
   <!-- AI Prompt -->
@@ -2605,7 +2606,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <li><strong>Resurrect the blog (last post Nov 2023)</strong> — 4 hrs/wk × 90 days · ~£18k/yr (Growth)</li>
       <li><strong>Surface Mentoring + Community above the homepage fold</strong> — 2 hrs · ~£8k/yr (Brand)</li>
     </ul></div>
-    <div class="exec-section"><h2>Single Biggest Lever</h2><p>Schema rollout across the eight product pages, the blog index, and the /review page. Course, Product, FAQ, AggregateRating, and Article schema together close the AI-citation gap on Bing (currently 0/6) — which matters because Bing is what Microsoft Copilot and ChatGPT's browse-mode route through, so closing the Bing gap closes the Copilot and ChatGPT gap in one move. Schema also unlocks "best EDM mentor" extraction from the testimonials surface and requires no copy changes. Estimated 4–6 hours of implementation, ~£15k/year COI recovery.</p></div>
+    <div class="exec-section"><h2>Single Biggest Lever</h2><p>Schema rollout across the eight product pages, the blog index, and the /review page. Course, Product, FAQ, AggregateRating, and Article schema together close the AI-citation gap on Bing (currently 0/6) — which matters because Bing is what ChatGPT search and ChatGPT browse mode route through, so closing the Bing gap closes the ChatGPT gap in one move. Schema also unlocks "best EDM mentor" extraction from the testimonials surface and requires no copy changes. Estimated 4–6 hours of implementation, ~£15k/year COI recovery.</p></div>
     <div class="exec-section"><h2>Unfair Advantage</h2><p>The stack is unique. No direct rival combines genuine practitioner credibility (Beatport #1s plus a 33-country tour) with six instructors, 60+ named alumni with verifiable label credits, the Producer Talk podcast as an owned earned-media surface, a 90,000-subscriber email list, and visible pricing on the flagship course. Each individual signal is matched somewhere in the competitor set; the combination is not.</p></div>
     <div class="exec-actions">
       <button class="exec-btn exec-btn-print" onclick="document.getElementById('exec-summary').classList.remove('active');setTimeout(function(){window.print()},150)">Print / Save as PDF</button>
