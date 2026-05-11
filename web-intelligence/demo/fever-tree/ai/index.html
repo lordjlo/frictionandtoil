@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI Search Report — fever-tree.com</title>
+<title>AI Search Report · fever-tree.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -108,7 +108,7 @@ body.wi-panel-locked{overflow:hidden}
     <a href="/web-intelligence/demo/fever-tree/" role="menuitem">Fever-Tree</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Big Brands &mdash; Live Audits</span>
+    <span class="wi-panel-title">Big Brands: Live Audits</span>
     <a href="/web-intelligence/big-brands/costco/" role="menuitem">Costco UK</a>
     <a href="/web-intelligence/big-brands/taylor-swift/" role="menuitem">Taylor Swift</a>
     <a href="/web-intelligence/big-brands/barclays/" role="menuitem">Barclays</a>
@@ -136,13 +136,14 @@ body.wi-panel-locked{overflow:hidden}
     <div class="report-meta">AI Search dimension · April 2026 · Delivered by Friction &amp; Toil</div>
   </header>
 
-  <!-- MATURITY RUNG CARD -->
+  <!-- MATURITY RUNG CARD (Phase 6c refresh: 5-rung framework, /18 scoring, β-strict per-engine) -->
   <div class="rung-card">
     <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
     <div class="rung-name">Emerging</div>
-    <div class="rung-sov">AI Share of Voice — Google <strong style="color:var(--ai)">2/6</strong> · Bing <strong style="color:var(--ai)">1/2</strong>* · Brave <strong style="color:var(--ai)">2/6</strong> → headline <strong style="color:var(--ai)">2/6</strong> &nbsp;<span style="color:var(--text-muted);font-size:11px">*Bing N/A on 4 of 6 queries (tokenisation failure)</span></div>
-    <div class="rung-trajectory">Add Product and FAQ structured data to every fever-tree.com product page — this is the single fix most likely to move Fever-Tree from Emerging to Cited for "compare premium tonic waters" and "best cocktail mixer" searches, where AI engines currently extract specs from Difford's Guide and Amazon instead of your own site.</div>
+    <div class="rung-sov">AI Share of Voice (5 / 18 cells): Google <strong style="color:var(--ai)">2/6</strong> · Bing <strong style="color:var(--ai)">1/6</strong>* · Brave <strong style="color:var(--ai)">2/6</strong> &nbsp;<span style="color:var(--text-muted);font-size:11px">*Bing forced Unlikely on 4 of 6 queries (natural-language tokenisation failure)</span></div>
+    <div class="rung-trajectory">Add Product and FAQ structured data to every fever-tree.com product page. This is the single fix most likely to move Fever-Tree from Emerging to Cited (6/18 minimum) for "compare premium tonic waters" and "best cocktail mixer" searches, where AI engines currently extract specs from Difford's Guide and Amazon instead of your own site.</div>
     <div class="ladder">
+      <div class="rung-step passed">✓ Blocked</div>
       <div class="rung-step passed">Invisible</div>
       <div class="rung-step active">Emerging</div>
       <div class="rung-step next">Cited</div>
@@ -150,10 +151,13 @@ body.wi-panel-locked{overflow:hidden}
     </div>
   </div>
 
+  <!-- Citable vs Cited disclosure (Phase 5 web-intelligence parallel; positioning alignment) -->
+  <p style="font-size:12px;color:var(--text-muted);line-height:1.6;margin:1.5rem 0 0;font-style:italic;">This snapshots your structural readiness across Google, Bing (the index that powers ChatGPT search and browse mode), and Brave (the index that powers Anthropic Claude search and Perplexity). For ongoing drift tracking, week by week, of what AI is actually saying about you in the wild, see the &pound;150&thinsp;/&thinsp;mo Pulse.</p>
+
   <!-- AI SoV TABLE -->
   <div class="report-section">
     <div class="section-label">AI Share of Voice</div>
-    <div class="section-title">Six target queries — who surfaces, and why</div>
+    <div class="section-title">Six target queries: who surfaces, and why</div>
     <table>
       <thead>
         <tr>
@@ -170,7 +174,7 @@ body.wi-panel-locked{overflow:hidden}
           <td><span class="badge badge-green">Likely Cited</span></td>
           <td style="text-align:center;color:var(--green);font-family:var(--mono)">✓</td>
           <td style="text-align:center;color:var(--green);font-family:var(--mono)">✓</td>
-          <td>—</td>
+          <td>(own surfaces only)</td>
         </tr>
         <tr>
           <td>"Fever-Tree mixer range"</td>
@@ -209,7 +213,7 @@ body.wi-panel-locked{overflow:hidden}
         </tr>
       </tbody>
     </table>
-    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;"><strong>Structural verdict</strong> — assessed against documented AI citation factors based on structural and content signals (Likely Cited / Possible / Unlikely). <strong>Bing &amp; Brave</strong> — live-tested May 2026 via WebFetch on bing.com and search.brave.com (citation = fever-tree.com in top 5 organic OR named in AI summary box). Bing N/A on 4 of 6 queries due to natural-language tokenisation failure (Bing returned dictionary / NS&amp;I Premium Bonds / NHS results for unquoted natural-language queries — a known engine-specific failure mode in this niche, not a Fever-Tree gap). Live prompt testing against ChatGPT, Perplexity, Gemini, and Copilot is available as a retainer add-on.</p>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;"><strong>Structural verdict:</strong> assessed against documented AI citation factors based on structural and content signals (Likely Cited / Possible / Unlikely). <strong>Bing &amp; Brave:</strong> live-tested May 2026 via WebFetch on bing.com and search.brave.com (citation = fever-tree.com in top 5 organic OR named in AI summary box). Bing forced Unlikely on 4 of 6 queries due to natural-language tokenisation failure (Bing returned dictionary / NS&amp;I Premium Bonds / NHS results for unquoted natural-language queries, a known engine-specific failure mode in this niche, not a Fever-Tree gap). Live prompt testing against ChatGPT, Perplexity, Gemini, and Claude is available as a retainer add-on.</p>
   </div>
 
   <!-- CITATION HOST MAP -->
@@ -252,7 +256,7 @@ body.wi-panel-locked{overflow:hidden}
         </tr>
       </tbody>
     </table>
-    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in your sector. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them — it's their placement brief.</p>
+    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in your sector. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them: it's their placement brief.</p>
   </div>
 
   <!-- VENDOR BAKE-OFF -->
@@ -261,7 +265,7 @@ body.wi-panel-locked{overflow:hidden}
     <div class="section-title">Can AI compare you head-to-head when asked?</div>
     <div class="status-card">
       <h4>Bake-Off Absent (0 / 3)</h4>
-      <p>No pricing is visible as HTML text anywhere on the site — purchasing redirects entirely to third-party retail partners (Waitrose, Amazon, Ocado). Product features are presented in marketing prose rather than structured tables or lists. There are no competitor comparison claims backed by specific numbers or specifications. When AI engines answer "compare Fever-Tree vs Q Mixers vs Double Dutch," they pull every spec from Difford's Guide profiles and Amazon listings — because fever-tree.com provides no machine-readable product data of its own.</p>
+      <p>No pricing is visible as HTML text anywhere on the site. Purchasing redirects entirely to third-party retail partners (Waitrose, Amazon, Ocado). Product features are presented in marketing prose rather than structured tables or lists. There are no competitor comparison claims backed by specific numbers or specifications. When AI engines answer "compare Fever-Tree vs Q Mixers vs Double Dutch," they pull every spec from Difford's Guide profiles and Amazon listings, because fever-tree.com provides no machine-readable product data of its own.</p>
     </div>
   </div>
 
@@ -271,7 +275,7 @@ body.wi-panel-locked{overflow:hidden}
     <div class="section-title">Can AI engines read your site?</div>
     <div class="status-card">
       <h4>Fully Open</h4>
-      <p>No AI crawlers are blocked. GPTBot, ClaudeBot, PerplexityBot, GoogleOther, CCBot, anthropic-ai, OAI-SearchBot — all have unrestricted access to fever-tree.com. The only Disallow rule is <code style="font-family:var(--mono);font-size:12px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px;">/admin</code>. This is the correct configuration. Crawler access is not the bottleneck here.</p>
+      <p>No AI crawlers are blocked. GPTBot, ClaudeBot, PerplexityBot, GoogleOther, CCBot, anthropic-ai, OAI-SearchBot all have unrestricted access to fever-tree.com. The only Disallow rule is <code style="font-family:var(--mono);font-size:12px;background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px;">/admin</code>. This is the correct configuration. Crawler access is not the bottleneck here.</p>
     </div>
   </div>
 
@@ -279,13 +283,13 @@ body.wi-panel-locked{overflow:hidden}
   <div class="action-card">
     <div class="action-label">Your next move</div>
     <div class="action-title">Add product schema to all mixer pages</div>
-    <div class="action-detail">Fever-Tree's product pages contain zero structured data — no schema.org/Product markup, no ItemList, no FAQ schema. When AI engines are asked to compare premium tonic waters or recommend a Moscow Mule mixer, they extract ingredients, formats, and specs from Difford's Guide and Amazon listings rather than from fever-tree.com itself. Adding Product schema (name, description, ingredients as structured properties, available pack sizes) to every product page makes each SKU directly extractable by AI citation engines. This is a single sprint dev task with no content rewrites required — and it directly targets the primary citation gap across all 6 audited queries.</div>
+    <div class="action-detail">Fever-Tree's product pages contain zero structured data: no schema.org/Product markup, no ItemList, no FAQ schema. When AI engines are asked to compare premium tonic waters or recommend a Moscow Mule mixer, they extract ingredients, formats, and specs from Difford's Guide and Amazon listings rather than from fever-tree.com itself. Adding Product schema (name, description, ingredients as structured properties, available pack sizes) to every product page makes each SKU directly extractable by AI citation engines. This is a single sprint dev task with no content rewrites required, and it directly targets the primary citation gap across all 6 audited queries.</div>
   </div>
 
   <!-- UPGRADE CTA -->
   <div class="upgrade-cta">
     <h3>Get the full five-dimension report</h3>
-    <p>This report covers AI Search only. The full Web Intelligence Report adds Design, Brand, Competitive position, and Growth — with a £-denominated business impact model and three competitor deep-dives.</p>
+    <p>This report covers AI Search only. The full Web Intelligence Report adds Design, Brand, Competitive position, and Growth, with a £-denominated business impact model and three competitor deep-dives.</p>
     <p style="font-size:13px;color:var(--text-secondary);margin:0 auto 0.75rem;line-height:1.6;">Your £250 credit toward the full report:</p>
     <div class="code-block">AI-SEARCH-UPGRADE</div>
     <br>
