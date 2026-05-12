@@ -39,8 +39,27 @@ default outcome unless we follow the rule below.
 ## Per-page marker
 
 Mark exactly one link with `class="wi-current" aria-current="page"`
-to indicate the current page in the open panel. Every consuming page
-has exactly one `wi-current` marker.
+to indicate the current page in the open panel. Most consuming pages
+carry one `wi-current` marker; the hub, multi-index-live, and
+real-life-stories carry their marker in a different group (Hub
+overview, On this page, or Stories of Realisation respectively).
+
+## Shift split — three groups, not one
+
+As of May 2026 the eight Shift items are split into three groups in
+the panel so the editorial / tactical distinction reads at a glance:
+
+- **The Shift** &mdash; the cornerstone framework article
+  (Maturity Curve, at `/web-intelligence/the-shift/`).
+- **Editorials** &mdash; thesis pieces (long-read, argument-driven):
+  Multi-Index Problem, Citation Graph, Cost of Not Knowing.
+- **Briefings** &mdash; tactical guides (how-to, audit methodology):
+  AI Search Visibility Audit UK, AI Overview Visibility,
+  How to Rank in ChatGPT, Perplexity Citation Audit.
+
+When adding a new Shift sub-page, drop it into the correct group by
+voice and length (editorials run ~1,800 lines and read as essays;
+briefings run ~1,300 lines and end with a self-check).
 
 ## What is NOT in the canonical file
 
