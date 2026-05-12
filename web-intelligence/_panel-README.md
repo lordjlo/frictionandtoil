@@ -22,6 +22,10 @@ default outcome unless we follow the rule below.
 | Multi-Index Problem | `web-intelligence/the-shift/multi-index-problem/index.html` | B |
 | Cost of Not Knowing | `web-intelligence/the-shift/cost-of-not-knowing/index.html` | B |
 | Citation Graph | `web-intelligence/the-shift/citation-graph/index.html` | B |
+| AI Search Visibility Audit UK | `web-intelligence/the-shift/ai-search-visibility-audit-uk/index.html` | B |
+| How to Rank in ChatGPT | `web-intelligence/the-shift/how-to-rank-in-chatgpt/index.html` | B |
+| AI Overview Visibility | `web-intelligence/the-shift/ai-overview-visibility/index.html` | B |
+| Perplexity Citation Audit | `web-intelligence/the-shift/perplexity-citation-audit/index.html` | B |
 | Real-Life Stories | `web-intelligence/real-life-stories/index.html` | B |
 
 **Variants** (defined inline in the canonical file):
