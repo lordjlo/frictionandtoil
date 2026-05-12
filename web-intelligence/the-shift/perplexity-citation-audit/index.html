@@ -497,6 +497,170 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .wi-panel a.wi-current::before { content: "▸ "; color: rgba(255,255,255,0.5); margin-right: 4px; }
 body.wi-panel-locked { overflow: hidden; }
 @media (max-width: 700px) { .wi-nav { padding: 0 20px !important; } .wi-panel { right: 12px; width: calc(100vw - 24px); } }
+/* Sticky section sub-nav - canonical .wi-subnav. See /web-intelligence/_subnav-canonical.html */
+.wi-subnav {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 98;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.wi-subnav.is-visible { opacity: 1; pointer-events: auto; }
+.wi-subnav a {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0 1.4rem;
+  line-height: 40px;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.wi-subnav a:hover { color: var(--text); }
+.wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
+.wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
+@media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ============ RICH COMPONENTS (Shift depth tier) ============ */
+
+/* ---- Stat Strip ---- */
+.stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); overflow: hidden; max-width: 820px; margin-top: 2.5rem; }
+.stat-cell { padding: 2rem 1.75rem; border-right: 1px solid var(--border); transition: background 0.25s; text-align: center; }
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num { font-family: var(--mono); font-weight: 600; font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.85rem; text-align: center; animation: stat-throb 2.6s ease-in-out infinite; transform-origin: center; display: inline-block; }
+.stat-num.col-search { animation-delay: 0s; color: var(--search); text-shadow: 0 0 18px rgba(99,102,241,0.45); }
+.stat-num.col-design { animation-delay: 0.9s; color: var(--design); text-shadow: 0 0 18px rgba(201,150,58,0.40); }
+.stat-num.col-compete { animation-delay: 0.45s; color: var(--compete); text-shadow: 0 0 18px rgba(244,63,94,0.40); }
+@keyframes stat-throb { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.78; } }
+@media (prefers-reduced-motion: reduce) { .stat-num { animation: none; } }
+.stat-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.stat-source { display: block; margin-top: 0.55rem; font-size: 0.68rem; font-family: var(--mono); color: var(--text-muted); letter-spacing: 0.04em; }
+@media (max-width: 700px) { .stat-strip { grid-template-columns: 1fr; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+
+/* ---- Section TL;DR ---- */
+.section-tldr { display: block; margin-top: 1.4rem; padding: 0.85rem 1rem 0.85rem 1.05rem; border-left: 2px solid var(--design); background: linear-gradient(90deg, rgba(201,150,58,0.06), rgba(201,150,58,0.01)); border-radius: 0 4px 4px 0; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.05rem; line-height: 1.45; color: var(--text); letter-spacing: -0.005em; }
+.section-tldr-eyebrow { display: block; margin-bottom: 0.4rem; font-family: var(--mono); font-style: normal; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--design); }
+.section-head .section-tldr { max-width: 64ch; margin-top: 1.5rem; margin-left: 0; margin-right: 0; }
+
+/* ---- Table strap ---- */
+.table-strap { margin-top: 2.25rem; margin-bottom: 0.5rem; display: inline-block; padding: 0.35rem 0.75rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--design); background: rgba(201,150,58,0.08); border: 1px solid rgba(201,150,58,0.25); border-radius: 999px; }
+
+/* ---- Chapter Break ---- */
+.chapter-break { padding: clamp(4rem, 8vw, 6rem) var(--gutter); text-align: center; border-bottom: 1px solid var(--border); background: var(--bg); position: relative; }
+.chapter-break::before { content: ""; display: block; width: 60px; height: 1px; background: var(--design); opacity: 0.5; margin: 0 auto 2rem; }
+.chapter-break-quote { max-width: 760px; margin: 0 auto; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 2.8vw, 2.15rem); line-height: 1.35; color: var(--text); letter-spacing: -0.005em; }
+
+/* ---- Table breakout ---- */
+.table-breakout { margin-top: 2.25rem; margin-bottom: 1rem; width: 100%; min-width: 0; }
+.tier-table-wrap { border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tier-table-caption { padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border); font-family: var(--body); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
+.tier-table { width: 100%; min-width: 760px; border-collapse: collapse; font-family: var(--body); font-size: 0.82rem; table-layout: fixed; }
+.tier-table thead th { padding: 0.85rem 0.9rem; text-align: left; font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.tier-table tbody td { padding: 0.9rem; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-secondary); line-height: 1.5; word-break: break-word; overflow-wrap: anywhere; }
+.tier-table tbody tr:last-child td { border-bottom: none; }
+.tier-table tbody tr:hover td { background: var(--bg-card-hover); }
+.tier-name { font-family: var(--mono); font-size: 0.76rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+.tier-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.tier-bot { font-family: var(--mono); font-size: 0.74rem; color: var(--text); word-break: break-word; overflow-wrap: anywhere; }
+.tier-bot-empty { color: var(--text-muted); font-style: italic; font-family: var(--body); font-size: 0.76rem; }
+.table-scroll-hint { display: none; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.6rem; }
+@media (max-width: 900px) { .table-scroll-hint { display: block; } }
+
+/* ---- Vignettes ---- */
+.vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.section-head { max-width: 880px; margin: 0 auto 0.5rem; text-align: left; }
+.vignette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.vignette-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 2rem 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+.vignette-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.vignette-card.v1 { border-top: 3px solid var(--search); }
+.vignette-card.v2 { border-top: 3px solid var(--design); }
+.vignette-card.v3 { border-top: 3px solid var(--compete); }
+.vignette-tag { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+.vignette-headline { font-family: var(--serif); font-size: 1.32rem; font-weight: 400; line-height: 1.28; color: var(--text); margin-bottom: 1rem; }
+.vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+.vignette-body p + p { margin-top: 0.85rem; }
+.vignette-coi { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+.vignette-coi-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-coi-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-coi-value { font-family: var(--mono); font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+.vignette-coi-row.full .vignette-coi-value { font-size: 1.05rem; }
+.vignette-card.v1 .vignette-coi-row.full .vignette-coi-value { color: var(--search); }
+.vignette-card.v2 .vignette-coi-row.full .vignette-coi-value { color: var(--design); }
+.vignette-card.v3 .vignette-coi-row.full .vignette-coi-value { color: var(--compete); }
+.vignette-engine { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-engine-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-engine-value { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+
+/* ---- Sidebar ---- */
+.sidebar-section { padding: clamp(4rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+.sidebar-callout { max-width: 880px; margin: 0 auto; padding: 2.75rem clamp(1.5rem, 3vw, 3rem); background: linear-gradient(180deg, rgba(201,150,58,0.04), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 12px; position: relative; }
+.sidebar-callout::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2)); border-radius: 12px 0 0 12px; }
+.sidebar-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--design); margin-bottom: 0.85rem; }
+.sidebar-callout h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; color: var(--text); margin-bottom: 1.25rem; }
+.sidebar-intro { font-family: var(--body); font-size: 1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 64ch; }
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+.sidebar-point-num { font-family: var(--mono); font-size: 1.1rem; font-weight: 600; color: var(--design); min-width: 2.4rem; padding-top: 0.15rem; }
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda { margin-top: 2.25rem; padding-top: 1.75rem; border-top: 1px solid var(--border); font-family: var(--body); font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+.sidebar-coda em { color: var(--text); font-style: italic; }
+
+/* ---- Engine Strip ---- */
+.engine-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+.engine-card { padding: 1.4rem 1.35rem 1.3rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; border-top-width: 3px; display: flex; flex-direction: column; gap: 0.85rem; }
+.engine-card.fam-google { border-top-color: var(--search); }
+.engine-card.fam-openai { border-top-color: var(--design); }
+.engine-card.fam-anthropic { border-top-color: var(--compete); }
+.engine-card-fam { font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card.fam-google .engine-card-fam { color: var(--search); }
+.engine-card.fam-openai .engine-card-fam { color: var(--design); }
+.engine-card.fam-anthropic .engine-card-fam { color: var(--compete); }
+.engine-card-surfaces { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.3; color: var(--text); }
+.engine-card-row { padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.2rem; }
+.engine-card-row-label { font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card-row-value { font-family: var(--body); font-size: 0.85rem; font-weight: 500; line-height: 1.4; color: var(--text-secondary); }
+@media (max-width: 800px) { .engine-strip { grid-template-columns: 1fr; } }
+
+/* ---- Frame Block ---- */
+.frame-block { margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.frame-cell { padding: 1.5rem 1.5rem 1.4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+.frame-cell.old { border-left: 3px solid var(--text-muted); opacity: 0.85; }
+.frame-cell.new { border-left: 3px solid var(--design); }
+.frame-label { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; }
+.frame-cell.new .frame-label { color: var(--design); }
+.frame-quote { font-family: var(--serif); font-style: italic; font-size: 1.1rem; line-height: 1.45; color: var(--text); }
+@media (max-width: 700px) { .frame-block { grid-template-columns: 1fr; } }
+
+/* ---- Sources ---- */
+.sources { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sources .container { max-width: 880px; }
+.sources h2 { font-family: var(--display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+.sources ol { list-style: none; padding: 0; margin: 0; counter-reset: sourcenum; display: flex; flex-direction: column; gap: 0.85rem; }
+.sources li { counter-increment: sourcenum; font-size: 0.78rem; line-height: 1.65; color: var(--text-muted); padding-left: 2.25rem; position: relative; }
+.sources li::before { content: counter(sourcenum); position: absolute; left: 0; top: 0; font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); font-weight: 600; width: 1.75rem; text-align: right; }
+.sources li strong { color: var(--text-secondary); font-weight: 600; }
+.sources li em { color: var(--text-secondary); }
+.sources li a { color: var(--design); text-decoration: none; border-bottom: 1px solid rgba(201,150,58,0.25); word-break: break-all; }
+.sources li a:hover { color: var(--text); }
 </style>
 </head>
 <body>
@@ -565,7 +729,32 @@ body.wi-panel-locked { overflow: hidden; }
         <p class="hero-subhead reveal d2">Perplexity is the AI engine that shows its working. Every paragraph in every answer carries footnoted citations to the live web sources it pulled from. That makes it the easiest engine to audit and the most punishing to get wrong.</p>
         <p class="hero-deck reveal d3">Perplexity is unusual among AI engines because it surfaces its citations as first-class UI. You don&rsquo;t need a tool to know whether you&rsquo;re cited. You just need to ask the question and read the footnotes. For UK businesses, this is the cheapest visibility audit available: open Perplexity, run ten queries, read the citations, write down what you see.</p>
         <p class="hero-byline reveal d3">By Frank Graham &middot; Published 10 May 2026 &middot; ~6 min read</p>
+
+        <div class="stat-strip reveal d4">
+          <div class="stat-cell">
+            <div class="stat-num col-search">6</div>
+            <div class="stat-desc">distinct domains is the upper bound Perplexity tries to cite per answer. Source diversity is structural. There is a citation slot for niche specialists.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">45</div>
+            <div class="stat-desc">minutes for the canonical audit. A browser, a spreadsheet, ten to fifteen queries. No tools, no licence fees, no agency retainer.</div>
+            <span class="stat-source">Friction &amp; Toil audit methodology, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-compete">5</div>
+            <div class="stat-desc">structural reasons a domain stops being cited. PerplexityBot blocked, page-2 organic rank, rambling first paragraph, no freshness signals, thin sub-topic coverage.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, Q1 2026</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      Perplexity shows its working. The audit is whether you have the discipline to read what it shows.
     </div>
   </section>
 
@@ -575,6 +764,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
         <h2 class="section-heading">How Perplexity picks sources.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          High organic authority on the query, specific answer up top, recency, three-to-six distinct domains per answer, structured signals.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Perplexity runs a live web search for every query, fetches the top results, and synthesises an answer with paragraph-level citations. The sources it tends to favour:</p>
@@ -585,6 +778,59 @@ body.wi-panel-locked { overflow: hidden; }
           <li><strong>Source diversity.</strong> Perplexity tries to cite three to six distinct domains per answer. It dislikes citing the same domain twice unless it has to. That means there&rsquo;s a citation slot for niche specialists, not just the dominant publishers.</li>
           <li><strong>Structured signals.</strong> Schema, especially Article and FAQPage, makes content cheaper for the answer layer to extract. We covered the structural mechanics in <a href="/web-intelligence/the-shift/citation-graph/">The Citation Graph Doesn&rsquo;t Read Your Drafts</a>.</li>
         </ul>
+
+        <div class="engine-strip" aria-label="Citation behaviour across three AI engines">
+          <div class="engine-card fam-anthropic">
+            <span class="engine-card-fam">Perplexity</span>
+            <span class="engine-card-surfaces">Footnoted, paragraph-level</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Citation surface</span>
+              <span class="engine-card-row-value">Numbered footnotes inline with the answer. Sources panel always visible.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Auditability</span>
+              <span class="engine-card-row-value">High. Run the query and read.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Authority bias</span>
+              <span class="engine-card-row-value">Academic publications, established trade press, named experts.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-openai">
+            <span class="engine-card-fam">Bing-powered ChatGPT</span>
+            <span class="engine-card-surfaces">Linked, often clustered</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Citation surface</span>
+              <span class="engine-card-row-value">Inline links in search mode. Variable. Sometimes a small sources tray.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Auditability</span>
+              <span class="engine-card-row-value">Medium. Need to switch to search mode.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Authority bias</span>
+              <span class="engine-card-row-value">Whatever Bing&rsquo;s organic top-10 surfaces, with OpenAI&rsquo;s answer-quality layer on top.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-google">
+            <span class="engine-card-fam">Brave-powered Claude</span>
+            <span class="engine-card-surfaces">Embedded sources, summarised</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Citation surface</span>
+              <span class="engine-card-row-value">Sources block at end of answer when web tools are engaged.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Auditability</span>
+              <span class="engine-card-row-value">Medium. Less granular than Perplexity&rsquo;s paragraph-level footnotes.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Authority bias</span>
+              <span class="engine-card-row-value">Whatever Brave&rsquo;s independent index surfaces. Different from Bing and Google.</span>
+            </div>
+          </div>
+        </div>
+
+        <p>Perplexity is the easiest of the three to audit precisely because the citations are first-class UI. Every other engine requires some inference. That is why the Perplexity audit is the cheapest visibility diagnostic available in 2026, and why it is also the most punishing: there is no plausible excuse for not knowing what your sector&rsquo;s answers look like in it.</p>
       </div>
     </div>
   </section>
@@ -595,6 +841,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
         <h2 class="section-heading">The audit method, end to end.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Forty-five minutes. A browser. A spreadsheet. Ten to fifteen queries across branded, commercial, informational, and comparison categories.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>This is the method we use for every F&amp;T client. Forty-five minutes, no tools beyond a browser and a spreadsheet.</p>
@@ -607,6 +857,56 @@ body.wi-panel-locked { overflow: hidden; }
         </ol>
 
         <div class="pull-quote reveal">You don&rsquo;t need a tool to know whether you&rsquo;re cited. You just need to ask the question and read the footnotes.</div>
+
+        <div class="table-breakout reveal">
+          <div class="table-strap">Query mix at a glance</div>
+          <div class="tier-table-wrap">
+            <div class="tier-table-caption">Four query categories &middot; what each measures &middot; how citation patterns differ</div>
+            <table class="tier-table">
+              <colgroup>
+                <col style="width:18%">
+                <col style="width:30%">
+                <col style="width:30%">
+                <col style="width:22%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Example shape</th>
+                  <th>What citation tells you</th>
+                  <th>Typical mix</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tier-name">Branded</span></td>
+                  <td class="tier-desc">&ldquo;What is [your brand]?&rdquo; / &ldquo;Is [your brand] any good?&rdquo;</td>
+                  <td class="tier-desc">Whether Perplexity has a coherent picture of you at all. Floor-level check.</td>
+                  <td><span class="tier-bot">2&ndash;3 queries</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Commercial</span></td>
+                  <td class="tier-desc">&ldquo;Best [category] in [city]&rdquo; / &ldquo;Top [category] for [use case]&rdquo;</td>
+                  <td class="tier-desc">Whether you are in the shortlist when a buyer asks the category question.</td>
+                  <td><span class="tier-bot">4&ndash;5 queries</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Informational</span></td>
+                  <td class="tier-desc">&ldquo;How does [process] work?&rdquo; / &ldquo;What is [concept]?&rdquo;</td>
+                  <td class="tier-desc">Whether your editorial content carries the structural signals the answer layer reads.</td>
+                  <td><span class="tier-bot">3&ndash;4 queries</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Comparison</span></td>
+                  <td class="tier-desc">&ldquo;[Your brand] vs [competitor]&rdquo; / &ldquo;Alternatives to [competitor]&rdquo;</td>
+                  <td class="tier-desc">Whether your differentiators are extractable as specific, supported claims.</td>
+                  <td><span class="tier-bot">2&ndash;3 queries</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-scroll-hint">&larr; scroll &rarr;</div>
+        </div>
       </div>
     </div>
   </section>
@@ -617,6 +917,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
         <h2 class="section-heading">What &ldquo;not cited&rdquo; usually means.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Five recurring diagnoses. Off page 1 organic, rambling first paragraph, no freshness, thin specialist coverage, PerplexityBot blocked.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>From dozens of audits, the diagnosis usually reduces to one of five patterns:</p>
@@ -637,6 +941,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
         <h2 class="section-heading">What to fix, in priority order.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Unblock PerplexityBot first. Then first-paragraph answers. Then visible dates. Then specialist pages. Then the third-party citation graph.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Working from the diagnosis, the order matters:</p>
@@ -657,11 +965,166 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
         <h2 class="section-heading">The reporting cadence.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Monthly is the honest cadence. Daily is noise. Quarterly should add the qualitative read: cited for the right claims, alongside the right peers?
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Perplexity citations move week to week. The honest reporting cadence for a small or mid-size UK business is monthly: re-run the same fifteen queries, note the deltas, decide whether the pattern is moving the right way.</p>
         <p>The wrong cadence is daily: noise dominates. Citation rates fluctuate with the freshness window, with new competitor publications, with Perplexity&rsquo;s own model updates. Daily reporting will whip you around. Monthly is enough to see real movement.</p>
         <p>For a quarterly or annual board update, supplement the citation count with the qualitative read: are we cited for the right claims? Are we cited alongside the right peers? Has any competitor become disproportionately cited on a query we used to own? The data answers the count. The reading answers the why.</p>
+
+        <div class="frame-block reveal">
+          <div class="frame-cell old">
+            <span class="frame-label">Old reporting</span>
+            <p class="frame-quote">&ldquo;We rank for these keywords on Google. Here is the month-on-month delta.&rdquo;</p>
+          </div>
+          <div class="frame-cell new">
+            <span class="frame-label">New reporting</span>
+            <p class="frame-quote">&ldquo;Out of fifteen queries in Perplexity this month, we were cited in nine. Up from seven last month. Two of the three competitors we lost ground to are running active PR. We&rsquo;re behind on freshness, not on quality.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V.5 PATTERN VIGNETTES ============ -->
+  <section class="vignettes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-numeral">V &frac12;</span>
+        <h2 class="section-heading">Three patterns the citation tray makes obvious.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Composite cases from the F&amp;T audit base. Perplexity&rsquo;s footnotes name the diagnosis the dashboard cannot.
+        </span>
+        <p class="section-sub">The composites below are not single brands. Each is drawn from multiple Q1 and Q2 2026 audits where Perplexity&rsquo;s paragraph-level footnotes pointed at a specific structural failure on the audited domain.</p>
+      </div>
+
+      <div class="vignette-grid">
+
+        <div class="vignette-card v1 reveal d1">
+          <span class="vignette-tag">01 &middot; The WAF lock-out</span>
+          <div class="vignette-headline">A B2B services firm cited in zero queries. The Cloudflare WAF was returning 403 to PerplexityBot.</div>
+          <div class="vignette-body">
+            <p>Robots.txt allowed PerplexityBot. The edge response, set by a bot-fight-mode rule the agency had not surfaced, did not. The actual user-agent fetch never reached the page.</p>
+            <p>One Cloudflare toggle moved citations from 0 to 5 within ten days. No content changed. No schema added.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Before (cited)</span>
+              <span class="vignette-coi-value">0 / 15</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">After WAF fix</span>
+              <span class="vignette-coi-value">5 / 15</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Perplexity</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v2 reveal d2">
+          <span class="vignette-tag">02 &middot; The stale freshness</span>
+          <div class="vignette-headline">An editorial-heavy professional-services site with 2022 publish dates on its most-cited evergreen pages.</div>
+          <div class="vignette-body">
+            <p>Perplexity treated the pages as historical. The cited slot went to competitors with 2026 dateModified entries and visible &ldquo;last updated&rdquo; lines in body copy, even where the content was less detailed.</p>
+            <p>A six-week refresh sprint (visible dates, light editorial updates, dateModified schema) moved citations from 4 of 15 to 11 of 15.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Pages refreshed</span>
+              <span class="vignette-coi-value">22</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation lift</span>
+              <span class="vignette-coi-value">4 &rarr; 11 of 15</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Perplexity</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v3 reveal d3">
+          <span class="vignette-tag">03 &middot; The shallow specialist</span>
+          <div class="vignette-headline">A category-heavy site covering ten themes shallowly. A new specialist competitor took the citation slot in three of them.</div>
+          <div class="vignette-body">
+            <p>The brand had a 600-word page on each theme. The competitor had a single 1,800-word dedicated page on one theme and was cited for it in every related query. Perplexity&rsquo;s diversity preference and depth bias compounded.</p>
+            <p>Three new specialist pages over a quarter recovered citation in two of the three lost themes; the third needed external trade-press placement to shift.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Specialist pages added</span>
+              <span class="vignette-coi-value">3</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Themes recovered</span>
+              <span class="vignette-coi-value">2 of 3</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Perplexity</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;max-width:64ch;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In each case, the footnotes named the diagnosis on the first read. The cost was not the fix; it was the months of not having opened Perplexity at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR &middot; SELF-CHECK ============ -->
+  <section class="sidebar-section" id="self-check">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; The forty-five-minute self-check</span>
+        <h3>The Perplexity Citation Self-Check.</h3>
+        <p class="sidebar-intro">Five steps. A browser, a spreadsheet, and one block of focused time. The minimum honest read of where your brand sits inside the engine that shows its working.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div class="sidebar-point-body">
+              <strong>Write down fifteen queries.</strong> 2 to 3 branded, 4 to 5 commercial, 3 to 4 informational, 2 to 3 comparison. Use language a real buyer would use, not the language of your category page. Put them in column A of a spreadsheet.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div class="sidebar-point-body">
+              <strong>Run each query in Perplexity.</strong> Open the Sources panel. Record in column B whether your domain is cited (yes / no). In column C, list the top three domains that were cited instead, if you weren&rsquo;t.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div class="sidebar-point-body">
+              <strong>For each non-citing query, open one of the competitor sources.</strong> Read its first paragraph. Note the answer format, schema (view-source), visible date, named author. The pattern across the cited pages is the pattern your page needs to match.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">04</div>
+            <div class="sidebar-point-body">
+              <strong>Check <code style="font-family:var(--mono);font-size:0.9em;color:var(--text);">yourdomain.com/robots.txt</code> for PerplexityBot.</strong> Then test the actual edge response from a tool like Cloudflare&rsquo;s Trace, in case a WAF rule is silently returning 403. The robots.txt and the wire response can disagree.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">05</div>
+            <div class="sidebar-point-body">
+              <strong>Pick the highest-leverage of the five fixes to start this month.</strong> Unblock PerplexityBot if blocked. Otherwise: first-paragraph answers on your top ten pages. Re-run the same fifteen queries thirty days later. Note the deltas honestly.
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-coda">
+          Score honestly. <strong>0&ndash;3 cited of 15</strong> = something structural is broken (WAF, schema, ranking floor). The audit will name it on the first read. <strong>4&ndash;8</strong> = you are partially adapted; the work is on first-paragraph answers and freshness. <strong>9&ndash;12</strong> = you are operating at 2026 visibility discipline; the work is now the citation graph and trade-press placement. <strong>13&ndash;15</strong> = you are the brand competitors are auditing to learn from.
+        </div>
       </div>
     </div>
   </section>
@@ -709,6 +1172,22 @@ body.wi-panel-locked { overflow: hidden; }
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES &amp; REFERENCES ============ -->
+  <section class="sources">
+    <div class="container">
+      <h2>Sources &amp; references</h2>
+      <ol>
+        <li><strong>Perplexity, <em>PerplexityBot documentation</em></strong>: canonical reference for PerplexityBot (search indexing) and Perplexity-User (live retrieval), and the hybrid retrieval model combining Perplexity&rsquo;s own crawler with third-party search providers. <a href="https://docs.perplexity.ai/guides/bots" target="_blank" rel="noopener">docs.perplexity.ai/guides/bots</a></li>
+        <li><strong>Anthropic, <em>Subprocessor list</em></strong>: documentation listing Brave Search Inc. as a third-party search provider for Claude&rsquo;s web-search capability. <a href="https://www.anthropic.com/legal/subprocessors" target="_blank" rel="noopener">anthropic.com/legal/subprocessors</a></li>
+        <li><strong>OpenAI, <em>Bots &amp; crawlers documentation</em></strong>: canonical reference for OAI-SearchBot and ChatGPT-User and the search-mode citation behaviour Perplexity is most often compared against. <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener">platform.openai.com/docs/bots</a></li>
+        <li><strong>Schema.org, <em>Article, FAQPage, datePublished, dateModified</em></strong>: canonical reference for the structured-data types and freshness signals whose presence correlates with Perplexity citation in our audit base. <a href="https://schema.org/Article" target="_blank" rel="noopener">schema.org</a></li>
+        <li><strong>Cloudflare, <em>Bot fight mode &amp; AI bot management</em></strong>: documentation for the WAF defaults that most commonly produce silent PerplexityBot 403s in the F&amp;T audit base. <a href="https://developers.cloudflare.com/bots/concepts/bot-detection/" target="_blank" rel="noopener">developers.cloudflare.com/bots</a></li>
+        <li><strong>Friction &amp; Toil audit base, Q1 2026</strong>: 42 commissioned Web Intelligence Reports across UK hospitality, professional services, and heritage venues. Source for the &ldquo;5 recurring reasons&rdquo; figure cited in the hero stat strip and the three composites in Section V &frac12;.</li>
+        <li><strong>Friction &amp; Toil live re-test, May 2026</strong>: 38-brand curl-based crawler-policy and schema scan. Companion evidence for the structural-failure patterns described in Section III.</li>
+      </ol>
     </div>
   </section>
 
