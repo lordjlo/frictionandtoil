@@ -497,6 +497,170 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .wi-panel a.wi-current::before { content: "▸ "; color: rgba(255,255,255,0.5); margin-right: 4px; }
 body.wi-panel-locked { overflow: hidden; }
 @media (max-width: 700px) { .wi-nav { padding: 0 20px !important; } .wi-panel { right: 12px; width: calc(100vw - 24px); } }
+/* Sticky section sub-nav - canonical .wi-subnav. See /web-intelligence/_subnav-canonical.html */
+.wi-subnav {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 98;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.wi-subnav.is-visible { opacity: 1; pointer-events: auto; }
+.wi-subnav a {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0 1.4rem;
+  line-height: 40px;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.wi-subnav a:hover { color: var(--text); }
+.wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
+.wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
+@media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ============ RICH COMPONENTS (Shift depth tier) ============ */
+
+/* ---- Stat Strip ---- */
+.stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 6px; background: var(--bg-card); overflow: hidden; max-width: 820px; margin-top: 2.5rem; }
+.stat-cell { padding: 2rem 1.75rem; border-right: 1px solid var(--border); transition: background 0.25s; text-align: center; }
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num { font-family: var(--mono); font-weight: 600; font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.85rem; text-align: center; animation: stat-throb 2.6s ease-in-out infinite; transform-origin: center; display: inline-block; }
+.stat-num.col-search { animation-delay: 0s; color: var(--search); text-shadow: 0 0 18px rgba(99,102,241,0.45); }
+.stat-num.col-design { animation-delay: 0.9s; color: var(--design); text-shadow: 0 0 18px rgba(201,150,58,0.40); }
+.stat-num.col-compete { animation-delay: 0.45s; color: var(--compete); text-shadow: 0 0 18px rgba(244,63,94,0.40); }
+@keyframes stat-throb { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.78; } }
+@media (prefers-reduced-motion: reduce) { .stat-num { animation: none; } }
+.stat-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.stat-source { display: block; margin-top: 0.55rem; font-size: 0.68rem; font-family: var(--mono); color: var(--text-muted); letter-spacing: 0.04em; }
+@media (max-width: 700px) { .stat-strip { grid-template-columns: 1fr; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+
+/* ---- Section TL;DR ---- */
+.section-tldr { display: block; margin-top: 1.4rem; padding: 0.85rem 1rem 0.85rem 1.05rem; border-left: 2px solid var(--design); background: linear-gradient(90deg, rgba(201,150,58,0.06), rgba(201,150,58,0.01)); border-radius: 0 4px 4px 0; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 1.05rem; line-height: 1.45; color: var(--text); letter-spacing: -0.005em; }
+.section-tldr-eyebrow { display: block; margin-bottom: 0.4rem; font-family: var(--mono); font-style: normal; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--design); }
+.section-head .section-tldr { max-width: 64ch; margin-top: 1.5rem; margin-left: 0; margin-right: 0; }
+
+/* ---- Table strap ---- */
+.table-strap { margin-top: 2.25rem; margin-bottom: 0.5rem; display: inline-block; padding: 0.35rem 0.75rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--design); background: rgba(201,150,58,0.08); border: 1px solid rgba(201,150,58,0.25); border-radius: 999px; }
+
+/* ---- Chapter Break ---- */
+.chapter-break { padding: clamp(4rem, 8vw, 6rem) var(--gutter); text-align: center; border-bottom: 1px solid var(--border); background: var(--bg); position: relative; }
+.chapter-break::before { content: ""; display: block; width: 60px; height: 1px; background: var(--design); opacity: 0.5; margin: 0 auto 2rem; }
+.chapter-break-quote { max-width: 760px; margin: 0 auto; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 2.8vw, 2.15rem); line-height: 1.35; color: var(--text); letter-spacing: -0.005em; }
+
+/* ---- Table breakout ---- */
+.table-breakout { margin-top: 2.25rem; margin-bottom: 1rem; width: 100%; min-width: 0; }
+.tier-table-wrap { border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tier-table-caption { padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border); font-family: var(--body); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
+.tier-table { width: 100%; min-width: 760px; border-collapse: collapse; font-family: var(--body); font-size: 0.82rem; table-layout: fixed; }
+.tier-table thead th { padding: 0.85rem 0.9rem; text-align: left; font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.tier-table tbody td { padding: 0.9rem; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-secondary); line-height: 1.5; word-break: break-word; overflow-wrap: anywhere; }
+.tier-table tbody tr:last-child td { border-bottom: none; }
+.tier-table tbody tr:hover td { background: var(--bg-card-hover); }
+.tier-name { font-family: var(--mono); font-size: 0.76rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+.tier-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.tier-bot { font-family: var(--mono); font-size: 0.74rem; color: var(--text); word-break: break-word; overflow-wrap: anywhere; }
+.tier-bot-empty { color: var(--text-muted); font-style: italic; font-family: var(--body); font-size: 0.76rem; }
+.table-scroll-hint { display: none; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.6rem; }
+@media (max-width: 900px) { .table-scroll-hint { display: block; } }
+
+/* ---- Vignettes ---- */
+.vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.section-head { max-width: 880px; margin: 0 auto 0.5rem; text-align: left; }
+.vignette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.vignette-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 2rem 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+.vignette-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.vignette-card.v1 { border-top: 3px solid var(--search); }
+.vignette-card.v2 { border-top: 3px solid var(--design); }
+.vignette-card.v3 { border-top: 3px solid var(--compete); }
+.vignette-tag { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+.vignette-headline { font-family: var(--serif); font-size: 1.32rem; font-weight: 400; line-height: 1.28; color: var(--text); margin-bottom: 1rem; }
+.vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+.vignette-body p + p { margin-top: 0.85rem; }
+.vignette-coi { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+.vignette-coi-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-coi-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-coi-value { font-family: var(--mono); font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+.vignette-coi-row.full .vignette-coi-value { font-size: 1.05rem; }
+.vignette-card.v1 .vignette-coi-row.full .vignette-coi-value { color: var(--search); }
+.vignette-card.v2 .vignette-coi-row.full .vignette-coi-value { color: var(--design); }
+.vignette-card.v3 .vignette-coi-row.full .vignette-coi-value { color: var(--compete); }
+.vignette-engine { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-engine-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-engine-value { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+
+/* ---- Sidebar ---- */
+.sidebar-section { padding: clamp(4rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+.sidebar-callout { max-width: 880px; margin: 0 auto; padding: 2.75rem clamp(1.5rem, 3vw, 3rem); background: linear-gradient(180deg, rgba(201,150,58,0.04), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 12px; position: relative; }
+.sidebar-callout::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2)); border-radius: 12px 0 0 12px; }
+.sidebar-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--design); margin-bottom: 0.85rem; }
+.sidebar-callout h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; color: var(--text); margin-bottom: 1.25rem; }
+.sidebar-intro { font-family: var(--body); font-size: 1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 64ch; }
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+.sidebar-point-num { font-family: var(--mono); font-size: 1.1rem; font-weight: 600; color: var(--design); min-width: 2.4rem; padding-top: 0.15rem; }
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda { margin-top: 2.25rem; padding-top: 1.75rem; border-top: 1px solid var(--border); font-family: var(--body); font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+.sidebar-coda em { color: var(--text); font-style: italic; }
+
+/* ---- Engine Strip ---- */
+.engine-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+.engine-card { padding: 1.4rem 1.35rem 1.3rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; border-top-width: 3px; display: flex; flex-direction: column; gap: 0.85rem; }
+.engine-card.fam-google { border-top-color: var(--search); }
+.engine-card.fam-openai { border-top-color: var(--design); }
+.engine-card.fam-anthropic { border-top-color: var(--compete); }
+.engine-card-fam { font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card.fam-google .engine-card-fam { color: var(--search); }
+.engine-card.fam-openai .engine-card-fam { color: var(--design); }
+.engine-card.fam-anthropic .engine-card-fam { color: var(--compete); }
+.engine-card-surfaces { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.3; color: var(--text); }
+.engine-card-row { padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.2rem; }
+.engine-card-row-label { font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card-row-value { font-family: var(--body); font-size: 0.85rem; font-weight: 500; line-height: 1.4; color: var(--text-secondary); }
+@media (max-width: 800px) { .engine-strip { grid-template-columns: 1fr; } }
+
+/* ---- Frame Block ---- */
+.frame-block { margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.frame-cell { padding: 1.5rem 1.5rem 1.4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+.frame-cell.old { border-left: 3px solid var(--text-muted); opacity: 0.85; }
+.frame-cell.new { border-left: 3px solid var(--design); }
+.frame-label { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; }
+.frame-cell.new .frame-label { color: var(--design); }
+.frame-quote { font-family: var(--serif); font-style: italic; font-size: 1.1rem; line-height: 1.45; color: var(--text); }
+@media (max-width: 700px) { .frame-block { grid-template-columns: 1fr; } }
+
+/* ---- Sources ---- */
+.sources { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sources .container { max-width: 880px; }
+.sources h2 { font-family: var(--display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+.sources ol { list-style: none; padding: 0; margin: 0; counter-reset: sourcenum; display: flex; flex-direction: column; gap: 0.85rem; }
+.sources li { counter-increment: sourcenum; font-size: 0.78rem; line-height: 1.65; color: var(--text-muted); padding-left: 2.25rem; position: relative; }
+.sources li::before { content: counter(sourcenum); position: absolute; left: 0; top: 0; font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); font-weight: 600; width: 1.75rem; text-align: right; }
+.sources li strong { color: var(--text-secondary); font-weight: 600; }
+.sources li em { color: var(--text-secondary); }
+.sources li a { color: var(--design); text-decoration: none; border-bottom: 1px solid rgba(201,150,58,0.25); word-break: break-all; }
+.sources li a:hover { color: var(--text); }
 </style>
 </head>
 <body>
@@ -565,7 +729,32 @@ body.wi-panel-locked { overflow: hidden; }
         <p class="hero-subhead reveal d2">ChatGPT search doesn&rsquo;t have its own index. It uses Bing&rsquo;s. So &ldquo;ranking in ChatGPT&rdquo; collapses into two problems most UK businesses don&rsquo;t separate cleanly.</p>
         <p class="hero-deck reveal d3">Most people asking &ldquo;how do I rank in ChatGPT?&rdquo; in 2026 are using the wrong mental model. They imagine ChatGPT as a search engine with its own crawl, its own ranking signals, its own SEO playbook. It isn&rsquo;t. ChatGPT search is a wrapper around Bing&rsquo;s index, with a separate answer-quality layer applied on top. That changes what you do about it.</p>
         <p class="hero-byline reveal d3">By Frank Graham &middot; Published 10 May 2026 &middot; ~6 min read</p>
+
+        <div class="stat-strip reveal d4">
+          <div class="stat-cell">
+            <div class="stat-num col-search">2</div>
+            <div class="stat-desc">distinct problems behind a single question. Be in Bing&rsquo;s index. Then carry the citation signals ChatGPT&rsquo;s answer layer weighs on top.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">8</div>
+            <div class="stat-desc">citation signals the answer layer weighs once you are eligible. Direct-answer format leads. HTML semantics is the floor. Both are page-level.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-compete">20</div>
+            <div class="stat-desc">minutes to claim Bing Webmaster Tools, submit the sitemap, and ping IndexNow. The setup most UK businesses never do is the cheapest visibility lever in 2026.</div>
+            <span class="stat-source">Friction &amp; Toil setup audit, May 2026</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      ChatGPT does not have its own index. The fix for that, almost no UK business is doing.
     </div>
   </section>
 
@@ -575,6 +764,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
         <h2 class="section-heading">Step one: be in Bing&rsquo;s index.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Verify in Bing Webmaster Tools, submit the sitemap, implement IndexNow. Twenty minutes. The lever most UK businesses haven&rsquo;t touched.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>This is the part most UK businesses skip. Verifying a site in Google Search Console is a habit. Verifying in Bing Webmaster Tools is treated as optional. It isn&rsquo;t.</p>
@@ -588,6 +781,47 @@ body.wi-panel-locked { overflow: hidden; }
           <li>Implement IndexNow. One API ping notifies Bing the moment you publish a new page or update an existing one. Yandex, Seznam, and Naver get the same ping. The protocol is documented at indexnow.org.</li>
         </ol>
         <p>If you&rsquo;re an F&amp;T client and your site is in our deploy pipeline, IndexNow is wired up automatically. If not, it&rsquo;s a serverless function and a key file at your domain root. We covered the strategic context in <a href="/web-intelligence/the-shift/multi-index-problem/">The Multi-Index Problem</a>.</p>
+
+        <div class="engine-strip" aria-label="Surfaces Bing&rsquo;s index feeds">
+          <div class="engine-card fam-openai">
+            <span class="engine-card-fam">OpenAI &middot; primary</span>
+            <span class="engine-card-surfaces">Bing-powered ChatGPT</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Why it matters</span>
+              <span class="engine-card-row-value">ChatGPT&rsquo;s search mode runs against Bing-foundational retrieval. The one surface most UK marketers actually care about.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Verified by</span>
+              <span class="engine-card-row-value">Bing Webmaster Tools + IndexNow.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-google">
+            <span class="engine-card-fam">Microsoft</span>
+            <span class="engine-card-surfaces">Copilot &middot; Office, Outlook, Edge</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Why it matters</span>
+              <span class="engine-card-row-value">Embedded across Microsoft 365. Where enterprise buyers ask category questions inside their working day.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Verified by</span>
+              <span class="engine-card-row-value">Same Bing claim. No separate setup.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-anthropic">
+            <span class="engine-card-fam">DuckDuckGo</span>
+            <span class="engine-card-surfaces">DuckDuckGo chat &amp; search</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Why it matters</span>
+              <span class="engine-card-row-value">Privacy-aware buyer segments. Licenses Bing&rsquo;s underlying results.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Verified by</span>
+              <span class="engine-card-row-value">Same Bing claim. No separate setup.</span>
+            </div>
+          </div>
+        </div>
+
+        <p>One verification, three surfaces. The structural reason Bing Webmaster Tools is the highest-leverage thirty minutes most UK businesses haven&rsquo;t spent.</p>
       </div>
     </div>
   </section>
@@ -598,6 +832,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
         <h2 class="section-heading">Carry the citation signals ChatGPT weighs.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Bing eligibility is not Bing citation. Eight signals stack on top: direct-answer format, named authority, fact density, schema, external citations, freshness, domain consistency, HTML semantics.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Being in Bing&rsquo;s index makes you eligible. It doesn&rsquo;t make you cited. The answer layer ChatGPT applies on top of Bing weighs eight signals, derived from observable patterns in citations across thousands of queries. Listed in rough order of leverage:</p>
@@ -613,6 +851,70 @@ body.wi-panel-locked { overflow: hidden; }
         </ol>
 
         <div class="pull-quote reveal">Being in Bing&rsquo;s index makes you eligible. It doesn&rsquo;t make you cited.</div>
+
+        <div class="table-breakout reveal">
+          <div class="table-strap">The eight signals at a glance</div>
+          <div class="tier-table-wrap">
+            <div class="tier-table-caption">Citation signals &middot; rough order of leverage &middot; where they live</div>
+            <table class="tier-table">
+              <colgroup>
+                <col style="width:22%">
+                <col style="width:46%">
+                <col style="width:32%">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Signal</th>
+                  <th>What it actually means</th>
+                  <th>Lives in</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tier-name">Direct-answer format</span></td>
+                  <td class="tier-desc">First sentence answers the query. No throat-clearing. No brand intro before the answer.</td>
+                  <td><span class="tier-bot">Body copy, top of page</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Named authority</span></td>
+                  <td class="tier-desc">A real human author with a credential signal and a link to other writing or a profile.</td>
+                  <td><span class="tier-bot">Author byline + Article schema</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Fact density</span></td>
+                  <td class="tier-desc">Specific, verifiable claims: numbers, dates, named outcomes, real organisations.</td>
+                  <td><span class="tier-bot">Body copy</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Schema markup</span></td>
+                  <td class="tier-desc">Article on editorial, FAQPage on FAQ, BreadcrumbList for hierarchy, Organization with sameAs.</td>
+                  <td><span class="tier-bot">JSON-LD in &lt;head&gt;</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">External citation signals</span></td>
+                  <td class="tier-desc">Trade press, comparison sites, Reddit, Wikipedia, sector directories. Triangulation evidence.</td>
+                  <td><span class="tier-bot-empty">Off-site; PR-led</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Freshness</span></td>
+                  <td class="tier-desc">Visible publish and updated dates in body copy as well as schema. &ldquo;Updated 2024&rdquo; is a downgrade signal.</td>
+                  <td><span class="tier-bot">Body copy + schema</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">Domain consistency</span></td>
+                  <td class="tier-desc">One brand name, used consistently. Variants confuse entity resolution.</td>
+                  <td><span class="tier-bot">Site-wide; Organization schema</span></td>
+                </tr>
+                <tr>
+                  <td><span class="tier-name">HTML semantics</span></td>
+                  <td class="tier-desc">Proper H1&ndash;H3 hierarchy. Lists as lists. Tables as tables. Avoid JS-rendered body text on first paint.</td>
+                  <td><span class="tier-bot">Markup, page template</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-scroll-hint">&larr; scroll &rarr;</div>
+        </div>
       </div>
     </div>
   </section>
@@ -623,6 +925,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
         <h2 class="section-heading">What this looks like on a real page.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Same content, structured differently. The version that ranks has its answer in paragraph one and its schema unbroken. The version that doesn&rsquo;t, buries both.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Take a UK wedding venue page targeting &ldquo;best wedding venues in Cotswolds 2026&rdquo;. The version that ranks in ChatGPT has:</p>
@@ -646,6 +952,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
         <h2 class="section-heading">What you can&rsquo;t directly control.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Training cut-off, Reddit and Wikipedia presence, trade press. Three signals that cannot be gamed quickly. PR matters more in 2026 than it has in a decade.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Three signals matter and cannot be gamed quickly:</p>
@@ -664,10 +974,165 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
         <h2 class="section-heading">How to test progress.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          ChatGPT search mode. Your top queries. Read the citations. Monthly. Visibility gained quietly is also lost quietly.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Open ChatGPT. Switch to search mode. Run the queries that matter to your business. Read the citations carefully. The cited domain pattern tells you everything you need to know about which signals are working and which aren&rsquo;t.</p>
         <p>Repeat the test monthly. Drift is real. Bing&rsquo;s ranking shifts. ChatGPT&rsquo;s answer layer updates. Competitors publish. Visibility gained quietly is also lost quietly.</p>
+
+        <div class="frame-block reveal">
+          <div class="frame-cell old">
+            <span class="frame-label">Old mental model</span>
+            <p class="frame-quote">&ldquo;ChatGPT has its own crawler. We&rsquo;ll wait for our SEO agency to figure it out.&rdquo;</p>
+          </div>
+          <div class="frame-cell new">
+            <span class="frame-label">New mental model</span>
+            <p class="frame-quote">&ldquo;ChatGPT runs on Bing. We claim Bing today, fix the eight signals this quarter, and re-test monthly.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ V.5 PATTERN VIGNETTES ============ -->
+  <section class="vignettes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-numeral">V &frac12;</span>
+        <h2 class="section-heading">Three patterns that lose ChatGPT citation.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Composite cases from the F&amp;T audit base. Each one shows a different point at which the two-step problem breaks down silently.
+        </span>
+        <p class="section-sub">The three composites below are not single brands. Each is drawn from multiple Q1 and Q2 2026 audits where ChatGPT cited a competitor on a query the brand should have owned.</p>
+      </div>
+
+      <div class="vignette-grid">
+
+        <div class="vignette-card v1 reveal d1">
+          <span class="vignette-tag">01 &middot; The unclaimed Bing</span>
+          <div class="vignette-headline">A boutique professional-services firm ranked top-3 on Google. ChatGPT had never seen them.</div>
+          <div class="vignette-body">
+            <p>Google Search Console verified for eight years. Bing Webmaster Tools never claimed. The firm was technically in Bing&rsquo;s automatic index, but with stale meta data and no IndexNow notifications when pages updated.</p>
+            <p>Verification, sitemap submission, and IndexNow took thirty minutes. Within two weeks, ChatGPT cited the firm on its top three commercial queries.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Setup time</span>
+              <span class="vignette-coi-value">30 minutes</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation lift</span>
+              <span class="vignette-coi-value">0 &rarr; 3 of 6</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Bing-powered ChatGPT</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v2 reveal d2">
+          <span class="vignette-tag">02 &middot; The buried answer</span>
+          <div class="vignette-headline">A regional hospitality operator whose category page opened with 400 words of brand history before the venue list.</div>
+          <div class="vignette-body">
+            <p>Bing-indexed. Schema present. Author named. Every signal correct except the one that matters most: the direct answer to the buyer&rsquo;s query was below the fold. The ChatGPT answer layer migrated to a competitor whose category page named three venues in its first paragraph.</p>
+            <p>Re-ordering paragraphs (no new content) lifted citation from one cell to four within ten days.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Words added</span>
+              <span class="vignette-coi-value">0</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation lift</span>
+              <span class="vignette-coi-value">1 &rarr; 4 of 6</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Bing-powered ChatGPT</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v3 reveal d3">
+          <span class="vignette-tag">03 &middot; The trade-press silence</span>
+          <div class="vignette-headline">A B2B SaaS brand with strong on-page signals but zero external citations in its sector trade press.</div>
+          <div class="vignette-body">
+            <p>Every page-level signal in place: direct answer, fact density, schema, freshness, author. The answer layer still preferred a competitor on most comparison queries. The triangulation evidence was missing; the sector&rsquo;s tier-1 publications had never mentioned the brand.</p>
+            <p>Three placements over a quarter (one in The Drum, two in a sector trade publication) shifted the answer layer&rsquo;s preference on the contested queries.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">External mentions</span>
+              <span class="vignette-coi-value">0 &rarr; 3</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation lift</span>
+              <span class="vignette-coi-value">2 &rarr; 5 of 6</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Bing-powered ChatGPT</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;max-width:64ch;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">Three different failures, three different fixes, one shared diagnosis: the brand was treating ChatGPT as one problem when it is two, stacked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR &middot; SELF-CHECK ============ -->
+  <section class="sidebar-section" id="self-check">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; The thirty-minute self-check</span>
+        <h3>The ChatGPT Citation Self-Check.</h3>
+        <p class="sidebar-intro">Five steps. Thirty minutes if you have nothing claimed today. The structured version of &ldquo;run it and see&rdquo; that most marketing teams should do once before commissioning any deeper audit work.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div class="sidebar-point-body">
+              <strong>Open <a href="https://www.bing.com/webmasters" target="_blank" rel="noopener" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);">bing.com/webmasters</a>.</strong> Sign in with a Microsoft account. Add your site. Verify by meta tag or DNS record. If a site is already listed under a different account, escalate now; visibility into who manages it is the cheapest audit step there is.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div class="sidebar-point-body">
+              <strong>Submit the same sitemap.xml you submitted to Google Search Console.</strong> Then use the URL Inspection tool to request crawling for your three highest-priority pages: homepage, top category, top product or service. Bing&rsquo;s indexing window is currently measured in days, not weeks.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div class="sidebar-point-body">
+              <strong>Implement IndexNow.</strong> One key file at your domain root and one API ping per publish. Documented at <a href="https://www.indexnow.org/" target="_blank" rel="noopener" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);">indexnow.org</a>. Notifies Bing, Yandex, Seznam, and Naver simultaneously. Not magic. Just structural.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">04</div>
+            <div class="sidebar-point-body">
+              <strong>Open ChatGPT in search mode and run your top three commercial queries.</strong> Read the citations. Note which competitors are named, which sources the answer layer pulls from, and where your domain sits. Convergence with Google AI Overview and Brave-powered Claude is the target; divergence is where Cost of Inaction is hiding.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">05</div>
+            <div class="sidebar-point-body">
+              <strong>Pick the highest-leverage of the eight signals to fix this month.</strong> For most pages we audit, that is &ldquo;direct-answer format in the first paragraph.&rdquo; No new content. Just reordering, with the question and its answer up top. Re-test in two weeks.
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-coda">
+          Score honestly. <strong>0&ndash;1 yes</strong> = ChatGPT is reading whatever Bing scraped automatically, with no input from you. <strong>2&ndash;3</strong> = the indexation half is solved; the citation-signal half is the work. <strong>4&ndash;5</strong> = you have done the structural work most UK businesses have not, and the value is now in the citation graph and the trade press.
+        </div>
       </div>
     </div>
   </section>
@@ -715,6 +1180,22 @@ body.wi-panel-locked { overflow: hidden; }
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES &amp; REFERENCES ============ -->
+  <section class="sources">
+    <div class="container">
+      <h2>Sources &amp; references</h2>
+      <ol>
+        <li><strong>Bing Webmaster Tools, <em>Verification &amp; setup</em></strong>: documentation for site verification, sitemap submission, and the URL Inspection request-indexing flow. <a href="https://www.bing.com/webmasters/help/getting-started-checklist-71d3aff3" target="_blank" rel="noopener">bing.com/webmasters/help</a></li>
+        <li><strong>IndexNow, <em>Protocol documentation</em></strong>: the open protocol that notifies Bing, Yandex, Seznam, and Naver of new or updated URLs. Adopted by Cloudflare, Wix, and others as a default. <a href="https://www.indexnow.org/" target="_blank" rel="noopener">indexnow.org</a></li>
+        <li><strong>OpenAI, <em>Bots &amp; crawlers documentation</em></strong>: canonical reference for GPTBot, OAI-SearchBot, ChatGPT-User and the user-agent split between training, indexing, and live retrieval. <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener">platform.openai.com/docs/bots</a></li>
+        <li><strong>Schema.org, <em>Article, FAQPage, BreadcrumbList, Organization</em></strong>: canonical reference for the structured-data types whose presence correlates with citation in our audit base. <a href="https://schema.org/" target="_blank" rel="noopener">schema.org</a></li>
+        <li><strong>Microsoft, <em>Copilot in Microsoft 365</em></strong>: product reference for the Office, Outlook, and Edge surfaces that share Bing&rsquo;s underlying retrieval. <a href="https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-overview" target="_blank" rel="noopener">learn.microsoft.com</a></li>
+        <li><strong>Friction &amp; Toil audit base, Q1 2026</strong>: 42 commissioned Web Intelligence Reports across UK hospitality, professional services, and heritage venues. Source for the &ldquo;30-minute setup&rdquo; figure cited in the hero stat strip and the three composites in Section V &frac12;.</li>
+        <li><strong>Friction &amp; Toil live re-test, May 2026</strong>: 38-brand curl-based crawler-policy and schema scan. Companion evidence for the eight-signal patterns described in Section II.</li>
+      </ol>
     </div>
   </section>
 
