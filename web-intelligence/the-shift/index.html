@@ -1420,6 +1420,45 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 body.wi-panel-locked { overflow: hidden; }
 .nav-links-desktop, .wi-mobile-menu { display: none !important; }
 @media (max-width: 700px) { .wi-nav { padding: 0 20px !important; } .wi-panel { right: 12px; width: calc(100vw - 24px); } }
+/* Sticky section sub-nav - canonical .wi-subnav. See /web-intelligence/_subnav-canonical.html */
+.wi-subnav {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  z-index: 98;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.wi-subnav.is-visible { opacity: 1; pointer-events: auto; }
+.wi-subnav a {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0 1.4rem;
+  line-height: 40px;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.wi-subnav a:hover { color: var(--text); }
+.wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
+.wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
+@media (max-width: 768px) { .wi-subnav { display: none; } }
 </style>
 </head>
 <body>
@@ -1431,6 +1470,22 @@ body.wi-panel-locked { overflow: hidden; }
   <button class="nav-hamburger" id="wiMenuBtn" aria-label="Open menu" aria-controls="wiPanel" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+</nav>
+<!-- WI sub-nav: canonical at /web-intelligence/_subnav-canonical.html. Sync per /web-intelligence/_panel-README.md. -->
+<nav class="wi-subnav is-visible" id="wiSubnav" aria-label="Section navigation">
+  <a href="/web-intelligence/the-shift/" class="is-active" aria-current="page">Briefs</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#multi-index-proof">Live demo</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#covers">How it works</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#pricing">Pricing</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#sample">Examples</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#free-score">Free score</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#faq">FAQs</a>
 </nav>
 <div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
   <div class="wi-panel-group">

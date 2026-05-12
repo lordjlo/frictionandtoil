@@ -52,6 +52,34 @@ media query) and the JavaScript that opens/closes the panel
 historical drift was strictly in the `<div class="wi-panel">` markup.
 If a CSS or JS change becomes necessary, document it here too.
 
+## Sub-nav (`_subnav-canonical.html`)
+
+In addition to the hamburger panel, 9 pages carry a sticky 7-item
+sub-nav (Briefs &middot; Live demo &middot; How it works &middot; Pricing &middot; Examples &middot;
+Free score &middot; FAQs).
+
+### Pages that consume the sub-nav
+
+| Page | File | Active link |
+| :--- | :--- | :--- |
+| The Shift index | `web-intelligence/the-shift/index.html` | Briefs |
+| Multi-Index Problem | `web-intelligence/the-shift/multi-index-problem/index.html` | Briefs |
+| Cost of Not Knowing | `web-intelligence/the-shift/cost-of-not-knowing/index.html` | Briefs |
+| Citation Graph | `web-intelligence/the-shift/citation-graph/index.html` | Briefs |
+| AI Search Visibility Audit UK | `web-intelligence/the-shift/ai-search-visibility-audit-uk/index.html` | Briefs |
+| How to Rank in ChatGPT | `web-intelligence/the-shift/how-to-rank-in-chatgpt/index.html` | Briefs |
+| AI Overview Visibility | `web-intelligence/the-shift/ai-overview-visibility/index.html` | Briefs |
+| Perplexity Citation Audit | `web-intelligence/the-shift/perplexity-citation-audit/index.html` | Briefs |
+| Real-Life Stories | `web-intelligence/real-life-stories/index.html` | Examples |
+
+The hub (`web-intelligence/index.html`) uses a JS-driven scroll-position
+variant of this sub-nav -- do not sync the canonical to the hub.
+`multi-index-live/index.html` has a custom 4-item variant -- leave alone.
+
+Each consuming page marks exactly one link with `class="is-active"` +
+`aria-current="page"`. The `.wi-subnav` CSS rules are inlined in each
+page's `<style>` block alongside the `.wi-panel` rules.
+
 ## History
 
 The drift this file addresses came from the May 2026 refactor that

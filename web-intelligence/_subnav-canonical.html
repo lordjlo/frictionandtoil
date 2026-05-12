@@ -1,0 +1,28 @@
+<!--
+Canonical Web Intelligence sub-nav.
+Mirrored across 8 Shift pages + real-life-stories per /web-intelligence/_panel-README.md.
+When this file changes, sync the consuming pages listed in _panel-README.md.
+Each consuming page sets one link to class="is-active" + aria-current="page"
+per the page's primary group:
+  - the-shift hub + 7 articles -> "Briefs"
+  - real-life-stories          -> "Examples"
+The hub (web-intelligence/index.html) uses a JS-driven scroll-position
+variant of this sub-nav (no `is-visible` by default; toggled on scroll) -
+do not sync the canonical to the hub.
+multi-index-live/index.html has its own 4-item variant - leave alone.
+-->
+<nav class="wi-subnav is-visible" id="wiSubnav" aria-label="Section navigation">
+  <a href="/web-intelligence/the-shift/">Briefs</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#multi-index-proof">Live demo</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#covers">How it works</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#pricing">Pricing</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#sample">Examples</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#free-score">Free score</a>
+  <span class="sep" aria-hidden="true">&middot;</span>
+  <a href="/web-intelligence/#faq">FAQs</a>
+</nav>
