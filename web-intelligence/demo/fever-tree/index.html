@@ -895,8 +895,8 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
     <span class="mode-dot" style="background:rgba(255,255,255,0.3)"></span>How to Use
   </button>
   <div class="mode-divider"></div>
-  <button class="mode-btn mode-brain" onclick="switchMode('brain',this)" style="display:none;color:#c084fc">
-    <span class="mode-dot" style="background:#a855f7"></span>💬 Ask Your Brain
+  <button class="mode-btn mode-brain" onclick="switchMode('brain',this)" style="color:#c084fc">
+    <span class="mode-dot" style="background:#a855f7"></span>🔒 Ask Your Brain
   </button>
   <div class="mode-divider"></div>
   <button class="mode-btn mode-search" onclick="switchMode('search',this)">
@@ -1099,6 +1099,55 @@ window.addEventListener('afterprint', function(){ document.body.classList.remove
 </div>
 
 <!-- ========== END: CHUNK_4_GUIDE ========== -->
+
+<!-- ========== BEGIN: CHUNK_4b_BRAIN_LOCKED ========== -->
+<!-- BRAIN PANEL — locked preview (no NotebookLM brain provisioned for this public audit) -->
+<div id="panel-brain" class="mode-panel">
+<div class="container" style="padding:60px 24px 80px;max-width:980px">
+
+  <div style="text-align:center;margin-bottom:40px">
+    <div style="width:88px;height:88px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(168,85,247,0.35);background:rgba(168,85,247,0.08);margin-bottom:20px">🔒</div>
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:600;color:#c084fc;margin-bottom:10px">Capability Preview · Locked</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.2">Ask Your Brain</h2>
+    <p style="font-size:15px;color:var(--text-secondary);max-width:620px;margin:0 auto;line-height:1.7">A NotebookLM-powered second brain trained on every page of this audit, plus the source intelligence behind it. Available to paying clients — what you'd unlock if Fever-Tree were on a retained engagement.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:32px">
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.85">
+      <div style="font-size:24px;margin-bottom:10px">🎧</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Audio Overview</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.5">A 12–18 minute podcast-style walkthrough of the full audit — two AI hosts discuss the findings, the gaps, and the strategic implications in conversational format. Listen on the commute.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">🔒</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.85">
+      <div style="font-size:24px;margin-bottom:10px">🧠</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Mind Map</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.5">An interactive concept map of every finding, recommendation, and dependency — see at a glance how the schema fix unlocks the AI SoV gap, which unlocks the conversion infrastructure.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">🔒</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.85">
+      <div style="font-size:24px;margin-bottom:10px">📊</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">Infographic</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.5">A single-page visual summary of the audit — the kind of artefact you forward to a board, a co-founder, or a non-technical stakeholder who won't read 3,700 lines of HTML.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">🔒</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.85">
+      <div style="font-size:24px;margin-bottom:10px">💬</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px">NotebookLM Chat</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.5">Ask anything. "What's the fastest fix for the AI SoV gap?" "How does our schema score compare to Q Mixers?" The brain answers with citations back to the exact section of the audit.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">🔒</div>
+    </div>
+  </div>
+
+  <div style="padding:28px 32px;background:linear-gradient(135deg,rgba(168,85,247,0.10),rgba(99,102,241,0.08));border:1px solid rgba(168,85,247,0.30);border-radius:var(--radius);text-align:center">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">This is a public audit, not a retained engagement</div>
+    <p style="font-size:13px;color:var(--text-secondary);max-width:620px;margin:0 auto 18px;line-height:1.7">Fever-Tree was scanned as part of F&amp;T's avatar validation work — independent and unsolicited. A provisioned NotebookLM brain ships with the Annual Intelligence Plan and the Full Intelligence Report (one-off). The capability is real; it's just not on for this report.</p>
+    <a href="mailto:hello@frictionandtoil.com?subject=Fever-Tree%20Brain%20Provisioning" style="display:inline-block;padding:13px 32px;border-radius:100px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#c084fc;border:1px solid rgba(168,85,247,0.45);text-decoration:none;letter-spacing:.3px">Talk to F&amp;T about provisioning →</a>
+  </div>
+
+</div>
+</div>
+<!-- ========== END: CHUNK_4b_BRAIN_LOCKED ========== -->
 
 <!-- ========== BEGIN: CHUNK_5_DASHBOARD ========== -->
 <!-- DASHBOARD PANEL -->
