@@ -497,6 +497,214 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .wi-panel a.wi-current::before { content: "▸ "; color: rgba(255,255,255,0.5); margin-right: 4px; }
 body.wi-panel-locked { overflow: hidden; }
 @media (max-width: 700px) { .wi-nav { padding: 0 20px !important; } .wi-panel { right: 12px; width: calc(100vw - 24px); } }
+
+/* ============ RICH COMPONENTS (Shift depth tier) ============ */
+
+/* ---- Stat Strip ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  overflow: hidden;
+  max-width: 820px;
+  margin-top: 2.5rem;
+}
+.stat-cell {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid var(--border);
+  transition: background 0.25s;
+  text-align: center;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: var(--bg-card-hover); }
+.stat-num {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+  text-align: center;
+  animation: stat-throb 2.6s ease-in-out infinite;
+  transform-origin: center;
+  display: inline-block;
+}
+.stat-num.col-search { animation-delay: 0s; color: var(--search); text-shadow: 0 0 18px rgba(99,102,241,0.45); }
+.stat-num.col-design { animation-delay: 0.9s; color: var(--design); text-shadow: 0 0 18px rgba(201,150,58,0.40); }
+.stat-num.col-compete { animation-delay: 0.45s; color: var(--compete); text-shadow: 0 0 18px rgba(244,63,94,0.40); }
+@keyframes stat-throb {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.78; }
+}
+@media (prefers-reduced-motion: reduce) { .stat-num { animation: none; } }
+.stat-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.stat-source { display: block; margin-top: 0.55rem; font-size: 0.68rem; font-family: var(--mono); color: var(--text-muted); letter-spacing: 0.04em; }
+@media (max-width: 700px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-cell:last-child { border-bottom: none; }
+}
+
+/* ---- Section TL;DR ---- */
+.section-tldr {
+  display: block;
+  margin-top: 1.4rem;
+  padding: 0.85rem 1rem 0.85rem 1.05rem;
+  border-left: 2px solid var(--design);
+  background: linear-gradient(90deg, rgba(201,150,58,0.06), rgba(201,150,58,0.01));
+  border-radius: 0 4px 4px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.section-tldr-eyebrow {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--design);
+}
+.section-head .section-tldr { max-width: 64ch; margin-top: 1.5rem; margin-left: 0; margin-right: 0; }
+
+/* ---- Table strap ---- */
+.table-strap {
+  margin-top: 2.25rem; margin-bottom: 0.5rem;
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--design);
+  background: rgba(201,150,58,0.08);
+  border: 1px solid rgba(201,150,58,0.25);
+  border-radius: 999px;
+}
+
+/* ---- Chapter Break ---- */
+.chapter-break {
+  padding: clamp(4rem, 8vw, 6rem) var(--gutter);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.chapter-break::before {
+  content: ""; display: block; width: 60px; height: 1px;
+  background: var(--design); opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.chapter-break-quote {
+  max-width: 760px; margin: 0 auto;
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+  line-height: 1.35; color: var(--text);
+  letter-spacing: -0.005em;
+}
+
+/* ---- Table breakout (tier-style) ---- */
+.table-breakout { margin-top: 2.25rem; margin-bottom: 1rem; width: 100%; min-width: 0; }
+.tier-table-wrap { border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tier-table-caption { padding: 1.1rem 1.4rem; border-bottom: 1px solid var(--border); font-family: var(--body); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-muted); }
+.tier-table { width: 100%; min-width: 760px; border-collapse: collapse; font-family: var(--body); font-size: 0.82rem; table-layout: fixed; }
+.tier-table thead th { padding: 0.85rem 0.9rem; text-align: left; font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.tier-table tbody td { padding: 0.9rem; vertical-align: top; border-bottom: 1px solid var(--border); color: var(--text-secondary); line-height: 1.5; word-break: break-word; overflow-wrap: anywhere; }
+.tier-table tbody tr:last-child td { border-bottom: none; }
+.tier-table tbody tr:hover td { background: var(--bg-card-hover); }
+.tier-name { font-family: var(--mono); font-size: 0.76rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+.tier-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.tier-bot { font-family: var(--mono); font-size: 0.74rem; color: var(--text); word-break: break-word; overflow-wrap: anywhere; }
+.tier-bot-empty { color: var(--text-muted); font-style: italic; font-family: var(--body); font-size: 0.76rem; }
+.table-scroll-hint { display: none; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.6rem; }
+@media (max-width: 900px) { .table-scroll-hint { display: block; } }
+
+/* ---- Vignettes ---- */
+.vignettes { padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+.section-head { max-width: 880px; margin: 0 auto 0.5rem; text-align: left; }
+.vignette-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.vignette-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 2rem 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+.vignette-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+.vignette-card.v1 { border-top: 3px solid var(--search); }
+.vignette-card.v2 { border-top: 3px solid var(--design); }
+.vignette-card.v3 { border-top: 3px solid var(--compete); }
+.vignette-tag { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+.vignette-headline { font-family: var(--serif); font-size: 1.32rem; font-weight: 400; line-height: 1.28; color: var(--text); margin-bottom: 1rem; }
+.vignette-body { font-size: 0.92rem; line-height: 1.65; color: var(--text-secondary); }
+.vignette-body p + p { margin-top: 0.85rem; }
+.vignette-coi { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem; }
+.vignette-coi-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-coi-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-coi-value { font-family: var(--mono); font-size: 0.92rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+.vignette-coi-row.full .vignette-coi-value { font-size: 1.05rem; }
+.vignette-card.v1 .vignette-coi-row.full .vignette-coi-value { color: var(--search); }
+.vignette-card.v2 .vignette-coi-row.full .vignette-coi-value { color: var(--design); }
+.vignette-card.v3 .vignette-coi-row.full .vignette-coi-value { color: var(--compete); }
+.vignette-engine { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.vignette-engine-label { font-family: var(--body); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.vignette-engine-value { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; letter-spacing: -0.01em; text-align: right; color: var(--text-secondary); }
+
+/* ---- Sidebar ---- */
+.sidebar-section { padding: clamp(4rem, 8vw, 6rem) 0; border-bottom: 1px solid var(--border); background: var(--bg); }
+.sidebar-callout { max-width: 880px; margin: 0 auto; padding: 2.75rem clamp(1.5rem, 3vw, 3rem); background: linear-gradient(180deg, rgba(201,150,58,0.04), rgba(255,255,255,0.02)); border: 1px solid var(--border); border-radius: 12px; position: relative; }
+.sidebar-callout::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--design), rgba(201,150,58,0.2)); border-radius: 12px 0 0 12px; }
+.sidebar-tag { display: inline-block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--design); margin-bottom: 0.85rem; }
+.sidebar-callout h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; color: var(--text); margin-bottom: 1.25rem; }
+.sidebar-intro { font-family: var(--body); font-size: 1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 64ch; }
+.sidebar-points { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-point { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+.sidebar-point-num { font-family: var(--mono); font-size: 1.1rem; font-weight: 600; color: var(--design); min-width: 2.4rem; padding-top: 0.15rem; }
+.sidebar-point-body { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-point-body strong { color: var(--text); font-weight: 600; }
+.sidebar-coda { margin-top: 2.25rem; padding-top: 1.75rem; border-top: 1px solid var(--border); font-family: var(--body); font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); }
+.sidebar-coda strong { color: var(--text); font-weight: 600; }
+.sidebar-coda em { color: var(--text); font-style: italic; }
+
+/* ---- Engine Strip ---- */
+.engine-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+.engine-card { padding: 1.4rem 1.35rem 1.3rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; border-top-width: 3px; display: flex; flex-direction: column; gap: 0.85rem; }
+.engine-card.fam-google { border-top-color: var(--search); }
+.engine-card.fam-openai { border-top-color: var(--design); }
+.engine-card.fam-anthropic { border-top-color: var(--compete); }
+.engine-card-fam { font-family: var(--mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card.fam-google .engine-card-fam { color: var(--search); }
+.engine-card.fam-openai .engine-card-fam { color: var(--design); }
+.engine-card.fam-anthropic .engine-card-fam { color: var(--compete); }
+.engine-card-surfaces { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.3; color: var(--text); }
+.engine-card-row { padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.2rem; }
+.engine-card-row-label { font-family: var(--mono); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+.engine-card-row-value { font-family: var(--body); font-size: 0.85rem; font-weight: 500; line-height: 1.4; color: var(--text-secondary); }
+@media (max-width: 800px) { .engine-strip { grid-template-columns: 1fr; } }
+
+/* ---- Frame Block ---- */
+.frame-block { margin: 2.5rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.frame-cell { padding: 1.5rem 1.5rem 1.4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+.frame-cell.old { border-left: 3px solid var(--text-muted); opacity: 0.85; }
+.frame-cell.new { border-left: 3px solid var(--design); }
+.frame-label { display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.85rem; }
+.frame-cell.new .frame-label { color: var(--design); }
+.frame-quote { font-family: var(--serif); font-style: italic; font-size: 1.1rem; line-height: 1.45; color: var(--text); }
+@media (max-width: 700px) { .frame-block { grid-template-columns: 1fr; } }
+
+/* ---- Sources ---- */
+.sources { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sources .container { max-width: 880px; }
+.sources h2 { font-family: var(--display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+.sources ol { list-style: none; padding: 0; margin: 0; counter-reset: sourcenum; display: flex; flex-direction: column; gap: 0.85rem; }
+.sources li { counter-increment: sourcenum; font-size: 0.78rem; line-height: 1.65; color: var(--text-muted); padding-left: 2.25rem; position: relative; }
+.sources li::before { content: counter(sourcenum); position: absolute; left: 0; top: 0; font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); font-weight: 600; width: 1.75rem; text-align: right; }
+.sources li strong { color: var(--text-secondary); font-weight: 600; }
+.sources li em { color: var(--text-secondary); }
+.sources li a { color: var(--design); text-decoration: none; border-bottom: 1px solid rgba(201,150,58,0.25); word-break: break-all; }
+.sources li a:hover { color: var(--text); }
 </style>
 </head>
 <body>
@@ -565,7 +773,32 @@ body.wi-panel-locked { overflow: hidden; }
         <p class="hero-subhead reveal d2">Google&rsquo;s AI Overviews now sit above the ten blue links for a growing share of UK queries. Each Overview cites three to six sources. The selection logic isn&rsquo;t public, but it&rsquo;s observable.</p>
         <p class="hero-deck reveal d3">The AI Overview is the most consequential change to Google search in fifteen years, and most UK businesses are still treating it as a marketing-blog topic rather than an indexation problem. It is an indexation problem. The mechanics are visible if you read the citations carefully.</p>
         <p class="hero-byline reveal d3">By Frank Graham &middot; Published 10 May 2026 &middot; ~6 min read</p>
+
+        <div class="stat-strip reveal d4">
+          <div class="stat-cell">
+            <div class="stat-num col-search">6</div>
+            <div class="stat-desc">sources is the maximum any Overview cites in its tray. The median across our observed sample sits at four. The cited list is a small one, and entry to it is contested.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-design">5</div>
+            <div class="stat-desc">structural signals determine whether a page is in the cited set. Page-1 organic rank is the price of entry. The other four sit downstream of it.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, May 2026</span>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-num col-compete">0</div>
+            <div class="stat-desc">dashboards in the UK businesses we audit name &ldquo;AI Overview presence&rdquo; as a tracked weekly metric. The most consequential change to Google in fifteen years is unmeasured.</div>
+            <span class="stat-source">Friction &amp; Toil audit base, Q1 2026</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER BREAK ============ -->
+  <section class="chapter-break">
+    <div class="chapter-break-quote reveal">
+      The selection logic isn&rsquo;t public. The selection pattern, once you read enough Overviews, is.
     </div>
   </section>
 
@@ -575,6 +808,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
         <h2 class="section-heading">What an AI Overview actually is.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          A Gemini synthesis sitting above the ten blue links, citing three to six sources. The selection logic is observable.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>An AI Overview is a Gemini-generated synthesis that answers the user&rsquo;s query using sources from Google&rsquo;s live index. It surfaces above the ten blue links when Google&rsquo;s system decides the query is &ldquo;answerable&rdquo; with reasonable confidence, which in practice means: informational queries, comparison queries, &ldquo;how to&rdquo; queries, and the more considered transactional queries (&ldquo;best wedding venues in Cotswolds 2026&rdquo;, not &ldquo;buy nike air max&rdquo;).</p>
@@ -589,6 +826,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
         <h2 class="section-heading">The five signals that get you cited.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Page-1 organic rank, direct-answer format, relevant schema, topical authority, verifiable claims. Four of the five are page-level.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>From observing several hundred Overviews across UK sectors, the citation pattern is consistent:</p>
@@ -605,12 +846,74 @@ body.wi-panel-locked { overflow: hidden; }
     </div>
   </section>
 
+  <!-- ============ II.5 THREE GOOGLE ANSWER SURFACES ============ -->
+  <section class="prose-section">
+    <div class="container">
+      <div class="prose-label reveal">
+        <span class="section-numeral" style="font-size:0.78em;letter-spacing:-0.02em;">II &frac12;</span>
+        <h2 class="section-heading">Three Google answer surfaces. Same index. Different shortlists.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          AI Overview, AI Mode, and the older Featured Snippet all read Google&rsquo;s index. They cite differently. Optimising for one is not optimising for all three.
+        </span>
+      </div>
+      <div class="body-prose reveal d2">
+        <p>Before engineering for AI Overview citation, it helps to see where the Overview sits among Google&rsquo;s other answer surfaces. Three Google products now produce answers above the ten blue links, and they do not agree on who to cite.</p>
+
+        <div class="engine-strip" aria-label="Three Google answer surfaces">
+          <div class="engine-card fam-google">
+            <span class="engine-card-fam">Google &middot; pre-2024</span>
+            <span class="engine-card-surfaces">Featured Snippet</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Cites</span>
+              <span class="engine-card-row-value">One source. Extracted paragraph.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Triggered by</span>
+              <span class="engine-card-row-value">Direct factual queries with a clear best-answer page.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-openai">
+            <span class="engine-card-fam">Google &middot; 2024</span>
+            <span class="engine-card-surfaces">AI Overview</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Cites</span>
+              <span class="engine-card-row-value">Three to six sources. Sources tray.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Triggered by</span>
+              <span class="engine-card-row-value">Informational, comparison, and considered-transactional queries.</span>
+            </div>
+          </div>
+          <div class="engine-card fam-anthropic">
+            <span class="engine-card-fam">Google &middot; 2025</span>
+            <span class="engine-card-surfaces">AI Mode (full-tab)</span>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Cites</span>
+              <span class="engine-card-row-value">Variable. Deeper retrieval, multi-turn.</span>
+            </div>
+            <div class="engine-card-row">
+              <span class="engine-card-row-label">Triggered by</span>
+              <span class="engine-card-row-value">User opts into the AI Mode tab from the search bar.</span>
+            </div>
+          </div>
+        </div>
+
+        <p>The Featured Snippet is the oldest of the three. It still fires, but on a shrinking share of queries; the Overview has absorbed most of the territory it used to occupy. The AI Overview is the surface this article is mostly about. AI Mode is a distinct full-page conversational interface that runs deeper retrieval against the same Google index. The three surfaces are read in different contexts by different segments of the buyer base. A brand that is cited in one is not automatically cited in the other two. Tracking only the surface your dashboard happens to show you is the same Multi-Index trap, scoped down to a single vendor. We covered the cross-engine version of this in <a href="/web-intelligence/the-shift/multi-index-problem/">The Multi-Index Problem</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ III. ENGINEER FOR IT ============ -->
   <section class="prose-section">
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
         <h2 class="section-heading">How to engineer for it, page by page.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Five checks per page. Named query in H1. One-sentence answer up top. Supported claim. Correct schema. Hierarchical URL.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Take any page where you want AI Overview visibility. Run this checklist:</p>
@@ -631,6 +934,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
         <h2 class="section-heading">Why some pages stop getting cited.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Three failure modes: marketing-team rewrite, schema drift, a more authoritative source publishing a cleaner answer.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Three patterns we see in F&amp;T audits where Overview citations have dropped:</p>
@@ -639,6 +946,111 @@ body.wi-panel-locked { overflow: hidden; }
           <li><strong>The schema got broken.</strong> A site migration removed FAQPage schema, or the Q&amp;A pairs in the HTML drifted from the schema. Overviews favour pages where the human-visible content matches the structured data exactly.</li>
           <li><strong>A more authoritative source published a clearer answer.</strong> Reuters wrote about your topic. The Times did. A trade publication did. Overviews migrate to the cleaner, more authoritative answer. The defensive move is publishing fact-dense original research that becomes the cited source for everyone else.</li>
         </ul>
+
+        <div class="frame-block reveal">
+          <div class="frame-cell old">
+            <span class="frame-label">Old</span>
+            <p class="frame-quote">&ldquo;We rank #1 on Google for our core query.&rdquo;</p>
+          </div>
+          <div class="frame-cell new">
+            <span class="frame-label">New</span>
+            <p class="frame-quote">&ldquo;When the AI Overview answers our core query, our page is in the three-to-six cited sources, and we know which signals put us there.&rdquo;</p>
+          </div>
+        </div>
+
+        <p>The first sentence describes a static rank. The second describes an operating discipline. Overviews change every time the underlying index refreshes, which is constantly. A page that was cited in February can be uncited in May without any deliberate change on your part; a competitor publishing a cleaner version of your answer is enough. The discipline is to keep reading the cited sources, not to trust the dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IV.5 WORKED EXAMPLES ============ -->
+  <section class="vignettes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-numeral">IV &frac12;</span>
+        <h2 class="section-heading">Three patterns that drop a cited page.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Composite cases from the F&amp;T audit base. The dashboard does not name what changed. The Overview tray does.
+        </span>
+        <p class="section-sub">The three patterns below are not hypothetical. Each one is a composite drawn from multiple audits in Q1 and Q2 2026 where a previously-cited page stopped appearing in its category Overview, and the dashboard offered no explanation.</p>
+      </div>
+
+      <div class="vignette-grid">
+
+        <div class="vignette-card v1 reveal d1">
+          <span class="vignette-tag">01 &middot; The page-one fall</span>
+          <div class="vignette-headline">A regional venue group ranking position 8 for its core comparison query. Page-1, but barely.</div>
+          <div class="vignette-body">
+            <p>The Overview answer layer reads top-down. For most informational queries we observe, the cited sources cluster in organic positions one through five. Sliding from position 4 to position 8 has no immediate visible cost on the rank tracker. It has a clear cost on Overview presence.</p>
+            <p>The page was cited in February. By May, the Overview cited two competitors that had each moved up two positions. The page was still page-1. It was no longer in the cited set.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Citation rate (Feb)</span>
+              <span class="vignette-coi-value">68%</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation rate (May)</span>
+              <span class="vignette-coi-value">9%</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Google AI Overview</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v2 reveal d2">
+          <span class="vignette-tag">02 &middot; The schema migration</span>
+          <div class="vignette-headline">A professional-services firm with strong FAQPage citation. A site rebuild dropped the schema on launch.</div>
+          <div class="vignette-body">
+            <p>The human-visible Q&amp;A content survived the migration. The structured-data block that mirrored it did not. The Overview answer layer favours pages where the FAQPage schema matches the visible questions exactly. The mirror was broken on launch night.</p>
+            <p>Citation rate halved in eight days. The marketing team had no event in their calendar that named what changed.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Time to detect</span>
+              <span class="vignette-coi-value">~6 weeks</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Citation half-life</span>
+              <span class="vignette-coi-value">8 days</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Google AI Overview</span>
+          </div>
+        </div>
+
+        <div class="vignette-card v3 reveal d3">
+          <span class="vignette-tag">03 &middot; The brand rewrite</span>
+          <div class="vignette-headline">A page that answered the query in its first paragraph, rewritten as a brand intro and a hero quote.</div>
+          <div class="vignette-body">
+            <p>The new top-of-page copy described what the company stood for. The answer to the query that had been cited for six months moved to paragraph five. The Overview answer layer stopped finding a clean extract and migrated to a plainer competitor page.</p>
+            <p>The rewrite read well. The rank held. The Overview citation was gone within a fortnight.</p>
+          </div>
+          <div class="vignette-coi">
+            <div class="vignette-coi-row">
+              <span class="vignette-coi-label">Rank position</span>
+              <span class="vignette-coi-value">unchanged</span>
+            </div>
+            <div class="vignette-coi-row full">
+              <span class="vignette-coi-label">Overview citation</span>
+              <span class="vignette-coi-value">lost</span>
+            </div>
+          </div>
+          <div class="vignette-engine">
+            <span class="vignette-engine-label">Surface</span>
+            <span class="vignette-engine-value">Google AI Overview</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal d4" style="margin-top:3rem;max-width:64ch;margin-left:auto;margin-right:auto;text-align:center;">
+        <p style="font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;font-weight:400;color:var(--text-secondary);line-height:1.5;">In each case, the rank tracker said the page was fine. In each case, the Overview tray named a different set of sources by the time the marketing team noticed.</p>
       </div>
     </div>
   </section>
@@ -649,6 +1061,10 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
         <h2 class="section-heading">How to test for AI Overview visibility.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Incognito Google, UK-located, 10&ndash;15 queries. Note which trigger Overviews and which sources get cited. Twenty minutes of reading beats every dashboard.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>The boring, manual way works best. Open Google in an incognito window, set the location to your target market (UK, or a specific UK city), and run the queries you care about. Note which queries trigger an Overview. Note which sources are cited. Repeat for ten to fifteen queries.</p>
@@ -663,10 +1079,62 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">VI</span>
         <h2 class="section-heading">Tools that report on Overview presence.</h2>
+        <span class="section-tldr">
+          <span class="section-tldr-eyebrow">In one line</span>
+          Authoritas, Peec AI, KIME, Profound track trends. None substitute for reading the cited page and asking why.
+        </span>
       </div>
       <div class="body-prose reveal d2">
         <p>Several tools track AI Overview citations as of mid-2026: Authoritas, Peec AI, KIME, and Profound all have variants. They&rsquo;re useful for tracking trends. They are not a substitute for reading the actual Overview text and asking why a competitor is cited and you aren&rsquo;t.</p>
         <p>The data answers a different question: <em>are we trending up or down?</em>. The reading answers the more useful one: <em>what does the cited page do that ours doesn&rsquo;t?</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIDEBAR &middot; SELF-CHECK ============ -->
+  <section class="sidebar-section" id="self-check">
+    <div class="container">
+      <div class="sidebar-callout reveal">
+        <span class="sidebar-tag">Sidebar &middot; The five-minute self-check</span>
+        <h3>The AI Overview Self-Check.</h3>
+        <p class="sidebar-intro">Five minutes. One coffee. The five-question audit covered in <a href="/web-intelligence/the-shift/" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);">the Maturity Curve piece</a> asks whether you are visible at all. This one asks whether the most consequential surface in Google search has you in its cited set.</p>
+
+        <div class="sidebar-points">
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">01</div>
+            <div class="sidebar-point-body">
+              <strong>Run your 10 most important commercial queries in incognito Google, UK-located.</strong> Note which trigger an Overview, and which do not. Informational and comparison queries tend to. Pure transactional queries rarely do. The mix is your starting map.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">02</div>
+            <div class="sidebar-point-body">
+              <strong>For each Overview that fired, open every cited source in a new tab.</strong> Read the first paragraph of each. The Overview answer layer reads top-down and stops when it has a clean extract. The pattern across the cited pages is the pattern your page needs to match.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">03</div>
+            <div class="sidebar-point-body">
+              <strong>Ask: what does the cited page do in its first paragraph that yours doesn&rsquo;t?</strong> A direct answer. A number. A named source. A clean structural cue. The Overview is not subjective. If a competitor is cited and you aren&rsquo;t, the difference is in the first 200 words.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">04</div>
+            <div class="sidebar-point-body">
+              <strong>Check your page schema.</strong> FAQPage on Q&amp;A content. HowTo on instructional. Article on editorial. Product on product pages. LocalBusiness on near-me queries. The human-visible content must match the structured data exactly; drift is one of the three most common citation-loss patterns we audit.
+            </div>
+          </div>
+          <div class="sidebar-point">
+            <div class="sidebar-point-num">05</div>
+            <div class="sidebar-point-body">
+              <strong>Cross-check Bing-powered ChatGPT and Brave-powered Claude on the same query.</strong> The Overview is one surface. The two other major AI assistants read different indexes (covered in <a href="/web-intelligence/the-shift/multi-index-problem/" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);">The Multi-Index Problem</a>). Overlap reveals the citation graph your sector lives on. Divergence reveals which engines you are losing.
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-coda">
+          Score honestly. <strong>0&ndash;1 yes</strong> = the most consequential change to Google in fifteen years is unmeasured in your reporting. <strong>2&ndash;3</strong> = you have started to read the surface but not yet engineered for it. <strong>4&ndash;5</strong> = you are operating with the visibility discipline of a 2026 brand, and most of your competitors are not.
+        </div>
       </div>
     </div>
   </section>
@@ -714,6 +1182,21 @@ body.wi-panel-locked { overflow: hidden; }
           <span class="form-note">No pitch sequence. Unsubscribe any time.</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES &amp; REFERENCES ============ -->
+  <section class="sources">
+    <div class="container">
+      <h2>Sources &amp; references</h2>
+      <ol>
+        <li><strong>Google Search Central, <em>AI Overviews and your website</em></strong>: Google&rsquo;s own documentation on how AI Overviews source from the index, the role of standard SEO practices, and what is and isn&rsquo;t a separate optimisation surface. <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">developers.google.com/search/docs/appearance/ai-features</a></li>
+        <li><strong>Google, <em>Generative AI in Search: Let Google do the searching for you</em></strong>: launch reference for the AI Overview product and the sources tray, the original public framing for how the surface integrates Gemini&rsquo;s synthesis with Google&rsquo;s live index. <a href="https://blog.google/products/search/generative-ai-google-search-may-2024/" target="_blank" rel="noopener">blog.google/products/search/generative-ai-google-search-may-2024</a></li>
+        <li><strong>Schema.org, <em>FAQPage, HowTo, Article, Product, LocalBusiness</em></strong>: canonical reference for the structured-data types whose presence correlates with Overview citation in our audit base. <a href="https://schema.org/FAQPage" target="_blank" rel="noopener">schema.org</a></li>
+        <li><strong>Google, <em>Search Quality Rater Guidelines</em> (Dec 2025 edition)</strong>: the rater handbook that underpins how Google assesses the &ldquo;helpful, reliable, people-first&rdquo; signals AI Overview citation behaviour appears to favour. <a href="https://services.google.com/fh/files/misc/hsw-sqrg.pdf" target="_blank" rel="noopener">services.google.com</a></li>
+        <li><strong>Friction &amp; Toil audit base, Q1 2026</strong>: 42 commissioned Web Intelligence Reports across UK hospitality, professional services, and heritage venues. Source for the &ldquo;0 dashboards&rdquo; figure cited in the hero stat strip and for the three composite cases in Section IV &frac12;.</li>
+        <li><strong>Friction &amp; Toil live re-test, May 2026</strong>: 38-brand curl-based crawler-policy and schema scan re-running Overview-relevant diagnostics. Companion evidence for the structural-readiness patterns described in Section II.</li>
+      </ol>
     </div>
   </section>
 
