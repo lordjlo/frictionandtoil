@@ -28,6 +28,16 @@ default outcome unless we follow the rule below.
 | Perplexity Citation Audit | `web-intelligence/the-shift/perplexity-citation-audit/index.html` | B |
 | Real-Life Stories | `web-intelligence/real-life-stories/index.html` | B |
 
+**Taster pages** (use a simplified panel with Web Intelligence, Industry Examples, Sample Reports, Big Brands, Briefings, More from F&T groups — not the canonical Variant A/B structure):
+
+| Page | File |
+| :--- | :--- |
+| Wedding Venues | `web-intelligence/wedding-venues/index.html` |
+| Members' Clubs | `web-intelligence/members-club/index.html` |
+| Destination Hotels | `web-intelligence/destination-hotel/index.html` |
+| Health Clubs | `web-intelligence/health-club/index.html` |
+| Heritage Estates | `web-intelligence/heritage-estate/index.html` |
+
 **Variants** (defined inline in the canonical file):
 
 - **A** — includes the "On this page" group with page-local anchors.
