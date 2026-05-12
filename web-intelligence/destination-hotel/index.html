@@ -317,9 +317,9 @@ const RING_DESCS = {
 const C = CONFIG;
 const CIRC = 345;
 
-document.getElementById('page-title').textContent = 'Website Intelligence — ' + C.clientName;
+document.title = 'Website Intelligence — ' + C.clientName + ' · F&T';
 document.getElementById('t-domain').textContent = C.clientName;
-document.getElementById('t-prepared').textContent = 'Anonymised sector sample &middot; ' + C.date;
+document.getElementById('t-prepared').innerHTML = 'Anonymised sector sample &middot; ' + C.date;
 document.getElementById('t-revenue').textContent = C.revenueRange;
 document.getElementById('t-headline').textContent = C.diagnosticHeadline;
 document.getElementById('t-subline').textContent = C.diagnosticSubline;
