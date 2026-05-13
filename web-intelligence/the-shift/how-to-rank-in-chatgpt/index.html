@@ -491,6 +491,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .wi-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .wi-panel-group + .wi-panel-group { margin-top: 8px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
 .wi-panel-title { display: block; padding: 0 22px 6px; font-family: sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+a.wi-panel-title { text-decoration: none; }
+a.wi-panel-title:hover { color: rgba(255,255,255,0.65); }
 .wi-panel a { display: block; padding: 10px 22px; font-family: sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.15s, background 0.15s; }
 .wi-panel a:hover, .wi-panel a:focus-visible { color: #fff; background: rgba(255,255,255,0.04); outline: none; }
 .wi-panel a.wi-current { color: #fff; background: rgba(255,255,255,0.05); cursor: default; pointer-events: none; }
@@ -691,7 +693,7 @@ body.wi-panel-locked { overflow: hidden; }
 </nav>
 <div class="wi-panel" id="wiPanel" role="menu" aria-labelledby="wiMenuBtn">
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Web Intelligence hub</span>
+    <a class="wi-panel-title" href="/web-intelligence/">Web Intelligence hub</a>
     <a href="/web-intelligence/" role="menuitem">Hub overview</a>
     <a href="/web-intelligence/multi-index-live/" role="menuitem">Multi-Index live demo</a>
     <a href="/web-intelligence/#maturity" role="menuitem">Maturity curve</a>
@@ -702,24 +704,32 @@ body.wi-panel-locked { overflow: hidden; }
     <a href="/web-intelligence/#free-score" role="menuitem">Get a free score</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">The Shift</span>
+    <a class="wi-panel-title" href="/web-intelligence/the-shift/">The Shift</a>
     <a href="/web-intelligence/the-shift/" role="menuitem">Maturity Curve</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Editorials</span>
+    <a class="wi-panel-title" href="/web-intelligence/the-shift/">Editorials</a>
     <a href="/web-intelligence/the-shift/multi-index-problem/" role="menuitem">Multi-Index Problem</a>
     <a href="/web-intelligence/the-shift/citation-graph/" role="menuitem">Citation Graph</a>
     <a href="/web-intelligence/the-shift/cost-of-not-knowing/" role="menuitem">Cost of Not Knowing</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Briefings</span>
+    <a class="wi-panel-title" href="/web-intelligence/the-shift/">Briefings</a>
     <a href="/web-intelligence/the-shift/ai-search-visibility-audit-uk/" role="menuitem">AI Search Visibility Audit UK</a>
     <a href="/web-intelligence/the-shift/ai-overview-visibility/" role="menuitem">AI Overview Visibility</a>
     <a href="/web-intelligence/the-shift/how-to-rank-in-chatgpt/" class="wi-current" aria-current="page" role="menuitem">How to Rank in ChatGPT</a>
     <a href="/web-intelligence/the-shift/perplexity-citation-audit/" role="menuitem">Perplexity Citation Audit</a>
   </div>
   <div class="wi-panel-group">
-    <span class="wi-panel-title">Stories of Realisation</span>
+    <a class="wi-panel-title" href="/web-intelligence/#big-brands">Big Brands &middot; Live Audits</a>
+    <a href="/web-intelligence/big-brands/costco/" role="menuitem">Costco UK</a>
+    <a href="/web-intelligence/big-brands/taylor-swift/" role="menuitem">Taylor Swift</a>
+    <a href="/web-intelligence/big-brands/barclays/" role="menuitem">Barclays</a>
+    <a href="/web-intelligence/big-brands/samsung/" role="menuitem">Samsung UK</a>
+    <a href="/web-intelligence/big-brands/nike/" role="menuitem">Nike</a>
+  </div>
+  <div class="wi-panel-group">
+    <a class="wi-panel-title" href="/web-intelligence/real-life-stories/">Stories of Realisation</a>
     <a href="/web-intelligence/real-life-stories/" role="menuitem">All four stories</a>
     <a href="/web-intelligence/real-life-stories/#the-invisible-landmark" role="menuitem">01 &middot; The Invisible Landmark</a>
     <a href="/web-intelligence/real-life-stories/#the-club-that-didnt-exist" role="menuitem">02 &middot; The Club That Didn&rsquo;t Exist</a>
