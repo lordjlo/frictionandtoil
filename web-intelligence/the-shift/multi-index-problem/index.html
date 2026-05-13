@@ -1165,6 +1165,22 @@ body.wi-panel-locked { overflow: hidden; }
 .wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
 .wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
 @media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -1313,7 +1329,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
-        <h2 class="section-heading">The map you've been reading isn't the territory.</h2>
+        <h2 class="section-heading" id="map-not-territory">The map you've been reading isn't the territory.<a class="heading-anchor" href="#map-not-territory" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Your agency dashboard tracks one engine. Your buyer is on three.
@@ -1333,7 +1349,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
-        <h2 class="section-heading">One buyer. Three engines. Three indexes.</h2>
+        <h2 class="section-heading" id="three-indexes">One buyer. Three engines. Three indexes.<a class="heading-anchor" href="#three-indexes" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Gemini reads Google. ChatGPT reads Bing. Claude reads Brave. The three indexes do not agree on who you are.
@@ -1395,7 +1411,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral" style="font-size:0.78em;letter-spacing:-0.02em;">II &frac12;</span>
-        <h2 class="section-heading">And even within one engine, the answers diverge.</h2>
+        <h2 class="section-heading" id="answers-diverge">And even within one engine, the answers diverge.<a class="heading-anchor" href="#answers-diverge" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Three Google surfaces (Gemini, Search AI Overview, AI Mode) produce three different shortlists for the same query. The shared index is not the shared answer.
@@ -1458,7 +1474,7 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-subrow">
         <div class="prose-label reveal">
           <span class="section-numeral">III</span>
-          <h2 class="section-heading">The mechanism nobody briefed the marketing department on.</h2>
+          <h2 class="section-heading" id="three-crawler-tiers">The mechanism nobody briefed the marketing department on.<a class="heading-anchor" href="#three-crawler-tiers" aria-label="Link to this section">#</a></h2>
           <span class="section-tldr">
             <span class="section-tldr-eyebrow">In one line</span>
             Three tiers of bot. Blocking GPTBot is one decision. Blocking OAI-SearchBot is what removes you from ChatGPT. Most agency-set robots.txt files don't separate them.
@@ -1554,7 +1570,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">IV</span>
-        <h2 class="section-heading">What the divergence actually costs.</h2>
+        <h2 class="section-heading" id="divergence-costs">What the divergence actually costs.<a class="heading-anchor" href="#divergence-costs" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Single-index Cost of Inaction was a third of the picture. Most marketing directors are reading the smallest third.
@@ -1652,7 +1668,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
-        <h2 class="section-heading">What changes in the marketing director's quarterly report.</h2>
+        <h2 class="section-heading" id="quarterly-report">What changes in the marketing director's quarterly report.<a class="heading-anchor" href="#quarterly-report" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Run the category query in three assistants. Claim Bing Webmaster Tools. Retire &ldquo;#1 on Google&rdquo; as the answer to the visibility question.
@@ -1735,7 +1751,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="closing-inner reveal">
         <span class="eyebrow">Closing</span>
-        <h2>One ranking is no longer one truth.</h2>
+        <h2 id="one-ranking">One ranking is no longer one truth.<a class="heading-anchor" href="#one-ranking" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>Marketing directors at heritage venues, members' clubs, and country house hotels have spent fifteen years building the offline brand. The Google rank, when it came, was the digital echo of that brand. For most of that period, the echo was loud enough. One index, one ranking, one true statement: <em>we are visible to the buyer</em>.</p>
           <p>That statement is now true on one third of the buyer's surface area. Sometimes less. The brand built carefully for a decade is being filtered, in real time, through three indexes that do not agree on what it stands for, and the dashboard in front of most marketing directors is reading from the one that is shrinking fastest as a share of the total.</p>

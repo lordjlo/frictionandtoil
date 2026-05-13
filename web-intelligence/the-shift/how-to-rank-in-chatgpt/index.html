@@ -663,6 +663,22 @@ body.wi-panel-locked { overflow: hidden; }
 .sources li em { color: var(--text-secondary); }
 .sources li a { color: var(--design); text-decoration: none; border-bottom: 1px solid rgba(201,150,58,0.25); word-break: break-all; }
 .sources li a:hover { color: var(--text); }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -795,7 +811,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
-        <h2 class="section-heading">Step one: be in Bing&rsquo;s index.</h2>
+        <h2 class="section-heading" id="step-one-bing-index">Step one: be in Bing&rsquo;s index.<a class="heading-anchor" href="#step-one-bing-index" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Verify in Bing Webmaster Tools, submit the sitemap, implement IndexNow. Twenty minutes. The lever most UK businesses haven&rsquo;t touched.
@@ -863,7 +879,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
-        <h2 class="section-heading">Carry the citation signals ChatGPT weighs.</h2>
+        <h2 class="section-heading" id="citation-signals">Carry the citation signals ChatGPT weighs.<a class="heading-anchor" href="#citation-signals" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Bing eligibility is not Bing citation. Eight signals stack on top: direct-answer format, named authority, fact density, schema, external citations, freshness, domain consistency, HTML semantics.
@@ -956,7 +972,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
-        <h2 class="section-heading">What this looks like on a real page.</h2>
+        <h2 class="section-heading" id="real-page-example">What this looks like on a real page.<a class="heading-anchor" href="#real-page-example" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Same content, structured differently. The version that ranks has its answer in paragraph one and its schema unbroken. The version that doesn&rsquo;t, buries both.
@@ -983,7 +999,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
-        <h2 class="section-heading">What you can&rsquo;t directly control.</h2>
+        <h2 class="section-heading" id="cant-control">What you can&rsquo;t directly control.<a class="heading-anchor" href="#cant-control" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Training cut-off, Reddit and Wikipedia presence, trade press. Three signals that cannot be gamed quickly. PR matters more in 2026 than it has in a decade.
@@ -1005,7 +1021,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
-        <h2 class="section-heading">How to test progress.</h2>
+        <h2 class="section-heading" id="test-progress">How to test progress.<a class="heading-anchor" href="#test-progress" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           ChatGPT search mode. Your top queries. Read the citations. Monthly. Visibility gained quietly is also lost quietly.
@@ -1034,7 +1050,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">V &frac12;</span>
-        <h2 class="section-heading">Three patterns that lose ChatGPT citation.</h2>
+        <h2 class="section-heading" id="three-loss-patterns">Three patterns that lose ChatGPT citation.<a class="heading-anchor" href="#three-loss-patterns" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Composite cases from the F&amp;T audit base. Each one shows a different point at which the two-step problem breaks down silently.
@@ -1174,7 +1190,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="closing-inner reveal">
         <span class="eyebrow">The bottom line</span>
-        <h2>Ranking in ChatGPT is two problems. Solve them in order.</h2>
+        <h2 id="two-problems">Ranking in ChatGPT is two problems. Solve them in order.<a class="heading-anchor" href="#two-problems" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>Get into Bing (verify in Bing Webmaster Tools, submit sitemap, implement IndexNow). Then carry the eight citation signals (direct-answer format, named authority, fact density, schema, external citations, freshness, domain consistency, HTML semantics).</p>
           <p>Do the first today. Audit the second this quarter. Re-test monthly. <strong>The mistake most UK businesses make is treating &ldquo;ChatGPT SEO&rdquo; as one thing. It&rsquo;s two, in this order.</strong></p>
@@ -1235,7 +1251,7 @@ body.wi-panel-locked { overflow: hidden; }
   <section class="related-section">
     <div class="container">
       <span class="eyebrow">Real-world examples</span>
-      <h2 class="section-heading" style="max-width:32ch;">Brands missing the citation signals.</h2>
+      <h2 class="section-heading" id="brands-missing-signals" style="max-width:32ch;">Brands missing the citation signals.<a class="heading-anchor" href="#brands-missing-signals" aria-label="Link to this section">#</a></h2>
       <p class="section-sub">Two audits where the eight-factor breakdown is visible at scale.</p>
       <div class="related-grid">
         <a href="/web-intelligence/big-brands/taylor-swift/" class="related-card">

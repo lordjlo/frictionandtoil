@@ -1461,6 +1461,22 @@ body.wi-panel-locked { overflow: hidden; }
 .wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
 .wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
 @media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -1591,7 +1607,7 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
         <span class="eyebrow">The Shift</span>
-        <h2 class="section-heading">The decade-old playbook has expired.</h2>
+        <h2 class="section-heading" id="playbook-expired">The decade-old playbook has expired.<a class="heading-anchor" href="#playbook-expired" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>For ten years, the formula was simple. Rank on page one. Generate clicks. Work your funnel. That formula still holds for a shrinking slice of queries. For the rest, AI has already answered the question before your listing appears.</p>
@@ -1611,12 +1627,12 @@ body.wi-panel-locked { overflow: hidden; }
   </section>
 
   <!-- ============ MATURITY CURVE (rung-by-rung with transitions) ============ -->
-  <section class="rung-section">
+  <section class="rung-section" id="maturity-curve">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">II</span>
         <span class="eyebrow">The Maturity Curve</span>
-        <h2 class="section-heading">Every business on the web sits on one of four rungs.</h2>
+        <h2 class="section-heading" id="four-rungs">Every business on the web sits on one of four rungs.<a class="heading-anchor" href="#four-rungs" aria-label="Link to this section">#</a></h2>
         <p class="section-sub">The Agentic Web does not grade on a curve. Each transition between rungs requires a specific, identifiable change, and the changes are not evenly distributed in cost or complexity. Most businesses are stuck not because the fixes are expensive, but because nobody has told them which fix applies to them.</p>
       </div>
 
@@ -1752,12 +1768,12 @@ body.wi-panel-locked { overflow: hidden; }
   </section>
 
   <!-- ============ III. THE MECHANICS OF CITATION ============ -->
-  <section class="evidence">
+  <section class="evidence" id="agent-experience">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">III</span>
         <span class="eyebrow">The Mechanics of Citation</span>
-        <h2 class="section-heading">You solved for User Experience.<br>Now you must solve for Agent Experience.</h2>
+        <h2 class="section-heading" id="agent-experience-h2">You solved for User Experience.<br>Now you must solve for Agent Experience.<a class="heading-anchor" href="#agent-experience-h2" aria-label="Link to this section">#</a></h2>
         <p class="section-sub">You have spent years making your website beautiful for humans. Human-beautiful websites are often invisible to AI. The mechanics of AI citation are documented, and they are not what most marketers expect.</p>
       </div>
 
@@ -1799,12 +1815,12 @@ body.wi-panel-locked { overflow: hidden; }
   </section>
 
   <!-- ============ IV. THE TWO FAILURE MODES (promoted) ============ -->
-  <section class="problems">
+  <section class="problems" id="failure-modes">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">IV</span>
         <span class="eyebrow">The Failure Modes</span>
-        <h2 class="section-heading">Two failure modes nobody is pricing in.</h2>
+        <h2 class="section-heading" id="two-failure-modes">Two failure modes nobody is pricing in.<a class="heading-anchor" href="#two-failure-modes" aria-label="Link to this section">#</a></h2>
         <p class="section-sub">Beyond the visibility curve, two specific failure modes are costing businesses enquiries and revenue silently, before a buyer has ever visited the website. These are the mechanics most marketing leaders have not yet absorbed.</p>
       </div>
 
@@ -1827,12 +1843,12 @@ body.wi-panel-locked { overflow: hidden; }
   </section>
 
   <!-- ============ V. SECTOR EVIDENCE (corrected) ============ -->
-  <section class="sectors">
+  <section class="sectors" id="sector-evidence">
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">V</span>
         <span class="eyebrow">Evidence From Your Sector</span>
-        <h2 class="section-heading">This is not a distant trend.<br>It is live in your market, right now.</h2>
+        <h2 class="section-heading" id="live-in-market">This is not a distant trend.<br>It is live in your market, right now.<a class="heading-anchor" href="#live-in-market" aria-label="Link to this section">#</a></h2>
         <p class="section-sub">The shift looks different by vertical, but it is happening across all of them, and in several sectors the infrastructure for AI-intermediated commerce is already in place.</p>
       </div>
 
@@ -1871,7 +1887,7 @@ body.wi-panel-locked { overflow: hidden; }
       <div class="closing-inner reveal">
         <span class="section-numeral" style="display:block;text-align:center;margin-bottom:0.5rem;">VI</span>
         <span class="eyebrow" style="display:block;text-align:center;margin-bottom:1.5rem;">The Timing Question</span>
-        <h2>The question is when the tipping point reaches your vertical.</h2>
+        <h2 id="tipping-point">The question is when the tipping point reaches your vertical.<a class="heading-anchor" href="#tipping-point" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>AI Overviews are already eroding click-through on the queries that trigger them; by 58% on the top organic result (<em>Ahrefs, December 2025</em>), with the click rate falling from 15% to just 8% on AI-summarised pages (<em>Pew Research, July 2025</em>).</p>
           <p>The businesses being cited in AI answers today are building a compounding advantage. Citation positions reinforce themselves: models retrain on a web that already cites you, third-party platforms reference you because the models do, and the citation graph thickens around your name. The brands that are Recommended in AI results 18 months from now are the ones being audited today.</p>
@@ -1886,7 +1902,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="reveal">
         <span class="eyebrow">Where You Stand, Specifically</span>
-        <h2>You cannot fix what you cannot see.</h2>
+        <h2 id="cannot-fix">You cannot fix what you cannot see.<a class="heading-anchor" href="#cannot-fix" aria-label="Link to this section">#</a></h2>
         <p>If you scored 0, 1, or 2 on the audit; that is the gap a Web Intelligence Report closes. The rungs are universal. The fixes are not. Which <code style="font-family:var(--mono);font-size:0.85em;color:var(--text);">robots.txt</code> lines, which schema, which third-party platforms, which competitors are eating your citation share; those answers are specific to your site, your sector, your buyers.</p>
         <div class="closing-cta" style="margin-top:2rem;">
           <a href="/web-intelligence/" class="btn-primary">Commission a Web Intelligence Report <span class="arrow">&rarr;</span></a>

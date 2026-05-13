@@ -663,6 +663,22 @@ body.wi-panel-locked { overflow: hidden; }
 .sources li em { color: var(--text-secondary); }
 .sources li a { color: var(--design); text-decoration: none; border-bottom: 1px solid rgba(201,150,58,0.25); word-break: break-all; }
 .sources li a:hover { color: var(--text); }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -795,7 +811,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
-        <h2 class="section-heading">How Perplexity picks sources.</h2>
+        <h2 class="section-heading" id="how-perplexity-picks">How Perplexity picks sources.<a class="heading-anchor" href="#how-perplexity-picks" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           High organic authority on the query, specific answer up top, recency, three-to-six distinct domains per answer, structured signals.
@@ -872,7 +888,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
-        <h2 class="section-heading">The audit method, end to end.</h2>
+        <h2 class="section-heading" id="audit-method">The audit method, end to end.<a class="heading-anchor" href="#audit-method" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Forty-five minutes. A browser. A spreadsheet. Ten to fifteen queries across branded, commercial, informational, and comparison categories.
@@ -948,7 +964,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
-        <h2 class="section-heading">What &ldquo;not cited&rdquo; usually means.</h2>
+        <h2 class="section-heading" id="not-cited-meaning">What &ldquo;not cited&rdquo; usually means.<a class="heading-anchor" href="#not-cited-meaning" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Five recurring diagnoses. Off page 1 organic, rambling first paragraph, no freshness, thin specialist coverage, PerplexityBot blocked.
@@ -972,7 +988,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
-        <h2 class="section-heading">What to fix, in priority order.</h2>
+        <h2 class="section-heading" id="what-to-fix">What to fix, in priority order.<a class="heading-anchor" href="#what-to-fix" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Unblock PerplexityBot first. Then first-paragraph answers. Then visible dates. Then specialist pages. Then the third-party citation graph.
@@ -996,7 +1012,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">V</span>
-        <h2 class="section-heading">The reporting cadence.</h2>
+        <h2 class="section-heading" id="reporting-cadence">The reporting cadence.<a class="heading-anchor" href="#reporting-cadence" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Monthly is the honest cadence. Daily is noise. Quarterly should add the qualitative read: cited for the right claims, alongside the right peers?
@@ -1026,7 +1042,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">V &frac12;</span>
-        <h2 class="section-heading">Three patterns the citation tray makes obvious.</h2>
+        <h2 class="section-heading" id="three-citation-patterns">Three patterns the citation tray makes obvious.<a class="heading-anchor" href="#three-citation-patterns" aria-label="Link to this section">#</a></h2>
         <span class="section-tldr">
           <span class="section-tldr-eyebrow">In one line</span>
           Composite cases from the F&amp;T audit base. Perplexity&rsquo;s footnotes name the diagnosis the dashboard cannot.
@@ -1166,7 +1182,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="closing-inner reveal">
         <span class="eyebrow">The bottom line</span>
-        <h2>The cheapest visibility diagnostic available in 2026.</h2>
+        <h2 id="cheapest-diagnostic">The cheapest visibility diagnostic available in 2026.<a class="heading-anchor" href="#cheapest-diagnostic" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>Forty-five minutes, a browser, ten to fifteen queries, a spreadsheet. Read the citations honestly and the diagnosis writes itself.</p>
           <p><strong>Most UK businesses skip it because the result is uncomfortable.</strong> The companies that don&rsquo;t skip it are the ones gaining citation share each quarter, while their competitors stay on the same monthly Google ranking report they were running in 2022.</p>
@@ -1227,7 +1243,7 @@ body.wi-panel-locked { overflow: hidden; }
   <section class="related-section">
     <div class="container">
       <span class="eyebrow">Real-world examples</span>
-      <h2 class="section-heading" style="max-width:32ch;">Brands invisible to Perplexity at scale.</h2>
+      <h2 class="section-heading" id="brands-invisible" style="max-width:32ch;">Brands invisible to Perplexity at scale.<a class="heading-anchor" href="#brands-invisible" aria-label="Link to this section">#</a></h2>
       <p class="section-sub">Two audits where Perplexity cites trade publications and comparison sites instead of the brand itself.</p>
       <div class="related-grid">
         <a href="/web-intelligence/big-brands/barclays/" class="related-card">

@@ -879,6 +879,22 @@ body.wi-panel-locked { overflow: hidden; }
 .wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
 .wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
 @media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -1005,7 +1021,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="eyebrow">Opening Argument</span>
-        <h2 class="section-heading">The first compounding curve since PageRank.</h2>
+        <h2 class="section-heading" id="compounding-curve">The first compounding curve since PageRank.<a class="heading-anchor" href="#compounding-curve" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>In 1998, Google's PageRank algorithm decided that links were votes. The businesses that understood this first built moats that lasted a decade. Today, LLMs are building the next foundational graph: the citation feedback loop. Models retrain on the answers they previously produced, and the citation graph they build today shapes the citation graph they build next year. Brands cited as authoritative answers now become more likely to be cited later. Brands absent from today's citation pool become harder to surface in future cycles, regardless of how good their product is.</p>
@@ -1027,7 +1043,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
-        <h2 class="section-heading">The diagnosis no-one runs.</h2>
+        <h2 class="section-heading" id="diagnosis-no-one-runs">The diagnosis no-one runs.<a class="heading-anchor" href="#diagnosis-no-one-runs" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>Every agency pitch a founder sits through is selling a future. <em>3x growth. Double the pipeline.</em> The slides change; the maths doesn't. Every promise is a multiplier on a future the buyer has not yet earned, sold against the stranger they will be twelve months from now if everything works.</p>
@@ -1054,7 +1070,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
-        <h2 class="section-heading">What the maths actually does.</h2>
+        <h2 class="section-heading" id="maths-methodology">What the maths actually does.<a class="heading-anchor" href="#maths-methodology" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The Cost of Inaction methodology is not novel statistics. It is conventional inputs assembled with discipline, then expressed as a range rather than a point estimate. Four numbers, multiplied. The discipline lies in being honest about each input.</p>
@@ -1093,7 +1109,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="section-head reveal">
         <span class="section-numeral">III</span>
-        <h2 class="section-heading">Three shapes of the same problem.</h2>
+        <h2 class="section-heading" id="three-shapes">Three shapes of the same problem.<a class="heading-anchor" href="#three-shapes" aria-label="Link to this section">#</a></h2>
         <p class="section-sub">Three ranges, three sectors, three engagements delivered in Q1 2026. Names redacted at client request; sector and structural detail preserved.</p>
       </div>
 
@@ -1151,7 +1167,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
-        <h2 class="section-heading">Why the curve is steepening.</h2>
+        <h2 class="section-heading" id="curve-steepening">Why the curve is steepening.<a class="heading-anchor" href="#curve-steepening" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>Until 2024, COI calculations were stable. Search traffic moved slowly. Conversion rates moved slowly. Average deal values moved slowly. The methodology produced a number that held up for a year or more between recalculations.</p>
@@ -1210,7 +1226,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="closing-inner reveal">
         <span class="eyebrow">Closing</span>
-        <h2>You can buy upside. You cannot buy back the months spent not measuring downside.</h2>
+        <h2 id="buy-upside">You can buy upside. You cannot buy back the months spent not measuring downside.<a class="heading-anchor" href="#buy-upside" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>Every agency in the market will sell you a future. Few will tell you what your present is already costing. The discipline of running the maths, honestly, with a sensitivity envelope, on inputs you can defend, is the cheapest test you can run before signing any growth engagement.</p>
           <p>If the number is small, the report told you that, and you keep your money. If the number is large, the report told you that, and the work pays for itself before it has begun. Either answer is a return on the intelligence.</p>

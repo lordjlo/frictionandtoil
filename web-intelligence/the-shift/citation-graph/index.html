@@ -800,6 +800,22 @@ body.wi-panel-locked { overflow: hidden; }
 .wi-subnav a.is-active { color: var(--text); border-bottom-color: var(--design); }
 .wi-subnav .sep { color: var(--text-muted); font-size: 0.6rem; pointer-events: none; user-select: none; }
 @media (max-width: 768px) { .wi-subnav { display: none; } }
+
+/* ---- Heading anchors ---- */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 0.45em;
+  font-size: 0.65em;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  vertical-align: middle;
+  font-weight: 400;
+  font-family: sans-serif;
+  letter-spacing: 0;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor { opacity: 1; color: var(--design, #c9963a); }
 </style>
 </head>
 <body>
@@ -926,7 +942,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="eyebrow">Opening Argument</span>
-        <h2 class="section-heading">Every piece is either compounding or evaporating.</h2>
+        <h2 class="section-heading" id="compounding-or-evaporating">Every piece is either compounding or evaporating.<a class="heading-anchor" href="#compounding-or-evaporating" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The argument of <a href="/web-intelligence/the-shift/cost-of-not-knowing/" style="color:var(--design);border-bottom:1px solid rgba(201,150,58,0.3);"><em>the last Shift</em></a> was that AI citation positions reinforce themselves. Brands cited as authoritative today become more likely to be cited tomorrow. Brands absent from the citation pool now become harder to surface in future cycles, and the gap compounds.</p>
@@ -949,7 +965,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">I</span>
-        <h2 class="section-heading">Publish-and-pray: the founder who hits send and waits.</h2>
+        <h2 class="section-heading" id="publish-and-pray">Publish-and-pray: the founder who hits send and waits.<a class="heading-anchor" href="#publish-and-pray" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The most common failure mode in founder editorial is the easiest one to describe.</p>
@@ -970,7 +986,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">II</span>
-        <h2 class="section-heading">The piece the models couldn't read: illegibility as silent killer.</h2>
+        <h2 class="section-heading" id="illegibility-silent-killer">The piece the models couldn't read: illegibility as silent killer.<a class="heading-anchor" href="#illegibility-silent-killer" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The second failure mode is harder to spot because the founder did everything they were supposed to.</p>
@@ -990,7 +1006,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">III</span>
-        <h2 class="section-heading">The first impression the model never forgets.</h2>
+        <h2 class="section-heading" id="first-impression">The first impression the model never forgets.<a class="heading-anchor" href="#first-impression" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The third failure mode is the most uncomfortable, because it is the one a founder typically discovers too late to do anything cheap about.</p>
@@ -1013,7 +1029,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="prose-label reveal">
         <span class="section-numeral">IV</span>
-        <h2 class="section-heading">Why all three are the same problem.</h2>
+        <h2 class="section-heading" id="same-problem">Why all three are the same problem.<a class="heading-anchor" href="#same-problem" aria-label="Link to this section">#</a></h2>
       </div>
       <div class="body-prose reveal d2">
         <p>The three failure modes look different. A founder experiencing publish-and-pray has a discoverability problem. A founder experiencing illegibility has an extractability problem. A founder experiencing path-dependency has a positioning problem. Three different headaches.</p>
@@ -1084,7 +1100,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="closing-inner reveal">
         <span class="eyebrow">Closing</span>
-        <h2>Three different headaches. One discipline that fixes them.</h2>
+        <h2 id="three-headaches">Three different headaches. One discipline that fixes them.<a class="heading-anchor" href="#three-headaches" aria-label="Link to this section">#</a></h2>
         <div class="closing-body">
           <p>You can write better. You can publish more. Neither will help if the work is being absorbed by systems you have never engineered for. The citation graph is not adjudicating quality. It is adjudicating extractability, consistency, and authority signal; a different competition, with different rules, that most founders are still playing the previous version of.</p>
           <p>The discipline that fixes publish-and-pray, illegibility, and path-dependency is the same discipline. Treat editorial as positioning, not artefact. Engineer the discoverability before the publication. Build extraction surfaces into the prose. Audit what the systems already think of you, and publish into the gap until they think differently.</p>
@@ -1102,7 +1118,7 @@ body.wi-panel-locked { overflow: hidden; }
     <div class="container">
       <div class="faq-inner">
         <span class="eyebrow reveal" style="text-align:center;">Frequently Asked Questions</span>
-        <h2 class="section-heading reveal d1" style="font-size:clamp(1.7rem,3vw,2.3rem);text-align:center;margin-bottom:2.5rem;">Quick answers for the citation graph.</h2>
+        <h2 class="section-heading reveal d1" id="faq-citation-graph" style="font-size:clamp(1.7rem,3vw,2.3rem);text-align:center;margin-bottom:2.5rem;">Quick answers for the citation graph.<a class="heading-anchor" href="#faq-citation-graph" aria-label="Link to this section">#</a></h2>
 
         <div class="faq-item reveal d1">
           <div class="faq-q">Why doesn't ChatGPT mention my company when I ask about my industry?</div>
