@@ -149,17 +149,29 @@ footer.report-footer{padding:40px 0 60px;text-align:center;font-family:'JetBrain
 .scenario-card ul{list-style:none;padding:0;margin:0 0 14px}
 .scenario-card li{padding:8px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;line-height:1.5;border-left:2px solid var(--border)}
 .scenario-maths{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,.25);padding:14px 16px;border-radius:var(--radius-xs);margin-top:12px;line-height:1.8;border:1px solid var(--border)}
-.cross-property-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0}
-.cross-property-table th{text-align:left;padding:12px 11px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.cross-property-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0;min-width:720px}
+.cross-property-table th{text-align:left;padding:12px 11px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);white-space:nowrap}
 .cross-property-table td{padding:13px 11px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
 .cross-property-table td strong{color:var(--text)}
 .cross-property-table tr.sub-brand-row{background:rgba(139,92,246,.04)}
 .cross-property-table tr.sub-brand-row td:first-child{border-left:3px solid var(--ai)}
+/* Sticky first column on horizontal scroll, desktop + mobile */
+.cross-property-table th:first-child,
+.cross-property-table td:first-child{position:sticky;left:0;background:var(--bg);z-index:2;border-right:1px solid var(--border)}
+.cross-property-table tr.sub-brand-row td:first-child{background:linear-gradient(90deg,rgba(139,92,246,.04),var(--bg))}
+.scroll-wrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-xs)}
+.scroll-hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);letter-spacing:.5px;margin:6px 0 8px;display:none}
+@media (max-width:900px){
+  .cross-property-table{font-size:11.5px;min-width:640px}
+  .cross-property-table th{padding:9px 8px;font-size:9.5px;letter-spacing:.7px}
+  .cross-property-table td{padding:10px 8px}
+  .scroll-hint{display:block}
+}
 .score-cell{font-family:'JetBrains Mono',monospace;font-weight:600}
 .sc-green{color:var(--green)}.sc-yellow{color:var(--yellow)}.sc-orange{color:var(--orange)}.sc-red{color:var(--red)}
-.sov-portfolio-grid{display:grid;grid-template-columns:170px repeat(6,1fr);gap:4px;font-size:10.5px;margin:16px 0}
+.sov-portfolio-grid{display:grid;grid-template-columns:200px repeat(6,minmax(96px,1fr));gap:4px;font-size:10.5px;margin:16px 0;min-width:780px}
 .sov-portfolio-grid .pg-cell{padding:11px 8px;text-align:center;border-radius:var(--radius-xs);font-weight:600;letter-spacing:.3px}
-.sov-portfolio-grid .pg-row-label{text-align:left;padding:11px 12px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:var(--text);border:1px solid var(--border)}
+.sov-portfolio-grid .pg-row-label{text-align:left;padding:11px 12px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:var(--text);border:1px solid var(--border);position:sticky;left:0;z-index:2}
 .sov-portfolio-grid .pg-header{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;background:rgba(255,255,255,.015);border:1px solid var(--border)}
 .founders-visibility-card{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:14px 0}
 .founders-visibility-card .col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:14px;color:var(--text);letter-spacing:.2px}
@@ -168,7 +180,14 @@ footer.report-footer{padding:40px 0 60px;text-align:center;font-family:'JetBrain
 .founders-visibility-card ul{list-style:none;padding:0;margin:0}
 .founders-visibility-card li{padding:10px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);font-size:12.5px;color:var(--text-secondary);margin-bottom:7px;line-height:1.55}
 .founders-visibility-card li strong{color:var(--text);font-weight:600}
-@media (max-width:900px){.founders-visibility-card{grid-template-columns:1fr}.sov-engine-row{grid-template-columns:repeat(3,1fr)}.sov-portfolio-grid{grid-template-columns:120px repeat(6,1fr)}}
+@media (max-width:900px){
+  .founders-visibility-card{grid-template-columns:1fr}
+  .sov-engine-row{grid-template-columns:repeat(3,1fr)}
+  .sov-portfolio-grid{grid-template-columns:160px repeat(6,minmax(86px,1fr));font-size:10px;min-width:680px}
+  .sov-portfolio-grid .pg-cell{padding:9px 5px;font-size:9.5px}
+  .sov-portfolio-grid .pg-row-label{font-size:10.5px;padding:9px 10px}
+  .sov-portfolio-grid .pg-header{font-size:8.5px}
+}
 .benchmark-rings{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:14px 0}
 .benchmark-rings .b-col{display:flex;flex-direction:column;align-items:center;gap:16px}
 .benchmark-rings .b-col h4{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text)}
@@ -745,7 +764,8 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
 
   <h3 id="matrix" style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--text)">W6 &middot; Cross-property comparison matrix</h3>
   <p class="section-lede">Each property scored on Brand presence (site page + name consistency), Social presence (IG + FB + TikTok composite), AI SoV (share of six engines where cited or mentioned for the property&rsquo;s defining query). Composite is the weighted sum. Sorted descending.</p>
-  <div style="overflow-x:auto">
+  <p class="scroll-hint">&larr; swipe to see all columns &rarr;</p>
+  <div class="scroll-wrap">
   <table class="cross-property-table">
     <thead>
       <tr>
@@ -840,7 +860,9 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
 <section id="sov-grid" class="block" style="margin-top:32px">
   <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px;color:var(--text)">W7 &middot; AI SoV portfolio matrix</h3>
   <p class="section-lede">Each property tested against its defining query across six engines. <span class="badge badge-pass" style="padding:2px 8px;font-size:9px">Cited</span> = property named in the answer. <span class="badge badge-medium" style="padding:2px 8px;font-size:9px">Mentioned</span> = referenced in passing. <span class="badge badge-critical" style="padding:2px 8px;font-size:9px">Invisible</span> = does not appear, competitor wins. <span class="badge" style="padding:2px 8px;font-size:9px;background:rgba(255,255,255,.02);color:var(--text-muted);border-color:var(--border);border-style:dashed">Simulated</span> = inferred via M12 5-citation-factor framework, not live-tested.</p>
-  <div class="sov-portfolio-grid" style="overflow-x:auto">
+  <p class="scroll-hint">&larr; swipe to see all six engines &rarr;</p>
+  <div class="scroll-wrap">
+  <div class="sov-portfolio-grid">
     <div class="pg-cell pg-row-label" style="font-weight:600">Property &middot; Query</div>
     <div class="pg-cell pg-header">ChatGPT</div>
     <div class="pg-cell pg-header">Perplexity</div>
@@ -920,6 +942,7 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
     <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
     <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
     <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+  </div>
   </div>
   <p class="caveat-note">AI SoV simulations use the public answer-layer evidence factors per the F&amp;T M12 framework (direct-answer-format, named authority, fact density, schema presence, external link signal). Live results vary by user, location, and model version, but the structural signals driving citations are stable and measurable. Cells marked &ldquo;Sim&rdquo; were inferred via M12; cells marked &ldquo;Live&rdquo; were tested via web search and answer-engine probing during the May 2026 build.</p>
 </section>
