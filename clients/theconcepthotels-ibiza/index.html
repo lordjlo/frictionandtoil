@@ -99,10 +99,15 @@ section.block .section-lede{font-size:14px;color:var(--text-secondary);max-width
 .ring-small{width:88px;height:88px}
 .ring-small .n{font-size:21px}
 .ring-small .l{font-size:9px;margin-top:3px}
-table.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
-.compare-table th{text-align:left;padding:11px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border);font-weight:600;background:rgba(255,255,255,.02)}
-.compare-table td{padding:13px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+table.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;min-width:560px}
+.compare-table th{text-align:left;padding:11px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border);font-weight:600;background:rgba(255,255,255,.02);white-space:nowrap}
+.compare-table td{padding:13px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
 .compare-table td strong{color:var(--text)}
+@media (max-width:900px){
+  .compare-table{font-size:12px;min-width:520px}
+  .compare-table th{padding:9px 10px;font-size:9.5px;letter-spacing:.7px}
+  .compare-table td{padding:10px 10px}
+}
 .flag-list{list-style:none;padding:0}
 .flag-list li{padding:10px 14px;background:rgba(255,255,255,.02);border-left:3px solid var(--yellow);border-radius:0 var(--radius-xs) var(--radius-xs) 0;font-size:13px;color:var(--text-secondary);margin-bottom:8px;line-height:1.55}
 .flag-list li.flag-red{border-left-color:var(--red)}
@@ -199,6 +204,14 @@ footer.report-footer{padding:40px 0 60px;text-align:center;font-family:'JetBrain
 .benchmark-rings .b-rings .ring-wrap{width:78px;height:78px;margin:0 auto}
 .benchmark-rings .b-rings .ring-num .n{font-size:18px}
 .benchmark-rings .b-rings .ring-num .l{font-size:8.5px}
+@media (max-width:900px){
+  .benchmark-rings{grid-template-columns:1fr;gap:24px;padding:22px 18px}
+  .benchmark-rings .b-rings{grid-template-columns:repeat(5,1fr);gap:6px}
+  .benchmark-rings .b-rings .ring-wrap{width:60px;height:60px}
+  .benchmark-rings .b-rings .ring-num .n{font-size:15px}
+  .benchmark-rings .b-rings .ring-num .l{font-size:7.5px}
+  .benchmark-rings .b-col + .b-col{border-top:1px solid var(--border);padding-top:24px}
+}
 .property-nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:32px}
 .property-nav-inner{display:flex;gap:8px;overflow-x:auto;padding:14px 24px;max-width:1200px;margin:0 auto}
 .property-nav a{padding:8px 14px;border-radius:var(--radius-xs);font-size:11.5px;color:var(--text-secondary);text-decoration:none;white-space:nowrap;border:1px solid var(--border);font-weight:500;letter-spacing:.3px;transition:all .15s}
@@ -706,6 +719,8 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
   <div class="intel-card">
     <h3>Four anchor names for a single group</h3>
     <p>Across surfaces, the group is named four different ways. AI engines cannot anchor a canonical entity when the trading name, legal name, GMB knowledge panel and corporate address all disagree.</p>
+    <p class="scroll-hint">&larr; swipe to see status column &rarr;</p>
+    <div class="scroll-wrap">
     <table class="compare-table">
       <thead><tr><th>Surface</th><th>Name in use</th><th>Status</th></tr></thead>
       <tbody>
@@ -717,6 +732,7 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
         <tr><td>GMB recorded address</td><td><strong>Edificio Ocean Group</strong>, Carrer de Jaume I, 07817</td><td><span class="badge badge-medium">Possible holding parent</span></td></tr>
       </tbody>
     </table>
+    </div>
     <p style="margin-top:14px">The Edificio Ocean Group address line suggests a shared corporate building or a parent / holding-company relationship worth confirming. The trading-to-legal name distance is normal for Spanish hotel groups. The <strong>three variants of the trading name across the public surfaces</strong> are not.</p>
   </div>
 
@@ -724,6 +740,8 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
   <div class="intel-card">
     <h3>Hyatt is paying to outrank your own brand term</h3>
     <p>A search for <em>concept hotels ibiza</em> on Google returns paid placements from competitors above the group&rsquo;s own site. Captured SERP snapshot:</p>
+    <p class="scroll-hint">&larr; swipe to see all columns &rarr;</p>
+    <div class="scroll-wrap">
     <table class="compare-table" style="margin-top:10px">
       <thead><tr><th>Position</th><th>Result</th><th>Type</th></tr></thead>
       <tbody>
@@ -734,6 +752,7 @@ Total                                : &euro;85k&ndash;&euro;145k / yr
         <tr><td>5</td><td><strong>theconcepthotels.com</strong> (own site)</td><td><span class="badge badge-high">First organic, but below 4 others</span></td></tr>
       </tbody>
     </table>
+    </div>
     <p style="margin-top:14px">Two paid bidders, two aggregators, and the group&rsquo;s own site only appears in position 5 on its own brand term. <strong>This is paid-traffic leakage at the most valuable keyword the group will ever rank for</strong>. A protective brand bid of even &euro;100 / week would push the group&rsquo;s own listing above the aggregators and reclaim direct bookings that are currently routing through Hyatt&rsquo;s remarketing pixel.</p>
     <p style="margin-top:10px"><span class="badge badge-critical">Critical</span> &nbsp; Defend the brand term in Google Ads. Estimated commercial leakage is in the &euro;15k to &euro;30k / year range based on typical brand-term click-through rate (CTR) splits in hospitality.</p>
   </div>
