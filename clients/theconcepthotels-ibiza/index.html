@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Deep-Dive &middot; The Concept Hotels (Ibiza) &middot; F&amp;T Intelligence</title>
+<meta name="description" content="Multi-property AI and web intelligence deep-dive across the eight properties of The Concept Hotels (Ibiza), with group context, founders visibility, competitor benchmark and recovery scenarios.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.15);
+  --text:#e8e8ed;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;
+  --search:#6366f1;--search-bg:rgba(99,102,241,0.12);--search-border:rgba(99,102,241,0.25);--search-glow:rgba(99,102,241,0.4);
+  --design:#c9963a;--design-bg:rgba(201,150,58,0.12);--design-border:rgba(201,150,58,0.25);--design-glow:rgba(201,150,58,0.4);
+  --brand:#10b981;--brand-bg:rgba(16,185,129,0.12);--brand-border:rgba(16,185,129,0.25);--brand-glow:rgba(16,185,129,0.4);
+  --compete:#f43f5e;--compete-bg:rgba(244,63,94,0.12);--compete-border:rgba(244,63,94,0.25);--compete-glow:rgba(244,63,94,0.4);
+  --growth:#06b6d4;--growth-bg:rgba(6,182,212,0.12);--growth-border:rgba(6,182,212,0.25);--growth-glow:rgba(6,182,212,0.4);
+  --ai:#8b5cf6;--ai-bg:rgba(139,92,246,0.12);--ai-border:rgba(139,92,246,0.25);--ai-glow:rgba(139,92,246,0.4);
+  --green:#22c55e;--green-bg:rgba(34,197,94,0.12);--green-border:rgba(34,197,94,0.25);
+  --yellow:#eab308;--yellow-bg:rgba(234,179,8,0.12);--yellow-border:rgba(234,179,8,0.25);
+  --red:#ef4444;--red-bg:rgba(239,68,68,0.12);--red-border:rgba(239,68,68,0.25);
+  --orange:#f97316;--orange-bg:rgba(249,115,22,0.12);--orange-border:rgba(249,115,22,0.25);
+  --blue:#3b82f6;--blue-bg:rgba(59,130,246,0.12);--blue-border:rgba(59,130,246,0.25);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+}
+::selection{background:var(--search);color:#fff}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(99,102,241,0.05) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(201,150,58,0.04) 0%,transparent 50%),
+             radial-gradient(ellipse at 50% 80%,rgba(16,185,129,0.03) 0%,transparent 50%);
+  z-index:-1;animation:drift 20s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(-2%,1%)}66%{transform:translate(1%,-1%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.global-header{padding:40px 0 24px;text-align:center}
+.header-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+.dot{width:6px;height:6px;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+.dot-multi{background:linear-gradient(90deg,var(--search),var(--design),var(--brand),var(--compete),var(--growth))}
+h1.report-title{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:600;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;color:var(--text)}
+.report-sub{font-size:14px;color:var(--text-secondary);max-width:780px;margin:0 auto 8px;letter-spacing:.3px}
+.report-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.5px;margin-top:8px}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:48px 0}
+section.block{padding:0;margin-bottom:8px}
+section.block h2{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;letter-spacing:-.3px;margin-bottom:6px;color:var(--text)}
+section.block .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+section.block .section-lede{font-size:14px;color:var(--text-secondary);max-width:880px;margin-bottom:22px;line-height:1.65}
+.intel-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:18px;transition:border-color .2s}
+.intel-card:hover{border-color:var(--border-hover)}
+.intel-card h3{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.intel-card p{font-size:13.5px;color:var(--text-secondary);line-height:1.7}
+.intel-card p + p{margin-top:10px}
+.intel-card strong{color:var(--text);font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;border:1px solid}
+.badge-critical{background:var(--red-bg);color:var(--red);border-color:var(--red-border)}
+.badge-high{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-border)}
+.badge-medium{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-border)}
+.badge-pass{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
+.badge-info{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)}
+.exec-card{background:linear-gradient(135deg,rgba(99,102,241,0.06) 0%,rgba(16,185,129,0.04) 100%);border:1px solid rgba(99,102,241,0.18);border-radius:var(--radius);padding:32px;margin-bottom:32px;position:relative;overflow:hidden}
+.exec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--search),var(--brand),var(--design))}
+.exec-headline{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;line-height:1.25;margin-bottom:14px;color:var(--text)}
+.exec-summary{font-size:14.5px;color:var(--text-secondary);line-height:1.75;max-width:920px}
+.exec-summary strong{color:var(--text);font-weight:600}
+.scores-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px;padding-top:22px;border-top:1px solid var(--border)}
+.score-pill{padding:14px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center}
+.score-pill .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);margin-bottom:6px}
+.score-pill .val{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:var(--text)}
+.score-pill.search .val{color:var(--search)}
+.score-pill.design .val{color:var(--design)}
+.score-pill.brand .val{color:var(--brand)}
+.score-pill.compete .val{color:var(--compete)}
+.score-pill.growth .val{color:var(--growth)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.stat-card{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center}
+.stat-val{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;color:var(--text);line-height:1.1;margin-bottom:6px}
+.stat-lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.priority-card{padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);border-left:3px solid;margin-bottom:14px}
+.priority-card.p-crit{border-left-color:var(--red)}
+.priority-card.p-high{border-left-color:var(--orange)}
+.priority-card.p-med{border-left-color:var(--yellow)}
+.priority-card.p-low{border-left-color:var(--green)}
+.priority-card h4{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;margin-bottom:8px;color:var(--text);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.priority-card .pc-body{font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:8px}
+.priority-card .pc-meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);letter-spacing:.5px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:900px){.two-col,.three-col,.scores-strip,.stats-row{grid-template-columns:1fr}}
+.ring-wrap{width:120px;height:120px;position:relative;flex-shrink:0}
+.ring-wrap svg{transform:rotate(-90deg);width:100%;height:100%}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:6}
+.ring-fg{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif}
+.ring-num .n{font-size:28px;font-weight:600;color:var(--text);line-height:1}
+.ring-num .l{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.ring-small{width:88px;height:88px}
+.ring-small .n{font-size:21px}
+.ring-small .l{font-size:9px;margin-top:3px}
+table.compare-table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0}
+.compare-table th{text-align:left;padding:11px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);border-bottom:1px solid var(--border);font-weight:600;background:rgba(255,255,255,.02)}
+.compare-table td{padding:13px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.compare-table td strong{color:var(--text)}
+.flag-list{list-style:none;padding:0}
+.flag-list li{padding:10px 14px;background:rgba(255,255,255,.02);border-left:3px solid var(--yellow);border-radius:0 var(--radius-xs) var(--radius-xs) 0;font-size:13px;color:var(--text-secondary);margin-bottom:8px;line-height:1.55}
+.flag-list li.flag-red{border-left-color:var(--red)}
+.flag-list li.flag-green{border-left-color:var(--green)}
+.cta-block{background:var(--bg-card);border:1px solid rgba(99,102,241,0.2);border-radius:var(--radius);padding:40px;text-align:center;margin-top:48px;position:relative;overflow:hidden}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--search),var(--brand),var(--design),var(--compete))}
+.cta-block h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;margin-bottom:10px;color:var(--text)}
+.cta-block p{font-size:14px;color:var(--text-secondary);max-width:600px;margin:0 auto 22px;line-height:1.65}
+.cta-btn{display:inline-block;padding:14px 30px;background:var(--search);color:#fff;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:transform .15s, background .15s}
+.cta-btn:hover{transform:translateY(-1px);background:#5856d6}
+.cta-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:14px;letter-spacing:.5px}
+footer.report-footer{padding:40px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:1px}
+
+/* ── Portfolio-specific ── */
+.property-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:24px;scroll-margin-top:80px}
+.property-panel.sub-brand{border-left:3px solid var(--ai);background:linear-gradient(135deg,rgba(139,92,246,0.04) 0%,var(--bg-card) 100%)}
+.property-panel h3.property-title{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;margin-bottom:4px;color:var(--text);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.property-panel .property-lede{font-size:13.5px;color:var(--text-secondary);margin-bottom:20px;line-height:1.65}
+.property-mini-ring{display:flex;gap:24px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+.social-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.social-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.social-card h4{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;margin-bottom:10px;color:var(--text);display:flex;align-items:center;gap:8px}
+.social-card .handle{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);margin-bottom:10px;word-break:break-all}
+.social-card .metric-row{display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);padding:4px 0}
+.social-card .metric-row strong{color:var(--text);font-weight:600}
+.social-card.absent{border-style:dashed;opacity:.65}
+.social-card.absent .handle{color:var(--red)}
+.sov-engine-row{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:12px 0}
+.sov-engine-cell{padding:10px 8px;border-radius:var(--radius-xs);text-align:center;font-size:10.5px;font-weight:600;letter-spacing:.3px}
+.sov-engine-cell .eng{font-family:'JetBrains Mono',monospace;font-size:9.5px;display:block;margin-bottom:4px;letter-spacing:.5px;font-weight:500}
+.sov-cited{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.sov-mentioned{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)}
+.sov-invisible{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
+.sov-simulated{background:rgba(255,255,255,.02);color:var(--text-muted);border:1px dashed var(--border)}
+.brand-arch-diagram{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:18px 0;overflow-x:auto}
+.brand-arch-diagram svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.scenario-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px}
+.scenario-card.conservative{border-top:3px solid var(--yellow)}
+.scenario-card.aggressive{border-top:3px solid var(--green)}
+.scenario-card h3{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.scenario-card .scenario-total{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:var(--text);margin:8px 0 14px;line-height:1.1}
+.scenario-card.aggressive .scenario-total{color:var(--green)}
+.scenario-card.conservative .scenario-total{color:var(--yellow)}
+.scenario-card ul{list-style:none;padding:0;margin:0 0 14px}
+.scenario-card li{padding:8px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;line-height:1.5;border-left:2px solid var(--border)}
+.scenario-maths{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);background:rgba(0,0,0,.25);padding:14px 16px;border-radius:var(--radius-xs);margin-top:12px;line-height:1.8;border:1px solid var(--border)}
+.cross-property-table{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0}
+.cross-property-table th{text-align:left;padding:12px 11px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.cross-property-table td{padding:13px 11px;border-bottom:1px solid var(--border);color:var(--text-secondary)}
+.cross-property-table td strong{color:var(--text)}
+.cross-property-table tr.sub-brand-row{background:rgba(139,92,246,.04)}
+.cross-property-table tr.sub-brand-row td:first-child{border-left:3px solid var(--ai)}
+.score-cell{font-family:'JetBrains Mono',monospace;font-weight:600}
+.sc-green{color:var(--green)}.sc-yellow{color:var(--yellow)}.sc-orange{color:var(--orange)}.sc-red{color:var(--red)}
+.sov-portfolio-grid{display:grid;grid-template-columns:170px repeat(6,1fr);gap:4px;font-size:10.5px;margin:16px 0}
+.sov-portfolio-grid .pg-cell{padding:11px 8px;text-align:center;border-radius:var(--radius-xs);font-weight:600;letter-spacing:.3px}
+.sov-portfolio-grid .pg-row-label{text-align:left;padding:11px 12px;background:rgba(255,255,255,.02);font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:var(--text);border:1px solid var(--border)}
+.sov-portfolio-grid .pg-header{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;background:rgba(255,255,255,.015);border:1px solid var(--border)}
+.founders-visibility-card{display:grid;grid-template-columns:1fr 1fr;gap:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:14px 0}
+.founders-visibility-card .col h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;margin-bottom:14px;color:var(--text);letter-spacing:.2px}
+.founders-visibility-card .surface{border-top:3px solid var(--green);padding-top:18px}
+.founders-visibility-card .absent{border-top:3px solid var(--red);padding-top:18px}
+.founders-visibility-card ul{list-style:none;padding:0;margin:0}
+.founders-visibility-card li{padding:10px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);font-size:12.5px;color:var(--text-secondary);margin-bottom:7px;line-height:1.55}
+.founders-visibility-card li strong{color:var(--text);font-weight:600}
+@media (max-width:900px){.founders-visibility-card{grid-template-columns:1fr}.sov-engine-row{grid-template-columns:repeat(3,1fr)}.sov-portfolio-grid{grid-template-columns:120px repeat(6,1fr)}}
+.benchmark-rings{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:14px 0}
+.benchmark-rings .b-col{display:flex;flex-direction:column;align-items:center;gap:16px}
+.benchmark-rings .b-col h4{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text)}
+.benchmark-rings .b-rings{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%}
+.benchmark-rings .b-rings .ring-wrap{width:78px;height:78px;margin:0 auto}
+.benchmark-rings .b-rings .ring-num .n{font-size:18px}
+.benchmark-rings .b-rings .ring-num .l{font-size:8.5px}
+.property-nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:32px}
+.property-nav-inner{display:flex;gap:8px;overflow-x:auto;padding:14px 24px;max-width:1200px;margin:0 auto}
+.property-nav a{padding:8px 14px;border-radius:var(--radius-xs);font-size:11.5px;color:var(--text-secondary);text-decoration:none;white-space:nowrap;border:1px solid var(--border);font-weight:500;letter-spacing:.3px;transition:all .15s}
+.property-nav a:hover{background:var(--bg-card-hover);color:var(--text);border-color:var(--border-hover)}
+.property-nav a.sub-brand{border-color:var(--ai-border);color:var(--ai)}
+.property-nav a.group{border-color:var(--search-border);color:var(--search)}
+.property-nav a.brain-tab{border-color:rgba(168,85,247,0.45);color:#c084fc;background:rgba(168,85,247,0.06)}
+.property-nav a.brain-tab:hover{background:rgba(168,85,247,0.12);color:#d8b4fe;border-color:rgba(168,85,247,0.6)}
+.property-nav a.tab-ai{border-color:var(--ai-border);color:var(--ai)}
+.property-nav a.tab-design{border-color:var(--design-border);color:var(--design)}
+.property-nav a.tab-compete{border-color:var(--compete-border);color:var(--compete)}
+.property-nav a.tab-brand{border-color:var(--brand-border);color:var(--brand)}
+.property-nav a.tab-growth{border-color:var(--growth-border);color:var(--growth)}
+.property-nav a.prop-tropicana{border-color:rgba(251,146,60,.40);color:#fdba74}
+.property-nav a.prop-dorado{border-color:rgba(251,191,36,.40);color:#fcd34d}
+.property-nav a.prop-cubanito{border-color:rgba(20,184,166,.45);color:#5eead4}
+.property-nav a.prop-paradiso{border-color:rgba(236,72,153,.45);color:#f9a8d4}
+.property-nav a.prop-romeos{border-color:rgba(239,68,68,.40);color:#fca5a5}
+.property-nav a.prop-grandparadiso{border-color:rgba(167,139,250,.45);color:#c4b5fd}
+.property-nav a.prop-losfelices{border-color:rgba(132,204,22,.45);color:#bef264}
+.property-nav a.prop-mongibello{border-color:rgba(14,165,233,.50);color:#7dd3fc}
+.property-nav .nav-divider{display:inline-block;width:1px;align-self:stretch;background:var(--border);margin:0 4px;flex-shrink:0}
+.nav-top-bar{display:none}
+[id]{scroll-margin-top:88px}
+@media (max-width:900px){
+  .nav-top-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:1200px;margin:0 auto}
+  .nav-brand{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--text);letter-spacing:.3px}
+  .nav-brand span{color:var(--text-muted);font-weight:400}
+  .nav-toggle{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-xs);padding:9px 11px;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:3px;width:40px;height:36px;-webkit-tap-highlight-color:transparent}
+  .nav-toggle span{display:block;width:16px;height:2px;background:var(--text);transition:transform .22s ease,opacity .22s ease;border-radius:1px}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+  .property-nav-inner{flex-direction:column;gap:6px;max-height:0;overflow:hidden;padding:0 20px;transition:max-height .3s ease,padding .3s ease;border-top:1px solid transparent}
+  .property-nav-inner.open{max-height:75vh;overflow-y:auto;padding:14px 20px 18px;border-top-color:var(--border)}
+  .property-nav-inner a{width:100%;text-align:left;font-size:13px;padding:11px 14px}
+  .property-nav .nav-divider{display:none}
+  [id]{scroll-margin-top:70px}
+}
+.caveat-note{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);background:rgba(255,255,255,.015);border:1px solid var(--border);border-radius:var(--radius-xs);padding:12px 14px;margin:14px 0;line-height:1.7;letter-spacing:.2px}
+/* ── Designer hero (Pikes/Bass Kleph signature) ── */
+.hero-header{padding:64px 0 28px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:2px;margin-bottom:36px}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:18px}
+.hero-domain{font-family:'Space Grotesk',sans-serif;font-size:84px;font-weight:600;letter-spacing:-2.5px;line-height:1;background:linear-gradient(90deg,#a78bfa 0%,#f9a8d4 30%,#fde68a 60%,#86efac 85%,#67e8f9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:28px}
+.hero-sub{font-size:16px;color:var(--text-secondary);max-width:820px;margin:0 auto 14px;font-weight:400;line-height:1.5}
+.hero-prepared{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--text-muted);letter-spacing:.5px;margin-top:10px}
+.hero-rings{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:48px 28px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 0 40px;background:linear-gradient(180deg,rgba(255,255,255,.012) 0%,transparent 100%)}
+.ring-card{text-align:center;padding:4px}
+.ring-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:2.2px;margin-bottom:18px;font-weight:600}
+.ring-card .ring-label.search{color:var(--search)}
+.ring-card .ring-label.design{color:var(--design)}
+.ring-card .ring-label.brand{color:var(--brand)}
+.ring-card .ring-label.compete{color:var(--compete)}
+.ring-card .ring-label.growth{color:var(--growth)}
+.ring-hero{width:140px;height:140px;margin:0 auto 16px;position:relative}
+.ring-hero svg{transform:rotate(-90deg);width:100%;height:100%;filter:drop-shadow(0 0 16px rgba(255,255,255,.03))}
+.ring-hero .ring-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif}
+.ring-hero .ring-num .n{font-size:44px;font-weight:600;color:var(--text);line-height:1}
+.ring-hero .ring-num .l{font-size:11px;color:var(--text-muted);margin-top:5px;letter-spacing:.5px}
+.ring-caption{font-size:12px;color:var(--text-secondary);line-height:1.55;max-width:180px;margin:0 auto}
+@media (max-width:900px){
+  .hero-domain{font-size:42px;letter-spacing:-1.2px}
+  .hero-rings{grid-template-columns:repeat(2,1fr);gap:32px;padding:36px 18px}
+  .hero-rings .ring-card:nth-child(5){grid-column:1 / 3}
+}
+.maturity-explainer{background:rgba(255,255,255,.015);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;margin:14px 0 22px;font-size:13px;color:var(--text-secondary);line-height:1.7}
+.maturity-explainer h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.maturity-explainer p{margin-bottom:8px}
+.maturity-explainer strong{color:var(--text);font-weight:600}
+.maturity-explainer ul.scale-list{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.maturity-explainer ul.scale-list li{padding:8px 12px;background:rgba(255,255,255,.02);border-radius:var(--radius-xs);font-size:12px;display:flex;align-items:center;gap:10px;border-left:2px solid var(--border)}
+@media (max-width:900px){.maturity-explainer ul.scale-list{grid-template-columns:1fr}}
+.maturity-rung-stack{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.rung{display:grid;grid-template-columns:48px 1fr 90px;gap:18px;align-items:center;padding:18px 22px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:var(--radius);transition:border-color .2s}
+.rung-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;background:rgba(255,255,255,.04);color:var(--text-secondary);border:1px solid var(--border)}
+.rung-body h4{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rung-body > p{font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin:0}
+.rung-properties{font-size:11.5px;color:var(--text-muted);margin-top:8px;line-height:1.5}
+.rung-properties strong{color:var(--text-secondary);font-weight:600}
+.rung-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);text-align:right;letter-spacing:.3px}
+.rung-blocked{background:rgba(239,68,68,.04);border-color:rgba(239,68,68,.22)}
+.rung-blocked .rung-num{background:rgba(239,68,68,.10);color:var(--red);border-color:rgba(239,68,68,.30)}
+.rung-blocked .rung-count{color:var(--red)}
+.rung-invisible .rung-num{background:rgba(168,85,247,.06);color:#c084fc;border-color:rgba(168,85,247,.22)}
+.rung-emerging .rung-num{background:rgba(168,85,247,.06);color:#c084fc;border-color:rgba(168,85,247,.22)}
+.rung-cited.current{background:rgba(99,102,241,.10);border-color:rgba(99,102,241,.45)}
+.rung-cited.current .rung-num{background:#6366f1;color:#fff;border-color:#818cf8}
+.rung-cited.current .rung-count{color:var(--search)}
+.rung-cited .rung-num{background:rgba(99,102,241,.06);color:var(--search);border-color:rgba(99,102,241,.22)}
+.rung-recommended{background:rgba(34,197,94,.04);border-color:rgba(34,197,94,.18)}
+.rung-recommended .rung-num{background:rgba(34,197,94,.10);color:var(--green);border-color:rgba(34,197,94,.30)}
+.rung-recommended .rung-count{color:var(--green)}
+.badge-current{display:inline-flex;padding:3px 10px;background:rgba(99,102,241,.18);color:#a5b4fc;border:1px solid rgba(99,102,241,.40);border-radius:100px;font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+.rung-unlock{padding:24px 28px;background:linear-gradient(135deg,rgba(99,102,241,.06),rgba(16,185,129,.03));border:1px solid rgba(99,102,241,.22);border-left:3px solid var(--search);border-radius:var(--radius);margin-top:20px}
+.rung-unlock h3{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+.rung-unlock p{font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:10px}
+.rung-unlock ol{padding-left:22px;color:var(--text-secondary);font-size:12.5px;line-height:1.85;margin-bottom:10px}
+.rung-unlock ol li{margin-bottom:4px}
+.rung-unlock .rung-foot{font-style:italic;color:var(--text-muted);font-size:12.5px;margin-top:6px;margin-bottom:0}
+.rung-pin{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:100px;font-size:9.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;border:1px solid}
+.rung-pin.pin-recommended{background:rgba(34,197,94,.10);color:var(--green);border-color:rgba(34,197,94,.30)}
+.rung-pin.pin-cited{background:rgba(99,102,241,.10);color:#a5b4fc;border-color:rgba(99,102,241,.30)}
+.rung-pin.pin-emerging{background:rgba(168,85,247,.08);color:#c084fc;border-color:rgba(168,85,247,.25)}
+.rung-pin.pin-invisible{background:rgba(239,68,68,.08);color:var(--red);border-color:rgba(239,68,68,.25)}
+@media (max-width:900px){
+  .rung{grid-template-columns:36px 1fr;gap:14px;padding:14px 16px}
+  .rung-count{display:none}
+  .rung-body h4{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="property-nav">
+  <div class="nav-top-bar">
+    <div class="nav-brand">Portfolio Deep-Dive <span>&middot; Concept Hotels</span></div>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="property-nav-inner" id="nav-links">
+    <a href="#exec" class="group">Executive</a>
+    <a href="#maturity" class="tab-ai">AI Maturity</a>
+    <a href="#scenarios" class="tab-design">&euro; Scenarios</a>
+    <a href="#top-5" class="tab-compete">Top 5 Actions</a>
+    <a href="#brain" class="brain-tab">&#128274; Ask Your Brain</a>
+    <span class="nav-divider"></span>
+    <a href="#group-context" class="group">Group Context</a>
+    <a href="#founders" class="tab-brand">Founders</a>
+    <a href="#benchmark" class="tab-compete">Vibra Benchmark</a>
+    <a href="#matrix" class="tab-growth">Cross-Property</a>
+    <a href="#sov-grid" class="tab-ai">AI SoV Grid</a>
+    <span class="nav-divider"></span>
+    <a href="#property-tropicana" class="prop-tropicana">Tropicana</a>
+    <a href="#property-dorado" class="prop-dorado">Dorado</a>
+    <a href="#property-cubanito" class="prop-cubanito">Cubanito</a>
+    <a href="#property-paradiso" class="prop-paradiso">Paradiso</a>
+    <a href="#property-romeos" class="prop-romeos">Romeo&rsquo;s</a>
+    <a href="#property-grand-paradiso" class="prop-grandparadiso">Grand Paradiso</a>
+    <a href="#property-los-felices" class="prop-losfelices">Los Felices</a>
+    <a href="#property-mongibello" class="prop-mongibello">Mongibello</a>
+  </div>
+</div>
+
+<header class="hero-header">
+  <div class="container">
+    <div class="hero-badge"><span class="dot dot-multi"></span> AI &amp; Web Intelligence Dashboard</div>
+    <p class="hero-eyebrow">Powered by F&amp;T Intelligence Systems</p>
+    <h1 class="hero-domain">theconcepthotels.com</h1>
+    <p class="hero-sub">AI visibility &amp; 5-dimension web analysis across eight Ibiza properties &middot; Search &middot; Design &middot; Brand &middot; Compete &middot; Growth</p>
+    <p class="hero-prepared">May 2026 &middot; Prepared for Diego Calvo and Tallyn Planells</p>
+  </div>
+</header>
+
+<div class="container">
+
+<section class="hero-rings">
+  <div class="ring-card">
+    <p class="ring-label search">Search</p>
+    <div class="ring-hero"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--search)" stroke-dasharray="415" data-score="60" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">60</span><span class="l">/ 100</span></div></div>
+    <p class="ring-caption">Branded category queries land. Unbranded commercial queries miss.</p>
+  </div>
+  <div class="ring-card">
+    <p class="ring-label design">Design</p>
+    <div class="ring-hero"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--design)" stroke-dasharray="415" data-score="85" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">85</span><span class="l">/ 100</span></div></div>
+    <p class="ring-caption">Property photography sings. Group narrative mute.</p>
+  </div>
+  <div class="ring-card">
+    <p class="ring-label brand">Brand</p>
+    <div class="ring-hero"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="35" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">35</span><span class="l">/ 100</span></div></div>
+    <p class="ring-caption">Eight stories, no narrator. Founders absent from the website.</p>
+  </div>
+  <div class="ring-card">
+    <p class="ring-label compete">Compete</p>
+    <div class="ring-hero"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--compete)" stroke-dasharray="415" data-score="85" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">85</span><span class="l">/ 100</span></div></div>
+    <p class="ring-caption">Art Deco and Cuban niches genuinely uncontested.</p>
+  </div>
+  <div class="ring-card">
+    <p class="ring-label growth">Growth</p>
+    <div class="ring-hero"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="65" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">65</span><span class="l">/ 100</span></div></div>
+    <p class="ring-caption">Two flagships carry six dormant accounts.</p>
+  </div>
+</section>
+
+<section id="exec" class="block">
+  <div class="exec-card">
+    <p class="section-eyebrow">Executive verdict &middot; Composite 66/100</p>
+    <h2 class="exec-headline">Eight distinct properties. One Instagram-famous hotel. Seven invisible operators.</h2>
+    <p class="exec-summary">Paradiso is genuinely AI-cited for Art Deco Ibiza. Cubanito owns the Cuban-themed niche so completely that it is essentially uncontested. The other six properties are each pulling a unique cultural thesis (tropical Art Deco, rock, Route 66, fashion designers, cinema, Italian Dolce Vita) but landing as invisible to the engines that increasingly choose where guests stay. The parent surface, theconcepthotels.com, is a portal to eight stories yet tells none of them at group level. The <strong>men who designed all of this, Diego Calvo and Tallyn Planells, do not appear on their own website</strong>. Fix that, fix four-way brand-name fragmentation, fix the social link parity, and the group converts a 66 composite into the 80+ that the design quality already justifies.</p>
+  </div>
+</section>
+
+<section id="maturity" class="block" style="margin-top:32px">
+  <p class="section-eyebrow">The AI Visibility Maturity Curve</p>
+  <h2>Where the portfolio sits on the maturity curve</h2>
+  <p class="section-lede">AI doesn&rsquo;t grade on a curve. It either recommends a property or it doesn&rsquo;t. The parent brand sits at <strong>Cited</strong> on its own defining query (3 of 6 engines name it, 2 mention it). But five of the eight properties are still at <strong>Emerging</strong>. Cubanito is the only property at Recommended; Paradiso and Mongibello sit at Cited; the remaining five are carried. The group&rsquo;s position is real, but fragile.</p>
+
+  <div class="maturity-explainer">
+    <h4>How the rung connects to the matrix in &sect;W7 <a href="#sov-grid" style="font-size:11px;color:var(--search);text-decoration:none;font-weight:500;margin-left:auto">View matrix &rarr;</a></h4>
+    <p>The matrix in &sect;W7 is <strong>per row</strong>. Each row is one query tested across six AI engines. Each cell is <em>Cited</em> (named in the answer), <em>Mentioned</em> (referenced in passing) or <em>Invisible</em> (does not appear). <strong>The rung above is a roll-up of one of those rows</strong>:</p>
+    <p><strong>Group rung</strong> = derived from the parent brand row (&ldquo;concept hotels ibiza&rdquo;). <strong>Per-property rung pin</strong> = derived from that property&rsquo;s own row (defining query &times; 6 engines). They are not averages of the portfolio. Each rung answers a different question.</p>
+    <p>To map a 6-engine row onto the F&amp;T 18-cell standard (6 priority queries &times; 3 search engines), we scale &times; 3:</p>
+    <ul class="scale-list">
+      <li><span class="rung-pin pin-invisible">Invisible</span> 0 cited and 0 mentioned</li>
+      <li><span class="rung-pin pin-emerging">Emerging</span> 0&ndash;1 cited (any mentioned) &middot; 1&ndash;5/18 scaled</li>
+      <li><span class="rung-pin pin-cited">Cited</span> 2&ndash;4 cited &middot; 6&ndash;12/18 scaled</li>
+      <li><span class="rung-pin pin-recommended">Recommended</span> 5&ndash;6 cited &middot; 13&ndash;18/18 scaled</li>
+    </ul>
+    <p style="margin-top:12px"><strong>Worked example for the group:</strong> &ldquo;concept hotels ibiza&rdquo; query &middot; ChatGPT <em>cited</em>, Perplexity <em>cited</em>, Claude <em>mentioned</em>, Gemini <em>cited</em>, Bing <em>mentioned</em>, Brave <em>invisible</em>. Three cited cells &times; 3 = <strong>9 / 18 effective &rarr; mid Cited rung.</strong></p>
+  </div>
+
+  <div class="maturity-rung-stack">
+    <div class="rung rung-blocked">
+      <div class="rung-num">!</div>
+      <div class="rung-body">
+        <h4>Blocked</h4>
+        <p>robots.txt disallows AI bots. No score is meaningful until that is fixed.</p>
+        <p class="rung-properties"><strong>Properties on this rung:</strong> none &middot; robots.txt allows the crawlers</p>
+      </div>
+      <div class="rung-count">n/a</div>
+    </div>
+
+    <div class="rung rung-invisible">
+      <div class="rung-num">1</div>
+      <div class="rung-body">
+        <h4>Invisible</h4>
+        <p>AI never surfaces the brand. The conversation happens without it.</p>
+        <p class="rung-properties"><strong>Properties on this rung:</strong> none</p>
+      </div>
+      <div class="rung-count">0 / 18</div>
+    </div>
+
+    <div class="rung rung-emerging">
+      <div class="rung-num">2</div>
+      <div class="rung-body">
+        <h4>Emerging</h4>
+        <p>AI mentions occasionally: incomplete, outdated, or missing the details that convert.</p>
+        <p class="rung-properties"><strong>Properties on this rung:</strong> Tropicana, Dorado, Romeo&rsquo;s, Grand Paradiso, Los Felices &middot; five of eight</p>
+      </div>
+      <div class="rung-count">1&ndash;5 / 18</div>
+    </div>
+
+    <div class="rung rung-cited current">
+      <div class="rung-num">3</div>
+      <div class="rung-body">
+        <h4>Cited <span class="badge-current">Group sits here</span></h4>
+        <p>AI includes the brand, but recommends competitors over it. Present, not chosen.</p>
+        <p class="rung-properties"><strong>Properties on this rung:</strong> Mongibello, Paradiso &middot; <strong>Group brand on the &ldquo;concept hotels ibiza&rdquo; query</strong> sits mid-rung (9/18 effective)</p>
+      </div>
+      <div class="rung-count">6&ndash;12 / 18</div>
+    </div>
+
+    <div class="rung rung-recommended">
+      <div class="rung-num">4</div>
+      <div class="rung-body">
+        <h4>Recommended</h4>
+        <p>AI actively selects. Differentiators are clear, evidence is current, the property comes up first.</p>
+        <p class="rung-properties"><strong>Properties on this rung:</strong> Cubanito &middot; one of eight</p>
+      </div>
+      <div class="rung-count">13&ndash;18 / 18</div>
+    </div>
+  </div>
+
+  <div class="rung-unlock">
+    <h3>Next rung unlock &middot; Emerging &rarr; Cited for the five and Cited &rarr; Recommended for the group</h3>
+    <p>Adding the right schema, a named-expert bio for each property and extractable evidence on the parent surface lifts the five Emerging properties into Cited. The group rung moves with them.</p>
+    <ol>
+      <li><strong>Schema markup</strong> (currently zero) &middot; Hotel + Organization + LocalBusiness across every property page</li>
+      <li><strong>Named-expert bios</strong> &middot; designers (Los Felices), musicians (Dorado), film references (Grand Paradiso), Quentin-Tarantino-flavoured curators (Romeo&rsquo;s) appear on the page, not only in third-party press</li>
+      <li><strong>Founders /about and /our-story</strong> &middot; Diego and Tallyn as named authority across every property page footer</li>
+      <li><strong>Brand-name consolidation</strong> &middot; one canonical entity for AI engines to anchor to</li>
+      <li><strong>Press wave around Mongibello 5-star elevation</strong> &middot; Schön Magazine, Hospitality &amp; Catering News and Hotel Magazine coverage indexed on /press</li>
+    </ol>
+    <p class="rung-foot">Usually a single dev sprint per the F&amp;T standard. Pulling the median property up one rung shifts the group&rsquo;s overall AI footprint into the upper half of Cited within one season &middot; and into Recommended territory by 2027.</p>
+  </div>
+</section>
+
+<section id="scenarios" class="block" style="margin-top:32px">
+  <p class="section-eyebrow">Recovery scenarios &middot; what&rsquo;s at stake</p>
+  <h2>&euro; Scenarios &middot; conservative and aggressive recovery</h2>
+  <p class="section-lede">Two recovery models. The conservative path fixes only the critical, zero-cost defects. The aggressive path fixes those plus the brand-architecture story, the founders page and the per-property AI hooks. Maths shown for both.</p>
+
+  <div class="two-col">
+    <div class="scenario-card conservative">
+      <h3>Conservative &middot; Quick Wins 1&ndash;3 only</h3>
+      <div class="scenario-total">&euro;28k&ndash;&euro;42k / yr</div>
+      <ul>
+        <li><strong>Google Business Profile (GBP) recategorisation</strong> &middot; corporate office to hotel chain &middot; restores local pack eligibility</li>
+        <li><strong>Brand-term Google Ads defence</strong> &middot; recovers Hyatt and Destino paid leakage</li>
+        <li><strong>Grand Paradiso IG link fix</strong> &middot; 30-minute CMS edit</li>
+        <li><strong>Brand-name single-variant decision</strong> &middot; one Slack thread, applied across surfaces</li>
+        <li><strong>FB vanity URL claims for Mongibello and Los Felices</strong> &middot; free</li>
+      </ul>
+      <div class="scenario-maths">
+Annual visits to theconcepthotels.com  : ~110,000 (estimated organic + referral)
+GBP miscategorisation traffic loss     : ~8% of local-intent queries
+Local pack restoration recovery        : +9,000 sessions / yr
+Hospitality conversion rate            : 2.0%
+Avg booking value                      : &euro;480 (3-night, design-led ADR)
+GBP recovery                           : 9,000 &times; 0.02 &times; &euro;480 = &euro;86k
+Capture rate after attribution         : 25% (most users still go via OTAs)
+Net GBP uplift                         : &euro;21k / yr
+Brand-term ad defence                  : &euro;6k&ndash;&euro;15k / yr (Hyatt/Destino leak)
+Link parity + naming                   : &euro;1k&ndash;&euro;6k / yr (compound)
+                                       --------
+Total                                  : &euro;28k&ndash;&euro;42k / yr
+      </div>
+    </div>
+
+    <div class="scenario-card aggressive">
+      <h3>Aggressive &middot; Top 5 Actions plus architecture</h3>
+      <div class="scenario-total">&euro;85k&ndash;&euro;145k / yr</div>
+      <ul>
+        <li><strong>Build /about and /our-story</strong> &middot; founders, awards, press logos</li>
+        <li><strong>Single brand-name decision plus schema migration</strong> &middot; Hotel + Organization + LocalBusiness</li>
+        <li><strong>Per-property AI hooks</strong> &middot; named-designer page (Los Felices), named-song page (Dorado), Ripley page (Mongibello), Cuban-culture page (Cubanito)</li>
+        <li><strong>Paradiso and Romeo&rsquo;s TikToks open</strong> &middot; cohort-fit critical</li>
+        <li><strong>Mongibello 5-star press wave</strong> &middot; coordinated launch around the elevation</li>
+      </ul>
+      <div class="scenario-maths">
+Conservative recovery baseline       : &euro;28k&ndash;&euro;42k / yr
+Founders / About page uplift         : +&euro;12k&ndash;&euro;18k (brand-credibility conversion rate +0.4%)
+Schema migration AI citation uplift  : +&euro;15k&ndash;&euro;25k (citation density &rarr; direct booking)
+Per-property AI hooks (4 properties) : +&euro;18k&ndash;&euro;32k (cited shifts to defended in 2 of 6 engines)
+TikTok audience capture              : +&euro;8k&ndash;&euro;18k (cohort-fit ROI on Paradiso, Romeo&rsquo;s)
+Mongibello 5-star ADR realisation    : +&euro;4k&ndash;&euro;10k (rate-premium conversion uplift)
+                                     --------
+Total                                : &euro;85k&ndash;&euro;145k / yr
+      </div>
+    </div>
+  </div>
+
+  <p class="caveat-note">Estimates based on observed traffic, category volume, standard hospitality conversion rates (2.0&ndash;2.5%) and design-led-Ibiza ADR (~&euro;180 / night, 3-night avg). Actuals will vary with season, ADR strategy, attribution model and reservation system. Both scenarios are intentionally conservative on the upper bound. A board-ready estimate that holds in cross-examination is more useful than an aspirational one that doesn&rsquo;t.</p>
+</section>
+
+<section id="top-5" class="block" style="margin-top:48px">
+  <p class="section-eyebrow">Top 5 group actions &middot; sequenced</p>
+  <h2>Five moves that lift the composite from 66 to a defensible 80+</h2>
+
+  <div class="priority-card p-crit">
+    <h4>1 &middot; Fix the Google Business Profile category and the social link parity <span class="badge badge-critical">Act now</span></h4>
+    <div class="pc-body">Re-categorise the corporate GBP from &ldquo;Corporate office&rdquo; to &ldquo;Hotel chain&rdquo;. Re-point the Grand Paradiso page to <em>@grandparadisoibiza</em>. Both fixes are CMS-level and take a combined two hours. Both unlock revenue recovery the moment they land.</div>
+    <div class="pc-meta">Owner: site editor + GBP manager &middot; Time: 2 hours &middot; Cost: &euro;0</div>
+  </div>
+
+  <div class="priority-card p-crit">
+    <h4>2 &middot; Build /about and /our-story for the founders <span class="badge badge-critical">Act now</span></h4>
+    <div class="pc-body">Diego and Tallyn&rsquo;s story is the highest-leverage missing asset in the entire portfolio. D5 Magazine, Numero Netherlands and Hidden Ibiza already wrote it. Replicate the founding moment from those interviews (the napkin-sketch decision in 2012 to build a group of design-led adult hotels in Ibiza), the 25-years-of-hospitality-then-decided-to-build-our-own narrative, the design philosophy in their own words. Add six press logos. One page, one day, &euro;0 cost, single largest brand-subscore lift available.</div>
+    <div class="pc-meta">Owner: founder approval, content writer &middot; Time: 1 day &middot; Cost: &euro;0</div>
+  </div>
+
+  <div class="priority-card p-high">
+    <h4>3 &middot; Pick one brand name and apply it to every public surface <span class="badge badge-high">This quarter</span></h4>
+    <div class="pc-body">Pick &ldquo;Concept Hotel Group&rdquo; as the corporate name (matches GBP and the legal entity short form). Keep &ldquo;The Concept Hotels&rdquo; as the consumer-facing trading brand for the 7-property collection. Mongibello remains a named sister brand. Update GBP, both site footers, all social bios, schema, press releases. AI engines will start converging on a single canonical entity within weeks.</div>
+    <div class="pc-meta">Owner: founder decision, then digital + brand &middot; Time: 1 day decision, 2 weeks rollout &middot; Cost: &euro;0&ndash;&euro;500</div>
+  </div>
+
+  <div class="priority-card p-high">
+    <h4>4 &middot; Ship per-property AI hooks for the four invisible properties <span class="badge badge-high">This quarter</span></h4>
+    <div class="pc-body">Each invisible property has one move that converts &ldquo;Invisible&rdquo; cells in the SoV grid to &ldquo;Mentioned&rdquo; or &ldquo;Cited&rdquo;. Los Felices &rarr; <em>/designers</em> index listing all 113 names. Dorado &rarr; <em>/songs</em> page listing every suite&rsquo;s named track. Grand Paradiso &rarr; <em>/films</em> page listing every cinema reference. Romeo&rsquo;s &rarr; reconciled brand name plus the &ldquo;Motel &amp; Diner&rdquo; framing. Each page seeds three of the five M12 citation factors at once.</div>
+    <div class="pc-meta">Owner: content + dev &middot; Time: 2 weeks &middot; Cost: &euro;1.5k&ndash;&euro;3k</div>
+  </div>
+
+  <div class="priority-card p-med">
+    <h4>5 &middot; Open Paradiso and Romeo&rsquo;s TikToks ahead of the 2026 season <span class="badge badge-medium">Optimal window</span></h4>
+    <div class="pc-body">The two most TikTok-resonant properties in the portfolio have no TikTok. Aggregator-driven TikToks of both already exist (&ldquo;A Pretty Cool Hotel Tour&rdquo; on Romeo&rsquo;s; multiple travel creators on Paradiso). Open both accounts in May, seed each with 8&ndash;10 reels reusing existing IG photography, then run weekly through August. The relationship between TikTok content and Bing&rsquo;s answer layer is growing; properties with TikTok presence are increasingly surfacing in &ldquo;most photogenic hotel&rdquo; and &ldquo;Instagrammable&rdquo; AI answers.</div>
+    <div class="pc-meta">Owner: social manager &middot; Time: ongoing &middot; Cost: &euro;0&ndash;&euro;500 / month</div>
+  </div>
+
+  <div class="intel-card" style="margin-top:24px;border-top:3px solid var(--design)">
+    <h3>Strategic timing &middot; act now, optimal window, later</h3>
+    <p><strong>Act now (May 2026):</strong> items 1 and 2. GBP recategorisation and founders page. Both are zero-cost and both compound through the 2026 season. Every week of delay is a week of lost local-pack visibility.</p>
+    <p style="margin-top:8px"><strong>Optimal window (May to July 2026):</strong> items 3, 4 and 5. The 2026 season runs May to October. Brand-name consolidation, per-property AI hooks and TikTok launches all need 4 to 8 weeks to compound before season peak in July. Beyond mid-July the ROI window narrows on this season.</p>
+    <p style="margin-top:8px"><strong>Later (Q4 2026 to Q1 2027):</strong> Mongibello 5-star repositioning across all corporate surfaces, full schema migration, a /press section with all D5 / LIV / Numero coverage indexed. Off-season work that ladders into the 2027 launch.</p>
+  </div>
+</section>
+
+<section id="brain" class="block" style="margin-top:48px">
+  <div style="text-align:center;margin-bottom:32px">
+    <div style="width:88px;height:88px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(168,85,247,0.35);background:rgba(168,85,247,0.08);margin-bottom:18px">&#128274;</div>
+    <p class="section-eyebrow" style="color:#c084fc">Capability preview &middot; locked</p>
+    <h2 style="margin-bottom:12px">Ask Your Brain</h2>
+    <p class="section-lede" style="margin:0 auto;max-width:680px;text-align:center">A NotebookLM-powered second brain trained on every page of this audit, every property panel and the source intelligence behind it. Available to retained clients. This is what Concept Hotel Group would unlock on engagement.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:28px">
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.88">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">Audio Overview</div>
+      <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6">A 14&ndash;18 minute podcast-style walkthrough of the eight properties, two AI hosts working through the gaps, the architecture decisions and the recovery scenarios in conversation. For the founder commute between properties.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">&#128274;</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.88">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">Mind Map</div>
+      <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6">An interactive map of every finding, every property and every dependency. See at a glance how the founders page unlocks the brand score, which unlocks AI citation density, which closes the Vibra gap.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">&#128274;</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.88">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">Portfolio Infographic</div>
+      <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6">A single-page visual of all eight properties, scored on Brand / Social / AI SoV, with the Top 5 sequenced. The artefact you forward to a co-founder, a board, or the operator who runs three of the eight day-to-day.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">&#128274;</div>
+    </div>
+    <div style="padding:22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);position:relative;opacity:0.88">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">NotebookLM Chat</div>
+      <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6">Ask anything. &ldquo;What&rsquo;s the cheapest fix for Los Felices?&rdquo; &ldquo;How do our designer credentials compare to Bless Ibiza&rsquo;s?&rdquo; The brain answers with citations back to the exact panel and finding in the audit.</div>
+      <div style="position:absolute;top:14px;right:14px;font-size:11px;color:#c084fc">&#128274;</div>
+    </div>
+  </div>
+
+  <div style="padding:28px 32px;background:linear-gradient(135deg,rgba(168,85,247,0.10),rgba(99,102,241,0.08));border:1px solid rgba(168,85,247,0.30);border-radius:var(--radius);text-align:center">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--text);margin-bottom:8px">This is an independent audit, not a retained engagement</div>
+    <p style="font-size:13px;color:var(--text-secondary);max-width:660px;margin:0 auto 18px;line-height:1.7">The Concept Hotels was scanned as part of F&amp;T&rsquo;s boutique-hospitality avatar work: independent and unsolicited. A provisioned NotebookLM brain ships with the Full Intelligence Report and the Annual Intelligence Plan. The capability is real; it&rsquo;s simply not on for this preview.</p>
+    <a href="mailto:hello@frictionandtoil.com?subject=Concept%20Hotels%20Brain%20Provisioning" style="display:inline-block;padding:13px 32px;border-radius:100px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#c084fc;border:1px solid rgba(168,85,247,0.45);text-decoration:none;letter-spacing:.3px;background:rgba(168,85,247,0.04)">Talk to F&amp;T about provisioning &rarr;</a>
+  </div>
+</section>
+
+<section id="group-context" class="block">
+  <p class="section-eyebrow">Group context wrapper</p>
+  <h2>Group findings the portfolio inherits, one floor below per-property</h2>
+  <p class="section-lede">Eight modules that touch every property at once. Brand architecture, holding-company hygiene, branded SERP defence, the corporate Google Business Profile, name-consistency across the portfolio, the comparison matrix, the engine grid and the link parity check.</p>
+
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:24px 0 10px;color:var(--text)">W1 &middot; Brand Architecture</h3>
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.65">Mongibello is treated as a sister brand on the parent site, with its own logo, its own domain (<span style="font-family:'JetBrains Mono',monospace;font-size:11.5px">mongibelloibiza.com</span>) and a Preferred Hotels &amp; Resorts affiliation. The other seven sit beneath The Concept Hotels umbrella with shared template treatment. As of April 2026, Mongibello was promoted from 4-star to 5-star, formally separating it from the rest. The diagram below reflects the architecture as designed.</p>
+
+  <div class="brand-arch-diagram">
+    <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brand architecture diagram showing parent group with seven Concept Hotels properties and Mongibello as five-star sister brand">
+      <!-- Legal entity -->
+      <rect x="320" y="10" width="260" height="58" rx="10" fill="rgba(99,102,241,0.10)" stroke="#6366f1" stroke-width="1.5"/>
+      <text x="450" y="34" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="600" fill="#e8e8ed" text-anchor="middle">Concept and Design Hotel Group SL</text>
+      <text x="450" y="52" font-family="JetBrains Mono,monospace" font-size="10" fill="#8b8b9e" text-anchor="middle">Legal entity &middot; Spain</text>
+
+      <!-- Connector down to two trading brands -->
+      <line x1="450" y1="68" x2="450" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="220" y1="100" x2="680" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="220" y1="100" x2="220" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="680" y1="100" x2="680" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+
+      <!-- Trading brand 1 -->
+      <rect x="60" y="130" width="320" height="56" rx="10" fill="rgba(16,185,129,0.10)" stroke="#10b981" stroke-width="1.5"/>
+      <text x="220" y="154" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="600" fill="#e8e8ed" text-anchor="middle">The Concept Hotels</text>
+      <text x="220" y="172" font-family="JetBrains Mono,monospace" font-size="10" fill="#8b8b9e" text-anchor="middle">theconcepthotels.com &middot; 7 properties</text>
+
+      <!-- Sub-brand -->
+      <rect x="520" y="130" width="320" height="56" rx="10" fill="rgba(139,92,246,0.10)" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6 3"/>
+      <text x="680" y="154" font-family="Space Grotesk,sans-serif" font-size="13" font-weight="600" fill="#e8e8ed" text-anchor="middle">Mongibello (sister brand)</text>
+      <text x="680" y="172" font-family="JetBrains Mono,monospace" font-size="10" fill="#a78bfa" text-anchor="middle">mongibelloibiza.com &middot; 5-star &middot; April 2026</text>
+
+      <!-- Connector -->
+      <line x1="220" y1="186" x2="220" y2="210" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="80" y1="210" x2="360" y2="210" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+
+      <!-- 7 main brand boxes (two rows) -->
+      <g font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600" fill="#e8e8ed" text-anchor="middle">
+        <rect x="20" y="220" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="75" y="245">Tropicana</text>
+        <text x="75" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Art Deco / Tropical</text>
+
+        <rect x="140" y="220" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="195" y="245">Dorado</text>
+        <text x="195" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Rock</text>
+
+        <rect x="260" y="220" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="315" y="245">Cubanito</text>
+        <text x="315" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Cuban</text>
+
+        <rect x="20" y="290" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(16,185,129,0.30)" stroke-width="1.5"/>
+        <text x="75" y="315">Paradiso</text>
+        <text x="75" y="332" font-family="JetBrains Mono,monospace" font-size="9" fill="#22c55e">Art Deco &middot; cited</text>
+
+        <rect x="140" y="290" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="195" y="313">Romeo&rsquo;s</text>
+        <text x="195" y="330" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Route 66</text>
+
+        <rect x="260" y="290" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="315" y="313">Grand Paradiso</text>
+        <text x="315" y="330" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Cinema</text>
+
+        <rect x="140" y="360" width="110" height="58" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.15)"/>
+        <text x="195" y="385">Los Felices</text>
+        <text x="195" y="402" font-family="JetBrains Mono,monospace" font-size="9" fill="#8b8b9e">Fashion</text>
+      </g>
+
+      <!-- Mongibello child box -->
+      <line x1="680" y1="186" x2="680" y2="220" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="600" y="220" width="160" height="58" rx="8" fill="rgba(139,92,246,0.06)" stroke="rgba(139,92,246,0.4)" stroke-width="1.5"/>
+      <text x="680" y="245" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600" fill="#e8e8ed" text-anchor="middle">Mongibello</text>
+      <text x="680" y="262" font-family="JetBrains Mono,monospace" font-size="9" fill="#a78bfa" text-anchor="middle">Italian 1960s &middot; 5-star</text>
+
+      <!-- Annotation -->
+      <text x="780" y="305" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#a78bfa" text-anchor="middle">Visually distinct in nav.</text>
+      <text x="780" y="320" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#a78bfa" text-anchor="middle">Own logo, own domain.</text>
+      <text x="780" y="335" font-family="JetBrains Mono,monospace" font-size="9.5" fill="#a78bfa" text-anchor="middle">Preferred Hotels affiliated.</text>
+    </svg>
+  </div>
+
+  <div class="intel-card">
+    <h3>Architecture finding &middot; design intent vs digital reality</h3>
+    <p>The founders <strong>intentionally separated Mongibello</strong> as a sister brand. The nav respects that. The logo respects that. The domain split respects that. But the parent site footer treats all eight identically, social handles are linked inconsistently and there is no architecture page explaining why Mongibello carries its own star rating. A sceptical reader of theconcepthotels.com cannot tell that the architecture is deliberate. It looks accidental. Add a one-paragraph architecture explainer to the parent footer and the design intent reads.</p>
+  </div>
+
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--text)">W2 &middot; Holding company and entity discovery</h3>
+  <div class="intel-card">
+    <h3>Four anchor names for a single group</h3>
+    <p>Across surfaces, the group is named four different ways. AI engines cannot anchor a canonical entity when the trading name, legal name, GMB knowledge panel and corporate address all disagree.</p>
+    <table class="compare-table">
+      <thead><tr><th>Surface</th><th>Name in use</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Trading site H1 and URL</td><td><strong>The Concept Hotels</strong></td><td><span class="badge badge-info">Primary trading</span></td></tr>
+        <tr><td>Spanish corporate site</td><td><strong>Concept Hotel Group</strong></td><td><span class="badge badge-info">concepthotelgroup.es</span></td></tr>
+        <tr><td>Google Business Profile</td><td><strong>Concept Hotel Group</strong></td><td><span class="badge badge-medium">Mixed with trading</span></td></tr>
+        <tr><td>Some pages on theconcepthotels.com</td><td><strong>Concept Hotels Group</strong></td><td><span class="badge badge-high">Third variant in same domain</span></td></tr>
+        <tr><td>Legal entity (registered)</td><td><strong>Concept and Design Hotel Group SL</strong></td><td><span class="badge badge-info">Spain registration</span></td></tr>
+        <tr><td>GMB recorded address</td><td><strong>Edificio Ocean Group</strong>, Carrer de Jaume I, 07817</td><td><span class="badge badge-medium">Possible holding parent</span></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px">The Edificio Ocean Group address line suggests a shared corporate building or a parent / holding-company relationship worth confirming. The trading-to-legal name distance is normal for Spanish hotel groups. The <strong>three variants of the trading name across the public surfaces</strong> are not.</p>
+  </div>
+
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--text)">W3 &middot; Branded SERP defence</h3>
+  <div class="intel-card">
+    <h3>Hyatt is paying to outrank your own brand term</h3>
+    <p>A search for <em>concept hotels ibiza</em> on Google returns paid placements from competitors above the group&rsquo;s own site. Captured SERP snapshot:</p>
+    <table class="compare-table" style="margin-top:10px">
+      <thead><tr><th>Position</th><th>Result</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Hyatt &middot; 7Pines Resort</td><td><span class="badge badge-critical">Paid &middot; brand-bid</span></td></tr>
+        <tr><td>2</td><td>Destino Five (competing group)</td><td><span class="badge badge-critical">Paid &middot; brand-bid</span></td></tr>
+        <tr><td>3</td><td>British Airways Holidays</td><td><span class="badge badge-medium">Aggregator</span></td></tr>
+        <tr><td>4</td><td>Boutique Hotels Guides</td><td><span class="badge badge-medium">Aggregator</span></td></tr>
+        <tr><td>5</td><td><strong>theconcepthotels.com</strong> (own site)</td><td><span class="badge badge-high">First organic, but below 4 others</span></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px">Two paid bidders, two aggregators, and the group&rsquo;s own site only appears in position 5 on its own brand term. <strong>This is paid-traffic leakage at the most valuable keyword the group will ever rank for</strong>. A protective brand bid of even &euro;100 / week would push the group&rsquo;s own listing above the aggregators and reclaim direct bookings that are currently routing through Hyatt&rsquo;s remarketing pixel.</p>
+    <p style="margin-top:10px"><span class="badge badge-critical">Critical</span> &nbsp; Defend the brand term in Google Ads. Estimated commercial leakage is in the &euro;15k to &euro;30k / year range based on typical brand-term click-through rate (CTR) splits in hospitality.</p>
+  </div>
+
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--text)">W4 &middot; Group Google Business Profile audit</h3>
+  <div class="intel-card">
+    <h3>Six structural defects on the group GBP</h3>
+    <ol style="list-style:decimal;padding-left:22px;color:var(--text-secondary);font-size:13px;line-height:1.85">
+      <li><strong>Miscategorised as &ldquo;Corporate office.&rdquo;</strong> Should be <em>Hotel chain</em> or <em>Hospitality</em>. As a corporate office the listing is locked out of the local hotel pack for every Ibiza search. Single highest-leverage fix on this page.</li>
+      <li><strong>45 reviews total across an 8-property group.</strong> Industry health norm is at least ten reviews per property. The group is sitting at roughly six. Each property GBP is likely undernourished too.</li>
+      <li><strong>&ldquo;Reviews aren&rsquo;t verified&rdquo;</strong> flag visible on the knowledge panel. Visible signal of low engagement; suppresses click-through.</li>
+      <li><strong>Spanish-only description.</strong> The English-speaking guest, the actual ideal customer profile (ICP) for design-led party Ibiza, sees nothing on the highest-trust surface in search.</li>
+      <li><strong>No Q&amp;A populated.</strong> Empty Q&amp;A invites third parties to answer. Two of the existing visible questions are answered by random users.</li>
+      <li><strong>Photo set thin for an 8-property group.</strong> Exterior present, interior thin, property-level coverage absent.</li>
+    </ol>
+    <p style="margin-top:14px">Total fix effort across all six items is half a day for someone with edit access to the GBP. The category fix alone (one click) re-enables local pack eligibility for the parent group across every Ibiza accommodation query.</p>
+  </div>
+</section>
+
+<section class="block" style="margin-top:32px">
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px;color:var(--text)">W5 &middot; Brand-name consistency audit</h3>
+  <div class="intel-card">
+    <h3>Three trading-name variants, before the legal entity even enters</h3>
+    <p>Crawling the parent site, the corporate site and the social bios surfaces three variants of the trading name in regular use. AI engines treat each as a candidate canonical entity. They cannot pick one, so the citation density splits across all three.</p>
+    <ul class="flag-list">
+      <li class="flag-red"><strong>&ldquo;The Concept Hotels&rdquo;</strong> in the H1, the URL slug, the social handle of one IG account and the Mongibello footer reference to <em>concept_hotel_group</em>.</li>
+      <li class="flag-red"><strong>&ldquo;Concept Hotel Group&rdquo;</strong> on concepthotelgroup.es, the Spanish corporate domain, and the Google Knowledge Panel.</li>
+      <li class="flag-red"><strong>&ldquo;Concept Hotels Group&rdquo;</strong> appears inconsistently on subpages within theconcepthotels.com itself.</li>
+    </ul>
+    <p>Pick one. Make every public surface match. The simplest decision is to lead with <em>Concept Hotel Group</em> (matches GBP and the legal-entity short form) and treat <em>The Concept Hotels</em> as the consumer trading brand for the 7-property collection sitting beneath it. Mongibello stays as a named sister brand.</p>
+  </div>
+
+  <h3 id="matrix" style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:32px 0 10px;color:var(--text)">W6 &middot; Cross-property comparison matrix</h3>
+  <p class="section-lede">Each property scored on Brand presence (site page + name consistency), Social presence (IG + FB + TikTok composite), AI SoV (share of six engines where cited or mentioned for the property&rsquo;s defining query). Composite is the weighted sum. Sorted descending.</p>
+  <div style="overflow-x:auto">
+  <table class="cross-property-table">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Concept</th>
+        <th>Brand</th>
+        <th>Social</th>
+        <th>AI SoV</th>
+        <th>Composite</th>
+        <th>Top action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Paradiso</strong><div style="font-size:11px;color:var(--text-muted)">paradiso_ibiza</div></td>
+        <td>Art Deco / Miami</td>
+        <td><span class="score-cell sc-green">72</span></td>
+        <td><span class="score-cell sc-green">78</span></td>
+        <td><span class="score-cell sc-green">67</span></td>
+        <td><strong><span class="score-cell sc-green">72</span></strong></td>
+        <td>Lock the Art Deco SoV with a schema-rich landing page that hits all 18 SoV signals</td>
+      </tr>
+      <tr>
+        <td><strong>Cubanito</strong><div style="font-size:11px;color:var(--text-muted)">cubanitoibiza</div></td>
+        <td>1950s Havana</td>
+        <td><span class="score-cell sc-yellow">60</span></td>
+        <td><span class="score-cell sc-green">68</span></td>
+        <td><span class="score-cell sc-green">83</span></td>
+        <td><strong><span class="score-cell sc-green">70</span></strong></td>
+        <td>Defend the uncontested Cuban niche; ship a longform &ldquo;Why Cuban-themed in Ibiza&rdquo; page</td>
+      </tr>
+      <tr class="sub-brand-row">
+        <td><strong>Mongibello</strong> <span class="badge badge-info" style="padding:2px 8px;font-size:9px">Sub-brand</span><div style="font-size:11px;color:var(--text-muted)">mongibelloibiza</div></td>
+        <td>Italian Dolce Vita 1960s</td>
+        <td><span class="score-cell sc-green">75</span></td>
+        <td><span class="score-cell sc-yellow">58</span></td>
+        <td><span class="score-cell sc-yellow">50</span></td>
+        <td><strong><span class="score-cell sc-yellow">61</span></strong></td>
+        <td>Use the 5-star elevation as a press hook; capture &ldquo;Dolce Vita Ibiza&rdquo; SoV before competitors notice</td>
+      </tr>
+      <tr>
+        <td><strong>Tropicana</strong><div style="font-size:11px;color:var(--text-muted)">tropicana_ibiza</div></td>
+        <td>Tropical Art Deco</td>
+        <td><span class="score-cell sc-yellow">52</span></td>
+        <td><span class="score-cell sc-yellow">62</span></td>
+        <td><span class="score-cell sc-yellow">50</span></td>
+        <td><strong><span class="score-cell sc-yellow">55</span></strong></td>
+        <td>Sharpen the positioning. Pick tropical, Art Deco or one as the lead. The page is currently doing both badly</td>
+      </tr>
+      <tr>
+        <td><strong>Romeo&rsquo;s</strong><div style="font-size:11px;color:var(--text-muted)">romeosibiza</div></td>
+        <td>Route 66 love motel</td>
+        <td><span class="score-cell sc-yellow">55</span></td>
+        <td><span class="score-cell sc-yellow">58</span></td>
+        <td><span class="score-cell sc-orange">33</span></td>
+        <td><strong><span class="score-cell sc-yellow">49</span></strong></td>
+        <td>The most TikTok-resonant property in the group has zero TikTok. Open one this quarter.</td>
+      </tr>
+      <tr>
+        <td><strong>Dorado</strong><div style="font-size:11px;color:var(--text-muted)">doradoibiza</div></td>
+        <td>Rock &amp; roll</td>
+        <td><span class="score-cell sc-yellow">50</span></td>
+        <td><span class="score-cell sc-yellow">52</span></td>
+        <td><span class="score-cell sc-orange">33</span></td>
+        <td><strong><span class="score-cell sc-orange">45</span></strong></td>
+        <td>Differentiate from Hard Rock Hotel and Ibiza Rocks with named musician room dedications</td>
+      </tr>
+      <tr>
+        <td><strong>Grand Paradiso</strong><div style="font-size:11px;color:var(--text-muted)">grandparadisoibiza</div></td>
+        <td>Cinema / Movie Hotel</td>
+        <td><span class="score-cell sc-orange">42</span></td>
+        <td><span class="score-cell sc-yellow">55</span></td>
+        <td><span class="score-cell sc-red">17</span></td>
+        <td><strong><span class="score-cell sc-orange">38</span></strong></td>
+        <td>The page links to <em>@paradiso_ibiza</em>, not its own IG. Fix the social link parity today.</td>
+      </tr>
+      <tr>
+        <td><strong>Los Felices</strong><div style="font-size:11px;color:var(--text-muted)">losfelicesibiza</div></td>
+        <td>Fashion / Palm Springs</td>
+        <td><span class="score-cell sc-orange">45</span></td>
+        <td><span class="score-cell sc-yellow">50</span></td>
+        <td><span class="score-cell sc-red">17</span></td>
+        <td><strong><span class="score-cell sc-orange">37</span></strong></td>
+        <td>113 named designers is a story. Build one page per featured designer and submit to fashion press.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="caveat-note">Scoring derived from observed property page completeness, captured IG/FB follower counts and bio link parity, plus simulated AI SoV via the M12 5-citation-factor framework on each property&rsquo;s defining query. Composite is a weighted estimate informed by 40% Brand, 35% Social, 25% AI SoV, with editorial judgement on factors not captured numerically (cohort fit, brand-architecture intent, press momentum). Re-run after fixes to track movement.</p>
+</section>
+
+<section id="sov-grid" class="block" style="margin-top:32px">
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px;color:var(--text)">W7 &middot; AI SoV portfolio matrix</h3>
+  <p class="section-lede">Each property tested against its defining query across six engines. <span class="badge badge-pass" style="padding:2px 8px;font-size:9px">Cited</span> = property named in the answer. <span class="badge badge-medium" style="padding:2px 8px;font-size:9px">Mentioned</span> = referenced in passing. <span class="badge badge-critical" style="padding:2px 8px;font-size:9px">Invisible</span> = does not appear, competitor wins. <span class="badge" style="padding:2px 8px;font-size:9px;background:rgba(255,255,255,.02);color:var(--text-muted);border-color:var(--border);border-style:dashed">Simulated</span> = inferred via M12 5-citation-factor framework, not live-tested.</p>
+  <div class="sov-portfolio-grid" style="overflow-x:auto">
+    <div class="pg-cell pg-row-label" style="font-weight:600">Property &middot; Query</div>
+    <div class="pg-cell pg-header">ChatGPT</div>
+    <div class="pg-cell pg-header">Perplexity</div>
+    <div class="pg-cell pg-header">Claude</div>
+    <div class="pg-cell pg-header">Gemini</div>
+    <div class="pg-cell pg-header">Bing&nbsp;Copilot</div>
+    <div class="pg-cell pg-header">Brave&nbsp;AI</div>
+
+    <div class="pg-cell pg-row-label"><strong>Group</strong> &middot; &ldquo;concept hotels ibiza&rdquo;</div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Paradiso</strong> &middot; &ldquo;Art Deco hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Cubanito</strong> &middot; &ldquo;Cuban-themed hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Tropicana</strong> &middot; &ldquo;design hotel Playa d&rsquo;en Bossa&rdquo;</div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Live</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Dorado</strong> &middot; &ldquo;rock-themed hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Live</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Romeo&rsquo;s</strong> &middot; &ldquo;Route 66 hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Grand Paradiso</strong> &middot; &ldquo;movie hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Live</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Los Felices</strong> &middot; &ldquo;fashion hotel Ibiza&rdquo;</div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Live</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+
+    <div class="pg-cell pg-row-label"><strong>Mongibello</strong> &middot; &ldquo;Italian Dolce Vita Ibiza&rdquo;</div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-cited">Cited <span class="eng">Live</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-mentioned">Mentioned <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+    <div class="pg-cell sov-invisible">Invisible <span class="eng">Sim</span></div>
+  </div>
+  <p class="caveat-note">AI SoV simulations use the public answer-layer evidence factors per the F&amp;T M12 framework (direct-answer-format, named authority, fact density, schema presence, external link signal). Live results vary by user, location, and model version, but the structural signals driving citations are stable and measurable. Cells marked &ldquo;Sim&rdquo; were inferred via M12; cells marked &ldquo;Live&rdquo; were tested via web search and answer-engine probing during the May 2026 build.</p>
+</section>
+
+<section class="block" style="margin-top:32px">
+  <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin:0 0 10px;color:var(--text)">W8 &middot; Link parity check</h3>
+  <div class="intel-card">
+    <h3>Two structural defects on social link parity</h3>
+    <p><strong>Grand Paradiso routes to the wrong Instagram.</strong> The Grand Paradiso property page on theconcepthotels.com links to <em>@paradiso_ibiza</em>, the smaller-sister property&rsquo;s account. Grand Paradiso has its own dedicated IG (<em>@grandparadisoibiza</em>, 17k followers), but the parent site directs all traffic away from it. That account is starved by its own parent.</p>
+    <p style="margin-top:10px"><strong>Mongibello&rsquo;s Facebook is a numeric profile, not a vanity URL.</strong> facebook.com/profile.php?id=100090915558551 cannot be linked from press, embedded in remarketing, or remembered by a guest. Convert to <em>facebook.com/mongibelloibiza</em>. Free fix.</p>
+    <p style="margin-top:10px"><strong>Group IG has 34k followers; the 8 property accounts combined have 220k+.</strong> Cross-tagging discipline at group level could turn a fragmented audience into a network. Currently each property posts in isolation.</p>
+  </div>
+</section>
+
+<section id="founders" class="block" style="margin-top:32px">
+  <p class="section-eyebrow">Elevation move 1 of 4</p>
+  <h2>Founders Visibility &middot; the people who built this are missing from their own brand</h2>
+  <p class="section-lede">Diego Calvo (CEO and co-founder) and Tallyn Planells (co-founder, ex-Privilege) have a story the press already loves. The hotel-industry press, design awards and the founders&rsquo; own personal channels carry that story. The parent site does not.</p>
+
+  <div class="founders-visibility-card">
+    <div class="col surface">
+      <h4>Where the founders surface</h4>
+      <ul>
+        <li><strong>D5 Magazine</strong> &middot; long-form CEO interview, Concept Hotel Group origin story, &ldquo;changing the rules of the game and breaking the design mould&rdquo;</li>
+        <li><strong>LIV Hospitality Design Awards 2025</strong> &middot; featured founder profile, six-property design narrative</li>
+        <li><strong>Numero Netherlands</strong> &middot; &ldquo;Diego Calvo&rsquo;s vision for Ibiza&rdquo; lifestyle feature</li>
+        <li><strong>Hidden Ibiza / Travel Hidden Places</strong> &middot; Diego Calvo as &ldquo;a hidden icon&rdquo; of the island</li>
+        <li><strong>Amusement Logic</strong> &middot; case-study write-up of Concept Hotel Group as architectural client</li>
+        <li><strong>TecnoHotel News (2021, 2023)</strong> &middot; Spanish-language industry interviews on portfolio strategy</li>
+        <li><strong>La Voz De Ibiza</strong> &middot; industry recognition coverage</li>
+        <li><strong>InteriHotel MAD24 (2024)</strong> &middot; conference-speaker billing</li>
+        <li><strong>diegocalvoibiza.com</strong> &middot; Diego&rsquo;s own personal site exists, with full bio and origin story</li>
+        <li><strong>Concept Hotel Group LinkedIn</strong> &middot; named founders listed there</li>
+      </ul>
+    </div>
+    <div class="col absent">
+      <h4>Where the founders do not surface</h4>
+      <ul>
+        <li><strong>theconcepthotels.com /about</strong> &middot; returns 404. The page does not exist.</li>
+        <li><strong>theconcepthotels.com /our-story</strong> &middot; returns 404. The page does not exist.</li>
+        <li><strong>Any per-property page</strong> &middot; not a single one references Diego or Tallyn as designer or operator</li>
+        <li><strong>Group Instagram bio</strong> &middot; no founder credit, no link to a story page</li>
+        <li><strong>Mongibello site</strong> &middot; no founder credit, despite Mongibello being the group&rsquo;s most ambitious property launch</li>
+        <li><strong>Press section</strong> &middot; absent. There is no /press, no /awards, no /recognition</li>
+        <li><strong>Property page captions</strong> &middot; describe the design but never the designer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="intel-card" style="margin-top:14px">
+    <h3>Why this is the single biggest brand lift available</h3>
+    <p>The brand subscore of 35 is held there almost single-handedly by the absence of an About page. A boutique-hospitality brand with 8 properties built over 14 years by a named founding duo and zero About page reads as a portal at best and as an aggregator at worst. <strong>The fix is one new page</strong>: founders&rsquo; bios, founding-year napkin pact, six press logos already earned. Time-to-implement: one day. Brand subscore lift: an estimated 35 points (to 70+) on the F&amp;T scale. AI citation lift: founder names are now anchorable as named authorities, which is one of the five M12 citation factors.</p>
+    <p style="margin-top:10px"><span class="badge badge-critical">Critical</span> &nbsp; Build /about and /our-story this quarter. The story exists already; it just needs to land on the brand&rsquo;s own surface.</p>
+  </div>
+</section>
+
+<section id="benchmark" class="block" style="margin-top:32px">
+  <p class="section-eyebrow">Elevation move 2 of 4</p>
+  <h2>Competitor group benchmark &middot; Concept Hotels vs Vibra Hotels</h2>
+  <p class="section-lede">The closest group-vs-group analogue is Vibra Hotels: Spanish parent, Balearic-focused, multi-property, sells a similar adult-leisure ICP. Scored on the five dimensions visible to a portfolio audit. Compete and Growth from the exec strip are reframed here as AI SoV and Social, because those are the dimensions where the gap to Vibra actually matters.</p>
+
+  <div class="benchmark-rings">
+    <div class="b-col">
+      <h4>The Concept Hotels</h4>
+      <div class="b-rings">
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--search)" stroke-dasharray="415" data-score="60" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">60</span><span class="l">Search</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--design)" stroke-dasharray="415" data-score="85" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">85</span><span class="l">Design</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="35" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">35</span><span class="l">Brand</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="52" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">52</span><span class="l">AI&nbsp;SoV</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="60" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">60</span><span class="l">Social</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="b-col">
+      <h4>Vibra Hotels</h4>
+      <div class="b-rings">
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--search)" stroke-dasharray="415" data-score="72" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">72</span><span class="l">Search</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--design)" stroke-dasharray="415" data-score="55" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">55</span><span class="l">Design</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="62" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">62</span><span class="l">Brand</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="40" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">40</span><span class="l">AI&nbsp;SoV</span></div></div>
+        </div>
+        <div>
+          <div class="ring-wrap"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="70" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">70</span><span class="l">Social</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intel-card" style="margin-top:14px">
+    <h3>Strategic read</h3>
+    <p><strong>Concept wins on Design (85 vs 55).</strong> No contest. Vibra is a competent mid-market operator; Concept is a portfolio of cultural theses each rendered as a hotel. <strong>Vibra wins on Brand (62 vs 35), Search (72 vs 60) and Social reach (Facebook 148k vs Concept&rsquo;s ~30k group).</strong> Vibra has 40 years of operational scale plus an About page; Concept has a better story and 14 years of design distinction but no story page. <strong>Concept wins on AI SoV (52 vs 40).</strong> Two of its properties (Paradiso, Cubanito) genuinely punch in AI answers; Vibra sits in the long tail of mid-market Ibiza accommodation listings.</p>
+    <p style="margin-top:10px">The pattern is clear. Concept already has the product Vibra cannot build. Concept is missing the operational marketing layer Vibra has had for decades. Closing the Brand gap alone takes Concept&rsquo;s composite from 66 to ~78 without touching the product.</p>
+  </div>
+</section>
+
+<section class="block" style="margin-top:48px">
+  <p class="section-eyebrow">Per-property deep panels</p>
+  <h2>Eight properties, each scored on Brand, Social and AI SoV</h2>
+  <p class="section-lede">Each panel: mini-ring set, property-page audit summary, IG + FB + TikTok cards, six-engine SoV row, one top action with time and revenue estimate.</p>
+
+  <!-- TROPICANA -->
+  <div id="property-tropicana" class="property-panel">
+    <h3 class="property-title">Tropicana <span class="badge badge-info" style="padding:3px 10px">Art Deco / Tropical</span> <span class="rung-pin pin-emerging">Emerging</span></h3>
+    <p class="property-lede"><strong>&ldquo;Another Cocktail, Flanagan.&rdquo;</strong> Art Deco hotel inspired by the 1988 film <em>Cocktail</em> and Miami Modern (MiMo) design, sited in Playa d&rsquo;en Bossa. Target reads as upscale leisure plus party-adjacent. Positioning is doing two themes at once (tropical and Art Deco) and consequently anchoring neither.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="52" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">52</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="62" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">62</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="50" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">50</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@tropicana_ibiza</div><div class="metric-row"><span>Followers</span><strong>29k</strong></div><div class="metric-row"><span>Posts</span><strong>204</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">tropicanaibizasuites</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>High</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Opportunity</span><strong>Open</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">ChatGPT</span>Mentioned</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Perplexity</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Claude</span>Invisible</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Gemini</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-high" style="margin-top:14px">
+      <h4>Top action &middot; pick one theme and lead with it <span class="badge badge-high">High</span></h4>
+      <div class="pc-body">The page is hybrid Tropical-Art-Deco. AI engines reading it cannot anchor a single category, so Tropicana ends up &ldquo;mentioned&rdquo; in three categories and &ldquo;cited&rdquo; in none. Choose: is this the tropical hotel in Playa d&rsquo;en Bossa, or the Art Deco hotel? Lead with one. The other becomes a supporting motif.</div>
+      <div class="pc-meta">Time: 1 day &middot; COI contribution: &euro;4k&ndash;&euro;7k / yr</div>
+    </div>
+  </div>
+
+  <!-- DORADO -->
+  <div id="property-dorado" class="property-panel">
+    <h3 class="property-title">Dorado <span class="badge badge-info" style="padding:3px 10px">Rock &amp; roll</span> <span class="rung-pin pin-emerging">Emerging</span></h3>
+    <p class="property-lede"><strong>&ldquo;Let the Good Times Roll.&rdquo;</strong> Beachfront rock-themed boutique on Playa d&rsquo;en Bossa, each suite named after a song. The product is genuinely differentiated. The category competition is brutal: Hard Rock Hotel Ibiza and Ibiza Rocks together own &ldquo;rock + Ibiza&rdquo; in AI memory and Dorado does not surface against either.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="50" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">50</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="52" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">52</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="33" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">33</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@doradoibiza</div><div class="metric-row"><span>Followers</span><strong>15k</strong></div><div class="metric-row"><span>Posts</span><strong>526</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">doradoibizasuites</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>Medium</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Opportunity</span><strong>Music reels</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">ChatGPT</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Perplexity</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Claude</span>Invisible</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Gemini</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-high" style="margin-top:14px">
+      <h4>Top action &middot; publish the songs <span class="badge badge-high">High</span></h4>
+      <div class="pc-body">Each suite is named after a song. That fact is not a story on the Dorado page; it&rsquo;s a sentence. Ship a public page that lists every room with its track, the year, the artist, why it was chosen. Each named song is an AI citation hook plus a music-press hook. Dorado moves from invisible to a verifiably distinct rock proposition.</div>
+      <div class="pc-meta">Time: 3 days &middot; COI contribution: &euro;3k&ndash;&euro;6k / yr</div>
+    </div>
+  </div>
+
+  <!-- CUBANITO -->
+  <div id="property-cubanito" class="property-panel">
+    <h3 class="property-title">Cubanito <span class="badge badge-info" style="padding:3px 10px">1950s Havana</span> <span class="rung-pin pin-recommended">Recommended</span></h3>
+    <p class="property-lede"><strong>&ldquo;50s Havana and Cuban flavour fill every corner of our most evocative hotel.&rdquo;</strong> Adults-only Cuban-themed boutique on the outskirts of San Antonio. Each room pays tribute to a Cuban musician, actor or artist. The category &ldquo;Cuban-themed hotel Ibiza&rdquo; is essentially uncontested. Cubanito owns it by default.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="60" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">60</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="68" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">68</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="83" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">83</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@cubanitoibiza</div><div class="metric-row"><span>Followers</span><strong>28k</strong></div><div class="metric-row"><span>Posts</span><strong>505</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">cubanitoibiza</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>Medium</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Opportunity</span><strong>Salsa nights</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-cited"><span class="eng">ChatGPT</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Perplexity</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Claude</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Gemini</span>Cited</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Bing&nbsp;Copilot</span>Mentioned</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Brave&nbsp;AI</span>Cited</div>
+    </div>
+    <div class="priority-card p-low" style="margin-top:14px">
+      <h4>Top action &middot; defend the niche while you own it <span class="badge badge-pass">Maintain</span></h4>
+      <div class="pc-body">Cubanito is currently the closest thing in the group to an AI-owned category. Publish a longform schema-rich page on Cuban culture in Ibiza, with a named author (a member of staff, named on the page) and the room dedications listed by Cuban artist. That converts &ldquo;cited&rdquo; from incidental to defensible. Mongibello&rsquo;s 5-star launch will draw press attention this season; do not let Cubanito drift in the noise.</div>
+      <div class="pc-meta">Time: 2 days &middot; COI contribution: &euro;2k&ndash;&euro;4k / yr (defending existing share)</div>
+    </div>
+  </div>
+
+  <!-- PARADISO -->
+  <div id="property-paradiso" class="property-panel">
+    <h3 class="property-title">Paradiso <span class="badge badge-info" style="padding:3px 10px">Art Deco / Miami</span> <span class="badge badge-pass" style="padding:3px 10px">Best in portfolio</span> <span class="rung-pin pin-cited">Cited</span></h3>
+    <p class="property-lede"><strong>&ldquo;Art and aesthetics in the pure Miami Ocean Drive style come to life in our most Instagrammable hotel.&rdquo;</strong> The flagship. Pink Art Deco, neon, 70s furniture, 60 rooms, fully renovated by Ilmio Design in 2018. Paradiso is the property that gives the rest of the group its AI visibility. The 77k IG following is roughly 35% of the entire portfolio&rsquo;s social audience.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="72" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">72</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="78" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">78</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="67" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">67</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@paradiso_ibiza</div><div class="metric-row"><span>Followers</span><strong>77k</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div><div class="metric-row"><span>Grid quality</span><strong>Original, on-theme</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">paradisoibizaarthotel</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>Very high</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Opportunity</span><strong>Critical gap</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-cited"><span class="eng">ChatGPT</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Perplexity</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Claude</span>Cited</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Gemini</span>Mentioned</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Bing&nbsp;Copilot</span>Cited</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-high" style="margin-top:14px">
+      <h4>Top action &middot; open a Paradiso TikTok this month <span class="badge badge-high">High</span></h4>
+      <div class="pc-body">Paradiso is described in third-party press as &ldquo;the most Instagrammable hotel in Ibiza.&rdquo; The TikTok category for that description is uncontested by the group. Hard Rock Hotel Ibiza, Ushua&iuml;a and Ibiza Rocks all run active TikToks. Paradiso&rsquo;s product is more TikTok-suited than any of them. The risk is that an aggregator (PopcornAndGlitter, A Pretty Cool Hotel Tour) builds the audience using Paradiso&rsquo;s aesthetic and the hotel never captures it. Open a TikTok this month, post pool reels, room reveals, sunset shots. Borrow Paradiso&rsquo;s existing IG photography library to seed week one.</div>
+      <div class="pc-meta">Time: 2 days setup, ongoing content &middot; COI contribution: &euro;6k&ndash;&euro;12k / yr</div>
+    </div>
+  </div>
+
+</section>
+
+<section class="block">
+  <!-- ROMEOS -->
+  <div id="property-romeos" class="property-panel">
+    <h3 class="property-title">Romeo&rsquo;s <span class="badge badge-info" style="padding:3px 10px">Route 66 motel</span> <span class="rung-pin pin-emerging">Emerging</span></h3>
+    <p class="property-lede"><strong>&ldquo;For Lovers &amp; Sinners.&rdquo;</strong> Route 66 love-motel transplanted to San Antonio Bay. Quentin Tarantino-flavoured diner, neon, heart-shaped pool, wedding chapel, vintage cars. Trade press describes Romeo&rsquo;s as &ldquo;all the ingredients to become the new king of Instagram in Ibiza.&rdquo; The hotel&rsquo;s own digital presence has not turned that compliment into a category-defining AI citation.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="55" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">55</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="58" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">58</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="33" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">33</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@romeosibiza</div><div class="metric-row"><span>Followers</span><strong>24k</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div><div class="metric-row"><span>Account name</span><strong>Romeo&rsquo;s Motel &amp; Diner</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">romeosibiza</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>Very high</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Note</span><strong>3rd-party TikToks viral</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-cited"><span class="eng">ChatGPT</span>Cited</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Perplexity</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Claude</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Gemini</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-crit" style="margin-top:14px">
+      <h4>Top action &middot; reconcile the brand name and the IG handle <span class="badge badge-critical">Critical</span></h4>
+      <div class="pc-body">The IG account is called &ldquo;Romeo&rsquo;s Motel &amp; Diner.&rdquo; The hotel page on theconcepthotels.com calls it &ldquo;Romeo&rsquo;s Ibiza Hotel.&rdquo; The online-travel-agency (OTA) listings call it &ldquo;Romeos Ibiza&rdquo; (no apostrophe). Three names for the same property; AI engines treat each as a separate entity. Plus: the &ldquo;A Pretty Cool Hotel Tour&rdquo; TikTok of Romeo&rsquo;s rooms has more views than the property&rsquo;s own social to date. The hotel needs to claim the &ldquo;Motel &amp; Diner&rdquo; framing across every surface and open a TikTok this season.</div>
+      <div class="pc-meta">Time: 1 day naming, ongoing TikTok &middot; COI contribution: &euro;5k&ndash;&euro;10k / yr</div>
+    </div>
+  </div>
+
+  <!-- GRAND PARADISO -->
+  <div id="property-grand-paradiso" class="property-panel">
+    <h3 class="property-title">Grand Paradiso <span class="badge badge-info" style="padding:3px 10px">Cinema / Movie Hotel</span> <span class="rung-pin pin-emerging">Emerging</span></h3>
+    <p class="property-lede"><strong>&ldquo;The Movie Hotel.&rdquo;</strong> Art Deco big-sister to Paradiso in San Antonio Bay; cinema and audiovisual art as the design thesis. The property page on theconcepthotels.com is positioning Grand Paradiso correctly. Two things undercut the launch: the page links to the wrong Instagram, and AI engines have not yet noticed that &ldquo;movie hotel Ibiza&rdquo; has an answer.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="42" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">42</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="55" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">55</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="17" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">17</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@grandparadisoibiza</div><div class="metric-row"><span>Followers</span><strong>17k</strong></div><div class="metric-row"><span>Posts</span><strong>358</strong></div><div class="metric-row"><span>Parent links to</span><strong style="color:var(--red)">paradiso_ibiza</strong></div></div>
+      <div class="social-card"><h4>Facebook</h4><div class="handle">grandparadisoibiza</div><div class="metric-row"><span>Page category</span><strong>Hotel</strong></div><div class="metric-row"><span>Link parity</span><strong>Consistent</strong></div><div class="metric-row"><span>Vanity URL</span><strong>Yes</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>High</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Cinema angle</span><strong>Wide open</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-invisible"><span class="eng">ChatGPT</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Perplexity</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Claude</span>Invisible</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Gemini</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-crit" style="margin-top:14px">
+      <h4>Top action &middot; fix the IG link on the parent page <span class="badge badge-critical">Critical</span></h4>
+      <div class="pc-body">The Grand Paradiso page on theconcepthotels.com links to <em>@paradiso_ibiza</em> in the social slot. That account belongs to the smaller Paradiso. Grand Paradiso has its own IG, <em>@grandparadisoibiza</em>, with 17k followers. The parent site is actively starving the larger property&rsquo;s own audience growth. This is a 30-minute fix in the CMS and should ship today. Separately, the &ldquo;movie hotel Ibiza&rdquo; AI category is wide open. A page that lists every suite&rsquo;s film reference, the cinema-themed amenities, the audiovisual art commissions, would seed the citation density Grand Paradiso needs.</div>
+      <div class="pc-meta">Time: 30 minutes for link parity, 3 days for content &middot; COI contribution: &euro;4k&ndash;&euro;8k / yr</div>
+    </div>
+  </div>
+
+  <!-- LOS FELICES -->
+  <div id="property-los-felices" class="property-panel">
+    <h3 class="property-title">Los Felices <span class="badge badge-info" style="padding:3px 10px">Fashion / Palm Springs</span> <span class="rung-pin pin-emerging">Emerging</span></h3>
+    <p class="property-lede"><strong>&ldquo;The Fashion Hotel in San Antonio Bay.&rdquo;</strong> Mid-century Palm Springs aesthetic, every room designed by a named fashion designer (113 total, including Jean Paul Gaultier, Pepa Salazar, Egonlab). This is genuinely one of one in the European hotel category. None of that signal reaches the AI engines because the property page does not name the designers; the longform credit lives only in third-party press.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="45" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">45</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="50" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">50</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="17" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">17</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@losfelicesibiza</div><div class="metric-row"><span>Followers</span><strong>18k</strong></div><div class="metric-row"><span>Posts</span><strong>227</strong></div><div class="metric-row"><span>Bio link</span><strong>Own page</strong></div></div>
+      <div class="social-card absent"><h4>Facebook</h4><div class="handle" style="color:var(--red)">profile.php?id=61550985231073</div><div class="metric-row"><span>Vanity URL</span><strong style="color:var(--red)">Missing</strong></div><div class="metric-row"><span>Page category</span><strong>Unknown</strong></div><div class="metric-row"><span>Fix</span><strong>Claim handle</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>Very high</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Fashion angle</span><strong>Wide open</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">ChatGPT</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Perplexity</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Claude</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Gemini</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-crit" style="margin-top:14px">
+      <h4>Top action &middot; name the 113 designers, publicly <span class="badge badge-critical">Critical</span></h4>
+      <div class="pc-body">Los Felices&rsquo; entire competitive moat is &ldquo;113 named fashion designers, each curating one suite.&rdquo; That fact does not appear on the hotel&rsquo;s own page in any AI-readable form. Build a /designers index with one paragraph per name, the year, the suite, a single image. Each entry is a citation hook for both fashion-press and AI engines. Vogue España, Hypebeast and Sch&ouml;n Magazine have all written about Los Felices in the past; they will write again if there is a clean asset to link to. Concurrently, claim a Facebook vanity URL and seed a TikTok with designer interview clips.</div>
+      <div class="pc-meta">Time: 1 week for /designers page &middot; COI contribution: &euro;6k&ndash;&euro;12k / yr</div>
+    </div>
+  </div>
+
+  <!-- MONGIBELLO (sub-brand) -->
+  <div id="property-mongibello" class="property-panel sub-brand">
+    <h3 class="property-title">Mongibello <span class="badge" style="padding:3px 10px;background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)">Sub-brand &middot; 5-star</span> <span class="rung-pin pin-cited">Cited</span></h3>
+    <p class="property-lede"><strong>&ldquo;The quintessence of the Dolce Far Niente.&rdquo;</strong> Italian Riviera 1960s aesthetic transplanted to Santa Eulalia&rsquo;s east coast. 167 rooms plus 32 suites. <strong>Promoted from 4-star to 5-star in April 2026.</strong> Named for the fictional town in Patricia Highsmith&rsquo;s The Talented Mr Ripley. Sister brand on its own domain (mongibelloibiza.com), Preferred Hotels &amp; Resorts affiliation. Mongibello is scored against premium boutique Mediterranean peers, not against the seven Concept Hotels properties.</p>
+    <div class="property-mini-ring">
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--brand)" stroke-dasharray="415" data-score="75" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">75</span><span class="l">Brand</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--growth)" stroke-dasharray="415" data-score="58" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">58</span><span class="l">Social</span></div></div>
+      <div class="ring-wrap ring-small"><svg viewBox="0 0 160 160"><circle class="ring-bg" cx="80" cy="80" r="66"></circle><circle class="ring-fg" cx="80" cy="80" r="66" stroke="var(--ai)" stroke-dasharray="415" data-score="50" stroke-dashoffset="415"></circle></svg><div class="ring-num"><span class="n">50</span><span class="l">AI&nbsp;SoV</span></div></div>
+    </div>
+    <div class="social-card-grid">
+      <div class="social-card"><h4>Instagram</h4><div class="handle">@mongibelloibiza</div><div class="metric-row"><span>Followers</span><strong>20k</strong></div><div class="metric-row"><span>Posts</span><strong>306</strong></div><div class="metric-row"><span>Bio</span><strong>&ldquo;5 STARS Opening April 2 2026&rdquo;</strong></div></div>
+      <div class="social-card absent"><h4>Facebook</h4><div class="handle" style="color:var(--red)">profile.php?id=100090915558551</div><div class="metric-row"><span>Vanity URL</span><strong style="color:var(--red)">Missing</strong></div><div class="metric-row"><span>Page category</span><strong>Unknown</strong></div><div class="metric-row"><span>Fix</span><strong>Claim handle</strong></div></div>
+      <div class="social-card absent"><h4>TikTok</h4><div class="handle">Not active</div><div class="metric-row"><span>Cohort fit</span><strong>High</strong></div><div class="metric-row"><span>Status</span><strong>Absent</strong></div><div class="metric-row"><span>Ripley angle</span><strong>Wide open</strong></div></div>
+    </div>
+    <div class="sov-engine-row">
+      <div class="sov-engine-cell sov-cited"><span class="eng">ChatGPT</span>Cited</div>
+      <div class="sov-engine-cell sov-cited"><span class="eng">Perplexity</span>Cited</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Claude</span>Mentioned</div>
+      <div class="sov-engine-cell sov-mentioned"><span class="eng">Gemini</span>Mentioned</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Bing&nbsp;Copilot</span>Invisible</div>
+      <div class="sov-engine-cell sov-invisible"><span class="eng">Brave&nbsp;AI</span>Invisible</div>
+    </div>
+    <div class="priority-card p-high" style="margin-top:14px">
+      <h4>Top action &middot; turn the 5-star elevation into a press wave <span class="badge badge-high">High</span></h4>
+      <div class="pc-body">Mongibello was promoted to 5-star for the 2026 season. Hospitality &amp; Catering News, Hotel Magazine and Sch&ouml;n Magazine have already covered the launch. The hotel has a Patricia Highsmith reference baked into its naming, a Preferred Hotels affiliation and the I Prefer loyalty programme. None of these credentials appear on the Mongibello site&rsquo;s landing fold. Surface them: Highsmith&rsquo;s name in the about copy, the 5-star indicator in the hero, the Preferred Hotels logo above the booking widget. Also: claim the FB vanity URL and seed a TikTok off the Alfa Romeo Spider at the entrance.</div>
+      <div class="pc-meta">Time: 2 days &middot; COI contribution: &euro;8k&ndash;&euro;15k / yr (5-star ADR uplift on direct bookings)</div>
+    </div>
+  </div>
+
+</section>
+
+<div class="cta-block">
+  <h3>Bring this to your team</h3>
+  <p>This deep-dive is the first half of the answer. The second half is sequencing, ownership and the per-property content edit. F&amp;T runs a 30-minute implementation call with founders and operators to walk through the Top 5 and agree owners. No pitch, no slides; we work through the actions.</p>
+  <a class="cta-btn" href="mailto:hello@frictionandtoil.com?subject=Concept%20Hotels%20Portfolio%20Deep-Dive%3A%20Implementation%20Call">Book a 30-minute implementation call &middot; hello@frictionandtoil.com</a>
+  <div class="cta-meta">F&amp;T Intelligence Systems &middot; portfolio.deepdive.v1 &middot; May 2026</div>
+</div>
+
+</div><!-- /.container -->
+
+<footer class="report-footer">
+  F&amp;T Intelligence Systems &middot; May 2026
+</footer>
+
+<script>
+(function(){
+  function animateRings(){
+    var rings = document.querySelectorAll('.ring-fg[data-score]');
+    rings.forEach(function(r){
+      var s = parseFloat(r.getAttribute('data-score'));
+      var dash = parseFloat(r.getAttribute('stroke-dasharray'));
+      if(isNaN(s)||isNaN(dash))return;
+      var off = dash - (dash * (s/100));
+      requestAnimationFrame(function(){ r.style.strokeDashoffset = off; });
+    });
+  }
+  function wireNav(){
+    var toggle = document.querySelector('.nav-toggle');
+    var inner = document.querySelector('.property-nav-inner');
+    if(!toggle || !inner) return;
+    toggle.addEventListener('click', function(){
+      var open = inner.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    inner.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        inner.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && inner.classList.contains('open')){
+        inner.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  function init(){ animateRings(); wireNav(); }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
