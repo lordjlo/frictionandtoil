@@ -1629,6 +1629,22 @@
   .tavatar[data-c="compete"] { background: var(--compete); }
   .tavatar[data-c="growth"]  { background: var(--growth); color: #0a2128; }
 
+  .tlogo {
+    height: 44px;
+    max-width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .tlogo img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+  .tlogo--pill {
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px 10px;
+  }
+  .tlogo--square { width: 44px; }
+
   .tname {
     font-family: var(--body);
     font-size: 0.9rem;
@@ -4089,10 +4105,10 @@
         <div class="tcard reveal d1">
           <p class="tquote">Truly exceptional service! These guys really know what they&rsquo;re doing, their advice is flawless and has really helped to maximise our website which is crucial in this day and age. Thank you once again!</p>
           <div class="tmeta">
-            <div class="tavatar" data-c="search">AO</div>
+            <div class="tlogo tlogo--pill"><img src="img/testimonials/champagne-fromage.png" alt="Champagne+Fromage" loading="lazy"></div>
             <div>
               <div class="tname">Angus O&rsquo;Donnell</div>
-              <div class="ttitle">Champagne+Fromage &middot; London</div>
+              <div class="ttitle">General Manager &middot; Champagne+Fromage</div>
             </div>
           </div>
         </div>
@@ -4100,10 +4116,21 @@
         <div class="tcard reveal d2">
           <p class="tquote">Wow, this is excellent. It&rsquo;s so helpful knowing what we need to fix, and how to fix it so we attract new customers.</p>
           <div class="tmeta">
-            <div class="tavatar" data-c="brand">AR</div>
+            <div class="tlogo"><img src="img/testimonials/hymn-to-ninkasi.png" alt="Hymn to Ninkasi" loading="lazy"></div>
             <div>
               <div class="tname">Andrew Rodgers</div>
               <div class="ttitle">Owner &middot; Hymn to Ninkasi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal d3">
+          <p class="tquote">Very useful, I never knew ChatGPT is powered by Bing and not Google!</p>
+          <div class="tmeta">
+            <div class="tlogo tlogo--square"><img src="img/testimonials/ffskate.webp" alt="FFS Kate" loading="lazy"></div>
+            <div>
+              <div class="tname">FFS Kate</div>
+              <div class="ttitle"><a href="https://www.ffskate.co.uk/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">ffskate.co.uk</a></div>
             </div>
           </div>
         </div>
