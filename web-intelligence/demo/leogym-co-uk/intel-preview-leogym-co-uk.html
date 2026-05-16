@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo Gym Marlow — Intelligence Preview · F&amp;T</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ─── tokens ─── */
+    :root {
+      --bg:          #0a0a0f;
+      --bg-card:     #12121a;
+      --bg-card-2:   #1a1a25;
+      --border:      rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+      --text:        #f0f0f5;
+      --text-secondary: #a0a0b8;
+      --text-muted:  #606078;
+      --search:      #6366f1;
+      --ai:          #a855f7;
+      --design:      #c9963a;
+      --green:       #22c55e;
+      --amber:       #f59e0b;
+      --red:         #ef4444;
+      --display:     'Space Grotesk', sans-serif;
+      --body:        'Inter', sans-serif;
+      --radius:      12px;
+      --radius-sm:   8px;
+      --radius-xs:   6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── layout ─── */
+    .shell { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+
+    /* ─── header ─── */
+    .combo-header {
+      padding: 32px 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .combo-brand { display: flex; align-items: center; gap: 14px; }
+    .combo-logo-ring {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--search) 0%, var(--ai) 100%);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--display); font-weight: 700; font-size: 18px;
+      color: white; flex-shrink: 0;
+    }
+    .combo-brand-name { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--text); }
+    .combo-brand-meta { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+    .combo-badge {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-muted); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 12px;
+    }
+
+    /* ─── hero grid ─── */
+    .combo-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
+    }
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 140px; height: 140px; border-radius: 50%;
+      filter: blur(60px); opacity: 0.15; pointer-events: none;
+    }
+    .hero-card.web::before { background: var(--search); }
+    .hero-card.ai::before  { background: var(--ai); }
+
+    .hero-eyebrow {
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 12px;
+    }
+
+    /* web hero */
+    .hero-score {
+      font-family: var(--display); font-size: clamp(3rem, 6vw, 4rem);
+      font-weight: 700; line-height: 1; color: var(--text); margin-bottom: 4px;
+    }
+    .hero-score .denom { font-size: 0.4em; color: var(--text-secondary); font-weight: 500; }
+    .hero-band {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 20px;
+    }
+    .band-needs-work { color: var(--amber); }
+    .band-good       { color: var(--green); }
+    .band-critical   { color: var(--red);   }
+    .band-excellent  { color: var(--green); }
+
+    .score-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .score-chip {
+      display: flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 10px;
+      font-size: 11px; font-weight: 600;
+    }
+    .chip-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .chip-val   { color: var(--text); }
+    .chip-fill  { width: 28px; height: 3px; border-radius: 100px; background: rgba(255,255,255,0.08); overflow: hidden; }
+    .chip-fill-inner { height: 100%; border-radius: 100px; }
+    .hero-coi { font-size: 12px; color: var(--text-muted); }
+    .hero-coi strong { color: var(--text); }
+
+    /* ai hero */
+    .rung-ladder-mini { display: flex; gap: 4px; margin-bottom: 14px; }
+    .rung-step-mini   { flex: 1; height: 4px; border-radius: 100px; background: rgba(255,255,255,0.06); }
+    .rung-step-mini.passed { background: rgba(168,85,247,0.35); }
+    .rung-step-mini.active { background: var(--ai); }
+
+    .hero-rung {
+      font-family: var(--display); font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700; line-height: 1; color: var(--text); margin-bottom: 4px;
+    }
+    .hero-rung-pos { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+    .hero-sov      { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+    .hero-sov strong { color: var(--text); font-weight: 700; }
+
+    .engine-mini-bars { display: flex; flex-direction: column; gap: 8px; }
+    .engine-mini {
+      display: grid; grid-template-columns: 90px 40px 1fr;
+      align-items: center; gap: 10px;
+    }
+    .engine-mini-label {
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-muted);
+    }
+    .engine-mini-score {
+      font-family: var(--display); font-size: 13px;
+      font-weight: 700; color: var(--text); text-align: right;
+    }
+    .engine-mini-track { height: 5px; background: rgba(255,255,255,0.06); border-radius: 100px; overflow: hidden; }
+    .engine-mini-fill  { height: 100%; border-radius: 100px; }
+    .fill-strong  { background: var(--green); }
+    .fill-weak    { background: var(--red);   }
+    .fill-partial { background: var(--amber); }
+
+    /* ─── crossover verdict ─── */
+    .combo-verdict {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 20px;
+      font-size: 13px; color: var(--text-secondary);
+      margin-bottom: 28px; text-align: center; line-height: 1.55;
+    }
+    .combo-verdict strong { color: var(--text); }
+
+    /* ─── tabs ─── */
+    .combo-tabs {
+      display: flex; gap: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .combo-tab {
+      padding: 10px 22px;
+      font-size: 13px; font-weight: 600; font-family: var(--body);
+      color: var(--text-muted); background: none; border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer; transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px; letter-spacing: 0.3px;
+    }
+    .combo-tab:hover                 { color: var(--text-secondary); }
+    .combo-tab.active                { color: var(--text); border-bottom-color: var(--search); }
+    .combo-tab[data-tab="ai"].active { border-bottom-color: var(--ai); }
+
+    /* ─── iframe panels ─── */
+    .combo-panel { display: none; }
+    .combo-panel.active { display: block; }
+    .panel-note {
+      font-size: 11px; color: var(--text-muted); text-align: right;
+      padding: 8px 12px 0;
+    }
+    .panel-note a { color: var(--text-muted); text-decoration: underline; }
+    .panel-note a:hover { color: var(--text-secondary); }
+    .panel-frame {
+      width: 100%; border: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      border: 1px solid var(--border); border-top: none;
+      background: var(--bg);
+    }
+    .panel-frame.web { min-height: 2000px; }
+    .panel-frame.ai  { min-height: 2900px; }
+
+    /* ─── combo CTA ─── */
+    .combo-cta {
+      margin-top: 40px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.07) 0%, rgba(201,150,58,0.05) 100%);
+      border: 1px solid rgba(201,150,58,0.18);
+      border-radius: var(--radius); padding: 40px 44px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .combo-cta::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #fbbf24, #c9963a);
+    }
+    .cta-headline {
+      font-family: var(--display); font-size: 1.4rem; font-weight: 700;
+      color: var(--text); margin-bottom: 8px;
+    }
+    .cta-sub {
+      font-size: 13px; color: var(--text-secondary); margin-bottom: 24px;
+      max-width: 52ch; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+    .cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #c9963a 0%, #a0752a 100%);
+      color: white; font-family: var(--display); font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,150,58,0.3);
+      color: #c9963a; font-family: var(--display); font-weight: 600; font-size: 14px;
+      padding: 13px 24px; border-radius: var(--radius-sm);
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { background: rgba(201,150,58,0.08); transform: translateY(-1px); }
+    .cta-note-text {
+      font-size: 11px; color: var(--text-muted); margin-bottom: 16px;
+      max-width: 50ch; margin-left: auto; margin-right: auto; line-height: 1.55;
+    }
+    .cta-note-text code {
+      font-family: monospace; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border); padding: 1px 6px;
+      border-radius: 3px; font-size: 11px; color: var(--text-secondary);
+    }
+    .cta-guarantee { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+    .cta-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .cta-link-item {
+      font-size: 12px; color: var(--text-muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cta-link-item:hover { color: var(--text-secondary); }
+
+    /* ─── footer ─── */
+    .combo-footer {
+      text-align: center; padding: 32px 0 16px;
+      font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px;
+    }
+    .combo-footer a { color: var(--text-muted); text-decoration: none; }
+    .combo-footer a:hover { color: var(--text-secondary); }
+
+    /* ─── responsive ─── */
+    @media (max-width: 680px) {
+      .combo-hero { grid-template-columns: 1fr; }
+      .hero-card  { padding: 22px 20px; }
+      .combo-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .panel-frame.web { min-height: 2800px; }
+      .panel-frame.ai  { min-height: 3800px; }
+      .combo-cta  { padding: 28px 20px; }
+      .cta-btns   { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ── HEADER ── -->
+  <header class="combo-header">
+    <div class="combo-brand">
+      <div class="combo-logo-ring">LG</div>
+      <div>
+        <div class="combo-brand-name">Leo Gym Marlow</div>
+        <div class="combo-brand-meta">leogym.co.uk · Intelligence Preview · May 2026</div>
+      </div>
+    </div>
+    <div class="combo-badge">F&amp;T Intelligence Systems</div>
+  </header>
+
+  <!-- ── UNIFIED HERO ── -->
+  <section class="combo-hero">
+
+    <!-- Left: Web Scorecard -->
+    <div class="hero-card web">
+      <div class="hero-eyebrow">Web Intelligence Score</div>
+      <div class="hero-score">50<span class="denom"> / 100</span></div>
+      <div class="hero-band band-needs-work">Needs Work</div>
+      <div class="score-chips">
+        <div class="score-chip">
+          <span class="chip-label">Search</span>
+          <span class="chip-val">50</span>
+          <div class="chip-fill"><div class="chip-fill-inner" style="width:50%;background:var(--amber)"></div></div>
+        </div>
+        <div class="score-chip">
+          <span class="chip-label">Design</span>
+          <span class="chip-val">65</span>
+          <div class="chip-fill"><div class="chip-fill-inner" style="width:65%;background:var(--search)"></div></div>
+        </div>
+        <div class="score-chip">
+          <span class="chip-label">Brand</span>
+          <span class="chip-val">60</span>
+          <div class="chip-fill"><div class="chip-fill-inner" style="width:60%;background:var(--search)"></div></div>
+        </div>
+        <div class="score-chip">
+          <span class="chip-label">Compete</span>
+          <span class="chip-val">45</span>
+          <div class="chip-fill"><div class="chip-fill-inner" style="width:45%;background:var(--amber)"></div></div>
+        </div>
+        <div class="score-chip">
+          <span class="chip-label">Growth</span>
+          <span class="chip-val">30</span>
+          <div class="chip-fill"><div class="chip-fill-inner" style="width:30%;background:var(--red)"></div></div>
+        </div>
+      </div>
+      <div class="hero-coi">Cost of inaction: <strong>£12k–£25k/yr</strong></div>
+    </div>
+
+    <!-- Right: AI Search Maturity -->
+    <div class="hero-card ai">
+      <div class="hero-eyebrow">AI Search Maturity</div>
+      <div class="rung-ladder-mini">
+        <div class="rung-step-mini passed"></div>
+        <div class="rung-step-mini passed"></div>
+        <div class="rung-step-mini passed"></div>
+        <div class="rung-step-mini active"></div>
+        <div class="rung-step-mini"></div>
+      </div>
+      <div class="hero-rung">Cited</div>
+      <div class="hero-rung-pos">Rung 4 of 5 · one schema sprint from Recommended</div>
+      <div class="hero-sov"><strong>11 / 18</strong> AI Share of Voice cells · 6 queries × 3 engines</div>
+      <div class="engine-mini-bars">
+        <div class="engine-mini">
+          <div class="engine-mini-label">Google · Gemini</div>
+          <div class="engine-mini-score">6 / 6</div>
+          <div class="engine-mini-track"><div class="engine-mini-fill fill-strong" style="width:100%"></div></div>
+        </div>
+        <div class="engine-mini">
+          <div class="engine-mini-label">Bing · ChatGPT</div>
+          <div class="engine-mini-score">0 / 6</div>
+          <div class="engine-mini-track"><div class="engine-mini-fill fill-weak" style="width:0%"></div></div>
+        </div>
+        <div class="engine-mini">
+          <div class="engine-mini-label">Brave · Claude</div>
+          <div class="engine-mini-score">5 / 6</div>
+          <div class="engine-mini-track"><div class="engine-mini-fill fill-strong" style="width:83%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── CROSSOVER VERDICT ── -->
+  <div class="combo-verdict">
+    <strong>Verdict:</strong> Cited by AI on Google and Brave — but a zero on Bing means the entire ChatGPT user base cannot find Leo Gym, and zero email capture means every AI-discovery lead goes cold before it can convert.
+  </div>
+
+  <!-- ── TABS ── -->
+  <div class="combo-tabs">
+    <button class="combo-tab active" data-tab="web" onclick="switchTab('web')">Web Scorecard</button>
+    <button class="combo-tab" data-tab="ai" onclick="switchTab('ai')">AI Search Report</button>
+  </div>
+
+  <!-- ── WEB SCORECARD PANEL ── -->
+  <div class="combo-panel active" data-tab="web">
+    <div class="panel-note">
+      <a href="taster-leogym-co-uk.html" target="_blank">Open full scorecard in new tab ↗</a>
+    </div>
+    <iframe
+      class="panel-frame web"
+      src="taster-leogym-co-uk-embed.html"
+      title="Leo Gym Marlow — Web Scorecard"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- ── AI SEARCH PANEL ── -->
+  <div class="combo-panel" data-tab="ai">
+    <div class="panel-note">
+      <a href="ai-search-report-leogym-co-uk.html" target="_blank">Open full AI Search Report in new tab ↗</a>
+    </div>
+    <iframe
+      class="panel-frame ai"
+      src="ai-search-report-leogym-co-uk-embed.html"
+      title="Leo Gym Marlow — AI Search Report"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- ── SHARED CTA ── -->
+  <div class="combo-cta">
+    <div class="cta-headline">Ready to fix both in one project?</div>
+    <div class="cta-sub">The full Web Intelligence Report maps exact fixes for all five dimensions — with a £-denominated business impact model and three competitor deep-dives.</div>
+    <div class="cta-btns">
+      <a class="btn-primary" href="https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01">Unlock the full report · £1,000</a>
+      <a class="btn-secondary" href="https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01">Save £250 on the full report</a>
+    </div>
+    <p class="cta-note-text">The AI Search Report (normally £250) is already shown above. Use code <code>AI-SEARCH-UPGRADE</code> at checkout for £250 off the full report.</p>
+    <div class="cta-guarantee">14-day money-back guarantee. If you don't find it useful, we'll refund in full.</div>
+    <div class="cta-links">
+      <a class="cta-link-item" href="https://calendly.com/frictionandtoil/15mins">Book a free 15-min call →</a>
+      <a class="cta-link-item" href="https://frictionandtoil.com/web-intelligence/#sample">See all three report tiers →</a>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="combo-footer">
+    <a href="https://frictionandtoil.com">F&amp;T Intelligence Systems</a> · May 2026 · hello@frictionandtoil.com
+  </div>
+
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.combo-tab').forEach(function(t) {
+    t.classList.toggle('active', t.dataset.tab === name);
+  });
+  document.querySelectorAll('.combo-panel').forEach(function(p) {
+    p.classList.toggle('active', p.dataset.tab === name);
+  });
+}
+</script>
+</body>
+</html>

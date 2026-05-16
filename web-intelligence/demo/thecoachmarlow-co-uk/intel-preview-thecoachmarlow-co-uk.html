@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+  INTELLIGENCE PREVIEW — The Coach, Marlow
+  Generated: May 2026 · F&T Intelligence Systems
+  Combo shell: web scorecard + AI search report in one view.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligence Preview — The Coach · thecoachmarlow.co.uk</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg-card:rgba(255,255,255,0.03);
+  --border:rgba(255,255,255,0.08);
+  --text:#e8e8ed;
+  --text-secondary:#8b8b9e;
+  --text-muted:#5a5a6e;
+  --search:#6366f1;
+  --design:#c9963a;
+  --brand:#10b981;
+  --compete:#f43f5e;
+  --growth:#06b6d4;
+  --ai:#a855f7;
+  --ai-glow:rgba(168,85,247,0.3);
+  --radius:16px;
+  --radius-sm:10px;
+  --radius-xs:8px;
+}
+::selection{background:var(--search);color:#fff}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(99,102,241,0.05) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 20%,rgba(168,85,247,0.04) 0%,transparent 50%),
+             radial-gradient(ellipse at 50% 80%,rgba(16,185,129,0.03) 0%,transparent 50%);
+  z-index:-1}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+.container{max-width:980px;margin:0 auto;padding:0 24px}
+
+/* ── HEADER ── */
+.combo-header{padding:48px 0 36px;text-align:center}
+.header-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:11px;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+.combo-header h1{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;line-height:1.15;margin-bottom:6px;color:var(--text)}
+.combo-header .domain{font-size:15px;color:var(--text-muted);margin-bottom:4px}
+.combo-header .prepared{font-size:13px;color:var(--text-muted)}
+
+/* ── UNIFIED HERO ── */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.hero-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.hero-card.web::before{background:linear-gradient(90deg,var(--search),var(--design),var(--brand))}
+.hero-card.ai::before{background:linear-gradient(90deg,var(--ai),#7c3aed)}
+.hero-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:12px}
+.hero-score{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;line-height:1;margin-bottom:4px}
+.hero-card.web .hero-score{color:var(--text)}
+.hero-card.ai .hero-score{color:var(--ai)}
+.hero-band{font-size:13px;font-weight:600;margin-bottom:16px}
+.hero-card.web .hero-band{color:#38bdf8}
+.hero-card.ai .hero-band{color:var(--ai)}
+.hero-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.chip{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:.5px}
+.chip-search{background:rgba(99,102,241,0.15);color:#a5b4fc}
+.chip-design{background:rgba(201,150,58,0.15);color:#fbbf24}
+.chip-brand{background:rgba(16,185,129,0.15);color:#6ee7b7}
+.chip-compete{background:rgba(244,63,94,0.15);color:#fda4af}
+.chip-growth{background:rgba(6,182,212,0.15);color:#67e8f9}
+.hero-rung{font-size:20px;font-weight:700;color:var(--ai);margin-bottom:4px;font-family:'Space Grotesk',sans-serif}
+.hero-sov{font-size:13px;color:var(--text-secondary);margin-bottom:14px}
+.engine-bars{display:flex;flex-direction:column;gap:6px}
+.engine-row{display:flex;align-items:center;gap:10px;font-size:12px}
+.engine-label{width:100px;color:var(--text-secondary);flex-shrink:0}
+.engine-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.engine-fill{height:100%;border-radius:3px;transition:width .6s ease}
+.fill-strong{background:linear-gradient(90deg,var(--ai),#7c3aed)}
+.fill-mid{background:linear-gradient(90deg,#fbbf24,#f97316)}
+.fill-weak{background:rgba(239,68,68,0.6)}
+.engine-score{width:32px;text-align:right;color:var(--text-secondary);font-size:11px;font-weight:600;flex-shrink:0}
+
+/* ── CROSSOVER VERDICT ── */
+.crossover{background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(168,85,247,0.06));border:1px solid rgba(168,85,247,0.2);border-radius:var(--radius);padding:18px 24px;margin-bottom:24px;text-align:center}
+.crossover p{font-size:14px;color:var(--text-secondary);line-height:1.6}
+.crossover strong{color:var(--text)}
+
+/* ── TABS ── */
+.tab-bar{display:flex;gap:4px;margin-bottom:16px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px}
+.combo-tab{flex:1;padding:10px 16px;border:none;background:transparent;color:var(--text-muted);font-size:13px;font-weight:600;border-radius:calc(var(--radius-sm) - 4px);cursor:pointer;transition:all .2s;letter-spacing:.3px}
+.combo-tab:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.combo-tab.active{background:var(--bg-card);color:var(--text);border:1px solid var(--border)}
+.combo-panel{display:none}
+.combo-panel.active{display:block}
+
+/* ── IFRAME PANELS ── */
+.panel-note{font-size:12px;color:var(--text-muted);text-align:right;margin-bottom:8px}
+.panel-note a{color:var(--text-secondary);text-decoration:none}
+.panel-note a:hover{color:var(--text)}
+iframe{width:100%;border:1px solid var(--border);border-radius:var(--radius);display:block;background:var(--bg)}
+.frame-web{min-height:2000px}
+.frame-ai{min-height:2900px}
+
+/* ── THREE-WAY CTA ── */
+.cta-block{background:linear-gradient(135deg,rgba(99,102,241,0.08) 0%,rgba(201,150,58,0.06) 100%);border:1px solid rgba(201,150,58,0.2);border-radius:var(--radius);padding:36px 40px;margin:24px 0 16px;text-align:center;position:relative;overflow:hidden}
+.cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#fbbf24,#c9963a)}
+.cta-title{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.cta-sub{font-size:13px;color:var(--text-secondary);margin-bottom:20px}
+.cta-primary{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,var(--search),#4f46e5);color:#fff;text-decoration:none;border-radius:var(--radius-sm);font-weight:700;font-size:15px;letter-spacing:.3px;transition:opacity .2s;margin-bottom:12px}
+.cta-primary:hover{opacity:.88}
+.cta-guarantee{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.cta-divider{font-size:12px;color:var(--text-muted);margin:4px 0 12px;text-transform:uppercase;letter-spacing:1px}
+.cta-secondary{display:inline-block;padding:12px 28px;background:transparent;border:1px solid rgba(201,150,58,0.5);color:#fbbf24;text-decoration:none;border-radius:var(--radius-sm);font-weight:600;font-size:14px;transition:all .2s;margin-bottom:8px}
+.cta-secondary:hover{background:rgba(201,150,58,0.08)}
+.cta-note{font-size:11px;color:var(--text-muted);margin-bottom:16px}
+.cta-note code{background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:11px}
+.cta-link-row{margin-top:6px}
+.cta-link-text{color:var(--text-muted);font-size:13px;text-decoration:none;transition:color .2s}
+.cta-link-text:hover{color:var(--text-secondary)}
+
+/* ── FOOTER ── */
+.combo-footer{text-align:center;padding:40px 0 28px;font-size:11px;color:var(--text-muted);letter-spacing:.5px}
+.combo-footer a{color:var(--text-secondary);text-decoration:none}
+.combo-footer a:hover{color:var(--text)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .hero-grid{grid-template-columns:1fr}
+  .combo-header h1{font-size:24px}
+  .hero-score{font-size:40px}
+  .cta-block{padding:24px 20px}
+  .frame-web{min-height:2800px}
+  .frame-ai{min-height:3800px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="combo-header">
+    <div class="header-badge">Intelligence Preview · F&amp;T</div>
+    <h1>The Coach, Marlow</h1>
+    <div class="domain">thecoachmarlow.co.uk</div>
+    <div class="prepared">Prepared by F&amp;T Intelligence Systems · May 2026</div>
+  </header>
+
+  <!-- UNIFIED HERO -->
+  <div class="hero-grid">
+
+    <!-- Web Composite -->
+    <div class="hero-card web">
+      <div class="hero-eyebrow">Web Scorecard</div>
+      <div class="hero-score">63</div>
+      <div class="hero-band">Good · 63 / 100</div>
+      <div class="hero-chips">
+        <span class="chip chip-search">Search 45</span>
+        <span class="chip chip-design">Design 75</span>
+        <span class="chip chip-brand">Brand 80</span>
+        <span class="chip chip-compete">Compete 80</span>
+        <span class="chip chip-growth">Growth 35</span>
+      </div>
+    </div>
+
+    <!-- AI Maturity -->
+    <div class="hero-card ai">
+      <div class="hero-eyebrow">AI Search Maturity</div>
+      <div class="hero-rung">Recommended</div>
+      <div class="hero-sov">13 / 18 cells · Rung 5 of 5</div>
+      <div class="engine-bars">
+        <div class="engine-row">
+          <span class="engine-label">Google · Gemini</span>
+          <div class="engine-track"><div class="engine-fill fill-strong" style="width:100%"></div></div>
+          <span class="engine-score">6 / 6</span>
+        </div>
+        <div class="engine-row">
+          <span class="engine-label">Bing · ChatGPT</span>
+          <div class="engine-track"><div class="engine-fill fill-weak" style="width:17%"></div></div>
+          <span class="engine-score">1 / 6</span>
+        </div>
+        <div class="engine-row">
+          <span class="engine-label">Brave · Claude</span>
+          <div class="engine-track"><div class="engine-fill fill-strong" style="width:100%"></div></div>
+          <span class="engine-score">6 / 6</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CROSSOVER VERDICT -->
+  <div class="crossover">
+    <p><strong>AI is actively recommending The Coach on Google and Brave.</strong> Schema markup is the single action that closes the Bing gap — and Bing's index powers most ChatGPT search results. On the web side, The Coach's site scores strongly across Brand, Design, and Competitive position; Growth (35) is the exposed flank.</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="combo-tab active" data-tab="web" onclick="switchTab('web')">Web Scorecard</button>
+    <button class="combo-tab" data-tab="ai" onclick="switchTab('ai')">AI Search Report</button>
+  </div>
+
+  <!-- WEB SCORECARD PANEL -->
+  <div class="combo-panel active" data-tab="web">
+    <div class="panel-note"><a href="taster-thecoachmarlow-co-uk.html" target="_blank">Open in new tab ↗</a></div>
+    <iframe
+      src="taster-thecoachmarlow-co-uk-embed.html"
+      class="frame-web"
+      frameborder="0"
+      title="Web Scorecard — The Coach">
+    </iframe>
+  </div>
+
+  <!-- AI SEARCH PANEL -->
+  <div class="combo-panel" data-tab="ai">
+    <div class="panel-note"><a href="ai-search-report-thecoachmarlow-co-uk.html" target="_blank">Open in new tab ↗</a></div>
+    <iframe
+      src="ai-search-report-thecoachmarlow-co-uk-embed.html"
+      class="frame-ai"
+      frameborder="0"
+      title="AI Search Report — The Coach">
+    </iframe>
+  </div>
+
+  <!-- THREE-WAY CTA -->
+  <div class="cta-block">
+    <div class="cta-title">Unlock the full five-dimension report</div>
+    <div class="cta-sub">The full Web Intelligence Report adds deep competitor analysis, a £-denominated growth model, and a 90-day action plan.</div>
+    <a class="cta-primary" href="https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01">Unlock the full report · £1,000</a>
+    <div class="cta-guarantee">14-day money-back guarantee. If you don't find it useful, we'll refund in full.</div>
+    <div class="cta-divider">or</div>
+    <a class="cta-secondary" href="https://buy.stripe.com/6oU28s9JI8Jp8oRgWN1kA01">Save £250 on the full report</a>
+    <div class="cta-note">The AI Search Report (normally £250) is already shown above. Use code <code>AI-SEARCH-UPGRADE</code> at checkout for £250 off the full report.</div>
+    <div class="cta-link-row">
+      <a class="cta-link-text" href="https://calendly.com/frictionandtoil/15mins">Or book a free 15-min call →</a>
+    </div>
+    <div class="cta-link-row">
+      <a class="cta-link-text" href="https://frictionandtoil.com/web-intelligence/#sample">Or see all three report tiers →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="combo-footer">
+    Generated by <a href="https://frictionandtoil.com">F&amp;T Intelligence Systems</a> · Website Intelligence Dashboard · May 2026
+  </div>
+
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.combo-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.combo-panel').forEach(p => p.classList.toggle('active', p.dataset.tab === name));
+}
+</script>
+</body>
+</html>

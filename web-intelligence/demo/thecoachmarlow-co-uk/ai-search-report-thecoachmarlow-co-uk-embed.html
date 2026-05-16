@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Search Report — thecoachmarlow.co.uk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;--bg-card:rgba(255,255,255,0.03);--bg-card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-hover:rgba(255,255,255,0.15);
+  --text:#e8e8ed;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;
+  --design:#c9963a;--search:#6366f1;--green:#22c55e;--red:#ef4444;--orange:#f97316;--yellow:#eab308;
+  --ai:#a855f7;--ai-bg:rgba(168,85,247,0.12);--ai-border:rgba(168,85,247,0.3);--ai-glow:rgba(168,85,247,0.45);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.6;min-height:100vh}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+.report-header{padding:3rem 0 2rem;border-bottom:1px solid var(--border)}
+.report-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.75rem}
+.report-title{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.report-meta{font-size:13px;color:var(--text-muted)}
+/* Disclosure (Citable vs Cited) */
+.disclosure{margin:1.5rem 0;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text-secondary);line-height:1.6}
+.disclosure strong{color:var(--text)}
+/* Rung card */
+.rung-card{margin:2.5rem 0;padding:2.5rem;background:var(--ai-bg);border:1px solid var(--ai-border);border-radius:var(--radius);position:relative;overflow:hidden}
+.rung-card.rung-blocked{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.3)}
+.rung-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--ai-glow);border-radius:50%;filter:blur(80px);opacity:0.3;pointer-events:none}
+.rung-card.rung-blocked::before{background:rgba(239,68,68,0.4)}
+.rung-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--ai);margin-bottom:0.75rem}
+.rung-card.rung-blocked .rung-eyebrow{color:var(--red)}
+.rung-name{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.rung-sov{font-size:14px;color:var(--text-secondary);margin-bottom:1.5rem}
+.rung-trajectory{font-size:14px;color:var(--text);padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:3px solid var(--ai);border-radius:0 var(--radius-xs) var(--radius-xs) 0;line-height:1.6}
+.rung-card.rung-blocked .rung-trajectory{border-left-color:var(--red)}
+/* Per-engine 3-bar visualisation (NEW v3.7) */
+.engine-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem}
+.engine-bar{padding:0.85rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--radius-xs)}
+.engine-bar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:0.5rem}
+.engine-bar-score{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.engine-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.engine-bar-fill{height:100%;background:var(--ai);border-radius:100px;transition:width 0.6s}
+.engine-bar-fill.fill-strong{background:var(--green)}
+.engine-bar-fill.fill-partial{background:var(--orange)}
+.engine-bar-fill.fill-weak{background:var(--red)}
+.engine-bar-sub{font-size:10px;color:var(--text-muted);margin-top:0.4rem}
+/* Ladder — 5 rungs (NEW v3.7: adds Blocked) */
+.ladder{display:flex;gap:0;margin-top:1.75rem}
+.rung-step{flex:1;padding:0.6rem 0.5rem;text-align:center;font-size:11px;font-weight:600;border:1px solid var(--border);margin-right:-1px}
+.rung-step:first-child{border-radius:var(--radius-xs) 0 0 var(--radius-xs)}
+.rung-step:last-child{border-radius:0 var(--radius-xs) var(--radius-xs) 0;margin-right:0}
+.rung-step.active{background:var(--ai);border-color:var(--ai);color:#fff}
+.rung-step.active.blocked{background:var(--red);border-color:var(--red)}
+.rung-step.passed{background:rgba(168,85,247,0.15);border-color:var(--ai-border);color:var(--ai)}
+.rung-step.next{color:var(--text-muted)}
+.rung-step.next-projected{border-color:rgba(201,150,58,0.55);background:rgba(201,150,58,0.08);box-shadow:0 0 0 2px rgba(201,150,58,0.14);color:var(--design)}
+/* Post-Unblock Projection Panel (v1.1, added May 2026 — Wild Branding pilot) */
+.projection-card{background:linear-gradient(180deg,rgba(168,85,247,0.05),rgba(168,85,247,0.02));border:1px solid rgba(168,85,247,0.3);border-radius:var(--radius);padding:24px 28px;margin:2.5rem 0 1.5rem}
+.projection-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ai);font-weight:700;margin-bottom:10px}
+.projection-headline{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:14px}
+.projection-headline strong{color:var(--ai)}
+.projection-cta{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:20px;padding:12px 16px;background:rgba(168,85,247,0.06);border-left:3px solid var(--ai);border-radius:0 6px 6px 0}
+.projection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.projection-engine{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.projection-engine-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.projection-engine-sub{font-size:11px;color:var(--text-muted);font-weight:400}
+.projection-engine-score{font-family:var(--display);font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.projection-engine-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden}
+.projection-engine-fill{height:100%;border-radius:100px;transition:width .3s}
+.projection-engine-fill.fill-strong{background:var(--green)}
+.projection-engine-fill.fill-partial{background:var(--orange)}
+.projection-engine-fill.fill-weak{background:var(--red)}
+.projection-what-unlocks{font-size:13px;color:var(--text-secondary);line-height:1.6;padding-top:12px;border-top:1px solid var(--border)}
+/* SoV grid banner (substrate-block override note, v1.1) */
+.sov-banner{padding:14px 18px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.25);border-radius:8px;margin-bottom:16px;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.sov-banner strong{color:var(--red)}
+.cell-factors{font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.4}
+/* Section */
+.report-section{margin:2.5rem 0;padding-top:2.5rem;border-top:1px solid var(--border)}
+.section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.5rem}
+.section-title{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:1.25rem}
+/* SoV grid table */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);padding:0.5rem 0.75rem;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:0.75rem;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+td:first-child{color:var(--text);font-weight:500}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25)}
+.badge-amber{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.25)}
+.badge-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25)}
+.engine-col{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600}
+/* Status card */
+.status-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:1rem}
+.status-card h4{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:0.5rem}
+.status-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+/* Action card */
+.action-card{padding:2rem;background:rgba(201,150,58,0.08);border:1px solid rgba(201,150,58,0.25);border-radius:var(--radius);margin:2.5rem 0}
+.action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--design);margin-bottom:0.5rem}
+.action-title{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.75rem}
+.action-detail{font-size:13px;color:var(--text-secondary);line-height:1.7}
+/* Upgrade CTA */
+.upgrade-cta{margin:3rem 0;padding:2.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+.upgrade-cta h3{font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:0.75rem}
+.upgrade-cta p{font-size:13px;color:var(--text-secondary);max-width:50ch;margin:0 auto 1.5rem;line-height:1.6}
+.upgrade-cta .code-block{display:inline-block;font-family:var(--mono);font-size:13px;background:rgba(255,255,255,0.06);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:var(--radius-xs);color:var(--text);margin-bottom:1.5rem;letter-spacing:1px}
+.btn-upgrade{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:var(--design);color:#14100a;font-family:var(--body);font-size:0.9rem;font-weight:600;border-radius:6px;text-decoration:none;transition:background .2s}
+.btn-upgrade:hover{background:#b08125}
+footer{margin-top:4rem;padding:2rem 0;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-muted)}
+/* Notable finding card */
+.finding-card{padding:1.25rem 1.5rem;background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.2);border-radius:var(--radius-sm);margin-top:1rem;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.finding-card strong{color:var(--orange)}
+@media(max-width:680px){.engine-bars{grid-template-columns:1fr}.ladder{display:grid;grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="report-header">
+    <div class="report-eyebrow">F&amp;T Intelligence · AI Search Report</div>
+    <div class="report-title">thecoachmarlow.co.uk</div>
+    <div class="report-meta">AI Search dimension · May 2026 · Delivered by Friction &amp; Toil</div>
+  </header>
+
+  <!-- CITABLE vs CITED DISCLOSURE -->
+  <div class="disclosure">
+    <strong>What this report measures:</strong> your structural <em>citation probability</em> across Google, Bing (the index that powers ChatGPT search and ChatGPT browse mode), and Brave (the index that powers Anthropic Claude search and Perplexity). This is a snapshot of readiness, not live AI output drift. For ongoing tracking of how your Maturity Rung moves over time, see the F&amp;T Annual Intelligence Plan (£2,500/yr).
+  </div>
+
+  <!-- MATURITY RUNG CARD -->
+  <div class="rung-card ">
+    <div class="rung-eyebrow">AI Visibility Maturity Curve</div>
+    <div class="rung-name">Recommended</div>
+    <div class="rung-sov">AI Share of Voice: 13 / 18 cells across Google · Bing · Brave (6 queries × 3 engines)</div>
+    <div class="rung-trajectory">Add Restaurant + FAQPage schema markup to the homepage and lunch/dinner menu page — the only missing citation factor across all 18 cells, and the fix that converts Bing's single passing cell into five. Yoast SEO (already installed) includes a built-in schema module. ~3 hours.</div>
+
+    <!-- Per-engine 3-bar viz -->
+    <div class="engine-bars">
+      <div class="engine-bar">
+        <div class="engine-bar-label">Google · Gemini</div>
+        <div class="engine-bar-score">6 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-strong" style="width:100%"></div></div>
+        <div class="engine-bar-sub">Powers Google AI Overviews, Gemini</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Bing · ChatGPT</div>
+        <div class="engine-bar-score">1 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-weak" style="width:17%"></div></div>
+        <div class="engine-bar-sub">Powers ChatGPT search + ChatGPT browse</div>
+      </div>
+      <div class="engine-bar">
+        <div class="engine-bar-label">Brave · Claude</div>
+        <div class="engine-bar-score">6 / 6</div>
+        <div class="engine-bar-track"><div class="engine-bar-fill fill-strong" style="width:100%"></div></div>
+        <div class="engine-bar-sub">Powers Claude search + Perplexity supplement</div>
+      </div>
+    </div>
+
+    <!-- 5-rung ladder -->
+    <div class="ladder">
+      <div class="rung-step passed">Blocked</div>
+      <div class="rung-step passed">Invisible</div>
+      <div class="rung-step passed">Emerging</div>
+      <div class="rung-step passed">Cited</div>
+      <div class="rung-step active">Recommended</div>
+    </div>
+  </div>
+
+  <!-- Notable finding: Bing gap -->
+  <div class="finding-card">
+    <strong>Notable finding: Bing gap (1/6).</strong> The Coach scores 6/6 on Google and Brave but only 1/6 on Bing. On five of six queries, Bing returns unrelated results — a known tokenisation failure in hospitality verticals where multi-word queries ("The Coach Marlow reviews", "Michelin star restaurant Marlow", "best gastropub Buckinghamshire") trigger dictionary entries, tyre-company pages, or fashion-brand results instead of the restaurant. This is not a brand visibility failure — it is a structural Bing limitation. The remedy is literal-phrase H2s, exact-match keyword titles, and Restaurant schema markup on key pages, which give Bing the structured signals it needs to resolve ambiguous queries. ChatGPT search and ChatGPT browse mode run on Bing's index: 1/6 Bing means most ChatGPT users searching category queries cannot find The Coach.
+  </div>
+
+  <!-- POST-UNBLOCK PROJECTION PANEL: not triggered (site not Blocked) -->
+
+  <!-- SoV 18-cell GRID -->
+  <div class="report-section">
+    <div class="section-label">AI Share of Voice — 18-cell grid</div>
+    <div class="section-title">Six target queries × three engines — who surfaces, and why</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Query</th>
+          <th class="engine-col">Google</th>
+          <th class="engine-col">Bing</th>
+          <th class="engine-col">Brave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Q1 · The Coach Marlow<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Branded</span></td>
+          <td>
+            <span class="badge badge-green">Likely Cited</span>
+            <div class="cell-factors">4/5 factors · Site ranks #1, Brad Cacela named in snippet</div>
+          </td>
+          <td>
+            <span class="badge badge-green">Likely Cited</span>
+            <div class="cell-factors">4/5 factors · Site ranks #1; branded lookup passes tokenisation</div>
+          </td>
+          <td>
+            <span class="badge badge-green">Likely Cited</span>
+            <div class="cell-factors">4/5 factors · Site #1 + knowledge infobox card surfaced</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Q2 · The Coach Marlow reviews<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Branded with intent</span></td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · TripAdvisor, Andy Hayler, London Unattached, Good Food Guide all cite The Coach</div>
+          </td>
+          <td>
+            <span class="badge badge-red">Unlikely</span>
+            <div class="cell-factors">0/5 factors · Bing tokenisation failure — "Coach" returns fashion brand + transport results. Engine-specific finding, not a brand gap.</div>
+          </td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · Andy Hayler, London Unattached, TripAdvisor (×2), Truffle Threads, Harald on Food — brand dominates. Note: some older reviews still reference Sarah Hayward as Head Chef — AI narrative gap.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Q3 · Michelin star restaurant Marlow<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Commercial non-brand</span></td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · Hand &amp; Flowers #1; thecoachmarlow.co.uk #3; Michelin Guide also features</div>
+          </td>
+          <td>
+            <span class="badge badge-red">Unlikely</span>
+            <div class="cell-factors">0/5 factors · Bing tokenisation failure — "Michelin" returns Michelin Tyre Company results. Engine-specific finding.</div>
+          </td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · Site at #4; Daily Mail names The Coach "UK's cheapest Michelin star restaurant"</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Q4 · Best gastropub Buckinghamshire<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Commercial superlative</span></td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · AI summary names The Coach; Top50Gastropubs lists The Coach in Buckinghamshire</div>
+          </td>
+          <td>
+            <span class="badge badge-red">Unlikely</span>
+            <div class="cell-factors">0/5 factors · Bing tokenisation failure — "best" triggers dictionary definitions from Cambridge, Merriam-Webster, Oxford.</div>
+          </td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · Top50Gastropubs #3 lists The Coach directly; Buckinghamshire Live also names The Coach</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Q5 · Gastropub private dining Marlow<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Use-case</span></td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · The Coach named as option with semi-private dining room; Hand &amp; Flowers The Shed dominant</div>
+          </td>
+          <td>
+            <span class="badge badge-red">Unlikely</span>
+            <div class="cell-factors">0/5 factors · Returns London/generic gastropub results — Marlow not localised; The Coach absent from top 10</div>
+          </td>
+          <td>
+            <span class="badge badge-amber">Possible</span>
+            <div class="cell-factors">3/5 factors · The Coach at #7; Hand &amp; Flowers and The Oarsman (privatediningrooms.co.uk) dominate private dining citations</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Q6 · Where can I eat Michelin starred food in Marlow?<br><span style="font-size:11px;color:var(--text-muted);font-weight:400">Question-format</span></td>
+          <td>
+            <span class="badge badge-green">Likely Cited</span>
+            <div class="cell-factors">4/5 factors · Google AI Overview triggered; The Coach named directly with "Michelin-starred plates in a more casual setting"</div>
+          </td>
+          <td>
+            <span class="badge badge-red">Unlikely</span>
+            <div class="cell-factors">0/5 factors · Bing tokenisation failure — "where can I" triggers modal-verb dictionaries from Cambridge, Collins, Merriam-Webster.</div>
+          </td>
+          <td>
+            <span class="badge badge-green">Likely Cited</span>
+            <div class="cell-factors">4/5 factors · My Marlow, Michelin Guide, Premier Inn all name The Coach for this Marlow Michelin query</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:1rem;line-height:1.5;">Each cell shows the citation-factor verdict (Likely Cited / Possible / Unlikely) and how many of the 5 structural factors the relevant page meets. Scores are assessed against documented AI citation factors based on structural and content signals. Live prompt testing against ChatGPT, Claude, and Perplexity is available as a retainer add-on (see F&amp;T Annual Intelligence Plan).</p>
+  </div>
+
+  <!-- CITATION HOST MAP -->
+  <div class="report-section">
+    <div class="section-label">Citation Host Map</div>
+    <div class="section-title">The publishers that control your AI reputation in hospitality</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Host</th>
+          <th>AI citation frequency</th>
+          <th>Your presence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>guide.michelin.com</td>
+          <td><span class="badge badge-green">High</span></td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">One-star listing confirmed; 2026 MICHELIN Guide listing live with inspector note</div></td>
+        </tr>
+        <tr>
+          <td>tripadvisor.co.uk</td>
+          <td><span class="badge badge-green">High</span></td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">1,834 reviews, rated 4.1/5, ranked #16 of 73 in Marlow — strong review count and update cadence</div></td>
+        </tr>
+        <tr>
+          <td>top50gastropubs.com</td>
+          <td><span class="badge badge-green">High</span></td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">Listed in Buckinghamshire; named Highest New Entry 2016 in Estrella Damm Top 50 Gastropubs</div></td>
+        </tr>
+        <tr>
+          <td>thegoodfoodguide.co.uk</td>
+          <td><span class="badge badge-green">High</span></td>
+          <td><span class="badge badge-green">Active</span><div class="cell-factors">Review present; Good Food Guide is a key AI citation source for UK restaurant category queries</div></td>
+        </tr>
+        <tr>
+          <td>reddit.com</td>
+          <td><span class="badge badge-amber">Medium</span></td>
+          <td><span class="badge badge-amber">Mentioned</span><div class="cell-factors">r/fryup post references The Coach (£16.50 breakfast dish); no sustained community thread activity detected. Brave's index favours Reddit for "best gastropub" queries — an occasional organic mention is a free signal worth encouraging.</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-secondary);margin-top:1rem;line-height:1.5;">These are the external sources AI engines pull from when answering category queries in your sector. Presence on high-frequency hosts is the fastest lever to move up the Maturity Curve. If you work with a PR agency, share this table with them — it is their placement brief.</p>
+  </div>
+
+  <!-- VENDOR BAKE-OFF -->
+  <div class="report-section">
+    <div class="section-label">Vendor Bake-Off Readiness</div>
+    <div class="section-title">Can AI compare you head-to-head when asked?</div>
+    <div class="status-card">
+      <h4>Bake-Off Partial (1/3 checks pass)</h4>
+      <p>Check 1 (pricing extractable): <strong>Pass</strong> — menu prices from £6.50 to £38.00 and package prices (£665, £995) are all in HTML text and extractable by AI.<br><br>Check 2 (feature data structured): <strong>Fail</strong> — menu items and package inclusions are in prose paragraphs, not table or structured list elements that AI can parse as key/value feature data.<br><br>Check 3 (comparison claims supported): <strong>Fail</strong> — no factual differentiators vs competitors are cited. Copy is descriptive ("seasonal", "inventive") without named comparative claims.<br><br><em>Note: bake-off readiness is lower-applicability in hospitality. Price is not the primary comparison axis — occasion, atmosphere, and Michelin reputation are. This finding is a medium-priority structural note, not the top lever.</em></p>
+    </div>
+  </div>
+
+  <!-- AI CRAWLER ACCESS -->
+  <div class="report-section">
+    <div class="section-label">AI Crawler Access</div>
+    <div class="section-title">Can AI engines read your site?</div>
+    <div class="status-card">
+      <h4>Fully open</h4>
+      <p>robots.txt is generated by Yoast SEO with a global User-agent: * and an empty Disallow directive — all AI bots are permitted without restriction. Confirmed bots allowed: GPTBot (ChatGPT training and search index), ClaudeBot (Anthropic Claude training and search), anthropic-ai (legacy Claude crawler alias), OAI-SearchBot (ChatGPT search and browse mode), PerplexityBot (Perplexity AI answers), GoogleOther (Gemini and Google AI training), CCBot (Common Crawl, which feeds most third-party LLMs). No per-bot restrictions detected. Sitemap correctly referenced at <code>https://thecoachmarlow.co.uk/sitemap_index.xml</code>.</p>
+    </div>
+  </div>
+
+  <!-- MULTI-ENGINE INDEXATION -->
+  <div class="report-section">
+    <div class="section-label">Multi-Engine Indexation</div>
+    <div class="section-title">Are you visible across the AI search substrate, not just Google?</div>
+    <div class="status-card">
+      <h4>Partial</h4>
+      <p>Bingbot and Bravebot are both allowed per robots.txt — no indexation blocks. IndexNow protocol was not detected in response headers or at common key paths. Bing Webmaster Tools verification cannot be confirmed externally — the site is assumed unverified pending direct check. The Yoast SEO sitemap is in place, which is a positive substrate signal, but active Bing Webmaster verification and IndexNow would ensure new content (head-chef story, seasonal menu updates) reaches ChatGPT search and ChatGPT browse mode without waiting for organic crawl cycles.</p>
+    </div>
+    <div class="status-card" style="margin-top:1rem;">
+      <h4>Standard recommendations</h4>
+      <p style="margin-bottom:0.75rem;"><strong>1. Verify in Bing Webmaster Tools</strong> — bing.com/webmasters. Submit the existing Yoast sitemap. Bing's index powers ChatGPT search and ChatGPT browse mode. Invisible on Bing means invisible to most ChatGPT users live-querying for category terms. ~30 min.</p>
+      <p style="margin-bottom:0.75rem;"><strong>2. Implement IndexNow</strong> — generate a key, host at <code>/&lt;key&gt;.txt</code>, ping the endpoint on every publish. One API call notifies Bing + Yandex + Seznam + Naver instantly. Without it, seasonal menu changes and chef announcements wait days for crawl. ~1 hour.</p>
+      <p style="font-size:12px;color:var(--text-muted);"><strong>Brave note:</strong> No webmaster tools exist for Brave. Bravebot is allowed per robots.txt — this is the only controllable surface. Brave's index is otherwise fed by the Web Discovery Project (passive opt-in via Brave-browser users) plus a Bing-licensed fallback for sparse queries.</p>
+    </div>
+  </div>
+
+  <!-- HEAD CHEF NARRATIVE GAP — Notable finding -->
+  <div class="report-section">
+    <div class="section-label">Notable finding</div>
+    <div class="section-title">Head chef transition is an unresolved AI narrative gap</div>
+    <div class="status-card">
+      <h4>Brad Cacela vs Sarah Hayward — AI citations are split</h4>
+      <p>The Coach's About page correctly names Brad Cacela as Head Chef (previously Senior Sous Chef at The Hand &amp; Flowers for 8+ years). However, several review sources appearing in the top 10 for "The Coach Marlow reviews" still reference Sarah Hayward as the name associated with the kitchen. Search result snippets from AI-facing review platforms continue to carry the older attribution, which means ChatGPT and Claude answers to "who is the chef at The Coach Marlow?" may give an outdated response.<br><br>The fix is not on the website — it is a PR and structured-data push. Publishing a blog post or press release naming Brad Cacela as Head Chef, getting it indexed and cited by the review platforms that dominate Q2 results (Good Food Guide, TripAdvisor editorial, Morning Advertiser), and adding a named-chef Person schema to the About page would close this gap within one crawl cycle. Estimated effort: one PR pitch + 1 hour schema work.</p>
+    </div>
+  </div>
+
+  <!-- ONE RECOMMENDED ACTION -->
+  <div class="action-card">
+    <div class="action-label">Your next move</div>
+    <div class="action-title">Add Restaurant + FAQPage schema to close the Bing gap</div>
+    <div class="action-detail">Schema markup (Restaurant structured data) is the single citation factor missing across all 18 cells — every other factor (named authority, fact density, external citations) is already strong. Adding Restaurant schema to the homepage and lunch/dinner page, plus FAQPage markup to the FAQs page, gives Bing the structured signals it needs to resolve ambiguous queries and surface The Coach on non-branded searches. It also strengthens Google AI Overviews and Brave answer-box extraction. Yoast SEO (already installed and active per the Yoast-generated sitemap) includes a built-in schema module — enabling Restaurant schema requires selecting the correct post type and filling in operating hours, price range, and cuisine type. Approximate effort: 3 hours.</div>
+  </div>
+  <!-- CTA + footer stripped for combo embed — see intel-preview-*.html for parent shell -->
+
+</div>
+</body>
+</html>
